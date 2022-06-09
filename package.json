@@ -1,0 +1,88 @@
+{
+  "name": "vuetify-pro-tiptap",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "functional components snackbar and dialog for vuetify",
+  "private": false,
+  "author": "yikoyu<2282373181@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yikoyu/vuetify-pro-tiptap"
+  },
+  "homepage": "https://yikoyu.github.io/vuetify-pro-tiptap/",
+  "keywords": [
+    "vue",
+    "typescript",
+    "vuetify",
+    "tiptap"
+  ],
+  "main": "./lib/vuetify-pro-tiptap.umd.js",
+  "module": "./lib/vuetify-pro-tiptap.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/vuetify-pro-tiptap.es.js",
+      "require": "./lib/vuetify-pro-tiptap.umd.js"
+    },
+    "./style.css": {
+      "import": "./lib/style.css",
+      "require": "./lib/style.css"
+    }
+  },
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build:lib": "pnpm check:types && vite build",
+    "build:examples": "pnpm build:lib && pnpm check:types && vite build --mode examples",
+    "lint": "eslint {src,examples}/**/*.{js,ts,tsx,vue}",
+    "lint:fix": "eslint {src,examples}/**/*.{js,ts,tsx,vue} --fix",
+    "git-commit": "git-cz",
+    "check:types": "vue-tsc --noEmit --skipLibCheck",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "push": "pnpm build:lib && pnpm publish --no-git-checks --registry https://registry.npmjs.org/",
+    "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@commitlint/cz-commitlint": "^17.0.0",
+    "@rushstack/eslint-patch": "^1.1.3",
+    "@types/node": "^16.11.8",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/composition-api": "^1.4.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "@vue/runtime-dom": "^3.2.37",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.2.2",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-define-config": "^1.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.6.2",
+    "sass": "1.32.13",
+    "typescript": "^4.7.2",
+    "unplugin-vue-components": "^0.19.6",
+    "vite": "^2.9.9",
+    "vite-plugin-dts": "^1.2.0",
+    "vite-plugin-eslint": "^1.3.0",
+    "vite-plugin-vue2": "^2.0.1",
+    "vue": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "vue-tsc": "0.37.3",
+    "vuetify": "^2.6.6"
+  }
+}

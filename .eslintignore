@@ -1,0 +1,15 @@
+.eslintrc.js
+build/**/*.js
+node_modules/*
+**/node_modules/*
+src-capacitor/android/*
+dist_electron
+dist
+lib
+vue.config.js
+commitlint.config.js
+config/router-config.js
+mock/js
+src/pwa/service-worker.js
+plopfile.js
+plop-templates/**/*.js

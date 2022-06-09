@@ -1,0 +1,1 @@
+# Vuetify Pro Tiptap

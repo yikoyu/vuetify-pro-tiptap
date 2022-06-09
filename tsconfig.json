@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["vite/client", "vuetify", "node"],
+    "lib": ["esnext", "dom"],
+    "paths": {
+      "@/*":["./src/*"]
+    }
+  },
+  "vueCompilerOptions": {
+    "target": 2, // delete after migrating to vue3 (or nuxt3)
+    "experimentalTemplateCompilerOptions": {
+      "compatConfig": {
+        "MODE": 2,
+        "COMPILER_V_ON_NATIVE": false,
+        "COMPILER_V_BIND_SYNC": false
+      } // delete after migrating to vue3 (or nuxt3)
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ]
+}
