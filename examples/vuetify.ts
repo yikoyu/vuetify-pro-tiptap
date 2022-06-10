@@ -6,10 +6,12 @@ import zhHans from 'vuetify/es5/locale/zh-Hans'
 export const createVuetify = (Vue: VueConstructor): Vuetify => {
   Vue.use(Vuetify)
 
-  return new Vuetify({
+  const vuetify = new Vuetify({
     lang: {
       locales: { zhHans },
       current: 'zhHans'
     }
   })
+
+  return vuetify
 }
