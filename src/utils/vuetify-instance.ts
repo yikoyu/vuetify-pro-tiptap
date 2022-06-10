@@ -1,5 +1,6 @@
 import Vuetify from 'vuetify/lib'
 import type { VuetifyPreset } from 'vuetify/types'
+import Logger from './logger'
 
 let vuetifyInstance: Vuetify
 
@@ -28,7 +29,7 @@ export function getVuetifyInstance(instance?: Vuetify, preset?: VuetifyPreset) {
 
 export function setVuetifyInstance(instance: Vuetify) {
   if (!instance) {
-    console.warn('[vuetify-pro-dialog]: invalid vuetify instance')
+    Logger.warn('invalid vuetify instance')
     return false
   }
   vuetifyInstance = instance

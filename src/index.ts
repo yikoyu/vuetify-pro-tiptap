@@ -1,6 +1,7 @@
 import type { PluginFunction } from 'vue'
 import type { default as Vuetify } from 'vuetify/lib'
 import { setVuetifyInstance } from './utils/vuetify-instance'
+import Logger from './utils/logger'
 
 import VuetifyTiptap from './components/VuetifyTiptap.vue'
 import VuetifyViewer from './components/VuetifyViewer.vue'
@@ -24,7 +25,7 @@ const createVuetifyProTipTap = (opts: InstallationOptions): PluginFunction<Insta
     const { vuetify, lang } = opts || {}
 
     if (!vuetify) {
-      console.warn('The module VuetifyProTipTap needs vuetify instance. Use Vue.use(VuetifyProTipTap, { vuetify })')
+      Logger.warn(`The module VuetifyProTipTap needs vuetify instance. Use Vue.use(VuetifyProTipTap, { vuetify })`)
       return
     }
 
