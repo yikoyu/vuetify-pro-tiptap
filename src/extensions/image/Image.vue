@@ -154,7 +154,6 @@ export default defineComponent({
     }
 
     const onMouseMove = throttle(function (e: MouseEvent) {
-      console.time('onMouseMove :>> ')
       e.preventDefault()
       e.stopPropagation()
       if (!unref(resizing)) return
@@ -164,19 +163,13 @@ export default defineComponent({
       const dx = (e.clientX - x) * (/l/.test(dir) ? -1 : 1)
       const dy = (e.clientY - y) * (/t/.test(dir) ? -1 : 1)
 
-      console.log('object :>> ', w + dx, h + dy, unref(maxSize).width)
-      console.log('width :>> ', clamp(w + dx, MIN_SIZE, unref(maxSize).width))
-      console.log('height :>> ', Math.max(h + dy, MIN_SIZE))
-
       props.updateAttributes({
         width: clamp(w + dx, MIN_SIZE, unref(maxSize).width),
         height: Math.max(h + dy, MIN_SIZE)
       })
-      console.timeEnd('onMouseMove :>> ')
     }, THROTTLE_WAIT_TIME)
 
     function onMouseUp(e: MouseEvent) {
-      console.log('onMouseUp :>> ', e)
       e.preventDefault()
       e.stopPropagation()
       if (!unref(resizing)) return
