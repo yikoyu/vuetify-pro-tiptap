@@ -6,10 +6,11 @@ import VuetifyTiptap from './components/VuetifyTiptap.vue'
 import VuetifyViewer from './components/VuetifyViewer.vue'
 export type { ToolbarType } from './constants/toolbar-definitions'
 export type { StarterKitOptions } from './core/tiptap-kit'
-import locale, { zhCN, enUS } from './locales'
+import locale, { zhHans, en } from './locales'
 
 export interface InstallationOptions {
   vuetify: Vuetify
+  lang?: string
 }
 
 /* istanbul ignore if */
@@ -20,7 +21,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 const createVuetifyProTipTap = (opts: InstallationOptions): PluginFunction<InstallationOptions> => {
   const install: PluginFunction<InstallationOptions> = (Vue): void => {
-    const { vuetify } = opts || {}
+    const { vuetify, lang } = opts || {}
 
     if (!vuetify) {
       console.warn('The module VuetifyProTipTap needs vuetify instance. Use Vue.use(VuetifyProTipTap, { vuetify })')
@@ -28,9 +29,10 @@ const createVuetifyProTipTap = (opts: InstallationOptions): PluginFunction<Insta
     }
 
     setVuetifyInstance(vuetify)
+    if (lang) locale.lang = lang
   }
 
   return install
 }
 
-export { createVuetifyProTipTap, VuetifyTiptap, VuetifyViewer, locale, zhCN, enUS }
+export { createVuetifyProTipTap, VuetifyTiptap, VuetifyViewer, locale, zhHans, en }

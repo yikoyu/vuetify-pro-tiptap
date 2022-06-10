@@ -17,7 +17,7 @@ const locale: Record<string, string> = {
   'editor.left.tooltip': '左对齐',
   'editor.center.tooltip': '居中对齐',
   'editor.right.tooltip': '右对齐',
-  'editor.justify.tooltip': '居中对齐',
+  'editor.justify.tooltip': '两端对齐',
   'editor.bulletlist.tooltip': '无序列表',
   'editor.orderedlist.tooltip': '有序列表',
   'editor.tasklist.tooltip': '任务列表',
