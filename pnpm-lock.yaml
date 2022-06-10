@@ -119,7 +119,7 @@ importers:
       '@vue/composition-api': ^1.4.0
       vue: ^2.6.14
       vuetify: ^2.6.2
-      vuetify-pro-tiptap: workspace:^0.0.1
+      vuetify-pro-tiptap: workspace:*
     dependencies:
       '@vue/composition-api': 1.6.2_vue@2.6.14
       vue: 2.6.14
