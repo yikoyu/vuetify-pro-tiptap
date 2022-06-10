@@ -27,27 +27,12 @@ $white-color: #fff;
       .v-toolbar__content {
         padding: 0;
       }
-      .divider {
-        width: 2px;
-        height: 1.25rem;
-        background-color: rgba(#000, 0.1);
-        margin-left: 0.25rem;
-        margin-right: 0.5rem;
-      }
     }
 
     &__toolbar {
       .v-toolbar__content {
         flex-wrap: wrap;
         padding: 4px 12px;
-
-        .divider {
-          width: 2px;
-          height: 1.25rem;
-          background-color: rgba(#000, 0.1);
-          margin-left: 0.25rem;
-          margin-right: 0.5rem;
-        }
       }
     }
 

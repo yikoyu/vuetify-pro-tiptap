@@ -4,7 +4,7 @@
       <!-- Spacer -->
       <v-spacer v-if="item.type === 'spacer'" :key="`spacer-${key}-${item.type}`" />
       <!-- Divider -->
-      <div v-else-if="item.type === 'divider'" class="divider" :key="`divider-${key}-${item.type}`" />
+      <v-divider v-else-if="item.type === 'divider'" vertical class="mx-1 me-2" :key="`divider-${key}-${item.type}`" />
       <!-- Slot -->
       <div v-else-if="item.type === 'slot'" :key="`slot-${key}-${item.type}`">
         <slot :name="item.slot" v-bind="{ attrs: { class: 'rounded me-1', disabled, icon: true, small: true } }" />
