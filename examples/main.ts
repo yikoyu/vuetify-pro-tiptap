@@ -12,7 +12,10 @@ import 'vuetify-pro-tiptap/style.css'
 // import { createVuetifyProTipTap } from '../src'
 // import '../src/styles/editor.scss'
 
-const VuetifyProTipTap = createVuetifyProTipTap({ vuetify })
+const VuetifyProTipTap = createVuetifyProTipTap({
+  vuetify,
+  lang: 'zhHans'
+})
 Vue.use(VuetifyProTipTap)
 
 const app = createApp({

@@ -1,8 +1,5 @@
 <script lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-
-import { defineComponent, nextTick, Ref, ref } from '@vue/composition-api'
+import { defineComponent, ref, type Ref } from '@vue/composition-api'
 import { mdiDeleteCircleOutline, mdiSend, mdiFileCodeOutline } from '@mdi/js'
 import { VuetifyTiptap, VuetifyViewer, type ToolbarType, type StarterKitOptions, locale } from 'vuetify-pro-tiptap'
 // import { VuetifyTiptap, VuetifyViewer, type ToolbarType, type StarterKitOptions, locale } from '../src'
@@ -15,9 +12,8 @@ export default defineComponent({
     VuetifyTiptap,
     VuetifyViewer
   },
-  setup(props, { root }) {
+  setup() {
     const content = ref(testHtml)
-    const view = ref(false)
     const outlined = ref(true)
     const dense = ref(false)
     const editHtml = ref(false)
@@ -77,10 +73,6 @@ export default defineComponent({
       '#html'
     ])
 
-    const slotPrepend = ref(false)
-    const slotAppend = ref(false)
-    const slotBottom = ref(true)
-
     function uploadImage(file: File) {
       console.log('e :>> ', file)
       return Promise.resolve('https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wE9P?ver=e767')
@@ -90,8 +82,8 @@ export default defineComponent({
       mdiDeleteCircleOutline,
       mdiFileCodeOutline,
       mdiSend,
+      locale,
       content,
-      view,
       outlined,
       dense,
       editHtml,
@@ -100,15 +92,6 @@ export default defineComponent({
       errorMessages,
       config,
       toolbar,
-      slotPrepend,
-      slotAppend,
-      slotBottom,
-      setLang: (lang: string) => {
-        locale.setLang(lang)
-        nextTick(() => {
-          root.$forceUpdate()
-        })
-      },
       uploadImage,
       dialog: ref(false)
     }
@@ -128,8 +111,8 @@ export default defineComponent({
         {{ $vuetify.rtl ? 'RTL' : 'LTR' }}
       </v-btn>
 
-      <v-btn class="ms-2" color="primary" @click="setLang('zh-CN')">set Chinese</v-btn>
-      <v-btn class="ms-2" color="primary" @click="setLang('en-US')">set English</v-btn>
+      <v-btn class="ms-2" color="primary" @click="locale.setLang('zhHans')">set Chinese</v-btn>
+      <v-btn class="ms-2" color="primary" @click="locale.setLang('en')">set English</v-btn>
 
       <vuetify-tiptap
         v-model="content"
@@ -201,33 +184,6 @@ export default defineComponent({
             <v-icon>{{ mdiDeleteCircleOutline }}</v-icon>
           </v-btn>
         </template>
-
-        <!-- <template v-if="slotBottom" #bottom="{ editor }">
-          <v-toolbar dense flat height="48px" color="grey lighten-4" class="px-2" style="border-top: 1px solid #ddd">
-            <v-spacer />
-            <v-btn
-              @click="
-                editor && editor.commands.setContent('')
-                content = ''
-              "
-              icon
-              small
-            >
-              <v-icon>{{ mdiSend }}</v-icon>
-            </v-btn>
-          </v-toolbar>
-        </template> -->
-
-        <!-- <template #image="{ editor, imageSrc }">
-            <v-text-field
-              :value="imageSrc"
-              name="src"
-              @input="editor.chain().focus().setImage({ src: $event }).run()"
-              label="Link URL"
-              :placeholder="'image'"
-              hide-details
-            />
-          </template> -->
       </vuetify-tiptap>
 
       <v-divider class="my-4"></v-divider>
