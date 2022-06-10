@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { unref, computed, onUnmounted, ref } from '@vue/composition-api'
+import Logger from '@/utils/logger'
 
 import zhHans from './zh-Hans'
 import en from './en'
@@ -28,6 +29,11 @@ class Locale {
   }
 
   set lang(lang: string) {
+    if (!this.isLangSupported(lang)) {
+      Logger.warn(`Can't find the current language "${lang}", Using language "${DEFAULT_LOCALE.lang}" by default`)
+      return
+    }
+
     DEFAULT_LOCALE.lang = lang
     this.bus.$emit('lang', lang)
   }
@@ -42,6 +48,11 @@ class Locale {
 
   loadLangMessage(lang: string): Record<string, string> {
     return this.message[lang]
+  }
+
+  private isLangSupported(lang: string): boolean {
+    const supportedLangs = Object.keys(this.message)
+    return supportedLangs.includes(lang)
   }
 
   public setLang(lang: string) {
