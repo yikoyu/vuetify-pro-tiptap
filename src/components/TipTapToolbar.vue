@@ -16,9 +16,9 @@
           <template #activator="{ on, attrs }">
             <!-- Color Button -->
             <div v-if="item.type === 'color'" class="me-1">
-              <ColorPicker v-model="color" v-bind="attrs" :dark="dark" :nudge-top="-4" :nudge-left="8" v-on="on" @input="item.action && item.action(color)">
-                <template #button="{ on }">
-                  <v-btn v-on="on" class="rounded" :disabled="disabled" icon small :data-testid="item.type">
+              <ColorPicker v-model="color" v-bind="attrs" :dark="dark" :nudge-top="-4" :nudge-left="8" @input="item.action && item.action(color)">
+                <template #button="{ on: btn }">
+                  <v-btn v-on="{ ...btn, ...on }" class="rounded" :disabled="disabled" icon small :data-testid="item.type">
                     <v-icon :color="color">
                       {{ item.icon }}
                     </v-icon>
@@ -29,17 +29,9 @@
 
             <!-- Highlight Button -->
             <div v-else-if="item.type === 'highlight'" class="me-1">
-              <ColorPicker
-                v-model="highlight"
-                v-bind="attrs"
-                :dark="dark"
-                :nudge-top="-4"
-                :nudge-left="8"
-                v-on="on"
-                @input="item.action && item.action(highlight)"
-              >
-                <template #button="{ on }">
-                  <v-btn v-on="on" class="rounded" :disabled="disabled" icon small :data-testid="item.type">
+              <ColorPicker v-model="highlight" v-bind="attrs" :dark="dark" :nudge-top="-4" :nudge-left="8" @input="item.action && item.action(highlight)">
+                <template #button="{ on: btn }">
+                  <v-btn v-on="{ ...btn, ...on }" class="rounded" :disabled="disabled" icon small :data-testid="item.type">
                     <v-icon :color="highlight">
                       {{ item.icon }}
                     </v-icon>
