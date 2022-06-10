@@ -2,7 +2,7 @@
   "name": "vuetify-pro-tiptap",
   "version": "0.0.1",
   "license": "MIT",
-  "description": "functional components snackbar and dialog for vuetify",
+  "description": "tiptap text editor on vuejs and vuetify",
   "private": false,
   "author": "yikoyu<2282373181@qq.com>",
   "repository": {
