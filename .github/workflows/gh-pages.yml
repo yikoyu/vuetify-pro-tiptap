@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [14]
-        pnpm: [6.32.19]
+        pnpm: [6.32.21]
 
     steps:
     - uses: actions/checkout@v2

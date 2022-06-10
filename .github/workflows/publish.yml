@@ -12,7 +12,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [14]
-        pnpm: [6.32.19]
+        pnpm: [6.32.21]
 
     steps:
     - uses: actions/checkout@v2
@@ -45,3 +45,19 @@ jobs:
         pnpm push
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Read package.json
+      uses: tyankatsu0105/read-package-version-actions@v1
+      id: package-version
+
+    - name: Create Release for Tag
+      id: release_tag
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        tag_name: v${{ steps.package-version.outputs.version }}
+        release_name: v${{ steps.package-version.outputs.version }}
+        prerelease: false
+        body: |
+          详情请参阅 [CHANGELOG.md](https://github.com/yikoyu/vuetify-pro-layout/blob/v${{ steps.package-version.outputs.version }}/CHANGELOG.md)
