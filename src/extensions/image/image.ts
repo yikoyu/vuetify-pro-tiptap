@@ -51,8 +51,8 @@ export default Image.extend<ImageOptions, ImageStorage>({
           }
         },
         parseHTML: element => {
-          const display = element.style.float ? element.style.float.replace(/['"]+/g, '') : element.style.display.replace(/['"]+/g, '')
-          return display
+          const display = element.getAttribute('data-display')
+          return display || 'inline'
         }
       }
     }
