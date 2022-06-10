@@ -57,6 +57,11 @@
       "path": "@commitlint/cz-commitlint"
     }
   },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.1.0",
+    "vue": "^2.6.0",
+    "vuetify": "^2.0.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
