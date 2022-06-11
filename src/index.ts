@@ -30,7 +30,7 @@ const createVuetifyProTipTap = (opts: InstallationOptions): PluginFunction<Insta
     }
 
     setVuetifyInstance(vuetify)
-    if (lang) locale.lang = lang
+    if (lang) locale.setLang(lang)
   }
 
   return install
