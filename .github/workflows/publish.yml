@@ -1,7 +1,4 @@
 on:
-  push:
-    tags:
-    - 'v*'
   workflow_dispatch:
 
 jobs:
@@ -39,25 +36,12 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    - name: Publish to NPM
-      run: |
-        npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-        pnpm push
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Build Lib
+      run: pnpm build:lib
 
-    - name: Read package.json
-      uses: tyankatsu0105/read-package-version-actions@v1
-      id: package-version
-
-    - name: Create Release for Tag
-      id: release_tag
-      uses: actions/create-release@v1
+    - name: Release
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      with:
-        tag_name: v${{ steps.package-version.outputs.version }}
-        release_name: v${{ steps.package-version.outputs.version }}
-        prerelease: false
-        body: |
-          详情请参阅 [CHANGELOG.md](https://github.com/yikoyu/vuetify-pro-layout/blob/v${{ steps.package-version.outputs.version }}/CHANGELOG.md)
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+      run: pnpm semantic-release
