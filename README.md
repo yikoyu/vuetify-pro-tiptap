@@ -12,8 +12,14 @@
   <a href="http://img.badgesize.io/https://unpkg.com/vuetify-pro-tiptap/lib/vuetify-pro-tiptap.es.js?compression=gzip&label=gzip">
     <img src="http://img.badgesize.io/https://unpkg.com/vuetify-pro-tiptap/lib/vuetify-pro-tiptap.es.js?compression=gzip&label=gzip">
   </a>
+  <a href="https://github.com/yikoyu/vuetify-pro-tiptap/actions/workflows/gh-pages.yml?query=workflow:gh-pages.yml+branch:master">
+    <img src="https://github.com/yikoyu/vuetify-pro-tiptap/actions/workflows/gh-pages.yml/badge.svg">
+  </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
+  </a>
+  <a href="https://github.com/semantic-release/semantic-release">
+    <img alt="semantic-release: angular" src="https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release">
   </a>
 </p>
 
