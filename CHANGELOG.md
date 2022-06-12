@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.0.0...v1.0.1) (2022-06-12)
+
+
+### Bug Fixes
+
+* 初始化语言设置改为setLang ([6d8f6b3](https://github.com/yikoyu/vuetify-pro-tiptap/commit/6d8f6b37c0fd17756edced36de40bb53ae1d8811))
+
 # 1.0.0 (2022-06-11)
 
 
