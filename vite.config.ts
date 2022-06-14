@@ -87,7 +87,7 @@ export default defineConfig(({ mode }) => {
     insertTypesEntry: true
   })
 
-  config.plugins.push(dtsPlugin)
+  config.plugins?.push(dtsPlugin)
   config.build = build
 
   return config
