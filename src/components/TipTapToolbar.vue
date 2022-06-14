@@ -11,7 +11,7 @@
       </div>
       <!-- Buttons -->
       <div v-else :key="`button-${key}-${item.type}`">
-        <v-tooltip :open-delay="500" top :z-index="201">
+        <v-tooltip :open-delay="500" top :z-index="201" bottom attach>
           <span>{{ item.title }}</span>
           <template #activator="{ on, attrs }">
             <!-- Color Button -->
