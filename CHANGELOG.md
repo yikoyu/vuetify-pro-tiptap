@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.0.1...v1.1.0) (2022-06-14)
+
+
+### Bug Fixes
+
+* **TipTapToolbar:** tooltip文本在dialog下无法显示 ([908c1b3](https://github.com/yikoyu/vuetify-pro-tiptap/commit/908c1b393ed35b8252541edee8bf91513581915b))
+
+
+### Features
+
+* 编辑器可进行全局配置 ([1ab3299](https://github.com/yikoyu/vuetify-pro-tiptap/commit/1ab329991a5ade7897452f4b5200bea4de257c33))
+
 ## [1.0.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.0.0...v1.0.1) (2022-06-12)
 
 
