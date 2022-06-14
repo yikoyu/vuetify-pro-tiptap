@@ -97,7 +97,7 @@ export default defineComponent({
     config: object<Partial<StarterKitOptions>>().def({}),
     editorClass: oneOfType<string | string[] | Record<string, any>>([String, Array, Object])
   },
-  setup(props, { emit, listeners }) {
+  setup(props, { emit, listeners, root }) {
     const toolbarRef = ref<Record<string, any> | null>(null)
     const editor: Ref<Editor | null> = ref(null)
     const isFullscreen = ref<boolean>(false)
@@ -214,6 +214,7 @@ export default defineComponent({
           underline: {},
           video: {}
         },
+        root.$vuetifyProTiptap?.config,
         props.config
       )
 

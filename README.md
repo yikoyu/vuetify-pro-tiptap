@@ -74,6 +74,32 @@ createApp({
   render: () => h(App)
 }).mount('#app')
 ```
+## 全局设置
+```TypeScript
+import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
+import 'vuetify-pro-tiptap/style.css'
+
+const VuetifyProTipTap = createVuetifyProTipTap({
+  vuetify,
+  lang: 'zhHans',
+  components: {
+    VuetifyTiptap,
+    VuetifyViewer
+  },
+  // 编辑器全局配置
+  config: {
+    image: {
+      imageTabs: [{ name: 'SELECT', component: SelectImage }],
+      hiddenTabs: ['upload'],
+      upload(file: File) {
+        return Promise.resolve(/** image url */)
+      }
+    }
+  }
+})
+
+Vue.use(VuetifyProTipTap)
+```
 
 ## 国际化
 

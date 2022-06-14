@@ -7,14 +7,29 @@ const vuetify = createVuetify(Vue)
 
 Vue.use(VCA)
 
-import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'
+import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
+import SelectImage from './components/SelectImage.vue'
 // import { createVuetifyProTipTap } from '../src'
 // import '../src/styles/editor.scss'
 
 const VuetifyProTipTap = createVuetifyProTipTap({
   vuetify,
-  lang: 'zhHans'
+  lang: 'zhHans',
+  components: {
+    VuetifyTiptap,
+    VuetifyViewer
+  },
+  config: {
+    image: {
+      imageTabs: [{ name: 'SELECT', component: SelectImage }],
+      // hiddenTabs: ['upload'],
+      upload(file: File) {
+        console.log('e :>> ', file)
+        return Promise.resolve('https://picsum.photos/1920/1080.webp')
+      }
+    }
+  }
 })
 Vue.use(VuetifyProTipTap)
 

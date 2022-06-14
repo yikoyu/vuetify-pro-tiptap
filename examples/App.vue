@@ -1,33 +1,21 @@
 <script lang="ts">
-import { defineComponent, ref, type Ref } from '@vue/composition-api'
+import { defineComponent, ref } from '@vue/composition-api'
 import { mdiDeleteCircleOutline, mdiSend, mdiFileCodeOutline } from '@mdi/js'
-import { VuetifyTiptap, VuetifyViewer, type ToolbarType, type StarterKitOptions, locale } from 'vuetify-pro-tiptap'
+import { type ToolbarType, locale } from 'vuetify-pro-tiptap'
 // import { VuetifyTiptap, VuetifyViewer, type ToolbarType, type StarterKitOptions, locale } from '../src'
-import SelectImage from './components/SelectImage.vue'
 
 const testHtml = `<h2 style="text-align: center">Welcome To Vuetify Tiptap Editor Demo</h2><p>🔥 <strong>Vuetify Tiptap Editor </strong>🔥is a WYSIWYG rich-text editor using&nbsp; <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/scrumpy/tiptap">tiptap</a>&nbsp;and <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/vuetifyjs/vuetify">vuetify</a>&nbsp;for Vue.js <img src="https://i.ibb.co/nbRN3S2/undraw-upload-87y9.png" alt="Test alt" width="200" data-display="right"> that's easy to use, friendly to developers, fully extensible and clean in design.</p><p></p><p style="text-align: right">👉Click on the image to get started image features 👉</p><p></p><p>You can toggle <strong>Fullscreen</strong> 📺 in this demo.</p><p></p><blockquote class="blockquote"><p>This demo is simple, switch tab for more features.</p><p>All demos source code: <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/yikoyu/vuetify-pro-tiptap">source code 🔗</a></p></blockquote>`
 
 export default defineComponent({
-  components: {
-    VuetifyTiptap,
-    VuetifyViewer
-  },
   setup() {
     const content = ref(testHtml)
+    const dialog = ref(false)
     const outlined = ref(true)
     const dense = ref(false)
     const editHtml = ref(false)
     const hideToolbar = ref(false)
     const disableToolbar = ref(false)
     const errorMessages = ref(null)
-
-    const config: Ref<Partial<StarterKitOptions>> = ref<Partial<StarterKitOptions>>({
-      image: {
-        upload: uploadImage,
-        imageTabs: [{ name: 'SELECT', component: SelectImage }]
-        // hiddenTabs: ['upload']
-      }
-    })
 
     const toolbar = ref<ToolbarType[]>([
       'bold',
@@ -73,27 +61,20 @@ export default defineComponent({
       '#html'
     ])
 
-    function uploadImage(file: File) {
-      console.log('e :>> ', file)
-      return Promise.resolve('https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wE9P?ver=e767')
-    }
-
     return {
       mdiDeleteCircleOutline,
       mdiFileCodeOutline,
       mdiSend,
       locale,
       content,
+      dialog,
       outlined,
       dense,
       editHtml,
       hideToolbar,
       disableToolbar,
       errorMessages,
-      config,
-      toolbar,
-      uploadImage,
-      dialog: ref(false)
+      toolbar
     }
   }
 })
@@ -119,7 +100,6 @@ export default defineComponent({
         label="Title"
         :hide-toolbar="hideToolbar"
         :disable-toolbar="disableToolbar"
-        :config="config"
         :toolbar="toolbar"
         :outlined="outlined"
         :dense="dense"
@@ -127,7 +107,6 @@ export default defineComponent({
         placeholder="Enter some text..."
         :error-messages="errorMessages"
         rounded
-        :uploadImage="uploadImage"
         :maxHeight="465"
       >
         <template v-if="editHtml" #editor="{ attrs }">
