@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.1.0...v1.1.1) (2022-06-15)
+
+
+### Bug Fixes
+
+* **type:** typescript的Modifiers on Import Names改为旧语法 ([e24e614](https://github.com/yikoyu/vuetify-pro-tiptap/commit/e24e61468ed6e632a9d5a76459eabbab3b4c3838))
+
 # [1.1.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.0.1...v1.1.0) (2022-06-14)
 
 
