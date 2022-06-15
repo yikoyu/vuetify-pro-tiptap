@@ -10,13 +10,16 @@
 
 <script lang="ts">
 import { computed, defineComponent, reactive, unref } from '@vue/composition-api'
-import { BubbleMenu, type Editor, type BubbleMenuInterface } from '@tiptap/vue-2'
+import { BubbleMenu } from '@tiptap/vue-2'
+import type { Editor, BubbleMenuInterface } from '@tiptap/vue-2'
 import { bool, object, array } from 'vue-types'
 import TipTapToolbar from '../TipTapToolbar.vue'
 import type { Definitions, ToolbarType } from '@/constants/toolbar-definitions'
-import { TextSelection, type NodeSelection } from 'prosemirror-state'
+import { TextSelection } from 'prosemirror-state'
+import type { NodeSelection } from 'prosemirror-state'
 
-import { useBubbleImage, type BubbleExtToolbarType } from './hooks/use-bubble'
+import { useBubbleImage } from './hooks/use-bubble'
+import type { BubbleExtToolbarType } from './hooks/use-bubble'
 
 type BubbleToolbarType = ToolbarType | BubbleExtToolbarType
 

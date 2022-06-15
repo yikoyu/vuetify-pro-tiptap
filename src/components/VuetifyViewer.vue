@@ -6,7 +6,8 @@
 import { defineComponent, computed } from '@vue/composition-api'
 import { string, object, bool, oneOfType } from 'vue-types'
 
-import xss, { type IWhiteList } from 'xss'
+import xss from 'xss'
+import type { IWhiteList } from 'xss'
 import xssRules from '@/constants/xss-rules'
 
 export default defineComponent({

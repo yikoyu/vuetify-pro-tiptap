@@ -51,19 +51,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, unref, computed, watch, onUnmounted, type Ref } from '@vue/composition-api'
+import { defineComponent, ref, unref, computed, watch, onUnmounted } from '@vue/composition-api'
+import type { Ref } from '@vue/composition-api'
 import { string, bool, array, object, oneOfType } from 'vue-types'
 import throttle from 'lodash.throttle'
 import merge from 'lodash.merge'
 
-import { Editor, EditorContent, type AnyExtension, type EditorOptions } from '@tiptap/vue-2'
+import { Editor, EditorContent } from '@tiptap/vue-2'
+import type { AnyExtension, EditorOptions } from '@tiptap/vue-2'
 import TipTapToolbar from './TipTapToolbar.vue'
 import BubbleMenu from './BubbleMenu/index.vue'
-import TiptapKit, { type StarterKitOptions } from '@/core/tiptap-kit'
+import TiptapKit from '@/core/tiptap-kit'
+import type { StarterKitOptions } from '@/core/tiptap-kit'
 
 import { useLocale } from '@/locales'
 import toolbarItems from '@/constants/toolbar-items'
-import { useMakeToolbarDefinitions, type ToolbarType, type Definitions } from '@/constants/toolbar-definitions'
+import { useMakeToolbarDefinitions } from '@/constants/toolbar-definitions'
+import type { ToolbarType, Definitions } from '@/constants/toolbar-definitions'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnSelectionUpdate = NonNullable<EditorOptions['onSelectionUpdate']>

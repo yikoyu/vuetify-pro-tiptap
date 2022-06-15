@@ -1,5 +1,6 @@
 import type { VueConstructor } from 'vue'
-import Image, { type ImageOptions as ImageNativeOptions } from '@tiptap/extension-image'
+import Image from '@tiptap/extension-image'
+import type { ImageOptions as ImageNativeOptions } from '@tiptap/extension-image'
 import ImageView from './Image.vue'
 import { VueNodeViewRenderer } from '@tiptap/vue-2'
 import type { ImageTab, ImageTabKey } from './types'
