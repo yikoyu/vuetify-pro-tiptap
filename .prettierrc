@@ -4,5 +4,5 @@
   "arrowParens": "avoid",
   "singleQuote": true,
   "trailingComma": "none",
-  "endOfLine": "crlf"
+  "endOfLine": "lf"
 }
