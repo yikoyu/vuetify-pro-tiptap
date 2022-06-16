@@ -10,8 +10,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14]
-        pnpm: [6.32.21]
+        node: [16]
+        pnpm: [7]
 
     steps:
     - uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
           ${{ runner.os }}-
 
     - name: Install pnpm
-      uses: pnpm/action-setup@v2.0.1
+      uses: pnpm/action-setup@v2.2.2
       with:
         version: ${{ matrix.pnpm }}
 
