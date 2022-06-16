@@ -1,3 +1,5 @@
+name: Example Page
+
 on:
   push:
     branches: [master]
