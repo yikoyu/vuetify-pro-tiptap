@@ -16,9 +16,9 @@ jobs:
         pnpm: [7]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -31,7 +31,7 @@ jobs:
         version: ${{ matrix.pnpm }}
 
     - name: Setup Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node }}
         registry-url: https://registry.npmmirror.com/
