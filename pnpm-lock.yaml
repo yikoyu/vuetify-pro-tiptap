@@ -46,7 +46,7 @@ importers:
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-vue: ^9.1.1
       husky: ^8.0.1
-      lint-staged: ^13.0.1
+      lint-staged: ^13.0.2
       lodash.merge: ^4.6.2
       lodash.throttle: ^4.1.1
       prettier: ^2.6.2
@@ -107,7 +107,7 @@ importers:
       eslint-plugin-prettier: 4.0.0_ucegkljdju7q4zmvwxzqoprf3y
       eslint-plugin-vue: 9.1.1_eslint@8.17.0
       husky: 8.0.1
-      lint-staged: 13.0.1
+      lint-staged: 13.0.2
       lodash.merge: 4.6.2
       lodash.throttle: 4.1.1
       prettier: 2.6.2
@@ -4434,8 +4434,8 @@ packages:
     resolution: {integrity: sha512-1Y9XQH65eQKA9p2xtk+zxvnTeQBG7rdAXSkUG97DmuI/Xhji9uaUzaWxRj6rf9YC0v8KKHkxav7tnLX82Sz5Fg==}
     dev: true
 
-  /lint-staged/13.0.1:
-    resolution: {integrity: sha512-Ykaf4QTi0a02BF7cnq7JIPGOJxH4TkNMWhSlJdH9wOekd0X+gog47Jfh/0L31DqZe5AiydLGC7LkPqpaNm+Kvg==}
+  /lint-staged/13.0.2:
+    resolution: {integrity: sha512-qQLfLTh9z34eMzfEHENC+QBskZfxjomrf+snF3xJ4BzilORbD989NLqQ00ughsF/A+PT41e87+WsMFabf9++pQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
