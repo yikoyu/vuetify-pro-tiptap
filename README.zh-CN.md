@@ -1,6 +1,6 @@
 # Vuetify Pro Tiptap
 
-A WYSIWYG rich-text editor using [tiptap](https://github.com/scrumpy/tiptap) and [vuetify](https://github.com/vuetifyjs/vuetify) for Vue.js
+一个 Vue.js 的基于 [tiptap](https://github.com/scrumpy/tiptap) 和 [vuetify](https://github.com/vuetifyjs/vuetify) 的 「所见即所得」 富文本编辑器
 
 [![download](http://img.shields.io/npm/dm/vuetify-pro-tiptap.svg)](https://npmcharts.com/compare/vuetify-pro-tiptap?minimal=true)
 [![version](https://img.shields.io/npm/v/vuetify-pro-tiptap.svg)](https://www.npmjs.org/package/vuetify-pro-tiptap)
@@ -9,32 +9,32 @@ A WYSIWYG rich-text editor using [tiptap](https://github.com/scrumpy/tiptap) and
 ![LICENSE](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![semantic-release: vue](https://img.shields.io/badge/semantic--release-vue-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-English | [中文](./README.zh-CN.md)
+[English](./README.md) | 中文
 
 ## Demo
 👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
 
-## Features
-- Use [vuetify](https://github.com/vuetifyjs/vuetify) components
-- Markdown support
-- TypeScript support
-- I18n support(`en`, `zhHans`)
-- Vuetify 2.x and Vue 2.x support
+## 特色
+- 使用 [vuetify](https://github.com/vuetifyjs/vuetify) 组件
+- 支持 markdown 语法
+- TypeScript 支持
+- 支持 i18n
+- Vuetify 2.x 和 Vue 2.x 支持
 
-## Installation
-### NPM
+## 安装
+### NPM安装
 ```shell
 pnpm add vuetify-pro-tiptap
 ```
-Or
+或者
 ```shell
 yarn add vuetify-pro-tiptap
 ```
-Or
+或者
 ```shell
 npm i vuetify-pro-tiptap -S
 ```
-### Install plugin
+### 安装插件
 ```TypeScript
 import Vue from 'vue'
 import VCA, { createApp, h } from '@vue/composition-api'
@@ -62,7 +62,7 @@ createApp({
   render: () => h(App)
 }).mount('#app')
 ```
-## Global Settings
+## 全局设置
 ```TypeScript
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
@@ -74,7 +74,7 @@ const VuetifyProTipTap = createVuetifyProTipTap({
     VuetifyTiptap,
     VuetifyViewer
   },
-  // edsitor global Settings
+  // 编辑器全局配置
   config: {
     image: {
       imageTabs: [{ name: 'SELECT', component: SelectImage }],
@@ -89,10 +89,10 @@ const VuetifyProTipTap = createVuetifyProTipTap({
 Vue.use(VuetifyProTipTap)
 ```
 
-## I18n
+## 国际化
 
-### Setting language
-You can declare when you install the plugin.
+### 设置语言
+你可以在安装插件的时候声明
 ```TypeScript
 import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 
@@ -100,28 +100,28 @@ const VuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans'
 })
 ```
-Or use `setLang` dynamic change
+或者调用方法动态修改
 ```TypeScript
 import { locale } from 'vuetify-pro-tiptap'
 
 locale.setLang('en')
 ```
-Available languages:
-- en (default)
+可用的语言:
+- en (默认)
 - zhHans
 
-### Use unavailable language
-Loading unavailable language, use `setMessage` for Settings
+### 加载新语言
+当前语言暂未提供时，可以使用 `setMessage` 进行设置
 ```TypeScript
 import { locale } from 'vuetify-pro-tiptap'
 
 locale.setMessage('zhHant', {
-  // i18n text
+  // 国际化文本
 })
 locale.setLang('zhHant')
 ```
 
-## Usage
+## 用法
 ```vue
 <script lang="ts">
 import { defineComponent, ref, type Ref } from '@vue/composition-api'
@@ -139,13 +139,13 @@ export default defineComponent({
 
     const config: Ref<Partial<StarterKitOptions>> = ref<Partial<StarterKitOptions>>({
       image: {
-        upload: uploadImage, // image upload function
-        imageTabs: [{ name: 'SELECT', component: SelectImage }] // custom tab
-        hiddenTabs: ['upload'] // use hidden tab
+        upload: uploadImage, // 图片上传方法
+        imageTabs: [{ name: 'SELECT', component: SelectImage }] // 自定义 tab
+        hiddenTabs: ['upload'] // 需要隐藏的 tab
       }
     })
 
-    // custom toolbar
+    // 自定义工具栏
     const toolbar = ref<ToolbarType[]>([
       'bold',
       'italic',
@@ -247,29 +247,29 @@ export default defineComponent({
 
 ### VuetifyTiptap
 
-| Name | Type | Default | Description |
+| 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
-| value | string | '' | The input’s value |
-| dark | boolean | false | Applies the dark theme variant to the component. |
-| dense | boolean | false | Reduces the input height |
-| outlined | boolean | true | Applies the outlined style to the input |
-| disabled | boolean | false | Disable the input |
-| label | string | undefined | Sets input label |
-| placeholder | string | undefined | Sets the input’s placeholder text |
-| toolbar | ToolbarType[] | All component  | Toolbar button config |
-| hideToolbar | boolean | false | Hidden the toolbar |
-| disableToolbar | boolean | false | Disable the toolbar |
-| minHeight | string \| boolean | undefined | Sets the minimum height for the component. |
-| maxHeight | string \| boolean | undefined | Sets the maximum height for the component. |
-| extensions | AnyExtension[] | [] | Tiptap the extensions |
-| config | Partial\<StarterKitOptions> | {} | Editor config |
-| editorClass | string \| string[] \| Record\<string, any> | undefined | Editor class |
+| value | string | '' | 输入的值 |
+| dark | boolean | false | 是否为深色主题 |
+| dense | boolean | false | 是否为紧凑模式 |
+| outlined | boolean | true | 将轮廓样式应用于输入 |
+| disabled | boolean | false | 禁用输入 |
+| label | string | undefined | 设置输入标签 |
+| placeholder | string | undefined | 设置输入的占位符文本 |
+| toolbar | ToolbarType[] | 展示所有组件 | 工具栏组件配置 |
+| hideToolbar | boolean | false | 隐藏工具栏 |
+| disableToolbar | boolean | false | 禁用工具栏 |
+| minHeight | string \| boolean | undefined | 输入框最小高度 |
+| maxHeight | string \| boolean | undefined | 输入框最大高度 |
+| extensions | AnyExtension[] | [] | tiptap插件 |
+| config | Partial\<StarterKitOptions> | {} | 编辑器配置 |
+| editorClass | string \| string[] \| Record\<string, any> | undefined | 编辑器class |
 
 ### VuetifyViewer
 
-| Name | Type | Default | Description |
+| 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
-| value | value | '' | The preview’s value |
-| dense | boolean | false | Reduces the input height |
-| xss | boolean | true | Enable xss filter |
-| xssOptions | xss.IWhiteList | Default rule | Xss filter rule config |
+| value | value | '' | 预览的值 |
+| dense | boolean | false | 是否为紧凑模式 |
+| xss | boolean | true | 是否开启xss过滤 |
+| xssOptions | xss.IWhiteList | 内置默认规则 | xss过滤规则配置 |
