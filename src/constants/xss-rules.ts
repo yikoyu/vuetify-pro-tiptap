@@ -3,7 +3,7 @@ import type { IWhiteList } from 'xss'
 const rules: IWhiteList = {
   a: ['href', 'title', 'target'],
   span: ['style'],
-  blockquote: ['style'],
+  blockquote: ['class', 'style'],
   p: ['class', 'style'],
   hr: [],
   pre: [],
