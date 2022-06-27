@@ -2,9 +2,9 @@
   "name": "examples",
   "version": "0.0.0",
   "dependencies": {
-    "@vue/composition-api": "^1.6.2",
+    "@vue/composition-api": "*",
     "vue": "^2.6.14",
-    "vuetify": "^2.6.6",
+    "vuetify": "*",
     "vuetify-pro-tiptap": "workspace:*"
   }
 }
