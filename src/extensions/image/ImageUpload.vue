@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from '@vue/composition-api'
+import { defineComponent, ref, computed, unref } from '@vue/composition-api'
 import { func, object } from 'vue-types'
 import { mdiLinkVariant, mdiText } from '@/constants/icons'
 import type { ImageForm } from './types'
@@ -43,7 +43,12 @@ export default defineComponent({
       try {
         loading.value = true
         const data = await props.upload?.(file)
-        if (data) form.value.src = data
+        if (!data) return
+
+        form.value = {
+          ...unref(form),
+          src: data
+        }
       } finally {
         loading.value = false
       }
