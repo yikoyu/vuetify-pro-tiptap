@@ -40,6 +40,7 @@ const locale: Record<string, string> = {
   'editor.image.dialog.tab.upload': 'upload',
   'editor.image.dialog.form.link': 'Link',
   'editor.image.dialog.form.alt': 'Alt',
+  'editor.image.dialog.form.aspectRatio': 'Lock original aspect ratio',
   'editor.image.dialog.form.file': 'File',
   'editor.image.dialog.button.apply': 'apply',
   'editor.video.tooltip': 'Video',

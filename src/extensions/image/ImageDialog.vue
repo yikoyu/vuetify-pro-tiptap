@@ -39,21 +39,10 @@ import { array, bool, func, object } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'
 import { mdiClose, mdiLinkVariant, mdiText } from '@/constants/icons'
-import type { ImageTab, ImageTabKey } from './types'
+import type { ImageForm, ImageTab, ImageTabKey, ImageAttrsOptions } from './types'
 
 import ImageUrl from './ImageUrl.vue'
 import ImageUpload from './ImageUpload.vue'
-
-interface ImageAttributes {
-  src?: string
-  alt?: string
-}
-
-interface Form {
-  src?: string
-  alt?: string
-  file?: File
-}
 
 export default defineComponent({
   components: {
@@ -61,7 +50,7 @@ export default defineComponent({
     ImageUpload
   },
   props: {
-    value: object<ImageAttributes>().def({}),
+    value: object<ImageAttrsOptions>().def({}),
     editor: object<Editor>().isRequired,
     show: bool().def(false),
     dark: bool().def(false),
@@ -73,7 +62,7 @@ export default defineComponent({
     const { t } = useLocale()
 
     const tab = ref<boolean>(false)
-    const form = ref<Form>({})
+    const form = ref<ImageForm>({})
 
     const defaultImageTabs = computed<ImageTab[]>(() => {
       const defTabs: ImageTab[] = [
@@ -104,13 +93,17 @@ export default defineComponent({
     })
 
     async function apply() {
-      const { src, alt } = unref(form)
+      const { src, lockAspectRatio, height } = unref(form)
       if (!src) return
 
       props.editor
         .chain()
         .focus()
-        .setImage({ src, alt: alt ?? undefined })
+        .setImage({
+          ...unref(form),
+          src,
+          height: lockAspectRatio ? undefined : height
+        })
         .run()
 
       close()
@@ -122,12 +115,9 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const { src, alt } = props.value
-
       form.value = {
         ...unref(form),
-        src: src ?? undefined,
-        alt: alt ?? undefined
+        ...props.value
       }
     })
 

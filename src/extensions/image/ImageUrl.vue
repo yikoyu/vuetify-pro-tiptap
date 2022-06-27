@@ -3,6 +3,8 @@
     <v-text-field v-model="form.src" :label="t('editor.image.dialog.form.link')" autofocus :prepend-icon="mdiLinkVariant" />
 
     <v-text-field v-model="form.alt" :label="t('editor.image.dialog.form.alt')" :prepend-icon="mdiText" />
+
+    <v-checkbox v-model="form.lockAspectRatio" :label="t('editor.image.dialog.form.aspectRatio')"></v-checkbox>
   </v-form>
 </template>
 

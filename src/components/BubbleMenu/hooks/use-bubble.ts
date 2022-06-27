@@ -5,6 +5,7 @@ import type { Definitions } from '@/constants/toolbar-definitions'
 import { deleteSelection } from 'prosemirror-commands'
 
 import { mdiFormatFloatLeft, mdiFormatFloatNone, mdiFormatFloatRight, mdiSizeS, mdiSizeM, mdiSizeL, mdiDelete } from '@/constants/icons'
+import type { Display } from '@/extensions/image/types'
 
 export type BubbleImageToolbarType = 'float-left' | 'float-none' | 'float-right' | 'size-small' | 'size-medium' | 'size-large' | 'image' | 'image-remove'
 export type BubbleVideoToolbarType = 'video' | 'video-remove'
@@ -13,8 +14,6 @@ export type BubbleExtToolbarType = BubbleImageToolbarType | BubbleVideoToolbarTy
 interface BubbleExtDefinitions extends Omit<Definitions, 'type'> {
   type: BubbleExtToolbarType
 }
-
-type Display = 'inline' | 'left' | 'right' | ''
 
 enum Size {
   small = 200,

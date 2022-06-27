@@ -3,7 +3,7 @@ import Image from '@tiptap/extension-image'
 import type { ImageOptions as ImageNativeOptions } from '@tiptap/extension-image'
 import ImageView from './Image.vue'
 import { VueNodeViewRenderer } from '@tiptap/vue-2'
-import type { ImageTab, ImageTabKey } from './types'
+import type { ImageTab, ImageTabKey, ImageAttrsOptions } from './types'
 
 type Upload = (file: File) => Promise<string>
 export interface ImageOptions extends ImageNativeOptions {
@@ -16,6 +16,21 @@ export interface ImageStorage {
   upload?: Upload
   imageTabs: ImageTab[]
   hiddenTabs: ImageTabKey[]
+}
+
+interface SetImageAttrsOptions extends ImageAttrsOptions {
+  src: string
+}
+
+declare module '@tiptap/core' {
+  interface Commands<ReturnType> {
+    imageResize: {
+      /**
+       * Add an image
+       */
+      setImage: (options: SetImageAttrsOptions) => ReturnType
+    }
+  }
 }
 
 export default Image.extend<ImageOptions, ImageStorage>({
@@ -33,6 +48,9 @@ export default Image.extend<ImageOptions, ImageStorage>({
       },
       alt: {
         default: null
+      },
+      lockAspectRatio: {
+        default: true
       },
       width: {
         default: '100%'

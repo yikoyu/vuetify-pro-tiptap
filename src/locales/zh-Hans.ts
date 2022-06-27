@@ -40,6 +40,7 @@ const locale: Record<string, string> = {
   'editor.image.dialog.tab.upload': '本地图片',
   'editor.image.dialog.form.link': '链接',
   'editor.image.dialog.form.alt': '说明',
+  'editor.image.dialog.form.aspectRatio': '锁定原有长宽比',
   'editor.image.dialog.form.file': '文件',
   'editor.image.dialog.button.apply': '应用',
   'editor.video.tooltip': '视频',

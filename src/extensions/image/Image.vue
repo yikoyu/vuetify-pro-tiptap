@@ -1,5 +1,5 @@
 <template>
-  <node-view-wrapper as="div" :class="imageViewClass">
+  <node-view-wrapper as="div" :class="imageViewClass" :style="imageMaxStyle">
     <div
       draggable="true"
       data-drag-handle
@@ -8,6 +8,7 @@
         'image-view__body--resizing': resizing
       }"
       class="image-view__body"
+      :style="imageMaxStyle"
     >
       <img @load="onImageLoad" @click="selectImage" :src="src" :alt="alt" :width="width" :height="height" class="image-view__body__image" />
 
@@ -30,6 +31,7 @@ import { NodeViewWrapper } from '@tiptap/vue-2'
 import { nodeViewProps } from '@/utils/node-view-props'
 import { bool } from 'vue-types'
 import throttle from 'lodash.throttle'
+import { ImageAttrsOptions } from './types'
 
 function clamp(val: number, min: number, max: number) {
   if (val < min) return min
@@ -79,11 +81,12 @@ export default defineComponent({
       dir: ''
     })
 
-    const src = computed<string>(() => props.node.attrs.src || undefined)
-    const alt = computed<string | undefined>(() => props.node.attrs.alt || undefined)
-    const width = computed<number | undefined>(() => props.node.attrs.width || undefined)
-    const height = computed<number | undefined>(() => props.node.attrs.height || undefined)
-    const display = computed<string>(() => props.node.attrs.display || undefined)
+    const src = computed<ImageAttrsOptions['src']>(() => props.node.attrs.src || undefined)
+    const alt = computed<ImageAttrsOptions['alt']>(() => props.node.attrs.alt || undefined)
+    const width = computed<ImageAttrsOptions['width']>(() => props.node.attrs.width || undefined)
+    const height = computed<ImageAttrsOptions['height']>(() => props.node.attrs.height || undefined)
+    const display = computed<ImageAttrsOptions['display']>(() => props.node.attrs.display || undefined)
+    const lockAspectRatio = computed<ImageAttrsOptions['lockAspectRatio']>(() => props.node.attrs.lockAspectRatio ?? true)
     const imageViewClass = computed<string[]>(() => {
       if (typeof unref(display) === 'string') {
         return ['image-view', `image-view--${unref(display)}`]
@@ -91,6 +94,7 @@ export default defineComponent({
 
       return ['image-view']
     })
+    const imageMaxStyle = computed(() => ({ width: unref(width) === '100%' ? unref(width) : undefined }))
 
     function onImageLoad(e: Record<string, any>) {
       originalSize.value = {
@@ -165,7 +169,7 @@ export default defineComponent({
 
       props.updateAttributes({
         width: clamp(w + dx, MIN_SIZE, unref(maxSize).width),
-        height: Math.max(h + dy, MIN_SIZE)
+        height: unref(lockAspectRatio) ? null : Math.max(h + dy, MIN_SIZE)
       })
     }, THROTTLE_WAIT_TIME)
 
@@ -210,6 +214,7 @@ export default defineComponent({
 
     return {
       imageViewClass,
+      imageMaxStyle,
       resizing,
       src,
       alt,
