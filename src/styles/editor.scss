@@ -73,6 +73,9 @@ $white-color: #fff;
         margin: 2px 0px;
         margin-bottom: 0;
         line-height: 1.5rem;
+        &:empty::after {
+          content: '\00A0';
+        }
       }
 
       h1,
