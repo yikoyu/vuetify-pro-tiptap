@@ -33,7 +33,7 @@ const locale: Record<string, string> = {
   'editor.image.float.right.tooltip': '右浮动',
   'editor.image.size.small.tooltip': '小尺寸',
   'editor.image.size.medium.tooltip': '中等尺寸',
-  'editor.image.size.large.tooltip': '大尺寸',
+  'editor.image.size.large.tooltip': '铺满',
   'editor.image.remove.tooltip': '删除',
   'editor.image.dialog.title': '插入图片',
   'editor.image.dialog.tab.url': '网络图片',

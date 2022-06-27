@@ -33,7 +33,7 @@ const locale: Record<string, string> = {
   'editor.image.float.right.tooltip': 'Float right',
   'editor.image.size.small.tooltip': 'Small',
   'editor.image.size.medium.tooltip': 'Medium',
-  'editor.image.size.large.tooltip': 'Large',
+  'editor.image.size.large.tooltip': 'Cover',
   'editor.image.remove.tooltip': 'Remove',
   'editor.image.dialog.title': 'Insert image',
   'editor.image.dialog.tab.url': 'url',
