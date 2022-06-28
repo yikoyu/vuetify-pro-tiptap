@@ -41,6 +41,7 @@ import {
   mdiSizeS,
   mdiSizeM,
   mdiSizeL,
+  mdiAspectRatio,
   mdiDelete,
   mdiText
 } from '@mdi/js'
@@ -56,6 +57,7 @@ export {
   mdiSizeS,
   mdiSizeM,
   mdiSizeL,
+  mdiAspectRatio,
   mdiDelete,
   mdiText
 }

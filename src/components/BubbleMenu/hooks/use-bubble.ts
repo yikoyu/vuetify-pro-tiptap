@@ -4,10 +4,19 @@ import { useLocale } from '@/locales'
 import type { Definitions } from '@/constants/toolbar-definitions'
 import { deleteSelection } from 'prosemirror-commands'
 
-import { mdiFormatFloatLeft, mdiFormatFloatNone, mdiFormatFloatRight, mdiSizeS, mdiSizeM, mdiSizeL, mdiDelete } from '@/constants/icons'
+import { mdiFormatFloatLeft, mdiFormatFloatNone, mdiFormatFloatRight, mdiSizeS, mdiSizeM, mdiSizeL, mdiAspectRatio, mdiDelete } from '@/constants/icons'
 import type { Display } from '@/extensions/image/types'
 
-export type BubbleImageToolbarType = 'float-left' | 'float-none' | 'float-right' | 'size-small' | 'size-medium' | 'size-large' | 'image' | 'image-remove'
+export type BubbleImageToolbarType =
+  | 'float-left'
+  | 'float-none'
+  | 'float-right'
+  | 'size-small'
+  | 'size-medium'
+  | 'size-large'
+  | 'image'
+  | 'image-aspect-ratio'
+  | 'image-remove'
 export type BubbleVideoToolbarType = 'video' | 'video-remove'
 export type BubbleExtToolbarType = BubbleImageToolbarType | BubbleVideoToolbarType
 
@@ -77,6 +86,19 @@ export function useBubbleImage(editor: Editor) {
         type: 'size-large',
         action: () => setImageSize(Size.large),
         isActive: () => editor.isActive('image', { width: Size.large })
+      },
+      {
+        title: unref(t)('editor.image.dialog.form.aspectRatio'),
+        icon: mdiAspectRatio,
+        type: 'image-aspect-ratio',
+        action: () => {
+          const isLock = editor.isActive('image', { lockAspectRatio: true })
+          editor.commands.updateAttributes('image', {
+            lockAspectRatio: !isLock,
+            height: isLock ? undefined : null
+          })
+        },
+        isActive: () => editor.isActive('image', { lockAspectRatio: true })
       },
       {
         title: unref(t)('editor.image.remove.tooltip'),
