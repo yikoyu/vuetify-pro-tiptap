@@ -1,5 +1,18 @@
+@import './markdown.scss';
+
 $primary-color: #409eff;
 $white-color: #fff;
+
+.theme--light.v-application blockquote {
+  color: #57606a;
+  border-left: .25em solid #d0d7de;
+  background-color: #f8f8f8;
+}
+.theme--dark.v-application blockquote {
+  color: #8b949e;
+  border-left: .25em solid #30363d;
+  background-color: #212121;
+}
 
 .vuetify-pro-tiptap {
   overflow-wrap: anywhere;
@@ -37,103 +50,7 @@ $white-color: #fff;
     }
 
     &__content {
-      :focus-visible {
-        outline: -webkit-focus-ring-color auto 0px;
-      }
-
-      img {
-        display: inline-block;
-        float: none;
-        max-width: 100%;
-
-        &[data-display='inline'] {
-          padding-left: 12px;
-          padding-right: 12px;
-        }
-
-        &[data-display='block'] {
-          display: block;
-        }
-
-        &[data-display='left'] {
-          float: left;
-          padding-left: 0;
-          padding-right: 12px;
-        }
-
-        &[data-display='right'] {
-          float: right;
-          padding-left: 12px;
-          padding-right: 0;
-        }
-      }
-
-      p {
-        padding: 0.35em 0;
-        margin: 2px 0px;
-        margin-bottom: 0;
-        line-height: 1.5rem;
-        &:empty::after {
-          content: '\00A0';
-        }
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
-        margin-top: 20px;
-        margin-bottom: 20px;
-
-        &:first-child {
-          margin-top: 0;
-        }
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-
-      blockquote {
-        border-left: 0.25em solid #dfe2e5;
-        color: #6a737d;
-        padding-left: 1em;
-        margin: 20px 0 !important;
-      }
-
-      ul,
-      ol {
-        padding-left: 20px;
-      }
-
-      ul[data-type='taskList'] {
-        list-style: none;
-        padding: 0;
-
-        p {
-          margin: 0;
-        }
-
-        li {
-          display: flex;
-
-          > label {
-            flex: 0 0 auto;
-            margin-right: 0.5rem;
-            margin-top: 0.4rem;
-            user-select: none;
-          }
-
-          > div {
-            flex: 1 1 auto;
-          }
-        }
-      }
-
-      .mention {
-        color: $primary-color;
-      }
+      @include markdown;
     }
   }
 

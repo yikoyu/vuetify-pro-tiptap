@@ -24,7 +24,7 @@ const rules: IWhiteList = {
   h5: ['class', 'style'],
   h6: ['class', 'style'],
   ul: ['class', 'data-type'],
-  li: ['data-checked', 'itemtypename'],
+  li: ['class', 'data-checked', 'itemtypename'],
   ol: [],
   u: [],
   tr: ['class', 'style'],

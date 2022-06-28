@@ -34,6 +34,7 @@ const toolbarItems: ToolbarType[] = [
   'blockquote',
   'rule',
   'code',
+  'codeBlock',
   '|',
   'clear',
   'fullscreen',

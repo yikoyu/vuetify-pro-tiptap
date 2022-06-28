@@ -224,7 +224,7 @@ export default defineComponent({
           },
           taskItem: {
             HTMLAttributes: {
-              itemTypeName: 'task-list'
+              class: 'task-list-item'
             }
           },
           textStyle: {},
