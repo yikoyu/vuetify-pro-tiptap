@@ -10,7 +10,7 @@ Vue.use(VCA)
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
 import SelectImage from './components/SelectImage.vue'
-// import { createVuetifyProTipTap } from '../src'
+// import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from '../src'
 // import '../src/styles/editor.scss'
 
 const VuetifyProTipTap = createVuetifyProTipTap({
