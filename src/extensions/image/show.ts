@@ -20,6 +20,8 @@ export function show(editor: Editor) {
     value.width = attrs.width || undefined
     value.height = attrs.height || undefined
     value.display = attrs.display || undefined
+  } else {
+    value.lockAspectRatio = true
   }
 
   const ImageDialogComponent = Vue.extend(ImageDialog)
