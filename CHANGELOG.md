@@ -1,3 +1,22 @@
+# [1.2.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.1.1...v1.2.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **image:** update上传时无效 ([d347f68](https://github.com/yikoyu/vuetify-pro-tiptap/commit/d347f685b3cff521902eaac872cdff963be0bd8e))
+* **image:** 表单输入时lockAspectRatio默认值伪true ([6acf546](https://github.com/yikoyu/vuetify-pro-tiptap/commit/6acf54622242b5d8db415ed209dfb28838fd92fe))
+* **locales:** 修改国际化文本 editor.image.size.large ([57d90e5](https://github.com/yikoyu/vuetify-pro-tiptap/commit/57d90e588a564a63c0bfa312d63c46e53097ca6c))
+* **VuetifyViewer:** blockquote的class被xss过滤 ([c5a4577](https://github.com/yikoyu/vuetify-pro-tiptap/commit/c5a45771ceb46ae3f349394d90f0e13681b1978f))
+* 编辑器换空行，getHTML输出html为<p></p>，和编辑时行为不一致 ([7ae230e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7ae230eb79c303abfc618cd1e48d7331af7805d9))
+
+
+### Features
+
+* **BubbleMenu:** 添加image-aspect-ratio选项 ([7fde452](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7fde452f82c0b613c881b64e2115b62bc89a79fe))
+* **image:** 添加长宽锁定功能，width为100%时，编辑器无效果 ([9188ae4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/9188ae4f0634fec72d62078416cf351fa600f50f))
+* **VuetifyTiptap:** 添加maxWidth参数 ([b8cccd0](https://github.com/yikoyu/vuetify-pro-tiptap/commit/b8cccd0a189f7dfec2833c91f71aea2ffee9915e))
+* **VuetifyViewer:** 添加before插槽和after插槽 ([a5fa49a](https://github.com/yikoyu/vuetify-pro-tiptap/commit/a5fa49a0b55e3f694ea381f6081a81265a88c46a))
+
 ## [1.1.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.1.0...v1.1.1) (2022-06-15)
 
 
