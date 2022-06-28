@@ -247,6 +247,7 @@ export default defineComponent({
 
 ### VuetifyTiptap
 
+#### Props
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
 | value | string | '' | 输入的值 |
@@ -259,14 +260,22 @@ export default defineComponent({
 | toolbar | ToolbarType[] | 展示所有组件 | 工具栏组件配置 |
 | hideToolbar | boolean | false | 隐藏工具栏 |
 | disableToolbar | boolean | false | 禁用工具栏 |
+| maxWidth | string \| boolean | undefined | 输入框最大宽度 |
 | minHeight | string \| boolean | undefined | 输入框最小高度 |
 | maxHeight | string \| boolean | undefined | 输入框最大高度 |
 | extensions | AnyExtension[] | [] | tiptap插件 |
 | config | Partial\<StarterKitOptions> | {} | 编辑器配置 |
 | editorClass | string \| string[] \| Record\<string, any> | undefined | 编辑器class |
 
+#### Slots
+| Name | Description |
+| ---- | ---- |
+| editor | 自定义编辑器的插槽 |
+| bottom | 自定义编辑器底部的插槽 |
+
 ### VuetifyViewer
 
+#### Props
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
 | value | value | '' | 预览的值 |

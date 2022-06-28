@@ -247,6 +247,7 @@ export default defineComponent({
 
 ### VuetifyTiptap
 
+#### Props
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
 | value | string | '' | The input’s value |
@@ -259,14 +260,22 @@ export default defineComponent({
 | toolbar | ToolbarType[] | All component  | Toolbar button config |
 | hideToolbar | boolean | false | Hidden the toolbar |
 | disableToolbar | boolean | false | Disable the toolbar |
+| maxWidth | string \| boolean | undefined | Sets the maximum width for the component. |
 | minHeight | string \| boolean | undefined | Sets the minimum height for the component. |
 | maxHeight | string \| boolean | undefined | Sets the maximum height for the component. |
 | extensions | AnyExtension[] | [] | Tiptap the extensions |
 | config | Partial\<StarterKitOptions> | {} | Editor config |
 | editorClass | string \| string[] \| Record\<string, any> | undefined | Editor class |
 
+#### Slots
+| Name | Description |
+| ---- | ---- |
+| editor | Slot to customize editor |
+| bottom | Slot to customize editor bottom |
+
 ### VuetifyViewer
 
+#### Props
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
 | value | value | '' | The preview’s value |

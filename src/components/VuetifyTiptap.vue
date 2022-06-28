@@ -10,6 +10,7 @@
         flat
         :outlined="outlined"
         :dark="dark"
+        :color="dark ? '#212121' : '#EEEEEE'"
         style="width: 100%"
         v-bind="$attrs"
         :style="{
@@ -75,6 +76,17 @@ type OnUpdate = NonNullable<EditorOptions['onUpdate']>
 
 const THROTTLE_WAIT_TIME = 16
 
+const getUnitWithPxAsDefault = (value?: string) => {
+  if (!value) return value
+
+  const num = parseInt(value, 10)
+  const unit = value.slice(num.toString().length)
+
+  return num + (unit || 'px')
+}
+
+const isNumber = (value: unknown): value is number => typeof value === 'number'
+
 export default defineComponent({
   components: {
     TipTapToolbar,
@@ -93,6 +105,7 @@ export default defineComponent({
     // append: array<string>().def([]),
     hideToolbar: bool().def(false),
     disableToolbar: bool().def(false),
+    maxWidth: oneOfType<string | number>([String, Number]),
     minHeight: oneOfType<string | number>([String, Number]),
     maxHeight: oneOfType<string | number>([String, Number]),
 
@@ -119,24 +132,24 @@ export default defineComponent({
     })
 
     const contentDynamicStyles = computed(() => {
-      if (unref(isFullscreen)) return { height: '100%', overflowY: 'auto' }
+      const maxWidth = getUnitWithPxAsDefault(isNumber(props.maxWidth) ? String(props.maxWidth) : props.maxWidth)
 
-      const getUnitWithPxAsDefault = (str?: string) => {
-        if (!str) return str
-
-        const num = parseInt(str, 10)
-        const unit = str.slice(num.toString().length)
-
-        return num + (unit || 'px')
+      const maxHeightStyle = {
+        maxWidth: maxWidth,
+        width: !maxWidth ? undefined : '100%',
+        margin: !maxWidth ? undefined : '0 auto',
+        backgroundColor: props.dark ? '#1E1E1E' : '#FFFFFF'
       }
+      if (unref(isFullscreen)) return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
 
-      const minHeight = getUnitWithPxAsDefault(typeof props.minHeight === 'number' ? String(props.minHeight) : props.minHeight)
-      const maxHeight = getUnitWithPxAsDefault(typeof props.maxHeight === 'number' ? String(props.maxHeight) : props.maxHeight)
+      const minHeight = getUnitWithPxAsDefault(isNumber(props.minHeight) ? String(props.minHeight) : props.minHeight)
+      const maxHeight = getUnitWithPxAsDefault(isNumber(props.maxHeight) ? String(props.maxHeight) : props.maxHeight)
 
       return {
         minHeight,
         maxHeight,
-        overflowY: 'auto'
+        overflowY: 'auto',
+        ...maxHeightStyle
       }
     })
 
