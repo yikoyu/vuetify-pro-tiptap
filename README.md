@@ -282,3 +282,9 @@ export default defineComponent({
 | dense | boolean | false | Reduces the input height |
 | xss | boolean | true | Enable xss filter |
 | xssOptions | xss.IWhiteList | Default rule | Xss filter rule config |
+
+#### Slots
+| Name | Description |
+| ---- | ---- |
+| before | Add content at the before |
+| after | Add content at the after |

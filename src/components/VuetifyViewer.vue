@@ -1,5 +1,9 @@
 <template>
-  <div class="vuetify-pro-tiptap-editor__content" :class="{ dense, view: true }" v-html="cleanValue" style="width: 100%"></div>
+  <div class="vuetify-pro-tiptap-editor__content" :class="{ dense, view: true }" style="width: 100%">
+    <slot name="before" />
+    <div class="content" v-html="cleanValue"></div>
+    <slot name="after" />
+  </div>
 </template>
 
 <script lang="ts">

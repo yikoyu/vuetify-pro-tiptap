@@ -282,3 +282,9 @@ export default defineComponent({
 | dense | boolean | false | 是否为紧凑模式 |
 | xss | boolean | true | 是否开启xss过滤 |
 | xssOptions | xss.IWhiteList | 内置默认规则 | xss过滤规则配置 |
+
+#### Slots
+| Name | Description |
+| ---- | ---- |
+| before | 在顶部添加内容 |
+| after | 在底部添加内容 |
