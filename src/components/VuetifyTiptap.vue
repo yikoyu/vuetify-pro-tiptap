@@ -1,7 +1,7 @@
 <template>
   <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
     <!-- Edit Mode -->
-    <BubbleMenu :editor="editor" :dark="dark" :disabled="disableToolbar" :items="items" />
+    <BubbleMenu :editor="editor" :dark="isDark" :disabled="disableToolbar" :items="items" />
 
     <v-subheader v-if="label">{{ label }}</v-subheader>
 
@@ -9,8 +9,8 @@
       <v-card
         flat
         :outlined="outlined"
-        :dark="dark"
-        :color="dark ? '#212121' : '#EEEEEE'"
+        :dark="isDark"
+        :color="isDark ? '#212121' : '#EEEEEE'"
         style="width: 100%"
         v-bind="$attrs"
         :style="{
@@ -24,10 +24,10 @@
           ref="toolbarRef"
           class="vuetify-pro-tiptap-editor__toolbar"
           v-if="!hideToolbar && toolbar && toolbar.length"
-          :dark="dark"
+          :dark="isDark"
           :disabled="disableToolbar"
           :items="items"
-          :color="dark ? undefined : 'grey lighten-4'"
+          :color="isDark ? undefined : 'grey lighten-4'"
         >
           <template v-for="item in slotItems" #[item.slot]="{ attrs }">
             <slot :name="item.slot" v-bind="{ editor, attrs }"></slot>
@@ -35,11 +35,17 @@
         </TipTapToolbar>
 
         <slot name="editor" v-bind="{ editor, attrs: { class: 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }">
-          <editor-content class="vuetify-pro-tiptap-editor__content" :editor="editor" :class="editorClass" :style="contentDynamicStyles" data-testid="value" />
+          <editor-content
+            class="vuetify-pro-tiptap-editor__content"
+            :class="[{ __dark: isDark }, editorClass]"
+            :editor="editor"
+            :style="contentDynamicStyles"
+            data-testid="value"
+          />
         </slot>
 
         <slot name="bottom" v-bind="{ editor }">
-          <v-toolbar dense flat :color="dark ? undefined : 'grey lighten-4'">
+          <v-toolbar dense flat :color="isDark ? undefined : 'grey lighten-4'">
             <v-spacer />
 
             <span class="text-overline me-4">{{ editor.storage.characterCount.words() }} {{ t('editor.words') }}</span>
@@ -127,6 +133,8 @@ export default defineComponent({
       toolbar: props.toolbar
     })
 
+    const isDark = computed<boolean>(() => props.dark || root.$vuetify.theme.dark)
+
     const slotItems = computed<(Definitions & { slot: string })[]>(() => {
       return unref(items).filter(item => item.type === 'slot') as (Definitions & { slot: string })[]
     })
@@ -138,7 +146,7 @@ export default defineComponent({
         maxWidth: maxWidth,
         width: !maxWidth ? undefined : '100%',
         margin: !maxWidth ? undefined : '0 auto',
-        backgroundColor: props.dark ? '#1E1E1E' : '#FFFFFF'
+        backgroundColor: unref(isDark) ? '#1E1E1E' : '#FFFFFF'
       }
       if (unref(isFullscreen)) return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
 
@@ -258,6 +266,7 @@ export default defineComponent({
       editor,
       isFullscreen,
       items,
+      isDark,
       slotItems,
       contentDynamicStyles,
       t
