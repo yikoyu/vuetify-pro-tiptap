@@ -8,7 +8,7 @@ importers:
       '@commitlint/config-conventional': ^17.0.3
       '@commitlint/cz-commitlint': ^17.0.3
       '@mdi/js': ^6.7.96
-      '@rushstack/eslint-patch': ^1.1.3
+      '@rushstack/eslint-patch': ^1.1.4
       '@semantic-release/changelog': ^6.0.1
       '@semantic-release/commit-analyzer': ^9.0.2
       '@semantic-release/git': ^10.0.1
@@ -72,7 +72,7 @@ importers:
       '@commitlint/config-conventional': 17.0.3
       '@commitlint/cz-commitlint': 17.0.3_commitizen@4.2.4
       '@mdi/js': 6.7.96
-      '@rushstack/eslint-patch': 1.1.3
+      '@rushstack/eslint-patch': 1.1.4
       '@semantic-release/changelog': 6.0.1_semantic-release@19.0.3
       '@semantic-release/commit-analyzer': 9.0.2_semantic-release@19.0.3
       '@semantic-release/git': 10.0.1_semantic-release@19.0.3
@@ -1071,8 +1071,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rushstack/eslint-patch/1.1.3:
-    resolution: {integrity: sha512-WiBSI6JBIhC6LRIsB2Kwh8DsGTlbBU+mLRxJmAe3LjHTdkDpwIbEOZgoXBbZilk/vlfjK8i6nKRAvIRn1XaIMw==}
+  /@rushstack/eslint-patch/1.1.4:
+    resolution: {integrity: sha512-LwzQKA4vzIct1zNZzBmRKI9QuNpLgTQMEjsQLf3BXuGYb3QPTP4Yjf6mkdX+X1mYttZ808QpOwAzZjv28kq7DA==}
     dev: true
 
   /@rushstack/node-core-library/3.45.5:
