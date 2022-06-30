@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': ^17.0.3
       '@commitlint/config-conventional': ^17.0.3
       '@commitlint/cz-commitlint': ^17.0.3
-      '@mdi/js': ^6.7.96
+      '@mdi/js': ^6.9.96
       '@rushstack/eslint-patch': ^1.1.4
       '@semantic-release/changelog': ^6.0.1
       '@semantic-release/commit-analyzer': ^9.0.2
@@ -71,7 +71,7 @@ importers:
       '@commitlint/cli': 17.0.3
       '@commitlint/config-conventional': 17.0.3
       '@commitlint/cz-commitlint': 17.0.3_commitizen@4.2.4
-      '@mdi/js': 6.7.96
+      '@mdi/js': 6.9.96
       '@rushstack/eslint-patch': 1.1.4
       '@semantic-release/changelog': 6.0.1_semantic-release@19.0.3
       '@semantic-release/commit-analyzer': 9.0.2_semantic-release@19.0.3
@@ -888,8 +888,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.13
     dev: true
 
-  /@mdi/js/6.7.96:
-    resolution: {integrity: sha512-vZvhFrNN9LQx+Awu3nU6ESfXXDpRA/CA4mwikzU5g8uf9NpAocK43ecQvVNntwiXlLKpyplas8d4lsfpqjtXLA==}
+  /@mdi/js/6.9.96:
+    resolution: {integrity: sha512-rK0/vLFaiItYS2W7uVmaKPKnhNQE4XVkylpk5njtVwENnp8elwY5uRL6qvdj2esuvUHG7DwygE4Qu3eKxxuJiQ==}
     dev: true
 
   /@microsoft/api-extractor-model/7.18.0:
