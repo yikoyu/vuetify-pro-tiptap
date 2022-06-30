@@ -279,7 +279,9 @@ export default defineComponent({
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
 | value | value | '' | The preview’s value |
+| dark | boolean | false | Applies the dark theme variant to the component. |
 | dense | boolean | false | Reduces the input height |
+| hideMarkdownStyle | boolean | false | Hide .markdown-body class |
 | xss | boolean | true | Enable xss filter |
 | xssOptions | xss.IWhiteList | Default rule | Xss filter rule config |
 

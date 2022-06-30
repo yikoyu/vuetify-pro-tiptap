@@ -1,5 +1,5 @@
 <template>
-  <div class="vuetify-pro-tiptap-editor__content" :class="{ __dark: isDark, dense, view: true }" style="width: 100%">
+  <div class="vuetify-pro-tiptap-editor__content" :class="viewerClass" style="width: 100%">
     <slot name="before" />
     <div class="content" v-html="cleanValue"></div>
     <slot name="after" />
@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api'
+import { defineComponent, computed, unref } from '@vue/composition-api'
 import { string, object, bool, oneOfType } from 'vue-types'
 
 import xss from 'xss'
@@ -19,11 +19,19 @@ export default defineComponent({
     value: string().def(''),
     dark: bool().def(false),
     dense: bool().def(false),
+    hideMarkdownStyle: bool().def(false),
     xss: oneOfType<boolean | string[]>([Boolean, Array]).def(true),
     xssOptions: object<IWhiteList>().def(xssRules)
   },
   setup(props, { root }) {
     const isDark = computed(() => props.dark || root.$vuetify.theme.dark)
+
+    const viewerClass = computed(() => ({
+      __dark: unref(isDark),
+      dense: props.dense,
+      view: true,
+      'markdown-body': !props.hideMarkdownStyle
+    }))
 
     const cleanValue = computed(() => {
       if (props.xss === false) {
@@ -41,7 +49,7 @@ export default defineComponent({
     })
 
     return {
-      isDark,
+      viewerClass,
       cleanValue
     }
   }

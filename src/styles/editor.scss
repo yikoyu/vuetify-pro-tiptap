@@ -3,17 +3,6 @@
 $primary-color: #409eff;
 $white-color: #fff;
 
-.theme--light.v-application blockquote {
-  color: #57606a;
-  border-left: .25em solid #d0d7de;
-  background-color: #f8f8f8;
-}
-.theme--dark.v-application blockquote {
-  color: #8b949e;
-  border-left: .25em solid #30363d;
-  background-color: #212121;
-}
-
 .vuetify-pro-tiptap {
   overflow-wrap: anywhere;
 
@@ -50,7 +39,60 @@ $white-color: #fff;
     }
 
     &__content {
-      @include markdown;
+      :focus-visible {
+        outline: -webkit-focus-ring-color auto 0px;
+      }
+
+      img {
+        display: inline-block;
+        float: none;
+
+        &[data-display='inline'] {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        &[data-display='block'] {
+          display: block;
+        }
+
+        &[data-display='left'] {
+          float: left;
+          padding-left: 0;
+          padding-right: 12px;
+        }
+
+        &[data-display='right'] {
+          float: right;
+          padding-left: 12px;
+          padding-right: 0;
+        }
+      }
+
+      .task-list {
+        list-style: none;
+        padding-left: 0;
+
+        .task-list-item {
+          list-style: none;
+          display: flex;
+
+          > label {
+            flex: 0 0 auto;
+            padding-left: 8px;
+            padding-right: 8px;
+            user-select: none;
+          }
+
+          > div {
+            flex: 1 1 auto;
+          }
+        }
+      }
+
+      &.markdown-body {
+        @include markdown-body;
+      }
     }
   }
 

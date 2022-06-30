@@ -279,7 +279,9 @@ export default defineComponent({
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
 | value | value | '' | 预览的值 |
+| dark | boolean | false | 是否为深色主题 |
 | dense | boolean | false | 是否为紧凑模式 |
+| hideMarkdownStyle | boolean | false | 隐藏.markdown-body类 |
 | xss | boolean | true | 是否开启xss过滤 |
 | xssOptions | xss.IWhiteList | 内置默认规则 | xss过滤规则配置 |
 

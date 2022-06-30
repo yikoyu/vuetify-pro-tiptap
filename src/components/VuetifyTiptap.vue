@@ -36,7 +36,7 @@
 
         <slot name="editor" v-bind="{ editor, attrs: { class: 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }">
           <editor-content
-            class="vuetify-pro-tiptap-editor__content"
+            class="vuetify-pro-tiptap-editor__content markdown-body"
             :class="[{ __dark: isDark }, editorClass]"
             :editor="editor"
             :style="contentDynamicStyles"
