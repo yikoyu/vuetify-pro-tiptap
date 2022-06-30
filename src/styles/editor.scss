@@ -1,7 +1,9 @@
 @import './markdown.scss';
 
-$primary-color: #409eff;
 $white-color: #fff;
+$border-color: #dcdfe6;
+$primary-color: #409eff;
+$extra-light-primary-color: #ecf5ff;
 
 .vuetify-pro-tiptap {
   overflow-wrap: anywhere;
@@ -105,6 +107,23 @@ $white-color: #fff;
       &.focus {
         > div {
           outline: 4px solid $primary-color;
+        }
+      }
+    }
+
+    table.table-wrapper {
+      .selectedCell {
+        position: relative;
+        &::after {
+          z-index: 2;
+          position: absolute;
+          content: '';
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background: rgb(200 200 255 / 40%);
+          pointer-events: none;
         }
       }
     }
@@ -236,6 +255,28 @@ $white-color: #fff;
     p {
       padding: 0 0;
       line-height: 1.2rem;
+    }
+  }
+}
+
+.table-grid-size-editor {
+  $root: &;
+
+  &__cell {
+    &__inner {
+      border: 1px solid $border-color;
+      box-sizing: border-box;
+      border-radius: 2px;
+      height: 16px;
+      padding: 4px;
+      width: 16px;
+    }
+
+    &--selected {
+      #{$root}__cell__inner {
+        background-color: $extra-light-primary-color;
+        border-color: $primary-color;
+      }
     }
   }
 }

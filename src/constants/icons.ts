@@ -26,6 +26,7 @@ import {
   mdiLinkVariant,
   mdiImage,
   mdiVideo,
+  mdiTable,
   mdiFormatQuoteOpen,
   mdiMinus,
   mdiCodeTags,
@@ -88,6 +89,7 @@ export interface IconsOptions {
   link: string
   image: string
   video: string
+  table: string
   blockquote: string
   rule: string
   code: string
@@ -124,6 +126,7 @@ export const icons: IconsOptions = {
   link: mdiLinkVariant,
   image: mdiImage,
   video: mdiVideo,
+  table: mdiTable,
   blockquote: mdiFormatQuoteOpen,
   rule: mdiMinus,
   code: mdiCodeTags,

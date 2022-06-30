@@ -24,6 +24,7 @@
           ref="toolbarRef"
           class="vuetify-pro-tiptap-editor__toolbar"
           v-if="!hideToolbar && toolbar && toolbar.length"
+          :editor="editor"
           :dark="isDark"
           :disabled="disableToolbar"
           :items="items"
@@ -225,6 +226,11 @@ export default defineComponent({
           link: {
             openOnClick: true
           },
+          table: {
+            HTMLAttributes: {
+              class: 'table-wrapper'
+            }
+          },
           taskList: {
             HTMLAttributes: {
               class: 'task-list'
@@ -238,7 +244,7 @@ export default defineComponent({
           textStyle: {},
           underline: {},
           video: {}
-        },
+        } as Partial<StarterKitOptions>,
         root.$vuetifyProTiptap?.config,
         props.config
       )

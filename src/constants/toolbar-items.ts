@@ -30,6 +30,7 @@ const toolbarItems: ToolbarType[] = [
   'link',
   'image',
   'video',
+  'table',
   '|',
   'blockquote',
   'rule',

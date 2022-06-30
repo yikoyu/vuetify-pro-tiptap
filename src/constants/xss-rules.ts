@@ -27,11 +27,11 @@ const rules: IWhiteList = {
   li: ['class', 'data-checked', 'itemtypename'],
   ol: [],
   u: [],
-  tr: ['class', 'style'],
-  td: ['class', 'style'],
-  th: ['class', 'style'],
-  tbody: ['class', 'style'],
   table: ['class', 'style'],
+  tbody: ['class', 'style'],
+  tr: ['class', 'style'],
+  th: ['class', 'style', 'colspan', 'rowspan'],
+  td: ['class', 'style', 'colspan', 'rowspan'],
   br: []
 }
 

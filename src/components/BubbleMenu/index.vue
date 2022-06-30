@@ -1,8 +1,8 @@
 <template>
   <BubbleMenu :editor="editor" :tippyOptions="tippyOptions">
-    <v-card class="vuetify-pro-tiptap-editor__menu-bubble">
+    <v-card v-show="menu.length > 0" class="vuetify-pro-tiptap-editor__menu-bubble">
       <v-card-text class="d-flex pa-0">
-        <TipTapToolbar :items="menu" :dark="dark" :disabled="disabled" rounded />
+        <TipTapToolbar :editor="editor" :items="menu" :dark="dark" :disabled="disabled" rounded />
       </v-card-text>
     </v-card>
   </BubbleMenu>

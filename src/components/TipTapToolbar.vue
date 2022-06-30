@@ -40,6 +40,31 @@
               </ColorPicker>
             </div>
 
+            <!-- Table Button -->
+            <div v-else-if="item.type === 'table'">
+              <TableMenu v-bind="attrs" :editor="editor" :dark="dark">
+                <template #button="{ on: btn }">
+                  <v-btn
+                    :disabled="disabled"
+                    class="rounded me-1"
+                    :class="{
+                      'v-btn--active': item.isActive && item.isActive()
+                    }"
+                    :color="item.isActive && item.isActive() ? 'primary' : undefined"
+                    v-bind="attrs"
+                    icon
+                    small
+                    :data-testid="item.type"
+                    v-on="{ ...btn, ...on }"
+                  >
+                    <v-icon>
+                      {{ item.icon }}
+                    </v-icon>
+                  </v-btn>
+                </template>
+              </TableMenu>
+            </div>
+
             <!-- Standard Button -->
             <v-btn
               v-else
@@ -67,16 +92,19 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
-import { bool, array } from 'vue-types'
+import { object, bool, array } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import type { Definitions } from '@/constants/toolbar-definitions'
 import ColorPicker from './ColorPicker.vue'
+import TableMenu from './TableMenu/index.vue'
 
 export default defineComponent({
   components: {
-    ColorPicker
+    ColorPicker,
+    TableMenu
   },
   props: {
+    editor: object<Editor>().isRequired,
     dark: bool().def(false),
     disabled: bool().def(false),
     items: array<Definitions>().def(() => [])

@@ -32,6 +32,10 @@ import TaskList, { TaskListOptions } from '@tiptap/extension-task-list'
 import TaskItem, { TaskItemOptions } from '@tiptap/extension-task-item'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import Underline, { UnderlineOptions } from '@tiptap/extension-underline'
+import Table, { TableOptions } from '@tiptap/extension-table'
+import TableRow, { TableRowOptions } from '@tiptap/extension-table-row'
+import TableHeader, { TableHeaderOptions } from '@tiptap/extension-table-header'
+import TableCell, { TableCellOptions } from '@tiptap/extension-table-cell'
 import Video, { IframeOptions } from '@/extensions/video/video'
 import Image, { ImageOptions } from '@/extensions/image/image'
 
@@ -66,6 +70,10 @@ export interface StarterKitOptions {
   taskItem: Partial<TaskItemOptions> | false
   textStyle: Partial<TextStyleOptions> | false
   underline: Partial<UnderlineOptions> | false
+  table: Partial<TableOptions> | false
+  tableRow: Partial<TableRowOptions> | false
+  tableHeader: Partial<TableHeaderOptions> | false
+  tableCell: Partial<TableCellOptions> | false
   video: Partial<IframeOptions> | false
 }
 
@@ -197,6 +205,22 @@ export default Extension.create<StarterKitOptions>({
 
     if (this.options.text !== false) {
       extensions.push(Text.configure(this.options.text))
+    }
+
+    if (this.options.table !== false) {
+      extensions.push(Table.configure(this.options.table))
+    }
+
+    if (this.options.tableRow !== false) {
+      extensions.push(TableRow.configure(this.options.tableRow))
+    }
+
+    if (this.options.tableHeader !== false) {
+      extensions.push(TableHeader.configure(this.options.tableHeader))
+    }
+
+    if (this.options.tableCell !== false) {
+      extensions.push(TableCell.configure(this.options.tableCell))
     }
 
     return extensions

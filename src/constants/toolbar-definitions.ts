@@ -216,6 +216,13 @@ export function useMakeToolbarDefinitions({ editor, isFullscreen, toolbar }: Con
       },
       isActive: () => unref(editor)?.isActive('iframe') || false
     },
+    table: {
+      title: unref(t)('editor.table.tooltip'),
+      icon: icons.get('table'),
+      type: 'table',
+      action: () => {},
+      isActive: () => unref(editor)?.isActive('table') || false
+    },
     blockquote: {
       title: unref(t)('editor.blockquote.tooltip'),
       icon: icons.get('blockquote'),
