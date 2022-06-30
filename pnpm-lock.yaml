@@ -56,7 +56,7 @@ importers:
       sass: 1.32.13
       semantic-release: ^19.0.3
       typescript: ^4.7.4
-      unplugin-vue-components: ^0.19.6
+      unplugin-vue-components: ^0.20.1
       vite: ^2.9.13
       vite-plugin-dts: ^1.2.0
       vite-plugin-eslint: ^1.6.1
@@ -120,7 +120,7 @@ importers:
       sass: 1.32.13
       semantic-release: 19.0.3
       typescript: 4.7.4
-      unplugin-vue-components: 0.19.6_vite@2.9.13+vue@2.6.14
+      unplugin-vue-components: 0.20.1_vite@2.9.13+vue@2.6.14
       vite: 2.9.13_sass@1.32.13
       vite-plugin-dts: 1.2.0_vite@2.9.13
       vite-plugin-eslint: 1.6.1_eslint@8.18.0+vite@2.9.13
@@ -4773,7 +4773,7 @@ packages:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.22.0
+      resolve: 1.22.1
       semver: 5.7.1
       validate-npm-package-license: 3.0.4
     dev: true
@@ -5433,6 +5433,15 @@ packages:
 
   /resolve/1.22.0:
     resolution: {integrity: sha512-Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==}
+    hasBin: true
+    dependencies:
+      is-core-module: 2.9.0
+      path-parse: 1.0.7
+      supports-preserve-symlinks-flag: 1.0.0
+    dev: true
+
+  /resolve/1.22.1:
+    resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
     hasBin: true
     dependencies:
       is-core-module: 2.9.0
@@ -6102,17 +6111,14 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-vue-components/0.19.6_vite@2.9.13+vue@2.6.14:
-    resolution: {integrity: sha512-APvrJ9Hpid1MLT0G4PWerMJgARhNw6dzz0pcCwCxaO2DR7VyvDacMqjOQNC6ukq7FSw3wzD8VH+9i3EFXwkGmw==}
+  /unplugin-vue-components/0.20.1_vite@2.9.13+vue@2.6.14:
+    resolution: {integrity: sha512-I70rKUvnJXxBvvTvKhjMV6jXh48BdiUNn2jcQiTdZjqBA3Xgkze31tdc4KBX46yryIy0y6pVaZ9gVBNPrF785g==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
-      '@babel/traverse': ^7.15.4
       vue: 2 || 3
     peerDependenciesMeta:
       '@babel/parser':
-        optional: true
-      '@babel/traverse':
         optional: true
     dependencies:
       '@antfu/utils': 0.5.2
@@ -6123,8 +6129,8 @@ packages:
       local-pkg: 0.4.1
       magic-string: 0.26.2
       minimatch: 5.1.0
-      resolve: 1.22.0
-      unplugin: 0.6.3_vite@2.9.13
+      resolve: 1.22.1
+      unplugin: 0.7.1_vite@2.9.13
       vue: 2.6.14
     transitivePeerDependencies:
       - esbuild
@@ -6134,12 +6140,12 @@ packages:
       - webpack
     dev: true
 
-  /unplugin/0.6.3_vite@2.9.13:
-    resolution: {integrity: sha512-CoW88FQfCW/yabVc4bLrjikN9HC8dEvMU4O7B6K2jsYMPK0l6iAnd9dpJwqGcmXJKRCU9vwSsy653qg+RK0G6A==}
+  /unplugin/0.7.1_vite@2.9.13:
+    resolution: {integrity: sha512-Z6hNDXDNh9aimMkPU1mEjtk+2ova8gh0y7rJeJdGH1vWZOHwF2lLQiQ/R97rv9ymmzEQXsR2fyMet72T8jy6ew==}
     peerDependencies:
       esbuild: '>=0.13'
       rollup: ^2.50.0
-      vite: ^2.3.0
+      vite: ^2.3.0 || ^3.0.0-0
       webpack: 4 || 5
     peerDependenciesMeta:
       esbuild:
@@ -6151,10 +6157,11 @@ packages:
       webpack:
         optional: true
     dependencies:
+      acorn: 8.7.1
       chokidar: 3.5.3
       vite: 2.9.13_sass@1.32.13
       webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.4.3
+      webpack-virtual-modules: 0.4.4
     dev: true
 
   /uri-js/4.4.1:
@@ -6436,8 +6443,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /webpack-virtual-modules/0.4.3:
-    resolution: {integrity: sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==}
+  /webpack-virtual-modules/0.4.4:
+    resolution: {integrity: sha512-h9atBP/bsZohWpHnr+2sic8Iecb60GxftXsWNLLLSqewgIsGzByd2gcIID4nXcG+3tNe4GQG3dLcff3kXupdRA==}
     dev: true
 
   /whatwg-url/5.0.0:
