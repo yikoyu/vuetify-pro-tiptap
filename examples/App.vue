@@ -3,12 +3,11 @@ import { defineComponent, ref } from '@vue/composition-api'
 import { mdiDeleteCircleOutline, mdiSend, mdiFileCodeOutline } from '@mdi/js'
 import { type ToolbarType, locale } from 'vuetify-pro-tiptap'
 // import { type ToolbarType, locale } from '../src'
-
-const testHtml = `<h2 style="text-align: center">Welcome To Vuetify Tiptap Editor Demo</h2><p>🔥 <strong>Vuetify Tiptap Editor </strong>🔥is a WYSIWYG rich-text editor using&nbsp; <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/scrumpy/tiptap">tiptap</a>&nbsp;and <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/vuetifyjs/vuetify">vuetify</a>&nbsp;for Vue.js <img src="https://i.ibb.co/nbRN3S2/undraw-upload-87y9.png" alt="Test alt" width="200" data-display="right"> that's easy to use, friendly to developers, fully extensible and clean in design.</p><p></p><p style="text-align: right">👉Click on the image to get started image features 👉</p><p></p><p>You can toggle <strong>Fullscreen</strong> 📺 in this demo.</p><p></p><blockquote class="blockquote"><p>This demo is simple, switch tab for more features.</p><p>All demos source code: <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/yikoyu/vuetify-pro-tiptap">source code 🔗</a></p></blockquote>`
+import html from './html'
 
 export default defineComponent({
   setup() {
-    const content = ref(testHtml)
+    const content = ref(html)
     const dialog = ref(false)
     const outlined = ref(true)
     const dense = ref(false)
@@ -16,6 +15,7 @@ export default defineComponent({
     const hideToolbar = ref(false)
     const disableToolbar = ref(false)
     const errorMessages = ref(null)
+    const maxWidth = ref<number>(900)
 
     const toolbar = ref<ToolbarType[]>([
       'bold',
@@ -47,6 +47,7 @@ export default defineComponent({
       'link',
       'image',
       'video',
+      'table',
       '|',
       'blockquote',
       'rule',
@@ -75,6 +76,7 @@ export default defineComponent({
       hideToolbar,
       disableToolbar,
       errorMessages,
+      maxWidth,
       toolbar
     }
   }
@@ -104,12 +106,11 @@ export default defineComponent({
         :toolbar="toolbar"
         :outlined="outlined"
         :dense="dense"
-        :dark="$vuetify.theme.dark"
         placeholder="Enter some text..."
         :error-messages="errorMessages"
         rounded
         :maxHeight="465"
-        :maxWidth="900"
+        :maxWidth="maxWidth"
       >
         <template v-if="editHtml" #editor="{ attrs }">
           <v-textarea v-bind="attrs" height="auto" hide-details v-model="content" flat solo />
@@ -131,7 +132,9 @@ export default defineComponent({
               </v-toolbar>
 
               <v-container>
-                <vuetify-viewer :value="content" />
+                <v-sheet class="mx-auto" :maxWidth="maxWidth">
+                  <vuetify-viewer :value="content" />
+                </v-sheet>
               </v-container>
             </v-card>
           </v-dialog>
