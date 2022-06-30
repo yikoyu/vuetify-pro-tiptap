@@ -57,7 +57,7 @@ importers:
       semantic-release: ^19.0.3
       typescript: ^4.7.4
       unplugin-vue-components: ^0.19.6
-      vite: ^2.9.12
+      vite: ^2.9.13
       vite-plugin-dts: ^1.2.0
       vite-plugin-eslint: ^1.6.1
       vite-plugin-vue2: ^2.0.1
@@ -120,11 +120,11 @@ importers:
       sass: 1.32.13
       semantic-release: 19.0.3
       typescript: 4.7.4
-      unplugin-vue-components: 0.19.6_vite@2.9.12+vue@2.6.14
-      vite: 2.9.12_sass@1.32.13
-      vite-plugin-dts: 1.2.0_vite@2.9.12
-      vite-plugin-eslint: 1.6.1_eslint@8.18.0+vite@2.9.12
-      vite-plugin-vue2: 2.0.1_jttg6x6i6wypek3x7xn5g4bdeq
+      unplugin-vue-components: 0.19.6_vite@2.9.13+vue@2.6.14
+      vite: 2.9.13_sass@1.32.13
+      vite-plugin-dts: 1.2.0_vite@2.9.13
+      vite-plugin-eslint: 1.6.1_eslint@8.18.0+vite@2.9.13
+      vite-plugin-vue2: 2.0.1_rjze3w2zsgj4z24tnggj7hdbyq
       vue: 2.6.14
       vue-template-compiler: 2.6.14
       vue-tsc: 0.37.7_typescript@4.7.4
@@ -6102,7 +6102,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-vue-components/0.19.6_vite@2.9.12+vue@2.6.14:
+  /unplugin-vue-components/0.19.6_vite@2.9.13+vue@2.6.14:
     resolution: {integrity: sha512-APvrJ9Hpid1MLT0G4PWerMJgARhNw6dzz0pcCwCxaO2DR7VyvDacMqjOQNC6ukq7FSw3wzD8VH+9i3EFXwkGmw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -6124,7 +6124,7 @@ packages:
       magic-string: 0.26.2
       minimatch: 5.1.0
       resolve: 1.22.0
-      unplugin: 0.6.3_vite@2.9.12
+      unplugin: 0.6.3_vite@2.9.13
       vue: 2.6.14
     transitivePeerDependencies:
       - esbuild
@@ -6134,7 +6134,7 @@ packages:
       - webpack
     dev: true
 
-  /unplugin/0.6.3_vite@2.9.12:
+  /unplugin/0.6.3_vite@2.9.13:
     resolution: {integrity: sha512-CoW88FQfCW/yabVc4bLrjikN9HC8dEvMU4O7B6K2jsYMPK0l6iAnd9dpJwqGcmXJKRCU9vwSsy653qg+RK0G6A==}
     peerDependencies:
       esbuild: '>=0.13'
@@ -6152,7 +6152,7 @@ packages:
         optional: true
     dependencies:
       chokidar: 3.5.3
-      vite: 2.9.12_sass@1.32.13
+      vite: 2.9.13_sass@1.32.13
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.4.3
     dev: true
@@ -6191,7 +6191,7 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /vite-plugin-dts/1.2.0_vite@2.9.12:
+  /vite-plugin-dts/1.2.0_vite@2.9.13:
     resolution: {integrity: sha512-dg0x2VKHDnpNQvx0iPKkPpX+aJNBqzusMJv1l7SwzTV8J62eLhIKzE2FKOp4oYkPlN/vi+MqNEDKvv+XE70lzA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -6204,12 +6204,12 @@ packages:
       fast-glob: 3.2.11
       fs-extra: 10.1.0
       ts-morph: 14.0.0
-      vite: 2.9.12_sass@1.32.13
+      vite: 2.9.13_sass@1.32.13
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-eslint/1.6.1_eslint@8.18.0+vite@2.9.12:
+  /vite-plugin-eslint/1.6.1_eslint@8.18.0+vite@2.9.13:
     resolution: {integrity: sha512-wXwGJ222zjlllHmmPXX6oSU8DbmYjnA6HHBYbOLT8WAc73j4/YAtBQHCVSoHOTPiT4TPzsuZSvputWwc86BweQ==}
     peerDependencies:
       eslint: '>=7'
@@ -6219,10 +6219,10 @@ packages:
       '@types/eslint': 8.4.3
       eslint: 8.18.0
       rollup: 2.75.6
-      vite: 2.9.12_sass@1.32.13
+      vite: 2.9.13_sass@1.32.13
     dev: true
 
-  /vite-plugin-vue2/2.0.1_jttg6x6i6wypek3x7xn5g4bdeq:
+  /vite-plugin-vue2/2.0.1_rjze3w2zsgj4z24tnggj7hdbyq:
     resolution: {integrity: sha512-8ixcIDZwk3PSbdaqKrPFYDot044lPLIqpjjuRXUDHdRhml87Kbc6JqLq6uwHERlPovwfI3DpluWRMVgn/Llmag==}
     peerDependencies:
       vite: ^2.0.0
@@ -6256,7 +6256,7 @@ packages:
       rollup: 2.75.6
       slash: 3.0.0
       source-map: 0.7.4
-      vite: 2.9.12_sass@1.32.13
+      vite: 2.9.13_sass@1.32.13
       vue-template-babel-compiler: 1.2.0_ev5jzj74xu2fombjvobqpq452a
       vue-template-compiler: 2.6.14
     transitivePeerDependencies:
@@ -6316,8 +6316,8 @@ packages:
       - whiskers
     dev: true
 
-  /vite/2.9.12_sass@1.32.13:
-    resolution: {integrity: sha512-suxC36dQo9Rq1qMB2qiRorNJtJAdxguu5TMvBHOc/F370KvqAe9t48vYp+/TbPKRNrMh/J55tOUmkuIqstZaew==}
+  /vite/2.9.13_sass@1.32.13:
+    resolution: {integrity: sha512-AsOBAaT0AD7Mhe8DuK+/kE4aWYFMx/i0ZNi98hJclxb4e0OhQcZYUrvLjIaQ8e59Ui7txcvKMiJC1yftqpQoDw==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
