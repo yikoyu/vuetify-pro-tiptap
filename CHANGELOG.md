@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.2.0...v1.3.0) (2022-06-30)
+
+
+### Features
+
+* **style:** 重构markdown样式，新增dark模式样式。VuetifyViewer新增hideMarkdownStyle参数 ([22b25f2](https://github.com/yikoyu/vuetify-pro-tiptap/commit/22b25f278196dabf639da2cc51e43bac5b94650c))
+* **table:** 添加 table 插件 ([21a1c57](https://github.com/yikoyu/vuetify-pro-tiptap/commit/21a1c57653b5bb768c3a7bd61c3d05539a774d29))
+
 # [1.2.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.1.1...v1.2.0) (2022-06-28)
 
 
