@@ -65,7 +65,7 @@ importers:
       vue-template-compiler: ^2.6.14
       vue-tsc: 0.38.2
       vue-types: ^4.1.1
-      vuetify: ^2.6.6
+      vuetify: ^2.6.7
       xss: ^1.0.13
     devDependencies:
       '@commitlint/cli': 17.0.3
@@ -129,7 +129,7 @@ importers:
       vue-template-compiler: 2.6.14
       vue-tsc: 0.38.2_typescript@4.7.4
       vue-types: 4.1.1_vue@2.6.14
-      vuetify: 2.6.6_vue@2.6.14
+      vuetify: 2.6.7_vue@2.6.14
       xss: 1.0.13
 
   examples:
@@ -6429,6 +6429,15 @@ packages:
       vue: ^2.6.4
     dependencies:
       vue: 2.6.14
+    dev: false
+
+  /vuetify/2.6.7_vue@2.6.14:
+    resolution: {integrity: sha512-1XxCv6mt1UsKaW7rqow0hF/jOw1ijT/fHH9euWLHgSVIcPAx8D2AY5ihTCBbMmV53Hj/YD0DUvzyk6cM/OGHvw==}
+    peerDependencies:
+      vue: ^2.6.4
+    dependencies:
+      vue: 2.6.14
+    dev: true
 
   /w3c-keyname/2.2.4:
     resolution: {integrity: sha512-tOhfEwEzFLJzf6d1ZPkYfGj+FWhIpBux9ppoP3rlclw3Z0BZv3N7b7030Z1kYth+6rDuAsXUFr+d0VE6Ed1ikw==}
