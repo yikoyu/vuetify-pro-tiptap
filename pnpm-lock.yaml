@@ -38,7 +38,7 @@ importers:
       '@types/lodash.merge': ^4.6.7
       '@types/lodash.throttle': ^4.1.7
       '@types/node': ^17.0.42
-      '@vue/composition-api': ^1.6.3
+      '@vue/composition-api': ^1.7.0
       '@vue/eslint-config-prettier': ^7.0.0
       '@vue/eslint-config-typescript': ^11.0.0
       '@vue/runtime-dom': ^3.2.37
@@ -102,7 +102,7 @@ importers:
       '@types/lodash.merge': 4.6.7
       '@types/lodash.throttle': 4.1.7
       '@types/node': 17.0.42
-      '@vue/composition-api': 1.6.3_vue@2.6.14
+      '@vue/composition-api': 1.7.0_vue@2.6.14
       '@vue/eslint-config-prettier': 7.0.0_r45fuxdoy44v4cqkvfhni3iz4y
       '@vue/eslint-config-typescript': 11.0.0_buclsfeus64j3clgnmfgeicsui
       '@vue/runtime-dom': 3.2.37
@@ -2075,6 +2075,15 @@ packages:
       vue: '>= 2.5 < 3'
     dependencies:
       vue: 2.6.14
+    dev: false
+
+  /@vue/composition-api/1.7.0_vue@2.6.14:
+    resolution: {integrity: sha512-hxOgLYR+wjuPX9bkP2pAPlqUs98XxBoa9DSLyp1z6+YR92wC42PZcZKs4d+VRtcv4udOv041Kss+F6ap5nj8YA==}
+    peerDependencies:
+      vue: '>= 2.5 < 2.7'
+    dependencies:
+      vue: 2.6.14
+    dev: true
 
   /@vue/eslint-config-prettier/7.0.0_r45fuxdoy44v4cqkvfhni3iz4y:
     resolution: {integrity: sha512-/CTc6ML3Wta1tCe1gUeO0EYnVXfo3nJXsIhZ8WJr3sov+cGASr6yuiibJTL6lmIBm7GobopToOuB3B6AWyV0Iw==}
