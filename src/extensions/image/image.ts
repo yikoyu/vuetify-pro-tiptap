@@ -1,4 +1,3 @@
-import type { VueConstructor } from 'vue'
 import Image from '@tiptap/extension-image'
 import type { ImageOptions as ImageNativeOptions } from '@tiptap/extension-image'
 import ImageView from './Image.vue'
@@ -77,6 +76,6 @@ export default Image.extend<ImageOptions, ImageStorage>({
     }
   },
   addNodeView() {
-    return VueNodeViewRenderer(ImageView as VueConstructor)
+    return VueNodeViewRenderer(ImageView)
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :dark="dark" :value="show" max-width="400">
+  <v-dialog v-model="dialog" :dark="dark" max-width="400" @click:outside="close">
     <v-card>
       <v-card-title>
         <span class="headline">{{ t('editor.link.dialog.title') }}</span>
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, unref, computed } from '@vue/composition-api'
+import { defineComponent, ref, unref, computed, watchEffect } from '@vue/composition-api'
 import { string, bool, object } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'
@@ -41,6 +41,10 @@ export default defineComponent({
   setup(props, { root }) {
     const { t } = useLocale()
     const url = ref<string>('')
+
+    const dialog = ref<boolean>(false)
+
+    watchEffect(() => (dialog.value = props.show))
 
     const isDisabled = computed(() => {
       if (props.value === url.value) return true
@@ -61,8 +65,14 @@ export default defineComponent({
     }
 
     function close() {
-      root.$destroy()
-      root.$el.parentNode?.removeChild(root.$el)
+      dialog.value = false
+
+      if (!root) return
+
+      setTimeout(() => {
+        root.$destroy()
+        root.$el.parentNode?.removeChild(root.$el)
+      }, 300)
     }
 
     return {
@@ -70,6 +80,7 @@ export default defineComponent({
       url,
       isDisabled,
       t,
+      dialog,
       apply,
       close
     }

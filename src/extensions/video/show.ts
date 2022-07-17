@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from '@vue/composition-api'
 import type { Editor } from '@tiptap/vue-2'
 
 import { getVuetifyInstance } from '@/utils/vuetify-instance'
@@ -7,8 +7,8 @@ import VideoDialog from './VideoDialog.vue'
 export function show(editor: Editor) {
   const { src } = editor.getAttributes('iframe')
 
-  const VideoDialogComponent = Vue.extend(VideoDialog)
-  const instance = new VideoDialogComponent({
+  const instance = createApp({
+    ...VideoDialog,
     vuetify: getVuetifyInstance(),
     propsData: {
       editor,
@@ -17,6 +17,5 @@ export function show(editor: Editor) {
     }
   })
 
-  instance.$mount()
-  document.querySelector('body')?.appendChild(instance.$el)
+  instance.mount()
 }

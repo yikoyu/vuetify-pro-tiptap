@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from '@vue/composition-api'
 import type { Editor } from '@tiptap/vue-2'
 import type { NodeSelection } from 'prosemirror-state'
 
@@ -24,8 +24,8 @@ export function show(editor: Editor) {
     value.lockAspectRatio = true
   }
 
-  const ImageDialogComponent = Vue.extend(ImageDialog)
-  const instance = new ImageDialogComponent({
+  const instance = createApp({
+    ...ImageDialog,
     vuetify: getVuetifyInstance(),
     propsData: {
       editor,
@@ -37,6 +37,5 @@ export function show(editor: Editor) {
     }
   })
 
-  instance.$mount()
-  document.querySelector('body')?.appendChild(instance.$el)
+  instance.mount()
 }

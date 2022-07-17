@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :dark="dark" :value="show" max-width="400">
+  <v-dialog v-model="dialog" :dark="dark" max-width="400" @click:outside="close">
     <v-card>
       <v-card-title>
         <span class="headline">{{ t('editor.image.dialog.title') }}</span>
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, unref, onMounted } from '@vue/composition-api'
+import { computed, defineComponent, ref, unref, onMounted, watchEffect } from '@vue/composition-api'
 import { array, bool, func, object } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'
@@ -60,6 +60,10 @@ export default defineComponent({
   },
   setup(props, { root }) {
     const { t } = useLocale()
+
+    const dialog = ref<boolean>(false)
+
+    watchEffect(() => (dialog.value = props.show))
 
     const tab = ref<boolean>(false)
     const form = ref<ImageForm>({})
@@ -110,8 +114,14 @@ export default defineComponent({
     }
 
     function close() {
-      root.$destroy()
-      root.$el.parentNode?.removeChild(root.$el)
+      dialog.value = false
+
+      if (!root) return
+
+      setTimeout(() => {
+        root.$destroy()
+        root.$el.parentNode?.removeChild(root.$el)
+      }, 300)
     }
 
     onMounted(() => {
@@ -131,6 +141,7 @@ export default defineComponent({
       disabledApply,
       form,
       t,
+      dialog,
       apply,
       close
     }
