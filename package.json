@@ -41,9 +41,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config vite-example.config.ts",
     "build:lib": "pnpm check:types && vite build",
-    "build:examples": "pnpm build:lib && pnpm check:types && vite build --mode examples",
+    "build:examples": "pnpm build:lib && pnpm check:types && vite build --config vite-example.config.ts",
     "lint": "eslint {src,examples}/**/*.{js,ts,tsx,vue}",
     "lint:fix": "eslint {src,examples}/**/*.{js,ts,tsx,vue} --fix",
     "git-commit": "git-cz",
