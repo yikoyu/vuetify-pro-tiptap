@@ -134,14 +134,8 @@ importers:
 
   examples:
     specifiers:
-      '@vue/composition-api': '*'
-      vue: ^2.6.14
-      vuetify: '*'
       vuetify-pro-tiptap: workspace:*
     dependencies:
-      '@vue/composition-api': 1.6.3_vue@2.6.14
-      vue: 2.6.14
-      vuetify: 2.6.6_vue@2.6.14
       vuetify-pro-tiptap: link:..
 
 packages:
@@ -2087,14 +2081,6 @@ packages:
       - walrus
       - whiskers
     dev: true
-
-  /@vue/composition-api/1.6.3_vue@2.6.14:
-    resolution: {integrity: sha512-f0TgOKqU460QyVLp5URi8LMVJ3eE3/3OuFrytItSNmp5FbisS67jVvUZg7pzIzZonqc4chG1SNS48PMOsH7a4g==}
-    peerDependencies:
-      vue: '>= 2.5 < 3'
-    dependencies:
-      vue: 2.6.14
-    dev: false
 
   /@vue/composition-api/1.7.0_vue@2.6.14:
     resolution: {integrity: sha512-hxOgLYR+wjuPX9bkP2pAPlqUs98XxBoa9DSLyp1z6+YR92wC42PZcZKs4d+VRtcv4udOv041Kss+F6ap5nj8YA==}
@@ -6441,14 +6427,7 @@ packages:
 
   /vue/2.6.14:
     resolution: {integrity: sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==}
-
-  /vuetify/2.6.6_vue@2.6.14:
-    resolution: {integrity: sha512-H4KtxDFmDN8QiTRiGfBySyjMhVaHAJTKB0llGGKZT5jKxtnx9gvEtMWXKtVuRP0NJJP0H6xBPJHNOH7nT18qiQ==}
-    peerDependencies:
-      vue: ^2.6.4
-    dependencies:
-      vue: 2.6.14
-    dev: false
+    dev: true
 
   /vuetify/2.6.7_vue@2.6.14:
     resolution: {integrity: sha512-1XxCv6mt1UsKaW7rqow0hF/jOw1ijT/fHH9euWLHgSVIcPAx8D2AY5ihTCBbMmV53Hj/YD0DUvzyk6cM/OGHvw==}

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VCA, { createApp, h } from '@vue/composition-api'
+import VCA from '@vue/composition-api'
 import { createVuetify } from './vuetify'
 import App from './App.vue'
 
@@ -10,8 +10,6 @@ Vue.use(VCA)
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
 import SelectImage from './components/SelectImage.vue'
-// import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from '../src'
-// import '../src/styles/editor.scss'
 
 const VuetifyProTipTap = createVuetifyProTipTap({
   vuetify,
@@ -33,8 +31,7 @@ const VuetifyProTipTap = createVuetifyProTipTap({
 })
 Vue.use(VuetifyProTipTap)
 
-const app = createApp({
+new Vue({
   vuetify,
-  render: () => h(App)
-})
-app.mount('#app')
+  render: h => h(App)
+}).$mount('#app')

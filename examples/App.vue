@@ -2,7 +2,6 @@
 import { defineComponent, ref } from '@vue/composition-api'
 import { mdiDeleteCircleOutline, mdiSend, mdiFileCodeOutline } from '@mdi/js'
 import { type ToolbarType, locale } from 'vuetify-pro-tiptap'
-// import { type ToolbarType, locale } from '../src'
 import html from './html'
 
 export default defineComponent({
@@ -177,14 +176,3 @@ export default defineComponent({
     <!-- </v-main> -->
   </v-app>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* color: #2c3e50; */
-  /* overflow: auto; */
-  /* padding-top: 60px; */
-}
-</style>
