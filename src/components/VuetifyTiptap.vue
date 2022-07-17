@@ -77,6 +77,8 @@ import toolbarItems from '@/constants/toolbar-items'
 import { useMakeToolbarDefinitions } from '@/constants/toolbar-definitions'
 import type { ToolbarType, Definitions } from '@/constants/toolbar-definitions'
 
+import useContext from '@/hooks/use-context'
+
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnSelectionUpdate = NonNullable<EditorOptions['onSelectionUpdate']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -121,11 +123,12 @@ export default defineComponent({
     config: object<Partial<StarterKitOptions>>().def({}),
     editorClass: oneOfType<string | string[] | Record<string, any>>([String, Array, Object])
   },
-  setup(props, { emit, listeners, root }) {
+  setup(props, { emit }) {
     const toolbarRef = ref<Record<string, any> | null>(null)
     const editor: Ref<Editor | null> = ref(null)
     const isFullscreen = ref<boolean>(false)
 
+    const root = useContext()
     const { t } = useLocale()
 
     const { items } = useMakeToolbarDefinitions({
@@ -134,7 +137,7 @@ export default defineComponent({
       toolbar: props.toolbar
     })
 
-    const isDark = computed<boolean>(() => props.dark || root.$vuetify.theme.dark)
+    const isDark = computed<boolean>(() => props.dark || root?.$vuetify.theme.dark || false)
 
     const slotItems = computed<(Definitions & { slot: string })[]>(() => {
       return unref(items).filter(item => item.type === 'slot') as (Definitions & { slot: string })[]
@@ -177,7 +180,7 @@ export default defineComponent({
     watch(() => props.disabled, onDisabledChange)
 
     const handleKeyDown = throttle<HandleKeyDown>(function (view, event) {
-      if (event.key === 'Enter' && listeners.enter && !event.shiftKey) {
+      if (event.key === 'Enter' && root?.$listeners.enter && !event.shiftKey) {
         emit('enter')
 
         return true
@@ -245,7 +248,7 @@ export default defineComponent({
           underline: {},
           video: {}
         } as Partial<StarterKitOptions>,
-        root.$vuetifyProTiptap?.config,
+        root?.$vuetifyProTiptap?.config,
         props.config
       )
 

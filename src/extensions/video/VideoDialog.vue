@@ -30,6 +30,7 @@ import { string, bool, object } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'
 import { mdiClose } from '@/constants/icons'
+import useContext from '@/hooks/use-context'
 
 export default defineComponent({
   props: {
@@ -38,7 +39,9 @@ export default defineComponent({
     show: bool().def(false),
     dark: bool().def(false)
   },
-  setup(props, { root }) {
+  setup(props) {
+    const root = useContext()
+
     const { t } = useLocale()
     const url = ref<string>('')
 

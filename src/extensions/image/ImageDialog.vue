@@ -39,6 +39,7 @@ import { array, bool, func, object } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'
 import { mdiClose, mdiLinkVariant, mdiText } from '@/constants/icons'
+import useContext from '@/hooks/use-context'
 import type { ImageForm, ImageTab, ImageTabKey, ImageAttrsOptions } from './types'
 
 import ImageUrl from './ImageUrl.vue'
@@ -58,7 +59,9 @@ export default defineComponent({
     imageTabs: array<ImageTab>().def([]),
     hiddenTabs: array<ImageTabKey>().def([])
   },
-  setup(props, { root }) {
+  setup(props) {
+    const root = useContext()
+
     const { t } = useLocale()
 
     const dialog = ref<boolean>(false)

@@ -14,6 +14,8 @@ import xss from 'xss'
 import type { IWhiteList } from 'xss'
 import xssRules from '@/constants/xss-rules'
 
+import useContext from '@/hooks/use-context'
+
 export default defineComponent({
   props: {
     value: string().def(''),
@@ -23,8 +25,10 @@ export default defineComponent({
     xss: oneOfType<boolean | string[]>([Boolean, Array]).def(true),
     xssOptions: object<IWhiteList>().def(xssRules)
   },
-  setup(props, { root }) {
-    const isDark = computed(() => props.dark || root.$vuetify.theme.dark)
+  setup(props) {
+    const root = useContext()
+
+    const isDark = computed(() => props.dark || root?.$vuetify.theme.dark || false)
 
     const viewerClass = computed(() => ({
       __dark: unref(isDark),
