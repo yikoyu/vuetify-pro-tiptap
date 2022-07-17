@@ -60,7 +60,7 @@ importers:
       vite: ^2.9.14
       vite-plugin-dts: ^1.2.1
       vite-plugin-eslint: ^1.6.1
-      vite-plugin-vue2: ^2.0.1
+      vite-plugin-vue2: ^2.0.2
       vue: ^2.6.14
       vue-demi: ^0.13.5
       vue-template-compiler: ^2.6.14
@@ -127,7 +127,7 @@ importers:
       vite: 2.9.14_sass@1.32.13
       vite-plugin-dts: 1.2.1_vite@2.9.14
       vite-plugin-eslint: 1.6.1_eslint@8.19.0+vite@2.9.14
-      vite-plugin-vue2: 2.0.1_2d6nmvbz72nl7aanzvuu3maytm
+      vite-plugin-vue2: 2.0.2_2d6nmvbz72nl7aanzvuu3maytm
       vue: 2.6.14
       vue-template-compiler: 2.6.14
       vue-tsc: 0.38.2_typescript@4.7.4
@@ -6206,10 +6206,10 @@ packages:
       vite: 2.9.14_sass@1.32.13
     dev: true
 
-  /vite-plugin-vue2/2.0.1_2d6nmvbz72nl7aanzvuu3maytm:
-    resolution: {integrity: sha512-8ixcIDZwk3PSbdaqKrPFYDot044lPLIqpjjuRXUDHdRhml87Kbc6JqLq6uwHERlPovwfI3DpluWRMVgn/Llmag==}
+  /vite-plugin-vue2/2.0.2_2d6nmvbz72nl7aanzvuu3maytm:
+    resolution: {integrity: sha512-Oo1iwc5Zo376s3MYXqS7j+KXs26EjiyWV8/dmI23SoorO3zaAgnBefR45Zme+QtM407tJ2MVq0mqfI10qA5+LQ==}
     peerDependencies:
-      vite: ^2.0.0
+      vite: ^2.0.0 || ^3.0.0
       vue-template-compiler: ^2.2.0
     dependencies:
       '@babel/core': 7.18.5
