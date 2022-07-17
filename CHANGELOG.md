@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.3.0...v1.4.0) (2022-07-17)
+
+
+### Bug Fixes
+
+* **extansions:** dialog弹框关闭未清除dom ([e9725f1](https://github.com/yikoyu/vuetify-pro-tiptap/commit/e9725f1d3162ee8799fab927244aac9b1099e170))
+
+
+### Features
+
+* **vue-demi:** 兼容vue2.7.x ([759d033](https://github.com/yikoyu/vuetify-pro-tiptap/commit/759d033fd7e4a6f66f16f134d370ff15b2cc7351))
+
 # [1.3.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.2.0...v1.3.0) (2022-06-30)
 
 
