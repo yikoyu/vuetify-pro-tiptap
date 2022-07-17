@@ -1,4 +1,4 @@
-import type { VueConstructor, PluginFunction } from 'vue'
+import type { Plugin } from 'vue-demi'
 import type { default as Vuetify } from 'vuetify/lib'
 import { setVuetifyInstance } from './utils/vuetify-instance'
 import Logger from './utils/logger'
@@ -12,7 +12,7 @@ import locale, { zhHans, en } from './locales'
 interface InstallationOptions {
   vuetify: Vuetify
   lang?: string
-  components?: Record<string, VueConstructor>
+  components?: Record<string, any>
   config?: Partial<StarterKitOptions>
 }
 
@@ -31,8 +31,8 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.component('VuetifyViewer', VuetifyViewer)
 }
 
-const createVuetifyProTipTap = (opts: InstallationOptions): PluginFunction<InstallationOptions> => {
-  const install: PluginFunction<InstallationOptions> = (Vue): void => {
+const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
+  const install: Plugin = (_Vue): void => {
     const { vuetify, lang, components = {}, config } = opts || {}
 
     if (!vuetify) {
@@ -43,9 +43,9 @@ const createVuetifyProTipTap = (opts: InstallationOptions): PluginFunction<Insta
     setVuetifyInstance(vuetify)
     if (lang) locale.setLang(lang)
 
-    Object.keys(components).forEach(key => Vue.component(key, components[key]))
+    Object.keys(components).forEach(key => _Vue.component(key, components[key]))
 
-    Vue.prototype.$vuetifyProTiptap = {
+    _Vue.prototype.$vuetifyProTiptap = {
       defaultLang: lang,
       config
     }

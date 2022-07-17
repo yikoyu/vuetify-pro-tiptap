@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, onUnmounted, ref, unref } from '@vue/composition-api'
+import { computed, defineComponent, onMounted, onUnmounted, ref, unref } from 'vue-demi'
 import { NodeViewWrapper } from '@tiptap/vue-2'
 import { nodeViewProps } from '@/utils/node-view-props'
 import { bool } from 'vue-types'

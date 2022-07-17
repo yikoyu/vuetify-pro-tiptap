@@ -59,8 +59,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, unref, computed, watch, onUnmounted } from '@vue/composition-api'
-import type { Ref } from '@vue/composition-api'
+import { defineComponent, ref, unref, computed, watch, onUnmounted } from 'vue-demi'
+import type { Ref } from 'vue-demi'
 import { string, bool, array, object, oneOfType } from 'vue-types'
 import throttle from 'lodash.throttle'
 import merge from 'lodash.merge'

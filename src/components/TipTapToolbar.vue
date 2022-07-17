@@ -91,7 +91,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api'
+import { defineComponent, ref } from 'vue-demi'
 import { object, bool, array } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import type { Definitions } from '@/constants/toolbar-definitions'

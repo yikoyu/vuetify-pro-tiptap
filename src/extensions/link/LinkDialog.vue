@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, unref, computed, watchEffect } from '@vue/composition-api'
+import { defineComponent, ref, unref, computed, watchEffect } from 'vue-demi'
 import { string, bool, object } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'

@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, unref } from '@vue/composition-api'
+import { computed, defineComponent, ref, unref } from 'vue-demi'
 import { object, bool } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import * as icons from '@/constants/icons'

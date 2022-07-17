@@ -1,4 +1,4 @@
-import { unref, computed, onUnmounted, ref } from '@vue/composition-api'
+import { unref, computed, onUnmounted, ref } from 'vue-demi'
 import Logger from '@/utils/logger'
 import mitt, { EventType } from '@/utils/mitt'
 

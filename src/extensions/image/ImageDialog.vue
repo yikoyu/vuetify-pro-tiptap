@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, unref, onMounted, watchEffect } from '@vue/composition-api'
+import { computed, defineComponent, ref, unref, onMounted, watchEffect } from 'vue-demi'
 import { array, bool, func, object } from 'vue-types'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'

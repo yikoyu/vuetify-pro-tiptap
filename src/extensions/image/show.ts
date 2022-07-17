@@ -1,4 +1,4 @@
-import { createApp } from '@vue/composition-api'
+import { createApp } from 'vue-demi'
 import type { Editor } from '@tiptap/vue-2'
 import type { NodeSelection } from 'prosemirror-state'
 

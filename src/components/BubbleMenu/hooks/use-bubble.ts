@@ -1,4 +1,4 @@
-import { unref, computed } from '@vue/composition-api'
+import { unref, computed } from 'vue-demi'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'
 import type { Definitions } from '@/constants/toolbar-definitions'

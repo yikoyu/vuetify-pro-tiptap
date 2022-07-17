@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, unref } from '@vue/composition-api'
+import { defineComponent, computed, unref } from 'vue-demi'
 import { string, object, bool, oneOfType } from 'vue-types'
 
 import xss from 'xss'

@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api'
+import { defineComponent, computed } from 'vue-demi'
 import { object, func } from 'vue-types'
 import { mdiLinkVariant, mdiText } from '@/constants/icons'
 import type { ImageForm } from './types'

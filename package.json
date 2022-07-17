@@ -65,6 +65,11 @@
     "vue": "^2.6.0",
     "vuetify": "^2.0.0"
   },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
@@ -129,5 +134,8 @@
     "vue-types": "^4.1.1",
     "vuetify": "^2.6.7",
     "xss": "^1.0.13"
+  },
+  "dependencies": {
+    "vue-demi": "^0.13.5"
   }
 }

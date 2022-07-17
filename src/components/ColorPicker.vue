@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api'
+import { defineComponent, ref } from 'vue-demi'
 import { string, bool, oneOfType } from 'vue-types'
 import { mdiCircle } from '@/constants/icons'
 

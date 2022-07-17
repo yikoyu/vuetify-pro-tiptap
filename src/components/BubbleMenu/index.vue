@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, unref } from '@vue/composition-api'
+import { computed, defineComponent, reactive, unref } from 'vue-demi'
 import { BubbleMenu } from '@tiptap/vue-2'
 import type { Editor, BubbleMenuInterface } from '@tiptap/vue-2'
 import { bool, object, array } from 'vue-types'

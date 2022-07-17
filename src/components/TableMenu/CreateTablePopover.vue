@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, unref } from '@vue/composition-api'
+import { defineComponent, reactive, ref, unref } from 'vue-demi'
 import { bool } from 'vue-types'
 import { useLocale } from '@/locales'
 
