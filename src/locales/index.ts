@@ -1,6 +1,6 @@
-import Vue from 'vue'
 import { unref, computed, onUnmounted, ref } from '@vue/composition-api'
 import Logger from '@/utils/logger'
+import mitt, { EventType } from '@/utils/mitt'
 
 import zhHans from './zh-Hans'
 import en from './en'
@@ -8,6 +8,10 @@ import en from './en'
 interface LocaleInterface {
   lang: string
   message: Record<string, Record<string, string>>
+}
+
+interface MittEvents extends Record<EventType, unknown> {
+  lang: string
 }
 
 export const DEFAULT_LOCALE: LocaleInterface = {
@@ -19,9 +23,9 @@ export const DEFAULT_LOCALE: LocaleInterface = {
 }
 
 class Locale {
-  private bus
+  private emitter
   constructor() {
-    this.bus = new Vue()
+    this.emitter = mitt<MittEvents>()
   }
 
   get lang(): string {
@@ -35,7 +39,7 @@ class Locale {
     }
 
     DEFAULT_LOCALE.lang = lang
-    this.bus.$emit('lang', lang)
+    this.emitter.emit('lang', lang)
   }
 
   get message(): Record<string, Record<string, string>> {
@@ -59,17 +63,14 @@ class Locale {
     this.lang = lang
   }
 
-  public registerWatchLang() {
-    const subscribe = (hook: (lang: string) => void) => {
-      this.bus.$on('lang', (lang: string) => hook(lang))
-    }
+  public registerWatchLang(hook: (lang: string) => void) {
+    this.emitter.on('lang', hook)
 
     const unsubscribe = () => {
-      this.bus.$off('lang')
+      this.emitter.off('lang', hook)
     }
 
     return {
-      subscribe,
       unsubscribe
     }
   }
@@ -98,8 +99,7 @@ const useLocale = () => {
     return locale.buildI18nHandler(unref(lang))
   })
 
-  const watchLang = locale.registerWatchLang()
-  watchLang.subscribe(val => {
+  const watchLang = locale.registerWatchLang(val => {
     lang.value = val
   })
 
