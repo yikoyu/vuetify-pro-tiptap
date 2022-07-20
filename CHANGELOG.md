@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.0...v1.4.1) (2022-07-20)
+
+
+### Refactor
+
+* 升级到vue2.7.x，并改用setup写法 ([#30](https://github.com/yikoyu/vuetify-pro-tiptap/issues/30)) ([3ee90d4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/3ee90d42c8e3eafe240e28a6ef8e46d0ad131cae))
+
 # [1.4.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.3.0...v1.4.0) (2022-07-17)
 
 
