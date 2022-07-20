@@ -1,85 +1,64 @@
-<script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api'
-import { mdiDeleteCircleOutline, mdiSend, mdiFileCodeOutline } from '@mdi/js'
+<script setup lang="ts">
+import { ref } from 'vue'
+import { mdiDeleteCircleOutline, mdiFileCodeOutline } from '@mdi/js'
 import { type ToolbarType, locale } from 'vuetify-pro-tiptap'
 import html from './html'
 
-export default defineComponent({
-  setup() {
-    const content = ref(html)
-    const dialog = ref(false)
-    const outlined = ref(true)
-    const dense = ref(false)
-    const editHtml = ref(false)
-    const hideToolbar = ref(false)
-    const disableToolbar = ref(false)
-    const errorMessages = ref(null)
-    const maxWidth = ref<number>(900)
+const content = ref(html)
+const dialog = ref(false)
+const outlined = ref(true)
+const dense = ref(false)
+const editHtml = ref(false)
+const hideToolbar = ref(false)
+const disableToolbar = ref(false)
+const errorMessages = ref(null)
+const maxWidth = ref<number>(900)
 
-    const toolbar = ref<ToolbarType[]>([
-      'bold',
-      'italic',
-      'underline',
-      'strike',
-      'color',
-      'highlight',
-      '|',
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'p',
-      '|',
-      'left',
-      'center',
-      'right',
-      'justify',
-      '|',
-      'bulletList',
-      'orderedList',
-      'taskList',
-      'indent',
-      'outdent',
-      '|',
-      'link',
-      'image',
-      'video',
-      'table',
-      '|',
-      'blockquote',
-      'rule',
-      'code',
-      'codeBlock',
-      '|',
-      'clear',
-      'fullscreen',
-      'undo',
-      'redo',
-      '#clean-btn',
-      '#preview',
-      '#html'
-    ])
-
-    return {
-      mdiDeleteCircleOutline,
-      mdiFileCodeOutline,
-      mdiSend,
-      locale,
-      content,
-      dialog,
-      outlined,
-      dense,
-      editHtml,
-      hideToolbar,
-      disableToolbar,
-      errorMessages,
-      maxWidth,
-      toolbar
-    }
-  }
-})
+const toolbar = ref<ToolbarType[]>([
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'color',
+  'highlight',
+  '|',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'p',
+  '|',
+  'left',
+  'center',
+  'right',
+  'justify',
+  '|',
+  'bulletList',
+  'orderedList',
+  'taskList',
+  'indent',
+  'outdent',
+  '|',
+  'link',
+  'image',
+  'video',
+  'table',
+  '|',
+  'blockquote',
+  'rule',
+  'code',
+  'codeBlock',
+  '|',
+  'clear',
+  'fullscreen',
+  'undo',
+  'redo',
+  '#clean-btn',
+  '#preview',
+  '#html'
+])
 </script>
 
 <template>

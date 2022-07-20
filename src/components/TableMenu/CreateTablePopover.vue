@@ -1,3 +1,80 @@
+<script setup lang="ts">
+import { reactive, ref, unref } from 'vue-demi'
+import { useLocale } from '@/locales'
+
+const INIT_GRID_SIZE = 6
+const MAX_GRID_SIZE = 10
+const DEFAULT_SELECTED_GRID_SIZE = 2
+
+interface GridSize {
+  rows: number
+  cols: number
+}
+
+interface CreateTableOptions {
+  rows: number
+  cols: number
+  withHeaderRow: boolean
+}
+
+interface CreateTablePopoverProps {
+  dark?: boolean
+}
+
+interface CreateTablePopoverEmits {
+  (event: 'createTable', options: CreateTableOptions): void
+}
+
+withDefaults(defineProps<CreateTablePopoverProps>(), {
+  dark: false
+})
+
+const emits = defineEmits<CreateTablePopoverEmits>()
+
+const { t } = useLocale()
+
+const menu = ref<boolean>(false)
+const withHeaderRow = ref<boolean>(true)
+const tableGridSize = reactive<GridSize>({
+  rows: INIT_GRID_SIZE,
+  cols: INIT_GRID_SIZE
+})
+
+const selectedTableGridSize: GridSize = reactive<GridSize>({
+  rows: DEFAULT_SELECTED_GRID_SIZE,
+  cols: DEFAULT_SELECTED_GRID_SIZE
+})
+
+function selectTableGridSize(rows: number, cols: number): void {
+  if (rows === tableGridSize.rows) {
+    tableGridSize.rows = Math.min(rows + 1, MAX_GRID_SIZE)
+  }
+
+  if (cols === tableGridSize.cols) {
+    tableGridSize.cols = Math.min(cols + 1, MAX_GRID_SIZE)
+  }
+
+  selectedTableGridSize.rows = rows
+  selectedTableGridSize.cols = cols
+}
+
+function onMouseDown(rows: number, cols: number) {
+  emits('createTable', { rows, cols, withHeaderRow: unref(withHeaderRow) })
+  resetTableGridSize()
+}
+
+function resetTableGridSize(): void {
+  menu.value = false
+  withHeaderRow.value = true
+
+  tableGridSize.rows = INIT_GRID_SIZE
+  tableGridSize.cols = INIT_GRID_SIZE
+
+  selectedTableGridSize.rows = DEFAULT_SELECTED_GRID_SIZE
+  selectedTableGridSize.cols = DEFAULT_SELECTED_GRID_SIZE
+}
+</script>
+
 <template>
   <v-menu v-model="menu" offset-x open-on-hover :close-on-content-click="false" :dark="dark">
     <template #activator="{ on, attrs }">
@@ -28,79 +105,3 @@
     </v-card>
   </v-menu>
 </template>
-
-<script lang="ts">
-import { defineComponent, reactive, ref, unref } from 'vue-demi'
-import { bool } from 'vue-types'
-import { useLocale } from '@/locales'
-
-const INIT_GRID_SIZE = 6
-const MAX_GRID_SIZE = 10
-const DEFAULT_SELECTED_GRID_SIZE = 2
-
-interface GridSize {
-  rows: number
-  cols: number
-}
-
-export default defineComponent({
-  props: {
-    dark: bool().def(false)
-  },
-  setup(props, { emit }) {
-    const { t } = useLocale()
-
-    const menu = ref<boolean>(false)
-    const withHeaderRow = ref<boolean>(true)
-    const tableGridSize = reactive<GridSize>({
-      rows: INIT_GRID_SIZE,
-      cols: INIT_GRID_SIZE
-    })
-
-    const selectedTableGridSize: GridSize = reactive<GridSize>({
-      rows: DEFAULT_SELECTED_GRID_SIZE,
-      cols: DEFAULT_SELECTED_GRID_SIZE
-    })
-
-    function selectTableGridSize(rows: number, cols: number): void {
-      if (rows === tableGridSize.rows) {
-        tableGridSize.rows = Math.min(rows + 1, MAX_GRID_SIZE)
-      }
-
-      if (cols === tableGridSize.cols) {
-        tableGridSize.cols = Math.min(cols + 1, MAX_GRID_SIZE)
-      }
-
-      selectedTableGridSize.rows = rows
-      selectedTableGridSize.cols = cols
-    }
-
-    function onMouseDown(rows: number, cols: number) {
-      emit('createTable', { rows, cols, withHeaderRow: unref(withHeaderRow) })
-      resetTableGridSize()
-    }
-
-    function resetTableGridSize(): void {
-      menu.value = false
-      withHeaderRow.value = true
-
-      tableGridSize.rows = INIT_GRID_SIZE
-      tableGridSize.cols = INIT_GRID_SIZE
-
-      selectedTableGridSize.rows = DEFAULT_SELECTED_GRID_SIZE
-      selectedTableGridSize.cols = DEFAULT_SELECTED_GRID_SIZE
-    }
-
-    return {
-      t,
-      menu,
-      withHeaderRow,
-      tableGridSize,
-      selectedTableGridSize,
-      selectTableGridSize,
-      onMouseDown,
-      resetTableGridSize
-    }
-  }
-})
-</script>

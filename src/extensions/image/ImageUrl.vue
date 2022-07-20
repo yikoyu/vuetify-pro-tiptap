@@ -1,3 +1,29 @@
+<script setup lang="ts">
+import { computed } from 'vue-demi'
+import { mdiLinkVariant, mdiText } from '@/constants/icons'
+import type { ImageForm } from './types'
+
+interface ImageUrlProps {
+  t: (path: string) => string
+  value?: ImageForm
+}
+
+interface ImageUrlEmits {
+  (event: 'input', form: ImageForm): void
+}
+
+const props = withDefaults(defineProps<ImageUrlProps>(), {
+  value: () => ({})
+})
+
+const emits = defineEmits<ImageUrlEmits>()
+
+const form = computed({
+  get: () => props.value,
+  set: val => emits('input', val)
+})
+</script>
+
 <template>
   <v-form>
     <v-text-field v-model="form.src" :label="t('editor.image.dialog.form.link')" autofocus :prepend-icon="mdiLinkVariant" />
@@ -7,29 +33,3 @@
     <v-checkbox v-model="form.lockAspectRatio" :label="t('editor.image.dialog.form.aspectRatio')"></v-checkbox>
   </v-form>
 </template>
-
-<script lang="ts">
-import { defineComponent, computed } from 'vue-demi'
-import { object, func } from 'vue-types'
-import { mdiLinkVariant, mdiText } from '@/constants/icons'
-import type { ImageForm } from './types'
-
-export default defineComponent({
-  props: {
-    value: object<ImageForm>().def({}),
-    t: func<(path: string) => string>().isRequired
-  },
-  setup(props, { emit }) {
-    const form = computed({
-      get: () => props.value,
-      set: val => emit('input', val)
-    })
-
-    return {
-      mdiLinkVariant,
-      mdiText,
-      form
-    }
-  }
-})
-</script>

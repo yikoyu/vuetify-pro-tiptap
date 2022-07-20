@@ -17,7 +17,7 @@
     }
   },
   "vueCompilerOptions": {
-    "target": 2, // delete after migrating to vue3 (or nuxt3)
+    "target": 2.7, // delete after migrating to vue3 (or nuxt3)
     "experimentalTemplateCompilerOptions": {
       "compatConfig": {
         "MODE": 2,
