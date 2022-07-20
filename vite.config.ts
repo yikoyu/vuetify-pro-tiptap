@@ -22,7 +22,6 @@ export default defineConfig({
       fix: true
     }),
     dts({
-      tsConfigFilePath: 'tsconfig.lib.json',
       insertTypesEntry: true
     })
   ],
@@ -42,9 +41,10 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
+        exports: 'named',
         globals: {
           vue: 'Vue',
-          vueDemi: 'vue-demi',
+          'vue-demi': 'vueDemi',
           vuetify: 'Vuetify',
           'vuetify/lib': 'VuetifyLib'
         }

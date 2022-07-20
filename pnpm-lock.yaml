@@ -37,7 +37,6 @@ importers:
       '@tiptap/vue-2': 2.0.0-beta.84
       '@types/lodash.merge': ^4.6.7
       '@types/lodash.throttle': ^4.1.7
-      '@types/node': ^17.0.42
       '@vue/composition-api': ^1.7.0
       '@vue/eslint-config-prettier': ^7.0.0
       '@vue/eslint-config-typescript': ^11.0.0
@@ -104,7 +103,6 @@ importers:
       '@tiptap/vue-2': 2.0.0-beta.84_xbvdzshbxychv7mr2kk4piuedm
       '@types/lodash.merge': 4.6.7
       '@types/lodash.throttle': 4.1.7
-      '@types/node': 17.0.42
       '@vue/composition-api': 1.7.0_vue@2.6.14
       '@vue/eslint-config-prettier': 7.0.0_exbhzpnbupd3ikhi4722x4yn6e
       '@vue/eslint-config-typescript': 11.0.0_rbwfxavh274jq5nrli6gjtdzua
@@ -134,12 +132,6 @@ importers:
       vue-types: 4.1.1_vue@2.6.14
       vuetify: 2.6.7_vue@2.6.14
       xss: 1.0.13
-
-  examples:
-    specifiers:
-      vuetify-pro-tiptap: workspace:*
-    dependencies:
-      vuetify-pro-tiptap: link:..
 
 packages:
 
@@ -2648,7 +2640,7 @@ packages:
       lodash: ^4.17.20
       marko: ^3.14.4
       mote: ^0.2.0
-      mustache: ^3.0.0
+      mustache: ^4.0.1
       nunjucks: ^3.2.2
       plates: ~0.4.11
       pug: ^3.0.0
