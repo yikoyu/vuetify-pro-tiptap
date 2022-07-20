@@ -1,44 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue-demi'
-import type { Editor } from '@tiptap/vue-2'
-import type { Definitions } from '@/constants/toolbar-definitions'
-import ColorPicker from './ColorPicker.vue'
-import TableMenu from './TableMenu/index.vue'
-
-interface TipTapToolbarProps {
-  editor: Editor
-  dark?: boolean
-  disabled?: boolean
-  items?: Definitions[]
-}
-
-withDefaults(defineProps<TipTapToolbarProps>(), {
-  dark: false,
-  disabled: false,
-  items: () => []
-})
-
-// Color
-const color = ref<string | null>(null)
-
-// Highlight
-const highlight = ref<string | null>(null)
-
-function onUpdate(editor: Editor) {
-  const { color: colorValue } = editor.getAttributes('textStyle')
-  const { color: highlightValue } = editor.getAttributes('highlight')
-
-  color.value = colorValue
-  highlight.value = highlightValue
-}
-
-defineExpose({
-  color,
-  highlight,
-  onUpdate
-})
-</script>
-
 <template>
   <v-toolbar v-bind="$attrs" dense flat height="auto" class="py-1 ps-1">
     <template v-for="(item, key) in items">
@@ -130,3 +89,46 @@ defineExpose({
     </template>
   </v-toolbar>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue-demi'
+import { object, bool, array } from 'vue-types'
+import type { Editor } from '@tiptap/vue-2'
+import type { Definitions } from '@/constants/toolbar-definitions'
+import ColorPicker from './ColorPicker.vue'
+import TableMenu from './TableMenu/index.vue'
+
+export default defineComponent({
+  components: {
+    ColorPicker,
+    TableMenu
+  },
+  props: {
+    editor: object<Editor>().isRequired,
+    dark: bool().def(false),
+    disabled: bool().def(false),
+    items: array<Definitions>().def(() => [])
+  },
+  setup() {
+    // Color
+    const color = ref<string | null>(null)
+
+    // Highlight
+    const highlight = ref<string | null>(null)
+
+    function onUpdate(editor: Editor) {
+      const { color: colorValue } = editor.getAttributes('textStyle')
+      const { color: highlightValue } = editor.getAttributes('highlight')
+
+      color.value = colorValue
+      highlight.value = highlightValue
+    }
+
+    return {
+      color,
+      highlight,
+      onUpdate
+    }
+  }
+})
+</script>
