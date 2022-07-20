@@ -1,11 +1,8 @@
 import Vue from 'vue'
-import VCA from '@vue/composition-api'
 import { createVuetify } from './vuetify'
 import App from './App.vue'
 
 const vuetify = createVuetify(Vue)
-
-Vue.use(VCA)
 
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'

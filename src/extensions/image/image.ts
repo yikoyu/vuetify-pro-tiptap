@@ -76,6 +76,6 @@ export default Image.extend<ImageOptions, ImageStorage>({
     }
   },
   addNodeView() {
-    return VueNodeViewRenderer(ImageView)
+    return VueNodeViewRenderer(ImageView as any)
   }
 })
