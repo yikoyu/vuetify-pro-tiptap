@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.1...v1.4.2) (2022-07-20)
+
+
+### Bug Fixes
+
+* **setup:** 放弃使用setup写法，使用setup写法编译错误，vue2.6.x无法使用 ([b83ee68](https://github.com/yikoyu/vuetify-pro-tiptap/commit/b83ee68f6cce15060933a9308a16e86e4f0813f3))
+
 ## [1.4.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.0...v1.4.1) (2022-07-20)
 
 
