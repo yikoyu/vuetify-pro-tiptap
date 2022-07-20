@@ -109,6 +109,7 @@
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/runtime-dom": "^3.2.37",
     "commitizen": "^4.2.5",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-define-config": "^1.5.1",
