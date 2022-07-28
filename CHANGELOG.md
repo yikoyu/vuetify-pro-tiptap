@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.2...v1.4.3) (2022-07-28)
+
+
+### Bug Fixes
+
+* **types:** 编译后vue-types类型错误 ([ec5acca](https://github.com/yikoyu/vuetify-pro-tiptap/commit/ec5acca443823c154f9a8cb5ccf0251972c9cc18))
+
 ## [1.4.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.1...v1.4.2) (2022-07-20)
 
 
