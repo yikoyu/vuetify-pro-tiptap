@@ -56,7 +56,7 @@ importers:
       sass: 1.32.13
       semantic-release: ^19.0.3
       typescript: ^4.7.4
-      unplugin-vue-components: ^0.21.1
+      unplugin-vue-components: ^0.21.2
       vite: ^3.0.2
       vite-plugin-dts: ^1.4.0
       vite-plugin-eslint: ^1.7.0
@@ -122,7 +122,7 @@ importers:
       sass: 1.32.13
       semantic-release: 19.0.3
       typescript: 4.7.4
-      unplugin-vue-components: 0.21.1_vite@3.0.2+vue@2.7.7
+      unplugin-vue-components: 0.21.2_vite@3.0.2+vue@2.7.7
       vite: 3.0.2_sass@1.32.13
       vite-plugin-dts: 1.4.0_vite@3.0.2
       vite-plugin-eslint: 1.7.0_eslint@8.20.0+vite@3.0.2
@@ -3461,8 +3461,8 @@ packages:
       strip-bom: 3.0.0
     dev: true
 
-  /local-pkg/0.4.1:
-    resolution: {integrity: sha512-lL87ytIGP2FU5PWwNDo0w3WhIo2gopIAxPg9RxDYF7m4rr5ahuZxP22xnJHIvaLTe4Z9P6uKKY2UHiwyB4pcrw==}
+  /local-pkg/0.4.2:
+    resolution: {integrity: sha512-mlERgSPrbxU3BP4qBqAvvwlgW4MTg78iwJdGGnv7kibKjWcJksrG3t6LB5lXI93wXRDvG4NpUgJFmTG4T6rdrg==}
     engines: {node: '>=14'}
     dev: true
 
@@ -5016,8 +5016,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-vue-components/0.21.1_vite@3.0.2+vue@2.7.7:
-    resolution: {integrity: sha512-8MhIT323q1EUu7rz6NfQeiHqDrZKtygy6s9jzcQAuuZUM2T38SHlPT5YJjBOZmM0Bau6YuNTKfBBX4iHzeusaQ==}
+  /unplugin-vue-components/0.21.2_vite@3.0.2+vue@2.7.7:
+    resolution: {integrity: sha512-HBU+EuesDj/HRs7EtYH7gBACljVhqLylltrCLModRmCToIIrrNvMh54aylUt4AD4qiwylgOx4Vgb9sBlrIcRDw==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -5031,11 +5031,11 @@ packages:
       chokidar: 3.5.3
       debug: 4.3.4
       fast-glob: 3.2.11
-      local-pkg: 0.4.1
+      local-pkg: 0.4.2
       magic-string: 0.26.2
       minimatch: 5.1.0
       resolve: 1.22.1
-      unplugin: 0.7.1_vite@3.0.2
+      unplugin: 0.7.2_vite@3.0.2
       vue: 2.7.7
     transitivePeerDependencies:
       - esbuild
@@ -5045,8 +5045,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin/0.7.1_vite@3.0.2:
-    resolution: {integrity: sha512-Z6hNDXDNh9aimMkPU1mEjtk+2ova8gh0y7rJeJdGH1vWZOHwF2lLQiQ/R97rv9ymmzEQXsR2fyMet72T8jy6ew==}
+  /unplugin/0.7.2_vite@3.0.2:
+    resolution: {integrity: sha512-m7thX4jP8l5sETpLdUASoDOGOcHaOVtgNyrYlToyQUvILUtEzEnngRBrHnAX3IKqooJVmXpoa/CwQ/QqzvGaHQ==}
     peerDependencies:
       esbuild: '>=0.13'
       rollup: ^2.50.0
