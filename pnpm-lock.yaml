@@ -61,13 +61,13 @@ importers:
       vite-plugin-dts: ^1.4.1
       vite-plugin-eslint: ^1.7.0
       vue: ^2.7.7
-      vue-demi: ^0.13.5
+      vue-demi: ^0.13.6
       vue-tsc: 0.39.0
       vue-types: ^4.2.0
       vuetify: ^2.6.7
       xss: ^1.0.13
     dependencies:
-      vue-demi: 0.13.5_vue@2.7.7
+      vue-demi: 0.13.6_vue@2.7.7
       vue-types: 4.2.0_vue@2.7.7
     devDependencies:
       '@commitlint/cli': 17.0.3
@@ -5162,8 +5162,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vue-demi/0.13.5_vue@2.7.7:
-    resolution: {integrity: sha512-tO3K2bML3AwiHmVHeKCq6HLef2st4zBXIV5aEkoJl6HZ+gJWxWv2O8wLH8qrA3SX3lDoTDHNghLX1xZg83MXvw==}
+  /vue-demi/0.13.6_vue@2.7.7:
+    resolution: {integrity: sha512-02NYpxgyGE2kKGegRPYlNQSL1UWfA/+JqvzhGCOYjhfbLWXU5QQX0+9pAm/R2sCOPKr5NBxVIab7fvFU0B1RxQ==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
