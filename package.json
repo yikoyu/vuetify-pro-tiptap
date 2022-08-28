@@ -134,6 +134,6 @@
   },
   "dependencies": {
     "vue-demi": "^0.13.11",
-    "vue-types": "^4.2.0"
+    "vue-types": "^4.2.1"
   }
 }
