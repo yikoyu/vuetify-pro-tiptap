@@ -63,12 +63,12 @@ importers:
       vue: ^2.7.7
       vue-demi: ^0.13.11
       vue-tsc: 0.39.0
-      vue-types: ^4.2.0
+      vue-types: ^4.2.1
       vuetify: ^2.6.7
       xss: ^1.0.13
     dependencies:
       vue-demi: 0.13.11_vue@2.7.7
-      vue-types: 4.2.0_vue@2.7.7
+      vue-types: 4.2.1_vue@2.7.7
     devDependencies:
       '@commitlint/cli': 17.0.3
       '@commitlint/config-conventional': 17.0.3
@@ -5206,8 +5206,8 @@ packages:
       typescript: 4.7.4
     dev: true
 
-  /vue-types/4.2.0_vue@2.7.7:
-    resolution: {integrity: sha512-iMllg63ZQ61DP7C2ZR1Ez7D6hqcP5/pcNP9SgXg6Nmrt82r2Mx06+xEw7GRrrysR6Sfoh3w+TLLflMTk6I/D0A==}
+  /vue-types/4.2.1_vue@2.7.7:
+    resolution: {integrity: sha512-DNQZmJuOvovLUIp0BENRkdnZHbI0V4e2mNvjAZOAXKD56YGvRchtUYOXA/XqTxdv7Ng5SJLZqRKRpAhm5NLaPQ==}
     engines: {node: '>=12.16.0'}
     peerDependencies:
       vue: ^2.0.0 || ^3.0.0
