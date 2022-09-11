@@ -65,7 +65,7 @@ importers:
       vue-tsc: 0.39.0
       vue-types: ^4.2.1
       vuetify: ^2.6.9
-      xss: ^1.0.13
+      xss: ^1.0.14
     dependencies:
       vue-demi: 0.13.11_vue@2.7.7
       vue-types: 4.2.1_vue@2.7.7
@@ -129,7 +129,7 @@ importers:
       vue: 2.7.7
       vue-tsc: 0.39.0_typescript@4.7.4
       vuetify: 2.6.9_vue@2.7.7
-      xss: 1.0.13
+      xss: 1.0.14
 
   examples:
     specifiers:
@@ -5321,8 +5321,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /xss/1.0.13:
-    resolution: {integrity: sha512-clu7dxTm1e8Mo5fz3n/oW3UCXBfV89xZ72jM8yzo1vR/pIS0w3sgB3XV2H8Vm6zfGnHL0FzvLJPJEBhd86/z4Q==}
+  /xss/1.0.14:
+    resolution: {integrity: sha512-og7TEJhXvn1a7kzZGQ7ETjdQVS2UfZyTlsEdDOqvQF7GoxNfY+0YLCzBy1kPdsDDx4QuNAonQPddpsn6Xl/7sw==}
     engines: {node: '>= 0.10.0'}
     hasBin: true
     dependencies:
