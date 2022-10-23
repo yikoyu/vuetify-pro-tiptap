@@ -129,7 +129,7 @@
     "vite-plugin-eslint": "^1.7.0",
     "vue": "^2.7.7",
     "vue-tsc": "0.39.0",
-    "vuetify": "^2.6.11",
+    "vuetify": "^2.6.12",
     "xss": "^1.0.14"
   },
   "dependencies": {
