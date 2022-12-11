@@ -41,7 +41,7 @@ importers:
       '@vue/eslint-config-prettier': ^7.0.0
       '@vue/eslint-config-typescript': ^11.0.2
       '@vue/runtime-dom': ^3.2.45
-      commitizen: ^4.2.5
+      commitizen: ^4.2.6
       conventional-changelog-conventionalcommits: ^5.0.0
       eslint: ^8.24.0
       eslint-config-prettier: ^8.5.0
@@ -72,7 +72,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
-      '@commitlint/cz-commitlint': 17.3.0_commitizen@4.2.5
+      '@commitlint/cz-commitlint': 17.3.0_commitizen@4.2.6
       '@mdi/js': 7.0.96
       '@rushstack/eslint-patch': 1.2.0
       '@semantic-release/changelog': 6.0.2_semantic-release@19.0.5
@@ -107,7 +107,7 @@ importers:
       '@vue/eslint-config-prettier': 7.0.0_uoqzb7ub56apwdxrwurswvvfwe
       '@vue/eslint-config-typescript': 11.0.2_xgc4xirg4ejg2tgchx2nhou42q
       '@vue/runtime-dom': 3.2.45
-      commitizen: 4.2.5
+      commitizen: 4.2.6
       conventional-changelog-conventionalcommits: 5.0.0
       eslint: 8.24.0
       eslint-config-prettier: 8.5.0_eslint@8.24.0
@@ -219,7 +219,7 @@ packages:
       ajv: 8.11.0
     dev: true
 
-  /@commitlint/cz-commitlint/17.3.0_commitizen@4.2.5:
+  /@commitlint/cz-commitlint/17.3.0_commitizen@4.2.6:
     resolution: {integrity: sha512-kaHa6vzEriGQZgnBj08TTc92m8KUAd0LbXhzUbfuoJzH5b9TnfsQI7Him7oXWe4PzXBVEMREcAdqIQHzRUilfQ==}
     engines: {node: '>=v14'}
     peerDependencies:
@@ -230,7 +230,7 @@ packages:
       '@commitlint/load': 17.3.0
       '@commitlint/types': 17.0.0
       chalk: 4.1.2
-      commitizen: 4.2.5
+      commitizen: 4.2.6
       lodash.isplainobject: 4.0.6
       word-wrap: 1.2.3
     transitivePeerDependencies:
@@ -1967,8 +1967,8 @@ packages:
     engines: {node: ^12.20.0 || >=14}
     dev: true
 
-  /commitizen/4.2.5:
-    resolution: {integrity: sha512-9sXju8Qrz1B4Tw7kC5KhnvwYQN88qs2zbiB8oyMsnXZyJ24PPGiNM3nHr73d32dnE3i8VJEXddBFIbOgYSEXtQ==}
+  /commitizen/4.2.6:
+    resolution: {integrity: sha512-RyTM+EiD9GO01DJUn9MRRAet3XUHGfoUZoksLfr+1ym1Xt2q5EYJs9Fg2BtKSb5Mo53i0BtMBmWMHQXVlZ/L9w==}
     engines: {node: '>= 12'}
     hasBin: true
     dependencies:
@@ -2130,7 +2130,7 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.2.5
+      commitizen: 4.2.6
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
@@ -3204,7 +3204,7 @@ packages:
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
-      rxjs: 7.5.5
+      rxjs: 7.5.7
       string-width: 4.2.3
       strip-ansi: 6.0.1
       through: 2.3.8
@@ -4508,12 +4508,6 @@ packages:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
       queue-microtask: 1.2.3
-    dev: true
-
-  /rxjs/7.5.5:
-    resolution: {integrity: sha512-sy+H0pQofO95VDmFLzyaw9xNJU4KTRSwQIGM6+iG3SypAtCiLDzpeG8sJrNCWn2Up9km+KhkvTdbkrdy+yzZdw==}
-    dependencies:
-      tslib: 2.4.0
     dev: true
 
   /rxjs/7.5.7:
