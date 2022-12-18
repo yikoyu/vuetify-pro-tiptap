@@ -74,7 +74,7 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@commitlint/cz-commitlint": "^17.3.0",
-    "@mdi/js": "^7.0.96",
+    "@mdi/js": "^7.1.96",
     "@rushstack/eslint-patch": "^1.2.0",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/commit-analyzer": "^9.0.2",
