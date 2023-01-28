@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
@@ -13,7 +14,8 @@
     "types": ["vite/client", "vuetify"],
     "lib": ["esnext", "dom"],
     "paths": {
-      "@/*":["./src/*"]
+      "@/*":["./src/*"],
+      "*": ["./node_modules/*"]
     }
   },
   "vueCompilerOptions": {
