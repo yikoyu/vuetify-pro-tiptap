@@ -1,6 +1,6 @@
 import { object, bool, func } from 'vue-types'
-import type { Node as ProseMirrorNode } from 'prosemirror-model'
-import type { Decoration } from 'prosemirror-view'
+import type { Node as ProseMirrorNode } from '@tiptap/pm/model'
+import type { Decoration } from '@tiptap/pm/view'
 
 export const nodeViewProps = {
   editor: object<import('@tiptap/core').Editor>().isRequired,

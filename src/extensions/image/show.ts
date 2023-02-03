@@ -1,6 +1,6 @@
 import { createApp } from 'vue-demi'
 import type { Editor } from '@tiptap/vue-2'
-import type { NodeSelection } from 'prosemirror-state'
+import type { NodeSelection } from '@tiptap/pm/state'
 
 import { getVuetifyInstance } from '@/utils/vuetify-instance'
 import ImageDialog from './ImageDialog.vue'

@@ -2,7 +2,7 @@ import { unref, computed } from 'vue-demi'
 import type { Editor } from '@tiptap/vue-2'
 import { useLocale } from '@/locales'
 import type { Definitions } from '@/constants/toolbar-definitions'
-import { deleteSelection } from 'prosemirror-commands'
+import { deleteSelection } from '@tiptap/pm/commands'
 
 import { mdiFormatFloatLeft, mdiFormatFloatNone, mdiFormatFloatRight, mdiSizeS, mdiSizeM, mdiSizeL, mdiAspectRatio, mdiDelete } from '@/constants/icons'
 import type { Display } from '@/extensions/image/types'
