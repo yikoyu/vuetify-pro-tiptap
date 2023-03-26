@@ -1,5 +1,5 @@
-import { Ref, unref, computed } from 'vue-demi'
-import type { Editor } from '@tiptap/vue-2'
+import { unref, computed, ShallowRef, Ref } from 'vue'
+import type { Editor } from '@tiptap/vue-3'
 import { useLocale } from '@/locales'
 import * as icons from './icons'
 import { mdiFullscreenExit } from './icons'
@@ -12,7 +12,7 @@ import { show as showVideo } from '@/extensions/video/show'
 export type ToolbarType = keyof IconsOptions | '|' | 'divider' | '>' | 'spacer' | `#${string}`
 
 interface Context {
-  editor: Ref<Editor | null>
+  editor: ShallowRef<Editor | undefined>
   isFullscreen: Ref<boolean>
   toolbar: ToolbarType[]
 }
@@ -22,7 +22,7 @@ export interface Definitions {
   icon?: string
   type: ToolbarType | 'slot'
   slot?: string
-  action?(...arg: any[]): void
+  action?(value?: unknown): void
   isActive?(): boolean
 }
 

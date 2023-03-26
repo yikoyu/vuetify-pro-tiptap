@@ -1,55 +1,6 @@
-<template>
-  <v-menu
-    v-model="menu"
-    offset-y
-    :dark="dark"
-    :nudge-left="nudgeLeft || 255"
-    :nudge-top="nudgeTop || 42"
-    :close-on-content-click="false"
-    transition="scale-transition"
-    :origin="!nudgeLeft ? 'top right' : 'top left'"
-  >
-    <template #activator="{ on }">
-      <slot name="button" v-bind="{ on }">
-        <v-btn :color="value" v-on="on" icon small>
-          <v-icon>{{ mdiCircle }}</v-icon>
-        </v-btn>
-      </slot>
-    </template>
-    <v-list>
-      <v-sheet class="d-flex flex-wrap justify-between ma-1" fluid :max-width="230">
-        <template v-for="color in colors">
-          <v-btn icon small :key="color" @click="setColor(color)">
-            <v-icon :color="color">{{ mdiCircle }}</v-icon>
-          </v-btn>
-        </template>
-      </v-sheet>
-
-      <!-- <template>
-        <v-btn v-if="!picker" block text @click="picker = true"> show more </v-btn>
-        <v-btn v-else block text @click="picker = false"> show less </v-btn>
-
-        <v-expand-transition>
-          <div v-if="picker" class="text-center">
-            <v-divider />
-            <v-color-picker
-              :value="value"
-              hide-mode-switch
-              mode="hexa"
-              :width="254"
-              @update:color="onInput"
-            />
-          </div>
-        </v-expand-transition>
-      </template> -->
-    </v-list>
-  </v-menu>
-</template>
-
-<script lang="ts">
-import { defineComponent, ref } from 'vue-demi'
-import { string, bool, oneOfType } from 'vue-types'
+<script setup lang="ts">
 import { mdiCircle } from '@/constants/icons'
+import { ref } from 'vue'
 
 const colors = [
   '#f44336',
@@ -78,29 +29,80 @@ const colors = [
   '#EEEEEE'
 ]
 
-export default defineComponent({
-  props: {
-    value: string().def(''),
-    nudgeLeft: oneOfType([String, Number]).def(0),
-    nudgeTop: oneOfType([String, Number]).def(0),
-    more: bool().def(true),
-    dark: bool().def(false)
-  },
-  setup(props, { emit }) {
-    const menu = ref(false)
-    // const picker = ref(false);
+interface Props {
+  modelValue?: string
+  nudgeLeft?: string | number
+  nudgeTop?: string | number
+  more?: boolean
+  dark?: boolean
+}
 
-    function setColor(color: string) {
-      emit('input', color)
-      menu.value = false
-    }
+interface Emits {
+  (event: 'update:modelValue', color: string): void
+  (event: 'change', color: string): void
+}
 
-    return {
-      mdiCircle,
-      colors,
-      menu,
-      setColor
-    }
-  }
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: '',
+  nudgeLeft: 0,
+  nudgeTop: 0,
+  more: true,
+  dark: false
 })
+
+const emit = defineEmits<Emits>()
+
+const menu = ref(false)
+// const picker = ref(false);
+
+function setColor(color: string) {
+  emit('update:modelValue', color)
+  emit('change', color)
+  menu.value = false
+}
 </script>
+
+<template>
+  <VMenu
+    v-model="menu"
+    :dark="dark"
+    :nudge-left="nudgeLeft || 255"
+    :nudge-top="nudgeTop || 42"
+    :close-on-content-click="false"
+    transition="scale-transition"
+    :origin="!nudgeLeft ? 'top right' : 'top left'"
+  >
+    <template #activator="{ props: _props }">
+      <slot name="button" v-bind="{ props: _props }">
+        <VBtn v-bind="_props" :color="modelValue" flat icon size="small" density="compact">
+          <VIcon>{{ mdiCircle }}</VIcon>
+        </VBtn>
+      </slot>
+    </template>
+    <VList>
+      <VSheet class="d-flex flex-wrap justify-between ma-1" fluid :max-width="230">
+        <VBtn v-for="color in colors" :key="color" flat icon density="compact" @click="setColor(color)">
+          <VIcon :color="color">{{ mdiCircle }}</VIcon>
+        </VBtn>
+      </VSheet>
+
+      <!-- <template>
+        <v-btn v-if="!picker" block text @click="picker = true"> show more </v-btn>
+        <v-btn v-else block text @click="picker = false"> show less </v-btn>
+
+        <v-expand-transition>
+          <div v-if="picker" class="text-center">
+            <v-divider />
+            <v-color-picker
+              :model-value="modelValue"
+              hide-mode-switch
+              mode="hexa"
+              :width="254"
+              @update:color="onInput"
+            />
+          </div>
+        </v-expand-transition>
+      </template> -->
+    </VList>
+  </VMenu>
+</template>

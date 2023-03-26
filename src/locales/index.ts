@@ -1,4 +1,4 @@
-import { unref, computed, onUnmounted, ref } from 'vue-demi'
+import { unref, computed, onUnmounted, ref } from 'vue'
 import Logger from '@/utils/logger'
 import mitt, { EventType } from '@/utils/mitt'
 

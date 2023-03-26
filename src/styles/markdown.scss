@@ -2,8 +2,8 @@
  * @See https://github.com/linxsbox/juejin-markdown-theme-cyanosis/blob/main/cyanosis.scss
  * @Author: linxsbox 
  * @Date: 2022-06-29 18:23:42 
- * @Last Modified by: yikoyu
- * @Last Modified time: 2022-06-29 18:24:38
+ * @Last Modified by: yky
+ * @Last Modified time: 2023-03-26 17:46:37
  */
 
 $monospace-font: Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -223,31 +223,10 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
       90deg,
       var(--cyanosis-link-color),
       rgba(255, 0, 0, 0.3),
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 0, 0, 0.3),
       var(--cyanosis-link-color)
     );
     border-width: 0;
     overflow: visible;
-
-    &::after {
-      content: '';
-      position: absolute;
-      margin: auto;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      display: inline-block;
-      width: 60px;
-      height: 20px;
-      background-color: var(--cyanosis-bg-color);
-      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAgCAYAAABgrToAAAADoklEQVRYR82XTYgcRRTHf2933Q1RjAa9eFO8JHoJ8RQVBQ2iBwXBET0YEUTXNVmNQtTpmeqaWV0XNRq/o4KoECSCEPSg4CF+BYUkIIiCoCJCPIhC/Ihh2Z0nVV27VnZnenumW9i6ddV7//frV69fVQurfMgq56NawFTPAU6QyomqXrw6wIZeyhCPebA5buNR+akKyGoAjd6BshthnYdSjqNcRVuOlIUsD2j0SuA94IwuMHdh5ZUykOUBXfSGbmKI54EtAeYIHSZoy5dl4JxvNYBOKdW1KE8BQ8AkVk6WhasWsAiN0TX9gveXQaPP+Aytpc4u+bMI06JNohsYYYYOR2lJWtS3OKDRfcAtQfgDoI6Vo4UCGb0OmAEuDvZvYmVbEd/igC3dzDz7gQu8sPA9kJDK27mBmjqBeLjTg90PDFOjWawFFQd06kZHEfaj3LAIpTRpSXsZ5E06zEYP9sDimnAApYaV2SLZG/wjMeqAkijwW4xQJ5Gf/ZzRC8OW3hiBTGGlURRswW55Bh/Ssxljrwew8l1PQaM14GngvGDzBUKdDsMeTtgU5o8B92PFlUf3YXUrHa7Fys6lBqcCGnX15YQ2A18FyPd7Crd1A3M8C1wdbH4DD3hWeP6IEXbQkG97ajR1HPFnuPP5jFFq1OWX7hl8WM9l1AO648uNfwLk7tytMeogty+xeQ4rO3r6bdcx1nuwOGsHmaXGtPzae4uzGnLH1kQkvpdZGrHjssBZJrL+pqS05KWc8tgITAPXRzYvYOXe/C2OV43eDcRBDtIhoS2f9wzc0Cv8Wls+zoFzUC5zF0U241h5uZtPfptp6OUM8wbK+cH5GEpCS17P3fJei0Z3+npTxryJ8CPzbKMtn/ZyWbkPGl0PuFPkmkjkcb4h4R2ZLwRq1H0ALmvjkf2HwK1Y+T1PY2XABe/sHJ6MxN5lnoSpnC/UGbsTaI5phK2R7x6s3Ffk5YoDOrWm3onwJHBmEP86bPmBrsGaenNoIdnxCH+gPEhLXi0Cl1VBvyPVLSh7gEuC62yAfOIUqabWEaaiucMIk6RyqJ+Q/QM69V26jjW86Gvov/EaoyT8zRCn+Xq7PVrbx0nuYUaO9wM3WAbjCE1NEUw09Um4UV+2OKfYfu5/S19gsAzGKqm6LE5FrShbdS0ku465DjDwKA/oQht19ejqbaEVuRbiLhuHByYLjtUAZpDutzP7cYdHsPJXWbjyNVgFwQoa1WXwf4Jd9YD/Ap80+yE7+u9aAAAAAElFTkSuQmCC);
-      background-repeat: no-repeat;
-      background-size: auto 100%;
-      background-position-x: center;
-      transition: background-color 0.5s;
-    }
   }
 
   code {

@@ -1,35 +1,35 @@
-<template>
-  <v-form>
-    <v-text-field v-model="form.src" :label="t('editor.image.dialog.form.link')" autofocus :prepend-icon="mdiLinkVariant" />
-
-    <v-text-field v-model="form.alt" :label="t('editor.image.dialog.form.alt')" :prepend-icon="mdiText" />
-
-    <v-checkbox v-model="form.lockAspectRatio" :label="t('editor.image.dialog.form.aspectRatio')"></v-checkbox>
-  </v-form>
-</template>
-
-<script lang="ts">
-import { defineComponent, computed } from 'vue-demi'
-import { object, func } from 'vue-types'
+<script setup lang="ts">
 import { mdiLinkVariant, mdiText } from '@/constants/icons'
+import { computed } from 'vue'
 import type { ImageForm } from './types'
 
-export default defineComponent({
-  props: {
-    value: object<ImageForm>().def({}),
-    t: func<(path: string) => string>().isRequired
-  },
-  setup(props, { emit }) {
-    const form = computed({
-      get: () => props.value,
-      set: val => emit('input', val)
-    })
+interface Props {
+  modelValue?: ImageForm
+  t: (path: string) => string
+}
 
-    return {
-      mdiLinkVariant,
-      mdiText,
-      form
-    }
-  }
+interface Emits {
+  (event: 'update:modelValue', value: ImageForm): void
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: () => ({})
+})
+
+const emit = defineEmits<Emits>()
+
+const form = computed({
+  get: () => props.modelValue,
+  set: val => emit('update:modelValue', val)
 })
 </script>
+
+<template>
+  <VForm>
+    <VTextField v-model="form.src" :label="t('editor.image.dialog.form.link')" autofocus :prepend-icon="mdiLinkVariant" />
+
+    <VTextField v-model="form.alt" :label="t('editor.image.dialog.form.alt')" :prepend-icon="mdiText" />
+
+    <VCheckbox v-model="form.lockAspectRatio" :label="t('editor.image.dialog.form.aspectRatio')"></VCheckbox>
+  </VForm>
+</template>

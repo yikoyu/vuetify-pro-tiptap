@@ -1,4 +1,5 @@
 const locale: Record<string, string> = {
+  'editor.remove': '删除',
   'editor.words': '单词',
   'editor.characters': '字符',
   'editor.bold.tooltip': '粗体',
@@ -34,7 +35,6 @@ const locale: Record<string, string> = {
   'editor.image.size.small.tooltip': '小尺寸',
   'editor.image.size.medium.tooltip': '中等尺寸',
   'editor.image.size.large.tooltip': '铺满',
-  'editor.image.remove.tooltip': '删除',
   'editor.image.dialog.title': '插入图片',
   'editor.image.dialog.tab.url': '网络图片',
   'editor.image.dialog.tab.upload': '本地图片',
@@ -47,7 +47,6 @@ const locale: Record<string, string> = {
   'editor.video.dialog.title': '插入视频',
   'editor.video.dialog.link': '网络链接',
   'editor.video.dialog.button.apply': '应用',
-  'editor.video.remove.tooltip': '删除',
   'editor.table.tooltip': '表格',
   'editor.table.menu.insert_table': '插入表格',
   'editor.table.menu.insert_table.with_header_row': '带标题行',

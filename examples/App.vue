@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { mdiDeleteCircleOutline, mdiFileCodeOutline } from '@mdi/js'
-import { type ToolbarType, locale } from 'vuetify-pro-tiptap'
+import { ref } from 'vue'
+import { useTheme } from 'vuetify'
+import { locale, type ToolbarType } from 'vuetify-pro-tiptap'
 import html from './html'
+
+const theme = useTheme()
 
 const content = ref(html)
 const dialog = ref(false)
@@ -59,18 +62,18 @@ const toolbar = ref<ToolbarType[]>([
   '#preview',
   '#html'
 ])
+
+function toggleTheme() {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
 </script>
 
 <template>
   <v-app id="app">
     <!-- <v-main> -->
     <v-container>
-      <v-btn color="primary" @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-        {{ $vuetify.theme.dark ? 'dark' : 'light' }}
-      </v-btn>
-
-      <v-btn class="ms-2" color="primary" @click="$vuetify.rtl = !$vuetify.rtl">
-        {{ $vuetify.rtl ? 'RTL' : 'LTR' }}
+      <v-btn color="primary" @click="toggleTheme">
+        {{ $vuetify.theme.current.dark ? 'dark' : 'light' }}
       </v-btn>
 
       <v-btn class="ms-2" color="primary" @click="locale.setLang('zhHans')">set Chinese</v-btn>
@@ -87,17 +90,17 @@ const toolbar = ref<ToolbarType[]>([
         placeholder="Enter some text..."
         :error-messages="errorMessages"
         rounded
-        :maxHeight="465"
-        :maxWidth="maxWidth"
+        :max-height="465"
+        :max-width="maxWidth"
       >
-        <template v-if="editHtml" #editor="{ attrs }">
-          <v-textarea v-bind="attrs" height="auto" hide-details v-model="content" flat solo />
+        <template v-if="editHtml" #editor="{ props }">
+          <v-textarea v-bind="props" v-model="content" height="auto" hide-details flat solo />
         </template>
 
-        <template #preview="{ attrs }">
+        <template #preview="{ props }">
           <v-dialog v-model="dialog" fullscreen hide-overlay>
-            <template #activator="{ on, attrs: dialog }">
-              <v-btn v-bind="{ ...attrs, ...dialog }" v-on="on">
+            <template #activator="{ props: dialogProps }">
+              <v-btn v-bind="{ ...props, ...dialogProps }">
                 <v-icon>{{ mdiFileCodeOutline }}</v-icon>
               </v-btn>
             </template>
@@ -110,7 +113,7 @@ const toolbar = ref<ToolbarType[]>([
               </v-toolbar>
 
               <v-container>
-                <v-sheet class="mx-auto" :maxWidth="maxWidth">
+                <v-sheet class="mx-auto" :max-width="maxWidth">
                   <vuetify-viewer :value="content" />
                 </v-sheet>
               </v-container>
@@ -120,29 +123,18 @@ const toolbar = ref<ToolbarType[]>([
 
         <template #html>
           <v-btn
-            @click="
-              editHtml = !editHtml
-              disableToolbar = !disableToolbar
-            "
             class="elevation-0"
-            small
+            size="small"
             :color="editHtml ? 'primary' : undefined"
             text
+            @click="editHtml = !editHtml && (disableToolbar = !disableToolbar)"
           >
             HTML
           </v-btn>
         </template>
 
-        <template #clean-btn="{ editor, attrs }">
-          <v-btn
-            v-bind="attrs"
-            icon
-            small
-            @click="
-              editor && editor.commands.setContent('')
-              content = ''
-            "
-          >
+        <template #clean-btn="{ editor, props }">
+          <v-btn v-bind="props" icon size="small" @click="editor && editor.commands.setContent('') && (content = '')">
             <v-icon>{{ mdiDeleteCircleOutline }}</v-icon>
           </v-btn>
         </template>

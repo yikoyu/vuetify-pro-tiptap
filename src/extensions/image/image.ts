@@ -1,8 +1,8 @@
-import Image from '@tiptap/extension-image'
 import type { ImageOptions as ImageNativeOptions } from '@tiptap/extension-image'
+import Image from '@tiptap/extension-image'
+import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import ImageView from './Image.vue'
-import { VueNodeViewRenderer } from '@tiptap/vue-2'
-import type { ImageTab, ImageTabKey, ImageAttrsOptions } from './types'
+import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './types'
 
 type Upload = (file: File) => Promise<string>
 export interface ImageOptions extends ImageNativeOptions {
@@ -76,6 +76,6 @@ export default Image.extend<ImageOptions, ImageStorage>({
     }
   },
   addNodeView() {
-    return VueNodeViewRenderer(ImageView as any)
+    return VueNodeViewRenderer(ImageView)
   }
 })

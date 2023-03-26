@@ -1,4 +1,4 @@
-name: Publish
+name: Release
 
 on:
   workflow_dispatch:
@@ -38,8 +38,10 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    - name: Build Lib & Push
+    - name: Build Lib
+      run: pnpm build:lib
+
+    - name: Release
       env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-      run: pnpm push
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      run: pnpm semantic-release

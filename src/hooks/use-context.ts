@@ -1,4 +1,4 @@
-import { getCurrentInstance } from 'vue-demi'
+import { getCurrentInstance } from 'vue'
 
 export default function useContext() {
   const vm = getCurrentInstance()

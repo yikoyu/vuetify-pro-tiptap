@@ -8,16 +8,15 @@ module.exports = defineConfig({
     node: true,
     es6: true
   },
+  parser: 'vue-eslint-parser',
   extends: [
     'eslint:recommended',
+    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    '@vue/eslint-config-prettier',
-    '@vue/eslint-config-typescript/recommended',
-    'plugin:vue/essential',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser'
   },
   rules: {
@@ -35,7 +34,7 @@ module.exports = defineConfig({
     'no-sparse-arrays': 'error', // 禁止稀疏数组
     'no-extra-bind': 'error', // 禁止使用 bind
     'no-useless-call': 'error', // 禁止使用 Function.prototype.call()
-    'yoda': 'error', // 禁用 yada 表达式
+    'yoda': 'error', // 禁用 yoda 表达式
     'no-delete-var': 'error', // 禁用 delete 操作符
     // 'no-undef': 'error', // 禁用未声明的变量
     'spaced-comment': 'error', // 强制在注释中石油一致的空格

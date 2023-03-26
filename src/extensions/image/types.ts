@@ -18,5 +18,5 @@ export interface ImageAttrsOptions {
 }
 
 export interface ImageForm extends ImageAttrsOptions {
-  file?: File
+  file?: File[]
 }

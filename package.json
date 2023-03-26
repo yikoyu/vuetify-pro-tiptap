@@ -61,14 +61,8 @@
     "pnpm": ">=7"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.1.0",
-    "vue": "^2.6.0",
-    "vuetify": "^2.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
+    "vue": "^3.2.0",
+    "vuetify": "^3.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
@@ -102,13 +96,12 @@
     "@tiptap/extension-underline": "2.0.0-beta.213",
     "@tiptap/pm": "2.0.0-beta.213",
     "@tiptap/starter-kit": "2.0.0-beta.213",
-    "@tiptap/vue-2": "2.0.0-beta.213",
+    "@tiptap/vue-3": "2.0.0-beta.213",
     "@types/lodash.merge": "^4.6.7",
     "@types/lodash.throttle": "^4.1.7",
-    "@vitejs/plugin-vue2": "^2.2.0",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
-    "@vue/runtime-dom": "^3.2.47",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "@vitejs/plugin-vue": "^4.0.0",
     "commitizen": "^4.3.0",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "eslint": "^8.33.0",
@@ -121,20 +114,20 @@
     "lodash.merge": "^4.6.2",
     "lodash.throttle": "^4.1.1",
     "prettier": "^2.8.4",
-    "sass": "1.32.13",
+    "sass": "1.58.3",
     "semantic-release": "^20.1.0",
     "typescript": "^4.9.5",
     "unplugin-vue-components": "^0.23.0",
     "vite": "^4.0.4",
-    "vite-plugin-dts": "^1.7.1",
+    "vite-plugin-dts": "^2.1.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vue": "^2.7.7",
+    "vue": "^3.2.47",
+    "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "1.0.24",
-    "vuetify": "^2.6.14",
+    "vuetify": "^3.1.5",
     "xss": "^1.0.14"
   },
   "dependencies": {
-    "vue-demi": "^0.13.11",
     "vue-types": "^5.0.2"
   }
 }

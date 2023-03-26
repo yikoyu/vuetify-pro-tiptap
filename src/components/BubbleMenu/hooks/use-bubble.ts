@@ -1,5 +1,5 @@
-import { unref, computed } from 'vue-demi'
-import type { Editor } from '@tiptap/vue-2'
+import { unref, computed } from 'vue'
+import type { Editor } from '@tiptap/vue-3'
 import { useLocale } from '@/locales'
 import type { Definitions } from '@/constants/toolbar-definitions'
 import { deleteSelection } from '@tiptap/pm/commands'
@@ -7,20 +7,11 @@ import { deleteSelection } from '@tiptap/pm/commands'
 import { mdiFormatFloatLeft, mdiFormatFloatNone, mdiFormatFloatRight, mdiSizeS, mdiSizeM, mdiSizeL, mdiAspectRatio, mdiDelete } from '@/constants/icons'
 import type { Display } from '@/extensions/image/types'
 
-export type BubbleImageToolbarType =
-  | 'float-left'
-  | 'float-none'
-  | 'float-right'
-  | 'size-small'
-  | 'size-medium'
-  | 'size-large'
-  | 'image'
-  | 'image-aspect-ratio'
-  | 'image-remove'
-export type BubbleVideoToolbarType = 'video' | 'video-remove'
-export type BubbleExtToolbarType = BubbleImageToolbarType | BubbleVideoToolbarType
+export type BubbleImageToolbarType = 'float-left' | 'float-none' | 'float-right' | 'size-small' | 'size-medium' | 'size-large' | 'image' | 'image-aspect-ratio'
+export type BubbleVideoToolbarType = 'video'
+export type BubbleExtToolbarType = 'remove' | BubbleImageToolbarType | BubbleVideoToolbarType
 
-interface BubbleExtDefinitions extends Omit<Definitions, 'type'> {
+export interface BubbleExtDefinitions extends Omit<Definitions, 'type'> {
   type: BubbleExtToolbarType
 }
 
@@ -101,18 +92,9 @@ export function useBubbleImage(editor: Editor) {
         isActive: () => editor.isActive('image', { lockAspectRatio: true })
       },
       {
-        title: unref(t)('editor.image.remove.tooltip'),
+        title: unref(t)('editor.remove'),
         icon: mdiDelete,
-        type: 'image-remove',
-        action: () => {
-          const { state, dispatch } = editor.view
-          deleteSelection(state, dispatch)
-        }
-      },
-      {
-        title: unref(t)('editor.video.remove.tooltip'),
-        icon: mdiDelete,
-        type: 'video-remove',
+        type: 'remove',
         action: () => {
           const { state, dispatch } = editor.view
           deleteSelection(state, dispatch)

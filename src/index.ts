@@ -1,6 +1,5 @@
-import type { Plugin } from 'vue-demi'
-import type { default as Vuetify } from 'vuetify/lib'
-import { setVuetifyInstance } from './utils/vuetify-instance'
+import type { Plugin, App } from 'vue'
+import { setVuetifyInstance, Vuetify } from './utils/vuetify-instance'
 import Logger from './utils/logger'
 
 import VuetifyTiptap from './components/VuetifyTiptap.vue'
@@ -16,8 +15,8 @@ interface InstallationOptions {
   config?: Partial<StarterKitOptions>
 }
 
-declare module 'vue/types/vue' {
-  interface Vue {
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
     $vuetifyProTiptap: {
       defaultLang?: string
       config?: Partial<StarterKitOptions>
@@ -25,14 +24,8 @@ declare module 'vue/types/vue' {
   }
 }
 
-/* istanbul ignore if */
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component('VuetifyTiptap', VuetifyTiptap)
-  window.Vue.component('VuetifyViewer', VuetifyViewer)
-}
-
 const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
-  const install: Plugin = (_Vue): void => {
+  const install: Plugin = (app: App): void => {
     const { vuetify, lang, components = {}, config } = opts || {}
 
     if (!vuetify) {
@@ -43,9 +36,9 @@ const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
     setVuetifyInstance(vuetify)
     if (lang) locale.setLang(lang)
 
-    Object.keys(components).forEach(key => _Vue.component(key, components[key]))
+    Object.keys(components).forEach(key => app.component(key, components[key]))
 
-    _Vue.prototype.$vuetifyProTiptap = {
+    app.config.globalProperties.$vuetifyProTiptap = {
       defaultLang: lang,
       config
     }

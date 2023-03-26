@@ -1,134 +1,122 @@
-<template>
-  <v-toolbar v-bind="$attrs" dense flat height="auto" class="py-1 ps-1">
-    <template v-for="(item, key) in items">
-      <!-- Spacer -->
-      <v-spacer v-if="item.type === 'spacer'" :key="`spacer-${key}-${item.type}`" />
-      <!-- Divider -->
-      <v-divider v-else-if="item.type === 'divider'" vertical class="mx-1 me-2" :key="`divider-${key}-${item.type}`" />
-      <!-- Slot -->
-      <div v-else-if="item.type === 'slot'" :key="`slot-${key}-${item.type}`">
-        <slot :name="item.slot" v-bind="{ attrs: { class: 'rounded me-1', disabled, icon: true, small: true } }" />
-      </div>
-      <!-- Buttons -->
-      <div v-else :key="`button-${key}-${item.type}`">
-        <v-tooltip :open-delay="500" top :z-index="201" bottom attach>
-          <span>{{ item.title }}</span>
-          <template #activator="{ on, attrs }">
-            <!-- Color Button -->
-            <div v-if="item.type === 'color'" class="me-1">
-              <ColorPicker v-model="color" v-bind="attrs" :dark="dark" :nudge-top="-4" :nudge-left="8" @input="item.action && item.action(color)">
-                <template #button="{ on: btn }">
-                  <v-btn v-on="{ ...btn, ...on }" class="rounded" :disabled="disabled" icon small :data-testid="item.type">
-                    <v-icon :color="color">
-                      {{ item.icon }}
-                    </v-icon>
-                  </v-btn>
-                </template>
-              </ColorPicker>
-            </div>
-
-            <!-- Highlight Button -->
-            <div v-else-if="item.type === 'highlight'" class="me-1">
-              <ColorPicker v-model="highlight" v-bind="attrs" :dark="dark" :nudge-top="-4" :nudge-left="8" @input="item.action && item.action(highlight)">
-                <template #button="{ on: btn }">
-                  <v-btn v-on="{ ...btn, ...on }" class="rounded" :disabled="disabled" icon small :data-testid="item.type">
-                    <v-icon :color="highlight">
-                      {{ item.icon }}
-                    </v-icon>
-                  </v-btn>
-                </template>
-              </ColorPicker>
-            </div>
-
-            <!-- Table Button -->
-            <div v-else-if="item.type === 'table'">
-              <TableMenu v-bind="attrs" :editor="editor" :dark="dark">
-                <template #button="{ on: btn }">
-                  <v-btn
-                    :disabled="disabled"
-                    class="rounded me-1"
-                    :class="{
-                      'v-btn--active': item.isActive && item.isActive()
-                    }"
-                    :color="item.isActive && item.isActive() ? 'primary' : undefined"
-                    v-bind="attrs"
-                    icon
-                    small
-                    :data-testid="item.type"
-                    v-on="{ ...btn, ...on }"
-                  >
-                    <v-icon>
-                      {{ item.icon }}
-                    </v-icon>
-                  </v-btn>
-                </template>
-              </TableMenu>
-            </div>
-
-            <!-- Standard Button -->
-            <v-btn
-              v-else
-              :disabled="disabled"
-              class="rounded me-1"
-              :class="{
-                'v-btn--active': item.isActive && item.isActive()
-              }"
-              :color="item.isActive && item.isActive() ? 'primary' : undefined"
-              v-bind="attrs"
-              v-on="on"
-              @click="item.action"
-              icon
-              small
-              :data-testid="item.type"
-            >
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-btn>
-          </template>
-        </v-tooltip>
-      </div>
-    </template>
-  </v-toolbar>
-</template>
-
-<script lang="ts">
-import { defineComponent, ref } from 'vue-demi'
-import { object, bool, array } from 'vue-types'
-import type { Editor } from '@tiptap/vue-2'
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { Editor } from '@tiptap/vue-3'
 import type { Definitions } from '@/constants/toolbar-definitions'
 import ColorPicker from './ColorPicker.vue'
 import TableMenu from './TableMenu/index.vue'
 
-export default defineComponent({
-  components: {
-    ColorPicker,
-    TableMenu
-  },
-  props: {
-    editor: object<Editor>().isRequired,
-    dark: bool().def(false),
-    disabled: bool().def(false),
-    items: array<Definitions>().def(() => [])
-  },
-  setup() {
-    // Color
-    const color = ref<string | null>(null)
+interface Props {
+  editor: Editor
+  dark?: boolean
+  disabled?: boolean
+  items?: Definitions[]
+}
 
-    // Highlight
-    const highlight = ref<string | null>(null)
+const props = withDefaults(defineProps<Props>(), {
+  dark: false,
+  disabled: false,
+  items: () => []
+})
 
-    function onUpdate(editor: Editor) {
-      const { color: colorValue } = editor.getAttributes('textStyle')
-      const { color: highlightValue } = editor.getAttributes('highlight')
+// Color
+const color = ref<string | undefined>(undefined)
 
-      color.value = colorValue
-      highlight.value = highlightValue
-    }
+// Highlight
+const highlight = ref<string | undefined>(undefined)
 
-    return {
-      color,
-      highlight,
-      onUpdate
-    }
-  }
+function onUpdate(editor: Editor) {
+  const { color: colorValue } = editor.getAttributes('textStyle')
+  const { color: highlightValue } = editor.getAttributes('highlight')
+
+  color.value = colorValue
+  highlight.value = highlightValue
+}
+
+defineExpose({
+  onUpdate
 })
 </script>
+
+<template>
+  <VToolbar v-bind="$attrs" density="compact" flat height="auto" class="py-1 ps-1">
+    <template v-for="(item, key) in items">
+      <!-- Spacer -->
+      <VSpacer v-if="item.type === 'spacer'" :key="`spacer-${key}-${item.type}`" />
+      <!-- Divider -->
+      <VDivider v-else-if="item.type === 'divider'" :key="`divider-${key}-${item.type}`" vertical class="mx-1 me-2" />
+      <!-- Slot -->
+      <div v-else-if="item.type === 'slot'" :key="`slot-${key}-${item.type}`">
+        <slot :name="item.slot" v-bind="{ props: { class: 'me-1', density: 'comfortable', rounded: true, disabled, icon: true, size: 'small' } }" />
+      </div>
+      <!-- Buttons -->
+      <div v-else :key="`button-${key}-${item.type}`">
+        <!-- Color Button -->
+        <div v-if="item.type === 'color'" class="me-1">
+          <ColorPicker v-model="color" :dark="dark" :nudge-top="-4" :nudge-left="8" @change="item.action">
+            <template #button="{ props: _props }">
+              <VBtn v-bind="_props" class="rounded" density="comfortable" :disabled="disabled" :color="color" icon size="small" :data-testid="item.type">
+                <VIcon>{{ item.icon }}</VIcon>
+                <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
+              </VBtn>
+            </template>
+          </ColorPicker>
+        </div>
+
+        <!-- Highlight Button -->
+        <div v-else-if="item.type === 'highlight'" class="me-1">
+          <ColorPicker v-model="highlight" :dark="dark" :nudge-top="-4" :nudge-left="8" @change="item.action">
+            <template #button="{ props: _props }">
+              <VBtn v-bind="_props" class="rounded" density="comfortable" :disabled="disabled" :color="highlight" icon size="small" :data-testid="item.type">
+                <VIcon>{{ item.icon }}</VIcon>
+                <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
+              </VBtn>
+            </template>
+          </ColorPicker>
+        </div>
+
+        <!-- Table Button -->
+        <div v-else-if="item.type === 'table'">
+          <TableMenu :editor="editor" :dark="dark">
+            <template #button="{ props: _props }">
+              <VBtn
+                :disabled="disabled"
+                class="rounded me-1"
+                :class="{
+                  'v-btn--active': item.isActive && item.isActive()
+                }"
+                :color="item.isActive && item.isActive() ? 'primary' : undefined"
+                v-bind="_props"
+                icon
+                size="small"
+                density="comfortable"
+                :data-testid="item.type"
+              >
+                <VIcon>{{ item.icon }}</VIcon>
+                <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
+              </VBtn>
+            </template>
+          </TableMenu>
+        </div>
+
+        <!-- Standard Button -->
+        <VBtn
+          v-else
+          :disabled="disabled"
+          class="rounded me-1"
+          :class="{
+            'v-btn--active': item.isActive && item.isActive()
+          }"
+          :color="item.isActive && item.isActive() ? 'primary' : undefined"
+          icon
+          size="small"
+          density="comfortable"
+          :data-testid="item.type"
+          @click="item.action"
+        >
+          <VIcon>{{ item.icon }}</VIcon>
+          <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
+        </VBtn>
+      </div>
+    </template>
+  </VToolbar>
+</template>

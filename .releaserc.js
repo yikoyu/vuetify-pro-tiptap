@@ -83,9 +83,9 @@ module.exports = {
     ],
     [
       '@semantic-release/npm',
-      // {
-      //   npmPublish: false
-      // }
+      {
+        npmPublish: false
+      }
     ],
     '@semantic-release/github',
     [

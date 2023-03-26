@@ -1,4 +1,5 @@
 const locale: Record<string, string> = {
+  'editor.remove': 'Remove',
   'editor.words': 'WORDS',
   'editor.characters': 'CHARACTERS',
   'editor.bold.tooltip': 'Bold',
@@ -34,7 +35,6 @@ const locale: Record<string, string> = {
   'editor.image.size.small.tooltip': 'Small',
   'editor.image.size.medium.tooltip': 'Medium',
   'editor.image.size.large.tooltip': 'Cover',
-  'editor.image.remove.tooltip': 'Remove',
   'editor.image.dialog.title': 'Insert image',
   'editor.image.dialog.tab.url': 'url',
   'editor.image.dialog.tab.upload': 'upload',
@@ -47,7 +47,6 @@ const locale: Record<string, string> = {
   'editor.video.dialog.title': 'Insert video',
   'editor.video.dialog.link': 'link',
   'editor.video.dialog.button.apply': 'apply',
-  'editor.video.remove.tooltip': 'Remove',
   'editor.table.tooltip': 'Table',
   'editor.table.menu.insert_table': 'Insert Table',
   'editor.table.menu.insert_table.with_header_row': 'With header row',

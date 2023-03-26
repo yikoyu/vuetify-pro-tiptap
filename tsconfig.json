@@ -19,14 +19,14 @@
     }
   },
   "vueCompilerOptions": {
-    "target": 2.7, // delete after migrating to vue3 (or nuxt3)
-    "experimentalTemplateCompilerOptions": {
-      "compatConfig": {
-        "MODE": 2,
-        "COMPILER_V_ON_NATIVE": false,
-        "COMPILER_V_BIND_SYNC": false
-      } // delete after migrating to vue3 (or nuxt3)
-    }
+    "target": 3, // delete after migrating to vue3 (or nuxt3)
+    // "experimentalTemplateCompilerOptions": {
+    //   "compatConfig": {
+    //     "MODE": 2,
+    //     "COMPILER_V_ON_NATIVE": false,
+    //     "COMPILER_V_BIND_SYNC": false
+    //   } // delete after migrating to vue3 (or nuxt3)
+    // }
   },
   "include": [
     "src/**/*.ts",
