@@ -8,20 +8,13 @@ import type { ToolbarType } from './constants/toolbar-definitions'
 import type { StarterKitOptions } from './core/tiptap-kit'
 import locale, { zhHans, en } from './locales'
 
+import { createContext } from './hooks/use-context'
+
 interface InstallationOptions {
   vuetify: Vuetify
   lang?: string
   components?: Record<string, any>
   config?: Partial<StarterKitOptions>
-}
-
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    $vuetifyProTiptap: {
-      defaultLang?: string
-      config?: Partial<StarterKitOptions>
-    }
-  }
 }
 
 const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
@@ -38,10 +31,7 @@ const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
 
     Object.keys(components).forEach(key => app.component(key, components[key]))
 
-    app.config.globalProperties.$vuetifyProTiptap = {
-      defaultLang: lang,
-      config
-    }
+    createContext({ defaultLang: lang, config })
   }
 
   return install

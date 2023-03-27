@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { mdiClose } from '@/constants/icons'
-import useContext from '@/hooks/use-context'
 import { useLocale } from '@/locales'
 import type { Editor } from '@tiptap/vue-3'
 import { computed, ref, unref, watchEffect } from 'vue'
@@ -20,7 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
   destroy: undefined
 })
 
-const root = useContext()
 const { t } = useLocale()
 
 const url = ref<string>(props.value || '')
@@ -49,8 +47,6 @@ function apply() {
 
 function close() {
   dialog.value = false
-
-  if (!root) return
 
   setTimeout(() => props.destroy?.(), 300)
 }

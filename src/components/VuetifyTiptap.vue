@@ -128,7 +128,7 @@ const TiptapKitConfig: Partial<StarterKitOptions> = merge(
     underline: {},
     video: {}
   } as Partial<StarterKitOptions>,
-  proxy?.$vuetifyProTiptap?.config,
+  proxy?.config,
   props.config
 )
 

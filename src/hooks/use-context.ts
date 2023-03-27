@@ -1,7 +1,18 @@
-import { getCurrentInstance } from 'vue'
+import { reactive } from 'vue'
+import type { StarterKitOptions } from '@/core/tiptap-kit'
 
-export default function useContext() {
-  const vm = getCurrentInstance()
+interface Instance {
+  defaultLang?: string
+  config?: Partial<StarterKitOptions>
+}
 
-  return vm?.proxy
+const state: Instance = reactive({})
+
+export function createContext(instance: Instance) {
+  state.defaultLang = instance.defaultLang
+  state.config = instance.config
+}
+
+export default function useContext(): Instance {
+  return state
 }
