@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { mdiDeleteCircleOutline, mdiFileCodeOutline, mdiClose } from '@mdi/js'
-import { ref } from 'vue'
+import { computed, ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
 import { locale, type ToolbarType } from 'vuetify-pro-tiptap'
 import html from './html'
@@ -16,6 +16,9 @@ const hideToolbar = ref(false)
 const disableToolbar = ref(false)
 const errorMessages = ref(null)
 const maxWidth = ref<number>(900)
+
+const customLang = ref({ ...locale.message['en'] })
+const customLangKey = computed(() => Object.keys(unref(customLang)))
 
 const toolbar = ref<ToolbarType[]>([
   'bold',
@@ -66,6 +69,11 @@ const toolbar = ref<ToolbarType[]>([
 function toggleTheme() {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
+
+function setCustom() {
+  locale.setMessage('custom', unref(customLang))
+  locale.setLang('custom')
+}
 </script>
 
 <template>
@@ -78,6 +86,7 @@ function toggleTheme() {
 
       <v-btn class="ms-2" color="primary" @click="locale.setLang('zhHans')">set Chinese</v-btn>
       <v-btn class="ms-2" color="primary" @click="locale.setLang('en')">set English</v-btn>
+      <v-btn class="ms-2" color="primary" @click="setCustom">set Custom Lang</v-btn>
 
       <vuetify-tiptap
         v-model="content"
@@ -143,6 +152,19 @@ function toggleTheme() {
       <v-divider class="my-4"></v-divider>
 
       <v-textarea :value="content" readonly auto-grow></v-textarea>
+
+      <v-divider class="my-4"></v-divider>
+
+      <v-card class="mt-2">
+        <v-card-title>Custom Lang</v-card-title>
+        <v-card-text>
+          <v-row>
+            <v-col v-for="key in customLangKey" :key="key" :cols="12" :sm="6" :md="4" :lg="3">
+              <v-text-field v-model="customLang[key]" :label="key"></v-text-field>
+            </v-col>
+          </v-row>
+        </v-card-text>
+      </v-card>
     </v-container>
     <!-- </v-main> -->
   </v-app>
