@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, unref, watchEffect } from 'vue'
-import { mdiClose } from '@/constants/icons'
+import { mdiClose, setSvg } from '@/constants/icons'
 import { useLocale } from '@/locales'
 import type { Editor } from '@tiptap/vue-3'
 import type { ImageAttrsOptions, ImageForm, ImageTab, ImageTabKey } from './types'
@@ -105,7 +105,7 @@ onMounted(() => {
         <VSpacer />
 
         <VBtn class="mx-0" icon @click="close">
-          <VIcon>{{ mdiClose }}</VIcon>
+          <VIcon :icon="setSvg(mdiClose)"></VIcon>
         </VBtn>
       </VToolbar>
 

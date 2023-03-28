@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiClose } from '@/constants/icons'
+import { mdiClose, setSvg } from '@/constants/icons'
 import { useLocale } from '@/locales'
 import type { Editor } from '@tiptap/vue-3'
 import { computed, ref, unref, watchEffect } from 'vue'
@@ -55,7 +55,7 @@ function close() {
         <VSpacer />
 
         <VBtn class="mx-0" icon @click="close">
-          <VIcon>{{ mdiClose }}</VIcon>
+          <VIcon :icon="setSvg(mdiClose)"></VIcon>
         </VBtn>
       </VToolbar>
 

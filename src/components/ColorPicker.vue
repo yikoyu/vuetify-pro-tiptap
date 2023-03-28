@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiCircle } from '@/constants/icons'
+import { mdiCircle, setSvg } from '@/constants/icons'
 import { ref } from 'vue'
 
 const colors = [
@@ -75,14 +75,14 @@ function setColor(color: string) {
     <template #activator="{ props: _props }">
       <slot name="button" v-bind="{ props: _props }">
         <VBtn v-bind="_props" :color="modelValue" flat icon size="small" density="compact">
-          <VIcon>{{ mdiCircle }}</VIcon>
+          <VIcon :icon="setSvg(mdiCircle)"></VIcon>
         </VBtn>
       </slot>
     </template>
     <VList>
       <VSheet class="d-flex flex-wrap justify-between ma-1" fluid :max-width="230">
         <VBtn v-for="color in colors" :key="color" flat icon density="compact" @click="setColor(color)">
-          <VIcon :color="color">{{ mdiCircle }}</VIcon>
+          <VIcon :icon="setSvg(mdiCircle)" :color="color"></VIcon>
         </VBtn>
       </VSheet>
 

@@ -8,15 +8,7 @@ import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pr
 import 'vuetify-pro-tiptap/style.css'
 import SelectImage from './components/SelectImage.vue'
 
-const vuetify = createVuetify({
-  icons: {
-    defaultSet: 'mdi',
-    aliases,
-    sets: {
-      mdi
-    }
-  }
-})
+const vuetify = createVuetify()
 
 const VuetifyProTipTap = createVuetifyProTipTap({
   vuetify,

@@ -146,7 +146,7 @@ function createTable(options: CreateTablePayload) {
     <template #activator="{ props: _props }">
       <slot name="button" v-bind="{ props: _props }">
         <VBtn icon size="small" v-bind="_props">
-          <VIcon>{{ icons.get('table') }}</VIcon>
+          <VIcon :icon="icons.get('table')"></VIcon>
         </VBtn>
       </slot>
     </template>

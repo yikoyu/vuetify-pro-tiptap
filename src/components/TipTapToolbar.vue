@@ -55,7 +55,7 @@ defineExpose({
           <ColorPicker v-model="color" :dark="dark" :nudge-top="-4" :nudge-left="8" @change="item.action">
             <template #button="{ props: _props }">
               <VBtn v-bind="_props" class="rounded" density="comfortable" :disabled="disabled" :color="color" icon size="small" :data-testid="item.type">
-                <VIcon>{{ item.icon }}</VIcon>
+                <VIcon :icon="item.icon"></VIcon>
                 <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
               </VBtn>
             </template>
@@ -67,7 +67,7 @@ defineExpose({
           <ColorPicker v-model="highlight" :dark="dark" :nudge-top="-4" :nudge-left="8" @change="item.action">
             <template #button="{ props: _props }">
               <VBtn v-bind="_props" class="rounded" density="comfortable" :disabled="disabled" :color="highlight" icon size="small" :data-testid="item.type">
-                <VIcon>{{ item.icon }}</VIcon>
+                <VIcon :icon="item.icon"></VIcon>
                 <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
               </VBtn>
             </template>
@@ -91,7 +91,7 @@ defineExpose({
                 density="comfortable"
                 :data-testid="item.type"
               >
-                <VIcon>{{ item.icon }}</VIcon>
+                <VIcon :icon="item.icon"></VIcon>
                 <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
               </VBtn>
             </template>
@@ -113,7 +113,7 @@ defineExpose({
           :data-testid="item.type"
           @click="item.action"
         >
-          <VIcon>{{ item.icon }}</VIcon>
+          <VIcon :icon="item.icon"></VIcon>
           <VTooltip activator="parent" location="top">{{ item.title }}</VTooltip>
         </VBtn>
       </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiDeleteCircleOutline, mdiFileCodeOutline } from '@mdi/js'
+import { mdiDeleteCircleOutline, mdiFileCodeOutline, mdiClose } from '@mdi/js'
 import { ref } from 'vue'
 import { useTheme } from 'vuetify'
 import { locale, type ToolbarType } from 'vuetify-pro-tiptap'
@@ -101,14 +101,14 @@ function toggleTheme() {
           <v-dialog v-model="dialog" fullscreen hide-overlay>
             <template #activator="{ props: dialogProps }">
               <v-btn v-bind="{ ...props, ...dialogProps }">
-                <v-icon>{{ mdiFileCodeOutline }}</v-icon>
+                <v-icon>{{ `svg:${mdiFileCodeOutline}` }}</v-icon>
               </v-btn>
             </template>
 
             <v-card>
               <v-toolbar dark color="primary">
                 <v-btn icon dark @click="dialog = false">
-                  <v-icon>$close</v-icon>
+                  <v-icon>{{ `svg:${mdiClose}` }}</v-icon>
                 </v-btn>
               </v-toolbar>
 
@@ -135,7 +135,7 @@ function toggleTheme() {
 
         <template #clean-btn="{ editor, props }">
           <v-btn v-bind="props" icon size="small" @click="editor && editor.commands.setContent('') && (content = '')">
-            <v-icon>{{ mdiDeleteCircleOutline }}</v-icon>
+            <v-icon>{{ `svg:${mdiDeleteCircleOutline}` }}</v-icon>
           </v-btn>
         </template>
       </vuetify-tiptap>

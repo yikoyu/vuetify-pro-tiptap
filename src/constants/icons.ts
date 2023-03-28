@@ -137,6 +137,10 @@ export const icons: IconsOptions = {
   fullscreen: mdiFullscreen
 }
 
+export function setSvg(icon: string): string {
+  return `svg:${icon}`
+}
+
 export function get(iconName: keyof IconsOptions): string {
-  return icons[iconName]
+  return setSvg(icons[iconName])
 }
