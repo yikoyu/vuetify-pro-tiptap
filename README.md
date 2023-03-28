@@ -19,7 +19,10 @@ English | [中文](./README.zh-CN.md)
 - Markdown support
 - TypeScript support
 - I18n support(`en`, `zhHans`)
-- Vuetify 2.x and Vue 2.x support
+- Vuetify 3.x and Vue 3.x support
+
+## Vuetify 2.x
+For Vuetify 2.x please use the latest version of [vuetify-pro-tiptap@1.X.X](https://github.com/yikoyu/vuetify-pro-tiptap/tree/1.x)
 
 ## Installation
 ### NPM
@@ -30,30 +33,19 @@ yarn add vuetify-pro-tiptap
 # or
 npm i vuetify-pro-tiptap -S
 ```
-To make `vuetify-pro-tiptap` work for Vue 2 (<2.7.0), you need to have `@vue/composition-api` installed:
-```shell
-pnpm add @vue/composition-api
-```
+
 ### Install plugin
-
-<details>
-<summary>Vue 2.6.x</summary>
-
 ```TypeScript
-import Vue from 'vue'
-import VCA from '@vue/composition-api'
-
-import Vuetify from 'vuetify/lib'
-
-import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'
-import 'vuetify-pro-tiptap/style.css'
-
+import { createApp } from 'vue'
+import { createVuetify } from 'vuetify'
+import 'vuetify/styles'
 import App from './App.vue'
 
-Vue.use(VCA)
-Vue.use(Vuetify)
+import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
+import 'vuetify-pro-tiptap/style.css'
+import SelectImage from './components/SelectImage.vue'
 
-const vuetify = new Vuetify()
+const vuetify = createVuetify()
 
 const VuetifyProTipTap = createVuetifyProTipTap({
   vuetify,
@@ -61,49 +53,15 @@ const VuetifyProTipTap = createVuetifyProTipTap({
 })
 Vue.use(VuetifyProTipTap)
 
-new Vue({
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App)
+app.use(vuetify)
+app.use(VuetifyProTipTap)
+app.mount('#app')
 ```
-
-</details>
-
-<details>
-<summary>Vue 2.7.x</summary>
-
-```TypeScript
-import Vue from 'vue'
-
-import Vuetify from 'vuetify/lib'
-
-import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'
-import 'vuetify-pro-tiptap/style.css'
-
-import App from './App.vue'
-
-Vue.use(Vuetify)
-
-const vuetify = new Vuetify()
-
-const VuetifyProTipTap = createVuetifyProTipTap({
-  vuetify,
-  lang: 'zhHans'
-})
-Vue.use(VuetifyProTipTap)
-
-new Vue({
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
-```
-
-</details>
 
 ## Global Settings
 ```TypeScript
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
-import 'vuetify-pro-tiptap/style.css'
 
 const VuetifyProTipTap = createVuetifyProTipTap({
   vuetify,
@@ -123,8 +81,6 @@ const VuetifyProTipTap = createVuetifyProTipTap({
     }
   }
 })
-
-Vue.use(VuetifyProTipTap)
 ```
 
 ## I18n
