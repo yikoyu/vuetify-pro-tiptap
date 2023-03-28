@@ -30,8 +30,9 @@ const VuetifyProTipTap = createVuetifyProTipTap({
       imageTabs: [{ name: 'SELECT', component: SelectImage }],
       // hiddenTabs: ['upload'],
       upload(file: File) {
-        console.log('e :>> ', file)
-        return Promise.resolve('https://picsum.photos/1920/1080.webp')
+        const url = URL.createObjectURL(file)
+        console.log('mock upload api :>> ', url)
+        return Promise.resolve(url)
       }
     }
   }

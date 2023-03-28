@@ -1,32 +1,50 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, unref, watch } from 'vue'
 
 interface SelectImageProps {
-  value?: Record<string, string>
+  modelValue?: Record<string, string>
+  upload?: (file: File) => Promise<string> // vue warn
+  t: (path: string) => string // vue warn
 }
 
 interface SelectImageEmits {
-  (event: 'input', form: Record<string, string>): void
+  (event: 'update:modelValue', form?: Record<string, string>): void
 }
 
 const props = withDefaults(defineProps<SelectImageProps>(), {
-  value: () => ({})
+  modelValue: () => ({}),
+  upload: undefined
 })
 
 const emits = defineEmits<SelectImageEmits>()
 
 const form = computed({
-  get: () => props.value,
-  set: val => emits('input', val)
+  get: () => props.modelValue,
+  set: val => {
+    emits('update:modelValue', val)
+  }
 })
 
 const items = [
-  { alt: 'Test 1', src: 'https://i.picsum.photos/id/1069/1920/1080.webp?hmac=cxjVzYK0ihh3VsIEKZ8FIfl6aGr19QO8yehQlPzoPeM' },
-  { alt: 'Test 2', src: 'https://i.picsum.photos/id/90/1920/1080.webp?hmac=gxjDsn0a57jTpyPG9YRuDhW0YIo5DlqbRSRXpwSAVmw' },
-  { alt: 'Test 3', src: 'https://i.picsum.photos/id/627/1920/1080.webp?hmac=N91GT9f0ZfCjx4mwrqPYHo-27d_0852EXonU54iCv6o' }
+  { alt: 'Test 1', src: 'https://picsum.photos/1920/1080.webp?t=1' },
+  { alt: 'Test 2', src: 'https://picsum.photos/1920/1080.webp?t=2' },
+  { alt: 'Test 3', src: 'https://picsum.photos/1920/1080.webp?t=3' }
 ]
+
+watch(
+  () => unref(form).src,
+  val => {
+    const find = items.find(k => k.src === val)
+    if (find) {
+      form.value.alt = find.alt
+    }
+  }
+)
 </script>
 
 <template>
-  <v-select v-model="form" label="Image" return-object :items="items" item-text="alt" item-value="src"></v-select>
+  <VAlert class="mb-4" type="info" text="Select tab is custom component"></VAlert>
+  <VSelect v-model="form.src" label="Select Image" :items="items" item-value="src" item-title="alt"></VSelect>
+  <VTextField v-model="form.alt" label="Alt" />
+  <VCheckbox v-model="form.lockAspectRatio" label="Lock original aspect ratio"></VCheckbox>
 </template>
