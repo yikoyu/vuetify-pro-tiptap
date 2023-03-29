@@ -29,6 +29,7 @@ interface Props {
   dark?: boolean
   dense?: boolean
   outlined?: boolean
+  flat?: boolean
   disabled?: boolean
   label?: string
   placeholder?: string
@@ -53,6 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
   dark: false,
   dense: false,
   outlined: true,
+  flat: true,
   disabled: false,
   label: undefined,
   placeholder: undefined,
@@ -215,16 +217,11 @@ onUnmounted(() => unref(editor)?.destroy())
     <!-- Edit Mode -->
     <BubbleMenu :editor="editor" :dark="isDark" :disabled="disableToolbar" :items="items" />
 
-    <VList density="compact">
-      <VListItemTitle v-if="label">{{ label }}</VListItemTitle>
-    </VList>
-
     <VInput class="pt-0" hide-details="auto">
       <VCard
-        flat
+        :flat="flat"
         :outlined="outlined"
         :dark="isDark"
-        :color="isDark ? '#212121' : '#EEEEEE'"
         style="width: 100%"
         v-bind="$attrs"
         :style="{
@@ -233,6 +230,10 @@ onUnmounted(() => unref(editor)?.destroy())
         class="vuetify-pro-tiptap-editor"
         :class="{ 'vuetify-pro-tiptap-editor--fullscreen': isFullscreen }"
       >
+        <template v-if="label && !isFullscreen">
+          <VCardTitle :class="isDark ? 'bg-grey-darken-3' : 'bg-grey-lighten-3'">{{ label }}</VCardTitle>
+          <VDivider></VDivider>
+        </template>
         <!-- Toolbar -->
         <TipTapToolbar
           v-if="!hideToolbar && toolbar && toolbar.length"
