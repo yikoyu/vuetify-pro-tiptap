@@ -222,6 +222,7 @@ onUnmounted(() => unref(editor)?.destroy())
         :flat="flat"
         :outlined="outlined"
         :dark="isDark"
+        :color="isDark ? 'grey-darken-4' : 'grey-lighten-4'"
         style="width: 100%"
         v-bind="$attrs"
         :style="{
