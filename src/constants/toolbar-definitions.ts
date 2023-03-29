@@ -2,7 +2,7 @@ import { unref, computed, ShallowRef, Ref } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
 import { useLocale } from '@/locales'
 import * as icons from './icons'
-import { mdiFullscreenExit } from './icons'
+import { setSvg, mdiFullscreenExit } from './icons'
 import type { IconsOptions } from './icons'
 
 import { show as showImage } from '@/extensions/image/show'
@@ -272,7 +272,7 @@ export function useMakeToolbarDefinitions({ editor, isFullscreen, toolbar }: Con
     },
     fullscreen: {
       title: unref(isFullscreen) ? unref(t)('editor.fullscreen.tooltip.exit') : unref(t)('editor.fullscreen.tooltip.fullscreen'),
-      icon: unref(isFullscreen) ? mdiFullscreenExit : icons.get('fullscreen'),
+      icon: unref(isFullscreen) ? setSvg(mdiFullscreenExit) : icons.get('fullscreen'),
       type: 'fullscreen',
       action: () => {
         isFullscreen.value = !unref(isFullscreen)
