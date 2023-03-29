@@ -147,10 +147,10 @@ const editor = useEditor({
       return false
     }, THROTTLE_WAIT_TIME)
   },
-  onSelectionUpdate: throttle<OnSelectionUpdate>(function ({ editor }) {
+  onSelectionUpdate: throttle<OnSelectionUpdate>(({ editor }) => {
     unref(toolbarRef)?.onUpdate(editor)
   }, THROTTLE_WAIT_TIME),
-  onUpdate: throttle<OnUpdate>(function ({ editor }) {
+  onUpdate: throttle<OnUpdate>(({ editor }) => {
     emit('update:modelValue', editor.getHTML())
   }, THROTTLE_WAIT_TIME),
   extensions: [TiptapKit.configure(TiptapKitConfig), ...props.extensions],
@@ -237,7 +237,7 @@ onUnmounted(() => unref(editor)?.destroy())
         <!-- Toolbar -->
         <TipTapToolbar
           v-if="!hideToolbar && toolbar && toolbar.length"
-          :ref="toolbarRef"
+          ref="toolbarRef"
           class="vuetify-pro-tiptap-editor__toolbar"
           :editor="editor"
           :dark="isDark"
