@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { nodeViewProps } from '@/utils/node-view-props'
-import { NodeViewWrapper } from '@tiptap/vue-3'
+import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
 import { computed, onMounted, onUnmounted, ref, unref } from 'vue'
-import { bool } from 'vue-types'
 import { ImageAttrsOptions } from './types'
 import { clamp, isNumber, throttle } from '@/utils/utils'
 
@@ -19,7 +17,10 @@ const THROTTLE_WAIT_TIME = 16
 
 const props = defineProps({
   ...nodeViewProps,
-  selected: bool().isRequired
+  selected: {
+    type: Boolean,
+    required: true
+  }
 })
 
 const maxSize = ref({

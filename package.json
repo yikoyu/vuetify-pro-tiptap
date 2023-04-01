@@ -126,8 +126,5 @@
     "vue-tsc": "1.2.0",
     "vuetify": "^3.1.11",
     "xss": "^1.0.14"
-  },
-  "dependencies": {
-    "vue-types": "^5.0.2"
   }
 }
