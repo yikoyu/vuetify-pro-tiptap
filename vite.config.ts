@@ -43,12 +43,11 @@ export default defineConfig({
         exports: 'named',
         globals: {
           vue: 'Vue',
-          'vue-demi': 'vueDemi',
           vuetify: 'Vuetify',
           'vuetify/components': 'VuetifyComp'
         }
       },
-      external: ['vue', 'vue-demi', 'vuetify', 'vuetify/components']
+      external: ['vue', 'vuetify', 'vuetify/components']
     }
   }
 })
