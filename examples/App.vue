@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { mdiDeleteCircleOutline, mdiFileCodeOutline, mdiClose } from '@mdi/js'
-import { computed, ref, unref } from 'vue'
+import { ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
 import { locale, type ToolbarType } from 'vuetify-pro-tiptap'
 import html from './html'
+
+import CustomLang from './components/CustomLang.vue'
 
 const theme = useTheme()
 
@@ -18,7 +20,6 @@ const errorMessages = ref(null)
 const maxWidth = ref<number>(900)
 
 const customLang = ref({ ...locale.message['en'] })
-const customLangKey = computed(() => Object.keys(unref(customLang)))
 
 const toolbar = ref<ToolbarType[]>([
   'bold',
@@ -68,6 +69,11 @@ const toolbar = ref<ToolbarType[]>([
 
 function toggleTheme() {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
+
+function toggleEditHtml() {
+  editHtml.value = !editHtml.value
+  disableToolbar.value = !disableToolbar.value
 }
 
 function setCustom() {
@@ -131,15 +137,7 @@ function setCustom() {
         </template>
 
         <template #html>
-          <v-btn
-            class="elevation-0"
-            size="small"
-            :color="editHtml ? 'primary' : undefined"
-            text
-            @click="editHtml = !editHtml && (disableToolbar = !disableToolbar)"
-          >
-            HTML
-          </v-btn>
+          <v-btn class="elevation-0" size="small" :color="editHtml ? 'primary' : undefined" text @click="toggleEditHtml"> HTML </v-btn>
         </template>
 
         <template #clean-btn="{ editor, props }">
@@ -155,16 +153,7 @@ function setCustom() {
 
       <v-divider class="my-4"></v-divider>
 
-      <v-card class="mt-2">
-        <v-card-title>Custom Lang</v-card-title>
-        <v-card-text>
-          <v-row>
-            <v-col v-for="key in customLangKey" :key="key" :cols="12" :sm="6" :md="4" :lg="3">
-              <v-text-field v-model="customLang[key]" :label="key"></v-text-field>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
+      <CustomLang v-model="customLang" />
     </v-container>
     <!-- </v-main> -->
   </v-app>
