@@ -70,7 +70,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { extMenu } = useBubbleImage(props.editor)
 
-const tippyOptions = reactive({
+const tippyOptions = reactive<Record<string, unknown>>({
   maxWidth: 'auto',
   zIndex: 20,
   appendTo: 'parent'
