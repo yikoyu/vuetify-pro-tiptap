@@ -35,6 +35,7 @@ interface Props {
   nudgeTop?: string | number
   more?: boolean
   dark?: boolean
+  activator?: string
 }
 
 interface Emits {
@@ -47,7 +48,8 @@ const props = withDefaults(defineProps<Props>(), {
   nudgeLeft: 0,
   nudgeTop: 0,
   more: true,
-  dark: false
+  dark: false,
+  activator: undefined
 })
 
 const emit = defineEmits<Emits>()
@@ -71,13 +73,10 @@ function setColor(color: string) {
     :close-on-content-click="false"
     transition="scale-transition"
     :origin="!nudgeLeft ? 'top right' : 'top left'"
+    :activator="activator"
   >
     <template #activator="{ props: _props }">
-      <slot name="button" v-bind="{ props: _props }">
-        <VBtn v-bind="_props" :color="modelValue" flat icon size="small" density="compact">
-          <VIcon :icon="setSvg(mdiCircle)"></VIcon>
-        </VBtn>
-      </slot>
+      <slot name="button" v-bind="{ props: _props }"></slot>
     </template>
     <VList>
       <VSheet class="d-flex flex-wrap justify-between ma-1" fluid :max-width="230">

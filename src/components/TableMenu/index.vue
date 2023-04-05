@@ -19,7 +19,6 @@ export interface Item {
 </script>
 
 <script setup lang="ts">
-import * as icons from '@/constants/icons'
 import { useLocale } from '@/locales'
 import type { Editor } from '@tiptap/vue-3'
 import { computed, ref, unref } from 'vue'
@@ -29,10 +28,12 @@ import CreateTablePopover from './CreateTablePopover.vue'
 interface Props {
   editor: Editor
   dark?: boolean
+  activator?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false
+  dark: false,
+  activator: undefined
 })
 
 const { t } = useLocale()
@@ -142,13 +143,9 @@ function createTable(options: CreateTablePayload) {
 </script>
 
 <template>
-  <VMenu v-model="menu" :dark="dark">
+  <VMenu v-model="menu" :dark="dark" :activator="activator">
     <template #activator="{ props: _props }">
-      <slot name="button" v-bind="{ props: _props }">
-        <VBtn icon size="small" v-bind="_props">
-          <VIcon :icon="icons.get('table')"></VIcon>
-        </VBtn>
-      </slot>
+      <slot name="button" v-bind="{ props: _props }"></slot>
     </template>
 
     <VList density="compact">
