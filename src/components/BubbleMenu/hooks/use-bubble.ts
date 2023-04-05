@@ -4,7 +4,7 @@ import { useLocale } from '@/locales'
 import type { Definitions } from '@/constants/toolbar-definitions'
 import { deleteSelection } from '@tiptap/pm/commands'
 
-import { setSvg, mdiFormatFloatLeft, mdiFormatFloatNone, mdiFormatFloatRight, mdiSizeS, mdiSizeM, mdiSizeL, mdiAspectRatio, mdiDelete } from '@/constants/icons'
+import { getIcon } from '@/constants/icons'
 import type { Display } from '@/extensions/image/types'
 
 export type BubbleImageToolbarType = 'float-left' | 'float-none' | 'float-right' | 'size-small' | 'size-medium' | 'size-large' | 'image' | 'image-aspect-ratio'
@@ -38,49 +38,49 @@ export function useBubbleImage(editor: Editor) {
     return [
       {
         title: unref(t)('editor.image.float.left.tooltip'),
-        icon: setSvg(mdiFormatFloatLeft),
+        icon: getIcon('formatFloatLeft'),
         type: 'float-left',
         action: () => setDisplay('left'),
         isActive: () => editor.isActive('image', { display: 'left' })
       },
       {
         title: unref(t)('editor.image.float.none.tooltip'),
-        icon: setSvg(mdiFormatFloatNone),
+        icon: getIcon('formatFloatNone'),
         type: 'float-none',
         action: () => setDisplay('inline'),
         isActive: () => editor.isActive('image', { display: 'inline' })
       },
       {
         title: unref(t)('editor.image.float.right.tooltip'),
-        icon: setSvg(mdiFormatFloatRight),
+        icon: getIcon('formatFloatRight'),
         type: 'float-right',
         action: () => setDisplay('right'),
         isActive: () => editor.isActive('image', { display: 'right' })
       },
       {
         title: unref(t)('editor.image.size.small.tooltip'),
-        icon: setSvg(mdiSizeS),
+        icon: getIcon('sizeS'),
         type: 'size-small',
         action: () => setImageSize(Size.small),
         isActive: () => editor.isActive('image', { width: Size.small })
       },
       {
         title: unref(t)('editor.image.size.medium.tooltip'),
-        icon: setSvg(mdiSizeM),
+        icon: getIcon('sizeM'),
         type: 'size-medium',
         action: () => setImageSize(Size.medium),
         isActive: () => editor.isActive('image', { width: Size.medium })
       },
       {
         title: unref(t)('editor.image.size.large.tooltip'),
-        icon: setSvg(mdiSizeL),
+        icon: getIcon('sizeL'),
         type: 'size-large',
         action: () => setImageSize(Size.large),
         isActive: () => editor.isActive('image', { width: Size.large })
       },
       {
         title: unref(t)('editor.image.dialog.form.aspectRatio'),
-        icon: setSvg(mdiAspectRatio),
+        icon: getIcon('aspectRatio'),
         type: 'image-aspect-ratio',
         action: () => {
           const isLock = editor.isActive('image', { lockAspectRatio: true })
@@ -93,7 +93,7 @@ export function useBubbleImage(editor: Editor) {
       },
       {
         title: unref(t)('editor.remove'),
-        icon: setSvg(mdiDelete),
+        icon: getIcon('delete'),
         type: 'remove',
         action: () => {
           const { state, dispatch } = editor.view

@@ -47,23 +47,7 @@ import {
   mdiText
 } from '@mdi/js'
 
-export {
-  mdiCircle,
-  mdiClose,
-  mdiFullscreenExit,
-  mdiLinkVariant,
-  mdiFormatFloatLeft,
-  mdiFormatFloatNone,
-  mdiFormatFloatRight,
-  mdiSizeS,
-  mdiSizeM,
-  mdiSizeL,
-  mdiAspectRatio,
-  mdiDelete,
-  mdiText
-}
-
-export interface IconsOptions {
+export interface ToolbarIconsOptions {
   bold: string
   italic: string
   underline: string
@@ -100,7 +84,23 @@ export interface IconsOptions {
   fullscreen: string
 }
 
-export const icons: IconsOptions = {
+export interface IconsOptions extends ToolbarIconsOptions {
+  circle: string
+  close: string
+  fullscreenExit: string
+  linkVariant: string
+  formatFloatLeft: string
+  formatFloatNone: string
+  formatFloatRight: string
+  sizeS: string
+  sizeM: string
+  sizeL: string
+  aspectRatio: string
+  delete: string
+  text: string
+}
+
+const icons: IconsOptions = {
   bold: mdiFormatBold,
   italic: mdiFormatItalic,
   underline: mdiFormatUnderline,
@@ -134,13 +134,25 @@ export const icons: IconsOptions = {
   clear: mdiFormatClear,
   undo: mdiUndo,
   redo: mdiRedo,
-  fullscreen: mdiFullscreen
+  fullscreen: mdiFullscreen,
+
+  // no tollbar icon
+  circle: mdiCircle,
+  close: mdiClose,
+  fullscreenExit: mdiFullscreenExit,
+  linkVariant: mdiLinkVariant,
+  formatFloatLeft: mdiFormatFloatLeft,
+  formatFloatNone: mdiFormatFloatNone,
+  formatFloatRight: mdiFormatFloatRight,
+  sizeS: mdiSizeS,
+  sizeM: mdiSizeM,
+  sizeL: mdiSizeL,
+  aspectRatio: mdiAspectRatio,
+  delete: mdiDelete,
+  text: mdiText
 }
 
-export function setSvg(icon: string): string {
-  return `svg:${icon}`
-}
-
-export function get(iconName: keyof IconsOptions): string {
-  return setSvg(icons[iconName])
+export function getIcon(iconName?: keyof IconsOptions): string | undefined {
+  if (!iconName) return undefined
+  return `svg:${icons[iconName]}`
 }

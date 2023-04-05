@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiCircle, setSvg } from '@/constants/icons'
+import { getIcon } from '@/constants/icons'
 import { ref } from 'vue'
 
 const colors = [
@@ -81,7 +81,7 @@ function setColor(color: string) {
     <VList>
       <VSheet class="d-flex flex-wrap justify-between ma-1" fluid :max-width="230">
         <VBtn v-for="color in colors" :key="color" flat icon density="compact" @click="setColor(color)">
-          <VIcon :icon="setSvg(mdiCircle)" :color="color"></VIcon>
+          <VIcon :icon="getIcon('circle')" :color="color"></VIcon>
         </VBtn>
       </VSheet>
 

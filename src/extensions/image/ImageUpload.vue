@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { setSvg, mdiLinkVariant, mdiText } from '@/constants/icons'
+import { getIcon } from '@/constants/icons'
 import { computed, ref, unref } from 'vue'
 import type { ImageForm } from './types'
 
@@ -52,14 +52,14 @@ async function onFileSelected(event: { isTrusted: boolean }) {
       :label="t('editor.image.dialog.form.file')"
       accept="image/*"
       :loading="loading"
-      :prepend-icon="setSvg(mdiLinkVariant)"
+      :prepend-icon="getIcon('linkVariant')"
       @change="onFileSelected"
       @click:clear="form.src = undefined"
     />
 
-    <VTextField v-model="form.src" :label="t('editor.image.dialog.form.link')" disabled autofocus :prepend-icon="setSvg(mdiLinkVariant)" />
+    <VTextField v-model="form.src" :label="t('editor.image.dialog.form.link')" disabled autofocus :prepend-icon="getIcon('linkVariant')" />
 
-    <VTextField v-model="form.alt" :label="t('editor.image.dialog.form.alt')" :prepend-icon="setSvg(mdiText)" />
+    <VTextField v-model="form.alt" :label="t('editor.image.dialog.form.alt')" :prepend-icon="getIcon('text')" />
 
     <VCheckbox v-model="form.lockAspectRatio" :label="t('editor.image.dialog.form.aspectRatio')"></VCheckbox>
   </VForm>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { setSvg, mdiLinkVariant, mdiText } from '@/constants/icons'
+import { getIcon } from '@/constants/icons'
 import { computed } from 'vue'
 import type { ImageForm } from './types'
 
@@ -26,9 +26,9 @@ const form = computed({
 
 <template>
   <VForm>
-    <VTextField v-model="form.src" :label="t('editor.image.dialog.form.link')" autofocus :prepend-icon="setSvg(mdiLinkVariant)" />
+    <VTextField v-model="form.src" :label="t('editor.image.dialog.form.link')" autofocus :prepend-icon="getIcon('linkVariant')" />
 
-    <VTextField v-model="form.alt" :label="t('editor.image.dialog.form.alt')" :prepend-icon="setSvg(mdiText)" />
+    <VTextField v-model="form.alt" :label="t('editor.image.dialog.form.alt')" :prepend-icon="getIcon('text')" />
 
     <VCheckbox v-model="form.lockAspectRatio" :label="t('editor.image.dialog.form.aspectRatio')"></VCheckbox>
   </VForm>
