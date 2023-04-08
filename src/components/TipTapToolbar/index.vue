@@ -33,6 +33,13 @@ function onUpdate(editor: Editor) {
   highlight.value = highlightValue
 }
 
+function onClick(item: Definitions) {
+  const noClickTypes: Definitions['type'][] = ['color', 'highlight']
+  if (noClickTypes.includes(item.type)) return
+
+  item.action?.()
+}
+
 defineExpose({
   onUpdate
 })
@@ -63,6 +70,7 @@ defineExpose({
           'v-btn--active': item.isActive && item.isActive()
         }"
         class="me-1 ms-0"
+        @click="onClick(item)"
       >
         <!-- Color Button -->
         <ColorPicker
