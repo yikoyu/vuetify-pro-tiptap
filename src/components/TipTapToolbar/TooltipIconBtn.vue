@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, unref, computed } from 'vue'
+import { unref, computed } from 'vue'
 import { getIcon } from '@/constants/icons'
 import type { IconsOptions } from '@/constants/icons'
 
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'small'
 })
 
-const tip = computed(() => {
+const text = computed(() => {
   if (!props.title) return undefined
   return unref(t)(props.title)
 })
@@ -36,7 +36,7 @@ const btnIcon = computed(() => getIcon(props.icon))
 <template>
   <VBtn class="rounded" density="comfortable" :disabled="disabled" :color="color" icon size="small">
     <VIcon :icon="btnIcon"></VIcon>
-    <VTooltip :eager="false" activator="parent" location="top">{{ tip }}</VTooltip>
+    <VTooltip :eager="false" activator="parent" location="top" :text="text" />
     <slot></slot>
   </VBtn>
 </template>

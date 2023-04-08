@@ -22,7 +22,7 @@ type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnSelectionUpdate = NonNullable<EditorOptions['onSelectionUpdate']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
 
-const THROTTLE_WAIT_TIME = 16
+const THROTTLE_WAIT_TIME = 200
 
 interface Props {
   modelValue?: string
