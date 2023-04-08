@@ -8,7 +8,7 @@ import TiptapKit from '@/core/tiptap-kit'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import BubbleMenu from './BubbleMenu/index.vue'
-import TipTapToolbar from './TipTapToolbar.vue'
+import TipTapToolbar from './TipTapToolbar/index.vue'
 
 import useContext from '@/hooks/use-context'
 

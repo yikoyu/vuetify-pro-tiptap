@@ -2,8 +2,8 @@
 import { ref, computed } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
 import type { Definitions } from '@/constants/toolbar-definitions'
-import ColorPicker from './ColorPicker.vue'
-import TableMenu from './TableMenu/index.vue'
+import ColorPicker from '../ColorPicker.vue'
+import TableMenu from '../TableMenu/index.vue'
 import TooltipIconBtn from './TooltipIconBtn.vue'
 
 interface Props {

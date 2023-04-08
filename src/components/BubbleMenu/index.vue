@@ -5,7 +5,7 @@ import type { Editor } from '@tiptap/vue-3'
 import { TextSelection } from '@tiptap/pm/state'
 import type { NodeSelection } from '@tiptap/pm/state'
 
-import TipTapToolbar from '../TipTapToolbar.vue'
+import TipTapToolbar from '../TipTapToolbar/index.vue'
 import type { Definitions, ToolbarType } from '@/constants/toolbar-definitions'
 
 import { useBubbleImage } from './hooks/use-bubble'
@@ -97,7 +97,7 @@ const nodeMenu = computed<BubbleToolbarType[]>(() => {
 const menu = computed(() => {
   return unref(nodeMenu)
     .map(item => {
-      return [...props.items, ...unref(extMenu)].find(k => k.type === item)
+      return [...props.items, ...extMenu].find(k => k.type === item)
     })
     .filter(item => item) as Definitions[]
 })
