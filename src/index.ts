@@ -22,7 +22,7 @@ const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
     const { vuetify, lang, components = {}, config } = opts || {}
 
     if (!vuetify) {
-      Logger.warn(`The module VuetifyProTipTap needs vuetify instance. Use Vue.use(VuetifyProTipTap, { vuetify })`)
+      Logger.warn(`The module VuetifyProTipTap needs vuetify instance. Use createVuetifyProTipTap({ vuetify })`)
       return
     }
 
@@ -40,3 +40,10 @@ const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
 export { createVuetifyProTipTap, VuetifyTiptap, VuetifyViewer }
 export { locale, zhHans, en }
 export type { ToolbarType, StarterKitOptions, InstallationOptions }
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    VuetifyTiptap: typeof VuetifyTiptap
+    VuetifyViewer: typeof VuetifyViewer
+  }
+}
