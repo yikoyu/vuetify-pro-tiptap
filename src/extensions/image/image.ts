@@ -11,12 +11,6 @@ export interface ImageOptions extends ImageNativeOptions {
   hiddenTabs: ImageTabKey[]
 }
 
-export interface ImageStorage {
-  upload?: Upload
-  imageTabs: ImageTab[]
-  hiddenTabs: ImageTabKey[]
-}
-
 interface SetImageAttrsOptions extends ImageAttrsOptions {
   src: string
 }
@@ -32,16 +26,10 @@ declare module '@tiptap/core' {
   }
 }
 
-export default Image.extend<ImageOptions, ImageStorage>({
-  addStorage() {
-    return {
-      upload: this.options.upload,
-      imageTabs: this.options.imageTabs,
-      hiddenTabs: this.options.hiddenTabs
-    }
-  },
+export default Image.extend<ImageOptions>({
   addAttributes() {
     return {
+      ...this.parent?.(),
       src: {
         default: null
       },
@@ -77,5 +65,13 @@ export default Image.extend<ImageOptions, ImageStorage>({
   },
   addNodeView() {
     return VueNodeViewRenderer(ImageView)
+  },
+  addOptions() {
+    return {
+      ...this.parent?.(),
+      upload: undefined,
+      imageTabs: [],
+      hiddenTabs: []
+    }
   }
 })

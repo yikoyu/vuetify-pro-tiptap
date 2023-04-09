@@ -199,7 +199,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <NodeViewWrapper as="div" :class="imageViewClass" :style="imageMaxStyle">
+  <NodeViewWrapper as="span" :class="imageViewClass" :style="imageMaxStyle">
     <div
       draggable="true"
       data-drag-handle

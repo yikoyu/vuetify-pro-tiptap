@@ -7,7 +7,8 @@ import ImageDialog from './ImageDialog.vue'
 import type { ImageAttrsOptions } from './types'
 
 export function show(editor: Editor) {
-  const { upload, imageTabs, hiddenTabs } = editor.storage['image'] || {}
+  const extensionImage = editor.extensionManager.extensions.find(k => k.name === 'image')
+  const { upload, imageTabs, hiddenTabs } = extensionImage?.options || {}
 
   const value: ImageAttrsOptions = {}
   const selection = editor?.view.state.selection as NodeSelection | null
