@@ -24,6 +24,10 @@ export function clamp(val: number, min: number, max: number) {
 
 export const isNumber = (value: unknown): value is number => typeof value === 'number'
 
+export const isBoolean = (value: unknown): value is boolean => typeof value === 'boolean'
+
+export const isFunction = (value: unknown): value is Function => typeof value === 'function'
+
 /**
  * Typescript error TS2742
  */

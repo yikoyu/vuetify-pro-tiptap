@@ -1,18 +1,36 @@
-import { reactive } from 'vue'
-import type { StarterKitOptions } from '@/core/tiptap-kit'
+import { reactive, computed } from 'vue'
+import type { AnyExtension } from '@tiptap/core'
 
 interface Instance {
   defaultLang?: string
-  config?: Partial<StarterKitOptions>
+  extensions: AnyExtension[]
+  isFullscreen: boolean
+  color?: string
+  highlight?: string
 }
 
-const state: Instance = reactive({})
+const state: Instance = reactive({
+  extensions: [],
+  isFullscreen: false,
+  color: undefined,
+  highlight: undefined
+}) as unknown as Instance
 
-export function createContext(instance: Instance) {
+export function createContext(instance: Partial<Instance>) {
   state.defaultLang = instance.defaultLang
-  state.config = instance.config
+  state.extensions = instance.extensions ?? []
 }
 
-export default function useContext(): Instance {
-  return state
+export function useContext() {
+  const isFullscreen = computed(() => state.isFullscreen)
+
+  function toggleFullscreen() {
+    state.isFullscreen = !state.isFullscreen
+  }
+
+  return {
+    state,
+    isFullscreen,
+    toggleFullscreen
+  }
 }

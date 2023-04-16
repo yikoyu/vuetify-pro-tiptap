@@ -2,9 +2,10 @@ import {
   mdiFormatBold,
   mdiFormatItalic,
   mdiFormatUnderline,
-  mdiFormatStrikethroughVariant,
+  mdiFormatStrikethrough,
   mdiWater,
   mdiFormatColorHighlight,
+  mdiFormatHeaderPound,
   mdiFormatHeader1,
   mdiFormatHeader2,
   mdiFormatHeader3,
@@ -23,10 +24,19 @@ import {
   mdiFormatIndentIncrease,
   mdiFullscreen,
   mdiFullscreenExit,
-  mdiLinkVariant,
-  mdiImage,
-  mdiVideo,
+  mdiLinkVariantPlus,
+  mdiImagePlus,
+  mdiVideoPlus,
   mdiTable,
+  mdiTablePlus,
+  mdiTableRemove,
+  mdiTableColumnPlusAfter,
+  mdiTableColumnPlusBefore,
+  mdiTableColumnRemove,
+  mdiTableRowPlusAfter,
+  mdiTableRowPlusBefore,
+  mdiTableRowRemove,
+  mdiTableMergeCells,
   mdiFormatQuoteOpen,
   mdiMinus,
   mdiCodeTags,
@@ -54,17 +64,8 @@ export interface ToolbarIconsOptions {
   strike: string
   color: string
   highlight: string
-  h1: string
-  h2: string
-  h3: string
-  h4: string
-  h5: string
-  h6: string
-  p: string
-  left: string
-  center: string
-  right: string
-  justify: string
+  heading: string
+  textAlign: string
   bulletList: string
   orderedList: string
   taskList: string
@@ -75,7 +76,7 @@ export interface ToolbarIconsOptions {
   video: string
   table: string
   blockquote: string
-  rule: string
+  horizontalRule: string
   code: string
   codeBlock: string
   clear: string
@@ -98,37 +99,54 @@ export interface IconsOptions extends ToolbarIconsOptions {
   aspectRatio: string
   delete: string
   text: string
+
+  // heading
+  h1: string
+  h2: string
+  h3: string
+  h4: string
+  h5: string
+  h6: string
+  p: string
+
+  // textAlign
+  left: string
+  center: string
+  right: string
+  justify: string
+
+  // table
+  tablePlus: string
+  tableRemove: string
+  tableColumnPlusAfter: string
+  tableColumnPlusBefore: string
+  tableColumnRemove: string
+  tableRowPlusAfter: string
+  tableRowPlusBefore: string
+  tableRowRemove: string
+  tableMergeCells: string
 }
 
 const icons: IconsOptions = {
   bold: mdiFormatBold,
   italic: mdiFormatItalic,
   underline: mdiFormatUnderline,
-  strike: mdiFormatStrikethroughVariant,
+  strike: mdiFormatStrikethrough,
   color: mdiWater,
   highlight: mdiFormatColorHighlight,
-  h1: mdiFormatHeader1,
-  h2: mdiFormatHeader2,
-  h3: mdiFormatHeader3,
-  h4: mdiFormatHeader4,
-  h5: mdiFormatHeader5,
-  h6: mdiFormatHeader6,
-  p: mdiFormatParagraph,
-  left: mdiFormatAlignLeft,
-  center: mdiFormatAlignCenter,
-  right: mdiFormatAlignRight,
-  justify: mdiFormatAlignJustify,
+  heading: mdiFormatHeaderPound,
+  textAlign: mdiFormatAlignCenter,
   bulletList: mdiFormatListBulleted,
   orderedList: mdiFormatListNumbered,
   taskList: mdiFormatListCheckbox,
   indent: mdiFormatIndentIncrease,
   outdent: mdiFormatIndentDecrease,
-  link: mdiLinkVariant,
-  image: mdiImage,
-  video: mdiVideo,
+  link: mdiLinkVariantPlus,
+  image: mdiImagePlus,
+  video: mdiVideoPlus,
   table: mdiTable,
   blockquote: mdiFormatQuoteOpen,
-  rule: mdiMinus,
+  horizontalRule: mdiMinus,
   code: mdiCodeTags,
   codeBlock: mdiCodeBracesBox,
   clear: mdiFormatClear,
@@ -136,11 +154,26 @@ const icons: IconsOptions = {
   redo: mdiRedo,
   fullscreen: mdiFullscreen,
 
+  // heading
+  h1: mdiFormatHeader1,
+  h2: mdiFormatHeader2,
+  h3: mdiFormatHeader3,
+  h4: mdiFormatHeader4,
+  h5: mdiFormatHeader5,
+  h6: mdiFormatHeader6,
+  p: mdiFormatParagraph,
+
+  // textAlign
+  left: mdiFormatAlignLeft,
+  center: mdiFormatAlignCenter,
+  right: mdiFormatAlignRight,
+  justify: mdiFormatAlignJustify,
+
   // no tollbar icon
   circle: mdiCircle,
   close: mdiClose,
   fullscreenExit: mdiFullscreenExit,
-  linkVariant: mdiLinkVariant,
+  linkVariant: mdiLinkVariantPlus,
   formatFloatLeft: mdiFormatFloatLeft,
   formatFloatNone: mdiFormatFloatNone,
   formatFloatRight: mdiFormatFloatRight,
@@ -149,7 +182,18 @@ const icons: IconsOptions = {
   sizeL: mdiSizeL,
   aspectRatio: mdiAspectRatio,
   delete: mdiDelete,
-  text: mdiText
+  text: mdiText,
+
+  // table
+  tablePlus: mdiTablePlus,
+  tableRemove: mdiTableRemove,
+  tableColumnPlusAfter: mdiTableColumnPlusAfter,
+  tableColumnPlusBefore: mdiTableColumnPlusBefore,
+  tableColumnRemove: mdiTableColumnRemove,
+  tableRowPlusAfter: mdiTableRowPlusAfter,
+  tableRowPlusBefore: mdiTableRowPlusBefore,
+  tableRowRemove: mdiTableRowRemove,
+  tableMergeCells: mdiTableMergeCells
 }
 
 export function getIcon(iconName?: keyof IconsOptions): string | undefined {
