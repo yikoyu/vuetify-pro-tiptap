@@ -110,7 +110,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.10.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
+    "lint-staged": "^13.2.1",
     "lodash.merge": "^4.6.2",
     "lodash.throttle": "^4.1.1",
     "prettier": "^2.8.7",
