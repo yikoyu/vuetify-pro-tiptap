@@ -103,6 +103,14 @@ $extra-light-primary-color: #ecf5ff;
     min-height: 180px;
     overflow-wrap: anywhere;
 
+    p.is-editor-empty:first-child:before {
+      content: attr(data-placeholder);
+      float: left;
+      color: #adb5bd;
+      pointer-events: none;
+      height: 0;
+    }
+
     .iframe-wrapper {
       &.focus {
         > div {
