@@ -5,6 +5,7 @@ import Document from '@tiptap/extension-document'
 import Dropcursor, { DropcursorOptions } from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import CharacterCount, { CharacterCountOptions } from '@tiptap/extension-character-count'
+import Paragraph, { ParagraphOptions } from '@tiptap/extension-paragraph'
 import HardBreak, { HardBreakOptions } from '@tiptap/extension-hard-break'
 
 import Text from '@tiptap/extension-text'
@@ -24,6 +25,7 @@ export interface BaseKitOptions {
   hardBreak: Partial<HardBreakOptions> | false
   text: any
   placeholder: Partial<PlaceholderOptions> | false
+  paragraph: Partial<ParagraphOptions> | false
   focus: Partial<FocusOptions> | false
   bubble: Partial<BubbleOptions<BaseKitOptions>>
 }
@@ -81,6 +83,10 @@ export default Extension.create<BaseKitOptions>({
 
     if (this.options.characterCount !== false) {
       extensions.push(CharacterCount.configure(this.options.characterCount))
+    }
+
+    if (this.options.paragraph !== false) {
+      extensions.push(Paragraph.configure(this.options.paragraph))
     }
 
     if (this.options.hardBreak !== false) {
