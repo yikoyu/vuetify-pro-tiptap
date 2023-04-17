@@ -32,11 +32,11 @@ const nodeType = computed<NodeTypeKey | undefined>(() => {
   const selection = props.editor.state.selection as NodeSelection
 
   const isImage = selection.node?.type.name === 'image'
-  const isIframe = selection.node?.type.name === 'video'
+  const isVideo = selection.node?.type.name === 'video'
   const isText = selection instanceof TextSelection
 
   if (isImage) return 'image'
-  if (isIframe) return 'video'
+  if (isVideo) return 'video'
   if (isText) return 'text'
   return undefined
 })
@@ -66,8 +66,8 @@ const items = computed(() => {
 </script>
 
 <template>
-  <BubbleMenu :editor="editor" :tippy-options="tippyOptions">
-    <VCard v-show="items.length > 0" class="vuetify-pro-tiptap-editor__menu-bubble">
+  <BubbleMenu v-if="items.length > 0" :editor="editor" :tippy-options="tippyOptions">
+    <VCard class="vuetify-pro-tiptap-editor__menu-bubble">
       <VCardText class="d-flex pa-0">
         <VToolbar density="compact" flat height="auto" class="py-1 ps-1">
           <template v-for="(item, key) in items" :key="key">

@@ -148,7 +148,7 @@ export const generateBubbleTypeMenu = <T = any>(
     for (const ext of nodeType) {
       if (ext === 'divider') {
         const lastItem = _items[_items.length - 1]
-        if (lastItem.type === 'divider') continue
+        if (lastItem?.type === 'divider') continue
 
         _items.push({
           type: 'divider',
@@ -183,6 +183,12 @@ export const generateBubbleTypeMenu = <T = any>(
         continue
       }
     }
+
+    const lastItem = _items[_items.length - 1]
+    const fristItem = _items[0]
+
+    if (lastItem?.type === 'divider') _items.pop()
+    if (fristItem?.type === 'divider') _items.shift()
 
     items[node as NodeTypeKey] = _items
   }
