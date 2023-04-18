@@ -35,53 +35,227 @@ npm i vuetify-pro-tiptap -S
 ```
 
 ### 安装插件
-```TypeScript
-import { createApp } from 'vue'
-import { createVuetify } from 'vuetify'
-import 'vuetify/styles'
-import App from './App.vue'
 
+<details>
+<summary>tiptap.ts</summary>
+
+```TypeScript
+import { markRaw } from 'vue'
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
+import { BaseKit, Bold, Italic, Underline, Strike, Color, Highlight, Heading, TextAlign, Bulletlist, Orderedlist, Tasklist, Indent, Link, Image, Video, Table, Blockquote, HorizontalRule, Code, Codeblock, Clear, Fullscreen, History } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
 import SelectImage from './components/SelectImage.vue'
 
-const vuetify = createVuetify()
-
-const VuetifyProTipTap = createVuetifyProTipTap({
-  vuetify,
-  lang: 'zhHans'
-})
-Vue.use(VuetifyProTipTap)
-
-const app = createApp(App)
-app.use(vuetify)
-app.use(VuetifyProTipTap)
-app.mount('#app')
-```
-
-## 全局设置
-```TypeScript
-import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
-
-const VuetifyProTipTap = createVuetifyProTipTap({
-  vuetify,
+export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',
   components: {
     VuetifyTiptap,
     VuetifyViewer
   },
-  // 编辑器全局配置
-  config: {
-    image: {
-      imageTabs: [{ name: 'SELECT', component: SelectImage }],
-      hiddenTabs: ['upload'],
-      upload(file: File) {
-        return Promise.resolve(/** image url */)
+  extensions: [
+    BaseKit.configure({
+      placeholder: {
+        placeholder: 'Enter some text...'
       }
+    }),
+    Bold,
+    Italic,
+    Underline,
+    Strike,
+    Code.configure({ divider: true }),
+    Heading,
+    TextAlign,
+    Color,
+    Highlight,
+    Clear.configure({ divider: true }),
+    Bulletlist,
+    Orderedlist,
+    Tasklist,
+    Indent.configure({ divider: true }),
+    Link,
+    Image.configure({
+      imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],
+      hiddenTabs: ['upload'],
+      upload(file) {
+        return Promise.resolve(/** Post upload URL */)
+      }
+    }),
+    Video,
+    Table.configure({ divider: true }),
+    Blockquote,
+    HorizontalRule,
+    Codeblock.configure({ divider: true }),
+    History.configure({ divider: true }),
+    Fullscreen
+  ]
+})
+```
+
+</details>
+
+<details>
+<summary>main.ts</summary>
+
+```typescript
+import { createApp } from 'vue'
+import { createVuetify } from 'vuetify'
+import 'vuetify/styles'
+import App from './App.vue'
+
+import { vuetifyProTipTap } from './tiptap'
+
+const vuetify = createVuetify()
+
+const app = createApp(App)
+app.use(vuetify)
+app.use(vuetifyProTipTap)
+
+// fix warning injected property "decorationClasses" is a ref and will be auto-unwrapped
+// https://github.com/ueberdosis/tiptap/issues/1719
+app.config.unwrapInjectedRef = true
+
+app.mount('#app')
+```
+
+</details>
+
+## 全局设置
+```TypeScript
+import { markRaw } from 'vue'
+import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap, defaultBubbleList } from 'vuetify-pro-tiptap'
+import { BaseKit, Image, Fullscreen } from 'vuetify-pro-tiptap'
+import 'vuetify-pro-tiptap/style.css'
+import SelectImage from './components/SelectImage.vue'
+
+export const vuetifyProTipTap = createVuetifyProTipTap({
+  // Set default lang
+  lang: 'zhHans',
+  // Global registration app.component
+  components: {
+    VuetifyTiptap,
+    VuetifyViewer
+  },
+  // Global registration extensions
+  extensions: [
+    BaseKit.configure({
+      placeholder: {
+        placeholder: 'Enter some text...'
+      },
+      bubble: {
+        // default config
+        list: {
+          image: [ 'float-left', 'float-none', 'float-right', 'divider', 'size-small', 'size-medium', 'size-large', 'divider', 'textAlign', 'divider', 'image', 'image-aspect-ratio', 'remove'],
+          text: ['bold', 'italic', 'underline', 'strike', 'divider', 'color', 'highlight', 'textAlign', 'divider', 'link'],
+          video: ['video', 'remove']
+        },
+        defaultBubbleList: editor => {
+          // You can customize the bubble menu here
+          return defaultBubbleList(editor) // default customize bubble list
+        }
+      }
+    }),
+    Image.configure({
+      // Generate a VDivider after the button
+      divider: true,
+      // Custom image tabs
+      imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],
+      // hidden default tab
+      hiddenTabs: ['upload'],
+      // custom upload function
+      upload(file) {
+        const url = URL.createObjectURL(file)
+        console.log('mock upload api :>> ', url)
+        return Promise.resolve(url)
+      }
+    }),
+    Fullscreen.configure({
+      // Generate a VSpacer after the button
+      spacer: true
+    })
+  ]
+})
+```
+
+## 自定义 extension
+
+<details>
+<summary>PreviewActionButton.vue</summary>
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { mdiFileCodeOutline, mdiClose } from '@mdi/js'
+import type { Editor } from '@tiptap/vue-3'
+import { ActionButton } from 'vuetify-pro-tiptap'
+
+interface Props {
+  editor: Editor
+  tooltip?: string
+  disabled?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  tooltip: undefined,
+  disabled: false
+})
+
+const dialog = ref(false)
+const maxWidth = ref<number>(900)
+</script>
+
+<template>
+  <ActionButton tooltip="全屏" :disabled="disabled">
+    <VIcon>{{ `svg:${mdiFileCodeOutline}` }}</VIcon>
+    <VDialog v-model="dialog" fullscreen hide-overlay activator="parent">
+      <VCard>
+        <VToolbar dark color="primary">
+          <VBtn icon dark @click="dialog = false">
+            <v-icon>{{ `svg:${mdiClose}` }}</v-icon>
+          </VBtn>
+        </VToolbar>
+
+        <VContainer>
+          <VSheet class="mx-auto" :max-width="maxWidth">
+            <VuetifyViewer :value="editor.getHTML()" />
+          </VSheet>
+        </VContainer>
+      </VCard>
+    </VDialog>
+  </ActionButton>
+</template>
+```
+
+</details>
+
+<details>
+<summary>preview.ts</summary>
+
+```typescript
+import { Extension } from '@tiptap/core'
+
+import PreviewActionButton from '../components/PreviewActionButton.vue'
+import type { ButtonView, GeneralOptions } from 'vuetify-pro-tiptap'
+
+export interface PreviewOptions extends GeneralOptions {
+  button: ButtonView
+}
+
+export default Extension.create<PreviewOptions>({
+  name: 'preview',
+  addOptions() {
+    return {
+      divider: false,
+      spacer: false,
+      button: () => ({
+        component: PreviewActionButton,
+        componentProps: {}
+      })
     }
   }
 })
 ```
+
+</details>
 
 ## 国际化
 
@@ -117,123 +291,43 @@ locale.setLang('zhHant')
 
 ## 用法
 ```vue
-<script lang="ts">
-import { defineComponent, ref, type Ref } from '@vue/composition-api'
-import { mdiDeleteCircleOutline, mdiSend, mdiFileCodeOutline } from '@mdi/js'
-import { VuetifyTiptap, VuetifyViewer, type ToolbarType, type StarterKitOptions, locale } from 'vuetify-pro-tiptap'
-import SelectImage from './components/SelectImage.vue'
+<script setup lang="ts">
+import { ref } from 'vue'
+import { VuetifyTiptap, VuetifyViewer } from 'vuetify-pro-tiptap'
+import 'vuetify-pro-tiptap/style.css'
+import { BaseKit, Bold, Italic, Underline, Strike, Color, Highlight, Heading, Link, Image, Video, Table, Fullscreen, History } from 'vuetify-pro-tiptap'
 
-export default defineComponent({
-  components: {
-    VuetifyTiptap,
-    VuetifyViewer
-  },
-  setup() {
-    const content = ref(`<h2 style="text-align: center">Welcome To Vuetify Tiptap Editor Demo</h2>`)
-
-    const config: Ref<Partial<StarterKitOptions>> = ref<Partial<StarterKitOptions>>({
-      image: {
-        upload: uploadImage, // 图片上传方法
-        imageTabs: [{ name: 'SELECT', component: SelectImage }] // 自定义 tab
-        hiddenTabs: ['upload'] // 需要隐藏的 tab
-      }
-    })
-
-    // 自定义工具栏
-    const toolbar = ref<ToolbarType[]>([
-      'bold',
-      'italic',
-      'underline',
-      'strike',
-      'color',
-      'highlight',
-      '|',
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'p',
-      '|',
-      'left',
-      'center',
-      'right',
-      'justify',
-      '|',
-      'bulletList',
-      'orderedList',
-      'taskList',
-      'indent',
-      'outdent',
-      '|',
-      'link',
-      'image',
-      'video',
-      '|',
-      'blockquote',
-      'rule',
-      'code',
-      '|',
-      'clear',
-      'fullscreen',
-      'undo',
-      'redo',
-      '#preview'
-    ])
-
-    function uploadImage(file: File): Promise<string> {
-      return Promise.resolve('https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wE9P?ver=e767')
+const extensions = [
+  BaseKit.configure({
+    placeholder: {
+      placeholder: 'Enter some text...'
     }
+  }),
+  Bold,
+  Italic,
+  Underline,
+  Strike,
+  Color,
+  Highlight,
+  Heading,
+  Link,
+  Image,
+  Video,
+  Table,
+  Fullscreen,
+  History
+]
 
-    return {
-      mdiDeleteCircleOutline,
-      mdiFileCodeOutline,
-      mdiSend,
-      content,
-      config,
-      toolbar,
-      dialog: ref(false)
-    }
-  }
-})
+const content = ref('')
 </script>
 
 <template>
-  <div>
-    <vuetify-tiptap
-      v-model="content"
-      label="Title"
-      :config="config"
-      :toolbar="toolbar"
-      :dark="$vuetify.theme.dark"
-      placeholder="Enter some text..."
-      rounded
-      :maxHeight="465"
-    >
-      <template #preview="{ attrs }">
-        <v-dialog v-model="dialog" fullscreen hide-overlay>
-          <template #activator="{ on, attrs: dialog }">
-            <v-btn v-bind="{ ...attrs, ...dialog }" v-on="on">
-              <v-icon>{{ mdiFileCodeOutline }}</v-icon>
-            </v-btn>
-          </template>
-
-          <v-card>
-            <v-toolbar dark color="primary">
-              <v-btn icon dark @click="dialog = false">
-                <v-icon>$close</v-icon>
-              </v-btn>
-            </v-toolbar>
-
-            <v-container>
-              <vuetify-viewer :value="content" />
-            </v-container>
-          </v-card>
-        </v-dialog>
-      </template>
-    </vuetify-tiptap>
-  </div>
+  <v-app id="app">
+    <v-container>
+      <VuetifyTiptap v-model="content" label="Title" rounded :min-height="200" :max-height="465" :max-width="900" :extensions="extensions" />
+      <VuetifyViewer :value="content" />
+    </v-container>
+  </v-app>
 </template>
 ```
 
@@ -244,21 +338,19 @@ export default defineComponent({
 #### Props
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
-| value | string | '' | 输入的值 |
+| modelValue | string | '' | 输入的值 |
 | dark | boolean | false | 是否为深色主题 |
 | dense | boolean | false | 是否为紧凑模式 |
 | outlined | boolean | true | 将轮廓样式应用于输入 |
+| flat | boolean | true | 移除卡片的 elevation |
 | disabled | boolean | false | 禁用输入 |
 | label | string | undefined | 设置输入标签 |
-| placeholder | string | undefined | 设置输入的占位符文本 |
-| toolbar | ToolbarType[] | 展示所有组件 | 工具栏组件配置 |
 | hideToolbar | boolean | false | 隐藏工具栏 |
 | disableToolbar | boolean | false | 禁用工具栏 |
 | maxWidth | string \| boolean | undefined | 输入框最大宽度 |
 | minHeight | string \| boolean | undefined | 输入框最小高度 |
 | maxHeight | string \| boolean | undefined | 输入框最大高度 |
 | extensions | AnyExtension[] | [] | tiptap插件 |
-| config | Partial\<StarterKitOptions> | {} | 编辑器配置 |
 | editorClass | string \| string[] \| Record\<string, any> | undefined | 编辑器class |
 
 #### Slots
