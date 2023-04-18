@@ -24,6 +24,7 @@ import History, { type HistoryOptions } from './history'
 import BaseKit, { type BaseKitOptions } from './base-kit'
 
 export { default as ActionButton } from './components/ActionButton.vue'
+export { defaultBubbleList } from './components/bubble'
 
 export interface StarterKitOptions extends BaseKitOptions {
   blockquote: Partial<BlockquoteOptions> | false
