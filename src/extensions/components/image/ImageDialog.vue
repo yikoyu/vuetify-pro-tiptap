@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, unref, watchEffect } from 'vue'
+import { computed, ref, unref, watch } from 'vue'
 import { getIcon } from '@/constants/icons'
 import { useLocale } from '@/locales'
 import type { Editor } from '@tiptap/vue-3'
@@ -86,12 +86,16 @@ function close() {
   setTimeout(() => props.destroy?.(), 300)
 }
 
-watchEffect(() => {
-  form.value = {
-    ...unref(form),
-    ...props.value
-  }
-})
+watch(
+  () => props.value,
+  val => {
+    form.value = {
+      ...unref(form),
+      ...val
+    }
+  },
+  { immediate: true, deep: true }
+)
 </script>
 
 <template>

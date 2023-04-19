@@ -25,6 +25,7 @@ import {
   mdiFullscreen,
   mdiFullscreenExit,
   mdiLinkVariantPlus,
+  mdiFileImagePlus,
   mdiImagePlus,
   mdiVideoPlus,
   mdiTable,
@@ -72,6 +73,7 @@ export interface ToolbarIconsOptions {
   indent: string
   outdent: string
   link: string
+  fileImagePlus: string
   image: string
   video: string
   table: string
@@ -142,6 +144,7 @@ const icons: IconsOptions = {
   indent: mdiFormatIndentIncrease,
   outdent: mdiFormatIndentDecrease,
   link: mdiLinkVariantPlus,
+  fileImagePlus: mdiFileImagePlus,
   image: mdiImagePlus,
   video: mdiVideoPlus,
   table: mdiTable,

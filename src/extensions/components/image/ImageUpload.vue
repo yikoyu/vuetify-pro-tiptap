@@ -52,7 +52,7 @@ async function onFileSelected(event: { isTrusted: boolean }) {
       :label="t('editor.image.dialog.form.file')"
       accept="image/*"
       :loading="loading"
-      :prepend-icon="getIcon('linkVariant')"
+      :prepend-icon="getIcon('fileImagePlus')"
       @change="onFileSelected"
       @click:clear="form.src = undefined"
     />

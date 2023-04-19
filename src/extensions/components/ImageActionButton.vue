@@ -41,22 +41,20 @@ const model = ref<ImageAttrsOptions>({})
 
 function onAction() {
   const selection = props.editor?.view.state.selection as NodeSelection | null
-  const attrs = selection?.node?.attrs as ImageAttrsOptions
+  const attrs = (selection?.node?.attrs ?? {}) as ImageAttrsOptions
 
-  model.value = {
-    src: attrs?.src || undefined,
-    alt: attrs?.alt || undefined,
-    title: attrs?.title || undefined,
-    lockAspectRatio: attrs?.lockAspectRatio ?? true,
-    width: attrs?.width || undefined,
-    height: attrs?.height || undefined,
-    display: attrs?.display || undefined
-  }
+  if (attrs?.src) model.value.src = attrs.src
+  if (attrs?.alt) model.value.alt = attrs.alt
+  if (attrs?.title) model.value.title = attrs.title
+  if (attrs?.width) model.value.width = attrs.width
+  if (attrs?.height) model.value.height = attrs.height
+  if (attrs?.display) model.value.display = attrs.display
+  model.value.lockAspectRatio = attrs.lockAspectRatio ?? true
 }
 </script>
 
 <template>
   <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="color" :is-active="isActive" :action="onAction">
-    <ImageDialog :editor="editor" :dark="dark" :value="model" :image-tabs="imageTabs" :hidden-tabs="hiddenTabs" />
+    <ImageDialog :editor="editor" :dark="dark" :value="model" :image-tabs="imageTabs" :hidden-tabs="hiddenTabs" :upload="upload" />
   </ActionButton>
 </template>
