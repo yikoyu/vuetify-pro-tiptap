@@ -1,6 +1,7 @@
-import { Color, ColorOptions as TiptapColorOptions } from '@tiptap/extension-color'
-import TextStyle from '@tiptap/extension-text-style'
+import { Color } from '@tiptap/extension-color'
+import { TextStyle } from '@tiptap/extension-text-style'
 import ColorActionButton from './components/ColorActionButton.vue'
+import type { ColorOptions as TiptapColorOptions } from '@tiptap/extension-color'
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface ColorOptions extends TiptapColorOptions, GeneralOptions {

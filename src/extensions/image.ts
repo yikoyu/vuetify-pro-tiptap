@@ -1,8 +1,8 @@
-import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
-import Image from '@tiptap/extension-image'
+import { Image } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import ImageView from './components/image/Image.vue'
 import ImageActionButton from './components/ImageActionButton.vue'
+import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
 import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
 import type { ButtonView, GeneralOptions } from '@/type'
 

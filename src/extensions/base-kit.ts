@@ -1,18 +1,22 @@
 // StarterKit
 import { Extension } from '@tiptap/core'
+import { Document } from '@tiptap/extension-document'
+import { Dropcursor } from '@tiptap/extension-dropcursor'
+import { Gapcursor } from '@tiptap/extension-gapcursor'
+import { CharacterCount } from '@tiptap/extension-character-count'
+import { Paragraph } from '@tiptap/extension-paragraph'
+import { HardBreak } from '@tiptap/extension-hard-break'
+import { Text } from '@tiptap/extension-text'
+import { Placeholder } from '@tiptap/extension-placeholder'
+import Focus from '@tiptap/extension-focus'
+
 import type { AnyExtension } from '@tiptap/core'
-import Document from '@tiptap/extension-document'
-import Dropcursor, { DropcursorOptions } from '@tiptap/extension-dropcursor'
-import Gapcursor from '@tiptap/extension-gapcursor'
-import CharacterCount, { CharacterCountOptions } from '@tiptap/extension-character-count'
-import Paragraph, { ParagraphOptions } from '@tiptap/extension-paragraph'
-import HardBreak, { HardBreakOptions } from '@tiptap/extension-hard-break'
-
-import Text from '@tiptap/extension-text'
-
-// Extensions
-import Placeholder, { PlaceholderOptions } from '@tiptap/extension-placeholder'
-import Focus, { FocusOptions } from '@tiptap/extension-focus'
+import type { DropcursorOptions } from '@tiptap/extension-dropcursor'
+import type { CharacterCountOptions } from '@tiptap/extension-character-count'
+import type { ParagraphOptions } from '@tiptap/extension-paragraph'
+import type { HardBreakOptions } from '@tiptap/extension-hard-break'
+import type { PlaceholderOptions } from '@tiptap/extension-placeholder'
+import type { FocusOptions } from '@tiptap/extension-focus'
 
 import { NODE_TYPE_MENU, defaultBubbleList, generateBubbleTypeMenu } from './components/bubble'
 import type { BubbleOptions } from './components/bubble'

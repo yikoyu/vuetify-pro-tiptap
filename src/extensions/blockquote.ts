@@ -1,5 +1,6 @@
-import { Blockquote, BlockquoteOptions as TiptapBlockquoteOptions } from '@tiptap/extension-blockquote'
+import { Blockquote } from '@tiptap/extension-blockquote'
 import ActionButton from './components/ActionButton.vue'
+import type { BlockquoteOptions as TiptapBlockquoteOptions } from '@tiptap/extension-blockquote'
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface BlockquoteOptions extends TiptapBlockquoteOptions, GeneralOptions {
