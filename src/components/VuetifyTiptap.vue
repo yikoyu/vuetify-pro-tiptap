@@ -3,7 +3,7 @@ import { computed, onUnmounted, unref, watch, useAttrs } from 'vue'
 import { useTheme } from 'vuetify'
 
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
-import { EditorContent, useEditor } from '@tiptap/vue-3'
+import { EditorContent, Editor } from '@tiptap/vue-3'
 import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
 
@@ -67,7 +67,7 @@ const sortExtensions = computed<AnyExtension[]>(() => {
   return exts.map((k, i) => k.configure({ sort: i }))
 })
 
-const editor = useEditor({
+const editor = new Editor({
   content: props.modelValue,
   editorProps: {
     handleKeyDown: throttle<HandleKeyDown>(function (view, event) {
