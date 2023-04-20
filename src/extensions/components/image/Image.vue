@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
-import { computed, onMounted, onUnmounted, ref, unref } from 'vue'
+import { computed, watchEffect, ref, unref } from 'vue'
 import { ImageAttrsOptions } from './types'
 import { IMAGE_MIN_SIZE, IMAGE_MAX_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants/define'
 import { clamp, isNumber, throttle } from '@/utils/utils'
@@ -186,12 +186,12 @@ function offEvents() {
 
 const resizeOb: ResizeObserver = new ResizeObserver(() => getMaxSize())
 
-onMounted(() => {
+watchEffect(effect => {
   unref(resizeOb).observe(props.editor.view.dom)
-})
 
-onUnmounted(() => {
-  unref(resizeOb).disconnect()
+  effect(() => {
+    unref(resizeOb).disconnect()
+  })
 })
 </script>
 

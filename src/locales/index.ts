@@ -1,4 +1,4 @@
-import { unref, computed, onUnmounted, ref } from 'vue'
+import { unref, computed, watchEffect, ref } from 'vue'
 import Logger from '@/utils/logger'
 import mitt, { EventType } from '@/utils/mitt'
 
@@ -99,11 +99,15 @@ const useLocale = () => {
     return locale.buildI18nHandler(unref(lang))
   })
 
-  const watchLang = locale.registerWatchLang(val => {
-    lang.value = val
-  })
+  watchEffect(effect => {
+    const watchLang = locale.registerWatchLang(val => {
+      lang.value = val
+    })
 
-  onUnmounted(() => watchLang.unsubscribe())
+    effect(() => {
+      watchLang.unsubscribe()
+    })
+  })
 
   return {
     lang,
