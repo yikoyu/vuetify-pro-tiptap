@@ -1,5 +1,4 @@
 import { OrderedList } from '@tiptap/extension-ordered-list'
-import { ListItem } from '@tiptap/extension-list-item'
 import ActionButton from './components/ActionButton.vue'
 import type { OrderedListOptions as TiptapOrderedListOptions } from '@tiptap/extension-ordered-list'
 import type { ButtonView, GeneralOptions } from '@/type'
@@ -22,9 +21,5 @@ export default OrderedList.extend<OrderedListOptions>({
         }
       })
     }
-  },
-
-  addExtensions() {
-    return [ListItem]
   }
 })

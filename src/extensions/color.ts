@@ -2,9 +2,11 @@ import { Color } from '@tiptap/extension-color'
 import { TextStyle } from '@tiptap/extension-text-style'
 import ColorActionButton from './components/ColorActionButton.vue'
 import type { ColorOptions as TiptapColorOptions } from '@tiptap/extension-color'
+import type { TextStyleOptions } from '@tiptap/extension-text-style'
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface ColorOptions extends TiptapColorOptions, GeneralOptions {
+  textStyle: Partial<TextStyleOptions>
   button: ButtonView
 }
 
@@ -27,6 +29,6 @@ export default Color.extend<ColorOptions>({
   },
 
   addExtensions() {
-    return [TextStyle]
+    return [TextStyle.configure(this.options.textStyle)]
   }
 })

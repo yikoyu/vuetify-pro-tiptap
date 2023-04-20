@@ -1,5 +1,4 @@
 import { BulletList } from '@tiptap/extension-bullet-list'
-import { ListItem } from '@tiptap/extension-list-item'
 import ActionButton from './components/ActionButton.vue'
 import type { BulletListOptions as TiptapBulletListOptions } from '@tiptap/extension-bullet-list'
 import type { ButtonView, GeneralOptions } from '@/type'
@@ -22,9 +21,5 @@ export default BulletList.extend<BulletListOptions>({
         }
       })
     }
-  },
-
-  addExtensions() {
-    return [ListItem]
   }
 })
