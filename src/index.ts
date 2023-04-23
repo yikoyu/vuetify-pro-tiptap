@@ -13,8 +13,8 @@ interface InstallationOptions {
   extensions?: Extensions
 }
 
-const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
-  const install: Plugin = (app: App): void => {
+const createVuetifyProTipTap = (opts: InstallationOptions): Plugin<InstallationOptions> => {
+  const install: Plugin<InstallationOptions> = (app: App): void => {
     const { lang, components = {}, extensions } = opts || {}
 
     if (lang) locale.setLang(lang)

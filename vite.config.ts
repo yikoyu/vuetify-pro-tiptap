@@ -8,6 +8,18 @@ import Components from 'unplugin-vue-components/vite'
 import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
 // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
 
+import { dependencies } from './package.json'
+
+const deps = Object.keys(dependencies).reduce((result, k) => {
+  const ignores: string[] = ['@tiptap/vue-3']
+  if (ignores.includes(k)) return result
+
+  const pattern = /[`~!@#$^\-&*()=|{}':;',\\[\].<>/?~！@#￥……&*（）——|{}【】'；：""'。，、？\s]/g
+  result[k] = k.replace(pattern, '')
+
+  return result
+}, {})
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -44,10 +56,11 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           vuetify: 'Vuetify',
-          'vuetify/components': 'VuetifyComp'
+          'vuetify/components': 'VuetifyComp',
+          ...deps
         }
       },
-      external: ['vue', 'vuetify', 'vuetify/components']
+      external: ['vue', 'vuetify', 'vuetify/components', ...Object.keys(deps)]
     }
   }
 })
