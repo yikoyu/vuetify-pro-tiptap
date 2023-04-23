@@ -65,8 +65,8 @@
     "vuetify": "^3.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.5.0",
-    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@commitlint/cz-commitlint": "^17.5.0",
     "@mdi/js": "^7.2.96",
     "@rushstack/eslint-patch": "^1.2.0",
