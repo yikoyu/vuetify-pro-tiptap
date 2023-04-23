@@ -234,8 +234,8 @@ importers:
         specifier: 1.4.4
         version: 1.4.4(typescript@5.0.4)
       vuetify:
-        specifier: ^3.1.11
-        version: 3.1.11(vue@3.2.47)
+        specifier: ^3.1.15
+        version: 3.1.15(vue@3.2.47)
       xss:
         specifier: ^1.0.14
         version: 1.0.14
@@ -5789,8 +5789,8 @@ packages:
       '@vue/server-renderer': 3.2.47(vue@3.2.47)
       '@vue/shared': 3.2.47
 
-  /vuetify@3.1.11(vue@3.2.47):
-    resolution: {integrity: sha512-EAR/7vdYY0jCYW+sn9owl6CC5QsWFw100KJnK0ahdHnFj9B93PR5xetekge8BsEWx6bSnsRIOdPyvud+p29wow==}
+  /vuetify@3.1.15(vue@3.2.47):
+    resolution: {integrity: sha512-uxB4UCrP+hFyJaoSsVObAGBRD73qq5ga7HULepzGoMeUWap2H99mcqmMdN/a/Yp4ODK3gT8EcUeph3EgEcsArQ==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       vite-plugin-vuetify: ^1.0.0-alpha.12
