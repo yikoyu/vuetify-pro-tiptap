@@ -56,11 +56,10 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           vuetify: 'Vuetify',
-          'vuetify/components': 'VuetifyComp',
-          ...deps
+          'vuetify/components': 'VuetifyComp'
         }
       },
-      external: ['vue', 'vuetify', 'vuetify/components', ...Object.keys(deps)]
+      external: ['vue', 'vuetify', 'vuetify/components']
     }
   }
 })
