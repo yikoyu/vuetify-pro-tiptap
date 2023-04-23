@@ -29,6 +29,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { state } = useContext()
 
+function onChange(color: string) {
+  props.action?.(color)
+}
+
 watchEffect(() => {
   const { color: highlightValue } = props.editor.getAttributes('highlight')
   state.highlight = highlightValue
@@ -37,6 +41,6 @@ watchEffect(() => {
 
 <template>
   <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="state.highlight" :is-active="isActive">
-    <ColorPicker v-model="state.highlight" activator="parent" :dark="dark" :nudge-top="-4" :nudge-left="8" @change="action" />
+    <ColorPicker v-model="state.highlight" activator="parent" :dark="dark" :nudge-top="-4" :nudge-left="8" @change="onChange" />
   </ActionButton>
 </template>
