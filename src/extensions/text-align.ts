@@ -1,4 +1,4 @@
-import { TextAlign } from '@tiptap/extension-text-align'
+import { TextAlign as TiptapTextAlign } from '@tiptap/extension-text-align'
 import ActionMenuButton from './components/ActionMenuButton.vue'
 import type { TextAlignOptions as TiptapTextAlignOptions } from '@tiptap/extension-text-align'
 import type { Item } from './components/ActionMenuButton.vue'
@@ -12,7 +12,7 @@ export interface TextAlignOptions extends TiptapTextAlignOptions, GeneralOptions
   options: TextAlignOptions
 }
 
-export default TextAlign.extend<TextAlignOptions>({
+export const TextAlign = TiptapTextAlign.extend<TextAlignOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

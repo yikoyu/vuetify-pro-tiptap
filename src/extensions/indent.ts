@@ -6,7 +6,7 @@ export interface IndentOptions extends GeneralOptions {
   button: ButtonView
 }
 
-export default Extension.create<IndentOptions>({
+export const Indent = Extension.create<IndentOptions>({
   name: 'indent',
   addOptions() {
     return {

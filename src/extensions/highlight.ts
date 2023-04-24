@@ -1,4 +1,4 @@
-import { Highlight } from '@tiptap/extension-highlight'
+import { Highlight as TiptapHighlight } from '@tiptap/extension-highlight'
 import HighlightActionButton from './components/HighlightActionButton.vue'
 import type { HighlightOptions as TiptapHighlightOptions } from '@tiptap/extension-highlight'
 import type { ButtonView, GeneralOptions } from '@/type'
@@ -7,7 +7,7 @@ export interface HighlightOptions extends TiptapHighlightOptions, GeneralOptions
   button: ButtonView
 }
 
-export default Highlight.extend<HighlightOptions>({
+export const Highlight = TiptapHighlight.extend<HighlightOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

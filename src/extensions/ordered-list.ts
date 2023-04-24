@@ -1,4 +1,4 @@
-import { OrderedList } from '@tiptap/extension-ordered-list'
+import { OrderedList as TiptapOrderedList } from '@tiptap/extension-ordered-list'
 import ActionButton from './components/ActionButton.vue'
 import type { OrderedListOptions as TiptapOrderedListOptions } from '@tiptap/extension-ordered-list'
 import type { ButtonView, GeneralOptions } from '@/type'
@@ -7,7 +7,7 @@ export interface OrderedListOptions extends TiptapOrderedListOptions, GeneralOpt
   button: ButtonView
 }
 
-export default OrderedList.extend<OrderedListOptions>({
+export const OrderedList = TiptapOrderedList.extend<OrderedListOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

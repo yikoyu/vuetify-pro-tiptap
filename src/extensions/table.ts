@@ -1,4 +1,4 @@
-import { Table } from '@tiptap/extension-table'
+import { Table as TiptapTable } from '@tiptap/extension-table'
 import { TableRow } from '@tiptap/extension-table-row'
 import { TableHeader } from '@tiptap/extension-table-header'
 import { TableCell } from '@tiptap/extension-table-cell'
@@ -16,7 +16,7 @@ export interface TableOptions extends TiptapTableOptions, GeneralOptions {
   button: ButtonView
 }
 
-export default Table.extend<TableOptions>({
+export const Table = TiptapTable.extend<TableOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

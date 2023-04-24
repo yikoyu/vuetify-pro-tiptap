@@ -1,4 +1,4 @@
-import { Image } from '@tiptap/extension-image'
+import { Image as TiptapImage } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import ImageView from './components/image/Image.vue'
 import ImageActionButton from './components/ImageActionButton.vue'
@@ -29,7 +29,7 @@ declare module '@tiptap/core' {
   }
 }
 
-export default Image.extend<ImageOptions>({
+export const Image = TiptapImage.extend<ImageOptions>({
   addAttributes() {
     return {
       ...this.parent?.(),

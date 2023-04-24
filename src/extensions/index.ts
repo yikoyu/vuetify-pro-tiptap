@@ -1,27 +1,27 @@
-import Bold, { type BoldOptions } from './bold'
-import Italic, { type ItalicOptions } from './italic'
-import Underline, { type UnderlineOptions } from './underline'
-import Strike, { type StrikeOptions } from './strike'
-import Color, { type ColorOptions } from './color'
-import Highlight, { type HighlightOptions } from './highlight'
-import Heading, { type HeadingOptions } from './heading'
-import TextAlign, { type TextAlignOptions } from './text-align'
-import Bulletlist, { type BulletListOptions } from './bullet-list'
-import Orderedlist, { type OrderedListOptions } from './ordered-list'
-import Tasklist, { type TaskListOptions } from './task-list'
-import Indent, { type IndentOptions } from './indent'
-import Link, { type LinkOptions } from './link'
-import Image, { type ImageOptions } from './image'
-import Video, { type VideoOptions } from './video'
-import Table, { type TableOptions } from './table'
-import Blockquote, { type BlockquoteOptions } from './blockquote'
-import HorizontalRule, { type HorizontalRuleOptions } from './horizontal-rule'
-import Code, { type CodeOptions } from './code'
-import Codeblock, { type CodeBlockOptions } from './code-block'
-import Clear, { type ClearOptions } from './clear'
-import Fullscreen, { type FullscreenOptions } from './fullscreen'
-import History, { type HistoryOptions } from './history'
-import BaseKit, { type BaseKitOptions } from './base-kit'
+import { Bold, type BoldOptions } from './bold'
+import { Italic, type ItalicOptions } from './italic'
+import { Underline, type UnderlineOptions } from './underline'
+import { Strike, type StrikeOptions } from './strike'
+import { Color, type ColorOptions } from './color'
+import { Highlight, type HighlightOptions } from './highlight'
+import { Heading, type HeadingOptions } from './heading'
+import { TextAlign, type TextAlignOptions } from './text-align'
+import { BulletList, type BulletListOptions } from './bullet-list'
+import { OrderedList, type OrderedListOptions } from './ordered-list'
+import { TaskList, type TaskListOptions } from './task-list'
+import { Indent, type IndentOptions } from './indent'
+import { Link, type LinkOptions } from './link'
+import { Image, type ImageOptions } from './image'
+import { Video, type VideoOptions } from './video'
+import { Table, type TableOptions } from './table'
+import { Blockquote, type BlockquoteOptions } from './blockquote'
+import { HorizontalRule, type HorizontalRuleOptions } from './horizontal-rule'
+import { Code, type CodeOptions } from './code'
+import { CodeBlock, type CodeBlockOptions } from './code-block'
+import { Clear, type ClearOptions } from './clear'
+import { Fullscreen, type FullscreenOptions } from './fullscreen'
+import { History, type HistoryOptions } from './history'
+import { BaseKit, type BaseKitOptions } from './base-kit'
 
 export { default as ActionButton } from './components/ActionButton.vue'
 export { defaultBubbleList } from './components/bubble'
@@ -90,9 +90,9 @@ export {
   Highlight,
   Heading,
   TextAlign,
-  Bulletlist,
-  Orderedlist,
-  Tasklist,
+  BulletList,
+  OrderedList,
+  TaskList,
   Indent,
   Link,
   Image,
@@ -101,7 +101,7 @@ export {
   Blockquote,
   HorizontalRule,
   Code,
-  Codeblock,
+  CodeBlock,
   Clear,
   Fullscreen,
   History,

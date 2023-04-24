@@ -6,7 +6,7 @@ export interface FullscreenOptions extends GeneralOptions {
   button: ButtonView
 }
 
-export default Extension.create<FullscreenOptions>({
+export const Fullscreen = Extension.create<FullscreenOptions>({
   name: 'fullscreen',
   addOptions() {
     return {

@@ -10,9 +10,9 @@ import {
   Highlight,
   Heading,
   TextAlign,
-  Bulletlist,
-  Orderedlist,
-  Tasklist,
+  BulletList,
+  OrderedList,
+  TaskList,
   Indent,
   Link,
   Image,
@@ -21,7 +21,7 @@ import {
   Blockquote,
   HorizontalRule,
   Code,
-  Codeblock,
+  CodeBlock,
   Clear,
   Fullscreen,
   History
@@ -51,9 +51,9 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     Color,
     Highlight,
     Clear.configure({ divider: true }),
-    Bulletlist,
-    Orderedlist,
-    Tasklist,
+    BulletList,
+    OrderedList,
+    TaskList,
     Indent.configure({ divider: true }),
     Link,
     Image.configure({
@@ -69,7 +69,7 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     Table.configure({ divider: true }),
     Blockquote,
     HorizontalRule,
-    Codeblock.configure({ divider: true }),
+    CodeBlock.configure({ divider: true }),
     History.configure({ divider: true }),
     Fullscreen
   ]
