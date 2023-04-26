@@ -7,7 +7,7 @@ export interface BlockquoteOptions extends TiptapBlockquoteOptions, GeneralOptio
   button: ButtonView
 }
 
-export const Blockquote = TiptapBlockquote.extend<BlockquoteOptions>({
+export const Blockquote = /* @__PURE__*/ TiptapBlockquote.extend<BlockquoteOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

@@ -29,7 +29,7 @@ declare module '@tiptap/core' {
   }
 }
 
-export const Image = TiptapImage.extend<ImageOptions>({
+export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
   addAttributes() {
     return {
       ...this.parent?.(),

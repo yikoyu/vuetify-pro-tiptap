@@ -7,7 +7,7 @@ export interface BoldOptions extends TiptapImageOptions, GeneralOptions {
   button: ButtonView
 }
 
-export const Bold = TiptapBold.extend<BoldOptions>({
+export const Bold = /* @__PURE__*/ TiptapBold.extend<BoldOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

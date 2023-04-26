@@ -6,7 +6,7 @@ export interface ClearOptions extends GeneralOptions {
   button: ButtonView
 }
 
-export const Clear = Node.create<ClearOptions>({
+export const Clear = /* @__PURE__*/ Node.create<ClearOptions>({
   name: 'clear',
   addOptions() {
     return {

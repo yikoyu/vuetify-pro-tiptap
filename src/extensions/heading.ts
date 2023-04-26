@@ -10,7 +10,7 @@ export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions {
   button: ButtonView<HeadingOptions>
 }
 
-export const Heading = TiptapHeading.extend<HeadingOptions>({
+export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

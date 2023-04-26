@@ -7,7 +7,7 @@ export interface UnderlineOptions extends TiptapUnderlineOptions, GeneralOptions
   button: ButtonView
 }
 
-export const Underline = TiptapUnderline.extend<UnderlineOptions>({
+export const Underline = /* @__PURE__*/ TiptapUnderline.extend<UnderlineOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TableMenu from './table/index.vue'
+import TableMenu from './table/TableMenu.vue'
 import ActionButton from './ActionButton.vue'
 import type { Editor } from '@tiptap/vue-3'
 import type { IconsOptions } from '@/constants/icons'

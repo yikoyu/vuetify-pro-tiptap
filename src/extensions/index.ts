@@ -1,109 +1,52 @@
-import { Bold, type BoldOptions } from './bold'
-import { Italic, type ItalicOptions } from './italic'
-import { Underline, type UnderlineOptions } from './underline'
-import { Strike, type StrikeOptions } from './strike'
-import { Color, type ColorOptions } from './color'
-import { Highlight, type HighlightOptions } from './highlight'
-import { Heading, type HeadingOptions } from './heading'
-import { TextAlign, type TextAlignOptions } from './text-align'
-import { BulletList, type BulletListOptions } from './bullet-list'
-import { OrderedList, type OrderedListOptions } from './ordered-list'
-import { TaskList, type TaskListOptions } from './task-list'
-import { Indent, type IndentOptions } from './indent'
-import { Link, type LinkOptions } from './link'
-import { Image, type ImageOptions } from './image'
-import { Video, type VideoOptions } from './video'
-import { Table, type TableOptions } from './table'
-import { Blockquote, type BlockquoteOptions } from './blockquote'
-import { HorizontalRule, type HorizontalRuleOptions } from './horizontal-rule'
-import { Code, type CodeOptions } from './code'
-import { CodeBlock, type CodeBlockOptions } from './code-block'
-import { Clear, type ClearOptions } from './clear'
-import { Fullscreen, type FullscreenOptions } from './fullscreen'
-import { History, type HistoryOptions } from './history'
-import { BaseKit, type BaseKitOptions } from './base-kit'
+export { Bold } from './bold'
+export { Italic } from './italic'
+export { Underline } from './underline'
+export { Strike } from './strike'
+export { Color } from './color'
+export { Highlight } from './highlight'
+export { Heading } from './heading'
+export { TextAlign } from './text-align'
+export { BulletList } from './bullet-list'
+export { OrderedList } from './ordered-list'
+export { TaskList } from './task-list'
+export { Indent } from './indent'
+export { Link } from './link'
+export { Image } from './image'
+export { Video } from './video'
+export { Table } from './table'
+export { Blockquote } from './blockquote'
+export { HorizontalRule } from './horizontal-rule'
+export { Code } from './code'
+export { CodeBlock } from './code-block'
+export { Clear } from './clear'
+export { Fullscreen } from './fullscreen'
+export { History } from './history'
+export { BaseKit } from './base-kit'
+
+export type { BoldOptions } from './bold'
+export type { ItalicOptions } from './italic'
+export type { UnderlineOptions } from './underline'
+export type { StrikeOptions } from './strike'
+export type { ColorOptions } from './color'
+export type { HighlightOptions } from './highlight'
+export type { HeadingOptions } from './heading'
+export type { TextAlignOptions } from './text-align'
+export type { BulletListOptions } from './bullet-list'
+export type { OrderedListOptions } from './ordered-list'
+export type { TaskListOptions } from './task-list'
+export type { IndentOptions } from './indent'
+export type { LinkOptions } from './link'
+export type { ImageOptions } from './image'
+export type { VideoOptions } from './video'
+export type { TableOptions } from './table'
+export type { BlockquoteOptions } from './blockquote'
+export type { HorizontalRuleOptions } from './horizontal-rule'
+export type { CodeOptions } from './code'
+export type { CodeBlockOptions } from './code-block'
+export type { ClearOptions } from './clear'
+export type { FullscreenOptions } from './fullscreen'
+export type { HistoryOptions } from './history'
+export type { BaseKitOptions } from './base-kit'
 
 export { default as ActionButton } from './components/ActionButton.vue'
 export { defaultBubbleList } from './components/bubble'
-
-export interface StarterKitOptions extends BaseKitOptions {
-  blockquote: Partial<BlockquoteOptions> | false
-  bold: Partial<BoldOptions> | false
-  bulletList: Partial<BulletListOptions> | false
-  code: Partial<CodeOptions> | false
-  codeBlock: Partial<CodeBlockOptions> | false
-  heading: Partial<HeadingOptions> | false
-  history: Partial<HistoryOptions> | false
-  horizontalRule: Partial<HorizontalRuleOptions> | false
-  italic: Partial<ItalicOptions> | false
-  // listItem: Partial<ListItemOptions> | false
-  orderedList: Partial<OrderedListOptions> | false
-  strike: Partial<StrikeOptions> | false
-  textAlign: Partial<TextAlignOptions> | false
-  color: Partial<ColorOptions> | false
-  highlight: Partial<HighlightOptions> | false
-  image: Partial<ImageOptions> | false
-  link: Partial<LinkOptions> | false
-  taskList: Partial<TaskListOptions> | false
-  // taskItem: Partial<TaskItemOptions> | false
-  // textStyle: Partial<TextStyleOptions> | false
-  underline: Partial<UnderlineOptions> | false
-  table: Partial<TableOptions> | false
-  // tableRow: Partial<TableRowOptions> | false
-  // tableHeader: Partial<TableHeaderOptions> | false
-  // tableCell: Partial<TableCellOptions> | false
-  video: Partial<VideoOptions> | false
-}
-
-export type {
-  BoldOptions,
-  ItalicOptions,
-  UnderlineOptions,
-  StrikeOptions,
-  ColorOptions,
-  HighlightOptions,
-  HeadingOptions,
-  TextAlignOptions,
-  BulletListOptions,
-  OrderedListOptions,
-  TaskListOptions,
-  IndentOptions,
-  LinkOptions,
-  ImageOptions,
-  VideoOptions,
-  TableOptions,
-  BlockquoteOptions,
-  HorizontalRuleOptions,
-  CodeOptions,
-  CodeBlockOptions,
-  ClearOptions,
-  FullscreenOptions,
-  HistoryOptions
-}
-
-export {
-  Bold,
-  Italic,
-  Underline,
-  Strike,
-  Color,
-  Highlight,
-  Heading,
-  TextAlign,
-  BulletList,
-  OrderedList,
-  TaskList,
-  Indent,
-  Link,
-  Image,
-  Video,
-  Table,
-  Blockquote,
-  HorizontalRule,
-  Code,
-  CodeBlock,
-  Clear,
-  Fullscreen,
-  History,
-  BaseKit
-}

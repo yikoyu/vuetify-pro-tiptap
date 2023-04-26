@@ -7,7 +7,7 @@ export interface HighlightOptions extends TiptapHighlightOptions, GeneralOptions
   button: ButtonView
 }
 
-export const Highlight = TiptapHighlight.extend<HighlightOptions>({
+export const Highlight = /* @__PURE__*/ TiptapHighlight.extend<HighlightOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

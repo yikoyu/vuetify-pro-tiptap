@@ -7,7 +7,7 @@ export interface CodeBlockOptions extends TiptapCodeBlockOptions, GeneralOptions
   button: ButtonView
 }
 
-export const CodeBlock = TiptapCodeBlock.extend<CodeBlockOptions>({
+export const CodeBlock = /* @__PURE__*/ TiptapCodeBlock.extend<CodeBlockOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

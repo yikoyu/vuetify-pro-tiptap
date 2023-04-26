@@ -7,7 +7,7 @@ export interface ItalicOptions extends TiptapItalicOptions, GeneralOptions {
   button: ButtonView
 }
 
-export const Italic = TiptapItalic.extend<ItalicOptions>({
+export const Italic = /* @__PURE__*/ TiptapItalic.extend<ItalicOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

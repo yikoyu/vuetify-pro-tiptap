@@ -16,7 +16,7 @@ export interface TableOptions extends TiptapTableOptions, GeneralOptions {
   button: ButtonView
 }
 
-export const Table = TiptapTable.extend<TableOptions>({
+export const Table = /* @__PURE__*/ TiptapTable.extend<TableOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

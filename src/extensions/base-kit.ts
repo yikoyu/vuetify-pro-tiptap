@@ -37,7 +37,7 @@ export interface BaseKitOptions {
   bubble: Partial<BubbleOptions<BaseKitOptions>>
 }
 
-export const BaseKit = Extension.create<BaseKitOptions>({
+export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
   name: 'base-kit',
 
   addOptions() {

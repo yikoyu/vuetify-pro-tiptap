@@ -7,7 +7,7 @@ export interface BulletListOptions extends TiptapBulletListOptions, GeneralOptio
   button: ButtonView
 }
 
-export const BulletList = TiptapBulletList.extend<BulletListOptions>({
+export const BulletList = /* @__PURE__*/ TiptapBulletList.extend<BulletListOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

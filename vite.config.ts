@@ -4,6 +4,8 @@ import vue from '@vitejs/plugin-vue'
 import eslintPlugin from 'vite-plugin-eslint'
 import dts from 'vite-plugin-dts'
 
+import { PluginPure } from 'rollup-plugin-pure'
+
 import Components from 'unplugin-vue-components/vite'
 import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
 // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
@@ -32,6 +34,12 @@ export default defineConfig({
     eslintPlugin({
       fix: true
     }),
+    {
+      // 在打包时 rollup 无法给 tiptap 加上 PURE 标注，需要手动加上
+      ...PluginPure({
+        functions: ['Mark.create', 'Extension.create', 'Node.create']
+      })
+    },
     dts({
       insertTypesEntry: true
     })

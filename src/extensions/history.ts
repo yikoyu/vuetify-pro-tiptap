@@ -7,7 +7,7 @@ export interface HistoryOptions extends TiptapHistoryOptions, GeneralOptions {
   button: ButtonView
 }
 
-export const History = TiptapHistory.extend<HistoryOptions>({
+export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
