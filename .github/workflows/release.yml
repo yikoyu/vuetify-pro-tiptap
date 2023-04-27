@@ -15,6 +15,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        persist-credentials: false
 
     - uses: actions/cache@v3
       with:
@@ -44,4 +46,6 @@ jobs:
     - name: Release
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
       run: pnpm semantic-release
