@@ -24,6 +24,8 @@ const locale: Record<string, string> = {
   'editor.textalign.justify.tooltip': 'Justify',
   'editor.fontFamily.tooltip': 'Font family',
   'editor.fontSize.tooltip': 'Font size',
+  'editor.superscript.tooltip': 'Superscript',
+  'editor.subscript.tooltip': 'Subscript',
   'editor.bulletlist.tooltip': 'Bullet List',
   'editor.orderedlist.tooltip': 'Ordered List',
   'editor.tasklist.tooltip': 'Task List',

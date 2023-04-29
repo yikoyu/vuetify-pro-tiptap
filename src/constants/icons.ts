@@ -19,6 +19,8 @@ import {
   mdiFormatAlignJustify,
   mdiFormatFont,
   mdiFormatSize,
+  mdiFormatSubscript,
+  mdiFormatSuperscript,
   mdiFormatListBulleted,
   mdiFormatListNumbered,
   mdiFormatListCheckbox,
@@ -121,6 +123,10 @@ export interface IconsOptions extends ToolbarIconsOptions {
   right: string
   justify: string
 
+  // sub and superscript
+  subscript: string
+  superscript: string
+
   // table
   tablePlus: string
   tableRemove: string
@@ -144,6 +150,8 @@ const icons: IconsOptions = {
   textAlign: mdiFormatAlignCenter,
   fontFamily: mdiFormatFont,
   fontSize: mdiFormatSize,
+  subscript: mdiFormatSubscript,
+  superscript: mdiFormatSuperscript,
   bulletList: mdiFormatListBulleted,
   orderedList: mdiFormatListNumbered,
   taskList: mdiFormatListCheckbox,
