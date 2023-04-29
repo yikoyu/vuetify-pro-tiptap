@@ -7,11 +7,13 @@ export interface DebouncedFunc<T extends (...args: any[]) => any> {
   flush(): ReturnType<T> | undefined
 }
 
-export const getUnitWithPxAsDefault = (value?: string) => {
+export const getUnitWithPxAsDefault = (value?: string | number) => {
   if (!value) return value
 
-  const num = parseInt(value, 10)
-  const unit = value.slice(num.toString().length)
+  const _value = isNumber(value) ? String(value) : value
+
+  const num = parseInt(_value, 10)
+  const unit = _value.slice(num.toString().length)
 
   return num + (unit || 'px')
 }

@@ -10,7 +10,7 @@ import TipTapToolbar from './TiptapToolbar.vue'
 import { useLocale } from '@/locales'
 import { useContext } from '@/hooks/use-context'
 import { THROTTLE_WAIT_TIME } from '@/constants/define'
-import { getUnitWithPxAsDefault, isNumber, throttle } from '@/utils/utils'
+import { getUnitWithPxAsDefault, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -94,7 +94,7 @@ const { t } = useLocale()
 const isDark = computed<boolean>(() => props.dark || theme.current.value.dark || false)
 
 const contentDynamicStyles = computed(() => {
-  const maxWidth = getUnitWithPxAsDefault(isNumber(props.maxWidth) ? String(props.maxWidth) : props.maxWidth)
+  const maxWidth = getUnitWithPxAsDefault(props.maxWidth)
 
   const maxHeightStyle = {
     maxWidth: maxWidth,
@@ -104,8 +104,8 @@ const contentDynamicStyles = computed(() => {
   }
   if (unref(isFullscreen)) return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
 
-  const minHeight = getUnitWithPxAsDefault(isNumber(props.minHeight) ? String(props.minHeight) : props.minHeight)
-  const maxHeight = getUnitWithPxAsDefault(isNumber(props.maxHeight) ? String(props.maxHeight) : props.maxHeight)
+  const minHeight = getUnitWithPxAsDefault(props.minHeight)
+  const maxHeight = getUnitWithPxAsDefault(props.maxHeight)
 
   return {
     minHeight,
