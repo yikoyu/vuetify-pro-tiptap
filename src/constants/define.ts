@@ -34,3 +34,27 @@ export const COLORS_LIST = [
   '#E8E8E8',
   '#EEEEEE'
 ]
+
+export interface FontFamilyProps {
+  title: string
+  value: string
+  divider?: boolean
+  default?: boolean
+}
+
+export const DEFAULT_FONT_FAMILY_VALUE = 'Roboto'
+
+export const DEFAULT_FONT_FAMILY_LIST: FontFamilyProps[] = [
+  { title: 'editor.fontFamily.default', value: DEFAULT_FONT_FAMILY_VALUE, divider: true, default: true },
+  { title: 'Arial', value: 'Arial' },
+  { title: 'Arial Black', value: 'Arial Black' },
+  { title: 'Georgia', value: 'Georgia' },
+  { title: 'Impact', value: 'Impact' },
+  { title: 'Helvetica', value: 'Helvetica' },
+  { title: 'Tahoma', value: 'Tahoma' },
+  { title: 'Times New Roman', value: 'Times New Roman' },
+  { title: 'Verdana', value: 'Verdana' },
+  { title: 'Courier New', value: 'Courier New', divider: true },
+  { title: 'Monaco', value: 'Monaco' },
+  { title: 'Monospace', value: 'monospace' }
+]

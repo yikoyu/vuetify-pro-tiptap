@@ -10,6 +10,7 @@ import { Text } from '@tiptap/extension-text'
 import { Placeholder } from '@tiptap/extension-placeholder'
 import Focus from '@tiptap/extension-focus'
 import { ListItem } from '@tiptap/extension-list-item'
+import { TextStyle } from '@tiptap/extension-text-style'
 
 import type { AnyExtension } from '@tiptap/core'
 import type { DropcursorOptions } from '@tiptap/extension-dropcursor'
@@ -19,6 +20,7 @@ import type { HardBreakOptions } from '@tiptap/extension-hard-break'
 import type { PlaceholderOptions } from '@tiptap/extension-placeholder'
 import type { FocusOptions } from '@tiptap/extension-focus'
 import type { ListItemOptions } from '@tiptap/extension-list-item'
+import type { TextStyleOptions } from '@tiptap/extension-text-style'
 
 import { NODE_TYPE_MENU, defaultBubbleList, generateBubbleTypeMenu } from './components/bubble'
 import type { BubbleOptions } from './components/bubble'
@@ -35,6 +37,7 @@ export interface BaseKitOptions {
   focus: Partial<FocusOptions> | false
   listItem: Partial<ListItemOptions> | false
   bubble: Partial<BubbleOptions<BaseKitOptions>>
+  textStyle: Partial<TextStyleOptions> | false
 }
 
 export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
@@ -106,6 +109,10 @@ export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
 
     if (this.options.listItem !== false) {
       extensions.push(ListItem.configure(this.options.listItem))
+    }
+
+    if (this.options.textStyle !== false) {
+      extensions.push(TextStyle.configure(this.options.textStyle))
     }
 
     return extensions

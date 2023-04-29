@@ -37,6 +37,9 @@ importers:
       '@tiptap/extension-focus':
         specifier: ^2.0.3
         version: 2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+      '@tiptap/extension-font-family':
+        specifier: ^2.0.3
+        version: 2.0.3(@tiptap/core@2.0.3)(@tiptap/extension-text-style@2.0.3)
       '@tiptap/extension-gapcursor':
         specifier: ^2.0.3
         version: 2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
@@ -1326,6 +1329,16 @@ packages:
     dependencies:
       '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+    dev: false
+
+  /@tiptap/extension-font-family@2.0.3(@tiptap/core@2.0.3)(@tiptap/extension-text-style@2.0.3):
+    resolution: {integrity: sha512-Fg7lqoaiKfBHFzJDLa2QE4QtF/dX2KG0kV4P+Kx2s0S0Z6vfKQ7KLgOg8QBkgNsI/b1KdXN7hAefHCC/L8l7bQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/extension-text-style': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
+      '@tiptap/extension-text-style': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
   /@tiptap/extension-gapcursor@2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):

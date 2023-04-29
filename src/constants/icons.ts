@@ -17,6 +17,7 @@ import {
   mdiFormatAlignCenter,
   mdiFormatAlignRight,
   mdiFormatAlignJustify,
+  mdiFormatFont,
   mdiFormatListBulleted,
   mdiFormatListNumbered,
   mdiFormatListCheckbox,
@@ -67,6 +68,7 @@ export interface ToolbarIconsOptions {
   highlight: string
   heading: string
   textAlign: string
+  fontFamily: string
   bulletList: string
   orderedList: string
   taskList: string
@@ -138,6 +140,7 @@ const icons: IconsOptions = {
   highlight: mdiFormatColorHighlight,
   heading: mdiFormatHeaderPound,
   textAlign: mdiFormatAlignCenter,
+  fontFamily: mdiFormatFont,
   bulletList: mdiFormatListBulleted,
   orderedList: mdiFormatListNumbered,
   taskList: mdiFormatListCheckbox,

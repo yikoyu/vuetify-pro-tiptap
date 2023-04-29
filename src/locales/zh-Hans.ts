@@ -21,6 +21,8 @@ const locale: Record<string, string> = {
   'editor.textalign.center.tooltip': '居中对齐',
   'editor.textalign.right.tooltip': '右对齐',
   'editor.textalign.justify.tooltip': '两端对齐',
+  'editor.fontFamily.tooltip': '字体',
+  'editor.fontFamily.default': '默认',
   'editor.bulletlist.tooltip': '无序列表',
   'editor.orderedlist.tooltip': '有序列表',
   'editor.tasklist.tooltip': '任务列表',
