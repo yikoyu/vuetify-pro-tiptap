@@ -45,7 +45,7 @@ export interface FontFamilyProps {
 export const DEFAULT_FONT_FAMILY_VALUE = 'Roboto'
 
 export const DEFAULT_FONT_FAMILY_LIST: FontFamilyProps[] = [
-  { title: 'editor.fontFamily.default', value: DEFAULT_FONT_FAMILY_VALUE, divider: true, default: true },
+  { title: 'editor.default', value: DEFAULT_FONT_FAMILY_VALUE, divider: true, default: true },
   { title: 'Arial', value: 'Arial' },
   { title: 'Arial Black', value: 'Arial Black' },
   { title: 'Georgia', value: 'Georgia' },
