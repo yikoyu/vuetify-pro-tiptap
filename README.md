@@ -347,9 +347,9 @@ const content = ref('')
 | label | string | undefined | Sets input label |
 | hideToolbar | boolean | false | Hidden the toolbar |
 | disableToolbar | boolean | false | Disable the toolbar |
-| maxWidth | string \| boolean | undefined | Sets the maximum width for the component. |
-| minHeight | string \| boolean | undefined | Sets the minimum height for the component. |
-| maxHeight | string \| boolean | undefined | Sets the maximum height for the component. |
+| maxWidth | string \| number | undefined | Sets the maximum width for the component. |
+| minHeight | string \| number | undefined | Sets the minimum height for the component. |
+| maxHeight | string \| number | undefined | Sets the maximum height for the component. |
 | extensions | AnyExtension[] | [] | Tiptap the extensions |
 | editorClass | string \| string[] \| Record\<string, any> | undefined | Editor class |
 
@@ -370,6 +370,7 @@ const content = ref('')
 | hideMarkdownStyle | boolean | false | Hide .markdown-body class |
 | xss | boolean | true | Enable xss filter |
 | xssOptions | xss.IWhiteList | Default rule | Xss filter rule config |
+| maxWidth | string \| number | undefined | Sets the maximum width for the component. |
 
 #### Slots
 | Name | Description |

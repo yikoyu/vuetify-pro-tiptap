@@ -347,9 +347,9 @@ const content = ref('')
 | label | string | undefined | 设置输入标签 |
 | hideToolbar | boolean | false | 隐藏工具栏 |
 | disableToolbar | boolean | false | 禁用工具栏 |
-| maxWidth | string \| boolean | undefined | 输入框最大宽度 |
-| minHeight | string \| boolean | undefined | 输入框最小高度 |
-| maxHeight | string \| boolean | undefined | 输入框最大高度 |
+| maxWidth | string \| number | undefined | 输入框最大宽度 |
+| minHeight | string \| number | undefined | 输入框最小高度 |
+| maxHeight | string \| number | undefined | 输入框最大高度 |
 | extensions | AnyExtension[] | [] | tiptap插件 |
 | editorClass | string \| string[] \| Record\<string, any> | undefined | 编辑器class |
 
@@ -370,6 +370,7 @@ const content = ref('')
 | hideMarkdownStyle | boolean | false | 隐藏.markdown-body类 |
 | xss | boolean | true | 是否开启xss过滤 |
 | xssOptions | xss.IWhiteList | 内置默认规则 | xss过滤规则配置 |
+| maxWidth | string \| number | undefined | 预览最大宽度 |
 
 #### Slots
 | Name | Description |
