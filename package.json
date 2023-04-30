@@ -95,7 +95,7 @@
     "prettier": "^2.8.8",
     "rollup-plugin-pure": "^0.0.2",
     "sass": "1.60.0",
-    "semantic-release": "^21.0.1",
+    "semantic-release": "^21.0.2",
     "typescript": "^5.0.4",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.1",
