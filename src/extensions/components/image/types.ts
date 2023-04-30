@@ -12,8 +12,8 @@ export interface ImageAttrsOptions {
   alt?: string
   title?: string
   lockAspectRatio?: boolean
-  width?: number | string
-  height?: number | string
+  width?: number | string | null
+  height?: number | string | null
   display?: Display
 }
 

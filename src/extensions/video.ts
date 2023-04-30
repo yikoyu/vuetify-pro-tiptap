@@ -1,15 +1,20 @@
 import { Node } from '@tiptap/core'
 import VideoActionButton from './components/VideoActionButton.vue'
+import { getUnitWithPxAsDefault } from '@/utils/utils'
+import { VIDEO_SIZE } from '@/constants/define'
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface VideoOptions extends GeneralOptions {
   allowFullscreen: boolean
   frameborder: boolean
+  width: number | string
   HTMLAttributes: {
     [key: string]: any
   }
   button: ButtonView<VideoOptions>
 }
+
+type SetVideoOptions = { src: string; width: string | number }
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -17,7 +22,11 @@ declare module '@tiptap/core' {
       /**
        * Add an video
        */
-      setVideo: (options: { src: string }) => ReturnType
+      setVideo: (options: Partial<SetVideoOptions>) => ReturnType
+      /**
+       * Update an video
+       */
+      updateVideo: (options: Partial<SetVideoOptions>) => ReturnType
     }
   }
 }
@@ -50,6 +59,8 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
 
   atom: true,
 
+  draggable: true,
+
   addAttributes() {
     return {
       src: {
@@ -59,10 +70,10 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
         })
       },
       width: {
-        default: '100%'
-      },
-      height: {
-        default: '100%'
+        default: this.options.width,
+        renderHTML: ({ width }) => ({
+          width: getUnitWithPxAsDefault(width)
+        })
       },
       frameborder: {
         default: this.options.frameborder ? 1 : 0,
@@ -78,34 +89,50 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
   parseHTML() {
     return [
       {
-        tag: 'iframe'
+        tag: 'div[data-video] iframe'
       }
     ]
   },
 
   renderHTML({ HTMLAttributes }) {
-    const responsiveStyle = 'position: relative;overflow: hidden;display: flex;flex: 1;max-width: 640px;'
+    const { width = '100%' } = HTMLAttributes ?? {}
+
+    const iframeHTMLAttributes = {
+      ...HTMLAttributes,
+      width: '100%',
+      height: '100%'
+    }
+
+    const responsiveStyle = `position: relative;overflow: hidden;display: flex;flex: 1;max-width: ${width};`
     const responsiveSizesStyle = `flex: 1;padding-bottom: ${(9 / 16) * 100}%;`
 
-    const iframeDOM = ['iframe', HTMLAttributes]
+    const iframeDOM = ['iframe', iframeHTMLAttributes]
     const sizesDOM = ['div', { style: responsiveSizesStyle }]
     const responsiveDOM = ['div', { style: responsiveStyle }, sizesDOM, iframeDOM]
-    return ['div', this.options.HTMLAttributes, responsiveDOM]
+
+    const divAttrs = {
+      ...this.options.HTMLAttributes,
+      'data-video': ''
+    }
+
+    return ['div', divAttrs, responsiveDOM]
   },
 
   addCommands() {
     return {
       setVideo:
-        (options: { src: string }) =>
-        ({ tr, dispatch }) => {
-          const { selection } = tr
-          const node = this.type.create(options)
+        options =>
+        ({ commands }) => {
+          return commands.insertContent({
+            type: this.name,
+            attrs: options
+          })
+        },
 
-          if (dispatch) {
-            tr.replaceRangeWith(selection.from, selection.to, node)
-          }
-
-          return true
+      updateVideo:
+        options =>
+        ({ commands }) => {
+          return commands.updateAttributes(this.name, options)
         }
     }
   },
@@ -116,6 +143,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       spacer: false,
       allowFullscreen: true,
       frameborder: false,
+      width: VIDEO_SIZE['size-medium'],
       HTMLAttributes: {
         class: 'iframe-wrapper',
         style: 'display: flex;justify-content: center;'

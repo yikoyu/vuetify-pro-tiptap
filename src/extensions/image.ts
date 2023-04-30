@@ -2,6 +2,7 @@ import { Image as TiptapImage } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import ImageView from './components/image/Image.vue'
 import ImageActionButton from './components/ImageActionButton.vue'
+import { IMAGE_SIZE } from '@/constants/define'
 import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
 import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
 import type { ButtonView, GeneralOptions } from '@/type'
@@ -24,7 +25,11 @@ declare module '@tiptap/core' {
       /**
        * Add an image
        */
-      setImage: (options: SetImageAttrsOptions) => ReturnType
+      setImage: (options: Partial<SetImageAttrsOptions>) => ReturnType
+      /**
+       * Update an image
+       */
+      updateImage: (options: Partial<SetImageAttrsOptions>) => ReturnType
     }
   }
 }
@@ -43,7 +48,7 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
         default: true
       },
       width: {
-        default: '100%'
+        default: IMAGE_SIZE['size-large']
       },
       height: {
         default: null
@@ -68,6 +73,16 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
   },
   addNodeView() {
     return VueNodeViewRenderer(ImageView)
+  },
+  addCommands() {
+    return {
+      ...this.parent?.(),
+      updateImage:
+        options =>
+        ({ commands }) => {
+          return commands.updateAttributes(this.name, options)
+        }
+    }
   },
   addOptions() {
     return {

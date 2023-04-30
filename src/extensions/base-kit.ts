@@ -22,7 +22,8 @@ import type { FocusOptions } from '@tiptap/extension-focus'
 import type { ListItemOptions } from '@tiptap/extension-list-item'
 import type { TextStyleOptions } from '@tiptap/extension-text-style'
 
-import { NODE_TYPE_MENU, defaultBubbleList, generateBubbleTypeMenu } from './components/bubble'
+import { NODE_TYPE_MENU } from '@/constants/define'
+import { defaultBubbleList, generateBubbleTypeMenu } from './components/bubble'
 import type { BubbleOptions } from './components/bubble'
 
 export interface BaseKitOptions {

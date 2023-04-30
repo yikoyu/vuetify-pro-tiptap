@@ -1,3 +1,5 @@
+import type { NodeTypeMenu } from '@/extensions/components/bubble'
+
 export const THROTTLE_WAIT_TIME = 200
 
 export const IMAGE_MIN_SIZE = 20
@@ -62,3 +64,34 @@ export const DEFAULT_FONT_FAMILY_LIST: FontFamilyProps[] = [
 export const DEFAULT_FONT_SIZE_LIST = [8, 10, 12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72]
 
 export const DEFAULT_FONT_SIZE_VALUUE = 'default'
+
+export enum IMAGE_SIZE {
+  'size-small' = 200,
+  'size-medium' = 500,
+  'size-large' = '100%'
+}
+export enum VIDEO_SIZE {
+  'size-small' = 480,
+  'size-medium' = 640,
+  'size-large' = '100%'
+}
+
+export const NODE_TYPE_MENU: NodeTypeMenu = {
+  image: [
+    'float-left',
+    'float-none',
+    'float-right',
+    'divider',
+    'image-size-small',
+    'image-size-medium',
+    'image-size-large',
+    'divider',
+    'textAlign',
+    'divider',
+    'image',
+    'image-aspect-ratio',
+    'remove'
+  ],
+  text: ['bold', 'italic', 'underline', 'strike', 'divider', 'color', 'highlight', 'textAlign', 'divider', 'link'],
+  video: ['video-size-small', 'video-size-medium', 'video-size-large', 'divider', 'video', 'remove']
+}

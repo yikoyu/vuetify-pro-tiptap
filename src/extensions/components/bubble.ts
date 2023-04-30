@@ -1,12 +1,20 @@
 import { deleteSelection } from '@tiptap/pm/commands'
+import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
 import type { Editor } from '@tiptap/vue-3'
 import type { ButtonViewReturn, ButtonViewParams, ExtensionNameKeys } from '@/type'
+import type { Display } from './image/types'
 
 import ActionButton from './ActionButton.vue'
 
 type BubbleImageFloatType = 'float-left' | 'float-none' | 'float-right'
-type BubbleImageSizeType = 'size-small' | 'size-medium' | 'size-large'
-type BubbleImageType = BubbleImageFloatType | BubbleImageSizeType | 'image' | 'image-aspect-ratio' | 'remove'
+type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large'
+type BubbleImageType =
+  | BubbleImageFloatType
+  | `image-${BubbleImageOrVideoSizeType}`
+  | `video-${BubbleImageOrVideoSizeType}`
+  | 'image'
+  | 'image-aspect-ratio'
+  | 'remove'
 
 type BubbleVideoType = 'video' | 'remove'
 type BubbleType = BubbleImageType | BubbleVideoType
@@ -14,7 +22,7 @@ type BubbleAllType = BubbleType | ExtensionNameKeys | 'divider'
 
 export type NodeTypeKey = 'image' | 'text' | 'video'
 export type BubbleTypeMenu = Partial<Record<NodeTypeKey, BubbleMenuItem[]>>
-type NodeTypeMenu = Partial<Record<NodeTypeKey, BubbleAllType[]>>
+export type NodeTypeMenu = Partial<Record<NodeTypeKey, BubbleAllType[]>>
 
 export interface BubbleMenuItem extends ButtonViewReturn {
   type: BubbleAllType
@@ -30,36 +38,10 @@ export interface BubbleOptions<T> {
   button: BubbleView<T>
 }
 
-enum Size {
-  'size-small' = 200,
-  'size-medium' = 500,
-  'size-large' = '100%'
-}
-
-export const NODE_TYPE_MENU: NodeTypeMenu = {
-  image: [
-    'float-left',
-    'float-none',
-    'float-right',
-    'divider',
-    'size-small',
-    'size-medium',
-    'size-large',
-    'divider',
-    'textAlign',
-    'divider',
-    'image',
-    'image-aspect-ratio',
-    'remove'
-  ],
-  text: ['bold', 'italic', 'underline', 'strike', 'divider', 'color', 'highlight', 'textAlign', 'divider', 'link'],
-  video: ['video', 'remove']
-}
-
 const imageFloatMenus = (editor: Editor): BubbleMenuItem[] => {
   const types: BubbleImageFloatType[] = ['float-left', 'float-none', 'float-right']
   const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = ['formatFloatLeft', 'formatFloatNone', 'formatFloatRight']
-  const display = ['left', 'inline', 'right']
+  const display: Display[] = ['left', 'inline', 'right']
 
   return types.map((float, i) => ({
     type: float,
@@ -67,24 +49,40 @@ const imageFloatMenus = (editor: Editor): BubbleMenuItem[] => {
     componentProps: {
       tooltip: `editor.image.${float.replace('-', '.')}.tooltip`,
       icon: icons[i],
-      action: () => editor.commands.updateAttributes('image', { display: display[i] }),
+      action: () => editor.commands.updateImage({ display: display[i] }),
       isActive: () => editor.isActive('image', { display: display[i] })
     }
   }))
 }
 
 const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
-  const types: BubbleImageSizeType[] = ['size-small', 'size-medium', 'size-large']
+  const types: BubbleImageOrVideoSizeType[] = ['size-small', 'size-medium', 'size-large']
   const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = ['sizeS', 'sizeM', 'sizeL']
 
   return types.map((size, i) => ({
-    type: size,
+    type: `image-${size}`,
     component: ActionButton,
     componentProps: {
-      tooltip: `editor.image.${size.replace('-', '.')}.tooltip`,
+      tooltip: `editor.${size.replace('-', '.')}.tooltip`,
       icon: icons[i],
-      action: () => editor.commands.updateAttributes('image', { width: Size[size], height: null }),
-      isActive: () => editor.isActive('image', { width: Size[size] })
+      action: () => editor.commands.updateImage({ width: IMAGE_SIZE[size], height: null }),
+      isActive: () => editor.isActive('image', { width: IMAGE_SIZE[size] })
+    }
+  }))
+}
+
+const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
+  const types: BubbleImageOrVideoSizeType[] = ['size-small', 'size-medium', 'size-large']
+  const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = ['sizeS', 'sizeM', 'sizeL']
+
+  return types.map((size, i) => ({
+    type: `video-${size}`,
+    component: ActionButton,
+    componentProps: {
+      tooltip: `editor.${size.replace('-', '.')}.tooltip`,
+      icon: icons[i],
+      action: () => editor.commands.updateVideo({ width: VIDEO_SIZE[size] }),
+      isActive: () => editor.isActive('video', { width: VIDEO_SIZE[size] })
     }
   }))
 }
@@ -92,6 +90,7 @@ const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
 export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
   ...imageFloatMenus(editor),
   ...imageSizeMenus(editor),
+  ...videoSizeMenus(editor),
   {
     type: 'image-aspect-ratio',
     component: ActionButton,
@@ -100,7 +99,7 @@ export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
       icon: 'aspectRatio',
       action: () => {
         const isLock = editor.isActive('image', { lockAspectRatio: true })
-        editor.commands.updateAttributes('image', {
+        editor.commands.updateImage({
           lockAspectRatio: !isLock,
           height: isLock ? undefined : null
         })
