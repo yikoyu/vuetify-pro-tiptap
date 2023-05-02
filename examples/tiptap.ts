@@ -21,6 +21,7 @@ import {
   Image,
   Video,
   Table,
+  Emoji,
   Blockquote,
   HorizontalRule,
   Code,
@@ -72,7 +73,11 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
       }
     }),
     Video,
-    Table.configure({ divider: true }),
+    Table,
+    Emoji.configure({
+      divider: true
+      // set: 'apple'
+    }),
     Blockquote,
     HorizontalRule,
     CodeBlock.configure({ divider: true }),

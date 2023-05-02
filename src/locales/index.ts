@@ -5,9 +5,11 @@ import mitt, { EventType } from '@/utils/mitt'
 import zhHans from './zh-Hans'
 import en from './en'
 
+type Message = Record<string, any>
+
 interface LocaleInterface {
   lang: string
-  message: Record<string, Record<string, string>>
+  message: Record<string, Message>
 }
 
 interface MittEvents extends Record<EventType, unknown> {
@@ -42,15 +44,15 @@ class Locale {
     this.emitter.emit('lang', lang)
   }
 
-  get message(): Record<string, Record<string, string>> {
+  get message(): Record<string, Message> {
     return DEFAULT_LOCALE.message
   }
 
-  set message(message: Record<string, Record<string, string>>) {
+  set message(message: Record<string, Message>) {
     DEFAULT_LOCALE.message = message
   }
 
-  loadLangMessage(lang: string): Record<string, string> {
+  loadLangMessage(lang: string): Message {
     return this.message[lang]
   }
 
@@ -94,6 +96,14 @@ const locale = new Locale()
 
 const useLocale = () => {
   const lang = ref(DEFAULT_LOCALE.lang)
+  const message = computed(() => {
+    const msg = locale.loadLangMessage(unref(lang))
+    if (!msg) {
+      return DEFAULT_LOCALE.message[DEFAULT_LOCALE.lang]
+    }
+
+    return msg
+  })
 
   const t = computed(() => {
     return locale.buildI18nHandler(unref(lang))
@@ -111,6 +121,7 @@ const useLocale = () => {
 
   return {
     lang,
+    message,
     t
   }
 }

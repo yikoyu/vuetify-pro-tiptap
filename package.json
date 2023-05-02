@@ -83,6 +83,7 @@
     "@vitejs/plugin-vue": "^4.1.0",
     "commitizen": "^4.3.0",
     "conventional-changelog-conventionalcommits": "^5.0.0",
+    "emoji-mart": "^5.5.2",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-define-config": "^1.18.0",

@@ -1,4 +1,4 @@
-const locale: Record<string, string> = {
+const editor_locale: Record<string, string> = {
   'editor.remove': 'Remove',
   'editor.words': 'WORDS',
   'editor.characters': 'CHARACTERS',
@@ -65,6 +65,7 @@ const locale: Record<string, string> = {
   'editor.table.menu.delete_row': 'Delete Row',
   'editor.table.menu.merge_or_split_cells': 'Merge Or Split Cells',
   'editor.table.menu.delete_table': 'Delete Table',
+  'editor.emoji.tooltip': 'Emoji',
   'editor.blockquote.tooltip': 'Blockquote',
   'editor.horizontalrule.tooltip': 'Horizontal Rule',
   'editor.code.tooltip': 'Code',
@@ -76,4 +77,40 @@ const locale: Record<string, string> = {
   'editor.fullscreen.tooltip.exit': 'Fullscreen Exit'
 }
 
-export default locale
+// copy to https://github.com/missive/emoji-mart/blob/main/packages/emoji-mart-data/i18n/en.json
+const emoji_locale = {
+  search: 'Search',
+  search_no_results_1: 'Oh no!',
+  search_no_results_2: 'That emoji couldn’t be found',
+  pick: 'Pick an emoji…',
+  add_custom: 'Add custom emoji',
+  categories: {
+    activity: 'Activity',
+    custom: 'Custom',
+    flags: 'Flags',
+    foods: 'Food & Drink',
+    frequent: 'Frequently used',
+    nature: 'Animals & Nature',
+    objects: 'Objects',
+    people: 'Smileys & People',
+    places: 'Travel & Places',
+    search: 'Search Results',
+    symbols: 'Symbols'
+  },
+  skins: {
+    choose: 'Choose default skin tone',
+    '1': 'Default',
+    '2': 'Light',
+    '3': 'Medium-Light',
+    '4': 'Medium',
+    '5': 'Medium-Dark',
+    '6': 'Dark'
+  }
+}
+
+const all_locale = {
+  ...editor_locale,
+  emoji_locale
+}
+
+export default all_locale

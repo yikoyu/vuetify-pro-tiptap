@@ -182,6 +182,9 @@ importers:
       conventional-changelog-conventionalcommits:
         specifier: ^5.0.0
         version: 5.0.0
+      emoji-mart:
+        specifier: ^5.5.2
+        version: 5.5.2
       eslint:
         specifier: ^8.39.0
         version: 8.39.0
@@ -2728,6 +2731,10 @@ packages:
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+    dev: true
+
+  /emoji-mart@5.5.2:
+    resolution: {integrity: sha512-Sqc/nso4cjxhOwWJsp9xkVm8OF5c+mJLZJFoFfzRuKO+yWiN7K8c96xmtughYb0d/fZ8UC6cLIQ/p4BR6Pv3/A==}
     dev: true
 
   /emoji-regex@8.0.0:

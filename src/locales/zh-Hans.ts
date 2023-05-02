@@ -1,4 +1,4 @@
-const locale: Record<string, string> = {
+const editor_locale: Record<string, string> = {
   'editor.remove': '删除',
   'editor.words': '单词',
   'editor.characters': '字符',
@@ -65,6 +65,7 @@ const locale: Record<string, string> = {
   'editor.table.menu.delete_row': '删除行',
   'editor.table.menu.merge_or_split_cells': '合并或拆分单元格',
   'editor.table.menu.delete_table': '删除表格',
+  'editor.emoji.tooltip': '表情',
   'editor.blockquote.tooltip': '引用',
   'editor.horizontalrule.tooltip': '分隔线',
   'editor.code.tooltip': '代码',
@@ -76,4 +77,40 @@ const locale: Record<string, string> = {
   'editor.fullscreen.tooltip.exit': '退出全屏'
 }
 
-export default locale
+// copy to https://github.com/missive/emoji-mart/blob/main/packages/emoji-mart-data/i18n/zh.json
+const emoji_locale = {
+  search: '搜索',
+  search_no_results_1: '哦不！',
+  search_no_results_2: '没有找到相关表情',
+  pick: '选择一个表情…',
+  add_custom: '添加自定义表情',
+  categories: {
+    activity: '活动',
+    custom: '自定义',
+    flags: '旗帜',
+    foods: '食物与饮品',
+    frequent: '最近使用',
+    nature: '动物与自然',
+    objects: '物品',
+    people: '表情与角色',
+    places: '旅行与景点',
+    search: '搜索结果',
+    symbols: '符号'
+  },
+  skins: {
+    choose: '选择默认肤色',
+    '1': '默认',
+    '2': '白色',
+    '3': '偏白',
+    '4': '中等',
+    '5': '偏黑',
+    '6': '黑色'
+  }
+}
+
+const all_locale = {
+  ...editor_locale,
+  emoji_locale
+}
+
+export default all_locale

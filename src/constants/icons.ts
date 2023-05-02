@@ -42,6 +42,7 @@ import {
   mdiTableRowPlusBefore,
   mdiTableRowRemove,
   mdiTableMergeCells,
+  mdiEmoticonOutline,
   mdiFormatQuoteOpen,
   mdiMinus,
   mdiCodeTags,
@@ -83,6 +84,7 @@ export interface ToolbarIconsOptions {
   image: string
   video: string
   table: string
+  emoji: string
   blockquote: string
   horizontalRule: string
   code: string
@@ -162,6 +164,7 @@ const icons: IconsOptions = {
   image: mdiImagePlus,
   video: mdiVideoPlus,
   table: mdiTable,
+  emoji: mdiEmoticonOutline,
   blockquote: mdiFormatQuoteOpen,
   horizontalRule: mdiMinus,
   code: mdiCodeTags,
