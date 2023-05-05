@@ -1,3 +1,64 @@
+## [2.0.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.3...v2.0.0) (2023-05-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **extensions:** 废弃 toolbar 属性，改用 extensions 属性
+废弃全局 config 属性，改用全局 extensions 属性
+* no support vuetify2.x
+
+### Features
+
+* **extensions:** add FontFamily extension ([2663b95](https://github.com/yikoyu/vuetify-pro-tiptap/commit/2663b954457bb56420c5faf4528d019dd67ac862))
+* **extensions:** add FontSize extension ([ef9d869](https://github.com/yikoyu/vuetify-pro-tiptap/commit/ef9d8696713a834ee6c45a4e484d0ac420680c09))
+* **extensions:** add superscript extension ([649aec0](https://github.com/yikoyu/vuetify-pro-tiptap/commit/649aec0d65e066be936b4abed517eaaa927887bc))
+* **extensions:** 新增导出 defaultBubbleList ([96a8828](https://github.com/yikoyu/vuetify-pro-tiptap/commit/96a8828ca5be917e8ea4dfd45a63acaa65afbe63))
+
+
+### Bug Fixes
+
+* **bubble-menu:** 不打包 tiptap 内容，无法显示tiptap ([9c94e77](https://github.com/yikoyu/vuetify-pro-tiptap/commit/9c94e772c3103ed816000d5a54928ee773224291))
+* **BubbleMenu:** 去除头尾的 divider ，bubble 为空 BubbleMenu 不显示 ([f2e4704](https://github.com/yikoyu/vuetify-pro-tiptap/commit/f2e4704edcb866da6ae7f9b0c8e680a815b53dbd))
+* **extension:** basekit 以外的的 addExtensions 支持使用 options配置 ([cd2c69e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/cd2c69ed3f8f31557b1af2eb00b064a8a6722898))
+* **icon:** 修复使用icon图标不需要配置 ([f67d9e9](https://github.com/yikoyu/vuetify-pro-tiptap/commit/f67d9e9c55a945e8727a46462537aaf648d6602f))
+* **icon:** 修复部分icon加载失败 ([4434145](https://github.com/yikoyu/vuetify-pro-tiptap/commit/443414524ad0286fe6a863b733757f3e861490eb))
+* **icon:** 退出全屏按钮不显示 ([da4920f](https://github.com/yikoyu/vuetify-pro-tiptap/commit/da4920f61fccd39228759c873c6292f6c21f0803))
+* **image:** 修复 upload 配置无效 ([0071529](https://github.com/yikoyu/vuetify-pro-tiptap/commit/0071529847bc81f6cbbdfa2c87df620b8a8c7671))
+* **install:** 修改安装失败提示文案，添加 GlobalComponents 全局提示 ([31a3d74](https://github.com/yikoyu/vuetify-pro-tiptap/commit/31a3d743ef146f846b85571f2318e947c197ec32))
+* **locale:** 修复中文错别字 ([bd6cb46](https://github.com/yikoyu/vuetify-pro-tiptap/commit/bd6cb46432dde57c454ec6bd7b9d77aa6e7957d5))
+* **placeholder:** placeholder 属性不生效 ([53ebebb](https://github.com/yikoyu/vuetify-pro-tiptap/commit/53ebebb7f5a97b0aede6d0c4fc5d78ed776629b2)), closes [#114](https://github.com/yikoyu/vuetify-pro-tiptap/issues/114)
+* **TiptapToolbar:** click事件无效 ([701de77](https://github.com/yikoyu/vuetify-pro-tiptap/commit/701de77334770780da78eb1439b768cd0917a5b3))
+* **Toolbar:** 修复输入卡顿 ([f489680](https://github.com/yikoyu/vuetify-pro-tiptap/commit/f489680133b5c5155b4e6ea1f9e78c4f1e7d82ba)), closes [#111](https://github.com/yikoyu/vuetify-pro-tiptap/issues/111)
+* **VuetifyTiptap:** title在dark模式颜色问题 ([cdf74f9](https://github.com/yikoyu/vuetify-pro-tiptap/commit/cdf74f9511f29c5092eeff4a2462af0481ca60b9))
+* **VuetifyTiptap:** toolbarRef获取为undefined问题 ([f8c2d20](https://github.com/yikoyu/vuetify-pro-tiptap/commit/f8c2d20ced2b8cab1b35942faa55ba4cc3bd79b9))
+* **VuetifyTiptap:** 低版本 vite 编译失败 ([b5ce05a](https://github.com/yikoyu/vuetify-pro-tiptap/commit/b5ce05ad0fff8d2cb6604aff999210a34184e3e6))
+* **VuetifyTiptap:** 卡片light模式颜色问题修复 ([d258f05](https://github.com/yikoyu/vuetify-pro-tiptap/commit/d258f05b65d1f5ab603a736c34652731fb40989c))
+
+
+### Performance
+
+* **extensions:** support tree-shaking ([e09d9f8](https://github.com/yikoyu/vuetify-pro-tiptap/commit/e09d9f8b541c506acfc031c1ce5d8c7da45bff15))
+* 减少生命周期的使用，改为 watchEffect ([24b6e80](https://github.com/yikoyu/vuetify-pro-tiptap/commit/24b6e805e72f7f342f0e75018c5e70e8c06514a9))
+
+
+### Refactor
+
+* **deps:** @tiptap/* move to dependencies ([02ae702](https://github.com/yikoyu/vuetify-pro-tiptap/commit/02ae7023edbf79d96f3c351ddbbd886d457446d0))
+* **extensions:** video 和 image 修改 ([1d30398](https://github.com/yikoyu/vuetify-pro-tiptap/commit/1d30398fb3af3615889b523e6fabadffa1d976fa))
+* **extensions:** 修改tiptap引入 ([cda22be](https://github.com/yikoyu/vuetify-pro-tiptap/commit/cda22be5adf09e2e478018841b9e5eaf3a4d420d))
+* **extensions:** 导出方式由 export default 改为 export ([89d3ad8](https://github.com/yikoyu/vuetify-pro-tiptap/commit/89d3ad8211c23fc48c05acde9fe6246d85f60611))
+* **extensions:** 重构 extensions 模块 ([#115](https://github.com/yikoyu/vuetify-pro-tiptap/issues/115)) ([46942ea](https://github.com/yikoyu/vuetify-pro-tiptap/commit/46942ea6f47a6a2c08ca73d63c6200d2aedd5d79))
+* **heading:** paragraph 从 heading 移至 base-kit ([fe752bf](https://github.com/yikoyu/vuetify-pro-tiptap/commit/fe752bf44cc1d4a6b8cf4d3aee854bf39261fea3))
+* **icon:** icon统一由getIcon来处理 ([fc25c78](https://github.com/yikoyu/vuetify-pro-tiptap/commit/fc25c782e9ba0c31a2cd4f59e4307bf450d45271))
+* **image:** addStorage改为addOptions ([9b534ce](https://github.com/yikoyu/vuetify-pro-tiptap/commit/9b534ce6a91f5adbb3167635c99355f0e3202ea5))
+* **Image:** 使用tiptap自己提供的nodeViewProps ([4f4263b](https://github.com/yikoyu/vuetify-pro-tiptap/commit/4f4263b8a4fa8f274ff6407cdab679f370fa9ad5))
+* **locales:** 修改可复用文案 ([7693056](https://github.com/yikoyu/vuetify-pro-tiptap/commit/76930560bcf90d141427f2b1ef8f2bfdb713f35a))
+* support vue3.x and vuetify3.x ([3b433c3](https://github.com/yikoyu/vuetify-pro-tiptap/commit/3b433c3d457ddf77c6cd84ba93e4612e146e96b3))
+* **TiptapToolbar:** 重构toolbar提升代码可读性 ([09b2074](https://github.com/yikoyu/vuetify-pro-tiptap/commit/09b20749db128e201a7950118fc53ac64ecff436))
+* **Toolbar:** icon和locale优化 ([61eb526](https://github.com/yikoyu/vuetify-pro-tiptap/commit/61eb526fb5f84854a05646ffa954bdd2f26e4d31))
+* **utils:** 改进 getUnitWithPxAsDefault 方法，支持number ([8474e76](https://github.com/yikoyu/vuetify-pro-tiptap/commit/8474e76ea32a26291d3fe86a72974a36607bc672))
+* 全局状态换成reactive ([815c534](https://github.com/yikoyu/vuetify-pro-tiptap/commit/815c53423c75eda57c8995d1097f7ca094c69c16))
+
 ## [1.4.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.2...v1.4.3) (2022-07-28)
 
 
