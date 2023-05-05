@@ -14,6 +14,8 @@ English | [中文](./README.zh-CN.md)
 ## Demo
 👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
 
+👾[Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-codesandbox-4pvcqm)
+
 ## Features
 - Use [vuetify](https://github.com/vuetifyjs/vuetify) components
 - Many out of box [extension](#extensions) (welcome to submit an issue for feature request)

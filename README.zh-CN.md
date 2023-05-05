@@ -14,6 +14,8 @@
 ## Demo
 👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
 
+👾[Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-codesandbox-4pvcqm)
+
 ## 特色
 - 使用 [vuetify](https://github.com/vuetifyjs/vuetify) 组件
 - 许多开箱即用的 [extension](#extensions) (欢迎提交 issue 为新的 feature 留下建议)
