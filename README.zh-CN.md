@@ -16,6 +16,7 @@
 
 ## 特色
 - 使用 [vuetify](https://github.com/vuetifyjs/vuetify) 组件
+- 许多开箱即用的 [extension](#extensions) (欢迎提交 issue 为新的 feature 留下建议)
 - 支持 markdown 语法
 - TypeScript 支持
 - 支持 i18n
@@ -42,7 +43,7 @@ npm i vuetify-pro-tiptap -S
 ```TypeScript
 import { markRaw } from 'vue'
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
-import { BaseKit, Bold, Italic, Underline, Strike, Color, Highlight, Heading, TextAlign, Bulletlist, Orderedlist, Tasklist, Indent, Link, Image, Video, Table, Blockquote, HorizontalRule, Code, Codeblock, Clear, Fullscreen, History } from 'vuetify-pro-tiptap'
+import { BaseKit, Bold, Italic, Underline, Strike, Color, Highlight, Heading, TextAlign, FontFamily, FontSize, SubAndSuperScript, BulletList, OrderedList, TaskList, Indent, Link, Image, Video, Table, Blockquote, HorizontalRule, Code, CodeBlock, Clear, Fullscreen, History } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
 import SelectImage from './components/SelectImage.vue'
 
@@ -65,26 +66,31 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     Code.configure({ divider: true }),
     Heading,
     TextAlign,
+    FontFamily,
+    FontSize,
     Color,
-    Highlight,
+    Highlight.configure({ divider: true }),
+    SubAndSuperScript.configure({ divider: true }),
     Clear.configure({ divider: true }),
-    Bulletlist,
-    Orderedlist,
-    Tasklist,
+    BulletList,
+    OrderedList,
+    TaskList,
     Indent.configure({ divider: true }),
     Link,
     Image.configure({
       imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],
-      hiddenTabs: ['upload'],
-      upload(file) {
-        return Promise.resolve(/** Post upload URL */)
+      // hiddenTabs: ['upload'],
+      upload(file: File) {
+        const url = URL.createObjectURL(file)
+        console.log('mock upload api :>> ', url)
+        return Promise.resolve(url)
       }
     }),
     Video,
     Table.configure({ divider: true }),
     Blockquote,
     HorizontalRule,
-    Codeblock.configure({ divider: true }),
+    CodeBlock.configure({ divider: true }),
     History.configure({ divider: true }),
     Fullscreen
   ]
@@ -175,6 +181,41 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
   ]
 })
 ```
+
+## <span id="extensions">Extensions</span>
+
+你可以只使用需要的 extension，对应的菜单按钮将会按照你声明的顺序被添加。
+
+所有可用的 extensions：
+
+- [`BaseKit`](./src/extensions/base-kit.ts)
+- [`Bold`](./src/extensions/bold.ts)
+- [`Italic`](./src/extensions/italic.ts)
+- [`Underline`](./src/extensions/underline.ts)
+- [`Strike`](./src/extensions/strike.ts)
+- [`Color`](./src/extensions/color.ts)
+- [`Highlight`](./src/extensions/highlight.ts)
+- [`Heading`](./src/extensions/heading.ts)
+- [`TextAlign`](./src/extensions/text-align.ts)
+- [`FontFamily`](./src/extensions/font-family.ts)
+- [`FontSize`](./src/extensions/font-size.ts)
+- [`SubAndSuperScript`](./src/extensions/subscript.ts)
+- [`BulletList`](./src/extensions/bullet-list.ts)
+- [`OrderedList`](./src/extensions/ordered-list.ts)
+- [`TaskList`](./src/extensions/task-list.ts)
+- [`Indent`](./src/extensions/indent.ts)
+- [`Link`](./src/extensions/link.ts)
+- [`Image`](./src/extensions/image.ts)
+- [`Video`](./src/extensions/video.ts)
+- [`Table`](./src/extensions/table.ts)
+- [`Emoji`](./src/extensions/emoji.ts)
+- [`Blockquote`](./src/extensions/blockquote.ts)
+- [`HorizontalRule`](./src/extensions/horizontal-rule.ts)
+- [`Code`](./src/extensions/code.ts)
+- [`CodeBlock`](./src/extensions/code-block.ts)
+- [`Clear`](./src/extensions/clear.ts)
+- [`Fullscreen`](./src/extensions/fullscreen.ts)
+- [`History`](./src/extensions/history.ts)
 
 ## 自定义 extension
 
