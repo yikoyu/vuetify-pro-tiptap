@@ -1,4 +1,4 @@
-const locale: Record<string, string> = {
+const editor_locale: Record<string, string> = {
   'editor.remove': 'Remove',
   'editor.words': 'WORDS',
   'editor.characters': 'CHARACTERS',
@@ -65,6 +65,7 @@ const locale: Record<string, string> = {
   'editor.table.menu.delete_row': 'Delete Row',
   'editor.table.menu.merge_or_split_cells': 'Merge Or Split Cells',
   'editor.table.menu.delete_table': 'Delete Table',
+  'editor.emoji.tooltip': 'Emoji',
   'editor.blockquote.tooltip': 'Blockquote',
   'editor.horizontalrule.tooltip': 'Horizontal Rule',
   'editor.code.tooltip': 'Code',
@@ -76,4 +77,33 @@ const locale: Record<string, string> = {
   'editor.fullscreen.tooltip.exit': 'Fullscreen Exit'
 }
 
-export default locale
+// copy to https://github.com/joeattardi/picmo/blob/main/packages/picmo/src/i18n/lang-en.ts
+const emoji_locale = {
+  'categories.activities': 'Activities',
+  'categories.animals-nature': 'Animals & Nature',
+  'categories.custom': 'Custom',
+  'categories.flags': 'Flags',
+  'categories.food-drink': 'Food & Drink',
+  'categories.objects': 'Objects',
+  'categories.people-body': 'People & Body',
+  'categories.recents': 'Recently Used',
+  'categories.smileys-emotion': 'Smileys & Emotion',
+  'categories.symbols': 'Symbols',
+  'categories.travel-places': 'Travel & Places',
+  'error.load': 'Failed to load emojis',
+  'recents.clear': 'Clear recent emojis',
+  'recents.none': "You haven't selected any emojis yet.",
+  retry: 'Try again',
+  'search.clear': 'Clear search',
+  'search.error': 'Failed to search emojis',
+  'search.notFound': 'No emojis found',
+  search: 'Search emojis...'
+}
+
+const all_locale = {
+  ...editor_locale,
+  emoji_locale,
+  emojibase: 'en' // emoji data and message i18n
+}
+
+export default all_locale

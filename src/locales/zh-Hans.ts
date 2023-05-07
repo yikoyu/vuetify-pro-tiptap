@@ -1,4 +1,4 @@
-const locale: Record<string, string> = {
+const editor_locale: Record<string, string> = {
   'editor.remove': '删除',
   'editor.words': '单词',
   'editor.characters': '字符',
@@ -65,6 +65,7 @@ const locale: Record<string, string> = {
   'editor.table.menu.delete_row': '删除行',
   'editor.table.menu.merge_or_split_cells': '合并或拆分单元格',
   'editor.table.menu.delete_table': '删除表格',
+  'editor.emoji.tooltip': '表情',
   'editor.blockquote.tooltip': '引用',
   'editor.horizontalrule.tooltip': '分隔线',
   'editor.code.tooltip': '代码',
@@ -76,4 +77,32 @@ const locale: Record<string, string> = {
   'editor.fullscreen.tooltip.exit': '退出全屏'
 }
 
-export default locale
+const emoji_locale = {
+  'categories.activities': '活动',
+  'categories.animals-nature': '动物与自然',
+  'categories.custom': '自定义',
+  'categories.flags': '旗帜',
+  'categories.food-drink': '食物与饮品',
+  'categories.objects': '物品',
+  'categories.people-body': '表情与角色',
+  'categories.recents': '最近使用',
+  'categories.smileys-emotion': '笑脸与情感',
+  'categories.symbols': '符号',
+  'categories.travel-places': '旅行与景点',
+  'error.load': '加载表情失败',
+  'recents.clear': '清除最近使用的表情',
+  'recents.none': '你还没有选择过任何表情',
+  retry: '再试一次',
+  'search.clear': '清空搜索',
+  'search.error': '搜索表情失败',
+  'search.notFound': '没有找到表情',
+  search: '搜索表情...'
+}
+
+const all_locale = {
+  ...editor_locale,
+  emoji_locale,
+  emojibase: 'zh' // emoji data and message i18n
+}
+
+export default all_locale
