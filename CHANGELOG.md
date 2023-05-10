@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.0.0...v2.0.1) (2023-05-10)
+
+
+### Bug Fixes
+
+* **types:** 修复 app.use 时类型错误 ([f8757ff](https://github.com/yikoyu/vuetify-pro-tiptap/commit/f8757ff7f7885aa064cd88cd0b769bf764452776))
+
 ## [2.0.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v1.4.3...v2.0.0) (2023-05-05)
 
 
