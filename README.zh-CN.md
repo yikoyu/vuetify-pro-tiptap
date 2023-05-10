@@ -420,3 +420,22 @@ const content = ref('')
 | ---- | ---- |
 | before | 在顶部添加内容 |
 | after | 在底部添加内容 |
+
+## 🏗 贡献代码
+
+1. 🍴Fork it
+2. 🔀Create your branch: `git checkout -b your-branch`
+3. 🎨Make your changes
+4. 📝Commit your changes with [Semantic Commit Messages (recommended)](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
+5. 🚀Push to the branch: `git push origin your-branch`
+6. 🎉Submit a PR to `master` branch
+
+## 📄 许可证
+
+[MIT](./LICENSE)
+
+## 🌹 鸣谢
+
+- [vuetify](https://github.com/vuetifyjs/vuetify)
+- [tiptap](https://github.com/scrumpy/tiptap)
+- [element-tiptap](https://github.com/Leecason/element-tiptap)

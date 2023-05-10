@@ -421,3 +421,22 @@ const content = ref('')
 | ---- | ---- |
 | before | Add content at the before |
 | after | Add content at the after |
+
+## 🏗 Contributing
+
+1. 🍴Fork it
+2. 🔀Create your branch: `git checkout -b your-branch`
+3. 🎨Make your changes
+4. 📝Commit your changes with [Semantic Commit Messages (recommended)](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
+5. 🚀Push to the branch: `git push origin your-branch`
+6. 🎉Submit a PR to `develop` branch
+
+## 📄 License
+
+[MIT](./LICENSE)
+
+## Thanks
+
+- [vuetify](https://github.com/vuetifyjs/vuetify)
+- [tiptap](https://github.com/scrumpy/tiptap)
+- [element-tiptap](https://github.com/Leecason/element-tiptap)
