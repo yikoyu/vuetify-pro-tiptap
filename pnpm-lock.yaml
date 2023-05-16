@@ -213,8 +213,8 @@ importers:
         specifier: ^2.8.8
         version: 2.8.8
       rollup-plugin-pure:
-        specifier: ^0.0.2
-        version: 0.0.2(rollup@3.21.5)
+        specifier: ^0.1.1
+        version: 0.1.1(rollup@3.21.5)
       sass:
         specifier: 1.60.0
         version: 1.60.0
@@ -5144,13 +5144,13 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-pure@0.0.2(rollup@3.21.5):
-    resolution: {integrity: sha512-tWFiV+fqoG+kHJYjItLnjxJNadcc9+qwJOqCiHpqv/QNfByyIxvf6oeKEbwIT5SWPt79tkU5ngwZ1b+oZ7X81g==}
+  /rollup-plugin-pure@0.1.1(rollup@3.21.5):
+    resolution: {integrity: sha512-LjQ4q4jKB6yzedRa3DxQzo6T2CW+WJWmzn8gkgmaNDtBFsL1nm7LIyvxKEROauuorYIk6QnWxWSRb09G9Z5CGg==}
     peerDependencies:
       rollup: ^3.0.0
     dependencies:
       '@rollup/pluginutils': 5.0.2(rollup@3.21.5)
-      magic-string: 0.29.0
+      magic-string: 0.30.0
       rollup: 3.21.5
       strip-literal: 1.0.1
     dev: true
