@@ -1,3 +1,15 @@
+## [2.0.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.0.1...v2.0.2) (2023-05-27)
+
+
+### Bug Fixes
+
+* cursor position drifts to the end ([6f16d22](https://github.com/yikoyu/vuetify-pro-tiptap/commit/6f16d22a50a3504f17e475c6fef8c40320eb4583)), closes [#132](https://github.com/yikoyu/vuetify-pro-tiptap/issues/132)
+
+
+### Performance
+
+* **theme:** improve theme switching ([8b20b68](https://github.com/yikoyu/vuetify-pro-tiptap/commit/8b20b681bdb19f8dbd68aaa2f13577d31f149667))
+
 ## [2.0.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.0.0...v2.0.1) (2023-05-10)
 
 
