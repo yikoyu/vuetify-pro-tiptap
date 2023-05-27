@@ -1,6 +1,10 @@
 import type { NodeTypeMenu } from '@/extensions/components/bubble'
 
-export const THROTTLE_WAIT_TIME = 200
+export const EDITOR_UPDATE_THROTTLE_WAIT_TIME = 200
+
+// watch throttling time must be less than the update time
+// otherwise the cursor position will reach the end
+export const EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME = EDITOR_UPDATE_THROTTLE_WAIT_TIME - 80
 
 export const IMAGE_MIN_SIZE = 20
 export const IMAGE_MAX_SIZE = 100000

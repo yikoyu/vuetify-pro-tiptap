@@ -9,7 +9,7 @@ import TipTapToolbar from './TiptapToolbar.vue'
 
 import { useLocale } from '@/locales'
 import { useContext } from '@/hooks/use-context'
-import { THROTTLE_WAIT_TIME } from '@/constants/define'
+import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
 import { getUnitWithPxAsDefault, throttle, isBoolean } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
@@ -78,11 +78,11 @@ const editor = new Editor({
       }
 
       return false
-    }, THROTTLE_WAIT_TIME)
+    }, EDITOR_UPDATE_THROTTLE_WAIT_TIME)
   },
   onUpdate: throttle<OnUpdate>(({ editor }) => {
     emit('update:modelValue', editor.getHTML())
-  }, THROTTLE_WAIT_TIME),
+  }, EDITOR_UPDATE_THROTTLE_WAIT_TIME),
   extensions: unref(sortExtensions),
   autofocus: false,
   editable: !props.disabled,
@@ -120,20 +120,23 @@ const contentDynamicStyles = computed(() => {
 })
 
 const onValueChange = throttle((val: string) => {
-  if (!unref(editor)) return
+  if (!editor) return
 
-  const html = unref(editor)?.getHTML()
+  const html = editor.getHTML()
+
   if (html === val) return
 
-  unref(editor)?.commands.setContent(val)
-}, THROTTLE_WAIT_TIME)
+  const { from, to } = editor.state.selection
+  editor.commands.setContent(val, false)
+  editor.commands.setTextSelection({ from, to })
+}, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME)
 
-const onDisabledChange = (val: boolean) => unref(editor)?.setEditable(!val)
+const onDisabledChange = (val: boolean) => editor?.setEditable(!val)
 
 watch(() => props.modelValue, onValueChange)
 watch(() => props.disabled, onDisabledChange)
 
-onUnmounted(() => unref(editor)?.destroy())
+onUnmounted(() => editor?.destroy())
 </script>
 
 <template>

@@ -161,9 +161,6 @@ importers:
       '@semantic-release/release-notes-generator':
         specifier: ^10.0.3
         version: 10.0.3(semantic-release@21.0.2)
-      '@types/lodash.merge':
-        specifier: ^4.6.7
-        version: 4.6.7
       '@types/lodash.throttle':
         specifier: ^4.1.7
         version: 4.1.7
@@ -203,9 +200,6 @@ importers:
       lint-staged:
         specifier: ^13.2.2
         version: 13.2.2
-      lodash.merge:
-        specifier: ^4.6.2
-        version: 4.6.2
       lodash.throttle:
         specifier: ^4.1.1
         version: 4.1.1
@@ -1700,12 +1694,6 @@ packages:
 
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
-    dev: true
-
-  /@types/lodash.merge@4.6.7:
-    resolution: {integrity: sha512-OwxUJ9E50gw3LnAefSHJPHaBLGEKmQBQ7CZe/xflHkyy/wH2zVyEIAKReHvVrrn7zKdF58p16We9kMfh7v0RRQ==}
-    dependencies:
-      '@types/lodash': 4.14.182
     dev: true
 
   /@types/lodash.throttle@4.1.7:
