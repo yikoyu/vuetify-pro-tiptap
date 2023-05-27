@@ -13,12 +13,10 @@ interface Menu {
 
 interface Props {
   editor: Editor
-  dark?: boolean
   disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
   disabled: false
 })
 
@@ -67,7 +65,7 @@ const items = computed(() => {
       <!-- Spacer -->
       <VSpacer v-if="item.spacer" />
       <!-- Buttons -->
-      <component :is="item.button.component" v-bind="item.button.componentProps" :editor="editor" :dark="dark" :disabled="disabled" />
+      <component :is="item.button.component" v-bind="item.button.componentProps" :editor="editor" :disabled="disabled" />
       <!-- Divider -->
       <VDivider v-if="item.divider" vertical class="mx-1 me-2" />
     </template>

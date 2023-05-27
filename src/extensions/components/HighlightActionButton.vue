@@ -10,7 +10,6 @@ import { useContext } from '@/hooks/use-context'
 
 interface Props {
   editor: Editor
-  dark?: boolean
   icon?: keyof IconsOptions
   tooltip?: string
   disabled?: boolean
@@ -19,7 +18,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
   icon: undefined,
   tooltip: undefined,
   disabled: false,
@@ -41,6 +39,6 @@ watchEffect(() => {
 
 <template>
   <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="state.highlight" :is-active="isActive">
-    <ColorPicker v-model="state.highlight" activator="parent" :dark="dark" :nudge-top="-4" :nudge-left="8" @change="onChange" />
+    <ColorPicker v-model="state.highlight" activator="parent" :nudge-top="-4" :nudge-left="8" @change="onChange" />
   </ActionButton>
 </template>

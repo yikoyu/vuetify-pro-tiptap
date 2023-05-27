@@ -14,17 +14,9 @@ import { reactive, ref, unref } from 'vue'
 import { useLocale } from '@/locales'
 import { TABLE_INIT_GRID_SIZE, TABLE_MAX_GRID_SIZE, TABLE_DEFAULT_SELECTED_GRID_SIZE } from '@/constants/define'
 
-interface Props {
-  dark?: false
-}
-
 interface Emits {
   (event: 'create-table', payload: CreateTablePayload): void
 }
-
-withDefaults(defineProps<Props>(), {
-  dark: false
-})
 
 const emit = defineEmits<Emits>()
 
@@ -73,7 +65,7 @@ function resetTableGridSize(): void {
 </script>
 
 <template>
-  <VMenu v-model="menu" location="end bottom" open-on-hover :close-on-content-click="false" :dark="dark" activator="parent">
+  <VMenu v-model="menu" location="end bottom" open-on-hover :close-on-content-click="false" activator="parent">
     <VCard density="compact" class="table-grid-size-editor">
       <VCardText class="pa-2 pb-0">
         <VCheckbox v-model="withHeaderRow" density="compact" hide-details :label="t('editor.table.menu.insert_table.with_header_row')"></VCheckbox>

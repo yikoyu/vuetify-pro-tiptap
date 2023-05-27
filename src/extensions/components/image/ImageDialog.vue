@@ -11,7 +11,6 @@ import ImageUrl from './ImageUrl.vue'
 interface Props {
   value?: ImageAttrsOptions
   editor: Editor
-  dark?: boolean
   upload?: (file: File) => Promise<string>
   imageTabs?: ImageTab[]
   hiddenTabs?: ImageTabKey[]
@@ -20,7 +19,6 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   value: () => ({}),
-  dark: false,
   upload: undefined,
   imageTabs: () => [],
   hiddenTabs: () => [],
@@ -99,7 +97,7 @@ watch(
 </script>
 
 <template>
-  <VDialog v-model="dialog" :dark="dark" max-width="400" activator="parent" @click:outside="close">
+  <VDialog v-model="dialog" max-width="400" activator="parent" @click:outside="close">
     <VCard>
       <VToolbar class="px-6" density="compact">
         <span class="headline">{{ t('editor.image.dialog.title') }}</span>

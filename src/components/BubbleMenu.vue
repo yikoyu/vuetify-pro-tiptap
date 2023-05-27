@@ -11,12 +11,10 @@ import type { BaseKitOptions } from '@/extensions/base-kit'
 
 interface Props {
   editor: Editor
-  dark?: boolean
   disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
   disabled: false
 })
 
@@ -74,7 +72,7 @@ const items = computed(() => {
             <!-- Divider -->
             <VDivider v-if="item.type === 'divider'" vertical class="mx-1 me-2" />
             <!-- Buttons -->
-            <component :is="item.component" v-else v-bind="item.componentProps" :editor="editor" :dark="dark" :disabled="disabled" />
+            <component :is="item.component" v-else v-bind="item.componentProps" :editor="editor" :disabled="disabled" />
           </template>
         </VToolbar>
       </VCardText>

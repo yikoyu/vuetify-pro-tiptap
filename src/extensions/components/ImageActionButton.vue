@@ -10,7 +10,6 @@ import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './image/types'
 
 interface Props {
   editor: Editor
-  dark?: boolean
   upload?: (file: File) => Promise<string>
   imageTabs?: ImageTab[]
   hiddenTabs?: ImageTabKey[]
@@ -24,7 +23,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
   upload: undefined,
   imageTabs: () => [],
   hiddenTabs: () => [],
@@ -55,6 +53,6 @@ function onAction() {
 
 <template>
   <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="color" :is-active="isActive" :action="onAction">
-    <ImageDialog :editor="editor" :dark="dark" :value="model" :image-tabs="imageTabs" :hidden-tabs="hiddenTabs" :upload="upload" />
+    <ImageDialog :editor="editor" :value="model" :image-tabs="imageTabs" :hidden-tabs="hiddenTabs" :upload="upload" />
   </ActionButton>
 </template>

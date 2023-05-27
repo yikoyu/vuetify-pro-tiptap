@@ -7,13 +7,11 @@ import { computed, ref, unref, watchEffect } from 'vue'
 interface Props {
   value?: string
   editor: Editor
-  dark?: boolean
   destroy?: () => void
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: undefined,
-  dark: false,
   destroy: undefined
 })
 
@@ -51,7 +49,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <VDialog v-model="dialog" :dark="dark" max-width="400" activator="parent" @click:outside="close">
+  <VDialog v-model="dialog" max-width="400" activator="parent" @click:outside="close">
     <VCard>
       <VToolbar class="px-6" density="compact">
         <span class="headline">{{ t('editor.video.dialog.title') }}</span>

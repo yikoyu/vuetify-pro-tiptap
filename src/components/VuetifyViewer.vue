@@ -3,6 +3,7 @@ import { computed, unref } from 'vue'
 import { useTheme } from 'vuetify'
 
 import xssRules from '@/constants/xss-rules'
+import { isBoolean } from '@/utils/utils'
 import type { IWhiteList } from 'xss'
 import xss from 'xss'
 
@@ -17,7 +18,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   value: '',
-  dark: false,
+  dark: undefined,
   dense: false,
   hideMarkdownStyle: false,
   xss: true,
@@ -26,7 +27,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const theme = useTheme()
 
-const isDark = computed(() => props.dark || theme.global.current.value.dark || false)
+const isDark = computed<boolean>(() => {
+  if (isBoolean(props.dark)) return props.dark
+  if (isBoolean(theme.current.value.dark)) return theme.current.value.dark
+  return false
+})
 
 const viewerClass = computed(() => ({
   __dark: unref(isDark),

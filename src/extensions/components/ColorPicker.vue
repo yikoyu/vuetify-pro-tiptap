@@ -8,7 +8,6 @@ interface Props {
   nudgeLeft?: string | number
   nudgeTop?: string | number
   more?: boolean
-  dark?: boolean
 }
 
 interface Emits {
@@ -20,8 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
   nudgeLeft: 0,
   nudgeTop: 0,
-  more: true,
-  dark: false
+  more: true
 })
 
 const emit = defineEmits<Emits>()
@@ -39,7 +37,6 @@ function setColor(color: string) {
 <template>
   <VMenu
     v-model="menu"
-    :dark="dark"
     :nudge-left="nudgeLeft || 255"
     :nudge-top="nudgeTop || 42"
     :close-on-content-click="false"

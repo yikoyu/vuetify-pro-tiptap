@@ -21,7 +21,6 @@ import { getIcon, IconsOptions } from '@/constants/icons'
 
 interface Props {
   editor: Editor
-  dark?: boolean
   disabled?: boolean
   color?: string
   maxHeight?: string | number
@@ -32,7 +31,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
   disabled: false,
   color: undefined,
   maxHeight: undefined,
@@ -65,7 +63,7 @@ const active = computed<Item>(() => {
 
 <template>
   <ActionButton :icon="active.icon" :tooltip="active.title" :disabled="disabled" :color="color" :is-active="active.isActive">
-    <VMenu v-model="menu" :dark="dark" activator="parent">
+    <VMenu v-model="menu" activator="parent">
       <VList density="compact" :max-height="maxHeight">
         <template v-for="(item, i) in items" :key="i">
           <VListItem :active="item.isActive()" @click="item.action">

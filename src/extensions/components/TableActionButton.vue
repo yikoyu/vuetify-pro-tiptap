@@ -7,7 +7,6 @@ import { ButtonViewReturnComponentProps } from '@/type'
 
 interface Props {
   editor: Editor
-  dark?: boolean
   icon?: keyof IconsOptions
   tooltip?: string
   disabled?: boolean
@@ -17,7 +16,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
   icon: undefined,
   tooltip: undefined,
   disabled: false,
@@ -29,6 +27,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="color" :action="action" :is-active="isActive">
-    <TableMenu :editor="editor" :dark="dark" activator="parent" />
+    <TableMenu :editor="editor" activator="parent" />
   </ActionButton>
 </template>

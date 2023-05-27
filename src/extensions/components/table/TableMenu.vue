@@ -30,12 +30,10 @@ import CreateTablePopover from './CreateTablePopover.vue'
 
 interface Props {
   editor: Editor
-  dark?: boolean
   activator?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
   activator: undefined
 })
 
@@ -155,7 +153,7 @@ function createTable(options: CreateTablePayload) {
 </script>
 
 <template>
-  <VMenu v-model="menu" :dark="dark" activator="parent">
+  <VMenu v-model="menu" activator="parent">
     <VList density="compact">
       <template v-for="(item, index) in items">
         <VListItem v-if="item.key === 'insert-table'" :key="index" :disabled="item.disabled">

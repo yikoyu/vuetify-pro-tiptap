@@ -8,7 +8,6 @@ import { ButtonViewReturnComponentProps } from '@/type'
 
 interface Props {
   editor: Editor
-  dark?: boolean
 
   icon?: keyof IconsOptions
   tooltip?: string
@@ -19,8 +18,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dark: false,
-
   icon: undefined,
   tooltip: undefined,
   disabled: false,
@@ -39,6 +36,6 @@ function onAction() {
 
 <template>
   <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="color" :is-active="isActive" :action="onAction">
-    <LinkDialog :editor="editor" :dark="dark" :value="href" />
+    <LinkDialog :editor="editor" :value="href" />
   </ActionButton>
 </template>
