@@ -16,6 +16,8 @@
 
 👾[Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-codesandbox-4pvcqm)
 
+👾[Nuxt3 Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-nuxt3-ttlk6x)
+
 ## 特色
 - 使用 [vuetify](https://github.com/vuetifyjs/vuetify) 组件
 - 许多开箱即用的 [extension](#extensions) (欢迎提交 issue 为新的 feature 留下建议)

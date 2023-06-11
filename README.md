@@ -16,6 +16,8 @@ English | [中文](./README.zh-CN.md)
 
 👾[Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-codesandbox-4pvcqm)
 
+👾[Nuxt3 Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-nuxt3-ttlk6x)
+
 ## Features
 - Use [vuetify](https://github.com/vuetifyjs/vuetify) components
 - Many out of box [extension](#extensions) (welcome to submit an issue for feature request)
