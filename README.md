@@ -140,6 +140,8 @@ import SelectImage from './components/SelectImage.vue'
 export const vuetifyProTipTap = createVuetifyProTipTap({
   // Set default lang
   lang: 'zhHans',
+  // Set markdown theme 
+  markdownTheme: 'github',
   // Global registration app.component
   components: {
     VuetifyTiptap,
@@ -221,6 +223,38 @@ All available extensions：
 - [`Fullscreen`](./src/extensions/fullscreen.ts)
 - [`History`](./src/extensions/history.ts)
 
+
+## Custom theme
+
+Create github.scss
+
+```scss
+$value: 'github';
+
+.vuetify-pro-tiptap-editor__content.markdown-theme-#{$value} {
+  // your custom styles
+  &.__dark {
+    // your dark mode custom styles
+  }
+}
+```
+
+Import github.scss in ts
+
+```typescript
+// import 'vuetify-pro-tiptap/style.css' // import all(editor and markdown) styles
+import 'vuetify-pro-tiptap/styles/editor.css' // only use editor style, not using markdown style
+import './styles/markdown/github.scss'
+```
+
+In the component using
+
+```vue
+<template>
+  <VuetifyTiptap v-model="content" markdown-theme="github" />
+  <VuetifyViewer :value="content" markdown-theme="github" />
+</template>
+```
 
 ## Custom extensions
 
@@ -385,6 +419,7 @@ const content = ref('')
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
 | modelValue | string | '' | The input’s value |
+| markdownTheme | string \| false | 'default' | Markdown theme |
 | dark | boolean | false | Applies the dark theme variant to the component. |
 | dense | boolean | false | Reduces the input height |
 | outlined | boolean | true | Applies the outlined style to the input |
@@ -413,7 +448,7 @@ const content = ref('')
 | value | value | '' | The preview’s value |
 | dark | boolean | false | Applies the dark theme variant to the component. |
 | dense | boolean | false | Reduces the input height |
-| hideMarkdownStyle | boolean | false | Hide .markdown-body class |
+| markdownTheme | string \| false | 'default' | Markdown theme |
 | xss | boolean | true | Enable xss filter |
 | xssOptions | xss.IWhiteList | Default rule | Xss filter rule config |
 | maxWidth | string \| number | undefined | Sets the maximum width for the component. |

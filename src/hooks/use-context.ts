@@ -3,6 +3,7 @@ import type { AnyExtension } from '@tiptap/core'
 
 interface Instance {
   defaultLang?: string
+  defaultMarkdownTheme?: string
   extensions: AnyExtension[]
   isFullscreen: boolean
   color?: string
@@ -18,6 +19,7 @@ const state: Instance = reactive({
 
 export function createContext(instance: Partial<Instance>) {
   state.defaultLang = instance.defaultLang
+  state.defaultMarkdownTheme = instance.defaultMarkdownTheme
   state.extensions = instance.extensions ?? []
 }
 

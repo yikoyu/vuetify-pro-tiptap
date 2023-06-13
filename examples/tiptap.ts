@@ -1,3 +1,9 @@
+/*
+ * @Date: 2023-05-11 22:14:19
+ * @LastEditors: yikoyu 2282373181@qq.com
+ * @LastEditTime: 2023-06-13 20:39:47
+ * @FilePath: \vuetify-pro-tiptap\examples\tiptap.ts
+ */
 import { markRaw } from 'vue'
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 import {
@@ -29,11 +35,17 @@ import {
   Fullscreen,
   History
 } from 'vuetify-pro-tiptap'
-import 'vuetify-pro-tiptap/style.css'
 import SelectImage from './components/SelectImage.vue'
+
+import 'vuetify-pro-tiptap/styles/editor.css'
+import 'vuetify-pro-tiptap/styles/markdown.css'
+
+import './styles/markdown/github.scss'
+import './styles/markdown/maidragon.scss'
 
 export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',
+  markdownTheme: 'github',
   components: {
     VuetifyTiptap,
     VuetifyViewer

@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2023-05-11 22:14:19
+ * @LastEditors: yikoyu 2282373181@qq.com
+ * @LastEditTime: 2023-06-13 21:24:28
+ * @FilePath: \vuetify-pro-tiptap\examples\components\PreviewActionButton.vue
+-->
 <script setup lang="ts">
 import { ref } from 'vue'
 import { mdiFileCodeOutline, mdiClose } from '@mdi/js'
@@ -15,6 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false
 })
 
+const markdownTheme = ref('')
 const dialog = ref(false)
 const maxWidth = ref<number>(900)
 </script>
@@ -26,13 +33,20 @@ const maxWidth = ref<number>(900)
       <VCard>
         <VToolbar dark color="primary">
           <VBtn icon dark @click="dialog = false">
-            <v-icon>{{ `svg:${mdiClose}` }}</v-icon>
+            <VIcon>{{ `svg:${mdiClose}` }}</VIcon>
           </VBtn>
+
+          <VBtnToggle v-model="markdownTheme" color="deep-purple-accent-3" rounded="0" group>
+            <VBtn value="">Global</VBtn>
+            <VBtn value="default">Default</VBtn>
+            <VBtn value="github">Github</VBtn>
+            <VBtn value="maidragon">Maidragon</VBtn>
+          </VBtnToggle>
         </VToolbar>
 
         <VContainer>
           <VSheet class="mx-auto" :max-width="maxWidth">
-            <VuetifyViewer :value="editor.getHTML()" />
+            <VuetifyViewer :value="editor.getHTML()" :markdown-theme="markdownTheme" />
           </VSheet>
         </VContainer>
       </VCard>

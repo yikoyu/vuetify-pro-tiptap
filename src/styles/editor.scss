@@ -1,5 +1,3 @@
-@import './markdown.scss';
-
 $white-color: #fff;
 $border-color: #dcdfe6;
 $primary-color: #409eff;
@@ -90,10 +88,6 @@ $extra-light-primary-color: #ecf5ff;
             flex: 1 1 auto;
           }
         }
-      }
-
-      &.markdown-body {
-        @include markdown-body;
       }
     }
   }

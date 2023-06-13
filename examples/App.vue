@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2023-05-27 17:21:21
+ * @LastEditors: yikoyu 2282373181@qq.com
+ * @LastEditTime: 2023-06-13 20:58:58
+ * @FilePath: \vuetify-pro-tiptap\examples\App.vue
+-->
 <script setup lang="ts">
 import { ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
@@ -12,6 +18,7 @@ const extensions = [preview.configure({ spacer: true })]
 const theme = useTheme()
 
 const content = ref(html)
+const markdownTheme = ref('maidragon')
 const outlined = ref(true)
 const dense = ref(false)
 const editHtml = ref(false)
@@ -60,6 +67,15 @@ function setCustom() {
       <v-btn class="mb-4 ms-4" color="primary" @click="locale.setLang('en')">set English</v-btn>
       <v-btn class="mb-4 ms-4" color="primary" @click="setCustom">set Custom Lang</v-btn>
 
+      <div class="my-4">
+        <v-btn-toggle v-model="markdownTheme" color="deep-purple-accent-3" rounded="0" group>
+          <v-btn value="">Global</v-btn>
+          <v-btn value="default">Default</v-btn>
+          <v-btn value="github">Github</v-btn>
+          <v-btn value="maidragon">Maidragon</v-btn>
+        </v-btn-toggle>
+      </div>
+
       <vuetify-tiptap
         v-model="content"
         label="Title"
@@ -72,6 +88,7 @@ function setCustom() {
         :max-height="465"
         :max-width="maxWidth"
         :extensions="extensions"
+        :markdown-theme="markdownTheme"
       />
       <v-divider class="my-4"></v-divider>
 

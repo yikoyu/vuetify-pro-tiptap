@@ -10,13 +10,14 @@ import TipTapToolbar from './TiptapToolbar.vue'
 import { useLocale } from '@/locales'
 import { useContext } from '@/hooks/use-context'
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { getUnitWithPxAsDefault, throttle, isBoolean } from '@/utils/utils'
+import { getUnitWithPxAsDefault, throttle, isBoolean, isString } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
 
 interface Props {
   modelValue?: string
+  markdownTheme?: string | false
   dark?: boolean
   dense?: boolean
   outlined?: boolean
@@ -39,6 +40,7 @@ interface Emits {
 
 const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
+  markdownTheme: undefined,
   dark: undefined,
   dense: false,
   outlined: true,
@@ -95,6 +97,17 @@ const isDark = computed<boolean>(() => {
   if (isBoolean(props.dark)) return props.dark
   if (isBoolean(theme.current.value.dark)) return theme.current.value.dark
   return false
+})
+
+const contentDynamicClasses = computed(() => {
+  const markdownTheme = (props.markdownTheme || state.defaultMarkdownTheme) ?? 'default'
+
+  const values: Record<string, any> = {
+    __dark: unref(isDark),
+    [`markdown-theme-${markdownTheme}`]: isString(markdownTheme) ? true : false
+  }
+
+  return [values, props.editorClass]
 })
 
 const contentDynamicStyles = computed(() => {
@@ -167,10 +180,10 @@ onUnmounted(() => editor?.destroy())
 
           <slot name="editor" v-bind="{ editor, props: { class: 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }">
             <EditorContent
-              class="vuetify-pro-tiptap-editor__content markdown-body"
-              :class="[{ __dark: isDark }, editorClass]"
-              :editor="editor"
+              class="vuetify-pro-tiptap-editor__content"
+              :class="contentDynamicClasses"
               :style="contentDynamicStyles"
+              :editor="editor"
               data-testid="value"
             />
           </slot>
@@ -190,5 +203,5 @@ onUnmounted(() => editor?.destroy())
 </template>
 
 <style lang="scss">
-@import '@/styles/editor.scss';
+@import '@/styles/index.scss';
 </style>

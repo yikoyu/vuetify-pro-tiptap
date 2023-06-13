@@ -140,6 +140,8 @@ import SelectImage from './components/SelectImage.vue'
 export const vuetifyProTipTap = createVuetifyProTipTap({
   // Set default lang
   lang: 'zhHans',
+  // Set markdown theme 
+  markdownTheme: 'github',
   // Global registration app.component
   components: {
     VuetifyTiptap,
@@ -220,6 +222,38 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
 - [`Clear`](./src/extensions/clear.ts)
 - [`Fullscreen`](./src/extensions/fullscreen.ts)
 - [`History`](./src/extensions/history.ts)
+
+## 自定义主题
+
+创建 github.scss
+
+```scss
+$value: 'github';
+
+.vuetify-pro-tiptap-editor__content.markdown-theme-#{$value} {
+  // 自定义样式
+  &.__dark {
+    // dark 模式下的自定义样式
+  }
+}
+```
+
+在 ts 中导入 github.scss
+
+```typescript
+// import 'vuetify-pro-tiptap/style.css' // 导入全部（editor 和 markdown）样式
+import 'vuetify-pro-tiptap/styles/editor.css' // 只使用 editor 样式，不使用 markdown 样式
+import './styles/markdown/github.scss'
+```
+
+在组件中使用
+
+```vue
+<template>
+  <VuetifyTiptap v-model="content" markdown-theme="github" />
+  <VuetifyViewer :value="content" markdown-theme="github" />
+</template>
+```
 
 ## 自定义 extension
 
@@ -384,6 +418,7 @@ const content = ref('')
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
 | modelValue | string | '' | 输入的值 |
+| markdownTheme | string \| false | 'default' | markdown主题 |
 | dark | boolean | false | 是否为深色主题 |
 | dense | boolean | false | 是否为紧凑模式 |
 | outlined | boolean | true | 将轮廓样式应用于输入 |
@@ -412,7 +447,7 @@ const content = ref('')
 | value | value | '' | 预览的值 |
 | dark | boolean | false | 是否为深色主题 |
 | dense | boolean | false | 是否为紧凑模式 |
-| hideMarkdownStyle | boolean | false | 隐藏.markdown-body类 |
+| markdownTheme | string \| false | 'default' | markdown主题 |
 | xss | boolean | true | 是否开启xss过滤 |
 | xssOptions | xss.IWhiteList | 内置默认规则 | xss过滤规则配置 |
 | maxWidth | string \| number | undefined | 预览最大宽度 |

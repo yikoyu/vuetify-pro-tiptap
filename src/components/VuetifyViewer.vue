@@ -3,7 +3,8 @@ import { computed, unref } from 'vue'
 import { useTheme } from 'vuetify'
 
 import xssRules from '@/constants/xss-rules'
-import { isBoolean } from '@/utils/utils'
+import { isBoolean, isString } from '@/utils/utils'
+import { useContext } from '@/hooks/use-context'
 import type { IWhiteList } from 'xss'
 import xss from 'xss'
 
@@ -11,7 +12,7 @@ interface Props {
   value?: string
   dark?: boolean
   dense?: boolean
-  hideMarkdownStyle?: boolean
+  markdownTheme?: string | false
   xss?: boolean | string[]
   xssOptions?: IWhiteList
 }
@@ -20,11 +21,12 @@ const props = withDefaults(defineProps<Props>(), {
   value: '',
   dark: undefined,
   dense: false,
-  hideMarkdownStyle: false,
+  markdownTheme: 'default',
   xss: true,
   xssOptions: () => xssRules
 })
 
+const { state } = useContext()
 const theme = useTheme()
 
 const isDark = computed<boolean>(() => {
@@ -33,11 +35,13 @@ const isDark = computed<boolean>(() => {
   return false
 })
 
+const markdownThemeValue = computed(() => (props.markdownTheme || state.defaultMarkdownTheme) ?? 'default')
+
 const viewerClass = computed(() => ({
   __dark: unref(isDark),
   dense: props.dense,
   view: true,
-  'markdown-body': !props.hideMarkdownStyle
+  [`markdown-theme-${unref(markdownThemeValue)}`]: isString(unref(markdownThemeValue)) ? true : false
 }))
 
 const cleanValue = computed(() => {

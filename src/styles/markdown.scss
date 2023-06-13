@@ -219,12 +219,7 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
     height: 1px;
     margin-top: 32px;
     margin-bottom: 32px;
-    background-image: linear-gradient(
-      90deg,
-      var(--cyanosis-link-color),
-      rgba(255, 0, 0, 0.3),
-      var(--cyanosis-link-color)
-    );
+    background-image: linear-gradient(90deg, var(--cyanosis-link-color), rgba(255, 0, 0, 0.3), var(--cyanosis-link-color));
     border-width: 0;
     overflow: visible;
   }
@@ -552,4 +547,8 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
       font-size: 18px;
     }
   }
+}
+
+.vuetify-pro-tiptap-editor__content.markdown-theme-default {
+  @include markdown-body();
 }

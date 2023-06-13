@@ -9,19 +9,24 @@ import { createContext } from './hooks/use-context'
 
 interface InstallationOptions {
   lang?: string
+  markdownTheme?: string
   components?: Record<string, any>
   extensions?: Extensions
 }
 
 const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
   const install: Plugin = (app: App): void => {
-    const { lang, components = {}, extensions } = opts || {}
+    const { lang, markdownTheme, components = {}, extensions } = opts || {}
 
     if (lang) locale.setLang(lang)
 
     Object.keys(components).forEach(key => app.component(key, components[key]))
 
-    createContext({ defaultLang: lang, extensions })
+    createContext({
+      defaultLang: lang,
+      defaultMarkdownTheme: markdownTheme,
+      extensions
+    })
   }
 
   return install
