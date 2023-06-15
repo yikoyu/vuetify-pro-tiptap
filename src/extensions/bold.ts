@@ -1,6 +1,8 @@
-import { Bold as TiptapBold } from '@tiptap/extension-bold'
-import ActionButton from './components/ActionButton.vue'
 import type { BoldOptions as TiptapImageOptions } from '@tiptap/extension-bold'
+import { Bold as TiptapBold } from '@tiptap/extension-bold'
+
+import ActionButton from './components/ActionButton.vue'
+
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface BoldOptions extends TiptapImageOptions, GeneralOptions {

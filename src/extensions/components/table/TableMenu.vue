@@ -1,32 +1,12 @@
-<script lang="ts">
-import { getIcon } from '@/constants/icons'
-
-type TableACtionKey =
-  | 'insert-table'
-  | 'add-column-before'
-  | 'add-column-after'
-  | 'delete-column'
-  | 'add-row-before'
-  | 'add-row-after'
-  | 'delete-row'
-  | 'merge-or-split-cells'
-  | 'delete-table'
-
-export interface Item {
-  type: 'item' | 'divider'
-  key?: TableACtionKey
-  title?: string
-  disabled?: boolean
-  icon?: string
-}
-</script>
-
 <script setup lang="ts">
-import { useLocale } from '@/locales'
-import type { Editor } from '@tiptap/vue-3'
 import { computed, ref, unref } from 'vue'
+import type { Editor } from '@tiptap/vue-3'
+
 import type { CreateTablePayload } from './CreateTablePopover.vue'
 import CreateTablePopover from './CreateTablePopover.vue'
+
+import { getIcon } from '@/constants/icons'
+import { useLocale } from '@/locales'
 
 interface Props {
   editor: Editor
@@ -152,26 +132,55 @@ function createTable(options: CreateTablePayload) {
 }
 </script>
 
+<script lang="ts">
+type TableACtionKey =
+  | 'insert-table'
+  | 'add-column-before'
+  | 'add-column-after'
+  | 'delete-column'
+  | 'add-row-before'
+  | 'add-row-after'
+  | 'delete-row'
+  | 'merge-or-split-cells'
+  | 'delete-table'
+
+export interface Item {
+  type: 'item' | 'divider'
+  key?: TableACtionKey
+  title?: string
+  disabled?: boolean
+  icon?: string
+}
+</script>
+
 <template>
   <VMenu v-model="menu" activator="parent">
     <VList density="compact">
       <template v-for="(item, index) in items">
         <VListItem v-if="item.key === 'insert-table'" :key="index" :disabled="item.disabled">
           <template #prepend>
-            <VIcon :icon="item.icon"></VIcon>
+            <VIcon :icon="item.icon" />
           </template>
+
           <VListItemTitle>{{ item.title }}</VListItemTitle>
+
           <CreateTablePopover v-if="item.key === 'insert-table'" :key="index" @create-table="createTable" />
         </VListItem>
 
-        <VListItem v-else-if="item.type === 'item'" :key="'item-' + index" :disabled="item.disabled" @click="setTable(item.key)">
+        <VListItem
+          v-else-if="item.type === 'item'"
+          :key="'item-' + index"
+          :disabled="item.disabled"
+          @click="setTable(item.key)"
+        >
           <template #prepend>
-            <VIcon :icon="item.icon"></VIcon>
+            <VIcon :icon="item.icon" />
           </template>
+
           <VListItemTitle>{{ item.title }}</VListItemTitle>
         </VListItem>
 
-        <VDivider v-else :key="'divider-' + index"></VDivider>
+        <VDivider v-else :key="'divider-' + index" />
       </template>
     </VList>
   </VMenu>

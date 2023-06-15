@@ -1,8 +1,9 @@
+import 'vuetify/styles'
+
 import { createApp } from 'vue'
 import { createVuetify } from 'vuetify'
-import 'vuetify/styles'
-import App from './App.vue'
 
+import App from './App.vue'
 import { vuetifyProTipTap } from './tiptap'
 
 const vuetify = createVuetify()

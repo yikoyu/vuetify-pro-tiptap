@@ -1,9 +1,10 @@
-import { unref, computed, watchEffect, ref } from 'vue'
+import { computed, ref, unref, watchEffect } from 'vue'
+
+import en from './en'
+import zhHans from './zh-Hans'
+
 import Logger from '@/utils/logger'
 import mitt, { EventType } from '@/utils/mitt'
-
-import zhHans from './zh-Hans'
-import en from './en'
 
 interface LocaleInterface {
   lang: string
@@ -116,4 +117,4 @@ const useLocale = () => {
 }
 
 export default locale
-export { zhHans, en, Locale, useLocale }
+export { en, Locale, useLocale, zhHans }

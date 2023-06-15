@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import ImageDialog from './image/ImageDialog.vue'
-import ActionButton from './ActionButton.vue'
-import type { Editor } from '@tiptap/vue-3'
 import type { NodeSelection } from '@tiptap/pm/state'
+import type { Editor } from '@tiptap/vue-3'
+
+import ImageDialog from './image/ImageDialog.vue'
+import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './image/types'
+import ActionButton from './ActionButton.vue'
+
 import type { IconsOptions } from '@/constants/icons'
 import { ButtonViewReturnComponentProps } from '@/type'
-import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './image/types'
 
 interface Props {
   editor: Editor
@@ -52,7 +54,14 @@ function onAction() {
 </script>
 
 <template>
-  <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="color" :is-active="isActive" :action="onAction">
+  <ActionButton
+    :icon="icon"
+    :tooltip="tooltip"
+    :disabled="disabled"
+    :color="color"
+    :is-active="isActive"
+    :action="onAction"
+  >
     <ImageDialog :editor="editor" :value="model" :image-tabs="imageTabs" :hidden-tabs="hiddenTabs" :upload="upload" />
   </ActionButton>
 </template>

@@ -1,9 +1,20 @@
 <script setup lang="ts">
-import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
-import { computed, watchEffect, ref, unref } from 'vue'
+import { computed, ref, unref, watchEffect } from 'vue'
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
+
 import { ImageAttrsOptions } from './types'
-import { IMAGE_MIN_SIZE, IMAGE_MAX_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants/define'
+
+import { IMAGE_MAX_SIZE, IMAGE_MIN_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants/define'
 import { clamp, isNumber, throttle } from '@/utils/utils'
+
+const props = defineProps({
+  ...nodeViewProps,
+
+  selected: {
+    type: Boolean,
+    required: true
+  }
+})
 
 const ResizeDirection = {
   TOP_LEFT: 'tl',
@@ -11,14 +22,6 @@ const ResizeDirection = {
   BOTTOM_LEFT: 'bl',
   BOTTOM_RIGHT: 'br'
 }
-
-const props = defineProps({
-  ...nodeViewProps,
-  selected: {
-    type: Boolean,
-    required: true
-  }
-})
 
 const maxSize = ref({
   width: IMAGE_MAX_SIZE,
@@ -30,7 +33,12 @@ const originalSize = ref({
   height: 0
 })
 
-const resizeDirections = ref<string[]>([ResizeDirection.TOP_LEFT, ResizeDirection.TOP_RIGHT, ResizeDirection.BOTTOM_LEFT, ResizeDirection.BOTTOM_RIGHT])
+const resizeDirections = ref<string[]>([
+  ResizeDirection.TOP_LEFT,
+  ResizeDirection.TOP_RIGHT,
+  ResizeDirection.BOTTOM_LEFT,
+  ResizeDirection.BOTTOM_RIGHT
+])
 
 const resizing = ref<boolean>(false)
 
@@ -207,7 +215,14 @@ watchEffect(effect => {
       class="image-view__body"
       :style="imageMaxStyle"
     >
-      <img :src="imgAttrs.src" :alt="imgAttrs.alt" :style="imgAttrs.style" class="image-view__body__image" @load="onImageLoad" @click="selectImage" />
+      <img
+        :src="imgAttrs.src"
+        :alt="imgAttrs.alt"
+        :style="imgAttrs.style"
+        class="image-view__body__image"
+        @load="onImageLoad"
+        @click="selectImage"
+      />
 
       <div v-if="editor.view.editable" v-show="selected || resizing" class="image-resizer">
         <span

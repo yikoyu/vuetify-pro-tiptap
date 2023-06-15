@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, unref } from 'vue'
 import { useTheme } from 'vuetify'
+import type { IWhiteList } from 'xss'
+import Xss from 'xss'
 
 import xssRules from '@/constants/xss-rules'
-import { isBoolean, isString } from '@/utils/utils'
 import { useContext } from '@/hooks/use-context'
-import type { IWhiteList } from 'xss'
-import xss from 'xss'
+import { isBoolean, isString } from '@/utils/utils'
 
 interface Props {
   value?: string
@@ -56,15 +56,16 @@ const cleanValue = computed(() => {
 
   const whiteList = props.xssOptions
 
-  return xss(value, { whiteList, css: false })
+  return Xss(value, { whiteList, css: false })
 })
 </script>
 
 <template>
-  <div class="vuetify-pro-tiptap-editor__content" :class="viewerClass" style="width: 100%">
-    <slot name="before" />
+  <div class="vuetify-pro-tiptap-editor__content" :class="viewerClass" :style="{ width: '100%' }">
+    <slot name="before"></slot>
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div class="content" v-html="cleanValue"></div>
-    <slot name="after" />
+
+    <slot name="after"></slot>
   </div>
 </template>

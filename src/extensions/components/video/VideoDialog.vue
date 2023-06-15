@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { computed, ref, unref, watchEffect } from 'vue'
+import type { Editor } from '@tiptap/vue-3'
+
 import { getIcon } from '@/constants/icons'
 import { useLocale } from '@/locales'
-import type { Editor } from '@tiptap/vue-3'
-import { computed, ref, unref, watchEffect } from 'vue'
 
 interface Props {
   value?: string
@@ -57,7 +58,7 @@ watchEffect(() => {
         <VSpacer />
 
         <VBtn class="mx-0" icon @click="close">
-          <VIcon :icon="getIcon('close')"></VIcon>
+          <VIcon :icon="getIcon('close')" />
         </VBtn>
       </VToolbar>
 

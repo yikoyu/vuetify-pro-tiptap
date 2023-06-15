@@ -1,8 +1,10 @@
 import { Node } from '@tiptap/core'
+
 import VideoActionButton from './components/VideoActionButton.vue'
-import { getUnitWithPxAsDefault } from '@/utils/utils'
+
 import { VIDEO_SIZE } from '@/constants/define'
 import type { ButtonView, GeneralOptions } from '@/type'
+import { getUnitWithPxAsDefault } from '@/utils/utils'
 
 export interface VideoOptions extends GeneralOptions {
   allowFullscreen: boolean
@@ -41,7 +43,9 @@ function linkConvert(src: string) {
   // Convert bilibili links
   const isBilibiliLink = /^https?:\/\/www.bilibili.com\/video\/.*/i.test(src)
   if (isBilibiliLink) {
-    src = src.replace(/\?.*$/i, '').replace('https://www.bilibili.com/video/', 'https://player.bilibili.com/player.html?bvid=')
+    src = src
+      .replace(/\?.*$/i, '')
+      .replace('https://www.bilibili.com/video/', 'https://player.bilibili.com/player.html?bvid=')
   }
 
   // Convert google drive links

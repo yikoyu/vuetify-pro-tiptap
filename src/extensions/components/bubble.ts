@@ -1,10 +1,11 @@
 import { deleteSelection } from '@tiptap/pm/commands'
-import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
 import type { Editor } from '@tiptap/vue-3'
-import type { ButtonViewReturn, ButtonViewParams, ExtensionNameKeys } from '@/type'
-import type { Display } from './image/types'
 
+import type { Display } from './image/types'
 import ActionButton from './ActionButton.vue'
+
+import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
+import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/type'
 
 type BubbleImageFloatType = 'float-left' | 'float-none' | 'float-right'
 type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large'
@@ -40,7 +41,11 @@ export interface BubbleOptions<T> {
 
 const imageFloatMenus = (editor: Editor): BubbleMenuItem[] => {
   const types: BubbleImageFloatType[] = ['float-left', 'float-none', 'float-right']
-  const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = ['formatFloatLeft', 'formatFloatNone', 'formatFloatRight']
+  const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = [
+    'formatFloatLeft',
+    'formatFloatNone',
+    'formatFloatRight'
+  ]
   const display: Display[] = ['left', 'inline', 'right']
 
   return types.map((float, i) => ({

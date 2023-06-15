@@ -6,104 +6,102 @@
  * @Last Modified time: 2023-03-26 17:46:37
  */
 
-$monospace-font: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$monospace-font: menlo, monaco, consolas, 'Courier New', monospace;
 $line-space: 16px;
 $id: '--cyanosis';
+$l-base-color: #353535;
+$l-title-color: #005bb7;
+$l-strong-color: #2196f3;
+$l-em-color: #4fc3f7;
+$l-del-color: #ccc;
+$l-link-color: #3da8f5;
+$l-linkh-color: #007fff;
+$l-border-color: #bedcff;
+$l-border-color2: #ececec;
+$l-bg-color: #fff;
+$l-blockquote-color: #8c8c8c;
+$l-blockquote-bg-color: #f0fdff;
+$l-code-color: #c2185b;
+$l-code-bg-color: #fff4f4;
+$l-code-pre-color: #f8f8f8;
+$l-table-border-color: #c3e0fd;
+$l-table-th-color: #dff0ff;
+$l-table-tht-color: $l-title-color;
+$l-table-tr-nc-color: #f7fbff;
+$l-table-trh-color: #e0edf7;
+$l-selection-text-color: #c80000;
+$l-selection-bg-color: rgb(175 207 247 / 25%);
+$l-selection-title-color: $l-title-color;
+$l-selection-title-bg-color: $l-selection-bg-color;
+$l-selection-del-color: #999;
+$l-selection-el-bg-color: #e8ebec;
+$l-selection-code-bg-color: #ffeaeb;
+$l-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
+$d-base-color: #cacaca;
+$d-title-color: #ddd;
+$d-strong-color: #fe9900;
+$d-em-color: #ffd28e;
+$d-del-color: #ccc;
+$d-link-color: #ffb648;
+$d-linkh-color: $d-strong-color;
+$d-border-color: #ffe3ba;
+$d-border-color2: #ffcb7b;
+$d-bg-color: #2f2f2f;
+$d-blockquote-color: #c7c7c7;
+$d-blockquote-bg-color: rgb(255 199 116 / 10%);
+$d-code-color: #000;
+$d-code-bg-color: $d-border-color2;
+$d-code-pre-color: rgb(255 227 185 / 50%);
+$d-table-border-color: $d-strong-color;
+$d-table-th-color: $d-link-color;
+$d-table-tht-color: $d-code-color;
+$d-table-tr-nc-color: #6d5736;
+$d-table-trh-color: #947443;
+$d-selection-text-color: #00c888;
+$d-selection-bg-color: rgb(175 207 247 / 25%);
+$d-selection-title-color: $d-code-color;
+$d-selection-title-bg-color: $d-strong-color;
+$d-selection-del-color: #999;
+$d-selection-el-bg-color: $d-code-color;
+$d-selection-code-bg-color: $d-border-color2;
+$d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
 
-$l-baseColor: #353535;
-$l-titleColor: #005bb7;
-$l-strongColor: #2196f3;
-$l-emColor: #4fc3f7;
-$l-delColor: #ccc;
-$l-linkColor: #3da8f5;
-$l-linkhColor: #007fff;
-$l-borderColor: #bedcff;
-$l-borderColor2: #ececec;
-$l-bgColor: #fff;
-$l-blockquoteColor: #8c8c8c;
-$l-blockquoteBgColor: #f0fdff;
-$l-codeColor: #c2185b;
-$l-codeBgColor: #fff4f4;
-$l-codePreColor: #f8f8f8;
-$l-tableBorderColor: #c3e0fd;
-$l-tableThColor: #dff0ff;
-$l-tableThtColor: $l-titleColor;
-$l-tableTrNcColor: #f7fbff;
-$l-tableTrhColor: #e0edf7;
-$l-selectionTextColor: #c80000;
-$l-selectionBgColor: rgba(175, 207, 247, 0.25);
-$l-selectionTitleColor: $l-titleColor;
-$l-selectionTitlebgColor: $l-selectionBgColor;
-$l-selectionDelColor: #999;
-$l-selectionElBgColor: #e8ebec;
-$l-selectionCodeBgColor: #ffeaeb;
-$l-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
-
-$d-baseColor: #cacaca;
-$d-titleColor: #ddd;
-$d-strongColor: #fe9900;
-$d-emColor: #ffd28e;
-$d-delColor: #ccc;
-$d-linkColor: #ffb648;
-$d-linkhColor: $d-strongColor;
-$d-borderColor: #ffe3ba;
-$d-borderColor2: #ffcb7b;
-$d-bgColor: #2f2f2f;
-$d-blockquoteColor: #c7c7c7;
-$d-blockquoteBgColor: rgba(255, 199, 116, 0.1);
-$d-codeColor: #000;
-$d-codeBgColor: $d-borderColor2;
-$d-codePreColor: rgba(255, 227, 185, 0.5);
-$d-tableBorderColor: $d-strongColor;
-$d-tableThColor: $d-linkColor;
-$d-tableThtColor: $d-codeColor;
-$d-tableTrNcColor: #6d5736;
-$d-tableTrhColor: #947443;
-$d-selectionTextColor: #00c888;
-$d-selectionBgColor: rgba(175, 207, 247, 0.25);
-$d-selectionTitleColor: $d-codeColor;
-$d-selectionTitlebgColor: $d-strongColor;
-$d-selectionDelColor: #999;
-$d-selectionElBgColor: $d-codeColor;
-$d-selectionCodeBgColor: $d-borderColor2;
-$d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
-
-@mixin LightAndDark($isDark: false) {
-  #{$id}-base-color: if($isDark, $d-baseColor, $l-baseColor);
-  #{$id}-title-color: if($isDark, $d-titleColor, $l-titleColor);
-  #{$id}-strong-color: if($isDark, $d-strongColor, $l-strongColor);
-  #{$id}-em-color: if($isDark, $d-emColor, $l-emColor);
-  #{$id}-del-color: if($isDark, $d-delColor, $l-delColor);
-  #{$id}-link-color: if($isDark, $d-linkColor, $l-linkColor);
-  #{$id}-linkh-color: if($isDark, $d-linkhColor, $l-linkhColor);
-  #{$id}-border-color: if($isDark, $d-borderColor, $l-borderColor);
-  #{$id}-border-color-2: if($isDark, $d-borderColor2, $l-borderColor2);
-  #{$id}-bg-color: if($isDark, $d-bgColor, $l-bgColor);
-  #{$id}-blockquote-color: if($isDark, $d-blockquoteColor, $l-blockquoteColor);
-  #{$id}-blockquote-bg-color: if($isDark, $d-blockquoteBgColor, $l-blockquoteBgColor);
-  #{$id}-code-color: if($isDark, $d-codeColor, $l-codeColor);
-  #{$id}-code-bg-color: if($isDark, $d-codeBgColor, $l-codeBgColor);
-  #{$id}-code-pre-color: if($isDark, $d-codePreColor, $l-codePreColor);
-  #{$id}-table-border-color: if($isDark, $d-tableBorderColor, $l-tableBorderColor);
-  #{$id}-table-th-color: if($isDark, $d-tableThColor, $l-tableThColor);
-  #{$id}-table-tht-color: if($isDark, $d-tableThtColor, $l-tableThtColor);
-  #{$id}-table-tr-nc-color: if($isDark, $d-tableTrNcColor, $l-tableTrNcColor);
-  #{$id}-table-trh-color: if($isDark, $d-tableTrhColor, $l-tableTrhColor);
-  #{$id}-slct-title-color: if($isDark, $d-selectionTitleColor, $l-selectionTitleColor);
-  #{$id}-slct-titlebg-color: if($isDark, $d-selectionTitlebgColor, $l-selectionTitlebgColor);
-  #{$id}-slct-text-color: if($isDark, $d-selectionTextColor, $l-selectionTextColor);
-  #{$id}-slct-bg-color: if($isDark, $d-selectionBgColor, $l-selectionBgColor);
-  #{$id}-slct-del-color: if($isDark, $d-selectionDelColor, $l-selectionDelColor);
-  #{$id}-slct-elbg-color: if($isDark, $d-selectionElBgColor, $l-selectionElBgColor);
-  #{$id}-slct-codebg-color: if($isDark, $d-selectionCodeBgColor, $l-selectionCodeBgColor);
-  #{$id}-slct-prebg-color: if($isDark, $d-selectionPreCodeBgColor, $l-selectionPreCodeBgColor);
+@mixin light-and-dark($isDark: false) {
+  #{$id}-base-color: if($isDark, $d-base-color, $l-base-color);
+  #{$id}-title-color: if($isDark, $d-title-color, $l-title-color);
+  #{$id}-strong-color: if($isDark, $d-strong-color, $l-strong-color);
+  #{$id}-em-color: if($isDark, $d-em-color, $l-em-color);
+  #{$id}-del-color: if($isDark, $d-del-color, $l-del-color);
+  #{$id}-link-color: if($isDark, $d-link-color, $l-link-color);
+  #{$id}-linkh-color: if($isDark, $d-linkh-color, $l-linkh-color);
+  #{$id}-border-color: if($isDark, $d-border-color, $l-border-color);
+  #{$id}-border-color-2: if($isDark, $d-border-color2, $l-border-color2);
+  #{$id}-bg-color: if($isDark, $d-bg-color, $l-bg-color);
+  #{$id}-blockquote-color: if($isDark, $d-blockquote-color, $l-blockquote-color);
+  #{$id}-blockquote-bg-color: if($isDark, $d-blockquote-bg-color, $l-blockquote-bg-color);
+  #{$id}-code-color: if($isDark, $d-code-color, $l-code-color);
+  #{$id}-code-bg-color: if($isDark, $d-code-bg-color, $l-code-bg-color);
+  #{$id}-code-pre-color: if($isDark, $d-code-pre-color, $l-code-pre-color);
+  #{$id}-table-border-color: if($isDark, $d-table-border-color, $l-table-border-color);
+  #{$id}-table-th-color: if($isDark, $d-table-th-color, $l-table-th-color);
+  #{$id}-table-tht-color: if($isDark, $d-table-tht-color, $l-table-tht-color);
+  #{$id}-table-tr-nc-color: if($isDark, $d-table-tr-nc-color, $l-table-tr-nc-color);
+  #{$id}-table-trh-color: if($isDark, $d-table-trh-color, $l-table-trh-color);
+  #{$id}-slct-title-color: if($isDark, $d-selection-title-color, $l-selection-title-color);
+  #{$id}-slct-titlebg-color: if($isDark, $d-selection-title-bg-color, $l-selection-title-bg-color);
+  #{$id}-slct-text-color: if($isDark, $d-selection-text-color, $l-selection-text-color);
+  #{$id}-slct-bg-color: if($isDark, $d-selection-bg-color, $l-selection-bg-color);
+  #{$id}-slct-del-color: if($isDark, $d-selection-del-color, $l-selection-del-color);
+  #{$id}-slct-elbg-color: if($isDark, $d-selection-el-bg-color, $l-selection-el-bg-color);
+  #{$id}-slct-codebg-color: if($isDark, $d-selection-code-bg-color, $l-selection-code-bg-color);
+  #{$id}-slct-prebg-color: if($isDark, $d-selection-pre-code-bg-color, $l-selection-pre-code-bg-color);
 }
 
-@mixin transitionColor() {
+@mixin transition-color() {
   transition: color 0.35s;
 }
 
-@mixin headTitle($padb: 4px, $fontSize: 24px, $mtop: 36px) {
+@mixin head-title($padb: 4px, $fontSize: 24px, $mtop: 36px) {
   padding-bottom: $padb;
   margin-top: $mtop;
   margin-bottom: 10px;
@@ -112,15 +110,15 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
   color: var(--cyanosis-title-color);
 }
 
-@mixin blockquoteColor {
+@mixin blockquote-color {
   color: var(--cyanosis-blockquote-color);
-  border-left: 4px solid var(--cyanosis-strong-color);
   background-color: var(--cyanosis-blockquote-bg-color);
+  border-left: 4px solid var(--cyanosis-strong-color);
 }
 
-@mixin selectionColor($bgColor: '', $txtColor: '') {
-  @if $bgColor != '' {
-    background-color: var($bgColor);
+@mixin selection-color($bg-color: '', $txtColor: '') {
+  @if $bg-color != '' {
+    background-color: var($bg-color);
   }
   @if $txtColor != '' {
     color: var($txtColor);
@@ -128,82 +126,87 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
 }
 
 @mixin markdown-body {
-  word-break: break-word;
-  line-height: 1.75;
-  font-weight: 400;
-  font-size: 14px;
   overflow-x: hidden;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--cyanosis-base-color);
-  @include transitionColor();
-  @include LightAndDark();
+  word-break: break-word;
+  @include transition-color;
+  @include light-and-dark;
 
   &.__dark {
-    @include LightAndDark(true);
+    @include light-and-dark(true);
   }
 
   h1 {
-    @include headTitle(4px, 30px);
-    @include transitionColor();
+    @include head-title(4px, 30px);
+    @include transition-color;
   }
 
   h2 {
     position: relative;
-    padding-left: 10px;
     padding-right: 10px;
-    @include headTitle(10px, 24px);
+    padding-left: 10px;
     border-bottom: 1px solid var(--cyanosis-border-color-2);
-    @include transitionColor();
+    @include head-title(10px, 24px);
+    @include transition-color;
 
     &::before {
-      content: '「';
       position: relative;
       top: -6px;
       left: auto;
+      content: '「';
     }
 
     &::after {
-      content: '」';
       position: relative;
       top: 6px;
       right: auto;
+      content: '」';
     }
   }
 
   h3 {
     position: relative;
-    @include headTitle(0, 20px, 30px);
+    @include head-title(0, 20px, 30px);
+
     padding-left: 6px;
-    @include transitionColor();
+    @include transition-color;
 
     &::before {
-      content: '»';
       padding-right: 6px;
       color: var(--cyanosis-strong-color);
+      content: '»';
     }
   }
 
   h4 {
-    @include headTitle(0, 16px, 24px);
+    @include head-title(0, 16px, 24px);
+
     padding-left: 6px;
-    @include transitionColor();
+    @include transition-color;
   }
 
   h5 {
-    @include headTitle(0, 14px, 18px);
+    @include head-title(0, 14px, 18px);
+
     padding-left: 6px;
-    @include transitionColor();
+    @include transition-color;
   }
 
   h6 {
-    @include headTitle(0, 12px, 12px);
+    @include head-title(0, 12px, 12px);
+
     padding-left: 6px;
-    @include transitionColor();
+    @include transition-color;
   }
 
   p {
-    line-height: inherit;
     margin-top: $line-space;
     margin-bottom: $line-space;
+    line-height: inherit;
+
     &:empty::after {
       content: '\00A0';
     }
@@ -219,36 +222,36 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
     height: 1px;
     margin-top: 32px;
     margin-bottom: 32px;
-    background-image: linear-gradient(90deg, var(--cyanosis-link-color), rgba(255, 0, 0, 0.3), var(--cyanosis-link-color));
-    border-width: 0;
     overflow: visible;
+    background-image: linear-gradient(90deg, var(--cyanosis-link-color), rgb(255 0 0 / 30%), var(--cyanosis-link-color));
+    border-width: 0;
   }
 
   code {
     padding: 0.065em 0.4em;
+    overflow-x: auto;
     font-family: $monospace-font;
     font-size: 0.87em;
     color: var(--cyanosis-code-color);
     word-break: break-word;
-    overflow-x: auto;
     background-color: var(--cyanosis-code-bg-color);
     border-radius: 2px;
   }
 
   pre {
-    font-family: $monospace-font;
-    overflow: auto;
     position: relative;
+    overflow: auto;
+    font-family: $monospace-font;
     line-height: 1.75;
 
     > code {
       display: block;
       padding: 16px 12px;
       margin: 0;
+      overflow-x: auto;
       font-size: 12px;
       color: #333;
       word-break: normal;
-      overflow-x: auto;
       background: var(--cyanosis-code-pre-color);
 
       &::-webkit-scrollbar {
@@ -269,8 +272,8 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
 
   a {
     position: relative;
-    text-decoration: none;
     color: var(--cyanosis-link-color);
+    text-decoration: none;
     border-bottom: 1px solid var(--cyanosis-border-color);
 
     &:hover {
@@ -284,37 +287,37 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
 
     &::after {
       position: absolute;
-      content: '';
       top: 100%;
       left: 0;
       width: 100%;
-      opacity: 0;
+      content: '';
       border-bottom: 1px solid var(--cyanosis-border-color);
+      opacity: 0;
       transition: top 0.3s, opacity 0.3s;
       transform: translate3d(0, 0, 0);
     }
 
     &:hover::after {
       top: 0;
-      opacity: 1;
       border-bottom-color: var(--cyanosis-linkh-color);
+      opacity: 1;
     }
   }
 
   table.table-wrapper {
     display: inline-block !important;
-    font-size: 12px;
     width: auto;
     max-width: 100%;
     overflow: auto;
-    border: 1px solid var(--cyanosis-table-border-color);
+    font-size: 12px;
     border-spacing: 0;
     border-collapse: collapse;
+    border: 1px solid var(--cyanosis-table-border-color);
 
     thead {
+      font-size: 14px;
       color: #000;
       text-align: left;
-      font-size: 14px;
       background: #f6f6f6;
     }
 
@@ -348,10 +351,11 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
   }
 
   blockquote {
-    @include blockquoteColor;
+    @include blockquote-color;
+
     padding: 1px 20px;
     margin: 22px 0;
-    @include transitionColor();
+    @include transition-color;
 
     &::after {
       display: block;
@@ -413,12 +417,12 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
   // details & summary
   details {
     & > summary {
-      outline: none;
-      color: var(--cyanosis-title-color);
       font-size: 20px;
       font-weight: bolder;
-      border-bottom: 1px solid var(--cyanosis-border-color);
+      color: var(--cyanosis-title-color);
       cursor: pointer;
+      border-bottom: 1px solid var(--cyanosis-border-color);
+      outline: none;
     }
 
     & > p {
@@ -438,7 +442,8 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
   h5,
   h6 {
     &::selection {
-      @include selectionColor();
+      @include selection-color;
+
       color: var(--cyanosis-slct-title-color);
       background-color: var(--cyanosis-slct-titlebg-color);
     }
@@ -474,6 +479,7 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
         background-color: transparent;
       }
     }
+
     tbody td {
       &::selection {
         background-color: var(--cyanosis-slct-bg-color);
@@ -485,10 +491,8 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
     background-color: var(--cyanosis-slct-codebg-color);
   }
 
-  pre {
-    > code::selection {
-      background-color: var(--cyanosis-slct-prebg-color);
-    }
+  pre > code::selection {
+    background-color: var(--cyanosis-slct-prebg-color);
   }
 
   .task-list {
@@ -499,42 +503,36 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
       position: relative;
 
       &::before {
-        content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
+        z-index: 1;
+        box-sizing: border-box;
         width: inherit;
         height: inherit;
+        content: '';
         background: #f0f8ff;
         border: 1px solid #add6ff;
         border-radius: 2px;
-        box-sizing: border-box;
-        z-index: 1;
       }
 
       &:checked {
         &::after {
-          content: '\2713';
           position: absolute;
-          top: -12px;
-          left: 0;
-          right: 0;
-          bottom: 0;
+          inset: -12px 0 0;
+          z-index: 2;
           width: 0;
           height: 0;
-          color: #ff5555;
           font-size: 20px;
           font-weight: bold;
-          z-index: 2;
+          color: #f55;
+          content: '\2713';
         }
       }
     }
   }
 
   // @media
-  @media (max-width: 720px) {
+  @media (width <= 720px) {
     h1 {
       font-size: 24px;
     }
@@ -550,5 +548,5 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
 }
 
 .vuetify-pro-tiptap-editor__content.markdown-theme-default {
-  @include markdown-body();
+  @include markdown-body;
 }

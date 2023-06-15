@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Editor } from '@tiptap/vue-3'
+
 import VideoDialog from './video/VideoDialog.vue'
 import ActionButton from './ActionButton.vue'
-import type { Editor } from '@tiptap/vue-3'
+
 import type { IconsOptions } from '@/constants/icons'
 import { ButtonViewReturnComponentProps } from '@/type'
 
@@ -35,7 +37,14 @@ function onAction() {
 </script>
 
 <template>
-  <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="color" :is-active="isActive" :action="onAction">
+  <ActionButton
+    :icon="icon"
+    :tooltip="tooltip"
+    :disabled="disabled"
+    :color="color"
+    :is-active="isActive"
+    :action="onAction"
+  >
     <VideoDialog :editor="editor" :value="src" />
   </ActionButton>
 </template>

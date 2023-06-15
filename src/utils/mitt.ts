@@ -37,7 +37,9 @@ export interface Emitter<Events extends Record<EventType, unknown>> {
  * @name mitt
  * @returns {Mitt}
  */
-export default function mitt<Events extends Record<EventType, unknown>>(all?: EventHandlerMap<Events>): Emitter<Events> {
+export default function mitt<Events extends Record<EventType, unknown>>(
+  all?: EventHandlerMap<Events>
+): Emitter<Events> {
   type GenericEventHandler = Handler<Events[keyof Events]> | WildcardHandler<Events>
   all = all || new Map()
 
@@ -93,6 +95,7 @@ export default function mitt<Events extends Record<EventType, unknown>>(all?: Ev
     emit<Key extends keyof Events>(type: Key, evt?: Events[Key]) {
       let handlers = all!.get(type)
       if (handlers) {
+        // eslint-disable-next-line @typescript-eslint/no-extra-semi
         ;(handlers as EventHandlerList<Events[keyof Events]>).slice().map(handler => {
           handler(evt!)
         })
@@ -100,6 +103,7 @@ export default function mitt<Events extends Record<EventType, unknown>>(all?: Ev
 
       handlers = all!.get('*')
       if (handlers) {
+        // eslint-disable-next-line @typescript-eslint/no-extra-semi
         ;(handlers as WildCardEventHandlerList<Events>).slice().map(handler => {
           handler(type, evt!)
         })

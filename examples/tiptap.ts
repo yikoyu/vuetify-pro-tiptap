@@ -4,44 +4,46 @@
  * @LastEditTime: 2023-06-13 20:39:47
  * @FilePath: \vuetify-pro-tiptap\examples\tiptap.ts
  */
-import { markRaw } from 'vue'
-import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap } from 'vuetify-pro-tiptap'
-import {
-  BaseKit,
-  Bold,
-  Italic,
-  Underline,
-  Strike,
-  Color,
-  Highlight,
-  Heading,
-  TextAlign,
-  FontFamily,
-  FontSize,
-  SubAndSuperScript,
-  BulletList,
-  OrderedList,
-  TaskList,
-  Indent,
-  Link,
-  Image,
-  Video,
-  Table,
-  Blockquote,
-  HorizontalRule,
-  Code,
-  CodeBlock,
-  Clear,
-  Fullscreen,
-  History
-} from 'vuetify-pro-tiptap'
-import SelectImage from './components/SelectImage.vue'
-
 import 'vuetify-pro-tiptap/styles/editor.css'
 import 'vuetify-pro-tiptap/styles/markdown.css'
-
 import './styles/markdown/github.scss'
 import './styles/markdown/maidragon.scss'
+
+import { markRaw } from 'vue'
+import {
+  BaseKit,
+  Blockquote,
+  Bold,
+  BulletList,
+  Clear,
+  Code,
+  CodeBlock,
+  Color,
+  createVuetifyProTipTap,
+  FontFamily,
+  FontSize,
+  Fullscreen,
+  Heading,
+  Highlight,
+  History,
+  HorizontalRule,
+  Image,
+  Indent,
+  Italic,
+  Link,
+  OrderedList,
+  Strike,
+  SubAndSuperScript,
+  Table,
+  TaskList,
+  TextAlign,
+  Underline,
+  Video,
+  VuetifyTiptap,
+  VuetifyViewer
+} from 'vuetify-pro-tiptap'
+
+import SelectImage from './components/SelectImage.vue'
 
 export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',

@@ -290,7 +290,7 @@ const maxWidth = ref<number>(900)
       <VCard>
         <VToolbar dark color="primary">
           <VBtn icon dark @click="dialog = false">
-            <v-icon>{{ `svg:${mdiClose}` }}</v-icon>
+            <VIcon>{{ `svg:${mdiClose}` }}</VIcon>
           </VBtn>
         </VToolbar>
 
@@ -402,12 +402,12 @@ const content = ref('')
 </script>
 
 <template>
-  <v-app id="app">
-    <v-container>
+  <VApp id="app">
+    <VContainer>
       <VuetifyTiptap v-model="content" label="Title" rounded :min-height="200" :max-height="465" :max-width="900" :extensions="extensions" />
       <VuetifyViewer :value="content" />
-    </v-container>
-  </v-app>
+    </VContainer>
+  </VApp>
 </template>
 ```
 

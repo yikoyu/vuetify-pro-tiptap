@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { unref, computed } from 'vue'
+import { computed, unref } from 'vue'
+
 import { getIcon } from '@/constants/icons'
+import { useContext } from '@/hooks/use-context'
+import { useLocale } from '@/locales'
 import { ButtonViewReturnComponentProps } from '@/type'
 
-import { useLocale } from '@/locales'
-import { useContext } from '@/hooks/use-context'
-
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+  color: undefined,
+  isActive: undefined
+})
 const { t } = useLocale()
 const { state, toggleFullscreen } = useContext()
 
@@ -14,12 +19,6 @@ interface Props {
   color?: string
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
-
-const props = withDefaults(defineProps<Props>(), {
-  disabled: false,
-  color: undefined,
-  isActive: undefined
-})
 
 const text = computed(() => {
   const tooltip = state.isFullscreen ? 'editor.fullscreen.tooltip.exit' : 'editor.fullscreen.tooltip.fullscreen'
@@ -56,8 +55,10 @@ function onAction() {
     }"
     @click="onAction"
   >
-    <VIcon :icon="icon"></VIcon>
+    <VIcon :icon="icon" />
+
     <VTooltip :eager="false" activator="parent" location="top" :text="text" />
+
     <slot></slot>
   </VBtn>
 </template>

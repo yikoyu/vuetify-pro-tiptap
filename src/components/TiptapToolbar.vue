@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, unref } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
+
 import { useLocale } from '@/locales'
-import { isFunction } from '@/utils/utils'
 import type { ButtonViewReturn } from '@/type'
+import { isFunction } from '@/utils/utils'
 
 interface Menu {
   button: ButtonViewReturn
@@ -65,7 +66,12 @@ const items = computed(() => {
       <!-- Spacer -->
       <VSpacer v-if="item.spacer" />
       <!-- Buttons -->
-      <component :is="item.button.component" v-bind="item.button.componentProps" :editor="editor" :disabled="disabled" />
+      <component
+        :is="item.button.component"
+        v-bind="item.button.componentProps"
+        :editor="editor"
+        :disabled="disabled"
+      />
       <!-- Divider -->
       <VDivider v-if="item.divider" vertical class="mx-1 me-2" />
     </template>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { getIcon } from '@/constants/icons'
+
 import type { IconsOptions } from '@/constants/icons'
+import { getIcon } from '@/constants/icons'
 import { ButtonViewReturnComponentProps } from '@/type'
 
 interface Props {
@@ -38,8 +39,10 @@ const btnIcon = computed(() => getIcon(props.icon))
     }"
     @click="action"
   >
-    <VIcon v-if="btnIcon" :icon="btnIcon"></VIcon>
+    <VIcon v-if="btnIcon" :icon="btnIcon" />
+
     <VTooltip :eager="false" activator="parent" location="top" :text="props.tooltip" />
+
     <slot></slot>
   </VBtn>
 </template>

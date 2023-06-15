@@ -43,8 +43,11 @@ watch(
 </script>
 
 <template>
-  <VAlert class="mb-4" type="info" text="Select tab is custom component"></VAlert>
-  <VSelect v-model="form.src" label="Select Image" :items="items" item-value="src" item-title="alt"></VSelect>
+  <VAlert class="mb-4" type="info" text="Select tab is custom component" />
+
+  <VSelect v-model="form.src" label="Select Image" :items="items" item-value="src" item-title="alt" />
+
   <VTextField v-model="form.alt" label="Alt" />
-  <VCheckbox v-model="form.lockAspectRatio" label="Lock original aspect ratio"></VCheckbox>
+
+  <VCheckbox v-model="form.lockAspectRatio" label="Lock original aspect ratio" />
 </template>

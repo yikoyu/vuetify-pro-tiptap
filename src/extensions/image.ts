@@ -1,10 +1,12 @@
+import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
 import { Image as TiptapImage } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
-import ImageView from './components/image/Image.vue'
-import ImageActionButton from './components/ImageActionButton.vue'
-import { IMAGE_SIZE } from '@/constants/define'
-import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
+
+import ImageView from './components/image/ImageView.vue'
 import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
+import ImageActionButton from './components/ImageActionButton.vue'
+
+import { IMAGE_SIZE } from '@/constants/define'
 import type { ButtonView, GeneralOptions } from '@/type'
 
 type Upload = (file: File) => Promise<string>

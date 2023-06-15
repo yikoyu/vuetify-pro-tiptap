@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed, ref, unref, watch } from 'vue'
-import { getIcon } from '@/constants/icons'
-import { useLocale } from '@/locales'
 import type { Editor } from '@tiptap/vue-3'
-import type { ImageAttrsOptions, ImageForm, ImageTab, ImageTabKey } from './types'
 
 import ImageUpload from './ImageUpload.vue'
 import ImageUrl from './ImageUrl.vue'
+import type { ImageAttrsOptions, ImageForm, ImageTab, ImageTabKey } from './types'
+
+import { getIcon } from '@/constants/icons'
+import { useLocale } from '@/locales'
 
 interface Props {
   value?: ImageAttrsOptions
@@ -101,10 +102,11 @@ watch(
     <VCard>
       <VToolbar class="px-6" density="compact">
         <span class="headline">{{ t('editor.image.dialog.title') }}</span>
+
         <VSpacer />
 
         <VBtn class="mx-0" icon @click="close">
-          <VIcon :icon="getIcon('close')"></VIcon>
+          <VIcon :icon="getIcon('close')" />
         </VBtn>
       </VToolbar>
 

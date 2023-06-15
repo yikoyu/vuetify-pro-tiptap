@@ -1,3 +1,9 @@
+<!--
+  * @Date: 2023-06-14 21:43:39
+  * @LastEditors: yikoyu 2282373181@qq.com
+  * @LastEditTime: 2023-06-14 23:11:42
+  * @FilePath: \vuetify-pro-tiptap\examples\components\CustomLang.vue
+-->
 <script setup lang="ts">
 import { computed, unref } from 'vue'
 
@@ -26,14 +32,15 @@ const customLangKey = computed(() => Object.keys(unref(customLang)))
 </script>
 
 <template>
-  <v-card class="mt-2">
-    <v-card-title>Custom Lang</v-card-title>
-    <v-card-text>
-      <v-row>
-        <v-col v-for="key in customLangKey" :key="key" :cols="12" :sm="6" :md="4" :lg="3">
-          <v-text-field v-model="customLang[key]" :label="key"></v-text-field>
-        </v-col>
-      </v-row>
-    </v-card-text>
-  </v-card>
+  <VCard class="mt-2">
+    <VCardTitle>Custom Lang</VCardTitle>
+
+    <VCardText>
+      <VRow>
+        <VCol v-for="key in customLangKey" :key="key" :cols="12" :sm="6" :md="4" :lg="3">
+          <VTextField v-model="customLang[key]" :label="key" />
+        </VCol>
+      </VRow>
+    </VCardText>
+  </VCard>
 </template>

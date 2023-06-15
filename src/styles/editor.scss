@@ -9,20 +9,17 @@ $extra-light-primary-color: #ecf5ff;
   &-editor {
     display: flex;
     flex-direction: column;
-    max-height: 100%;
     width: 100%;
+    max-height: 100%;
 
     &--fullscreen {
-      border-radius: 0 !important;
-      bottom: 0 !important;
-      height: 100% !important;
-      left: 0 !important;
-      margin: 0 !important;
       position: fixed !important;
-      right: 0 !important;
-      top: 0 !important;
-      width: 100% !important;
+      inset: 0 !important;
       z-index: 200;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
     }
 
     &__menu-bubble {
@@ -40,7 +37,7 @@ $extra-light-primary-color: #ecf5ff;
 
     &__content {
       :focus-visible {
-        outline: -webkit-focus-ring-color auto 0px;
+        outline: -webkit-focus-ring-color auto 0;
       }
 
       img {
@@ -48,8 +45,8 @@ $extra-light-primary-color: #ecf5ff;
         float: none;
 
         &[data-display='inline'] {
-          padding-left: 12px;
           padding-right: 12px;
+          padding-left: 12px;
         }
 
         &[data-display='block'] {
@@ -58,29 +55,29 @@ $extra-light-primary-color: #ecf5ff;
 
         &[data-display='left'] {
           float: left;
-          padding-left: 0;
           padding-right: 12px;
+          padding-left: 0;
         }
 
         &[data-display='right'] {
           float: right;
-          padding-left: 12px;
           padding-right: 0;
+          padding-left: 12px;
         }
       }
 
       .task-list {
-        list-style: none;
         padding-left: 0;
+        list-style: none;
 
         .task-list-item {
-          list-style: none;
           display: flex;
+          list-style: none;
 
           > label {
             flex: 0 0 auto;
-            padding-left: 8px;
             padding-right: 8px;
+            padding-left: 8px;
             user-select: none;
           }
 
@@ -93,16 +90,16 @@ $extra-light-primary-color: #ecf5ff;
   }
 
   .ProseMirror {
-    padding: 8px 18px;
     min-height: 180px;
+    padding: 8px 18px;
     overflow-wrap: anywhere;
 
-    p.is-editor-empty:first-child:before {
-      content: attr(data-placeholder);
+    p.is-editor-empty:first-child::before {
       float: left;
+      height: 0;
       color: #adb5bd;
       pointer-events: none;
-      height: 0;
+      content: attr(data-placeholder);
     }
 
     .iframe-wrapper {
@@ -116,16 +113,14 @@ $extra-light-primary-color: #ecf5ff;
     table.table-wrapper {
       .selectedCell {
         position: relative;
+
         &::after {
-          z-index: 2;
           position: absolute;
-          content: '';
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          background: rgb(200 200 255 / 40%);
+          inset: 0;
+          z-index: 2;
           pointer-events: none;
+          content: '';
+          background: rgb(200 200 255 / 40%);
         }
       }
     }
@@ -134,15 +129,15 @@ $extra-light-primary-color: #ecf5ff;
       $root: &;
 
       display: inline-block;
+      float: none;
       max-width: 100%;
       line-height: 0;
-      float: none;
-      user-select: none;
       vertical-align: baseline;
+      user-select: none;
 
       &--inline {
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
       }
 
       &--block {
@@ -151,25 +146,23 @@ $extra-light-primary-color: #ecf5ff;
 
       &--left {
         float: left;
-        margin-left: 0;
         margin-right: 12px;
+        margin-left: 0;
       }
 
       &--right {
         float: right;
-        margin-left: 12px;
         margin-right: 0;
+        margin-left: 12px;
       }
 
       &__body {
-        clear: both;
+        position: relative;
         display: inline-block;
         max-width: 100%;
-        outline-color: transparent;
-        outline-style: solid;
-        outline-width: 2px;
+        clear: both;
+        outline: transparent solid 2px;
         transition: all 0.2s ease-in;
-        position: relative;
 
         &:hover {
           outline-color: #ffc83d;
@@ -181,17 +174,17 @@ $extra-light-primary-color: #ecf5ff;
         }
 
         &__placeholder {
-          height: 100%;
-          left: 0;
           position: absolute;
           top: 0;
-          width: 100%;
+          left: 0;
           z-index: -1;
+          width: 100%;
+          height: 100%;
         }
 
         &__image {
-          cursor: pointer !important;
           margin: 0;
+          cursor: pointer !important;
         }
       }
 
@@ -203,47 +196,47 @@ $extra-light-primary-color: #ecf5ff;
     }
 
     .image-resizer {
-      border: 1px solid $primary-color;
-      height: 100%;
-      left: 0;
       position: absolute;
       top: 0;
-      width: 100%;
+      left: 0;
       z-index: 1;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $primary-color;
 
       &__handler {
+        position: absolute;
+        z-index: 2;
+        box-sizing: border-box;
+        display: block;
+        width: 12px;
+        height: 12px;
         background-color: $primary-color;
         border: 1px solid $white-color;
         border-radius: 2px;
-        box-sizing: border-box;
-        display: block;
-        height: 12px;
-        position: absolute;
-        width: 12px;
-        z-index: 2;
 
         &--tl {
-          cursor: nw-resize;
-          left: -6px;
           top: -6px;
+          left: -6px;
+          cursor: nw-resize;
         }
 
         &--tr {
-          cursor: ne-resize;
-          right: -6px;
           top: -6px;
+          right: -6px;
+          cursor: ne-resize;
         }
 
         &--bl {
           bottom: -6px;
-          cursor: sw-resize;
           left: -6px;
+          cursor: sw-resize;
         }
 
         &--br {
+          right: -6px;
           bottom: -6px;
           cursor: se-resize;
-          right: -6px;
         }
       }
     }
@@ -251,11 +244,12 @@ $extra-light-primary-color: #ecf5ff;
 
   &.dense {
     .ProseMirror {
-      padding: 6px 12px;
       min-height: 32px;
+      padding: 6px 12px;
     }
+
     p {
-      padding: 0 0;
+      padding: 0;
       line-height: 1.2rem;
     }
   }
@@ -266,12 +260,12 @@ $extra-light-primary-color: #ecf5ff;
 
   &__cell {
     &__inner {
-      border: 1px solid $border-color;
       box-sizing: border-box;
-      border-radius: 2px;
+      width: 16px;
       height: 16px;
       padding: 4px;
-      width: 16px;
+      border: 1px solid $border-color;
+      border-radius: 2px;
     }
 
     &--selected {

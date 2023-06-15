@@ -1,16 +1,17 @@
 import { resolve } from 'path'
+
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import eslintPlugin from 'vite-plugin-eslint'
+import { checker } from 'vite-plugin-checker'
 import dts from 'vite-plugin-dts'
-
+import eslint from 'vite-plugin-eslint2'
+import stylelint from 'vite-plugin-stylelint'
+import vue from '@vitejs/plugin-vue'
 import { PluginPure } from 'rollup-plugin-pure'
-
-import Components from 'unplugin-vue-components/vite'
 import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
-// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
+import Components from 'unplugin-vue-components/vite'
 
-import { dependencies } from './package.json'
+// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
+import { dependencies, scripts } from './package.json'
 
 const deps = Object.keys(dependencies).reduce((result, k) => {
   const ignores: string[] = ['@tiptap/vue-3']
@@ -30,9 +31,6 @@ export default defineConfig({
       dirs: undefined,
       dts: false,
       resolvers: [Vuetify3Resolver()]
-    }),
-    eslintPlugin({
-      fix: true
     }),
     {
       // 在打包时 rollup 无法给 tiptap 加上 PURE 标注，需要手动加上

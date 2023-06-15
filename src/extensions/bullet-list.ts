@@ -1,6 +1,8 @@
-import { BulletList as TiptapBulletList } from '@tiptap/extension-bullet-list'
-import ActionButton from './components/ActionButton.vue'
 import type { BulletListOptions as TiptapBulletListOptions } from '@tiptap/extension-bullet-list'
+import { BulletList as TiptapBulletList } from '@tiptap/extension-bullet-list'
+
+import ActionButton from './components/ActionButton.vue'
+
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface BulletListOptions extends TiptapBulletListOptions, GeneralOptions {

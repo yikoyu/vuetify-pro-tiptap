@@ -1,11 +1,10 @@
-import type { Plugin, App } from 'vue'
+import type { App, Plugin } from 'vue'
 import type { Extensions } from '@tiptap/core'
 
 import VuetifyTiptap from './components/VuetifyTiptap.vue'
 import VuetifyViewer from './components/VuetifyViewer.vue'
-import locale, { zhHans, en } from './locales'
-
 import { createContext } from './hooks/use-context'
+import locale, { en, zhHans } from './locales'
 
 interface InstallationOptions {
   lang?: string
@@ -35,7 +34,7 @@ const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
 export * from './extensions'
 export type { ButtonView, ButtonViewReturnComponentProps, GeneralOptions } from './type'
 export { createVuetifyProTipTap, VuetifyTiptap, VuetifyViewer }
-export { locale, zhHans, en }
+export { en, locale, zhHans }
 export type { InstallationOptions }
 
 declare module '@vue/runtime-core' {

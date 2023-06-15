@@ -1,4 +1,5 @@
 import type { Editor, Extension } from '@tiptap/vue-3'
+
 import type { IconsOptions } from './constants/icons'
 
 export type ExtensionNameKeys =

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { getIcon } from '@/constants/icons'
+
 import { COLORS_LIST } from '@/constants/define'
+import { getIcon } from '@/constants/icons'
 
 interface Props {
   modelValue?: string
@@ -47,27 +48,27 @@ function setColor(color: string) {
     <VList>
       <VSheet class="d-flex flex-wrap justify-between ma-1" fluid :max-width="230">
         <VBtn v-for="color in COLORS_LIST" :key="color" flat icon density="compact" @click="setColor(color)">
-          <VIcon :icon="getIcon('circle')" :color="color"></VIcon>
+          <VIcon :icon="getIcon('circle')" :color="color" />
         </VBtn>
       </VSheet>
 
       <!-- <template>
-        <v-btn v-if="!picker" block text @click="picker = true"> show more </v-btn>
-        <v-btn v-else block text @click="picker = false"> show less </v-btn>
+        <VBtn v-if="!picker" block text @click="picker = true"> show more </VBtn>
+        <VBtn v-else block text @click="picker = false"> show less </VBtn>
 
         <v-expand-transition>
-          <div v-if="picker" class="text-center">
-            <v-divider />
-            <v-color-picker
-              :model-value="modelValue"
-              hide-mode-switch
-              mode="hexa"
-              :width="254"
-              @update:color="onInput"
-            />
-          </div>
+        <div v-if="picker" class="text-center">
+        <v-divider />
+        <v-color-picker
+        :model-value="modelValue"
+        hide-mode-switch
+        mode="hexa"
+        :width="254"
+        @update:color="onInput"
+        />
+        </div>
         </v-expand-transition>
-      </template> -->
+        </template> -->
     </VList>
   </VMenu>
 </template>

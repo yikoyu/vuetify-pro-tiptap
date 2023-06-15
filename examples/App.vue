@@ -1,17 +1,17 @@
 <!--
- * @Date: 2023-05-27 17:21:21
- * @LastEditors: yikoyu 2282373181@qq.com
- * @LastEditTime: 2023-06-13 20:58:58
- * @FilePath: \vuetify-pro-tiptap\examples\App.vue
+  * @Date: 2023-05-27 17:21:21
+  * @LastEditors: yikoyu 2282373181@qq.com
+  * @LastEditTime: 2023-06-14 23:09:31
+  * @FilePath: \vuetify-pro-tiptap\examples\App.vue
 -->
 <script setup lang="ts">
 import { ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
 import { locale } from 'vuetify-pro-tiptap'
-import html from './html'
 
 import CustomLang from './components/CustomLang.vue'
 import preview from './extensions/preview'
+import html from './html'
 
 const extensions = [preview.configure({ spacer: true })]
 
@@ -40,9 +40,9 @@ function setCustom() {
 </script>
 
 <template>
-  <v-app id="app">
-    <v-container>
-      <v-alert class="mb-4" type="info" title="Support repository" variant="tonal">
+  <VApp id="app">
+    <VContainer>
+      <VAlert class="mb-4" type="info" title="Support repository" variant="tonal">
         <template #text>
           <div class="d-flex align-center">
             If you like the repository, you can give us
@@ -57,26 +57,31 @@ function setCustom() {
             ></iframe>
           </div>
         </template>
-      </v-alert>
+      </VAlert>
 
-      <v-btn class="mb-4" color="primary" @click="toggleTheme">
+      <VBtn class="mb-4" color="primary" @click="toggleTheme">
         {{ $vuetify.theme.current.dark ? 'dark' : 'light' }}
-      </v-btn>
+      </VBtn>
 
-      <v-btn class="mb-4 ms-4" color="primary" @click="locale.setLang('zhHans')">set Chinese</v-btn>
-      <v-btn class="mb-4 ms-4" color="primary" @click="locale.setLang('en')">set English</v-btn>
-      <v-btn class="mb-4 ms-4" color="primary" @click="setCustom">set Custom Lang</v-btn>
+      <VBtn class="mb-4 ms-4" color="primary" @click="locale.setLang('zhHans')"> set Chinese </VBtn>
+
+      <VBtn class="mb-4 ms-4" color="primary" @click="locale.setLang('en')"> set English </VBtn>
+
+      <VBtn class="mb-4 ms-4" color="primary" @click="setCustom"> set Custom Lang </VBtn>
 
       <div class="my-4">
-        <v-btn-toggle v-model="markdownTheme" color="deep-purple-accent-3" rounded="0" group>
-          <v-btn value="">Global</v-btn>
-          <v-btn value="default">Default</v-btn>
-          <v-btn value="github">Github</v-btn>
-          <v-btn value="maidragon">Maidragon</v-btn>
-        </v-btn-toggle>
+        <VBtn-toggle v-model="markdownTheme" color="deep-purple-accent-3" rounded="0" group>
+          <VBtn value=""> Global </VBtn>
+
+          <VBtn value="default"> Default </VBtn>
+
+          <VBtn value="github"> Github </VBtn>
+
+          <VBtn value="maidragon"> Maidragon </VBtn>
+        </VBtn-toggle>
       </div>
 
-      <vuetify-tiptap
+      <VuetifyTiptap
         v-model="content"
         label="Title"
         :hide-toolbar="hideToolbar"
@@ -90,13 +95,14 @@ function setCustom() {
         :extensions="extensions"
         :markdown-theme="markdownTheme"
       />
-      <v-divider class="my-4"></v-divider>
 
-      <v-textarea :value="content" readonly auto-grow></v-textarea>
+      <VDivider class="my-4" />
 
-      <v-divider class="my-4"></v-divider>
+      <VTextarea :value="content" readonly auto-grow />
 
-      <custom-lang v-model="customLang" />
-    </v-container>
-  </v-app>
+      <VDivider class="my-4" />
+
+      <CustomLang v-model="customLang" />
+    </VContainer>
+  </VApp>
 </template>

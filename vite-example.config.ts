@@ -1,10 +1,18 @@
+/*
+ * @Date: 2023-06-15 20:52:07
+ * @LastEditors: yikoyu 2282373181@qq.com
+ * @LastEditTime: 2023-06-15 22:46:19
+ * @FilePath: \vuetify-pro-tiptap\vite-example.config.ts
+ */
 import { resolve } from 'path'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import eslintPlugin from 'vite-plugin-eslint'
 
-import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
+import { checker } from 'vite-plugin-checker'
+import vue from '@vitejs/plugin-vue'
 import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+
+import { scripts } from './package.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,8 +24,14 @@ export default defineConfig({
       dts: false,
       resolvers: [Vuetify3Resolver()]
     }),
-    eslintPlugin({
-      fix: true
+    checker({
+      vueTsc: true,
+      eslint: {
+        lintCommand: scripts['lint:js']
+      },
+      stylelint: {
+        lintCommand: scripts['lint:css']
+      }
     })
   ],
   resolve: {

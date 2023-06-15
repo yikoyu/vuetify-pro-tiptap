@@ -1,4 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
+import { reactive, ref, unref } from 'vue'
+
+import { TABLE_DEFAULT_SELECTED_GRID_SIZE, TABLE_INIT_GRID_SIZE, TABLE_MAX_GRID_SIZE } from '@/constants/define'
+import { useLocale } from '@/locales'
+
 export interface GridSize {
   rows: number
   cols: number
@@ -7,12 +12,6 @@ export interface GridSize {
 export interface CreateTablePayload extends GridSize {
   withHeaderRow: boolean
 }
-</script>
-
-<script setup lang="ts">
-import { reactive, ref, unref } from 'vue'
-import { useLocale } from '@/locales'
-import { TABLE_INIT_GRID_SIZE, TABLE_MAX_GRID_SIZE, TABLE_DEFAULT_SELECTED_GRID_SIZE } from '@/constants/define'
 
 interface Emits {
   (event: 'create-table', payload: CreateTablePayload): void
@@ -68,15 +67,22 @@ function resetTableGridSize(): void {
   <VMenu v-model="menu" location="end bottom" open-on-hover :close-on-content-click="false" activator="parent">
     <VCard density="compact" class="table-grid-size-editor">
       <VCardText class="pa-2 pb-0">
-        <VCheckbox v-model="withHeaderRow" density="compact" hide-details :label="t('editor.table.menu.insert_table.with_header_row')"></VCheckbox>
+        <VCheckbox
+          v-model="withHeaderRow"
+          density="compact"
+          hide-details
+          :label="t('editor.table.menu.insert_table.with_header_row')"
+        />
       </VCardText>
+
       <VCardText class="d-flex flex-column flex-wrap justify-space-between pa-2">
         <div v-for="row in tableGridSize.rows" :key="'r' + row" class="d-flex">
           <div
             v-for="col in tableGridSize.cols"
             :key="'c' + col"
             :class="{
-              'table-grid-size-editor__cell--selected': col <= selectedTableGridSize.cols && row <= selectedTableGridSize.rows
+              'table-grid-size-editor__cell--selected':
+                col <= selectedTableGridSize.cols && row <= selectedTableGridSize.rows
             }"
             class="pa-1"
             @mouseover="selectTableGridSize(row, col)"
@@ -86,7 +92,10 @@ function resetTableGridSize(): void {
           </div>
         </div>
       </VCardText>
-      <VCardSubtitle class="pt-0 pb-2">{{ selectedTableGridSize.rows }} x {{ selectedTableGridSize.cols }}</VCardSubtitle>
+
+      <VCardSubtitle class="pt-0 pb-2">
+        {{ selectedTableGridSize.rows }} x {{ selectedTableGridSize.cols }}
+      </VCardSubtitle>
     </VCard>
   </VMenu>
 </template>

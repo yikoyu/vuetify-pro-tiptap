@@ -1,9 +1,11 @@
 import type { Extension } from '@tiptap/core'
-import { Heading as TiptapHeading } from '@tiptap/extension-heading'
-import ActionMenuButton from './components/ActionMenuButton.vue'
 import type { HeadingOptions as TiptapHeadingOptions } from '@tiptap/extension-heading'
+import { Heading as TiptapHeading } from '@tiptap/extension-heading'
+
 import type { Item } from './components/ActionMenuButton.vue'
+import ActionMenuButton from './components/ActionMenuButton.vue'
 import type { BaseKitOptions } from './base-kit'
+
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions {

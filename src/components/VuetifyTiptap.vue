@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed, onUnmounted, unref, watch, useAttrs } from 'vue'
+import { computed, onUnmounted, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
-
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
-import { EditorContent, Editor } from '@tiptap/vue-3'
+import { Editor, EditorContent } from '@tiptap/vue-3'
+
 import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
 
-import { useLocale } from '@/locales'
-import { useContext } from '@/hooks/use-context'
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { getUnitWithPxAsDefault, throttle, isBoolean, isString } from '@/utils/utils'
+import { useContext } from '@/hooks/use-context'
+import { useLocale } from '@/locales'
+import { getUnitWithPxAsDefault, isBoolean, isString, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -163,22 +163,33 @@ onUnmounted(() => editor?.destroy())
           :flat="flat"
           :outlined="outlined"
           :color="isDark ? 'grey-darken-4' : 'grey-lighten-4'"
-          style="width: 100%"
           v-bind="$attrs"
           :style="{
-            borderColor: $attrs['error-messages'] ? '#ff5252' : undefined
+            borderColor: $attrs['error-messages'] ? '#ff5252' : undefined,
+            width: '100%'
           }"
           class="vuetify-pro-tiptap-editor"
           :class="{ 'vuetify-pro-tiptap-editor--fullscreen': isFullscreen }"
         >
           <template v-if="label && !isFullscreen">
-            <VCardTitle :class="isDark ? 'bg-grey-darken-3' : 'bg-grey-lighten-3'">{{ label }}</VCardTitle>
-            <VDivider></VDivider>
+            <VCardTitle :class="isDark ? 'bg-grey-darken-3' : 'bg-grey-lighten-3'">
+              {{ label }}
+            </VCardTitle>
+
+            <VDivider />
           </template>
           <!-- Toolbar -->
-          <TipTapToolbar v-if="!hideToolbar" class="vuetify-pro-tiptap-editor__toolbar" :editor="editor" :disabled="disableToolbar" />
+          <TipTapToolbar
+            v-if="!hideToolbar"
+            class="vuetify-pro-tiptap-editor__toolbar"
+            :editor="editor"
+            :disabled="disableToolbar"
+          />
 
-          <slot name="editor" v-bind="{ editor, props: { class: 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }">
+          <slot
+            name="editor"
+            v-bind="{ editor, props: { class: 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }"
+          >
             <EditorContent
               class="vuetify-pro-tiptap-editor__content"
               :class="contentDynamicClasses"
@@ -192,8 +203,13 @@ onUnmounted(() => editor?.destroy())
             <VToolbar class="px-4" density="compact" flat>
               <VSpacer />
 
-              <span class="text-overline me-4">{{ editor.storage.characterCount.words() }} {{ t('editor.words') }}</span>
-              <span class="text-overline">{{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}</span>
+              <span class="text-overline me-4">
+                {{ editor.storage.characterCount.words() }} {{ t('editor.words') }}
+              </span>
+
+              <span class="text-overline">
+                {{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}
+              </span>
             </VToolbar>
           </slot>
         </VCard>

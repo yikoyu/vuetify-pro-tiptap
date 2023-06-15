@@ -1,5 +1,7 @@
 import { Extension } from '@tiptap/core'
+
 import ActionButton from './components/ActionButton.vue'
+
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface IndentOptions extends GeneralOptions {
