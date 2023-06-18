@@ -1,10 +1,7 @@
 import { resolve } from 'path'
 
 import { defineConfig } from 'vite'
-import { checker } from 'vite-plugin-checker'
 import dts from 'vite-plugin-dts'
-import eslint from 'vite-plugin-eslint2'
-import stylelint from 'vite-plugin-stylelint'
 import vue from '@vitejs/plugin-vue'
 import { PluginPure } from 'rollup-plugin-pure'
 import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
