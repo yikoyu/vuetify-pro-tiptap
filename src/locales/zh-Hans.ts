@@ -38,6 +38,7 @@ const locale: Record<string, string> = {
   'editor.link.dialog.title': '插入链接',
   'editor.link.dialog.link': '链接',
   'editor.link.dialog.button.apply': '应用',
+  'editor.markdownTheme.tooltip': '主题',
   'editor.image.tooltip': '图片',
   'editor.image.float.left.tooltip': '左浮动',
   'editor.image.float.none.tooltip': '无浮动',

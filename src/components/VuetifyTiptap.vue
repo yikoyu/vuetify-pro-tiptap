@@ -9,8 +9,9 @@ import TipTapToolbar from './TiptapToolbar.vue'
 
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
 import { useContext } from '@/hooks/use-context'
+import { useMarkdownTheme } from '@/hooks/use-markdown-theme'
 import { useLocale } from '@/locales'
-import { getUnitWithPxAsDefault, isBoolean, isString, throttle } from '@/utils/utils'
+import { getUnitWithPxAsDefault, isBoolean, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -36,6 +37,7 @@ interface Props {
 interface Emits {
   (event: 'enter'): void
   (event: 'update:modelValue', value: string): void
+  (event: 'update:markdownTheme', value: string): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -63,6 +65,12 @@ const attrs = useAttrs()
 
 const theme = useTheme()
 const { state, isFullscreen } = useContext()
+const { markdownThemeStyle } = useMarkdownTheme(
+  computed(() => props.markdownTheme),
+  (value: string) => {
+    emit('update:markdownTheme', value)
+  }
+)
 
 const sortExtensions = computed<AnyExtension[]>(() => {
   const exts = [...state.extensions, ...props.extensions]
@@ -100,11 +108,9 @@ const isDark = computed<boolean>(() => {
 })
 
 const contentDynamicClasses = computed(() => {
-  const markdownTheme = (props.markdownTheme || state.defaultMarkdownTheme) ?? 'default'
-
   const values: Record<string, any> = {
     __dark: unref(isDark),
-    [`markdown-theme-${markdownTheme}`]: isString(markdownTheme) ? true : false
+    ...unref(markdownThemeStyle)
   }
 
   return [values, props.editorClass]

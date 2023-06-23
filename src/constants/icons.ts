@@ -42,6 +42,7 @@ import {
   mdiImagePlus,
   mdiLinkVariantPlus,
   mdiMinus,
+  mdiPalette,
   mdiRedo,
   mdiSizeL,
   mdiSizeM,
@@ -90,6 +91,7 @@ export interface ToolbarIconsOptions {
   clear: string
   undo: string
   redo: string
+  markdownTheme: string
   fullscreen: string
 }
 
@@ -169,6 +171,7 @@ const icons: IconsOptions = {
   clear: mdiFormatClear,
   undo: mdiUndo,
   redo: mdiRedo,
+  markdownTheme: mdiPalette,
   fullscreen: mdiFullscreen,
 
   // heading

@@ -18,7 +18,7 @@ const extensions = [preview.configure({ spacer: true })]
 const theme = useTheme()
 
 const content = ref(html)
-const markdownTheme = ref('maidragon')
+const markdownTheme = ref('')
 const outlined = ref(true)
 const dense = ref(false)
 const editHtml = ref(false)
@@ -83,6 +83,7 @@ function setCustom() {
 
       <VuetifyTiptap
         v-model="content"
+        v-model:markdown-theme="markdownTheme"
         label="Title"
         :hide-toolbar="hideToolbar"
         :disable-toolbar="disableToolbar"
@@ -93,7 +94,6 @@ function setCustom() {
         :max-height="465"
         :max-width="maxWidth"
         :extensions="extensions"
-        :markdown-theme="markdownTheme"
       />
 
       <VDivider class="my-4" />

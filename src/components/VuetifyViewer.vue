@@ -5,8 +5,8 @@ import type { IWhiteList } from 'xss'
 import Xss from 'xss'
 
 import xssRules from '@/constants/xss-rules'
-import { useContext } from '@/hooks/use-context'
-import { isBoolean, isString } from '@/utils/utils'
+import { useMarkdownTheme } from '@/hooks/use-markdown-theme'
+import { isBoolean } from '@/utils/utils'
 
 interface Props {
   value?: string
@@ -21,13 +21,13 @@ const props = withDefaults(defineProps<Props>(), {
   value: '',
   dark: undefined,
   dense: false,
-  markdownTheme: 'default',
+  markdownTheme: undefined,
   xss: true,
   xssOptions: () => xssRules
 })
 
-const { state } = useContext()
 const theme = useTheme()
+const { markdownThemeStyle } = useMarkdownTheme(computed(() => props.markdownTheme))
 
 const isDark = computed<boolean>(() => {
   if (isBoolean(props.dark)) return props.dark
@@ -35,13 +35,11 @@ const isDark = computed<boolean>(() => {
   return false
 })
 
-const markdownThemeValue = computed(() => (props.markdownTheme || state.defaultMarkdownTheme) ?? 'default')
-
 const viewerClass = computed(() => ({
   __dark: unref(isDark),
   dense: props.dense,
   view: true,
-  [`markdown-theme-${unref(markdownThemeValue)}`]: isString(unref(markdownThemeValue)) ? true : false
+  ...unref(markdownThemeStyle)
 }))
 
 const cleanValue = computed(() => {

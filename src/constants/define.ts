@@ -65,6 +65,14 @@ export const DEFAULT_FONT_FAMILY_LIST: FontFamilyProps[] = [
   { title: 'Monospace', value: 'monospace' }
 ]
 
+export type MarkdownThemeProps = FontFamilyProps
+
+export const DEFAULT_MARKDOWN_THEME_VALUE = 'default'
+
+export const DEFAULT_MARKDOWN_THEME_LIST: FontFamilyProps[] = [
+  { title: 'editor.default', value: DEFAULT_MARKDOWN_THEME_VALUE, default: true }
+]
+
 export const DEFAULT_FONT_SIZE_LIST = [8, 10, 12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72]
 
 export const DEFAULT_FONT_SIZE_VALUUE = 'default'

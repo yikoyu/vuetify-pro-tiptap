@@ -31,6 +31,7 @@ import {
   Indent,
   Italic,
   Link,
+  MarkdownTheme,
   OrderedList,
   Strike,
   SubAndSuperScript,
@@ -91,6 +92,18 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     HorizontalRule,
     CodeBlock.configure({ divider: true }),
     History.configure({ divider: true }),
+    MarkdownTheme.configure({
+      markdownThemes: [
+        {
+          title: 'Github',
+          value: 'github'
+        },
+        {
+          title: 'Maidragon',
+          value: 'maidragon'
+        }
+      ]
+    }),
     Fullscreen
   ]
 })

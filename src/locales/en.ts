@@ -38,6 +38,7 @@ const locale: Record<string, string> = {
   'editor.link.dialog.title': 'Insert link',
   'editor.link.dialog.link': 'link',
   'editor.link.dialog.button.apply': 'apply',
+  'editor.markdownTheme.tooltip': 'Theme',
   'editor.image.tooltip': 'Image',
   'editor.image.float.left.tooltip': 'Float left',
   'editor.image.float.none.tooltip': 'Float none',
