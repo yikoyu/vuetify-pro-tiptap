@@ -3,7 +3,7 @@ import type { Extensions } from '@tiptap/core'
 
 import VuetifyTiptap from './components/VuetifyTiptap.vue'
 import VuetifyViewer from './components/VuetifyViewer.vue'
-import { createContext } from './hooks/use-context'
+import { createContext } from './hooks'
 import locale, { en, zhHans } from './locales'
 
 interface InstallationOptions {

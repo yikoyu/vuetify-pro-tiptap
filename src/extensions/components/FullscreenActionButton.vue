@@ -2,7 +2,7 @@
 import { computed, unref } from 'vue'
 
 import { getIcon } from '@/constants/icons'
-import { useContext } from '@/hooks/use-context'
+import { useContext } from '@/hooks'
 import { useLocale } from '@/locales'
 import { ButtonViewReturnComponentProps } from '@/type'
 

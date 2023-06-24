@@ -8,8 +8,7 @@ import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
 
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { useContext } from '@/hooks/use-context'
-import { useMarkdownTheme } from '@/hooks/use-markdown-theme'
+import { useContext, useMarkdownTheme } from '@/hooks'
 import { useLocale } from '@/locales'
 import { getUnitWithPxAsDefault, isBoolean, throttle } from '@/utils/utils'
 

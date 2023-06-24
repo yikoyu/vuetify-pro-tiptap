@@ -4,8 +4,8 @@ import type { Item } from './components/ActionMenuButton.vue'
 import ActionMenuButton from './components/ActionMenuButton.vue'
 
 import type { MarkdownThemeProps } from '@/constants/define'
-import { DEFAULT_MARKDOWN_THEME_LIST, DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
-import { useContext } from '@/hooks/use-context'
+import { DEFAULT_MARKDOWN_THEME_LIST } from '@/constants/define'
+import { useContext } from '@/hooks'
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface MarkdownThemeOptions extends GeneralOptions {

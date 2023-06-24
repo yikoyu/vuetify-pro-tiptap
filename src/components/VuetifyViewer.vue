@@ -5,7 +5,7 @@ import type { IWhiteList } from 'xss'
 import Xss from 'xss'
 
 import xssRules from '@/constants/xss-rules'
-import { useMarkdownTheme } from '@/hooks/use-markdown-theme'
+import { useMarkdownTheme } from '@/hooks'
 import { isBoolean } from '@/utils/utils'
 
 interface Props {

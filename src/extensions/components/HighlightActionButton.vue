@@ -6,7 +6,7 @@ import ActionButton from './ActionButton.vue'
 import ColorPicker from './ColorPicker.vue'
 
 import type { IconsOptions } from '@/constants/icons'
-import { useContext } from '@/hooks/use-context'
+import { useContext } from '@/hooks'
 import { ButtonViewReturnComponentProps } from '@/type'
 
 interface Props {
