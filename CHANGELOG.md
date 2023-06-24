@@ -1,3 +1,16 @@
+## [2.1.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.0.2...v2.1.0) (2023-06-24)
+
+
+### Features
+
+* can switch or customize the markdown theme ([be064ae](https://github.com/yikoyu/vuetify-pro-tiptap/commit/be064ae5fb006dc8947df815e7da37196844be96))
+* **extensions:** add markdown-theme extension ([9958f68](https://github.com/yikoyu/vuetify-pro-tiptap/commit/9958f68aab459c74fa908ba336a240155697d894))
+
+
+### Refactor
+
+* **hooks:** add index file ([05ccd1f](https://github.com/yikoyu/vuetify-pro-tiptap/commit/05ccd1f1436e8996219ed4161077775e8768d294))
+
 ## [2.0.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.0.1...v2.0.2) (2023-05-27)
 
 
