@@ -100,7 +100,7 @@
     "vite-plugin-dts": "^2.3.0",
     "vue": "^3.2.47",
     "vue-tsc": "1.8.8",
-    "vuetify": "^3.3.10",
+    "vuetify": "^3.3.11",
     "xss": "^1.0.14"
   },
   "dependencies": {
