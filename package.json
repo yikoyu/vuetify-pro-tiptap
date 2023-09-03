@@ -94,7 +94,7 @@
     "sass": "1.60.0",
     "semantic-release": "^21.0.9",
     "typescript": "^5.1.6",
-    "unplugin-vue-components": "^0.25.1",
+    "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.9",
     "vite-plugin-checker": "^0.6.2",
     "vite-plugin-dts": "^2.3.0",
