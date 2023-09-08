@@ -39,6 +39,10 @@ interface Emits {
   (event: 'update:markdownTheme', value: string): void
 }
 
+interface Expose {
+  editor: Editor,
+}
+
 const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
   markdownTheme: undefined,
@@ -97,6 +101,8 @@ const editor = new Editor({
   editable: !props.disabled,
   injectCSS: true
 })
+
+defineExpose<Expose>({ editor })
 
 const { t } = useLocale()
 
