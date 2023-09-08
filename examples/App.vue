@@ -1,11 +1,11 @@
 <!--
   * @Date: 2023-05-27 17:21:21
   * @LastEditors: yikoyu 2282373181@qq.com
-  * @LastEditTime: 2023-06-14 23:09:31
+  * @LastEditTime: 2023-09-08 22:40:11
   * @FilePath: \vuetify-pro-tiptap\examples\App.vue
 -->
 <script setup lang="ts">
-import { ref, unref } from 'vue'
+import { ref, unref, watch } from 'vue'
 import { useTheme } from 'vuetify'
 import { locale } from 'vuetify-pro-tiptap'
 
@@ -17,6 +17,7 @@ const extensions = [preview.configure({ spacer: true })]
 
 const theme = useTheme()
 
+const output = ref<'html' | 'json' | 'text'>('html')
 const content = ref(html)
 const markdownTheme = ref('')
 const outlined = ref(true)
@@ -28,6 +29,10 @@ const errorMessages = ref(null)
 const maxWidth = ref<number>(900)
 
 const customLang = ref({ ...locale.message['en'] })
+
+watch(content, val => {
+  console.log('output :>> ', val)
+})
 
 function toggleTheme() {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
@@ -81,10 +86,21 @@ function setCustom() {
         </VBtn-toggle>
       </div>
 
+      <div class="my-4">
+        <VBtn-toggle v-model="output" color="deep-purple-accent-3" rounded="0" group>
+          <VBtn value="html"> Html </VBtn>
+
+          <VBtn value="json"> Json </VBtn>
+
+          <VBtn value="text"> Text </VBtn>
+        </VBtn-toggle>
+      </div>
+
       <VuetifyTiptap
         v-model="content"
         v-model:markdown-theme="markdownTheme"
         label="Title"
+        :output="output"
         :hide-toolbar="hideToolbar"
         :disable-toolbar="disableToolbar"
         :outlined="outlined"

@@ -2,6 +2,8 @@ import type { Editor, Extension } from '@tiptap/vue-3'
 
 import type { IconsOptions } from './constants/icons'
 
+export type { JSONContent } from '@tiptap/core'
+
 export type ExtensionNameKeys =
   | 'bold'
   | 'italic'

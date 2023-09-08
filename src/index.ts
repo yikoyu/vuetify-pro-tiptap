@@ -32,7 +32,7 @@ const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
 }
 
 export * from './extensions'
-export type { ButtonView, ButtonViewReturnComponentProps, GeneralOptions } from './type'
+export type { ButtonView, ButtonViewReturnComponentProps, GeneralOptions, JSONContent } from './type'
 export { createVuetifyProTipTap, VuetifyTiptap, VuetifyViewer }
 export { en, locale, zhHans }
 export type { InstallationOptions }

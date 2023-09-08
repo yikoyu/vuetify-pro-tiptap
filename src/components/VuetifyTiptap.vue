@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onUnmounted, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
+import type { Editor as CoreEditor, JSONContent } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 
@@ -16,8 +17,9 @@ type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
 
 interface Props {
-  modelValue?: string
+  modelValue?: string | JSONContent
   markdownTheme?: string | false
+  output?: 'html' | 'json' | 'text'
   dark?: boolean
   dense?: boolean
   outlined?: boolean
@@ -35,13 +37,14 @@ interface Props {
 
 interface Emits {
   (event: 'enter'): void
-  (event: 'update:modelValue', value: string): void
+  (event: 'update:modelValue', value: Props['modelValue']): void
   (event: 'update:markdownTheme', value: string): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
   markdownTheme: undefined,
+  output: 'html',
   dark: undefined,
   dense: false,
   outlined: true,
@@ -90,7 +93,7 @@ const editor = new Editor({
     }, EDITOR_UPDATE_THROTTLE_WAIT_TIME)
   },
   onUpdate: throttle<OnUpdate>(({ editor }) => {
-    emit('update:modelValue', editor.getHTML())
+    emit('update:modelValue', getOutput(editor, props.output))
   }, EDITOR_UPDATE_THROTTLE_WAIT_TIME),
   extensions: unref(sortExtensions),
   autofocus: false,
@@ -137,12 +140,19 @@ const contentDynamicStyles = computed(() => {
   }
 })
 
-const onValueChange = throttle((val: string) => {
+function getOutput(editor: CoreEditor, output: Props['output']) {
+  if (output === 'html') return editor.getHTML()
+  if (output === 'json') return editor.getJSON()
+  if (output === 'text') return editor.getText()
+  return ''
+}
+
+const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
   if (!editor) return
 
-  const html = editor.getHTML()
+  const output = getOutput(editor, props.output)
 
-  if (html === val) return
+  if (output === val) return
 
   const { from, to } = editor.state.selection
   editor.commands.setContent(val, false)
