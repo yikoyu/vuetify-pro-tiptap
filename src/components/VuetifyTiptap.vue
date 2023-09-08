@@ -37,6 +37,7 @@ interface Props {
 
 interface Emits {
   (event: 'enter'): void
+  (event: 'change', editor: CoreEditor): void
   (event: 'update:modelValue', value: Props['modelValue']): void
   (event: 'update:markdownTheme', value: string): void
 }
@@ -94,6 +95,7 @@ const editor = new Editor({
   },
   onUpdate: throttle<OnUpdate>(({ editor }) => {
     emit('update:modelValue', getOutput(editor, props.output))
+    emit('change', editor)
   }, EDITOR_UPDATE_THROTTLE_WAIT_TIME),
   extensions: unref(sortExtensions),
   autofocus: false,

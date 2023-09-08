@@ -1,13 +1,13 @@
 <!--
   * @Date: 2023-05-27 17:21:21
   * @LastEditors: yikoyu 2282373181@qq.com
-  * @LastEditTime: 2023-09-08 22:40:11
+  * @LastEditTime: 2023-09-08 23:21:42
   * @FilePath: \vuetify-pro-tiptap\examples\App.vue
 -->
 <script setup lang="ts">
 import { ref, unref, watch } from 'vue'
 import { useTheme } from 'vuetify'
-import { locale } from 'vuetify-pro-tiptap'
+import { type Editor, locale } from 'vuetify-pro-tiptap'
 
 import CustomLang from './components/CustomLang.vue'
 import preview from './extensions/preview'
@@ -30,9 +30,9 @@ const maxWidth = ref<number>(900)
 
 const customLang = ref({ ...locale.message['en'] })
 
-watch(content, val => {
-  console.log('output :>> ', val)
-})
+// watch(content, val => {
+//   console.log('output :>> ', val)
+// })
 
 function toggleTheme() {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
@@ -41,6 +41,12 @@ function toggleTheme() {
 function setCustom() {
   locale.setMessage('custom', unref(customLang))
   locale.setLang('custom')
+}
+
+function onChangeEditor(editor: Editor) {
+  console.log('output[html] :>> ', editor.getHTML())
+  console.log('output[json] :>> ', editor.getJSON())
+  console.log('output[text] :>> ', editor.getText())
 }
 </script>
 
@@ -110,6 +116,7 @@ function setCustom() {
         :max-height="465"
         :max-width="maxWidth"
         :extensions="extensions"
+        @change="onChangeEditor"
       />
 
       <VDivider class="my-4" />
