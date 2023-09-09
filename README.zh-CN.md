@@ -419,6 +419,7 @@ const content = ref('')
 | ---- | ---- | ---- | ---- |
 | modelValue | string | '' | 输入的值 |
 | markdownTheme | string \| false | 'default' | markdown主题 |
+| output | 'html' \| 'json' \| 'text' | 'html' | 输出格式 |
 | dark | boolean | false | 是否为深色主题 |
 | dense | boolean | false | 是否为紧凑模式 |
 | outlined | boolean | true | 将轮廓样式应用于输入 |
@@ -434,10 +435,18 @@ const content = ref('')
 | editorClass | string \| string[] \| Record\<string, any> | undefined | 编辑器class |
 
 #### Slots
-| Name | Description |
+| 名称 | 说明 |
 | ---- | ---- |
 | editor | 自定义编辑器的插槽 |
 | bottom | 自定义编辑器底部的插槽 |
+
+#### Event
+| 名称 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| update:modelValue | string \| JSONContent | 编辑器 onUpdate 时处触发 |
+| update:markdownTheme | string | 切换主题时触发 |
+| change | { editor: Editor, output: string \| JSONContent } | 编辑器 onUpdate 时处触发 |
+| enter | | 键盘输入回车时触发 |
 
 ### VuetifyViewer
 
@@ -453,7 +462,7 @@ const content = ref('')
 | maxWidth | string \| number | undefined | 预览最大宽度 |
 
 #### Slots
-| Name | Description |
+| 名称 | 说明 |
 | ---- | ---- |
 | before | 在顶部添加内容 |
 | after | 在底部添加内容 |

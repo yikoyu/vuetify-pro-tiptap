@@ -418,8 +418,9 @@ const content = ref('')
 #### Props
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
-| modelValue | string | '' | The input’s value |
+| modelValue | string \| JSONContent | '' | The input’s value |
 | markdownTheme | string \| false | 'default' | Markdown theme |
+| output | 'html' \| 'json' \| 'text' | 'html' | Output format |
 | dark | boolean | false | Applies the dark theme variant to the component. |
 | dense | boolean | false | Reduces the input height |
 | outlined | boolean | true | Applies the outlined style to the input |
@@ -439,6 +440,14 @@ const content = ref('')
 | ---- | ---- |
 | editor | Slot to customize editor |
 | bottom | Slot to customize editor bottom |
+
+#### Event
+| Name | Type | Description |
+| ---- | ---- | ---- |
+| update:modelValue | string \| JSONContent | Emitted when editor onUpdate |
+| update:markdownTheme | string | Emitted when change theme |
+| change | { editor: Editor, output: string \| JSONContent } | Emitted when editor onUpdate |
+| enter | | Keyboard enter return |
 
 ### VuetifyViewer
 
