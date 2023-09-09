@@ -1,3 +1,10 @@
+## [2.2.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.1.0...v2.2.0) (2023-09-09)
+
+
+### Features
+
+* **VuetifyTiptap:** add onChange, output and export editor  ([#184](https://github.com/yikoyu/vuetify-pro-tiptap/issues/184)) ([a05ef7f](https://github.com/yikoyu/vuetify-pro-tiptap/commit/a05ef7ff166d2304e01e8251336033da97327cee))
+
 ## [2.1.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.0.2...v2.1.0) (2023-06-24)
 
 
