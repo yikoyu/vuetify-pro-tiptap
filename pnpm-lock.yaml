@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -162,6 +158,9 @@ importers:
       '@semantic-release/release-notes-generator':
         specifier: ^10.0.3
         version: 10.0.3(semantic-release@21.0.9)
+      '@types/lodash.isequal':
+        specifier: ^4.5.6
+        version: 4.5.6
       '@types/lodash.throttle':
         specifier: ^4.1.7
         version: 4.1.7
@@ -183,6 +182,9 @@ importers:
       lint-staged:
         specifier: ^13.2.3
         version: 13.2.3
+      lodash.isequal:
+        specifier: ^4.5.0
+        version: 4.5.0
       lodash.throttle:
         specifier: ^4.1.1
         version: 4.1.1
@@ -1844,6 +1846,12 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/lodash.isequal@4.5.6:
+    resolution: {integrity: sha512-Ww4UGSe3DmtvLLJm2F16hDwEQSv7U0Rr8SujLUA2wHI2D2dm8kPu6Et+/y303LfjTIwSBKXB/YTUcAKpem/XEg==}
+    dependencies:
+      '@types/lodash': 4.14.182
     dev: true
 
   /@types/lodash.throttle@4.1.7:
@@ -7811,3 +7819,7 @@ packages:
     optionalDependencies:
       commander: 9.5.0
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

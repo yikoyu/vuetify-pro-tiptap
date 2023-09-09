@@ -11,7 +11,8 @@ import TipTapToolbar from './TiptapToolbar.vue'
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
 import { useContext, useMarkdownTheme } from '@/hooks'
 import { useLocale } from '@/locales'
-import { getUnitWithPxAsDefault, isBoolean, throttle } from '@/utils/utils'
+import { VuetifyTiptapOnChange } from '@/type'
+import { getUnitWithPxAsDefault, isBoolean, isequal, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -37,7 +38,7 @@ interface Props {
 
 interface Emits {
   (event: 'enter'): void
-  (event: 'change', editor: CoreEditor): void
+  (event: 'change', value: VuetifyTiptapOnChange): void
   (event: 'update:modelValue', value: Props['modelValue']): void
   (event: 'update:markdownTheme', value: string): void
 }
@@ -94,8 +95,11 @@ const editor = new Editor({
     }, EDITOR_UPDATE_THROTTLE_WAIT_TIME)
   },
   onUpdate: throttle<OnUpdate>(({ editor }) => {
-    emit('update:modelValue', getOutput(editor, props.output))
-    emit('change', editor)
+    const output = getOutput(editor, props.output)
+
+    emit('update:modelValue', output)
+
+    emit('change', { editor, output })
   }, EDITOR_UPDATE_THROTTLE_WAIT_TIME),
   extensions: unref(sortExtensions),
   autofocus: false,
@@ -154,7 +158,7 @@ const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
 
   const output = getOutput(editor, props.output)
 
-  if (output === val) return
+  if (isequal(output, val)) return
 
   const { from, to } = editor.state.selection
   editor.commands.setContent(val, false)
@@ -167,6 +171,8 @@ watch(() => props.modelValue, onValueChange)
 watch(() => props.disabled, onDisabledChange)
 
 onUnmounted(() => editor?.destroy())
+
+defineExpose({ editor })
 </script>
 
 <template>

@@ -1,13 +1,13 @@
 <!--
   * @Date: 2023-05-27 17:21:21
   * @LastEditors: yikoyu 2282373181@qq.com
-  * @LastEditTime: 2023-09-08 23:21:42
+  * @LastEditTime: 2023-09-09 21:36:31
   * @FilePath: \vuetify-pro-tiptap\examples\App.vue
 -->
 <script setup lang="ts">
-import { ref, unref, watch } from 'vue'
+import { ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
-import { type Editor, locale } from 'vuetify-pro-tiptap'
+import { type Editor, locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
 
 import CustomLang from './components/CustomLang.vue'
 import preview from './extensions/preview'
@@ -17,6 +17,7 @@ const extensions = [preview.configure({ spacer: true })]
 
 const theme = useTheme()
 
+const VuetifyTiptapRef = ref<null | Record<string, any>>(null)
 const output = ref<'html' | 'json' | 'text'>('html')
 const content = ref(html)
 const markdownTheme = ref('')
@@ -43,10 +44,26 @@ function setCustom() {
   locale.setLang('custom')
 }
 
-function onChangeEditor(editor: Editor) {
+function onChangeEditor({ editor, output }: VuetifyTiptapOnChange) {
+  console.log('output :>> ', output)
   console.log('output[html] :>> ', editor.getHTML())
   console.log('output[json] :>> ', editor.getJSON())
   console.log('output[text] :>> ', editor.getText())
+}
+
+function getHTML() {
+  const value = VuetifyTiptapRef.value?.editor.getHTML()
+  console.log('getHTML :>> ', value)
+}
+
+function getJSON() {
+  const value = VuetifyTiptapRef.value?.editor.getJSON()
+  console.log('getJSON :>> ', value)
+}
+
+function getText() {
+  const value = VuetifyTiptapRef.value?.editor.getText()
+  console.log('getText :>> ', value)
 }
 </script>
 
@@ -102,7 +119,14 @@ function onChangeEditor(editor: Editor) {
         </VBtn-toggle>
       </div>
 
+      <VBtn class="mb-4" color="primary" @click="getHTML"> getHTML </VBtn>
+
+      <VBtn class="mb-4 ms-4" color="primary" @click="getJSON"> getJSON </VBtn>
+
+      <VBtn class="mb-4 ms-4" color="primary" @click="getText"> getText </VBtn>
+
       <VuetifyTiptap
+        ref="VuetifyTiptapRef"
         v-model="content"
         v-model:markdown-theme="markdownTheme"
         label="Title"

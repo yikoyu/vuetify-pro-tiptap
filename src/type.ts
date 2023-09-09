@@ -1,8 +1,14 @@
-import type { Editor, Extension } from '@tiptap/vue-3'
+import type { Editor as CoreEditor, Extension, JSONContent } from '@tiptap/core'
+import type { Editor } from '@tiptap/vue-3'
 
 import type { IconsOptions } from './constants/icons'
 
 export type { Editor, JSONContent } from '@tiptap/core'
+
+export type VuetifyTiptapOnChange = {
+  editor: CoreEditor
+  output: string | JSONContent
+}
 
 export type ExtensionNameKeys =
   | 'bold'

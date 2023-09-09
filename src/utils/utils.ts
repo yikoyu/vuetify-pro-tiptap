@@ -23,4 +23,5 @@ export const isBoolean = (value: unknown): value is boolean => typeof value === 
 
 export const isFunction = (value: unknown): value is Function => typeof value === 'function'
 
+export { default as isequal } from 'lodash.isequal'
 export { default as throttle } from 'lodash.throttle'
