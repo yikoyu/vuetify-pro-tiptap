@@ -50,7 +50,7 @@ const maxWidth = ref<number>(900)
 
         <VContainer>
           <VSheet class="mx-auto" :max-width="maxWidth">
-            <VuetifyViewer :value="editor.getHTML()" :markdown-theme="markdownTheme" />
+            <VuetifyViewer :value="editor.getJSON()" :markdown-theme="markdownTheme" />
           </VSheet>
         </VContainer>
       </VCard>

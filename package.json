@@ -146,6 +146,7 @@
     "@tiptap/extension-text-align": "^2.1.10",
     "@tiptap/extension-text-style": "^2.1.10",
     "@tiptap/extension-underline": "^2.1.10",
+    "@tiptap/html": "^2.1.10",
     "@tiptap/pm": "^2.1.10",
     "@tiptap/vue-3": "^2.1.10"
   }

@@ -454,13 +454,14 @@ const content = ref('')
 #### Props
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
-| value | value | '' | The preview’s value |
+| value | string \| JSONContent | '' | The preview’s value |
 | dark | boolean | false | Applies the dark theme variant to the component. |
 | dense | boolean | false | Reduces the input height |
 | markdownTheme | string \| false | 'default' | Markdown theme |
 | xss | boolean | true | Enable xss filter |
 | xssOptions | xss.IWhiteList | Default rule | Xss filter rule config |
 | maxWidth | string \| number | undefined | Sets the maximum width for the component. |
+| extensions | AnyExtension[] | [] | Tiptap the extensions |
 
 #### Slots
 | Name | Description |
