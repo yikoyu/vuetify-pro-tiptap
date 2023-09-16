@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { computed, unref } from 'vue'
 import { useTheme } from 'vuetify'
+import type { AnyExtension, JSONContent } from '@tiptap/core'
+import { generateHTML } from '@tiptap/html'
 import type { IWhiteList } from 'xss'
 import Xss from 'xss'
 
 import xssRules from '@/constants/xss-rules'
-import { useMarkdownTheme } from '@/hooks'
-import { isBoolean } from '@/utils/utils'
+import { useContext, useMarkdownTheme } from '@/hooks'
+import { isBoolean, isString } from '@/utils/utils'
 
 interface Props {
-  value?: string
+  value?: string | JSONContent
   dark?: boolean
   dense?: boolean
   markdownTheme?: string | false
   xss?: boolean | string[]
   xssOptions?: IWhiteList
+  extensions?: AnyExtension[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -23,11 +26,15 @@ const props = withDefaults(defineProps<Props>(), {
   dense: false,
   markdownTheme: undefined,
   xss: true,
-  xssOptions: () => xssRules
+  xssOptions: () => xssRules,
+  extensions: () => []
 })
 
+const { state } = useContext()
 const theme = useTheme()
 const { markdownThemeStyle } = useMarkdownTheme(computed(() => props.markdownTheme))
+
+const ext = computed<AnyExtension[]>(() => [...state.extensions, ...props.extensions])
 
 const isDark = computed<boolean>(() => {
   if (isBoolean(props.dark)) return props.dark
@@ -42,12 +49,17 @@ const viewerClass = computed(() => ({
   ...unref(markdownThemeStyle)
 }))
 
+const htmlValue = computed<string>(() => {
+  if (isString(props.value)) return props.value
+  return generateHTML(props.value, unref(ext))
+})
+
 const cleanValue = computed(() => {
   if (props.xss === false) {
-    return props.value
+    return unref(htmlValue)
   }
 
-  const value = props.value
+  const value = unref(htmlValue)
     .replace('https://youtu.be/', 'https://www.youtube.com/watch?v=')
     .replace('watch?v=', 'embed/')
     .replace('https://vimeo.com/', 'https://player.vimeo.com/video/')

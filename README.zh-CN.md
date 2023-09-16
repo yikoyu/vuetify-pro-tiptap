@@ -453,13 +453,15 @@ const content = ref('')
 #### Props
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ---- | ---- |
-| value | value | '' | 预览的值 |
+| value | string \| JSONContent | '' | 预览的值 |
 | dark | boolean | false | 是否为深色主题 |
 | dense | boolean | false | 是否为紧凑模式 |
 | markdownTheme | string \| false | 'default' | markdown主题 |
 | xss | boolean | true | 是否开启xss过滤 |
 | xssOptions | xss.IWhiteList | 内置默认规则 | xss过滤规则配置 |
 | maxWidth | string \| number | undefined | 预览最大宽度 |
+| extensions | AnyExtension[] | [] | tiptap插件 |
+
 
 #### Slots
 | 名称 | 说明 |

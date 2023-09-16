@@ -8,10 +8,11 @@
 import { ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
 import { type Editor, locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
+import JsonEditorVue from 'json-editor-vue'
 
 import CustomLang from './components/CustomLang.vue'
 import preview from './extensions/preview'
-import html from './html'
+import { jsonValue } from './html'
 
 const extensions = [preview.configure({ spacer: true })]
 
@@ -19,7 +20,7 @@ const theme = useTheme()
 
 const VuetifyTiptapRef = ref<null | Record<string, any>>(null)
 const output = ref<'html' | 'json' | 'text'>('html')
-const content = ref(html)
+const content = ref(jsonValue)
 const markdownTheme = ref('')
 const outlined = ref(true)
 const dense = ref(false)
@@ -58,7 +59,7 @@ function getHTML() {
 
 function getJSON() {
   const value = VuetifyTiptapRef.value?.editor.getJSON()
-  console.log('getJSON :>> ', value)
+  console.log('getJSON :>> ', value, JSON.stringify(value))
 }
 
 function getText() {
@@ -145,7 +146,8 @@ function getText() {
 
       <VDivider class="my-4" />
 
-      <VTextarea :value="content" readonly auto-grow />
+      <JsonEditorVue v-model="content" read-only height="400px" />
+      <!-- <VTextarea :value="content" readonly auto-grow /> -->
 
       <VDivider class="my-4" />
 
@@ -153,3 +155,9 @@ function getText() {
     </VContainer>
   </VApp>
 </template>
+
+<style>
+.jse-main {
+  max-height: 400px;
+}
+</style>
