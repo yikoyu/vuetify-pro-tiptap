@@ -104,6 +104,8 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
         }
       ]
     }),
-    Fullscreen
+    Fullscreen.configure({
+      useWindow: true
+    })
   ]
 })
