@@ -5,7 +5,8 @@ import FullscreenActionButton from './components/FullscreenActionButton.vue'
 import type { ButtonView, GeneralOptions } from '@/type'
 
 export interface FullscreenOptions extends GeneralOptions {
-  button: ButtonView
+  button: ButtonView<FullscreenOptions>
+  useWindow: boolean
 }
 
 export const Fullscreen = /* @__PURE__*/ Extension.create<FullscreenOptions>({
@@ -13,9 +14,12 @@ export const Fullscreen = /* @__PURE__*/ Extension.create<FullscreenOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
-      button: ({ editor, t }) => ({
+      useWindow: false,
+      button: ({ editor, extension, t }) => ({
         component: FullscreenActionButton,
-        componentProps: {}
+        componentProps: {
+          useWindow: extension.options.useWindow ?? false
+        }
       })
     }
   }
