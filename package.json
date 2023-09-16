@@ -25,6 +25,7 @@
   "module": "./lib/vuetify-pro-tiptap.mjs",
   "exports": {
     ".": {
+      "types": "./lib/index.d.ts",
       "import": "./lib/vuetify-pro-tiptap.mjs",
       "require": "./lib/vuetify-pro-tiptap.umd.js"
     },
