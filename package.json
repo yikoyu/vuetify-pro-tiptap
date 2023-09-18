@@ -94,7 +94,7 @@
     "lint-staged": "^13.3.0",
     "lodash.isequal": "^4.5.0",
     "lodash.throttle": "^4.1.1",
-    "rollup-plugin-pure": "^0.1.1",
+    "rollup-plugin-pure": "^0.2.1",
     "sass": "1.60.0",
     "semantic-release": "^21.1.2",
     "typescript": "^5.1.6",
