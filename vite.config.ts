@@ -10,7 +10,7 @@ import Components from 'unplugin-vue-components/vite'
 // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
 import { dependencies, scripts } from './package.json'
 
-const deps = Object.keys(dependencies).reduce((result, k) => {
+const deps = Object.keys(dependencies).reduce((result: any, k) => {
   const ignores: string[] = ['@tiptap/vue-3']
   if (ignores.includes(k)) return result
 

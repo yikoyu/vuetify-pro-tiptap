@@ -1,8 +1,8 @@
 {
   "**/*.{js,jsx,ts,tsx,vue}": [
-    "eslint --fix"
+    "npx eslint --fix"
   ],
   "**/*.{css,less,scss,vue}": [
-    "stylelint --fix"
+    "npx stylelint --fix"
   ]
 }
