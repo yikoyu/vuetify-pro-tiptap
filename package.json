@@ -59,7 +59,8 @@
     "push": "pnpm build:lib && pnpm publish --no-git-checks --registry https://registry.npmjs.org/",
     "prepare": "husky install",
     "test": "vitest -u",
-    "test:ui": "vitest --ui -u"
+    "test:ui": "vitest --ui -u",
+    "test:bench": "vitest bench"
   },
   "config": {
     "commitizen": {
