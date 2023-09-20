@@ -1,3 +1,17 @@
+## [2.3.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.2.0...v2.3.0) (2023-09-20)
+
+
+### Features
+
+* **fullscreen:** add useWindow ([ca0c5b2](https://github.com/yikoyu/vuetify-pro-tiptap/commit/ca0c5b2634cdfc8c87ca74487d2d2c5faf7f7e8c))
+* **VuetifyTiptap:** export useContext ([d1ede67](https://github.com/yikoyu/vuetify-pro-tiptap/commit/d1ede67db93c548bfd7c835033f0303fc5f3b299))
+* **VuetifyViewer:** support accept json content ([6b8af0a](https://github.com/yikoyu/vuetify-pro-tiptap/commit/6b8af0a74b730ab1ec28d9e31faf351b50af1545))
+
+
+### Bug Fixes
+
+* **types:** typescript5 not find a declaration file ([04625a3](https://github.com/yikoyu/vuetify-pro-tiptap/commit/04625a3080443b1ab52f2658e322eaaca6550bca))
+
 ## [2.2.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.1.0...v2.2.0) (2023-09-09)
 
 
