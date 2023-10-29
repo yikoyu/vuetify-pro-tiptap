@@ -166,11 +166,11 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3(semantic-release@21.1.2)
       '@types/lodash.isequal':
-        specifier: ^4.5.6
-        version: 4.5.6
+        specifier: ^4.5.7
+        version: 4.5.7
       '@types/lodash.throttle':
-        specifier: ^4.1.7
-        version: 4.1.7
+        specifier: ^4.1.8
+        version: 4.1.8
       '@vitejs/plugin-vue':
         specifier: ^4.3.4
         version: 4.3.4(vite@4.4.9)(vue@3.2.47)
@@ -1903,14 +1903,14 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/lodash.isequal@4.5.6:
-    resolution: {integrity: sha512-Ww4UGSe3DmtvLLJm2F16hDwEQSv7U0Rr8SujLUA2wHI2D2dm8kPu6Et+/y303LfjTIwSBKXB/YTUcAKpem/XEg==}
+  /@types/lodash.isequal@4.5.7:
+    resolution: {integrity: sha512-UJQsb7aW8JU/h3fivQXVRDp9EKi98T9iQcVeTXBxcD4jApgGgbrET/0hVS6vH/YoYpqkcToMU5fSNPEiWVZgDg==}
     dependencies:
       '@types/lodash': 4.14.182
     dev: true
 
-  /@types/lodash.throttle@4.1.7:
-    resolution: {integrity: sha512-znwGDpjCHQ4FpLLx19w4OXDqq8+OvREa05H89obtSyXyOFKL3dDjCslsmfBz0T2FU8dmf5Wx1QvogbINiGIu9g==}
+  /@types/lodash.throttle@4.1.8:
+    resolution: {integrity: sha512-EJT8Wg9HLcrsaTlFJ+wmolrGMCC/WBmqOISNi1y9hukgp15cYnfO435X1ReUl0VTIAYnRailHqSZEmzLJb5fiQ==}
     dependencies:
       '@types/lodash': 4.14.182
     dev: true
