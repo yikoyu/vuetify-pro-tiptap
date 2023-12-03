@@ -220,8 +220,8 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2(eslint@8.43.0)(stylelint@15.7.0)(typescript@5.2.2)(vite@4.5.0)(vue-tsc@1.8.22)
       vite-plugin-dts:
-        specifier: ^3.6.3
-        version: 3.6.3(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.2.2)(vite@4.5.0)
+        specifier: ^3.6.4
+        version: 3.6.4(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.2.2)(vite@4.5.0)
       vue:
         specifier: ^3.2.47
         version: 3.2.47
@@ -7585,8 +7585,8 @@ packages:
       vue-tsc: 1.8.22(typescript@5.2.2)
     dev: true
 
-  /vite-plugin-dts@3.6.3(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.2.2)(vite@4.5.0):
-    resolution: {integrity: sha512-NyRvgobl15rYj65coi/gH7UAEH+CpSjh539DbGb40DfOTZSvDLNYTzc8CK4460W+LqXuMK7+U3JAxRB3ksrNPw==}
+  /vite-plugin-dts@3.6.4(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.2.2)(vite@4.5.0):
+    resolution: {integrity: sha512-yOVhUI/kQhtS6lCXRYYLv2UUf9bftcwQK9ROxCX2ul17poLQs02ctWX7+vXB8GPRzH8VCK3jebEFtPqqijXx6w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
