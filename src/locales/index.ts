@@ -19,6 +19,7 @@ interface MittEvents extends Record<EventType, unknown> {
 export const DEFAULT_LOCALE: LocaleInterface = {
   lang: 'en',
   message: {
+    nl,
     zhHans,
     en
   }
