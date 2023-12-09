@@ -1,6 +1,7 @@
 import { computed, ref, unref, watchEffect } from 'vue'
 
 import en from './en'
+import nl from './nl'
 import zhHans from './zh-Hans'
 
 import Logger from '@/utils/logger'
@@ -117,4 +118,4 @@ const useLocale = () => {
 }
 
 export default locale
-export { en, Locale, useLocale, zhHans }
+export { en, Locale, useLocale, zhHans, nl }
