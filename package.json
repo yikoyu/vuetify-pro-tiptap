@@ -97,7 +97,7 @@
     "rollup-plugin-pure": "^0.2.1",
     "sass": "1.60.0",
     "semantic-release": "^21.1.2",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.3",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.5.0",
     "vite-plugin-checker": "^0.6.2",
