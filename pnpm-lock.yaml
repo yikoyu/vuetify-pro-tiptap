@@ -211,8 +211,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       unplugin-vue-components:
-        specifier: ^0.25.2
-        version: 0.25.2(rollup@3.29.2)(vue@3.2.47)
+        specifier: ^0.26.0
+        version: 0.26.0(rollup@3.29.2)(vue@3.2.47)
       vite:
         specifier: ^4.5.0
         version: 4.5.0(@types/node@20.5.1)(sass@1.60.0)
@@ -1181,21 +1181,6 @@ packages:
     dependencies:
       type-fest: 2.19.0
     dev: false
-
-  /@rollup/pluginutils@5.0.2(rollup@3.29.2):
-    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@types/estree': 1.0.1
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-      rollup: 3.29.2
-    dev: true
 
   /@rollup/pluginutils@5.0.4(rollup@3.29.2):
     resolution: {integrity: sha512-0KJnIoRI8A+a1dqOYLxH8vBf8bphDmty5QvIm2hqm7oFCFYKCAZWWd2hXgMibaPsNDhI0AtpYfQZJG47pt/k4g==}
@@ -4339,7 +4324,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.1
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
@@ -6479,15 +6464,6 @@ packages:
       path-parse: 1.0.7
     dev: true
 
-  /resolve@1.22.2:
-    resolution: {integrity: sha512-Sb+mjNHOULsBv818T40qSPeRiuWLyaGMa5ewydRLFimneixmVy2zdivRl+AF6jaYPC8ERxGDmFSiqui6SfPd+g==}
-    hasBin: true
-    dependencies:
-      is-core-module: 2.13.0
-      path-parse: 1.0.7
-      supports-preserve-symlinks-flag: 1.0.0
-    dev: true
-
   /resolve@1.22.4:
     resolution: {integrity: sha512-PXNdCiPqDqeUou+w1C2eTQbNfxKSuMxqTCuvlmmMsk1NWHL5fRrhY6Pl0qEYYc6+QqGClco1Qj8XnjPego4wfg==}
     hasBin: true
@@ -7472,8 +7448,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-vue-components@0.25.2(rollup@3.29.2)(vue@3.2.47):
-    resolution: {integrity: sha512-OVmLFqILH6w+eM8fyt/d/eoJT9A6WO51NZLf1vC5c1FZ4rmq2bbGxTy8WP2Jm7xwFdukaIdv819+UI7RClPyCA==}
+  /unplugin-vue-components@0.26.0(rollup@3.29.2)(vue@3.2.47):
+    resolution: {integrity: sha512-s7IdPDlnOvPamjunVxw8kNgKNK8A5KM1YpK5j/p97jEKTjlPNrA0nZBiSfAKKlK1gWZuyWXlKL5dk3EDw874LQ==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -7486,14 +7462,14 @@ packages:
         optional: true
     dependencies:
       '@antfu/utils': 0.7.6
-      '@rollup/pluginutils': 5.0.2(rollup@3.29.2)
+      '@rollup/pluginutils': 5.0.5(rollup@3.29.2)
       chokidar: 3.5.3
       debug: 4.3.4
       fast-glob: 3.3.1
       local-pkg: 0.4.3
       magic-string: 0.30.3
       minimatch: 9.0.3
-      resolve: 1.22.2
+      resolve: 1.22.4
       unplugin: 1.4.0
       vue: 3.2.47
     transitivePeerDependencies:
