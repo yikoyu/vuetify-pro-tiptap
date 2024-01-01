@@ -145,8 +145,8 @@ importers:
         specifier: ^17.8.1
         version: 17.8.1(commitizen@4.3.0)(inquirer@8.2.6)
       '@mdi/js':
-        specifier: ^7.3.67
-        version: 7.3.67
+        specifier: ^7.4.47
+        version: 7.4.47
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@21.1.2)
@@ -840,8 +840,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@mdi/js@7.3.67:
-    resolution: {integrity: sha512-MnRjknFqpTC6FifhGHjZ0+QYq2bAkZFQqIj8JA2AdPZbBxUvr8QSgB2yPAJ8/ob/XkR41xlg5majDR3c1JP1hw==}
+  /@mdi/js@7.4.47:
+    resolution: {integrity: sha512-KPnNOtm5i2pMabqZxpUz7iQf+mfrYZyKCZ8QNz85czgEt7cuHcGorWfdzUMWYA0SD+a6Hn4FmJ+YhzzzjkTZrQ==}
     dev: true
 
   /@microsoft/api-extractor-model@7.28.2(@types/node@20.5.1):
