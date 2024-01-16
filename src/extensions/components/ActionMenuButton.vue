@@ -8,17 +8,6 @@ import ActionButton from './ActionButton.vue'
 import { getIcon, IconsOptions } from '@/constants/icons'
 import type { ButtonViewReturnComponentProps } from '@/type'
 
-interface Props {
-  editor: Editor
-  disabled?: boolean
-  color?: string
-  maxHeight?: string | number
-
-  icon?: keyof IconsOptions
-  tooltip?: string
-  items?: Item[]
-}
-
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   color: undefined,
@@ -59,6 +48,17 @@ export interface Item {
   style?: StyleValue
   divider?: boolean
   default?: boolean
+}
+
+interface Props {
+  editor: Editor
+  disabled?: boolean
+  color?: string
+  maxHeight?: string | number
+
+  icon?: keyof IconsOptions
+  tooltip?: string
+  items?: Item[]
 }
 </script>
 
