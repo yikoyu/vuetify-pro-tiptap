@@ -7,7 +7,7 @@ import type { IWhiteList } from 'xss'
 import Xss from 'xss'
 
 import xssRules from '@/constants/xss-rules'
-import { useContext, useMarkdownTheme } from '@/hooks'
+import { useMarkdownTheme, useTiptapStore } from '@/hooks'
 import { isBoolean, isString } from '@/utils/utils'
 
 interface Props {
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   extensions: () => []
 })
 
-const { state } = useContext()
+const { state } = useTiptapStore()!
 const theme = useTheme()
 const { markdownThemeStyle } = useMarkdownTheme(computed(() => props.markdownTheme))
 

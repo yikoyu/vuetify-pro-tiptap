@@ -3,7 +3,7 @@ import { computed, unref, watch } from 'vue'
 import { useFullscreen } from '@vueuse/core'
 
 import { getIcon } from '@/constants/icons'
-import { useContext } from '@/hooks'
+import { useTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { ButtonViewReturnComponentProps } from '@/type'
 
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
   useWindow: false
 })
 const { t } = useLocale()
-const { state, toggleFullscreen } = useContext()
+const { state, toggleFullscreen } = useTiptapStore()!
 const { isFullscreen, enter, exit } = useFullscreen()
 
 interface Props {

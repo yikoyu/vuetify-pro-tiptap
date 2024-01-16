@@ -9,7 +9,7 @@ import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
 
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { useContext, useMarkdownTheme } from '@/hooks'
+import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { VuetifyTiptapOnChange } from '@/type'
 import { getUnitWithPxAsDefault, isBoolean, isequal, throttle } from '@/utils/utils'
@@ -68,7 +68,7 @@ const emit = defineEmits<Emits>()
 const attrs = useAttrs()
 
 const theme = useTheme()
-const { state, isFullscreen } = useContext()
+const { state, isFullscreen } = useProvideTiptapStore()
 const { markdownThemeStyle } = useMarkdownTheme(
   computed(() => props.markdownTheme),
   (value: string) => {
