@@ -20,6 +20,7 @@ import {
   CodeBlock,
   Color,
   createVuetifyProTipTap,
+  defaultBubbleList,
   FontFamily,
   FontSize,
   Fullscreen,
@@ -57,6 +58,44 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     BaseKit.configure({
       placeholder: {
         placeholder: 'Enter some text...'
+      },
+      bubble: {
+        // default config
+        list: {
+          image: [
+            'float-left',
+            'float-none',
+            'float-right',
+            'divider',
+            'image-size-small',
+            'image-size-medium',
+            'image-size-large',
+            'divider',
+            'textAlign',
+            'divider',
+            'image',
+            'image-aspect-ratio',
+            'remove'
+          ],
+          text: [
+            'bold',
+            'preview',
+            'italic',
+            'underline',
+            'strike',
+            'divider',
+            'color',
+            'highlight',
+            'textAlign',
+            'divider',
+            'link'
+          ],
+          video: ['video', 'remove']
+        },
+        defaultBubbleList: editor => {
+          // You can customize the bubble menu here
+          return defaultBubbleList(editor) // default customize bubble list
+        }
       }
     }),
     Bold,
