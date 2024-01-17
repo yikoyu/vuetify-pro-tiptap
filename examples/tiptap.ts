@@ -45,6 +45,7 @@ import {
   VuetifyViewer
 } from 'vuetify-pro-tiptap'
 
+import LinkDialog from './components/LinkDialog.vue'
 import SelectImage from './components/SelectImage.vue'
 
 export const vuetifyProTipTap = createVuetifyProTipTap({
@@ -115,7 +116,9 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     OrderedList,
     TaskList,
     Indent.configure({ divider: true }),
-    Link,
+    Link.configure({
+      dialogComponent: () => LinkDialog
+    }),
     Image.configure({
       imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],
       // hiddenTabs: ['upload'],

@@ -1,5 +1,6 @@
 import { Node } from '@tiptap/core'
 
+import VideoDialog from './components/video/VideoDialog.vue'
 import VideoActionButton from './components/VideoActionButton.vue'
 
 import { VIDEO_SIZE } from '@/constants/define'
@@ -13,6 +14,7 @@ export interface VideoOptions extends GeneralOptions {
   HTMLAttributes: {
     [key: string]: any
   }
+  dialogComponent: any
   button: ButtonView<VideoOptions>
 }
 
@@ -152,14 +154,22 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
         class: 'iframe-wrapper',
         style: 'display: flex;justify-content: center;'
       },
-      button: ({ editor, t }) => ({
-        component: VideoActionButton,
-        componentProps: {
-          isActive: () => editor.isActive('video') || false,
-          icon: 'video',
-          tooltip: t('editor.video.tooltip')
+      dialogComponent: () => VideoDialog,
+      button: ({ editor, extension, t }) => {
+        const { dialogComponent } = extension.options
+
+        return {
+          component: VideoActionButton,
+          componentProps: {
+            isActive: () => editor.isActive('video') || false,
+            icon: 'video',
+            tooltip: t('editor.video.tooltip')
+          },
+          componentSlots: {
+            dialog: dialogComponent()
+          }
         }
-      })
+      }
     }
   }
 })

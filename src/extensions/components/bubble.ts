@@ -169,7 +169,8 @@ export const generateBubbleTypeMenu = <T = any>(
           componentProps: {
             ...find.componentProps,
             tooltip: find.componentProps.tooltip ? t(find.componentProps.tooltip) : undefined
-          }
+          },
+          componentSlots: find.componentSlots
         })
         continue
       }
@@ -182,7 +183,8 @@ export const generateBubbleTypeMenu = <T = any>(
         _items.push({
           type: ext,
           component: _button.component,
-          componentProps: _button.componentProps
+          componentProps: _button.componentProps,
+          componentSlots: _button.componentSlots
         })
         continue
       }

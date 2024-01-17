@@ -48,9 +48,15 @@ export interface ButtonViewReturnComponentProps {
   [x: string]: any
 }
 
+export interface ButtonViewReturnComponentSlots {
+  dialog: () => any
+  [x: string]: () => any
+}
+
 export interface ButtonViewReturn {
   component: unknown
   componentProps: ButtonViewReturnComponentProps
+  componentSlots?: ButtonViewReturnComponentSlots
 }
 
 export interface ButtonViewParams<T = any> {

@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
 
-import VideoDialog from './video/VideoDialog.vue'
 import ActionButton from './ActionButton.vue'
 
 import type { IconsOptions } from '@/constants/icons'
@@ -45,6 +44,6 @@ function onAction() {
     :is-active="isActive"
     :action="onAction"
   >
-    <VideoDialog :editor="editor" :value="src" />
+    <slot name="dialog" :props="{ editor, value: src }"></slot>
   </ActionButton>
 </template>

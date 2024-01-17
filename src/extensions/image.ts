@@ -2,6 +2,7 @@ import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image
 import { Image as TiptapImage } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 
+import ImageDialog from './components/image/ImageDialog.vue'
 import ImageView from './components/image/ImageView.vue'
 import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
 import ImageActionButton from './components/ImageActionButton.vue'
@@ -14,6 +15,7 @@ export interface ImageOptions extends TiptapImageOptions, GeneralOptions {
   upload?: Upload
   imageTabs: ImageTab[]
   hiddenTabs: ImageTabKey[]
+  dialogComponent: any
   button: ButtonView<ImageOptions>
 }
 
@@ -93,8 +95,9 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
       imageTabs: [],
       hiddenTabs: [],
       inline: true,
+      dialogComponent: () => ImageDialog,
       button: ({ editor, extension, t }) => {
-        const { upload, imageTabs, hiddenTabs } = extension.options
+        const { upload, imageTabs, hiddenTabs, dialogComponent } = extension.options
 
         return {
           component: ImageActionButton,
@@ -106,6 +109,9 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
             isActive: () => editor.isActive('image') || false,
             icon: 'image',
             tooltip: t('editor.image.tooltip')
+          },
+          componentSlots: {
+            dialog: dialogComponent()
           }
         }
       }
