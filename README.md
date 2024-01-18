@@ -429,6 +429,7 @@ const content = ref('')
 | label | string | undefined | Sets input label |
 | hideToolbar | boolean | false | Hidden the toolbar |
 | disableToolbar | boolean | false | Disable the toolbar |
+| removeDefaultWrapper | boolean | false | Default wrapper when the delete editor is empty |
 | maxWidth | string \| number | undefined | Sets the maximum width for the component. |
 | minHeight | string \| number | undefined | Sets the minimum height for the component. |
 | maxHeight | string \| number | undefined | Sets the maximum height for the component. |

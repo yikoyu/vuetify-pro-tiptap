@@ -18,7 +18,7 @@ type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
 
 interface Props {
-  modelValue?: string | JSONContent
+  modelValue?: string | object
   markdownTheme?: string | false
   output?: 'html' | 'json' | 'text'
   dark?: boolean
@@ -29,6 +29,7 @@ interface Props {
   label?: string
   hideToolbar?: boolean
   disableToolbar?: boolean
+  removeDefaultWrapper?: boolean
   maxWidth?: string | number
   minHeight?: string | number
   maxHeight?: string | number
@@ -55,6 +56,7 @@ const props = withDefaults(defineProps<Props>(), {
   label: undefined,
   hideToolbar: false,
   disableToolbar: false,
+  removeDefaultWrapper: false,
   maxWidth: undefined,
   minHeight: undefined,
   maxHeight: undefined,
@@ -147,6 +149,13 @@ const contentDynamicStyles = computed(() => {
 })
 
 function getOutput(editor: CoreEditor, output: Props['output']) {
+  if (props.removeDefaultWrapper) {
+    if (output === 'html') return editor.isEmpty ? '' : editor.getHTML()
+    if (output === 'json') return editor.isEmpty ? {} : editor.getJSON()
+    if (output === 'text') return editor.isEmpty ? '' : editor.getText()
+    return ''
+  }
+
   if (output === 'html') return editor.getHTML()
   if (output === 'json') return editor.getJSON()
   if (output === 'text') return editor.getText()
