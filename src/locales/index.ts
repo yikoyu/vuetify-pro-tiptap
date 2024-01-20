@@ -1,6 +1,7 @@
 import { computed, ref, unref, watchEffect } from 'vue'
 
 import en from './en'
+import nl from './nl'
 import zhHans from './zh-Hans'
 
 import Logger from '@/utils/logger'
@@ -18,6 +19,7 @@ interface MittEvents extends Record<EventType, unknown> {
 export const DEFAULT_LOCALE: LocaleInterface = {
   lang: 'en',
   message: {
+    nl,
     zhHans,
     en
   }
@@ -117,4 +119,4 @@ const useLocale = () => {
 }
 
 export default locale
-export { en, Locale, useLocale, zhHans }
+export { en, Locale, useLocale, zhHans, nl }
