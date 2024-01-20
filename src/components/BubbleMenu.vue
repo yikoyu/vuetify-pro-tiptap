@@ -64,7 +64,7 @@ const items = computed(() => {
 </script>
 
 <template>
-  <BubbleMenu v-if="items.length > 0" :editor="editor" :tippy-options="tippyOptions">
+  <BubbleMenu v-show="items.length > 0" :editor="editor" :tippy-options="tippyOptions">
     <VCard class="vuetify-pro-tiptap-editor__menu-bubble">
       <VCardText class="d-flex pa-0">
         <VToolbar density="compact" flat height="auto" class="py-1 ps-1">
