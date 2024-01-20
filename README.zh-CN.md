@@ -427,8 +427,9 @@ const content = ref('')
 | disabled | boolean | false | 禁用输入 |
 | label | string | undefined | 设置输入标签 |
 | hideToolbar | boolean | false | 隐藏工具栏 |
-| removeDefaultWrapper | boolean | false | 删除编辑器为空时默认的包装器 |
 | disableToolbar | boolean | false | 禁用工具栏 |
+| hideBubble | boolean | false | 隐藏气泡菜单 |
+| removeDefaultWrapper | boolean | false | 删除编辑器为空时默认的包装器 |
 | maxWidth | string \| number | undefined | 输入框最大宽度 |
 | minHeight | string \| number | undefined | 输入框最小高度 |
 | maxHeight | string \| number | undefined | 输入框最大高度 |

@@ -29,6 +29,7 @@ interface Props {
   label?: string
   hideToolbar?: boolean
   disableToolbar?: boolean
+  hideBubble?: boolean
   removeDefaultWrapper?: boolean
   maxWidth?: string | number
   minHeight?: string | number
@@ -56,6 +57,7 @@ const props = withDefaults(defineProps<Props>(), {
   label: undefined,
   hideToolbar: false,
   disableToolbar: false,
+  hideBubble: false,
   removeDefaultWrapper: false,
   maxWidth: undefined,
   minHeight: undefined,
@@ -188,7 +190,7 @@ defineExpose({ editor })
   <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
     <VThemeProvider :theme="isDark ? 'dark' : 'light'">
       <!-- Edit Mode -->
-      <BubbleMenu :editor="editor" :disabled="disableToolbar" />
+      <BubbleMenu v-if="!hideBubble" :editor="editor" :disabled="disableToolbar" />
 
       <VInput class="pt-0" hide-details="auto">
         <VCard
