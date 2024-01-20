@@ -5,9 +5,9 @@
   * @FilePath: \vuetify-pro-tiptap\examples\App.vue
 -->
 <script setup lang="ts">
-import { ref, unref } from 'vue'
+import { computed, ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
-import { type Editor, locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
+import { locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
 import JsonEditorVue from 'json-editor-vue'
 
 import CustomLang from './components/CustomLang.vue'
@@ -126,6 +126,20 @@ function getText() {
 
       <VBtn class="mb-4 ms-4" color="primary" @click="getText"> getText </VBtn>
 
+      <div class="my-4">
+        <VDialog :width="maxWidth">
+          <template #activator="{ props }">
+            <VBtn v-bind="props" class="mb-4" color="primary" text="Viewer" />
+          </template>
+
+          <VCard>
+            <VCardText>
+              <VuetifyViewer :value="content" />
+            </VCardText>
+          </VCard>
+        </VDialog>
+      </div>
+
       <VuetifyTiptap
         ref="VuetifyTiptapRef"
         v-model="content"
@@ -148,6 +162,21 @@ function getText() {
 
       <JsonEditorVue v-model="content" read-only height="400px" />
       <!-- <VTextarea :value="content" readonly auto-grow /> -->
+
+      <VDivider class="my-4" />
+
+      <VuetifyTiptap
+        v-model:markdown-theme="markdownTheme"
+        label="Editor 2"
+        :outlined="outlined"
+        :dense="dense"
+        rounded
+        :max-height="465"
+        :max-width="maxWidth"
+        :extensions="extensions"
+      />
+
+      <VDivider class="my-4" />
 
       <VDivider class="my-4" />
 
