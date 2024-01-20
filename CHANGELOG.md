@@ -1,3 +1,23 @@
+## [2.4.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.3.0...v2.4.0) (2024-01-20)
+
+
+### Features
+
+* dialog can be customized with dialogComponent for custom components and styles ([5407d53](https://github.com/yikoyu/vuetify-pro-tiptap/commit/5407d53857d622a9f57dc9ae9d537b2a0b09c095)), closes [#253](https://github.com/yikoyu/vuetify-pro-tiptap/issues/253)
+* **locale:** add Dutch locale ([#243](https://github.com/yikoyu/vuetify-pro-tiptap/issues/243)) ([33ff84e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/33ff84e596ff25d67c941ae47c30bb4e955346b8))
+* **VuetifyTiptap:** add 'hideBubble' prop to hide the bubble menu ([60318c9](https://github.com/yikoyu/vuetify-pro-tiptap/commit/60318c9fdee030e54b48978aff8f14858e9a1884))
+* **VuetifyTiptap:** add removeDefaultWrapper option to remove default wrapper ([fa3c2db](https://github.com/yikoyu/vuetify-pro-tiptap/commit/fa3c2dbf4d44910cf4c4e4af51f931d83f622f54)), closes [#208](https://github.com/yikoyu/vuetify-pro-tiptap/issues/208)
+
+
+### Bug Fixes
+
+* bubble menu type is missing ([339251a](https://github.com/yikoyu/vuetify-pro-tiptap/commit/339251a4bbefcb03014c0476e93b4289329afa3f))
+* **BubbleMenu:** repeatedly selecting table cells crashes ([dafd80d](https://github.com/yikoyu/vuetify-pro-tiptap/commit/dafd80ddfdebcce2c87586ab5ea5f29cacb6004e))
+* **extensions:** disable commands that cannot be used in certain operations ([7432b7e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7432b7ee0ba13349f7f6e3b83e8912e7a613f690))
+* **extensions:** props type error ([2381b31](https://github.com/yikoyu/vuetify-pro-tiptap/commit/2381b319b8f75c8386552ca81dd877b7011c8379))
+* sharing global parameters among multiple editors ([259e6e6](https://github.com/yikoyu/vuetify-pro-tiptap/commit/259e6e6c9bc9b97e8c47ce33089e0c59e77a3a09)), closes [#253](https://github.com/yikoyu/vuetify-pro-tiptap/issues/253)
+* **Table:** unable to create table for mobile devices ([d33c67a](https://github.com/yikoyu/vuetify-pro-tiptap/commit/d33c67a73da2eb07be79ad557c539772c05d1cce)), closes [#255](https://github.com/yikoyu/vuetify-pro-tiptap/issues/255)
+
 ## [2.3.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.2.0...v2.3.0) (2023-09-20)
 
 
