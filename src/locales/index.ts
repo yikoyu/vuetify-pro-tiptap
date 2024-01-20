@@ -119,4 +119,4 @@ const useLocale = () => {
 }
 
 export default locale
-export { en, Locale, useLocale, zhHans, nl }
+export { en, Locale, nl, useLocale, zhHans }
