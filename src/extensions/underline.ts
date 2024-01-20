@@ -18,6 +18,7 @@ export const Underline = /* @__PURE__*/ TiptapUnderline.extend<UnderlineOptions>
         componentProps: {
           action: () => editor.commands.toggleUnderline(),
           isActive: () => editor.isActive('underline') || false,
+          disabled: !editor.can().toggleUnderline(),
           icon: 'underline',
           tooltip: t('editor.underline.tooltip')
         }

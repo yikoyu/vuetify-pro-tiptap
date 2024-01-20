@@ -107,6 +107,7 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
             imageTabs,
             hiddenTabs,
             isActive: () => editor.isActive('image') || false,
+            disabled: !editor.can().setImage({}),
             icon: 'image',
             tooltip: t('editor.image.tooltip')
           },

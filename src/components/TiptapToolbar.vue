@@ -66,7 +66,12 @@ const items = computed(() => {
       <!-- Spacer -->
       <VSpacer v-if="item.spacer" />
       <!-- Buttons -->
-      <component :is="item.button.component" v-bind="item.button.componentProps" :editor="editor" :disabled="disabled">
+      <component
+        :is="item.button.component"
+        v-bind="item.button.componentProps"
+        :editor="editor"
+        :disabled="disabled || item.button.componentProps?.disabled"
+      >
         <template v-for="(element, slotName, i) in item.button.componentSlots" :key="i" #[`${slotName}`]="values">
           <component :is="element" v-bind="values?.props" />
         </template>

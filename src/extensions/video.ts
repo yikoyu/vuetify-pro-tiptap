@@ -167,7 +167,8 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
           },
           componentSlots: {
             dialog: dialogComponent()
-          }
+          },
+          disabled: !editor.can().setVideo({})
         }
       }
     }

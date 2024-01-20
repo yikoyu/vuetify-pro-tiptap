@@ -24,6 +24,7 @@ export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
               if (item === 'undo') editor.commands.undo()
               if (item === 'redo') editor.commands.redo()
             },
+            disabled: !editor.can()[item](),
             icon: item,
             tooltip: t(`editor.${item}.tooltip`)
           }

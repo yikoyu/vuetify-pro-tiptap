@@ -30,6 +30,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
           componentProps: {
             action: () => editor.commands.toggleSubscript(),
             isActive: () => editor.isActive('subscript') || false,
+            disabled: !editor.can().toggleSubscript(),
             icon: 'subscript',
             tooltip: t('editor.subscript.tooltip')
           }
@@ -40,6 +41,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
           componentProps: {
             action: () => editor.commands.toggleSuperscript(),
             isActive: () => editor.isActive('superscript') || false,
+            disabled: !editor.can().toggleSuperscript(),
             icon: 'superscript',
             tooltip: t('editor.superscript.tooltip')
           }

@@ -17,6 +17,7 @@ export const Clear = /* @__PURE__*/ Node.create<ClearOptions>({
         component: ActionButton,
         componentProps: {
           action: () => editor.chain().focus().clearNodes().unsetAllMarks().run(),
+          disabled: !editor.can().chain().focus().clearNodes().unsetAllMarks().run(),
           icon: 'clear',
           tooltip: t('editor.clear.tooltip')
         }

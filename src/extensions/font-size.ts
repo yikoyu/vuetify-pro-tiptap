@@ -59,15 +59,19 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
 
             editor.commands.setFontSize(String(k))
           },
+          disabled: !editor.can().setFontSize(String(k)),
           divider: k === DEFAULT_FONT_SIZE_VALUUE ?? false,
           default: k === DEFAULT_FONT_SIZE_VALUUE ?? false
         }))
+
+        const disabled = items.filter(k => k.disabled).length === items.length
 
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'fontSize',
             tooltip: t('editor.fontSize.tooltip'),
+            disabled,
             items,
             maxHeight: 280
           }

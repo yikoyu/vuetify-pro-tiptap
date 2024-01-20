@@ -26,14 +26,18 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
           title: t(`editor.textalign.${k}.tooltip`),
           icon: k,
           isActive: () => editor.isActive({ textAlign: k }) || false,
-          action: () => editor.commands.setTextAlign(k)
+          action: () => editor.commands.setTextAlign(k),
+          disabled: !editor.can().setTextAlign(k)
         }))
+
+        const disabled = items.filter(k => k.disabled).length === items.length
 
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'center',
             tooltip: t('editor.textalign.tooltip'),
+            disabled,
             items
           }
         }

@@ -17,6 +17,7 @@ export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<Horizon
         component: ActionButton,
         componentProps: {
           action: () => editor.commands.setHorizontalRule(),
+          disabled: !editor.can().setHorizontalRule(),
           icon: 'horizontalRule',
           tooltip: t('editor.horizontalrule.tooltip')
         }

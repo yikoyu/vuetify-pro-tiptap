@@ -16,6 +16,10 @@ export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
       spacer: false,
       button: ({ editor, t }) => {
         const items: ['indent', 'outdent'] = ['indent', 'outdent']
+        const commands = {
+          indent: 'sinkListItem',
+          outdent: 'liftListItem'
+        } as const
 
         return items.map(item => ({
           component: ActionButton,
@@ -24,6 +28,7 @@ export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
               if (item === 'indent') editor.commands.sinkListItem('listItem')
               if (item === 'outdent') editor.commands.liftListItem('listItem')
             },
+            disabled: !editor.can()[commands[item]]('listItem'),
             icon: item,
             tooltip: t(`editor.${item}.tooltip`)
           }
