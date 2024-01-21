@@ -213,12 +213,7 @@ defineExpose({ editor })
             <VDivider />
           </template>
           <!-- Toolbar -->
-          <TipTapToolbar
-            v-if="!hideToolbar"
-            class="vuetify-pro-tiptap-editor__toolbar"
-            :editor="editor"
-            :disabled="disableToolbar"
-          />
+          <TipTapToolbar v-if="!hideToolbar" :editor="editor" :disabled="disableToolbar" />
 
           <slot
             name="editor"

@@ -61,7 +61,7 @@ const items = computed(() => {
 </script>
 
 <template>
-  <VToolbar v-bind="$attrs" density="compact" flat height="auto" class="py-1 ps-1">
+  <VToolbar v-bind="$attrs" density="compact" flat height="auto" class="vuetify-pro-tiptap-editor__toolbar py-1 ps-1">
     <template v-for="(item, key) in items" :key="key">
       <!-- Spacer -->
       <VSpacer v-if="item.spacer" />

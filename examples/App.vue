@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { computed, ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
-import { locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
+import { locale, type VuetifyTiptapOnChange, VuetifyTiptapProvider, VuetifyTiptapToolbar } from 'vuetify-pro-tiptap'
 import JsonEditorVue from 'json-editor-vue'
 
 import CustomLang from './components/CustomLang.vue'
@@ -29,6 +29,7 @@ const hideToolbar = ref(false)
 const disableToolbar = ref(false)
 const errorMessages = ref(null)
 const maxWidth = ref<number>(900)
+const editor = computed(() => VuetifyTiptapRef.value?.editor)
 
 const customLang = ref({ ...locale.message['en'] })
 
@@ -140,23 +141,29 @@ function getText() {
         </VDialog>
       </div>
 
-      <VuetifyTiptap
-        ref="VuetifyTiptapRef"
-        v-model="content"
-        v-model:markdown-theme="markdownTheme"
-        label="Title"
-        :output="output"
-        :hide-toolbar="hideToolbar"
-        :disable-toolbar="disableToolbar"
-        :outlined="outlined"
-        :dense="dense"
-        :error-messages="errorMessages"
-        rounded
-        :max-height="465"
-        :max-width="maxWidth"
-        :extensions="extensions"
-        @change="onChangeEditor"
-      />
+      <VuetifyTiptapProvider>
+        <VuetifyTiptapToolbar v-if="editor" :editor="editor" />
+
+        <VDivider class="my-4" />
+
+        <VuetifyTiptap
+          ref="VuetifyTiptapRef"
+          v-model="content"
+          v-model:markdown-theme="markdownTheme"
+          label="Title"
+          :output="output"
+          :hide-toolbar="hideToolbar"
+          :disable-toolbar="disableToolbar"
+          :outlined="outlined"
+          :dense="dense"
+          :error-messages="errorMessages"
+          rounded
+          :max-height="465"
+          :max-width="maxWidth"
+          :extensions="extensions"
+          @change="onChangeEditor"
+        />
+      </VuetifyTiptapProvider>
 
       <VDivider class="my-4" />
 

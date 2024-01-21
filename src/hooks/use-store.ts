@@ -1,4 +1,4 @@
-import { computed, reactive, watchEffect } from 'vue'
+import { computed, defineComponent, reactive, watchEffect } from 'vue'
 import type { AnyExtension } from '@tiptap/core'
 import { createInjectionState } from '@vueuse/core'
 
@@ -43,5 +43,13 @@ export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() =
     state,
     isFullscreen,
     toggleFullscreen
+  }
+})
+
+export const VuetifyTiptapProvider = defineComponent({
+  setup(props, { slots }) {
+    useProvideTiptapStore()
+
+    return () => slots?.default?.()
   }
 })
