@@ -18,7 +18,7 @@ jobs:
       with:
         persist-credentials: false
 
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       with:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
