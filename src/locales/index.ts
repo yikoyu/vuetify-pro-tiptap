@@ -4,6 +4,7 @@ import en from './en'
 import nl from './nl'
 import zhHans from './zh-Hans'
 
+import { DEFAULT_LANG_VALUE } from '@/constants/define'
 import Logger from '@/utils/logger'
 import mitt, { EventType } from '@/utils/mitt'
 
@@ -17,7 +18,7 @@ interface MittEvents extends Record<EventType, unknown> {
 }
 
 export const DEFAULT_LOCALE: LocaleInterface = {
-  lang: 'en',
+  lang: DEFAULT_LANG_VALUE,
   message: {
     nl,
     zhHans,

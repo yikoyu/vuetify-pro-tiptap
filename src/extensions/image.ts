@@ -8,18 +8,32 @@ import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './components/imag
 import ImageActionButton from './components/ImageActionButton.vue'
 
 import { IMAGE_SIZE } from '@/constants/define'
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
+/**
+ * Represents the type for the upload function, which takes a File parameter and returns a Promise of type string.
+ */
 type Upload = (file: File) => Promise<string>
-export interface ImageOptions extends TiptapImageOptions, GeneralOptions {
+
+/**
+ * Represents the interface for image options, extending TiptapImageOptions and GeneralOptions.
+ */
+export interface ImageOptions extends TiptapImageOptions, GeneralOptions<ImageOptions> {
+  /** Function for uploading images */
   upload?: Upload
+  /** List of image tabs */
   imageTabs: ImageTab[]
+  /** List of hidden image tab keys */
   hiddenTabs: ImageTabKey[]
+  /** Component for the image dialog */
   dialogComponent: any
-  button: ButtonView<ImageOptions>
 }
 
+/**
+ * Represents the interface for options to set image attributes, extending ImageAttrsOptions and including the src property.
+ */
 interface SetImageAttrsOptions extends ImageAttrsOptions {
+  /** The source URL of the image. */
   src: string
 }
 

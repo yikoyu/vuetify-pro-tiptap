@@ -1,19 +1,31 @@
 import type { NodeTypeMenu } from '@/extensions/components/bubble'
 
-export const EDITOR_UPDATE_THROTTLE_WAIT_TIME = 200
+export const DEFAULT_LANG_VALUE = 'en' as const
 
-// watch throttling time must be less than the update time
-// otherwise the cursor position will reach the end
+/** Throttle time for editor input (milliseconds) */
+export const EDITOR_UPDATE_THROTTLE_WAIT_TIME = 200 as const
+
+/**
+ * watch throttling time must be less than the update time
+ * otherwise the cursor position will reach the end
+ */
 export const EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME = EDITOR_UPDATE_THROTTLE_WAIT_TIME - 80
 
-export const IMAGE_MIN_SIZE = 20
-export const IMAGE_MAX_SIZE = 100000
-export const IMAGE_THROTTLE_WAIT_TIME = 16
+/** Minimum size for image adjustments */
+export const IMAGE_MIN_SIZE = 20 as const
+/** Maximum size for image adjustments */
+export const IMAGE_MAX_SIZE = 100000 as const
+/** Throttle time during adjustments for images (milliseconds) */
+export const IMAGE_THROTTLE_WAIT_TIME = 16 as const
 
-export const TABLE_INIT_GRID_SIZE = 6
-export const TABLE_MAX_GRID_SIZE = 10
-export const TABLE_DEFAULT_SELECTED_GRID_SIZE = 2
+/** Default number of rows and columns for grids when creating a table */
+export const TABLE_INIT_GRID_SIZE = 6 as const
+/** Maximum number of rows and columns for grids when creating a table */
+export const TABLE_MAX_GRID_SIZE = 10 as const
+/** Minimum number of rows and columns for grids when creating a table */
+export const TABLE_DEFAULT_SELECTED_GRID_SIZE = 2 as const
 
+/** Default color list for text color and text highlight */
 export const COLORS_LIST = [
   '#f44336',
   '#e91e63',
@@ -39,7 +51,7 @@ export const COLORS_LIST = [
   '#D5D5D4',
   '#E8E8E8',
   '#EEEEEE'
-]
+] as const
 
 export interface FontFamilyProps {
   title: string
@@ -48,8 +60,10 @@ export interface FontFamilyProps {
   default?: boolean
 }
 
-export const DEFAULT_FONT_FAMILY_VALUE = 'Roboto'
+/** Default font family value used */
+export const DEFAULT_FONT_FAMILY_VALUE = 'Roboto' as const
 
+/** Default font family list */
 export const DEFAULT_FONT_FAMILY_LIST: FontFamilyProps[] = [
   { title: 'editor.default', value: DEFAULT_FONT_FAMILY_VALUE, divider: true, default: true },
   { title: 'Arial', value: 'Arial' },
@@ -67,27 +81,35 @@ export const DEFAULT_FONT_FAMILY_LIST: FontFamilyProps[] = [
 
 export type MarkdownThemeProps = FontFamilyProps
 
-export const DEFAULT_MARKDOWN_THEME_VALUE = 'default'
+/** Default Markdown theme value */
+export const DEFAULT_MARKDOWN_THEME_VALUE = 'default' as const
 
+/** Default list of Markdown themes */
 export const DEFAULT_MARKDOWN_THEME_LIST: FontFamilyProps[] = [
   { title: 'editor.default', value: DEFAULT_MARKDOWN_THEME_VALUE, default: true }
 ]
 
-export const DEFAULT_FONT_SIZE_LIST = [8, 10, 12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72]
+/** Default font size list */
+export const DEFAULT_FONT_SIZE_LIST = [8, 10, 12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72] as const
 
-export const DEFAULT_FONT_SIZE_VALUUE = 'default'
+/** Default font size value */
+export const DEFAULT_FONT_SIZE_VALUUE = 'default' as const
 
+/** Options for setting image size in the bubble menu */
 export enum IMAGE_SIZE {
   'size-small' = 200,
   'size-medium' = 500,
   'size-large' = '100%'
 }
+
+/** Options for setting video size in the bubble menu */
 export enum VIDEO_SIZE {
   'size-small' = 480,
   'size-medium' = 640,
   'size-large' = '100%'
 }
 
+/** Actions displayed in the bubble menu */
 export const NODE_TYPE_MENU: NodeTypeMenu = {
   image: [
     'float-left',

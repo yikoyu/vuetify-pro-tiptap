@@ -6,11 +6,9 @@ import type { Item } from './components/ActionMenuButton.vue'
 import ActionMenuButton from './components/ActionMenuButton.vue'
 import type { BaseKitOptions } from './base-kit'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions {
-  button: ButtonView<HeadingOptions>
-}
+export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions<HeadingOptions> {}
 
 export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
   addOptions() {

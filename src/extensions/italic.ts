@@ -3,11 +3,9 @@ import { Italic as TiptapItalic } from '@tiptap/extension-italic'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface ItalicOptions extends TiptapItalicOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface ItalicOptions extends TiptapItalicOptions, GeneralOptions<ItalicOptions> {}
 
 export const Italic = /* @__PURE__*/ TiptapItalic.extend<ItalicOptions>({
   addOptions() {

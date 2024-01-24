@@ -3,11 +3,9 @@ import { History as TiptapHistory } from '@tiptap/extension-history'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface HistoryOptions extends TiptapHistoryOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface HistoryOptions extends TiptapHistoryOptions, GeneralOptions<HistoryOptions> {}
 
 export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
   addOptions() {

@@ -4,10 +4,13 @@ import { Link as TiptapLink } from '@tiptap/extension-link'
 import LinkDialog from './components/link/LinkDialog.vue'
 import LinkActionButton from './components/LinkActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface LinkOptions extends TiptapLinkOptions, GeneralOptions {
-  button: ButtonView<LinkOptions>
+/**
+ * Represents the interface for link options, extending TiptapLinkOptions and GeneralOptions.
+ */
+export interface LinkOptions extends TiptapLinkOptions, GeneralOptions<LinkOptions> {
+  /** Component for the link dialog */
   dialogComponent: any
 }
 

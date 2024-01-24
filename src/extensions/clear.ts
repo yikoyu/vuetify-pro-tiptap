@@ -2,11 +2,10 @@ import { Node } from '@tiptap/core'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface ClearOptions extends GeneralOptions {
-  button: ButtonView
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ClearOptions extends GeneralOptions<ClearOptions> {}
 
 export const Clear = /* @__PURE__*/ Node.create<ClearOptions>({
   name: 'clear',

@@ -2,11 +2,10 @@ import { Extension } from '@tiptap/core'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface IndentOptions extends GeneralOptions {
-  button: ButtonView
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface IndentOptions extends GeneralOptions<IndentOptions> {}
 
 export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
   name: 'indent',

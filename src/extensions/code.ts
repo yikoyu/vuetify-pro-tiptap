@@ -3,11 +3,9 @@ import { Code as TiptapCode } from '@tiptap/extension-code'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface CodeOptions extends TiptapCodeOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface CodeOptions extends TiptapCodeOptions, GeneralOptions<CodeOptions> {}
 
 export const Code = /* @__PURE__*/ TiptapCode.extend<CodeOptions>({
   addOptions() {

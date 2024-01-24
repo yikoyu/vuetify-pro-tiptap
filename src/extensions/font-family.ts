@@ -6,10 +6,17 @@ import ActionMenuButton from './components/ActionMenuButton.vue'
 
 import type { FontFamilyProps } from '@/constants/define'
 import { DEFAULT_FONT_FAMILY_LIST, DEFAULT_FONT_FAMILY_VALUE } from '@/constants/define'
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface FontFamilyOptions extends TiptapFontFamilyOptions, GeneralOptions {
-  button: ButtonView<FontFamilyOptions>
+/**
+ * Represents the interface for font family options, extending TiptapFontFamilyOptions and GeneralOptions.
+ */
+export interface FontFamilyOptions extends TiptapFontFamilyOptions, GeneralOptions<FontFamilyOptions> {
+  /**
+   * List of available font family properties
+   *
+   * @default DEFAULT_FONT_FAMILY_LIST
+   */
   fontFamilies: FontFamilyProps[]
 }
 

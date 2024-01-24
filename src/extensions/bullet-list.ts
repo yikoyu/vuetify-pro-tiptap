@@ -3,11 +3,9 @@ import { BulletList as TiptapBulletList } from '@tiptap/extension-bullet-list'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface BulletListOptions extends TiptapBulletListOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface BulletListOptions extends TiptapBulletListOptions, GeneralOptions<BulletListOptions> {}
 
 export const BulletList = /* @__PURE__*/ TiptapBulletList.extend<BulletListOptions>({
   addOptions() {

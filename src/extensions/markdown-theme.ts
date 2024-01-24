@@ -6,10 +6,17 @@ import ActionMenuButton from './components/ActionMenuButton.vue'
 import type { MarkdownThemeProps } from '@/constants/define'
 import { DEFAULT_MARKDOWN_THEME_LIST } from '@/constants/define'
 import { useTiptapStore } from '@/hooks'
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface MarkdownThemeOptions extends GeneralOptions {
-  button: ButtonView<MarkdownThemeOptions>
+/**
+ * Represents the interface for Markdown theme options, extending GeneralOptions.
+ */
+export interface MarkdownThemeOptions extends GeneralOptions<MarkdownThemeOptions> {
+  /**
+   * List of available Markdown theme properties
+   *
+   * @default DEFAULT_MARKDOWN_THEME_LIST
+   */
   markdownThemes: MarkdownThemeProps[]
 }
 

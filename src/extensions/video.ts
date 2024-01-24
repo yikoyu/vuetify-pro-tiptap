@@ -4,21 +4,48 @@ import VideoDialog from './components/video/VideoDialog.vue'
 import VideoActionButton from './components/VideoActionButton.vue'
 
 import { VIDEO_SIZE } from '@/constants/define'
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 import { getUnitWithPxAsDefault } from '@/utils/utils'
 
-export interface VideoOptions extends GeneralOptions {
+/**
+ * Represents the interface for video options, extending GeneralOptions.
+ */
+export interface VideoOptions extends GeneralOptions<VideoOptions> {
+  /**
+   * Indicates whether fullscreen play is allowed
+   *
+   * @default true
+   */
   allowFullscreen: boolean
+  /**
+   * Indicates whether to display the frameborder
+   *
+   * @default false
+   */
   frameborder: boolean
+  /**
+   * Width of the video, can be a number or string
+   *
+   * @default VIDEO_SIZE['size-medium']
+   */
   width: number | string
+  /** HTML attributes object for passing additional attributes */
   HTMLAttributes: {
     [key: string]: any
   }
+  /** Component for the video dialog */
   dialogComponent: any
-  button: ButtonView<VideoOptions>
 }
 
-type SetVideoOptions = { src: string; width: string | number }
+/**
+ * Represents the type for setting video options
+ */
+type SetVideoOptions = {
+  /** The source URL of the video */
+  src: string
+  /** The width of the video */
+  width: string | number
+}
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {

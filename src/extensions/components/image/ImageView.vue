@@ -24,8 +24,8 @@ const ResizeDirection = {
 }
 
 const maxSize = ref({
-  width: IMAGE_MAX_SIZE,
-  height: IMAGE_MAX_SIZE
+  width: <number>IMAGE_MAX_SIZE,
+  height: <number>IMAGE_MAX_SIZE
 })
 
 const originalSize = ref({

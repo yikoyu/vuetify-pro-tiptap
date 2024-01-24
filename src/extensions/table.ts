@@ -9,13 +9,18 @@ import { TableRow } from '@tiptap/extension-table-row'
 
 import TableActionButton from './components/TableActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface TableOptions extends TiptapTableOptions, GeneralOptions {
+/**
+ * Represents the interface for table options, extending TiptapTableOptions and GeneralOptions.
+ */
+export interface TableOptions extends TiptapTableOptions, GeneralOptions<TableOptions> {
+  /** options for table rows */
   tableRow: Partial<TableRowOptions>
+  /** options for table headers */
   tableHeader: Partial<TableHeaderOptions>
+  /** options for table cells */
   tableCell: Partial<TableCellOptions>
-  button: ButtonView
 }
 
 export const Table = /* @__PURE__*/ TiptapTable.extend<TableOptions>({

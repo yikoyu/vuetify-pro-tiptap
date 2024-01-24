@@ -4,14 +4,44 @@ import { createInjectionState } from '@vueuse/core'
 
 import { useContext } from './use-context'
 
-import { DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
+import { DEFAULT_LANG_VALUE, DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
 
+/**
+ * Interface representing an tiptap editor instance.
+ */
 interface Instance {
+  /**
+   * List of extensions
+   *
+   * @default []
+   */
   extensions: AnyExtension[]
+
+  /**
+   * Default language setting
+   *
+   * @default DEFAULT_LANG_VALUE
+   */
   defaultLang?: string
+
+  /**
+   * Default Markdown theme setting
+   *
+   * @default DEFAULT_MARKDOWN_THEME_VALUE
+   */
   defaultMarkdownTheme?: string
+
+  /**
+   * Whether it is in fullscreen mode
+   *
+   * @default false
+   */
   isFullscreen: boolean
+
+  /** Text color */
   color?: string
+
+  /** Highlight color */
   highlight?: string
 }
 
@@ -20,7 +50,7 @@ export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() =
 
   const state: Instance = reactive({
     extensions: _state.extensions ?? [],
-    defaultLang: 'en',
+    defaultLang: DEFAULT_LANG_VALUE,
     defaultMarkdownTheme: DEFAULT_MARKDOWN_THEME_VALUE,
     isFullscreen: false,
     color: undefined,

@@ -2,10 +2,17 @@ import { Extension } from '@tiptap/core'
 
 import FullscreenActionButton from './components/FullscreenActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface FullscreenOptions extends GeneralOptions {
-  button: ButtonView<FullscreenOptions>
+/**
+ * Represents the interface for fullscreen options, extending GeneralOptions.
+ */
+export interface FullscreenOptions extends GeneralOptions<FullscreenOptions> {
+  /**
+   * Indicates whether to use window fullscreen mode
+   *
+   * @default false
+   */
   useWindow: boolean
 }
 

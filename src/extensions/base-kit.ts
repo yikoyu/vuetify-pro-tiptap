@@ -26,19 +26,91 @@ import { defaultBubbleList, generateBubbleTypeMenu } from './components/bubble'
 
 import { NODE_TYPE_MENU } from '@/constants/define'
 
+/**
+ * Represents the interface for options in the base toolkit.
+ */
 export interface BaseKitOptions {
+  /**
+   * Whether to enable the document option
+   *
+   * @default true
+   */
   document: false
-  dropcursor: Partial<DropcursorOptions> | false
+
+  /**
+   * Whether to enable the text option
+   *
+   * @default true
+   */
+  text: false
+
+  /**
+   * Whether to enable the Gapcursor
+   *
+   * @default true
+   */
   gapcursor: false
+
+  /**
+   * Dropcursor options or false, indicating whether to enable the drop cursor
+   *
+   * @default true
+   */
+  dropcursor: Partial<DropcursorOptions> | false
+
+  /**
+   * character count options or false, indicating whether to enable character count
+   *
+   * @default true
+   */
   characterCount: Partial<CharacterCountOptions> | false
+
+  /**
+   * HardBreak options or false, indicating whether to enable hard breaks
+   *
+   * @default true
+   */
   hardBreak: Partial<HardBreakOptions> | false
-  text: any
+
+  /**
+   * Placeholder options or false, indicating whether to enable placeholders
+   *
+   * @default true
+   */
   placeholder: Partial<PlaceholderOptions> | false
+
+  /**
+   * Paragraph options or false, indicating whether to enable paragraph functionality
+   *
+   * @default true
+   */
   paragraph: Partial<ParagraphOptions> | false
+
+  /**
+   * Focus options or false, indicating whether to enable focus functionality
+   *
+   * @default true
+   */
   focus: Partial<FocusOptions> | false
+
+  /**
+   * ListItem options or false, indicating whether to enable list item functionality
+   *
+   * @default true
+   */
   listItem: Partial<ListItemOptions> | false
-  bubble: Partial<BubbleOptions<BaseKitOptions>>
+
+  /**
+   * Text Style options or false, indicating whether to enable text style functionality
+   *
+   * @default true
+   */
   textStyle: Partial<TextStyleOptions> | false
+
+  /**
+   * Bubble options, taking `BubbleOptions<BaseKitOptions>` as parameters, indicating whether to enable the bubble functionality
+   */
+  bubble: Partial<BubbleOptions<BaseKitOptions>>
 }
 
 export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
@@ -81,15 +153,19 @@ export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
     }
 
     if (this.options.document !== false) {
-      extensions.push(Document.configure(this.options.document))
+      extensions.push(Document.configure())
+    }
+
+    if (this.options.text !== false) {
+      extensions.push(Text.configure())
+    }
+
+    if (this.options.gapcursor !== false) {
+      extensions.push(Gapcursor.configure())
     }
 
     if (this.options.dropcursor !== false) {
       extensions.push(Dropcursor.configure(this.options.dropcursor))
-    }
-
-    if (this.options.gapcursor !== false) {
-      extensions.push(Gapcursor.configure(this.options.gapcursor))
     }
 
     if (this.options.characterCount !== false) {
@@ -102,10 +178,6 @@ export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
 
     if (this.options.hardBreak !== false) {
       extensions.push(HardBreak.configure(this.options.hardBreak))
-    }
-
-    if (this.options.text !== false) {
-      extensions.push(Text.configure(this.options.text))
     }
 
     if (this.options.listItem !== false) {
