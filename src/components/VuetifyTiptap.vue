@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onUnmounted, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
-import type { Editor as CoreEditor, JSONContent } from '@tiptap/core'
+import type { Editor as CoreEditor } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 
@@ -12,7 +12,7 @@ import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIM
 import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { VuetifyTiptapOnChange } from '@/type'
-import { getUnitWithPxAsDefault, isBoolean, isequal, throttle } from '@/utils/utils'
+import { getUnitWithPxAsDefault, hasExtension, isBoolean, isequal, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -237,13 +237,15 @@ defineExpose({ editor })
             <VToolbar class="px-4" density="compact" flat>
               <VSpacer />
 
-              <span class="text-overline me-4">
-                {{ editor.storage.characterCount.words() }} {{ t('editor.words') }}
-              </span>
+              <template v-if="hasExtension(editor, 'characterCount')">
+                <span class="text-overline me-4">
+                  {{ editor.storage.characterCount.words() }} {{ t('editor.words') }}
+                </span>
 
-              <span class="text-overline">
-                {{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}
-              </span>
+                <span class="text-overline">
+                  {{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}
+                </span>
+              </template>
             </VToolbar>
           </slot>
         </VCard>
