@@ -1,3 +1,17 @@
+## [2.4.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.1...v2.4.2) (2024-01-27)
+
+
+### Bug Fixes
+
+* **locale:** update Dutch locale ([c0b3ea7](https://github.com/yikoyu/vuetify-pro-tiptap/commit/c0b3ea7927da604dad84c2318816e3f273ea9e40))
+* **VuetifyTiptap:** closing characterCount causes editor error ([be1d0cd](https://github.com/yikoyu/vuetify-pro-tiptap/commit/be1d0cdae0587d4922cd329d1bb1cbf33a09c7a7)), closes [#272](https://github.com/yikoyu/vuetify-pro-tiptap/issues/272)
+
+
+### Refactor
+
+* replace lodash with lodash-unified ([8bfc5d9](https://github.com/yikoyu/vuetify-pro-tiptap/commit/8bfc5d9c725ff71c9ec2a079cfb0680cce21f686))
+* **VuetifyTiptap:** override configurations for duplicate extensions, update tsconfig ([8830fe3](https://github.com/yikoyu/vuetify-pro-tiptap/commit/8830fe3c9c73a7b26e6314ef46f59add35379906))
+
 ## [2.4.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.0...v2.4.1) (2024-01-20)
 
 
