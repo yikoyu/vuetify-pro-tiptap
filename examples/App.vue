@@ -7,14 +7,24 @@
 <script setup lang="ts">
 import { computed, ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
-import { locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
+import { BaseKit, Heading, locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
 import JsonEditorVue from 'json-editor-vue'
 
 import CustomLang from './components/CustomLang.vue'
 import preview from './extensions/preview'
 import { jsonValue } from './html'
 
-const extensions = [preview.configure({ spacer: true })]
+const extensions = [
+  preview.configure({ spacer: true }),
+  BaseKit.configure({
+    placeholder: {
+      placeholder: 'Placeholder...'
+    }
+  }),
+  Heading.configure({
+    levels: [1, 2, 3, 4]
+  })
+]
 
 const theme = useTheme()
 

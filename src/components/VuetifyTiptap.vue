@@ -12,7 +12,7 @@ import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIM
 import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { VuetifyTiptapOnChange } from '@/type'
-import { getUnitWithPxAsDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
+import { differenceBy, getUnitWithPxAsDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -81,8 +81,17 @@ const { markdownThemeStyle } = useMarkdownTheme(
 )
 
 const sortExtensions = computed<AnyExtension[]>(() => {
-  const exts = [...state.extensions, ...props.extensions]
-  return exts.map((k, i) => k.configure({ sort: i }))
+  const diff = differenceBy(props.extensions, state.extensions, 'name')
+
+  // Override configurations for duplicate extensions
+  const exts = state.extensions.map((k, i) => {
+    const find = props.extensions.find(ext => ext.name === k.name)
+    if (!find) return k
+
+    return k.configure(find.options)
+  })
+
+  return [...exts, ...diff].map((k, i) => k.configure({ sort: i }))
 })
 
 const editor = new Editor({
