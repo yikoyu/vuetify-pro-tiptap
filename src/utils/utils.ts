@@ -44,5 +44,4 @@ export function hasExtension(editor: Editor, name: string): boolean {
   return true
 }
 
-export { default as isequal } from 'lodash.isequal'
-export { default as throttle } from 'lodash.throttle'
+export { isEqual, throttle } from 'lodash-unified'

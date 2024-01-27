@@ -12,7 +12,7 @@ import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIM
 import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { VuetifyTiptapOnChange } from '@/type'
-import { getUnitWithPxAsDefault, hasExtension, isBoolean, isequal, throttle } from '@/utils/utils'
+import { getUnitWithPxAsDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -169,7 +169,7 @@ const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
 
   const output = getOutput(editor, props.output)
 
-  if (isequal(output, val)) return
+  if (isEqual(output, val)) return
 
   const { from, to } = editor.state.selection
   editor.commands.setContent(val, false)
