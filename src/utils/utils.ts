@@ -1,14 +1,15 @@
 import type { Editor } from '@tiptap/core'
 
-export const getUnitWithPxAsDefault = (value?: string | number) => {
+export const getCssUnitWithDefault = (value?: string | number, defaultUnit: string = 'px') => {
   if (!value) return value
 
-  const _value = isNumber(value) ? String(value) : value
+  const stringValue = isNumber(value) ? String(value) : value
 
-  const num = parseInt(_value, 10)
-  const unit = _value.slice(num.toString().length)
+  const num = parseFloat(stringValue)
+  const unitMatch = stringValue.match(/[a-zA-Z%]+$/)
+  const unit = unitMatch ? unitMatch[0] : defaultUnit
 
-  return num + (unit || 'px')
+  return isNaN(num) ? value : num + unit
 }
 
 export function clamp(val: number, min: number, max: number) {

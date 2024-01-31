@@ -12,7 +12,7 @@ import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIM
 import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { VuetifyTiptapOnChange } from '@/type'
-import { differenceBy, getUnitWithPxAsDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
+import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
@@ -138,7 +138,7 @@ const contentDynamicClasses = computed(() => {
 })
 
 const contentDynamicStyles = computed(() => {
-  const maxWidth = getUnitWithPxAsDefault(props.maxWidth)
+  const maxWidth = getCssUnitWithDefault(props.maxWidth)
 
   const maxHeightStyle = {
     maxWidth: maxWidth,
@@ -148,8 +148,8 @@ const contentDynamicStyles = computed(() => {
   }
   if (unref(isFullscreen)) return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
 
-  const minHeight = getUnitWithPxAsDefault(props.minHeight)
-  const maxHeight = getUnitWithPxAsDefault(props.maxHeight)
+  const minHeight = getCssUnitWithDefault(props.minHeight)
+  const maxHeight = getCssUnitWithDefault(props.maxHeight)
 
   return {
     minHeight,

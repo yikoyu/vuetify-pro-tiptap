@@ -5,6 +5,7 @@ import ActionMenuButton from './components/ActionMenuButton.vue'
 
 import { DEFAULT_FONT_SIZE_LIST, DEFAULT_FONT_SIZE_VALUUE } from '@/constants/define'
 import type { GeneralOptions } from '@/type'
+import { getCssUnitWithDefault } from '@/utils/utils'
 
 /**
  * Represents the interface for font size options, extending GeneralOptions.
@@ -101,7 +102,7 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
               }
 
               return {
-                style: `font-size: ${attributes.fontSize}px`
+                style: `font-size: ${getCssUnitWithDefault(attributes.fontSize)}`
               }
             }
           }

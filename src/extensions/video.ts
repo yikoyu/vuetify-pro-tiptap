@@ -5,7 +5,7 @@ import VideoActionButton from './components/VideoActionButton.vue'
 
 import { VIDEO_SIZE } from '@/constants/define'
 import type { GeneralOptions } from '@/type'
-import { getUnitWithPxAsDefault } from '@/utils/utils'
+import { getCssUnitWithDefault } from '@/utils/utils'
 
 /**
  * Represents the interface for video options, extending GeneralOptions.
@@ -105,7 +105,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       width: {
         default: this.options.width,
         renderHTML: ({ width }) => ({
-          width: getUnitWithPxAsDefault(width)
+          width: getCssUnitWithDefault(width)
         })
       },
       frameborder: {
