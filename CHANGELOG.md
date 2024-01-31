@@ -1,3 +1,10 @@
+## [2.4.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.2...v2.4.3) (2024-01-31)
+
+
+### Bug Fixes
+
+* **font-size:** "font-size" loading, duplicate "px" appears ([bae62e7](https://github.com/yikoyu/vuetify-pro-tiptap/commit/bae62e7a28c8be4c24bdfb806c10ef78df27d556)), closes [#275](https://github.com/yikoyu/vuetify-pro-tiptap/issues/275)
+
 ## [2.4.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.1...v2.4.2) (2024-01-27)
 
 
