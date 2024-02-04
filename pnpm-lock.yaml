@@ -184,8 +184,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0
       conventional-changelog-conventionalcommits:
-        specifier: ^6.1.0
-        version: 6.1.0
+        specifier: ^7.0.2
+        version: 7.0.2
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -2255,7 +2255,7 @@ packages:
   /@vueuse/shared@10.7.2(vue@3.2.47):
     resolution: {integrity: sha512-qFbXoxS44pi2FkgFjPvF4h7c9oMDutpyBdcJdMYIMg9XyXli2meFMuaKn+UMgsClo//Th6+beeCgqweT/79BVA==}
     dependencies:
-      vue-demi: 0.14.6(vue@3.2.47)
+      vue-demi: 0.14.7(vue@3.2.47)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -2924,6 +2924,13 @@ packages:
   /conventional-changelog-conventionalcommits@6.1.0:
     resolution: {integrity: sha512-3cS3GEtR78zTfMzk0AizXKKIdN4OvSh7ibNz6/DPbhWWQu7LqE/8+/GqSodV+sywUR2gpJAdP/1JFf4XtN7Zpw==}
     engines: {node: '>=14'}
+    dependencies:
+      compare-func: 2.0.0
+    dev: true
+
+  /conventional-changelog-conventionalcommits@7.0.2:
+    resolution: {integrity: sha512-NKXYmMR/Hr1DevQegFB4MwfM5Vv0m4UIxKZTTYuD98lpTknaZlSRrDOG4X7wIXpGkfsYxZTghUN+Qq+T0YQI7w==}
+    engines: {node: '>=16'}
     dependencies:
       compare-func: 2.0.0
     dev: true
@@ -7684,7 +7691,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.47
-    dev: false
 
   /vue-eslint-parser@9.3.1(eslint@8.43.0):
     resolution: {integrity: sha512-Clr85iD2XFZ3lJ52/ppmUDG/spxQu6+MAeHXjjyI4I1NUYZ9xmenQp4N0oaHJhrA8OOxltCVxMRfANGa70vU0g==}
