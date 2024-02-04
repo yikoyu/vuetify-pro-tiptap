@@ -184,8 +184,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0
       conventional-changelog-conventionalcommits:
-        specifier: ^6.1.0
-        version: 6.1.0
+        specifier: ^7.0.2
+        version: 7.0.2
       husky:
         specifier: ^8.0.3
         version: 8.0.3
