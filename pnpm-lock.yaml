@@ -223,8 +223,8 @@ importers:
         specifier: ^0.6.4
         version: 0.6.4(eslint@8.43.0)(stylelint@15.7.0)(typescript@5.3.3)(vite@4.5.2)(vue-tsc@1.8.27)
       vite-plugin-dts:
-        specifier: ^3.7.2
-        version: 3.7.2(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.3.3)(vite@4.5.2)
+        specifier: ^3.7.3
+        version: 3.7.3(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.3.3)(vite@4.5.2)
       vue:
         specifier: ^3.2.47
         version: 3.2.47
@@ -1952,7 +1952,7 @@ packages:
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
       natural-compare-lite: 1.4.0
-      semver: 7.5.4
+      semver: 7.6.0
       tsutils: 3.21.0(typescript@5.3.3)
       typescript: 5.3.3
     transitivePeerDependencies:
@@ -2026,7 +2026,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.4
+      semver: 7.6.0
       tsutils: 3.21.0(typescript@5.3.3)
       typescript: 5.3.3
     transitivePeerDependencies:
@@ -2047,7 +2047,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.59.11(typescript@5.3.3)
       eslint: 8.43.0
       eslint-scope: 5.1.1
-      semver: 7.5.4
+      semver: 7.6.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2580,7 +2580,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.4
+      semver: 7.6.0
     dev: true
 
   /bundle-name@3.0.0:
@@ -3590,7 +3590,7 @@ packages:
       is-core-module: 2.13.0
       minimatch: 3.1.2
       resolve: 1.22.4
-      semver: 7.5.4
+      semver: 7.6.0
     dev: true
 
   /eslint-plugin-node@11.1.0(eslint@8.43.0):
@@ -3661,7 +3661,7 @@ packages:
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.27
       safe-regex: 2.1.1
-      semver: 7.5.4
+      semver: 7.6.0
       strip-indent: 3.0.0
     dev: true
 
@@ -3676,7 +3676,7 @@ packages:
       natural-compare: 1.4.0
       nth-check: 2.1.1
       postcss-selector-parser: 6.0.13
-      semver: 7.5.4
+      semver: 7.6.0
       vue-eslint-parser: 9.3.1(eslint@8.43.0)
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
@@ -5525,7 +5525,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.13.0
-      semver: 7.5.4
+      semver: 7.6.0
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -5535,7 +5535,7 @@ packages:
     dependencies:
       hosted-git-info: 6.1.1
       is-core-module: 2.13.0
-      semver: 7.5.4
+      semver: 7.6.0
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -6616,7 +6616,7 @@ packages:
     resolution: {integrity: sha512-0Ju4+6A8iOnpL/Thra7dZsSlOHYAHIeMxfhWQRI1/VLcT3WDBZKKtQt/QkBOsiIN9ZpuvHE6cGZ0x4glCMmfiA==}
     engines: {node: '>=12'}
     dependencies:
-      semver: 7.5.4
+      semver: 7.6.0
     dev: true
 
   /semver-regex@4.0.5:
@@ -6986,7 +6986,7 @@ packages:
       stylelint: '>=14.0.0'
     dependencies:
       postcss-html: 1.5.0
-      semver: 7.5.4
+      semver: 7.6.0
       stylelint: 15.7.0(typescript@5.3.3)
       stylelint-config-html: 1.1.0(postcss-html@1.5.0)(stylelint@15.7.0)
       stylelint-config-recommended: 12.0.0(stylelint@15.7.0)
@@ -7557,8 +7557,8 @@ packages:
       vue-tsc: 1.8.27(typescript@5.3.3)
     dev: true
 
-  /vite-plugin-dts@3.7.2(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.3.3)(vite@4.5.2):
-    resolution: {integrity: sha512-kg//1nDA01b8rufJf4TsvYN8LMkdwv0oBYpiQi6nRwpHyue+wTlhrBiqgipdFpMnW1oOYv6ywmzE5B0vg6vSEA==}
+  /vite-plugin-dts@3.7.3(@types/node@20.5.1)(rollup@3.29.2)(typescript@5.3.3)(vite@4.5.2):
+    resolution: {integrity: sha512-26eTlBYdpjRLWCsTJebM8vkCieE+p9gP3raf+ecDnzzK5E3FG6VE1wcy55OkRpfWWVlVvKkYFe6uvRHYWx7Nog==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
@@ -7628,7 +7628,7 @@ packages:
     engines: {vscode: ^1.52.0}
     dependencies:
       minimatch: 3.1.2
-      semver: 7.5.4
+      semver: 7.6.0
       vscode-languageserver-protocol: 3.16.0
     dev: true
 
@@ -7700,7 +7700,7 @@ packages:
       espree: 9.5.2
       esquery: 1.5.0
       lodash: 4.17.21
-      semver: 7.5.4
+      semver: 7.6.0
     transitivePeerDependencies:
       - supports-color
     dev: true
