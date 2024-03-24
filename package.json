@@ -98,14 +98,14 @@
     "rollup-plugin-pure": "^0.2.1",
     "sass": "1.60.0",
     "semantic-release": "^23.0.4",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.3",
     "unplugin-vue-components": "^0.26.0",
     "vite": "^4.5.2",
     "vite-plugin-checker": "^0.6.4",
     "vite-plugin-dts": "^3.7.3",
     "vue": "^3.2.47",
-    "vue-tsc": "2.0.6",
-    "vuetify": "^3.5.9",
+    "vue-tsc": "2.0.7",
+    "vuetify": "^3.5.11",
     "xss": "^1.0.15"
   },
   "dependencies": {
