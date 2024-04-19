@@ -36,6 +36,7 @@ interface Props {
   maxHeight?: string | number
   extensions?: AnyExtension[]
   editorClass?: string | string[] | Record<string, any>
+  errorMessages: string | string[] | null
 }
 
 interface Emits {
@@ -62,6 +63,7 @@ const props = withDefaults(defineProps<Props>(), {
   maxWidth: undefined,
   minHeight: undefined,
   maxHeight: undefined,
+  errorMessages: () => [],
 
   // Editor
   extensions: () => [],
@@ -201,7 +203,7 @@ defineExpose({ editor })
       <!-- Edit Mode -->
       <BubbleMenu v-if="!hideBubble" :editor="editor" :disabled="disableToolbar" />
 
-      <VInput class="pt-0" hide-details="auto">
+      <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
         <VCard
           :flat="flat"
           :outlined="outlined"
