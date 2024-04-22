@@ -26,7 +26,7 @@ export default defineConfig({
     vue(),
     Components({
       dirs: undefined,
-      dts: false,
+      dts: 'types/components.d.ts',
       resolvers: [Vuetify3Resolver()]
     }),
     {
