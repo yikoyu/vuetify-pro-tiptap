@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, unref, watchEffect } from 'vue'
 import { locale } from 'vuetify-pro-tiptap'
-import { mdiClose } from '@mdi/js'
 import type { Editor } from '@tiptap/vue-3'
 
 interface Props {
@@ -60,7 +59,7 @@ watchEffect(() => {
         <VSpacer />
 
         <VBtn class="mx-0" icon @click="close">
-          <VIcon :icon="mdiClose" />
+          <VIcon icon="$close" />
         </VBtn>
       </VToolbar>
 
@@ -78,7 +77,7 @@ watchEffect(() => {
       </VCardText>
 
       <VCardActions>
-        <VBtn :disabled="isDisabled" text @click="apply">
+        <VBtn :disabled="isDisabled" @click="apply">
           {{ locale.message[locale.lang]['editor.link.dialog.button.apply'] }}
         </VBtn>
       </VCardActions>

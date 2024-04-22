@@ -125,7 +125,7 @@ watch(
       </VCardText>
 
       <VCardActions>
-        <VBtn text :disabled="disabledApply" @click="apply">
+        <VBtn :disabled="disabledApply" @click="apply">
           {{ t('editor.image.dialog.button.apply') }}
         </VBtn>
       </VCardActions>

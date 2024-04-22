@@ -72,7 +72,7 @@ watchEffect(() => {
       </VCardText>
 
       <VCardActions>
-        <VBtn :disabled="isDisabled" text @click="apply">
+        <VBtn :disabled="isDisabled" @click="apply">
           {{ t('editor.link.dialog.button.apply') }}
         </VBtn>
       </VCardActions>
