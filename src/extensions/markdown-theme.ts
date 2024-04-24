@@ -5,7 +5,7 @@ import ActionMenuButton from './components/ActionMenuButton.vue'
 
 import type { MarkdownThemeProps } from '@/constants/define'
 import { DEFAULT_MARKDOWN_THEME_LIST } from '@/constants/define'
-import { useTiptapStore } from '@/hooks'
+import { useContext } from '@/hooks'
 import type { GeneralOptions } from '@/type'
 
 /**
@@ -28,7 +28,7 @@ export const MarkdownTheme = /* @__PURE__*/ Extension.create<MarkdownThemeOption
       ...this.parent?.(),
       markdownThemes: DEFAULT_MARKDOWN_THEME_LIST,
       button: ({ editor, extension, t }) => {
-        const { state } = useTiptapStore()!
+        const { state } = useContext()
 
         const markdownThemes =
           ([...DEFAULT_MARKDOWN_THEME_LIST, ...extension.options.markdownThemes] as MarkdownThemeProps[]) || []
