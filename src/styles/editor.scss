@@ -31,7 +31,12 @@ $extra-light-primary-color: #ecf5ff;
     &__toolbar {
       .v-toolbar__content {
         flex-wrap: wrap;
+        row-gap: 4px;
         padding: 4px 12px;
+
+        .v-divider--vertical {
+          height: inherit;
+        }
       }
     }
 
