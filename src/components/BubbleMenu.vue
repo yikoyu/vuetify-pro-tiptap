@@ -28,11 +28,13 @@ const tippyOptions = reactive<Record<string, unknown>>({
 
 const nodeType = computed<NodeTypeKey | undefined>(() => {
   const selection = props.editor.state.selection as NodeSelection
+  const isLink = isLinkSelection()
 
   const isImage = selection.node?.type.name === 'image'
   const isVideo = selection.node?.type.name === 'video'
   const isText = selection instanceof TextSelection
 
+  if (isLink) return 'link'
   if (isImage) return 'image'
   if (isVideo) return 'video'
   if (isText) return 'text'
@@ -61,6 +63,14 @@ const items = computed(() => {
   if (!nodeType.value) return []
   return unref(nodeMenus)?.[nodeType.value] ?? []
 })
+
+function isLinkSelection() {
+  const { schema } = props.editor
+  const linkType = schema.marks.link
+  if (!linkType) return false
+
+  return props.editor.isActive(linkType.name)
+}
 </script>
 
 <template>

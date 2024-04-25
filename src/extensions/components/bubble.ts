@@ -6,6 +6,7 @@ import ActionButton from './ActionButton.vue'
 
 import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
 import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/type'
+import { isString } from '@/utils/utils'
 
 /** Represents the floating types for bubble images */
 type BubbleImageFloatType = 'float-left' | 'float-none' | 'float-right'
@@ -20,6 +21,8 @@ type BubbleImageType =
   | `video-${BubbleImageOrVideoSizeType}`
   | 'image'
   | 'image-aspect-ratio'
+  | 'unlink'
+  | 'link-open'
   | 'remove'
 
 /** Represents the types for bubble videos */
@@ -29,7 +32,7 @@ type BubbleVideoType = 'video' | 'remove'
 type BubbleAllType = BubbleImageType | BubbleVideoType | ExtensionNameKeys | 'divider' | (string & {})
 
 /** Represents the key types for node types */
-export type NodeTypeKey = 'image' | 'text' | 'video'
+export type NodeTypeKey = 'image' | 'text' | 'link' | 'video'
 
 /** Represents the menu of bubble types for each node type */
 export type BubbleTypeMenu = Partial<Record<NodeTypeKey, BubbleMenuItem[]>>
@@ -142,6 +145,33 @@ export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
         })
       },
       isActive: () => editor.isActive('image', { lockAspectRatio: true })
+    }
+  },
+  {
+    type: 'unlink',
+    component: ActionButton,
+    componentProps: {
+      tooltip: 'editor.link.unlink.tooltip',
+      icon: 'linkVariantOff',
+      action: () => {
+        const { href } = editor.getAttributes('link')
+
+        editor.chain().extendMarkRange('link', { href }).unsetLink().focus().run()
+      }
+    }
+  },
+  {
+    type: 'link-open',
+    component: ActionButton,
+    componentProps: {
+      tooltip: 'editor.link.open',
+      icon: 'openInNew',
+      action: () => {
+        const { href } = editor.getAttributes('link')
+        if (isString(href) && href) {
+          window.open(href, '_blank')
+        }
+      }
     }
   },
   {

@@ -127,5 +127,19 @@ export const NODE_TYPE_MENU: NodeTypeMenu = {
     'remove'
   ],
   text: ['bold', 'italic', 'underline', 'strike', 'divider', 'color', 'highlight', 'textAlign', 'divider', 'link'],
+  link: [
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'divider',
+    'color',
+    'highlight',
+    'textAlign',
+    'divider',
+    'link',
+    'unlink',
+    'link-open'
+  ],
   video: ['video-size-small', 'video-size-medium', 'video-size-large', 'divider', 'video', 'remove']
 }
