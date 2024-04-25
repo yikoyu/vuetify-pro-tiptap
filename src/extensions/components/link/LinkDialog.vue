@@ -1,55 +1,69 @@
 <script setup lang="ts">
-import { computed, ref, unref, watchEffect } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
+
+import type { LinkAttrs } from './types'
 
 import { getIcon } from '@/constants/icons'
 import { useLocale } from '@/locales'
 
 interface Props {
   value?: string
+  target?: '_self' | '_blank'
+  rel?: string
   editor: Editor
   destroy?: () => void
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: undefined,
+  target: '_blank',
+  rel: undefined,
   destroy: undefined
 })
 
 const { t } = useLocale()
 
-const url = ref<string>('')
+const generateLinkAttrs = (): LinkAttrs => ({
+  href: '',
+  target: '_blank',
+  rel: ''
+})
+
+const attrs = ref(generateLinkAttrs())
 
 const dialog = ref<boolean>(false)
 
 const isDisabled = computed(() => {
-  if (props.value === url.value) return true
-  if (!unref(url)) return true
-  return false
+  const { href, target, rel } = attrs.value
+  if (!href) return true
+
+  return props.value === href && props.target === target && props.rel === rel
 })
 
 function apply() {
-  if (unref(url)) {
-    props.editor
-      .chain()
-      .focus()
-      .extendMarkRange('link')
-      .setLink({ href: unref(url) })
-      .run()
+  const { href, target, rel } = attrs.value
+
+  if (href) {
+    props.editor.chain().focus().extendMarkRange('link').setLink({ href, target, rel }).run()
   }
   close()
 }
 
 function close() {
   dialog.value = false
-  url.value = ''
+  attrs.value = generateLinkAttrs()
 
   setTimeout(() => props.destroy?.(), 300)
 }
 
-watchEffect(() => {
-  if (props.value) {
-    url.value = props.value
+watch(dialog, val => {
+  if (!val) return
+
+  attrs.value = {
+    href: props.value,
+    target: props.target,
+    rel: props.rel
   }
 })
 </script>
@@ -68,7 +82,18 @@ watchEffect(() => {
       </VToolbar>
 
       <VCardText>
-        <VTextField v-model="url" :label="t('editor.link.dialog.link')" hide-details autofocus />
+        <VTextField v-model="attrs.href" :label="t('editor.link.dialog.link')" autofocus />
+
+        <VTextField v-model="attrs.rel" :label="t('editor.link.dialog.rel')" hide-details />
+
+        <VCheckbox
+          v-model="attrs.target"
+          :label="t('editor.link.dialog.openInNewTab')"
+          color="primary"
+          false-value="_self"
+          true-value="_blank"
+          hide-details
+        />
       </VCardText>
 
       <VCardActions>

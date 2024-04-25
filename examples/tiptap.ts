@@ -48,6 +48,8 @@ import {
 import LinkDialog from './components/LinkDialog.vue'
 import SelectImage from './components/SelectImage.vue'
 
+import { NODE_TYPE_MENU } from '@/constants/define'
+
 export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',
   markdownTheme: 'github',
@@ -63,35 +65,7 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
       bubble: {
         // default config
         list: {
-          image: [
-            'float-left',
-            'float-none',
-            'float-right',
-            'divider',
-            'image-size-small',
-            'image-size-medium',
-            'image-size-large',
-            'divider',
-            'textAlign',
-            'divider',
-            'image',
-            'image-aspect-ratio',
-            'remove'
-          ],
-          text: [
-            'bold',
-            'preview',
-            'italic',
-            'underline',
-            'strike',
-            'divider',
-            'color',
-            'highlight',
-            'textAlign',
-            'divider',
-            'link'
-          ],
-          video: ['video', 'remove']
+          ...NODE_TYPE_MENU
         },
         defaultBubbleList: editor => {
           // You can customize the bubble menu here

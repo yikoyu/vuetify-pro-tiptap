@@ -40,8 +40,10 @@ import {
   mdiFullscreen,
   mdiFullscreenExit,
   mdiImagePlus,
+  mdiLinkVariantOff,
   mdiLinkVariantPlus,
   mdiMinus,
+  mdiOpenInNew,
   mdiPalette,
   mdiRedo,
   mdiSizeL,
@@ -100,6 +102,8 @@ export interface IconsOptions extends ToolbarIconsOptions {
   close: string
   fullscreenExit: string
   linkVariant: string
+  linkVariantOff: string
+  openInNew: string
   formatFloatLeft: string
   formatFloatNone: string
   formatFloatRight: string
@@ -194,6 +198,8 @@ const icons: IconsOptions = {
   close: mdiClose,
   fullscreenExit: mdiFullscreenExit,
   linkVariant: mdiLinkVariantPlus,
+  linkVariantOff: mdiLinkVariantOff,
+  openInNew: mdiOpenInNew,
   formatFloatLeft: mdiFormatFloatLeft,
   formatFloatNone: mdiFormatFloatNone,
   formatFloatRight: mdiFormatFloatRight,
