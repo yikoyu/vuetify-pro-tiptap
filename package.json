@@ -83,7 +83,7 @@
     "@semantic-release/github": "^9.2.6",
     "@semantic-release/npm": "^11.0.3",
     "@semantic-release/release-notes-generator": "^12.1.0",
-    "@types/lodash": "^4.17.1",
+    "@types/lodash": "^4.17.4",
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^4.6.2",
     "@vueuse/core": "^10.9.0",
