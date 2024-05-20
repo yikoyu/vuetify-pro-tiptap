@@ -232,8 +232,8 @@ importers:
         specifier: 1.8.27
         version: 1.8.27(typescript@5.4.5)
       vuetify:
-        specifier: ^3.6.5
-        version: 3.6.5(typescript@5.4.5)(vue@3.4.25)
+        specifier: ^3.6.6
+        version: 3.6.6(typescript@5.4.5)(vue@3.4.25)
       xss:
         specifier: ^1.0.15
         version: 1.0.15
@@ -8063,8 +8063,8 @@ packages:
       '@vue/shared': 3.4.25
       typescript: 5.4.5
 
-  /vuetify@3.6.5(typescript@5.4.5)(vue@3.4.25):
-    resolution: {integrity: sha512-YrHTM1vb7UllAtfH9tWfTo1wYMjyCSybu4WtXrfMRpMwAaZWgfrMmqD/4Tc+0KqDsDsYMXaYs0nJ6HtdMJZbyA==}
+  /vuetify@3.6.6(typescript@5.4.5)(vue@3.4.25):
+    resolution: {integrity: sha512-7RkL0kuLsVUbc0YCwhPhVq54gSFKt5xv+SOrF01dxwJz7Ke3tAbvO616WhhQIfS78h1q/Ev952WJj5jpsdK58g==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       typescript: '>=4.7'
