@@ -121,6 +121,7 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     }),
     Image.configure({
       imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],
+      width: 500,
       // hiddenTabs: ['upload'],
       upload(file: File) {
         const url = URL.createObjectURL(file)

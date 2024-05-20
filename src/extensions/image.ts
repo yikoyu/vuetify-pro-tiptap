@@ -4,7 +4,7 @@ import { VueNodeViewRenderer } from '@tiptap/vue-3'
 
 import ImageDialog from './components/image/ImageDialog.vue'
 import ImageView from './components/image/ImageView.vue'
-import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
+import type { Display, ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
 import ImageActionButton from './components/ImageActionButton.vue'
 
 import { IMAGE_SIZE } from '@/constants/define'
@@ -21,6 +21,10 @@ type Upload = (file: File) => Promise<string>
 export interface ImageOptions extends TiptapImageOptions, GeneralOptions<ImageOptions> {
   /** Function for uploading images */
   upload?: Upload
+  /** image default width */
+  width?: string | number
+  /** image default display */
+  display: Display
   /** List of image tabs */
   imageTabs: ImageTab[]
   /** List of hidden image tab keys */
@@ -66,13 +70,13 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
         default: true
       },
       width: {
-        default: IMAGE_SIZE['size-large']
+        default: this.options.width
       },
       height: {
         default: null
       },
       display: {
-        default: 'inline',
+        default: this.options.display,
         renderHTML: ({ display }) => {
           if (!display) {
             return {}
@@ -106,6 +110,8 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
     return {
       ...this.parent?.(),
       upload: undefined,
+      width: IMAGE_SIZE['size-large'],
+      display: 'inline',
       imageTabs: [],
       hiddenTabs: [],
       inline: true,
