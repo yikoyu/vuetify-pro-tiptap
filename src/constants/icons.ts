@@ -1,5 +1,6 @@
 import {
   mdiAspectRatio,
+  mdiCheck,
   mdiCircle,
   mdiClose,
   mdiCodeBracesBox,
@@ -143,6 +144,8 @@ export interface IconsOptions extends ToolbarIconsOptions {
   tableRowPlusBefore: string
   tableRowRemove: string
   tableMergeCells: string
+
+  check: string
 }
 
 const icons: IconsOptions = {
@@ -219,7 +222,9 @@ const icons: IconsOptions = {
   tableRowPlusAfter: mdiTableRowPlusAfter,
   tableRowPlusBefore: mdiTableRowPlusBefore,
   tableRowRemove: mdiTableRowRemove,
-  tableMergeCells: mdiTableMergeCells
+  tableMergeCells: mdiTableMergeCells,
+
+  check: mdiCheck
 }
 
 export function getIcon(iconName?: keyof IconsOptions): string | undefined {
