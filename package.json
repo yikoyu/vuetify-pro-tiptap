@@ -1,6 +1,6 @@
 {
   "name": "vuetify-pro-tiptap",
-  "version": "2.4.3",
+  "version": "2.5.0",
   "license": "MIT",
   "description": "tiptap text editor on vuejs and vuetify",
   "private": false,

@@ -1,3 +1,18 @@
+## [2.5.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.3...v2.5.0) (2024-06-02)
+
+
+### Features
+
+* **ColorPicker:** support for custom colors ([0f29494](https://github.com/yikoyu/vuetify-pro-tiptap/commit/0f294941fa7f05bceab04b2e932136957a4ad1f0)), closes [#313](https://github.com/yikoyu/vuetify-pro-tiptap/issues/313)
+* **image:** support setting the default width and display ([2e60b5f](https://github.com/yikoyu/vuetify-pro-tiptap/commit/2e60b5fcd789b242a5a51ba0cc5355b67d3f92f2)), closes [#316](https://github.com/yikoyu/vuetify-pro-tiptap/issues/316)
+* **link:** added unlink function, rel & target attributes ([81c19b4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/81c19b482496f350b0c437286ffdf3313b096566))
+
+
+### Bug Fixes
+
+* **markdown-theme:** cannot switch themes ([3623106](https://github.com/yikoyu/vuetify-pro-tiptap/commit/3623106b4cb35edfadaf5432ab1d8e8b7094cb73))
+* **style:** buttons on toolbar's second line are not showing ([7e3ead5](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7e3ead5cd705bcfb843d2501d29287e3707df205))
+
 ## [2.4.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.2...v2.4.3) (2024-01-31)
 
 
