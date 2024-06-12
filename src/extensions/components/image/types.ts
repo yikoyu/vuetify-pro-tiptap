@@ -43,5 +43,5 @@ export interface ImageAttrsOptions {
 /** Represents a form for handling image attributes */
 export interface ImageForm extends ImageAttrsOptions {
   /** An array of File objects representing the image file */
-  file?: File[]
+  file?: File
 }

@@ -29,7 +29,7 @@ const form = computed({
 })
 
 async function onFileSelected(event: { isTrusted: boolean }) {
-  const file = unref(form).file?.[0]
+  const { file } = unref(form)
   if (!file || !event.isTrusted) return
 
   try {
