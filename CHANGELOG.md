@@ -1,3 +1,9 @@
+## [2.5.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.0...v2.5.1) (2024-06-12)
+
+### Bug Fixes
+
+* **Image:** upload function didn't run ([2ee4046](https://github.com/yikoyu/vuetify-pro-tiptap/commit/2ee4046aa2f19754a3f227346746d27d8266ef09)), closes [#332](https://github.com/yikoyu/vuetify-pro-tiptap/issues/332)
+
 ## [2.5.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.3...v2.5.0) (2024-06-02)
 
 
