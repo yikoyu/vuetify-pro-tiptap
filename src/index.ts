@@ -1,7 +1,6 @@
 import type { App, Plugin } from 'vue'
 import type { Extensions } from '@tiptap/core'
 
-import TiptapToolbar from './components/TiptapToolbar.vue'
 import VuetifyTiptap from './components/VuetifyTiptap.vue'
 import VuetifyViewer from './components/VuetifyViewer.vue'
 import { createContext, useContext, useTiptapStore } from './hooks'
@@ -41,7 +40,7 @@ export type {
   JSONContent,
   VuetifyTiptapOnChange
 } from './type'
-export { createVuetifyProTipTap, TiptapToolbar, VuetifyTiptap, VuetifyViewer }
+export { createVuetifyProTipTap, VuetifyTiptap, VuetifyViewer }
 export { useContext, useTiptapStore }
 export { en, locale, zhHans }
 export type { InstallationOptions }
@@ -50,6 +49,5 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     VuetifyTiptap: typeof VuetifyTiptap
     VuetifyViewer: typeof VuetifyViewer
-    TiptapToolbar: typeof TiptapToolbar
   }
 }
