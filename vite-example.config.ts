@@ -23,16 +23,16 @@ export default defineConfig({
       dirs: undefined,
       dts: false,
       resolvers: [Vuetify3Resolver()]
-    }),
-    checker({
-      vueTsc: true,
-      eslint: {
-        lintCommand: scripts['lint:js']
-      },
-      stylelint: {
-        lintCommand: scripts['lint:css']
-      }
     })
+    // checker({
+    //   vueTsc: true,
+    //   eslint: {
+    //     lintCommand: scripts['lint:js']
+    //   },
+    //   stylelint: {
+    //     lintCommand: scripts['lint:css']
+    //   }
+    // })
   ],
   resolve: {
     alias: {

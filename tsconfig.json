@@ -14,8 +14,7 @@
     "types": ["vite/client", "vuetify"],
     "lib": ["esnext", "dom"],
     "paths": {
-      "@/*":["./src/*"],
-      "*": ["./node_modules/*"]
+      "@/*":["./src/*"]
     }
   },
   "vueCompilerOptions": {
@@ -32,6 +31,8 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "types/*.ts",
+    "types/**/*.d.ts",
   ]
 }

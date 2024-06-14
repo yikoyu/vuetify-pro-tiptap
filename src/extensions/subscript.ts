@@ -7,12 +7,24 @@ import { Superscript as TiptapSuperscript } from '@tiptap/extension-superscript'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, ButtonViewReturn, GeneralOptions } from '@/type'
+import type { ButtonViewReturn, GeneralOptions } from '@/type'
 
-export interface SubAndSuperScriptOptions extends GeneralOptions {
+/**
+ * Represents the interface for subscript and superscript options, extending GeneralOptions.
+ */
+export interface SubAndSuperScriptOptions extends GeneralOptions<SubAndSuperScriptOptions> {
+  /**
+   * subscript options or false, indicating whether subscript is enabled
+   *
+   * @default true
+   */
   subscript: Partial<TiptapSubscriptOptions> | false
+  /**
+   * superscript options or false, indicating whether superscript is enabled
+   *
+   * @default true
+   */
   superscript: Partial<TiptapSuperscriptOptions> | false
-  button: ButtonView<SubAndSuperScriptOptions>
 }
 
 export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScriptOptions>({
@@ -30,6 +42,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
           componentProps: {
             action: () => editor.commands.toggleSubscript(),
             isActive: () => editor.isActive('subscript') || false,
+            disabled: !editor.can().toggleSubscript(),
             icon: 'subscript',
             tooltip: t('editor.subscript.tooltip')
           }
@@ -40,6 +53,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
           componentProps: {
             action: () => editor.commands.toggleSuperscript(),
             isActive: () => editor.isActive('superscript') || false,
+            disabled: !editor.can().toggleSuperscript(),
             icon: 'superscript',
             tooltip: t('editor.superscript.tooltip')
           }

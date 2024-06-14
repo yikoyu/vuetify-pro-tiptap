@@ -8,11 +8,6 @@ import CreateTablePopover from './CreateTablePopover.vue'
 import { getIcon } from '@/constants/icons'
 import { useLocale } from '@/locales'
 
-interface Props {
-  editor: Editor
-  activator?: string
-}
-
 const props = withDefaults(defineProps<Props>(), {
   activator: undefined
 })
@@ -150,6 +145,11 @@ export interface Item {
   title?: string
   disabled?: boolean
   icon?: string
+}
+
+interface Props {
+  editor: Editor
+  activator?: string
 }
 </script>
 

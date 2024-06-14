@@ -23,7 +23,7 @@ English | [中文](./README.zh-CN.md)
 - Many out of box [extension](#extensions) (welcome to submit an issue for feature request)
 - Markdown support
 - TypeScript support
-- I18n support(`en`, `zhHans`)
+- I18n support(`en`, `zhHans`, `nl`)
 - Vuetify 3.x and Vue 3.x support
 
 ## Vuetify 2.x
@@ -357,6 +357,7 @@ locale.setLang('en')
 Available languages:
 - en (default)
 - zhHans
+- nl
 
 ### Use unavailable language
 Loading unavailable language, use `setMessage` for Settings
@@ -429,6 +430,8 @@ const content = ref('')
 | label | string | undefined | Sets input label |
 | hideToolbar | boolean | false | Hidden the toolbar |
 | disableToolbar | boolean | false | Disable the toolbar |
+| hideBubble | boolean | false | Hidden the bubble menu |
+| removeDefaultWrapper | boolean | false | Default wrapper when the delete editor is empty |
 | maxWidth | string \| number | undefined | Sets the maximum width for the component. |
 | minHeight | string \| number | undefined | Sets the minimum height for the component. |
 | maxHeight | string \| number | undefined | Sets the maximum height for the component. |

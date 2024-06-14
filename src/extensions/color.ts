@@ -3,11 +3,9 @@ import { Color as TiptapColor } from '@tiptap/extension-color'
 
 import ColorActionButton from './components/ColorActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface ColorOptions extends TiptapColorOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface ColorOptions extends TiptapColorOptions, GeneralOptions<ColorOptions> {}
 
 export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
   addOptions() {
@@ -25,6 +23,7 @@ export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
             if (!color) return false
             return editor.isActive({ color }) || false
           },
+          disabled: !editor.can().setColor(''),
           icon: 'color',
           tooltip: t('editor.color.tooltip')
         }

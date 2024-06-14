@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 import { COLORS_LIST } from '@/constants/define'
 import { getIcon } from '@/constants/icons'
@@ -25,12 +25,19 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<Emits>()
 
+const inutValue = ref('')
 const menu = ref(false)
 // const picker = ref(false);
+
+watch(menu, val => {
+  inutValue.value = props.modelValue
+})
 
 function setColor(color: string) {
   emit('update:modelValue', color)
   emit('change', color)
+
+  inutValue.value = color
   menu.value = false
 }
 </script>
@@ -50,6 +57,24 @@ function setColor(color: string) {
         <VBtn v-for="color in COLORS_LIST" :key="color" flat icon density="compact" @click="setColor(color)">
           <VIcon :icon="getIcon('circle')" :color="color" />
         </VBtn>
+
+        <VTextField
+          v-model="inutValue"
+          class="mt-2 mx-1"
+          :append-inner-icon="getIcon('check')"
+          density="compact"
+          label="HEX"
+          variant="outlined"
+          flat
+          hide-details
+          single-line
+          clearable
+          @click:append-inner="setColor(inutValue)"
+        >
+          <template v-if="inutValue" #prepend-inner>
+            <VIcon class="opacity-100" :icon="getIcon('circle')" :color="inutValue" />
+          </template>
+        </VTextField>
       </VSheet>
 
       <!-- <template>

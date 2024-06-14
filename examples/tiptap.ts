@@ -20,6 +20,7 @@ import {
   CodeBlock,
   Color,
   createVuetifyProTipTap,
+  defaultBubbleList,
   FontFamily,
   FontSize,
   Fullscreen,
@@ -44,7 +45,10 @@ import {
   VuetifyViewer
 } from 'vuetify-pro-tiptap'
 
+import LinkDialog from './components/LinkDialog.vue'
 import SelectImage from './components/SelectImage.vue'
+
+import { NODE_TYPE_MENU } from '@/constants/define'
 
 export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',
@@ -57,6 +61,16 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     BaseKit.configure({
       placeholder: {
         placeholder: 'Enter some text...'
+      },
+      bubble: {
+        // default config
+        list: {
+          ...NODE_TYPE_MENU
+        },
+        defaultBubbleList: editor => {
+          // You can customize the bubble menu here
+          return defaultBubbleList(editor) // default customize bubble list
+        }
       }
     }),
     Bold,
@@ -76,9 +90,12 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     OrderedList,
     TaskList,
     Indent.configure({ divider: true }),
-    Link,
+    Link.configure({
+      dialogComponent: () => LinkDialog
+    }),
     Image.configure({
       imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],
+      width: 500,
       // hiddenTabs: ['upload'],
       upload(file: File) {
         const url = URL.createObjectURL(file)

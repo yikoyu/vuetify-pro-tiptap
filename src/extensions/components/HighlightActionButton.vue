@@ -6,7 +6,7 @@ import ActionButton from './ActionButton.vue'
 import ColorPicker from './ColorPicker.vue'
 
 import type { IconsOptions } from '@/constants/icons'
-import { useContext } from '@/hooks'
+import { useTiptapStore } from '@/hooks'
 import { ButtonViewReturnComponentProps } from '@/type'
 
 interface Props {
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   isActive: undefined
 })
 
-const { state } = useContext()
+const { state } = useTiptapStore()!
 
 function onChange(color: string) {
   props.action?.(color)

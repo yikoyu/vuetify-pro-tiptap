@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import { locale } from 'vuetify-pro-tiptap'
 import type { Editor } from '@tiptap/vue-3'
 
-import type { LinkAttrs } from './types'
-
-import { getIcon } from '@/constants/icons'
-import { useLocale } from '@/locales'
+interface LinkAttrs {
+  href?: string
+  target?: '_self' | '_blank'
+  rel?: string
+}
 
 interface Props {
   value?: string
@@ -21,8 +23,6 @@ const props = withDefaults(defineProps<Props>(), {
   rel: undefined,
   destroy: undefined
 })
-
-const { t } = useLocale()
 
 const generateLinkAttrs = (): LinkAttrs => ({
   href: '',
@@ -72,23 +72,27 @@ watch(dialog, val => {
   <VDialog v-model="dialog" max-width="400" activator="parent" @click:outside="close">
     <VCard>
       <VToolbar class="px-6" density="compact">
-        <span class="headline">{{ t('editor.link.dialog.title') }}</span>
+        <span class="headline">{{ locale.message[locale.lang]['editor.link.dialog.title'] }}</span>
 
         <VSpacer />
 
         <VBtn class="mx-0" icon @click="close">
-          <VIcon :icon="getIcon('close')" />
+          <VIcon icon="$close" />
         </VBtn>
       </VToolbar>
 
       <VCardText>
-        <VTextField v-model="attrs.href" :label="t('editor.link.dialog.link')" autofocus />
+        <div>This is a custom dialog component;</div>
 
-        <VTextField v-model="attrs.rel" :label="t('editor.link.dialog.rel')" hide-details />
+        <div>please use the <strong>dialogComponent</strong> parameter.</div>
+
+        <VTextField v-model="attrs.href" :label="locale.message[locale.lang]['editor.link.dialog.link']" autofocus />
+
+        <VTextField v-model="attrs.rel" :label="locale.message[locale.lang]['editor.link.dialog.rel']" hide-details />
 
         <VCheckbox
           v-model="attrs.target"
-          :label="t('editor.link.dialog.openInNewTab')"
+          :label="locale.message[locale.lang]['editor.link.dialog.openInNewTab']"
           color="primary"
           false-value="_self"
           true-value="_blank"
@@ -98,7 +102,7 @@ watch(dialog, val => {
 
       <VCardActions>
         <VBtn :disabled="isDisabled" @click="apply">
-          {{ t('editor.link.dialog.button.apply') }}
+          {{ locale.message[locale.lang]['editor.link.dialog.button.apply'] }}
         </VBtn>
       </VCardActions>
     </VCard>

@@ -4,11 +4,19 @@ import type { Item } from './components/ActionMenuButton.vue'
 import ActionMenuButton from './components/ActionMenuButton.vue'
 
 import { DEFAULT_FONT_SIZE_LIST, DEFAULT_FONT_SIZE_VALUUE } from '@/constants/define'
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
+import { getCssUnitWithDefault } from '@/utils/utils'
 
-export interface FontSizeOptions extends GeneralOptions {
-  button: ButtonView<FontSizeOptions>
+/**
+ * Represents the interface for font size options, extending GeneralOptions.
+ */
+export interface FontSizeOptions extends GeneralOptions<FontSizeOptions> {
   types: string[]
+  /**
+   * List of available font size values
+   *
+   * @default DEFAULT_FONT_SIZE_LIST
+   */
   fontSizes: number[]
 }
 
@@ -34,7 +42,7 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
     return {
       ...this.parent?.(),
       types: ['textStyle'],
-      fontSizes: DEFAULT_FONT_SIZE_LIST,
+      fontSizes: [...DEFAULT_FONT_SIZE_LIST],
       button: ({ editor, extension, t }) => {
         const fontSizes = (extension.options?.fontSizes as FontSizeOptions['fontSizes']) || []
 
@@ -59,15 +67,19 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
 
             editor.commands.setFontSize(String(k))
           },
+          disabled: !editor.can().setFontSize(String(k)),
           divider: k === DEFAULT_FONT_SIZE_VALUUE ?? false,
           default: k === DEFAULT_FONT_SIZE_VALUUE ?? false
         }))
+
+        const disabled = items.filter(k => k.disabled).length === items.length
 
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'fontSize',
             tooltip: t('editor.fontSize.tooltip'),
+            disabled,
             items,
             maxHeight: 280
           }
@@ -90,7 +102,7 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
               }
 
               return {
-                style: `font-size: ${attributes.fontSize}px`
+                style: `font-size: ${getCssUnitWithDefault(attributes.fontSize)}`
               }
             }
           }

@@ -1,3 +1,72 @@
+## [2.5.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.0...v2.5.1) (2024-06-12)
+
+### Bug Fixes
+
+* **Image:** upload function didn't run ([2ee4046](https://github.com/yikoyu/vuetify-pro-tiptap/commit/2ee4046aa2f19754a3f227346746d27d8266ef09)), closes [#332](https://github.com/yikoyu/vuetify-pro-tiptap/issues/332)
+
+## [2.5.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.3...v2.5.0) (2024-06-02)
+
+
+### Features
+
+* **ColorPicker:** support for custom colors ([0f29494](https://github.com/yikoyu/vuetify-pro-tiptap/commit/0f294941fa7f05bceab04b2e932136957a4ad1f0)), closes [#313](https://github.com/yikoyu/vuetify-pro-tiptap/issues/313)
+* **image:** support setting the default width and display ([2e60b5f](https://github.com/yikoyu/vuetify-pro-tiptap/commit/2e60b5fcd789b242a5a51ba0cc5355b67d3f92f2)), closes [#316](https://github.com/yikoyu/vuetify-pro-tiptap/issues/316)
+* **link:** added unlink function, rel & target attributes ([81c19b4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/81c19b482496f350b0c437286ffdf3313b096566))
+
+
+### Bug Fixes
+
+* **markdown-theme:** cannot switch themes ([3623106](https://github.com/yikoyu/vuetify-pro-tiptap/commit/3623106b4cb35edfadaf5432ab1d8e8b7094cb73))
+* **style:** buttons on toolbar's second line are not showing ([7e3ead5](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7e3ead5cd705bcfb843d2501d29287e3707df205))
+
+## [2.4.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.2...v2.4.3) (2024-01-31)
+
+
+### Bug Fixes
+
+* **font-size:** "font-size" loading, duplicate "px" appears ([bae62e7](https://github.com/yikoyu/vuetify-pro-tiptap/commit/bae62e7a28c8be4c24bdfb806c10ef78df27d556)), closes [#275](https://github.com/yikoyu/vuetify-pro-tiptap/issues/275)
+
+## [2.4.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.1...v2.4.2) (2024-01-27)
+
+
+### Bug Fixes
+
+* **locale:** update Dutch locale ([c0b3ea7](https://github.com/yikoyu/vuetify-pro-tiptap/commit/c0b3ea7927da604dad84c2318816e3f273ea9e40))
+* **VuetifyTiptap:** closing characterCount causes editor error ([be1d0cd](https://github.com/yikoyu/vuetify-pro-tiptap/commit/be1d0cdae0587d4922cd329d1bb1cbf33a09c7a7)), closes [#272](https://github.com/yikoyu/vuetify-pro-tiptap/issues/272)
+
+
+### Refactor
+
+* replace lodash with lodash-unified ([8bfc5d9](https://github.com/yikoyu/vuetify-pro-tiptap/commit/8bfc5d9c725ff71c9ec2a079cfb0680cce21f686))
+* **VuetifyTiptap:** override configurations for duplicate extensions, update tsconfig ([8830fe3](https://github.com/yikoyu/vuetify-pro-tiptap/commit/8830fe3c9c73a7b26e6314ef46f59add35379906))
+
+## [2.4.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.4.0...v2.4.1) (2024-01-20)
+
+
+### Bug Fixes
+
+* **VuetifyViewer:** cannot be used independently ([986eccc](https://github.com/yikoyu/vuetify-pro-tiptap/commit/986eccc4af579905e530439c0e149ae131408c31))
+
+## [2.4.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.3.0...v2.4.0) (2024-01-20)
+
+
+### Features
+
+* dialog can be customized with dialogComponent for custom components and styles ([5407d53](https://github.com/yikoyu/vuetify-pro-tiptap/commit/5407d53857d622a9f57dc9ae9d537b2a0b09c095)), closes [#253](https://github.com/yikoyu/vuetify-pro-tiptap/issues/253)
+* **locale:** add Dutch locale ([#243](https://github.com/yikoyu/vuetify-pro-tiptap/issues/243)) ([33ff84e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/33ff84e596ff25d67c941ae47c30bb4e955346b8))
+* **VuetifyTiptap:** add 'hideBubble' prop to hide the bubble menu ([60318c9](https://github.com/yikoyu/vuetify-pro-tiptap/commit/60318c9fdee030e54b48978aff8f14858e9a1884))
+* **VuetifyTiptap:** add removeDefaultWrapper option to remove default wrapper ([fa3c2db](https://github.com/yikoyu/vuetify-pro-tiptap/commit/fa3c2dbf4d44910cf4c4e4af51f931d83f622f54)), closes [#208](https://github.com/yikoyu/vuetify-pro-tiptap/issues/208)
+
+
+### Bug Fixes
+
+* bubble menu type is missing ([339251a](https://github.com/yikoyu/vuetify-pro-tiptap/commit/339251a4bbefcb03014c0476e93b4289329afa3f))
+* **BubbleMenu:** repeatedly selecting table cells crashes ([dafd80d](https://github.com/yikoyu/vuetify-pro-tiptap/commit/dafd80ddfdebcce2c87586ab5ea5f29cacb6004e))
+* **extensions:** disable commands that cannot be used in certain operations ([7432b7e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7432b7ee0ba13349f7f6e3b83e8912e7a613f690))
+* **extensions:** props type error ([2381b31](https://github.com/yikoyu/vuetify-pro-tiptap/commit/2381b319b8f75c8386552ca81dd877b7011c8379))
+* sharing global parameters among multiple editors ([259e6e6](https://github.com/yikoyu/vuetify-pro-tiptap/commit/259e6e6c9bc9b97e8c47ce33089e0c59e77a3a09)), closes [#253](https://github.com/yikoyu/vuetify-pro-tiptap/issues/253)
+* **Table:** unable to create table for mobile devices ([d33c67a](https://github.com/yikoyu/vuetify-pro-tiptap/commit/d33c67a73da2eb07be79ad557c539772c05d1cce)), closes [#255](https://github.com/yikoyu/vuetify-pro-tiptap/issues/255)
+
 ## [2.3.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.2.0...v2.3.0) (2023-09-20)
 
 

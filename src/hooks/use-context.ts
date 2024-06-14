@@ -1,20 +1,31 @@
-import { computed, reactive } from 'vue'
+import { reactive } from 'vue'
 import type { AnyExtension } from '@tiptap/core'
 
 interface Instance {
-  defaultLang?: string
-  defaultMarkdownTheme?: string
+  /**
+   * List of extensions
+   *
+   * @default []
+   */
   extensions: AnyExtension[]
-  isFullscreen: boolean
-  color?: string
-  highlight?: string
+
+  /**
+   * Default language setting
+   *
+   * @default DEFAULT_LANG_VALUE
+   */
+  defaultLang?: string
+
+  /**
+   * Default Markdown theme setting
+   *
+   * @default DEFAULT_MARKDOWN_THEME_VALUE
+   */
+  defaultMarkdownTheme?: string
 }
 
 const state: Instance = reactive({
-  extensions: [],
-  isFullscreen: false,
-  color: undefined,
-  highlight: undefined
+  extensions: []
 }) as unknown as Instance
 
 export function createContext(instance: Partial<Instance>) {
@@ -24,15 +35,7 @@ export function createContext(instance: Partial<Instance>) {
 }
 
 export function useContext() {
-  const isFullscreen = computed(() => state.isFullscreen)
-
-  function toggleFullscreen() {
-    state.isFullscreen = !state.isFullscreen
-  }
-
   return {
-    state,
-    isFullscreen,
-    toggleFullscreen
+    state
   }
 }

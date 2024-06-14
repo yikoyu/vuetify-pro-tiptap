@@ -28,11 +28,13 @@ const tippyOptions = reactive<Record<string, unknown>>({
 
 const nodeType = computed<NodeTypeKey | undefined>(() => {
   const selection = props.editor.state.selection as NodeSelection
+  const isLink = isLinkSelection()
 
   const isImage = selection.node?.type.name === 'image'
   const isVideo = selection.node?.type.name === 'video'
   const isText = selection instanceof TextSelection
 
+  if (isLink) return 'link'
   if (isImage) return 'image'
   if (isVideo) return 'video'
   if (isText) return 'text'
@@ -61,10 +63,18 @@ const items = computed(() => {
   if (!nodeType.value) return []
   return unref(nodeMenus)?.[nodeType.value] ?? []
 })
+
+function isLinkSelection() {
+  const { schema } = props.editor
+  const linkType = schema.marks.link
+  if (!linkType) return false
+
+  return props.editor.isActive(linkType.name)
+}
 </script>
 
 <template>
-  <BubbleMenu v-if="items.length > 0" :editor="editor" :tippy-options="tippyOptions">
+  <BubbleMenu v-show="items.length > 0" :editor="editor" :tippy-options="tippyOptions">
     <VCard class="vuetify-pro-tiptap-editor__menu-bubble">
       <VCardText class="d-flex pa-0">
         <VToolbar density="compact" flat height="auto" class="py-1 ps-1">
@@ -72,7 +82,17 @@ const items = computed(() => {
             <!-- Divider -->
             <VDivider v-if="item.type === 'divider'" vertical class="mx-1 me-2" />
             <!-- Buttons -->
-            <component :is="item.component" v-else v-bind="item.componentProps" :editor="editor" :disabled="disabled" />
+            <component
+              :is="item.component"
+              v-else
+              v-bind="item.componentProps"
+              :editor="editor"
+              :disabled="disabled || item.componentProps?.disabled"
+            >
+              <template v-for="(element, slotName, i) in item.componentSlots" :key="i" #[`${slotName}`]="values">
+                <component :is="element" v-bind="values?.props" />
+              </template>
+            </component>
           </template>
         </VToolbar>
       </VCardText>

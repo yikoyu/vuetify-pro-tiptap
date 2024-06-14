@@ -2,22 +2,42 @@ import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image
 import { Image as TiptapImage } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 
+import ImageDialog from './components/image/ImageDialog.vue'
 import ImageView from './components/image/ImageView.vue'
-import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
+import type { Display, ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
 import ImageActionButton from './components/ImageActionButton.vue'
 
 import { IMAGE_SIZE } from '@/constants/define'
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
+/**
+ * Represents the type for the upload function, which takes a File parameter and returns a Promise of type string.
+ */
 type Upload = (file: File) => Promise<string>
-export interface ImageOptions extends TiptapImageOptions, GeneralOptions {
+
+/**
+ * Represents the interface for image options, extending TiptapImageOptions and GeneralOptions.
+ */
+export interface ImageOptions extends TiptapImageOptions, GeneralOptions<ImageOptions> {
+  /** Function for uploading images */
   upload?: Upload
+  /** image default width */
+  width?: string | number
+  /** image default display */
+  display: Display
+  /** List of image tabs */
   imageTabs: ImageTab[]
+  /** List of hidden image tab keys */
   hiddenTabs: ImageTabKey[]
-  button: ButtonView<ImageOptions>
+  /** Component for the image dialog */
+  dialogComponent: any
 }
 
+/**
+ * Represents the interface for options to set image attributes, extending ImageAttrsOptions and including the src property.
+ */
 interface SetImageAttrsOptions extends ImageAttrsOptions {
+  /** The source URL of the image. */
   src: string
 }
 
@@ -50,13 +70,13 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
         default: true
       },
       width: {
-        default: IMAGE_SIZE['size-large']
+        default: this.options.width
       },
       height: {
         default: null
       },
       display: {
-        default: 'inline',
+        default: this.options.display,
         renderHTML: ({ display }) => {
           if (!display) {
             return {}
@@ -90,11 +110,14 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
     return {
       ...this.parent?.(),
       upload: undefined,
+      width: IMAGE_SIZE['size-large'],
+      display: 'inline',
       imageTabs: [],
       hiddenTabs: [],
       inline: true,
+      dialogComponent: () => ImageDialog,
       button: ({ editor, extension, t }) => {
-        const { upload, imageTabs, hiddenTabs } = extension.options
+        const { upload, imageTabs, hiddenTabs, dialogComponent } = extension.options
 
         return {
           component: ImageActionButton,
@@ -104,8 +127,12 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
             imageTabs,
             hiddenTabs,
             isActive: () => editor.isActive('image') || false,
+            disabled: !editor.can().setImage({}),
             icon: 'image',
             tooltip: t('editor.image.tooltip')
+          },
+          componentSlots: {
+            dialog: dialogComponent()
           }
         }
       }

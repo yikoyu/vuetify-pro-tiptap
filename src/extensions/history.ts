@@ -3,11 +3,9 @@ import { History as TiptapHistory } from '@tiptap/extension-history'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface HistoryOptions extends TiptapHistoryOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface HistoryOptions extends TiptapHistoryOptions, GeneralOptions<HistoryOptions> {}
 
 export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
   addOptions() {
@@ -24,6 +22,7 @@ export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
               if (item === 'undo') editor.commands.undo()
               if (item === 'redo') editor.commands.redo()
             },
+            disabled: !editor.can()[item](),
             icon: item,
             tooltip: t(`editor.${item}.tooltip`)
           }

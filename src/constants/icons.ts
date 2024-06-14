@@ -1,5 +1,6 @@
 import {
   mdiAspectRatio,
+  mdiCheck,
   mdiCircle,
   mdiClose,
   mdiCodeBracesBox,
@@ -40,8 +41,10 @@ import {
   mdiFullscreen,
   mdiFullscreenExit,
   mdiImagePlus,
+  mdiLinkVariantOff,
   mdiLinkVariantPlus,
   mdiMinus,
+  mdiOpenInNew,
   mdiPalette,
   mdiRedo,
   mdiSizeL,
@@ -100,6 +103,8 @@ export interface IconsOptions extends ToolbarIconsOptions {
   close: string
   fullscreenExit: string
   linkVariant: string
+  linkVariantOff: string
+  openInNew: string
   formatFloatLeft: string
   formatFloatNone: string
   formatFloatRight: string
@@ -139,6 +144,8 @@ export interface IconsOptions extends ToolbarIconsOptions {
   tableRowPlusBefore: string
   tableRowRemove: string
   tableMergeCells: string
+
+  check: string
 }
 
 const icons: IconsOptions = {
@@ -194,6 +201,8 @@ const icons: IconsOptions = {
   close: mdiClose,
   fullscreenExit: mdiFullscreenExit,
   linkVariant: mdiLinkVariantPlus,
+  linkVariantOff: mdiLinkVariantOff,
+  openInNew: mdiOpenInNew,
   formatFloatLeft: mdiFormatFloatLeft,
   formatFloatNone: mdiFormatFloatNone,
   formatFloatRight: mdiFormatFloatRight,
@@ -213,7 +222,9 @@ const icons: IconsOptions = {
   tableRowPlusAfter: mdiTableRowPlusAfter,
   tableRowPlusBefore: mdiTableRowPlusBefore,
   tableRowRemove: mdiTableRowRemove,
-  tableMergeCells: mdiTableMergeCells
+  tableMergeCells: mdiTableMergeCells,
+
+  check: mdiCheck
 }
 
 export function getIcon(iconName?: keyof IconsOptions): string | undefined {

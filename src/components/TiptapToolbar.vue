@@ -70,8 +70,13 @@ const items = computed(() => {
         :is="item.button.component"
         v-bind="item.button.componentProps"
         :editor="editor"
-        :disabled="disabled"
-      />
+        :disabled="disabled || item.button.componentProps?.disabled"
+      >
+        <template v-for="(element, slotName, i) in item.button.componentSlots" :key="i" #[`${slotName}`]="values">
+          <component :is="element" v-bind="values?.props" />
+        </template>
+      </component>
+
       <!-- Divider -->
       <VDivider v-if="item.divider" vertical class="mx-1 me-2" />
     </template>

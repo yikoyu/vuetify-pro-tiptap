@@ -3,11 +3,9 @@ import { HorizontalRule as TiptapHorizontalRule } from '@tiptap/extension-horizo
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface HorizontalRuleOptions extends TiptapHorizontalRuleOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface HorizontalRuleOptions extends TiptapHorizontalRuleOptions, GeneralOptions<HorizontalRuleOptions> {}
 
 export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<HorizontalRuleOptions>({
   addOptions() {
@@ -17,6 +15,7 @@ export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<Horizon
         component: ActionButton,
         componentProps: {
           action: () => editor.commands.setHorizontalRule(),
+          disabled: !editor.can().setHorizontalRule(),
           icon: 'horizontalRule',
           tooltip: t('editor.horizontalrule.tooltip')
         }

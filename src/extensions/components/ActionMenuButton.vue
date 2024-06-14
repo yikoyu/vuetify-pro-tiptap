@@ -8,17 +8,6 @@ import ActionButton from './ActionButton.vue'
 import { getIcon, IconsOptions } from '@/constants/icons'
 import type { ButtonViewReturnComponentProps } from '@/type'
 
-interface Props {
-  editor: Editor
-  disabled?: boolean
-  color?: string
-  maxHeight?: string | number
-
-  icon?: keyof IconsOptions
-  tooltip?: string
-  items?: Item[]
-}
-
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   color: undefined,
@@ -57,8 +46,20 @@ export interface Item {
   isActive: NonNullable<ButtonViewReturnComponentProps['isActive']>
   action?: ButtonViewReturnComponentProps['action']
   style?: StyleValue
+  disabled?: boolean
   divider?: boolean
   default?: boolean
+}
+
+interface Props {
+  editor: Editor
+  disabled?: boolean
+  color?: string
+  maxHeight?: string | number
+
+  icon?: keyof IconsOptions
+  tooltip?: string
+  items?: Item[]
 }
 </script>
 
@@ -73,7 +74,7 @@ export interface Item {
     <VMenu v-model="menu" activator="parent">
       <VList density="compact" :max-height="maxHeight">
         <template v-for="(item, i) in items" :key="i">
-          <VListItem :active="item.isActive()" @click="item.action">
+          <VListItem :active="item.isActive()" :disabled="item.disabled" @click="item.action">
             <template #prepend>
               <VIcon v-if="item.icon" :icon="getIcon(item.icon)" />
             </template>

@@ -1,22 +1,51 @@
 import { Node } from '@tiptap/core'
 
+import VideoDialog from './components/video/VideoDialog.vue'
 import VideoActionButton from './components/VideoActionButton.vue'
 
 import { VIDEO_SIZE } from '@/constants/define'
-import type { ButtonView, GeneralOptions } from '@/type'
-import { getUnitWithPxAsDefault } from '@/utils/utils'
+import type { GeneralOptions } from '@/type'
+import { getCssUnitWithDefault } from '@/utils/utils'
 
-export interface VideoOptions extends GeneralOptions {
+/**
+ * Represents the interface for video options, extending GeneralOptions.
+ */
+export interface VideoOptions extends GeneralOptions<VideoOptions> {
+  /**
+   * Indicates whether fullscreen play is allowed
+   *
+   * @default true
+   */
   allowFullscreen: boolean
+  /**
+   * Indicates whether to display the frameborder
+   *
+   * @default false
+   */
   frameborder: boolean
+  /**
+   * Width of the video, can be a number or string
+   *
+   * @default VIDEO_SIZE['size-medium']
+   */
   width: number | string
+  /** HTML attributes object for passing additional attributes */
   HTMLAttributes: {
     [key: string]: any
   }
-  button: ButtonView<VideoOptions>
+  /** Component for the video dialog */
+  dialogComponent: any
 }
 
-type SetVideoOptions = { src: string; width: string | number }
+/**
+ * Represents the type for setting video options
+ */
+type SetVideoOptions = {
+  /** The source URL of the video */
+  src: string
+  /** The width of the video */
+  width: string | number
+}
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -76,7 +105,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       width: {
         default: this.options.width,
         renderHTML: ({ width }) => ({
-          width: getUnitWithPxAsDefault(width)
+          width: getCssUnitWithDefault(width)
         })
       },
       frameborder: {
@@ -152,14 +181,23 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
         class: 'iframe-wrapper',
         style: 'display: flex;justify-content: center;'
       },
-      button: ({ editor, t }) => ({
-        component: VideoActionButton,
-        componentProps: {
-          isActive: () => editor.isActive('video') || false,
-          icon: 'video',
-          tooltip: t('editor.video.tooltip')
+      dialogComponent: () => VideoDialog,
+      button: ({ editor, extension, t }) => {
+        const { dialogComponent } = extension.options
+
+        return {
+          component: VideoActionButton,
+          componentProps: {
+            isActive: () => editor.isActive('video') || false,
+            icon: 'video',
+            tooltip: t('editor.video.tooltip')
+          },
+          componentSlots: {
+            dialog: dialogComponent()
+          },
+          disabled: !editor.can().setVideo({})
         }
-      })
+      }
     }
   }
 })

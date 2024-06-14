@@ -6,10 +6,17 @@ import ActionMenuButton from './components/ActionMenuButton.vue'
 
 import type { FontFamilyProps } from '@/constants/define'
 import { DEFAULT_FONT_FAMILY_LIST, DEFAULT_FONT_FAMILY_VALUE } from '@/constants/define'
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface FontFamilyOptions extends TiptapFontFamilyOptions, GeneralOptions {
-  button: ButtonView<FontFamilyOptions>
+/**
+ * Represents the interface for font family options, extending TiptapFontFamilyOptions and GeneralOptions.
+ */
+export interface FontFamilyOptions extends TiptapFontFamilyOptions, GeneralOptions<FontFamilyOptions> {
+  /**
+   * List of available font family properties
+   *
+   * @default DEFAULT_FONT_FAMILY_LIST
+   */
   fontFamilies: FontFamilyProps[]
 }
 
@@ -41,16 +48,20 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
 
             editor.commands.setFontFamily(k.value)
           },
+          disabled: !editor.can().setFontFamily(k.value),
           style: { fontFamily: k.value },
           divider: k.divider ?? false,
           default: k.default ?? false
         }))
+
+        const disabled = items.filter(k => k.disabled).length === items.length
 
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'fontFamily',
             tooltip: t('editor.fontFamily.tooltip'),
+            disabled,
             items,
             maxHeight: 280
           }

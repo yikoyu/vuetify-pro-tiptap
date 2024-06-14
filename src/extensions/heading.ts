@@ -6,11 +6,9 @@ import type { Item } from './components/ActionMenuButton.vue'
 import ActionMenuButton from './components/ActionMenuButton.vue'
 import type { BaseKitOptions } from './base-kit'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions {
-  button: ButtonView<HeadingOptions>
-}
+export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions<HeadingOptions> {}
 
 export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
   addOptions() {
@@ -25,6 +23,7 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
         const items: Item[] = levels.map(level => ({
           action: () => editor.commands.toggleHeading({ level }),
           isActive: () => editor.isActive('heading', { level }) || false,
+          disabled: !editor.can().toggleHeading({ level }),
           icon: `h${level}`,
           title: t(`editor.heading.h${level}.tooltip`)
         }))
@@ -33,17 +32,21 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
           items.unshift({
             action: () => editor.commands.setParagraph(),
             isActive: () => editor.isActive('paragraph') || false,
+            disabled: !editor.can().setParagraph(),
             icon: 'p',
             title: t('editor.paragraph.tooltip'),
             divider: true
           })
         }
 
+        const disabled = items.filter(k => k.disabled).length === items.length
+
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'heading',
             tooltip: t('editor.heading.tooltip'),
+            disabled,
             items
           }
         }

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
 
-import LinkDialog from './link/LinkDialog.vue'
+import type { LinkAttrs } from './link/types'
 import ActionButton from './ActionButton.vue'
 
 import type { IconsOptions } from '@/constants/icons'
@@ -28,11 +28,19 @@ const props = withDefaults(defineProps<Props>(), {
   isActive: undefined
 })
 
-const href = ref<string | undefined>(undefined)
+const attrs = ref<LinkAttrs>({
+  href: undefined,
+  target: undefined,
+  rel: undefined
+})
 
 function onAction() {
-  const { href: _href } = props.editor.getAttributes('link')
-  href.value = _href
+  const { href, target, rel } = props.editor.getAttributes('link')
+  attrs.value = {
+    href,
+    target,
+    rel
+  }
 }
 </script>
 
@@ -45,6 +53,6 @@ function onAction() {
     :is-active="isActive"
     :action="onAction"
   >
-    <LinkDialog :editor="editor" :value="href" />
+    <slot name="dialog" :props="{ editor, value: attrs.href, ...attrs }"></slot>
   </ActionButton>
 </template>

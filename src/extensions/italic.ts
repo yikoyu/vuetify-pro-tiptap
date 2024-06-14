@@ -3,11 +3,9 @@ import { Italic as TiptapItalic } from '@tiptap/extension-italic'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface ItalicOptions extends TiptapItalicOptions, GeneralOptions {
-  button: ButtonView
-}
+export interface ItalicOptions extends TiptapItalicOptions, GeneralOptions<ItalicOptions> {}
 
 export const Italic = /* @__PURE__*/ TiptapItalic.extend<ItalicOptions>({
   addOptions() {
@@ -18,6 +16,7 @@ export const Italic = /* @__PURE__*/ TiptapItalic.extend<ItalicOptions>({
         componentProps: {
           action: () => editor.commands.toggleItalic(),
           isActive: () => editor.isActive('italic') || false,
+          disabled: !editor.can().toggleItalic(),
           icon: 'italic',
           tooltip: t('editor.italic.tooltip')
         }

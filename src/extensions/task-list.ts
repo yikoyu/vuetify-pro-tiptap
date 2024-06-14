@@ -5,11 +5,14 @@ import { TaskList as TiptapTaskList } from '@tiptap/extension-task-list'
 
 import ActionButton from './components/ActionButton.vue'
 
-import type { ButtonView, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 
-export interface TaskListOptions extends TiptapTaskListOptions, GeneralOptions {
+/**
+ * Represents the interface for task list options, extending TiptapTaskListOptions and GeneralOptions.
+ */
+export interface TaskListOptions extends TiptapTaskListOptions, GeneralOptions<TaskListOptions> {
+  /** options for task items */
   taskItem: Partial<TaskItemOptions>
-  button: ButtonView
 }
 
 export const TaskList = /* @__PURE__*/ TiptapTaskList.extend<TaskListOptions>({
@@ -29,6 +32,7 @@ export const TaskList = /* @__PURE__*/ TiptapTaskList.extend<TaskListOptions>({
         componentProps: {
           action: () => editor.commands.toggleTaskList(),
           isActive: () => editor.isActive('taskList') || false,
+          disabled: !editor.can().toggleTaskList(),
           icon: 'taskList',
           tooltip: t('editor.tasklist.tooltip')
         }

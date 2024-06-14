@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import type { NodeSelection } from '@tiptap/pm/state'
 import type { Editor } from '@tiptap/vue-3'
 
-import ImageDialog from './image/ImageDialog.vue'
 import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './image/types'
 import ActionButton from './ActionButton.vue'
 
@@ -62,6 +61,6 @@ function onAction() {
     :is-active="isActive"
     :action="onAction"
   >
-    <ImageDialog :editor="editor" :value="model" :image-tabs="imageTabs" :hidden-tabs="hiddenTabs" :upload="upload" />
+    <slot name="dialog" :props="{ editor, value: model, imageTabs, hiddenTabs, upload }"></slot>
   </ActionButton>
 </template>

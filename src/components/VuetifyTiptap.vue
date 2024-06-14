@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onUnmounted, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
-import type { Editor as CoreEditor, JSONContent } from '@tiptap/core'
+import type { Editor as CoreEditor } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 
@@ -9,16 +9,16 @@ import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
 
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { useContext, useMarkdownTheme } from '@/hooks'
+import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { VuetifyTiptapOnChange } from '@/type'
-import { getUnitWithPxAsDefault, isBoolean, isequal, throttle } from '@/utils/utils'
+import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>
 
 interface Props {
-  modelValue?: string | JSONContent
+  modelValue?: string | object
   markdownTheme?: string | false
   output?: 'html' | 'json' | 'text'
   dark?: boolean
@@ -29,11 +29,14 @@ interface Props {
   label?: string
   hideToolbar?: boolean
   disableToolbar?: boolean
+  hideBubble?: boolean
+  removeDefaultWrapper?: boolean
   maxWidth?: string | number
   minHeight?: string | number
   maxHeight?: string | number
   extensions?: AnyExtension[]
   editorClass?: string | string[] | Record<string, any>
+  errorMessages: string | string[] | null
 }
 
 interface Emits {
@@ -55,9 +58,12 @@ const props = withDefaults(defineProps<Props>(), {
   label: undefined,
   hideToolbar: false,
   disableToolbar: false,
+  hideBubble: false,
+  removeDefaultWrapper: false,
   maxWidth: undefined,
   minHeight: undefined,
   maxHeight: undefined,
+  errorMessages: () => [],
 
   // Editor
   extensions: () => [],
@@ -68,7 +74,7 @@ const emit = defineEmits<Emits>()
 const attrs = useAttrs()
 
 const theme = useTheme()
-const { state, isFullscreen } = useContext()
+const { state, isFullscreen } = useProvideTiptapStore()
 const { markdownThemeStyle } = useMarkdownTheme(
   computed(() => props.markdownTheme),
   (value: string) => {
@@ -77,8 +83,17 @@ const { markdownThemeStyle } = useMarkdownTheme(
 )
 
 const sortExtensions = computed<AnyExtension[]>(() => {
-  const exts = [...state.extensions, ...props.extensions]
-  return exts.map((k, i) => k.configure({ sort: i }))
+  const diff = differenceBy(props.extensions, state.extensions, 'name')
+
+  // Override configurations for duplicate extensions
+  const exts = state.extensions.map((k, i) => {
+    const find = props.extensions.find(ext => ext.name === k.name)
+    if (!find) return k
+
+    return k.configure(find.options)
+  })
+
+  return [...exts, ...diff].map((k, i) => k.configure({ sort: i }))
 })
 
 const editor = new Editor({
@@ -125,7 +140,7 @@ const contentDynamicClasses = computed(() => {
 })
 
 const contentDynamicStyles = computed(() => {
-  const maxWidth = getUnitWithPxAsDefault(props.maxWidth)
+  const maxWidth = getCssUnitWithDefault(props.maxWidth)
 
   const maxHeightStyle = {
     maxWidth: maxWidth,
@@ -135,8 +150,8 @@ const contentDynamicStyles = computed(() => {
   }
   if (unref(isFullscreen)) return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
 
-  const minHeight = getUnitWithPxAsDefault(props.minHeight)
-  const maxHeight = getUnitWithPxAsDefault(props.maxHeight)
+  const minHeight = getCssUnitWithDefault(props.minHeight)
+  const maxHeight = getCssUnitWithDefault(props.maxHeight)
 
   return {
     minHeight,
@@ -147,6 +162,13 @@ const contentDynamicStyles = computed(() => {
 })
 
 function getOutput(editor: CoreEditor, output: Props['output']) {
+  if (props.removeDefaultWrapper) {
+    if (output === 'html') return editor.isEmpty ? '' : editor.getHTML()
+    if (output === 'json') return editor.isEmpty ? {} : editor.getJSON()
+    if (output === 'text') return editor.isEmpty ? '' : editor.getText()
+    return ''
+  }
+
   if (output === 'html') return editor.getHTML()
   if (output === 'json') return editor.getJSON()
   if (output === 'text') return editor.getText()
@@ -158,7 +180,7 @@ const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
 
   const output = getOutput(editor, props.output)
 
-  if (isequal(output, val)) return
+  if (isEqual(output, val)) return
 
   const { from, to } = editor.state.selection
   editor.commands.setContent(val, false)
@@ -179,9 +201,9 @@ defineExpose({ editor })
   <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
     <VThemeProvider :theme="isDark ? 'dark' : 'light'">
       <!-- Edit Mode -->
-      <BubbleMenu :editor="editor" :disabled="disableToolbar" />
+      <BubbleMenu v-if="!hideBubble" :editor="editor" :disabled="disableToolbar" />
 
-      <VInput class="pt-0" hide-details="auto">
+      <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
         <VCard
           :flat="flat"
           :outlined="outlined"
@@ -226,13 +248,15 @@ defineExpose({ editor })
             <VToolbar class="px-4" density="compact" flat>
               <VSpacer />
 
-              <span class="text-overline me-4">
-                {{ editor.storage.characterCount.words() }} {{ t('editor.words') }}
-              </span>
+              <template v-if="hasExtension(editor, 'characterCount')">
+                <span class="text-overline me-4">
+                  {{ editor.storage.characterCount.words() }} {{ t('editor.words') }}
+                </span>
 
-              <span class="text-overline">
-                {{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}
-              </span>
+                <span class="text-overline">
+                  {{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}
+                </span>
+              </template>
             </VToolbar>
           </slot>
         </VCard>

@@ -1,11 +1,9 @@
-import type { ButtonView, GeneralOptions } from 'vuetify-pro-tiptap'
+import type { GeneralOptions } from 'vuetify-pro-tiptap'
 import { Extension } from '@tiptap/core'
 
 import PreviewActionButton from '../components/PreviewActionButton.vue'
 
-export interface PreviewOptions extends GeneralOptions {
-  button: ButtonView
-}
+export type PreviewOptions = GeneralOptions<PreviewOptions>
 
 export default Extension.create<PreviewOptions>({
   name: 'preview',

@@ -2,69 +2,67 @@ const typeEnum = {
   feat: {
     description: 'A new feature',
     title: 'Features',
-    emoji: '✨',
+    emoji: '✨'
   },
   fix: {
     description: 'A bug fix',
     title: 'Bug Fixes',
-    emoji: '🐛',
+    emoji: '🐛'
   },
   docs: {
     description: 'Documentation only changes',
     title: 'Documentation',
-    emoji: '📚',
+    emoji: '📚'
   },
   style: {
-    description: 'Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
+    description:
+      'Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
     title: 'Styles',
-    emoji: '💎',
+    emoji: '💎'
   },
   refactor: {
     description: 'A code change that neither fixes a bug nor adds a feature',
     title: 'Code Refactoring',
-    emoji: '📦',
+    emoji: '📦'
   },
   perf: {
     description: 'A code change that improves performance',
     title: 'Performance Improvements',
-    emoji: '🚀',
+    emoji: '🚀'
   },
   test: {
     description: 'Adding missing tests or correcting existing tests',
     title: 'Tests',
-    emoji: '🚨',
+    emoji: '🚨'
   },
   revert: {
     description: 'Reverts a previous commit',
     title: 'Reverts',
-    emoji: '🗑',
+    emoji: '🗑'
   },
   config: {
     description: 'Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)',
     title: 'Configs',
-    emoji: '🔨',
+    emoji: '🔨'
   },
   chore: {
     description: "Other changes that don't modify src or test files",
     title: 'Chores',
-    emoji: '♻️',
-  },
+    emoji: '♻️'
+  }
 }
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'type-enum': [
-      2,
-      'always',
-      Object.keys(typeEnum),
-    ]
+    'footer-max-line-length': [0],
+    'type-enum': [2, 'always', Object.keys(typeEnum)]
   },
   prompt: {
     questions: {
       type: {
         description: "Select the type of change that you're committing:",
-        enum: typeEnum,
+        enum: typeEnum
       }
     }
   }
