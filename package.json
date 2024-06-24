@@ -2,6 +2,7 @@
   "name": "vuetify-pro-tiptap",
   "version": "2.5.1",
   "license": "MIT",
+  "packageManager": "pnpm@8.15.8",
   "description": "tiptap text editor on vuejs and vuetify",
   "private": false,
   "author": "yikoyu<2282373181@qq.com>",
@@ -65,8 +66,7 @@
     }
   },
   "engines": {
-    "node": "^18.0.0",
-    "pnpm": "^8.0.0"
+    "node": "^18.0.0 || ^20.0.0"
   },
   "peerDependencies": {
     "vue": "^3.2.0",
