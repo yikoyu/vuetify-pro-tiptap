@@ -1,3 +1,9 @@
+## [2.5.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.1...v2.5.2) (2024-06-24)
+
+### Bug Fixes
+
+* yarn install error ([5beafa0](https://github.com/yikoyu/vuetify-pro-tiptap/commit/5beafa02d29514306f0806bf2877a1f2ab8c0ce7)), closes [#337](https://github.com/yikoyu/vuetify-pro-tiptap/issues/337)
+
 ## [2.5.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.0...v2.5.1) (2024-06-12)
 
 ### Bug Fixes
