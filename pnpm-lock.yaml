@@ -166,8 +166,8 @@ importers:
         specifier: ^14.0.1
         version: 14.0.1(semantic-release@24.0.0)
       '@types/lodash':
-        specifier: ^4.17.5
-        version: 4.17.5
+        specifier: ^4.17.6
+        version: 4.17.6
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
@@ -1741,11 +1741,11 @@ packages:
   /@types/lodash-es@4.17.12:
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
     dependencies:
-      '@types/lodash': 4.17.5
+      '@types/lodash': 4.17.6
     dev: true
 
-  /@types/lodash@4.17.5:
-    resolution: {integrity: sha512-MBIOHVZqVqgfro1euRDWX7OO0fBVUUMrN6Pwm8LQsz8cWhEpihlvR70ENj3f40j58TNxZaWv2ndSkInykNBBJw==}
+  /@types/lodash@4.17.6:
+    resolution: {integrity: sha512-OpXEVoCKSS3lQqjx9GGGOapBeuW5eUboYHRlHP9urXPX25IKZ6AnP5ZRxtVf63iieUbsHxLn8NQ5Nlftc6yzAA==}
     dev: true
 
   /@types/minimist@1.2.5:
