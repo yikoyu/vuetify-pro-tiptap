@@ -157,8 +157,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@24.0.0)
       '@semantic-release/github':
-        specifier: ^10.1.1
-        version: 10.1.1(semantic-release@24.0.0)
+        specifier: ^10.1.3
+        version: 10.1.3(semantic-release@24.0.0)
       '@semantic-release/npm':
         specifier: ^12.0.1
         version: 12.0.1(semantic-release@24.0.0)
@@ -1209,8 +1209,8 @@ packages:
       - supports-color
     dev: true
 
-  /@semantic-release/github@10.1.1(semantic-release@24.0.0):
-    resolution: {integrity: sha512-sSmsBKGpAlTtXf9rUJf/si16p+FwPEsvsJRjl3KCwFP0WywaSpynvUhlYvE18n5rzkQNbGJnObAKIoo3xFMSjA==}
+  /@semantic-release/github@10.1.3(semantic-release@24.0.0):
+    resolution: {integrity: sha512-QVw7YT3J4VqyVjOnlRsFA3OCERAJHER4QbSPupbav3ER0fawrs2BAWbQFjsr24OAD4KTTKMZsVzF+GYFWCDtaQ==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
       semantic-release: '>=20.1.0'
@@ -5038,7 +5038,7 @@ packages:
     dependencies:
       vanilla-jsoneditor: 0.18.13
       vue: 3.4.25(typescript@5.4.5)
-      vue-demi: 0.14.8(vue@3.4.25)
+      vue-demi: 0.14.10(vue@3.4.25)
     dev: false
 
   /json-parse-better-errors@1.0.2:
@@ -6684,7 +6684,7 @@ packages:
     dependencies:
       '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.0.0)
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 10.1.1(semantic-release@24.0.0)
+      '@semantic-release/github': 10.1.3(semantic-release@24.0.0)
       '@semantic-release/npm': 12.0.1(semantic-release@24.0.0)
       '@semantic-release/release-notes-generator': 14.0.1(semantic-release@24.0.0)
       aggregate-error: 5.0.0
@@ -7878,6 +7878,21 @@ packages:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
     dev: true
 
+  /vue-demi@0.14.10(vue@3.4.25):
+    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.4.25(typescript@5.4.5)
+    dev: false
+
   /vue-demi@0.14.8(vue@3.4.25):
     resolution: {integrity: sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==}
     engines: {node: '>=12'}
@@ -7891,6 +7906,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.25(typescript@5.4.5)
+    dev: true
 
   /vue-eslint-parser@9.4.2(eslint@8.57.0):
     resolution: {integrity: sha512-Ry9oiGmCAK91HrKMtCrKFWmSFWvYkpGglCeFAIqDdr9zdXmMMpJOmUJS7WWsW7fX81h6mwHmUZCQQ1E0PkSwYQ==}
