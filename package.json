@@ -144,7 +144,7 @@
     "vite-plugin-checker": "^0.7.2",
     "vite-plugin-dts": "^3.9.1",
     "vue": "^3.2.47",
-    "vue-tsc": "1.8.27",
+    "vue-tsc": "2.0.29",
     "vuetify": "^3.6.9",
     "xss": "^1.0.15"
   }
