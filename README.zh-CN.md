@@ -356,6 +356,8 @@ locale.setLang('en')
 可用的语言:
 - en (默认)
 - zhHans
+- nl
+- de
 
 ### 加载新语言
 当前语言暂未提供时，可以使用 `setMessage` 进行设置
@@ -414,60 +416,60 @@ const content = ref('')
 ### VuetifyTiptap
 
 #### Props
-| 名称 | 类型 | 默认值 | 说明 |
-| ---- | ---- | ---- | ---- |
-| modelValue | string | '' | 输入的值 |
-| markdownTheme | string \| false | 'default' | markdown主题 |
-| output | 'html' \| 'json' \| 'text' | 'html' | 输出格式 |
-| dark | boolean | false | 是否为深色主题 |
-| dense | boolean | false | 是否为紧凑模式 |
-| outlined | boolean | true | 将轮廓样式应用于输入 |
-| flat | boolean | true | 移除卡片的 elevation |
-| disabled | boolean | false | 禁用输入 |
-| label | string | undefined | 设置输入标签 |
-| hideToolbar | boolean | false | 隐藏工具栏 |
-| disableToolbar | boolean | false | 禁用工具栏 |
-| hideBubble | boolean | false | 隐藏气泡菜单 |
-| removeDefaultWrapper | boolean | false | 删除编辑器为空时默认的包装器 |
-| maxWidth | string \| number | undefined | 输入框最大宽度 |
-| minHeight | string \| number | undefined | 输入框最小高度 |
-| maxHeight | string \| number | undefined | 输入框最大高度 |
-| extensions | AnyExtension[] | [] | tiptap插件 |
-| editorClass | string \| string[] \| Record\<string, any> | undefined | 编辑器class |
+| 名称                 | 类型                                       | 默认值    | 说明                         |
+| -------------------- | ------------------------------------------ | --------- | ---------------------------- |
+| modelValue           | string                                     | ''        | 输入的值                     |
+| markdownTheme        | string \| false                            | 'default' | markdown主题                 |
+| output               | 'html' \| 'json' \| 'text'                 | 'html'    | 输出格式                     |
+| dark                 | boolean                                    | false     | 是否为深色主题               |
+| dense                | boolean                                    | false     | 是否为紧凑模式               |
+| outlined             | boolean                                    | true      | 将轮廓样式应用于输入         |
+| flat                 | boolean                                    | true      | 移除卡片的 elevation         |
+| disabled             | boolean                                    | false     | 禁用输入                     |
+| label                | string                                     | undefined | 设置输入标签                 |
+| hideToolbar          | boolean                                    | false     | 隐藏工具栏                   |
+| disableToolbar       | boolean                                    | false     | 禁用工具栏                   |
+| hideBubble           | boolean                                    | false     | 隐藏气泡菜单                 |
+| removeDefaultWrapper | boolean                                    | false     | 删除编辑器为空时默认的包装器 |
+| maxWidth             | string \| number                           | undefined | 输入框最大宽度               |
+| minHeight            | string \| number                           | undefined | 输入框最小高度               |
+| maxHeight            | string \| number                           | undefined | 输入框最大高度               |
+| extensions           | AnyExtension[]                             | []        | tiptap插件                   |
+| editorClass          | string \| string[] \| Record\<string, any> | undefined | 编辑器class                  |
 
 #### Slots
-| 名称 | 说明 |
-| ---- | ---- |
-| editor | 自定义编辑器的插槽 |
+| 名称   | 说明                   |
+| ------ | ---------------------- |
+| editor | 自定义编辑器的插槽     |
 | bottom | 自定义编辑器底部的插槽 |
 
 #### Event
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-| update:modelValue | string \| JSONContent | 编辑器 onUpdate 时处触发 |
-| update:markdownTheme | string | 切换主题时触发 |
-| change | { editor: Editor, output: string \| JSONContent } | 编辑器 onUpdate 时处触发 |
-| enter | | 键盘输入回车时触发 |
+| 名称                 | 类型                                              | 说明                     |
+| -------------------- | ------------------------------------------------- | ------------------------ |
+| update:modelValue    | string \| JSONContent                             | 编辑器 onUpdate 时处触发 |
+| update:markdownTheme | string                                            | 切换主题时触发           |
+| change               | { editor: Editor, output: string \| JSONContent } | 编辑器 onUpdate 时处触发 |
+| enter                |                                                   | 键盘输入回车时触发       |
 
 ### VuetifyViewer
 
 #### Props
-| 名称 | 类型 | 默认值 | 说明 |
-| ---- | ---- | ---- | ---- |
-| value | string \| JSONContent | '' | 预览的值 |
-| dark | boolean | false | 是否为深色主题 |
-| dense | boolean | false | 是否为紧凑模式 |
-| markdownTheme | string \| false | 'default' | markdown主题 |
-| xss | boolean | true | 是否开启xss过滤 |
-| xssOptions | xss.IWhiteList | 内置默认规则 | xss过滤规则配置 |
-| maxWidth | string \| number | undefined | 预览最大宽度 |
-| extensions | AnyExtension[] | [] | tiptap插件 |
+| 名称          | 类型                  | 默认值       | 说明            |
+| ------------- | --------------------- | ------------ | --------------- |
+| value         | string \| JSONContent | ''           | 预览的值        |
+| dark          | boolean               | false        | 是否为深色主题  |
+| dense         | boolean               | false        | 是否为紧凑模式  |
+| markdownTheme | string \| false       | 'default'    | markdown主题    |
+| xss           | boolean               | true         | 是否开启xss过滤 |
+| xssOptions    | xss.IWhiteList        | 内置默认规则 | xss过滤规则配置 |
+| maxWidth      | string \| number      | undefined    | 预览最大宽度    |
+| extensions    | AnyExtension[]        | []           | tiptap插件      |
 
 #### Slots
-| 名称 | 说明 |
-| ---- | ---- |
+| 名称   | 说明           |
+| ------ | -------------- |
 | before | 在顶部添加内容 |
-| after | 在底部添加内容 |
+| after  | 在底部添加内容 |
 
 ## 🏗 贡献代码
 
