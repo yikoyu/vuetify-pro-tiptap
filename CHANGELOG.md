@@ -1,3 +1,9 @@
+## [2.5.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.2...v2.5.3) (2024-08-08)
+
+### Bug Fixes
+
+* **locale:** add german locale ([#349](https://github.com/yikoyu/vuetify-pro-tiptap/issues/349)) ([79ee65e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/79ee65e90ddb3087d471a159c79497bc6d3c5235))
+
 ## [2.5.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.1...v2.5.2) (2024-06-24)
 
 ### Bug Fixes
