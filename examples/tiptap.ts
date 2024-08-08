@@ -19,8 +19,6 @@ import {
   Code,
   CodeBlock,
   Color,
-  createVuetifyProTipTap,
-  defaultBubbleList,
   FontFamily,
   FontSize,
   Fullscreen,
@@ -42,7 +40,9 @@ import {
   Underline,
   Video,
   VuetifyTiptap,
-  VuetifyViewer
+  VuetifyViewer,
+  createVuetifyProTipTap,
+  defaultBubbleList
 } from 'vuetify-pro-tiptap'
 
 import LinkDialog from './components/LinkDialog.vue'

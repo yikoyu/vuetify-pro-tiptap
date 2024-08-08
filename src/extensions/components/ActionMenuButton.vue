@@ -5,7 +5,7 @@ import type { Editor } from '@tiptap/vue-3'
 
 import ActionButton from './ActionButton.vue'
 
-import { getIcon, IconsOptions } from '@/constants/icons'
+import { IconsOptions, getIcon } from '@/constants/icons'
 import type { ButtonViewReturnComponentProps } from '@/type'
 
 const props = withDefaults(defineProps<Props>(), {

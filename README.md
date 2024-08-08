@@ -140,7 +140,7 @@ import SelectImage from './components/SelectImage.vue'
 export const vuetifyProTipTap = createVuetifyProTipTap({
   // Set default lang
   lang: 'zhHans',
-  // Set markdown theme 
+  // Set markdown theme
   markdownTheme: 'github',
   // Global registration app.component
   components: {
@@ -223,7 +223,6 @@ All available extensions：
 - [`Fullscreen`](./src/extensions/fullscreen.ts)
 - [`History`](./src/extensions/history.ts)
 
-
 ## Custom theme
 
 Create github.scss
@@ -264,7 +263,7 @@ In the component using
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { mdiFileCodeOutline, mdiClose } from '@mdi/js'
+import { mdiClose, mdiFileCodeOutline } from '@mdi/js'
 import type { Editor } from '@tiptap/vue-3'
 import { ActionButton } from 'vuetify-pro-tiptap'
 
@@ -313,8 +312,8 @@ const maxWidth = ref<number>(900)
 ```typescript
 import { Extension } from '@tiptap/core'
 
-import PreviewActionButton from '../components/PreviewActionButton.vue'
 import type { ButtonView, GeneralOptions } from 'vuetify-pro-tiptap'
+import PreviewActionButton from '../components/PreviewActionButton.vue'
 
 export interface PreviewOptions extends GeneralOptions {
   button: ButtonView
@@ -375,9 +374,8 @@ locale.setLang('zhHant')
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { VuetifyTiptap, VuetifyViewer } from 'vuetify-pro-tiptap'
+import { BaseKit, Bold, Color, Fullscreen, Heading, Highlight, History, Image, Italic, Link, Strike, Table, Underline, Video, VuetifyTiptap, VuetifyViewer } from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
-import { BaseKit, Bold, Italic, Underline, Strike, Color, Highlight, Heading, Link, Image, Video, Table, Fullscreen, History } from 'vuetify-pro-tiptap'
 
 const extensions = [
   BaseKit.configure({

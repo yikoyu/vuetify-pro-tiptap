@@ -4,7 +4,6 @@ import ActionButton from './components/ActionButton.vue'
 
 import type { GeneralOptions } from '@/type'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IndentOptions extends GeneralOptions<IndentOptions> {}
 
 export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({

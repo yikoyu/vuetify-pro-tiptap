@@ -4,7 +4,7 @@ module.exports = {
     [
       '@semantic-release/commit-analyzer',
       {
-        "releaseRules": [
+        releaseRules: [
           { breaking: true,     release: "major" },
           { revert: true,       release: "patch" },
           { type: "feat",       release: "minor" },
@@ -91,6 +91,7 @@ module.exports = {
       '@semantic-release/git',
       {
         assets: ['CHANGELOG.md', 'package.json'], // 前面说到日志记录和版本好是新增修改的，需要 push 回 Git
+        // eslint-disable-next-line no-template-curly-in-string
         message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]

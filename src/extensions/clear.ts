@@ -4,7 +4,6 @@ import ActionButton from './components/ActionButton.vue'
 
 import type { GeneralOptions } from '@/type'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ClearOptions extends GeneralOptions<ClearOptions> {}
 
 export const Clear = /* @__PURE__*/ Node.create<ClearOptions>({

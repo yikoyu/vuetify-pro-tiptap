@@ -20,7 +20,7 @@ export function useMarkdownTheme(value: ComputedRef<string | false | undefined>,
 
   const markdownThemeStyle = computed(() => {
     return {
-      [`markdown-theme-${unref(markdownTheme)}`]: isString(unref(markdownTheme)) ? true : false
+      [`markdown-theme-${unref(markdownTheme)}`]: !!isString(unref(markdownTheme))
     }
   })
 

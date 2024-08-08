@@ -1,7 +1,7 @@
 /*
  * @See https://github.com/linxsbox/juejin-markdown-theme-cyanosis/blob/main/cyanosis.scss
- * @Author: linxsbox 
- * @Date: 2022-06-29 18:23:42 
+ * @Author: linxsbox
+ * @Date: 2022-06-29 18:23:42
  * @Last Modified by: yky
  * @Last Modified time: 2023-03-26 17:46:37
  */
@@ -77,24 +77,72 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   #{$id}-border-color: if($isDark, $d-border-color, $l-border-color);
   #{$id}-border-color-2: if($isDark, $d-border-color2, $l-border-color2);
   #{$id}-bg-color: if($isDark, $d-bg-color, $l-bg-color);
-  #{$id}-blockquote-color: if($isDark, $d-blockquote-color, $l-blockquote-color);
-  #{$id}-blockquote-bg-color: if($isDark, $d-blockquote-bg-color, $l-blockquote-bg-color);
+  #{$id}-blockquote-color: if(
+    $isDark,
+    $d-blockquote-color,
+    $l-blockquote-color
+  );
+  #{$id}-blockquote-bg-color: if(
+    $isDark,
+    $d-blockquote-bg-color,
+    $l-blockquote-bg-color
+  );
   #{$id}-code-color: if($isDark, $d-code-color, $l-code-color);
   #{$id}-code-bg-color: if($isDark, $d-code-bg-color, $l-code-bg-color);
   #{$id}-code-pre-color: if($isDark, $d-code-pre-color, $l-code-pre-color);
-  #{$id}-table-border-color: if($isDark, $d-table-border-color, $l-table-border-color);
+  #{$id}-table-border-color: if(
+    $isDark,
+    $d-table-border-color,
+    $l-table-border-color
+  );
   #{$id}-table-th-color: if($isDark, $d-table-th-color, $l-table-th-color);
   #{$id}-table-tht-color: if($isDark, $d-table-tht-color, $l-table-tht-color);
-  #{$id}-table-tr-nc-color: if($isDark, $d-table-tr-nc-color, $l-table-tr-nc-color);
+  #{$id}-table-tr-nc-color: if(
+    $isDark,
+    $d-table-tr-nc-color,
+    $l-table-tr-nc-color
+  );
   #{$id}-table-trh-color: if($isDark, $d-table-trh-color, $l-table-trh-color);
-  #{$id}-slct-title-color: if($isDark, $d-selection-title-color, $l-selection-title-color);
-  #{$id}-slct-titlebg-color: if($isDark, $d-selection-title-bg-color, $l-selection-title-bg-color);
-  #{$id}-slct-text-color: if($isDark, $d-selection-text-color, $l-selection-text-color);
-  #{$id}-slct-bg-color: if($isDark, $d-selection-bg-color, $l-selection-bg-color);
-  #{$id}-slct-del-color: if($isDark, $d-selection-del-color, $l-selection-del-color);
-  #{$id}-slct-elbg-color: if($isDark, $d-selection-el-bg-color, $l-selection-el-bg-color);
-  #{$id}-slct-codebg-color: if($isDark, $d-selection-code-bg-color, $l-selection-code-bg-color);
-  #{$id}-slct-prebg-color: if($isDark, $d-selection-pre-code-bg-color, $l-selection-pre-code-bg-color);
+  #{$id}-slct-title-color: if(
+    $isDark,
+    $d-selection-title-color,
+    $l-selection-title-color
+  );
+  #{$id}-slct-titlebg-color: if(
+    $isDark,
+    $d-selection-title-bg-color,
+    $l-selection-title-bg-color
+  );
+  #{$id}-slct-text-color: if(
+    $isDark,
+    $d-selection-text-color,
+    $l-selection-text-color
+  );
+  #{$id}-slct-bg-color: if(
+    $isDark,
+    $d-selection-bg-color,
+    $l-selection-bg-color
+  );
+  #{$id}-slct-del-color: if(
+    $isDark,
+    $d-selection-del-color,
+    $l-selection-del-color
+  );
+  #{$id}-slct-elbg-color: if(
+    $isDark,
+    $d-selection-el-bg-color,
+    $l-selection-el-bg-color
+  );
+  #{$id}-slct-codebg-color: if(
+    $isDark,
+    $d-selection-code-bg-color,
+    $l-selection-code-bg-color
+  );
+  #{$id}-slct-prebg-color: if(
+    $isDark,
+    $d-selection-pre-code-bg-color,
+    $l-selection-pre-code-bg-color
+  );
 }
 
 @mixin transition-color() {
@@ -120,6 +168,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   @if $bg-color != '' {
     background-color: var($bg-color);
   }
+
   @if $txtColor != '' {
     color: var($txtColor);
   }
@@ -132,6 +181,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   line-height: 1.75;
   color: var(--cyanosis-base-color);
   word-break: break-word;
+
   @include transition-color;
   @include light-and-dark;
 
@@ -149,6 +199,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     padding-right: 10px;
     padding-left: 10px;
     border-bottom: 1px solid var(--cyanosis-border-color-2);
+
     @include head-title(10px, 24px);
     @include transition-color;
 
@@ -169,9 +220,11 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
 
   h3 {
     position: relative;
+
     @include head-title(0, 20px, 30px);
 
     padding-left: 6px;
+
     @include transition-color;
 
     &::before {
@@ -185,6 +238,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     @include head-title(0, 16px, 24px);
 
     padding-left: 6px;
+
     @include transition-color;
   }
 
@@ -192,6 +246,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     @include head-title(0, 14px, 18px);
 
     padding-left: 6px;
+
     @include transition-color;
   }
 
@@ -199,6 +254,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     @include head-title(0, 12px, 12px);
 
     padding-left: 6px;
+
     @include transition-color;
   }
 
@@ -223,7 +279,12 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     margin-top: 32px;
     margin-bottom: 32px;
     overflow: visible;
-    background-image: linear-gradient(90deg, var(--cyanosis-link-color), rgb(255 0 0 / 30%), var(--cyanosis-link-color));
+    background-image: linear-gradient(
+      90deg,
+      var(--cyanosis-link-color),
+      rgb(255 0 0 / 30%),
+      var(--cyanosis-link-color)
+    );
     border-width: 0;
   }
 
@@ -293,7 +354,9 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
       content: '';
       border-bottom: 1px solid var(--cyanosis-border-color);
       opacity: 0;
-      transition: top 0.3s, opacity 0.3s;
+      transition:
+        top 0.3s,
+        opacity 0.3s;
       transform: translate3d(0, 0, 0);
     }
 
@@ -355,6 +418,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
 
     padding: 1px 20px;
     margin: 22px 0;
+
     @include transition-color;
 
     &::after {

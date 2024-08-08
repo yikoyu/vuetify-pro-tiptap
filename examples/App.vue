@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { computed, ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
-import { BaseKit, Heading, locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
+import { BaseKit, Heading, type VuetifyTiptapOnChange, locale } from 'vuetify-pro-tiptap'
 import JsonEditorVue from 'json-editor-vue'
 
 import CustomLang from './components/CustomLang.vue'
@@ -40,7 +40,7 @@ const disableToolbar = ref(false)
 const errorMessages = ref(null)
 const maxWidth = ref<number>(900)
 
-const customLang = ref({ ...locale.message['en'] })
+const customLang = ref({ ...locale.message.en })
 
 // watch(content, val => {
 //   console.log('output :>> ', val)

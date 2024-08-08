@@ -51,7 +51,7 @@ const locale: Record<string, string> = {
   'editor.image.dialog.tab.url': 'URL',
   'editor.image.dialog.tab.upload': 'Hochladen',
   'editor.image.dialog.form.link': 'Link',
-  'editor.image.dialog.form.alt': 'Alt',
-};
+  'editor.image.dialog.form.alt': 'Alt'
+}
 
 export default locale
