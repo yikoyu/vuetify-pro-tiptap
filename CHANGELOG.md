@@ -1,3 +1,9 @@
+## [2.5.4](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.3...v2.5.4) (2024-08-22)
+
+### Bug Fixes
+
+* augment `vue` rather than `@vue/runtime-core` ([#357](https://github.com/yikoyu/vuetify-pro-tiptap/issues/357)) ([b58b2a0](https://github.com/yikoyu/vuetify-pro-tiptap/commit/b58b2a0f8626c650ae1894fe0b6eb529f7e9dfd4))
+
 ## [2.5.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.2...v2.5.3) (2024-08-08)
 
 ### Bug Fixes
