@@ -58,15 +58,10 @@
     "lint:js": "eslint .",
     "lint:all": "eslint . & stylelint **/*.{css,less,scss,vue}",
     "lint:fix": "eslint . --fix & stylelint **/*.{css,less,scss,vue} --fix",
-    "git-commit": "git-cz",
+    "commit": "czg",
     "check:types": "vue-tsc --noEmit --skipLibCheck",
     "push": "pnpm build:lib && pnpm publish --no-git-checks --registry https://registry.npmjs.org/",
     "prepare": "husky install"
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
   },
   "peerDependencies": {
     "vue": "^3.2.0",
@@ -123,11 +118,12 @@
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^4.6.2",
     "@vueuse/core": "^10.11.0",
-    "@yikoyu/commitlint-config": "^0.1.0",
+    "@yikoyu/commitlint-config": "^0.2.0",
     "@yikoyu/semantic-release-config": "^0.1.2",
     "@yikoyu/stylelint-config": "^0.1.0",
-    "commitizen": "^4.3.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
+    "cz-git": "^1.9.4",
+    "czg": "^1.9.4",
     "eslint": "^9.9.0",
     "eslint-plugin-format": "^0.1.2",
     "husky": "^9.1.4",
