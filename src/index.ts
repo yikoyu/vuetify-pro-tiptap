@@ -45,7 +45,7 @@ export { useContext }
 export { en, locale, zhHans }
 export type { InstallationOptions }
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   export interface GlobalComponents {
     VuetifyTiptap: typeof VuetifyTiptap
     VuetifyViewer: typeof VuetifyViewer
