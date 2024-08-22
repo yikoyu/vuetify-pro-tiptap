@@ -1,6 +1,6 @@
 {
   "name": "vuetify-pro-tiptap",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "private": false,
   "packageManager": "pnpm@8.15.8",
   "description": "tiptap text editor on vuejs and vuetify",
@@ -124,7 +124,7 @@
     "@vitejs/plugin-vue": "^4.6.2",
     "@vueuse/core": "^10.11.0",
     "@yikoyu/commitlint-config": "^0.1.0",
-    "@yikoyu/semantic-release-config": "^0.1.1",
+    "@yikoyu/semantic-release-config": "^0.1.2",
     "@yikoyu/stylelint-config": "^0.1.0",
     "commitizen": "^4.3.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",

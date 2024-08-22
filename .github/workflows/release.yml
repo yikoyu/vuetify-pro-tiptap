@@ -3,9 +3,17 @@ name: Release
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read # for checkout
+
 jobs:
   publish-to-npm:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
 
     strategy:
       matrix:
@@ -16,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - uses: ./.github/actions/build-setup
