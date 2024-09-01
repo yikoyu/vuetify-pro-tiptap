@@ -112,12 +112,12 @@
     "@tiptap/vue-3": "^2.6.6"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.24.1",
+    "@antfu/eslint-config": "^2.27.3",
     "@mdi/js": "^7.4.47",
     "@types/lodash": "^4.17.7",
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^4.6.2",
-    "@vueuse/core": "^10.11.0",
+    "@vueuse/core": "^10.11.1",
     "@yikoyu/commitlint-config": "^0.2.0",
     "@yikoyu/semantic-release-config": "^0.1.2",
     "@yikoyu/stylelint-config": "^0.1.0",
@@ -126,8 +126,8 @@
     "czg": "^1.9.4",
     "eslint": "^9.9.1",
     "eslint-plugin-format": "^0.1.2",
-    "husky": "^9.1.4",
-    "lint-staged": "^15.2.8",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
@@ -135,13 +135,13 @@
     "sass": "1.60.0",
     "semantic-release": "^24.1.0",
     "typescript": "^5.5.4",
-    "unplugin-vue-components": "^0.27.3",
+    "unplugin-vue-components": "^0.27.4",
     "vite": "^4.5.3",
     "vite-plugin-checker": "^0.7.2",
     "vite-plugin-dts": "^3.9.1",
     "vue": "^3.2.47",
     "vue-tsc": "2.0.29",
-    "vuetify": "^3.6.14",
+    "vuetify": "^3.7.1",
     "xss": "^1.0.15"
   }
 }
