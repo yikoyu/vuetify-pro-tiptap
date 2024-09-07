@@ -117,7 +117,7 @@
     "@types/lodash": "^4.17.7",
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^4.6.2",
-    "@vueuse/core": "^10.11.1",
+    "@vueuse/core": "^11.0.3",
     "@yikoyu/commitlint-config": "^0.2.0",
     "@yikoyu/semantic-release-config": "^0.1.2",
     "@yikoyu/stylelint-config": "^0.1.0",
