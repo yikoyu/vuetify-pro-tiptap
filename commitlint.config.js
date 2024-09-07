@@ -1,6 +1,6 @@
-const { yikoyu } = require('@yikoyu/commitlint-config')
+import { yikoyu } from '@yikoyu/commitlint-config'
 
-module.exports = yikoyu({
+export default yikoyu({
   rules: {
     ...yikoyu().rules,
     'footer-max-line-length': [0]

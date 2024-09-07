@@ -1,5 +1,6 @@
 {
   "name": "vuetify-pro-tiptap",
+  "type": "module",
   "version": "2.5.4",
   "private": false,
   "packageManager": "pnpm@8.15.8",
@@ -25,8 +26,8 @@
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
-      "import": "./lib/vuetify-pro-tiptap.mjs",
-      "require": "./lib/vuetify-pro-tiptap.umd.js"
+      "import": "./lib/vuetify-pro-tiptap.js",
+      "require": "./lib/vuetify-pro-tiptap.umd.cjs"
     },
     "./style.css": {
       "import": "./lib/style.css",
@@ -37,8 +38,8 @@
       "require": "./lib/styles/"
     }
   },
-  "main": "./lib/vuetify-pro-tiptap.umd.js",
-  "module": "./lib/vuetify-pro-tiptap.mjs",
+  "main": "./lib/vuetify-pro-tiptap.umd.cjs",
+  "module": "./lib/vuetify-pro-tiptap.js",
   "types": "./lib/index.d.ts",
   "files": [
     "LICENSE",
