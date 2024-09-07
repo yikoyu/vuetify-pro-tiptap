@@ -77,72 +77,24 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   #{$id}-border-color: if($isDark, $d-border-color, $l-border-color);
   #{$id}-border-color-2: if($isDark, $d-border-color2, $l-border-color2);
   #{$id}-bg-color: if($isDark, $d-bg-color, $l-bg-color);
-  #{$id}-blockquote-color: if(
-    $isDark,
-    $d-blockquote-color,
-    $l-blockquote-color
-  );
-  #{$id}-blockquote-bg-color: if(
-    $isDark,
-    $d-blockquote-bg-color,
-    $l-blockquote-bg-color
-  );
+  #{$id}-blockquote-color: if($isDark, $d-blockquote-color, $l-blockquote-color);
+  #{$id}-blockquote-bg-color: if($isDark, $d-blockquote-bg-color, $l-blockquote-bg-color);
   #{$id}-code-color: if($isDark, $d-code-color, $l-code-color);
   #{$id}-code-bg-color: if($isDark, $d-code-bg-color, $l-code-bg-color);
   #{$id}-code-pre-color: if($isDark, $d-code-pre-color, $l-code-pre-color);
-  #{$id}-table-border-color: if(
-    $isDark,
-    $d-table-border-color,
-    $l-table-border-color
-  );
+  #{$id}-table-border-color: if($isDark, $d-table-border-color, $l-table-border-color);
   #{$id}-table-th-color: if($isDark, $d-table-th-color, $l-table-th-color);
   #{$id}-table-tht-color: if($isDark, $d-table-tht-color, $l-table-tht-color);
-  #{$id}-table-tr-nc-color: if(
-    $isDark,
-    $d-table-tr-nc-color,
-    $l-table-tr-nc-color
-  );
+  #{$id}-table-tr-nc-color: if($isDark, $d-table-tr-nc-color, $l-table-tr-nc-color);
   #{$id}-table-trh-color: if($isDark, $d-table-trh-color, $l-table-trh-color);
-  #{$id}-slct-title-color: if(
-    $isDark,
-    $d-selection-title-color,
-    $l-selection-title-color
-  );
-  #{$id}-slct-titlebg-color: if(
-    $isDark,
-    $d-selection-title-bg-color,
-    $l-selection-title-bg-color
-  );
-  #{$id}-slct-text-color: if(
-    $isDark,
-    $d-selection-text-color,
-    $l-selection-text-color
-  );
-  #{$id}-slct-bg-color: if(
-    $isDark,
-    $d-selection-bg-color,
-    $l-selection-bg-color
-  );
-  #{$id}-slct-del-color: if(
-    $isDark,
-    $d-selection-del-color,
-    $l-selection-del-color
-  );
-  #{$id}-slct-elbg-color: if(
-    $isDark,
-    $d-selection-el-bg-color,
-    $l-selection-el-bg-color
-  );
-  #{$id}-slct-codebg-color: if(
-    $isDark,
-    $d-selection-code-bg-color,
-    $l-selection-code-bg-color
-  );
-  #{$id}-slct-prebg-color: if(
-    $isDark,
-    $d-selection-pre-code-bg-color,
-    $l-selection-pre-code-bg-color
-  );
+  #{$id}-slct-title-color: if($isDark, $d-selection-title-color, $l-selection-title-color);
+  #{$id}-slct-titlebg-color: if($isDark, $d-selection-title-bg-color, $l-selection-title-bg-color);
+  #{$id}-slct-text-color: if($isDark, $d-selection-text-color, $l-selection-text-color);
+  #{$id}-slct-bg-color: if($isDark, $d-selection-bg-color, $l-selection-bg-color);
+  #{$id}-slct-del-color: if($isDark, $d-selection-del-color, $l-selection-del-color);
+  #{$id}-slct-elbg-color: if($isDark, $d-selection-el-bg-color, $l-selection-el-bg-color);
+  #{$id}-slct-codebg-color: if($isDark, $d-selection-code-bg-color, $l-selection-code-bg-color);
+  #{$id}-slct-prebg-color: if($isDark, $d-selection-pre-code-bg-color, $l-selection-pre-code-bg-color);
 }
 
 @mixin transition-color() {
