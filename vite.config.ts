@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 
-import { defineConfig } from 'vite'
+import { PluginOption, defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import vue from '@vitejs/plugin-vue'
 import { PluginPure } from 'rollup-plugin-pure'
@@ -29,12 +29,9 @@ export default defineConfig({
       dts: 'types/components.d.ts',
       resolvers: [Vuetify3Resolver()]
     }),
-    {
-      // 在打包时 rollup 无法给 tiptap 加上 PURE 标注，需要手动加上
-      ...PluginPure({
-        functions: ['Mark.create', 'Extension.create', 'Node.create']
-      })
-    },
+    PluginPure({
+      functions: ['Mark.create', 'Extension.create', 'Node.create']
+    }) as PluginOption,
     dts({
       insertTypesEntry: true
     })
