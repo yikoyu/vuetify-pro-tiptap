@@ -76,14 +76,10 @@ $-red: #fe226f;
     width: 360px;
     height: 132px;
     background-image: url($-float);
-    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
-    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
-    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
-    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
+    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
+    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
+    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
+    animation: floatit infinite 5.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
   }
 
   &::after {
@@ -93,14 +89,10 @@ $-red: #fe226f;
     height: 176px;
     background-image: url($-float2);
     opacity: 0.87;
-    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
-    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
-    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
-    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-      alternate;
+    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
+    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
+    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
+    animation: floatit infinite 6.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate;
   }
 
   h1,
