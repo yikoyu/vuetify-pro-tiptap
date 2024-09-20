@@ -14,9 +14,9 @@ English | [中文](./README.zh-CN.md)
 ## Demo
 👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
 
-👾[Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-codesandbox-4pvcqm)
+👾[Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/main)
 
-👾[Nuxt3 Code Sandbox](https://codesandbox.io/p/sandbox/vuetify-pro-tiptap-nuxt3-ttlk6x)
+👾[Nuxt3 Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/nuxt)
 
 ## Features
 - Use [vuetify](https://github.com/vuetifyjs/vuetify) components
