@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, unref, watchEffect } from 'vue'
-import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
+import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
 
 import { ImageAttrsOptions } from './types'
 
@@ -23,9 +23,12 @@ const ResizeDirection = {
   BOTTOM_RIGHT: 'br'
 }
 
-const maxSize = ref({
-  width: <number>IMAGE_MAX_SIZE,
-  height: <number>IMAGE_MAX_SIZE
+const maxSize = ref<{
+    width: number
+    height: number
+}>({
+  width: IMAGE_MAX_SIZE,
+  height: IMAGE_MAX_SIZE
 })
 
 const originalSize = ref({
@@ -53,8 +56,8 @@ const resizerState = ref({
 const imgAttrs = computed(() => {
   const { src, alt, width: w, height: h } = props.node.attrs
 
-  const width = isNumber(w) ? w + 'px' : w
-  const height = isNumber(h) ? h + 'px' : h
+  const width = isNumber(w) ? `${w}px` : w
+  const height = isNumber(h) ? `${h}px` : h
 
   return {
     src: src || undefined,
@@ -100,7 +103,7 @@ function selectImage() {
 const getMaxSize = throttle(function () {
   const { editor } = props
   const { width } = getComputedStyle(editor.view.dom)
-  maxSize.value.width = parseInt(width, 10)
+  maxSize.value.width = Number.parseInt(width, 10)
 }, IMAGE_THROTTLE_WAIT_TIME)
 
 /* on resizer handler mousedown

@@ -1,6 +1,6 @@
 /*
  * @See https://github.com/iota9star/juejin-markdown-theme-maidragon/blob/main/maidragon.scss
- * @Author: iota9star 
+ * @Author: iota9star
  * @Date: 2023-06-12 22:11:14
  * @Last Modified by: mikey.zhaopeng
  * @Last Modified time: 2023-06-Fr 08:33:16
@@ -171,10 +171,15 @@ $-red: #fe226f;
       background-color: rgba($-orange, 0.87);
       transition: -webkit-border-radius 0.3s;
       transition: border-radius 0.3s;
-      transition: border-radius 0.3s, -moz-border-radius 0.3s;
+      transition:
+        border-radius 0.3s,
+        -moz-border-radius 0.3s;
       transition: -webkit-border-radius 0.3s;
       transition: border-radius 0.3s;
-      transition: border-radius 0.3s, -webkit-border-radius 0.3s, -moz-border-radius 0.3s;
+      transition:
+        border-radius 0.3s,
+        -webkit-border-radius 0.3s,
+        -moz-border-radius 0.3s;
     }
 
     &:hover {

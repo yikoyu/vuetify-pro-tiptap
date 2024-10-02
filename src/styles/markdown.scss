@@ -1,7 +1,7 @@
 /*
  * @See https://github.com/linxsbox/juejin-markdown-theme-cyanosis/blob/main/cyanosis.scss
- * @Author: linxsbox 
- * @Date: 2022-06-29 18:23:42 
+ * @Author: linxsbox
+ * @Date: 2022-06-29 18:23:42
  * @Last Modified by: yky
  * @Last Modified time: 2023-03-26 17:46:37
  */
@@ -120,6 +120,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   @if $bg-color != '' {
     background-color: var($bg-color);
   }
+
   @if $txtColor != '' {
     color: var($txtColor);
   }
@@ -132,6 +133,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   line-height: 1.75;
   color: var(--cyanosis-base-color);
   word-break: break-word;
+
   @include transition-color;
   @include light-and-dark;
 
@@ -149,6 +151,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     padding-right: 10px;
     padding-left: 10px;
     border-bottom: 1px solid var(--cyanosis-border-color-2);
+
     @include head-title(10px, 24px);
     @include transition-color;
 
@@ -169,9 +172,11 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
 
   h3 {
     position: relative;
+
     @include head-title(0, 20px, 30px);
 
     padding-left: 6px;
+
     @include transition-color;
 
     &::before {
@@ -185,6 +190,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     @include head-title(0, 16px, 24px);
 
     padding-left: 6px;
+
     @include transition-color;
   }
 
@@ -192,6 +198,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     @include head-title(0, 14px, 18px);
 
     padding-left: 6px;
+
     @include transition-color;
   }
 
@@ -199,6 +206,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     @include head-title(0, 12px, 12px);
 
     padding-left: 6px;
+
     @include transition-color;
   }
 
@@ -223,7 +231,12 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     margin-top: 32px;
     margin-bottom: 32px;
     overflow: visible;
-    background-image: linear-gradient(90deg, var(--cyanosis-link-color), rgb(255 0 0 / 30%), var(--cyanosis-link-color));
+    background-image: linear-gradient(
+      90deg,
+      var(--cyanosis-link-color),
+      rgb(255 0 0 / 30%),
+      var(--cyanosis-link-color)
+    );
     border-width: 0;
   }
 
@@ -293,7 +306,9 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
       content: '';
       border-bottom: 1px solid var(--cyanosis-border-color);
       opacity: 0;
-      transition: top 0.3s, opacity 0.3s;
+      transition:
+        top 0.3s,
+        opacity 0.3s;
       transform: translate3d(0, 0, 0);
     }
 
@@ -355,6 +370,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
 
     padding: 1px 20px;
     margin: 22px 0;
+
     @include transition-color;
 
     &::after {

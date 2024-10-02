@@ -3,49 +3,40 @@ name: Release
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read # for checkout
+
 jobs:
   publish-to-npm:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
 
     strategy:
       matrix:
         os: [ubuntu-latest]
         node: [20]
-        pnpm: [8]
+        # pnpm: [8]
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
-    - uses: actions/cache@v4
-      with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-
+      - uses: ./.github/actions/build-setup
+        with:
+          node-version: ${{ matrix.node }}
 
-    - name: Install pnpm
-      uses: pnpm/action-setup@v3.0.0
-      with:
-        version: ${{ matrix.pnpm }}
+      - name: Build Lib
+        run: pnpm build:lib
 
-    - name: Setup Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node }}
-        registry-url: https://registry.npmmirror.com/
-        cache: 'pnpm'
-
-    - name: Install dependencies
-      run: pnpm install
-
-    - name: Build Lib
-      run: pnpm build:lib
-
-    - name: Release
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-      run: pnpm semantic-release
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+        run: pnpm semantic-release

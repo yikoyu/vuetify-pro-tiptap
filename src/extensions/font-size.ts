@@ -68,8 +68,8 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
             editor.commands.setFontSize(String(k))
           },
           disabled: !editor.can().setFontSize(String(k)),
-          divider: k === DEFAULT_FONT_SIZE_VALUUE ?? false,
-          default: k === DEFAULT_FONT_SIZE_VALUUE ?? false
+          divider: k === DEFAULT_FONT_SIZE_VALUUE,
+          default: k === DEFAULT_FONT_SIZE_VALUUE
         }))
 
         const disabled = items.filter(k => k.disabled).length === items.length

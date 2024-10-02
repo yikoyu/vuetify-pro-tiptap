@@ -1,3 +1,21 @@
+## [2.5.4](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.3...v2.5.4) (2024-08-22)
+
+### Bug Fixes
+
+* augment `vue` rather than `@vue/runtime-core` ([#357](https://github.com/yikoyu/vuetify-pro-tiptap/issues/357)) ([b58b2a0](https://github.com/yikoyu/vuetify-pro-tiptap/commit/b58b2a0f8626c650ae1894fe0b6eb529f7e9dfd4))
+
+## [2.5.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.2...v2.5.3) (2024-08-08)
+
+### Bug Fixes
+
+* **locale:** add german locale ([#349](https://github.com/yikoyu/vuetify-pro-tiptap/issues/349)) ([79ee65e](https://github.com/yikoyu/vuetify-pro-tiptap/commit/79ee65e90ddb3087d471a159c79497bc6d3c5235))
+
+## [2.5.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.1...v2.5.2) (2024-06-24)
+
+### Bug Fixes
+
+* yarn install error ([5beafa0](https://github.com/yikoyu/vuetify-pro-tiptap/commit/5beafa02d29514306f0806bf2877a1f2ab8c0ce7)), closes [#337](https://github.com/yikoyu/vuetify-pro-tiptap/issues/337)
+
 ## [2.5.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.0...v2.5.1) (2024-06-12)
 
 ### Bug Fixes
