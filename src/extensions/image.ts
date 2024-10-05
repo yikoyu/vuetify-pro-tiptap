@@ -94,7 +94,7 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
     }
   },
   addNodeView() {
-    return VueNodeViewRenderer(ImageView)
+    return VueNodeViewRenderer(ImageView as any)
   },
   addCommands() {
     return {
