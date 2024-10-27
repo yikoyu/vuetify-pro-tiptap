@@ -125,7 +125,7 @@
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cz-git": "^1.9.4",
     "czg": "^1.9.4",
-    "eslint": "^9.12.0",
+    "eslint": "^9.13.0",
     "eslint-plugin-format": "^0.1.2",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.10",
