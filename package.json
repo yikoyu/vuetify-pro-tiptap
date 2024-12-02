@@ -113,7 +113,7 @@
     "@tiptap/vue-3": "^2.10.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.27.3",
+    "@antfu/eslint-config": "^3.11.2",
     "@mdi/js": "^7.4.47",
     "@types/lodash": "^4.17.13",
     "@types/lodash-es": "^4.17.12",
