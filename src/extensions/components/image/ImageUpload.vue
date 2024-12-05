@@ -28,23 +28,25 @@ const form = computed({
   set: val => emit('update:modelValue', val)
 })
 
-async function onFileSelected(event: { isTrusted: boolean }) {
-  const { file } = unref(form)
-  if (!file || !event.isTrusted) return
+const onFileSelected = async (files: File | File[]) => {
+  const file = files instanceof File ? files : files[0];
+  if (!file) return;
 
   try {
-    loading.value = true
-    const data = await props.upload?.(file)
-    if (!data) return
+      loading.value = true;
+      const data = await props.upload?.(file);
+      if (!data) return;
 
-    form.value = {
-      ...unref(form),
-      src: data
-    }
+      form.value = {
+          ...unref(form),
+          src: data,
+      };
+  } catch (err) {
+      console.error("Failed to execute upload file", err);
   } finally {
-    loading.value = false
+      loading.value = false;
   }
-}
+};
 </script>
 
 <template>
@@ -55,7 +57,7 @@ async function onFileSelected(event: { isTrusted: boolean }) {
       accept="image/*"
       :loading="loading"
       :prepend-icon="getIcon('fileImagePlus')"
-      @change="onFileSelected"
+      @update:model-value="onFileSelected"
       @click:clear="form.src = undefined"
     />
 
