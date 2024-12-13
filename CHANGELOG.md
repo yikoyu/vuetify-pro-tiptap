@@ -1,3 +1,9 @@
+## [2.5.5](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.4...v2.5.5) (2024-12-13)
+
+### Refactor
+
+* **image:** :recycle: file select event to model update ([#406](https://github.com/yikoyu/vuetify-pro-tiptap/issues/406)) ([085eeae](https://github.com/yikoyu/vuetify-pro-tiptap/commit/085eeae870a4d543d60fde11257f2493872712ea)), closes [#405](https://github.com/yikoyu/vuetify-pro-tiptap/issues/405)
+
 ## [2.5.4](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.3...v2.5.4) (2024-08-22)
 
 ### Bug Fixes
