@@ -4,6 +4,7 @@ import { computed, ref, unref } from 'vue'
 import type { ImageForm } from './types'
 
 import { getIcon } from '@/constants/icons'
+import Logger from '@/utils/logger'
 
 interface Props {
   modelValue?: ImageForm
@@ -29,24 +30,28 @@ const form = computed({
 })
 
 const onFileSelected = async (files: File | File[]) => {
-  const file = files instanceof File ? files : files[0];
-  if (!file) return;
+  const file = files instanceof File ? files : files[0]
+  if (!file) {
+    throw new Error('No files to upload')
+  }
 
   try {
-      loading.value = true;
-      const data = await props.upload?.(file);
-      if (!data) return;
+      loading.value = true
+      const data = await props.upload?.(file)
+      if (!data) {
+        throw new Error('No link received after upload')
+      }
 
       form.value = {
           ...unref(form),
-          src: data,
-      };
+          src: data
+      }
   } catch (err) {
-      console.error("Failed to execute upload file", err);
+      Logger.error(`Failed to execute upload file: ${err}`)
   } finally {
-      loading.value = false;
+      loading.value = false
   }
-};
+}
 </script>
 
 <template>
