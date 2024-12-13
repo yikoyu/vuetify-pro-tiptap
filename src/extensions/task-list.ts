@@ -1,11 +1,11 @@
+import type { GeneralOptions } from '@/type'
 import type { TaskItemOptions } from '@tiptap/extension-task-item'
-import { TaskItem } from '@tiptap/extension-task-item'
 import type { TaskListOptions as TiptapTaskListOptions } from '@tiptap/extension-task-list'
+import { TaskItem } from '@tiptap/extension-task-item'
+
 import { TaskList as TiptapTaskList } from '@tiptap/extension-task-list'
 
 import ActionButton from './components/ActionButton.vue'
-
-import type { GeneralOptions } from '@/type'
 
 /**
  * Represents the interface for task list options, extending TiptapTaskListOptions and GeneralOptions.

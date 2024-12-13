@@ -1,13 +1,13 @@
+import type { ButtonViewReturn, GeneralOptions } from '@/type'
 import type { Extensions } from '@tiptap/core'
-import { Extension } from '@tiptap/core'
 import type { SubscriptExtensionOptions as TiptapSubscriptOptions } from '@tiptap/extension-subscript'
-import { Subscript as TiptapSubscript } from '@tiptap/extension-subscript'
 import type { SuperscriptExtensionOptions as TiptapSuperscriptOptions } from '@tiptap/extension-superscript'
+import { Extension } from '@tiptap/core'
+import { Subscript as TiptapSubscript } from '@tiptap/extension-subscript'
+
 import { Superscript as TiptapSuperscript } from '@tiptap/extension-superscript'
 
 import ActionButton from './components/ActionButton.vue'
-
-import type { ButtonViewReturn, GeneralOptions } from '@/type'
 
 /**
  * Represents the interface for subscript and superscript options, extending GeneralOptions.

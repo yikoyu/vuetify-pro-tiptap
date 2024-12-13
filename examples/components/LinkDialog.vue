@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { Editor } from '@tiptap/vue-3'
 import { computed, ref, watch } from 'vue'
 import { locale } from 'vuetify-pro-tiptap'
-import type { Editor } from '@tiptap/vue-3'
 
 interface LinkAttrs {
   href?: string

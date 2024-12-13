@@ -1,9 +1,9 @@
+import type { GeneralOptions } from '@/type'
 import type { OrderedListOptions as TiptapOrderedListOptions } from '@tiptap/extension-ordered-list'
+
 import { OrderedList as TiptapOrderedList } from '@tiptap/extension-ordered-list'
 
 import ActionButton from './components/ActionButton.vue'
-
-import type { GeneralOptions } from '@/type'
 
 export interface OrderedListOptions extends TiptapOrderedListOptions, GeneralOptions<OrderedListOptions> {}
 

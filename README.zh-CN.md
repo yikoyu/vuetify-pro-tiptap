@@ -109,10 +109,10 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
 ```typescript
 import { createApp } from 'vue'
 import { createVuetify } from 'vuetify'
-import 'vuetify/styles'
 import App from './App.vue'
-
 import { vuetifyProTipTap } from './tiptap'
+
+import 'vuetify/styles'
 
 const vuetify = createVuetify()
 
@@ -262,9 +262,9 @@ import './styles/markdown/github.scss'
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
-import { mdiClose, mdiFileCodeOutline } from '@mdi/js'
 import type { Editor } from '@tiptap/vue-3'
+import { mdiClose, mdiFileCodeOutline } from '@mdi/js'
+import { ref } from 'vue'
 import { ActionButton } from 'vuetify-pro-tiptap'
 
 interface Props {
@@ -310,9 +310,9 @@ const maxWidth = ref<number>(900)
 <summary>preview.ts</summary>
 
 ```typescript
-import { Extension } from '@tiptap/core'
-
 import type { ButtonView, GeneralOptions } from 'vuetify-pro-tiptap'
+
+import { Extension } from '@tiptap/core'
 import PreviewActionButton from '../components/PreviewActionButton.vue'
 
 export interface PreviewOptions extends GeneralOptions {

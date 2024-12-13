@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref, unref, watchEffect } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
-
 import { getIcon } from '@/constants/icons'
+
 import { useLocale } from '@/locales'
+import { computed, ref, unref, watchEffect } from 'vue'
 
 interface Props {
   value?: string

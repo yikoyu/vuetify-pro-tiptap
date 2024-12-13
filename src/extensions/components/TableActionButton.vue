@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Editor } from '@tiptap/vue-3'
-
-import TableMenu from './table/TableMenu.vue'
-import ActionButton from './ActionButton.vue'
-
 import type { IconsOptions } from '@/constants/icons'
+
+import type { Editor } from '@tiptap/vue-3'
 import { ButtonViewReturnComponentProps } from '@/type'
+
+import ActionButton from './ActionButton.vue'
+import TableMenu from './table/TableMenu.vue'
 
 interface Props {
   editor: Editor

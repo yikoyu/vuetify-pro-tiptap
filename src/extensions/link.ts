@@ -1,13 +1,13 @@
-import { getMarkRange } from '@tiptap/core'
-import type { LinkOptions as TiptapLinkOptions } from '@tiptap/extension-link'
-import { Link as TiptapLink } from '@tiptap/extension-link'
-import { Plugin, TextSelection } from '@tiptap/pm/state'
-import type { EditorView } from '@tiptap/pm/view'
-
-import LinkDialog from './components/link/LinkDialog.vue'
-import LinkActionButton from './components/LinkActionButton.vue'
-
 import type { GeneralOptions } from '@/type'
+import type { LinkOptions as TiptapLinkOptions } from '@tiptap/extension-link'
+import type { EditorView } from '@tiptap/pm/view'
+import { getMarkRange } from '@tiptap/core'
+import { Link as TiptapLink } from '@tiptap/extension-link'
+
+import { Plugin, TextSelection } from '@tiptap/pm/state'
+import LinkDialog from './components/link/LinkDialog.vue'
+
+import LinkActionButton from './components/LinkActionButton.vue'
 
 /**
  * Represents the interface for link options, extending TiptapLinkOptions and GeneralOptions.

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { computed, ref, unref, watch } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
-
-import ImageUpload from './ImageUpload.vue'
-import ImageUrl from './ImageUrl.vue'
 import type { ImageAttrsOptions, ImageForm, ImageTab, ImageTabKey } from './types'
 
 import { getIcon } from '@/constants/icons'
 import { useLocale } from '@/locales'
+import { computed, ref, unref, watch } from 'vue'
+
+import ImageUpload from './ImageUpload.vue'
+import ImageUrl from './ImageUrl.vue'
 
 interface Props {
   value?: ImageAttrsOptions

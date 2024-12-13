@@ -5,10 +5,10 @@
   * @FilePath: \vuetify-pro-tiptap\examples\components\PreviewActionButton.vue
 -->
 <script setup lang="ts">
+import type { Editor } from '@tiptap/vue-3'
+import { mdiClose, mdiFileCodeOutline } from '@mdi/js'
 import { ref } from 'vue'
 import { ActionButton } from 'vuetify-pro-tiptap'
-import { mdiClose, mdiFileCodeOutline } from '@mdi/js'
-import type { Editor } from '@tiptap/vue-3'
 
 interface Props {
   editor: Editor

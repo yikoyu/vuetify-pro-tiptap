@@ -1,5 +1,5 @@
-import { reactive } from 'vue'
 import type { AnyExtension } from '@tiptap/core'
+import { reactive } from 'vue'
 
 interface Instance {
   /**

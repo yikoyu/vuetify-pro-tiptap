@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, unref, watchEffect } from 'vue'
-import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
-
-import { ImageAttrsOptions } from './types'
-
 import { IMAGE_MAX_SIZE, IMAGE_MIN_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants/define'
 import { clamp, isNumber, throttle } from '@/utils/utils'
+
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
+
+import { computed, ref, unref, watchEffect } from 'vue'
+import { ImageAttrsOptions } from './types'
 
 const props = defineProps({
   ...nodeViewProps,

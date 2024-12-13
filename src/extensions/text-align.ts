@@ -1,10 +1,10 @@
+import type { GeneralOptions } from '@/type'
 import type { TextAlignOptions as TiptapTextAlignOptions } from '@tiptap/extension-text-align'
-import { TextAlign as TiptapTextAlign } from '@tiptap/extension-text-align'
 
 import type { Item } from './components/ActionMenuButton.vue'
-import ActionMenuButton from './components/ActionMenuButton.vue'
+import { TextAlign as TiptapTextAlign } from '@tiptap/extension-text-align'
 
-import type { GeneralOptions } from '@/type'
+import ActionMenuButton from './components/ActionMenuButton.vue'
 
 /** Represents the type for text alignments */
 type Alignments = 'left' | 'center' | 'right' | 'justify'

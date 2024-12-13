@@ -1,5 +1,5 @@
-import type { App, Plugin } from 'vue'
 import type { Extensions } from '@tiptap/core'
+import type { App, Plugin } from 'vue'
 
 import VuetifyTiptap from './components/VuetifyTiptap.vue'
 import VuetifyViewer from './components/VuetifyViewer.vue'

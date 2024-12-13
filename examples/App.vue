@@ -5,10 +5,10 @@
   * @FilePath: \vuetify-pro-tiptap\examples\App.vue
 -->
 <script setup lang="ts">
+import JsonEditorVue from 'json-editor-vue'
 import { computed, ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
-import { BaseKit, Heading, type VuetifyTiptapOnChange, locale } from 'vuetify-pro-tiptap'
-import JsonEditorVue from 'json-editor-vue'
+import { BaseKit, Heading, locale, type VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
 
 import CustomLang from './components/CustomLang.vue'
 import preview from './extensions/preview'

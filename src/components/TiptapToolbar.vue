@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, unref } from 'vue'
+import type { ButtonViewReturn } from '@/type'
 import type { Editor } from '@tiptap/vue-3'
 
 import { useLocale } from '@/locales'
-import type { ButtonViewReturn } from '@/type'
 import { isFunction } from '@/utils/utils'
+import { computed, unref } from 'vue'
 
 interface Menu {
   button: ButtonViewReturn

@@ -1,13 +1,13 @@
+import { DEFAULT_LANG_VALUE } from '@/constants/define'
+
+import Logger from '@/utils/logger'
+import mitt, { EventType } from '@/utils/mitt'
 import { computed, ref, unref, watchEffect } from 'vue'
+import de from './de'
 
 import en from './en'
 import nl from './nl'
-import de from './de'
 import zhHans from './zh-Hans'
-
-import { DEFAULT_LANG_VALUE } from '@/constants/define'
-import Logger from '@/utils/logger'
-import mitt, { EventType } from '@/utils/mitt'
 
 interface LocaleInterface {
   lang: string
@@ -122,4 +122,4 @@ const useLocale = () => {
 }
 
 export default locale
-export { en, de, Locale, nl, useLocale, zhHans }
+export { de, en, Locale, nl, useLocale, zhHans }

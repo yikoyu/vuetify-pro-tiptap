@@ -1,8 +1,8 @@
+import type { GeneralOptions } from '@/type'
+
 import { Extension } from '@tiptap/core'
 
 import FullscreenActionButton from './components/FullscreenActionButton.vue'
-
-import type { GeneralOptions } from '@/type'
 
 /**
  * Represents the interface for fullscreen options, extending GeneralOptions.

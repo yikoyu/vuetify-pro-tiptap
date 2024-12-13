@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { watchEffect } from 'vue'
+import type { IconsOptions } from '@/constants/icons'
 import type { Editor } from '@tiptap/vue-3'
 
-import ActionButton from './ActionButton.vue'
-import ColorPicker from './ColorPicker.vue'
-
-import type { IconsOptions } from '@/constants/icons'
 import { useTiptapStore } from '@/hooks'
 import { ButtonViewReturnComponentProps } from '@/type'
+
+import { watchEffect } from 'vue'
+import ActionButton from './ActionButton.vue'
+import ColorPicker from './ColorPicker.vue'
 
 interface Props {
   editor: Editor
