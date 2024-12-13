@@ -1,10 +1,10 @@
-import { computed, reactive, watchEffect } from 'vue'
 import type { AnyExtension } from '@tiptap/core'
+import { DEFAULT_LANG_VALUE, DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
 import { createInjectionState } from '@vueuse/core'
 
-import { useContext } from './use-context'
+import { computed, reactive, watchEffect } from 'vue'
 
-import { DEFAULT_LANG_VALUE, DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
+import { useContext } from './use-context'
 
 /**
  * Interface representing an tiptap editor instance.

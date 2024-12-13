@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-
 import { COLORS_LIST } from '@/constants/define'
+
 import { getIcon } from '@/constants/icons'
+import { ref, watch } from 'vue'
 
 interface Props {
   modelValue?: string

@@ -1,11 +1,11 @@
-import { Node } from '@tiptap/core'
-
-import VideoDialog from './components/video/VideoDialog.vue'
-import VideoActionButton from './components/VideoActionButton.vue'
+import type { GeneralOptions } from '@/type'
 
 import { VIDEO_SIZE } from '@/constants/define'
-import type { GeneralOptions } from '@/type'
 import { getCssUnitWithDefault } from '@/utils/utils'
+
+import { Node } from '@tiptap/core'
+import VideoDialog from './components/video/VideoDialog.vue'
+import VideoActionButton from './components/VideoActionButton.vue'
 
 /**
  * Represents the interface for video options, extending GeneralOptions.

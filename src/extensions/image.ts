@@ -1,14 +1,14 @@
+import type { GeneralOptions } from '@/type'
 import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
-import { Image as TiptapImage } from '@tiptap/extension-image'
-import { VueNodeViewRenderer } from '@tiptap/vue-3'
-
-import ImageDialog from './components/image/ImageDialog.vue'
-import ImageView from './components/image/ImageView.vue'
 import type { Display, ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
-import ImageActionButton from './components/ImageActionButton.vue'
 
 import { IMAGE_SIZE } from '@/constants/define'
-import type { GeneralOptions } from '@/type'
+import { Image as TiptapImage } from '@tiptap/extension-image'
+import { VueNodeViewRenderer } from '@tiptap/vue-3'
+import ImageDialog from './components/image/ImageDialog.vue'
+
+import ImageView from './components/image/ImageView.vue'
+import ImageActionButton from './components/ImageActionButton.vue'
 
 /**
  * Represents the type for the upload function, which takes a File parameter and returns a Promise of type string.

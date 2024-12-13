@@ -1,8 +1,8 @@
+import type { GeneralOptions } from '@/type'
+
 import { Node } from '@tiptap/core'
 
 import ActionButton from './components/ActionButton.vue'
-
-import type { GeneralOptions } from '@/type'
 
 export interface ClearOptions extends GeneralOptions<ClearOptions> {}
 

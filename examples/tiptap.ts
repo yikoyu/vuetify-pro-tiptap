@@ -1,14 +1,4 @@
-/*
- * @Date: 2023-05-11 22:14:19
- * @LastEditors: yikoyu 2282373181@qq.com
- * @LastEditTime: 2023-06-13 20:39:47
- * @FilePath: \vuetify-pro-tiptap\examples\tiptap.ts
- */
-import 'vuetify-pro-tiptap/styles/editor.css'
-import 'vuetify-pro-tiptap/styles/markdown.css'
-import './styles/markdown/github.scss'
-import './styles/markdown/maidragon.scss'
-
+import { NODE_TYPE_MENU } from '@/constants/define'
 import { markRaw } from 'vue'
 import {
   BaseKit,
@@ -19,6 +9,8 @@ import {
   Code,
   CodeBlock,
   Color,
+  createVuetifyProTipTap,
+  defaultBubbleList,
   FontFamily,
   FontSize,
   Fullscreen,
@@ -40,15 +32,23 @@ import {
   Underline,
   Video,
   VuetifyTiptap,
-  VuetifyViewer,
-  createVuetifyProTipTap,
-  defaultBubbleList
+  VuetifyViewer
 } from 'vuetify-pro-tiptap'
-
 import LinkDialog from './components/LinkDialog.vue'
-import SelectImage from './components/SelectImage.vue'
 
-import { NODE_TYPE_MENU } from '@/constants/define'
+import SelectImage from './components/SelectImage.vue'
+/*
+ * @Date: 2023-05-11 22:14:19
+ * @LastEditors: yikoyu 2282373181@qq.com
+ * @LastEditTime: 2023-06-13 20:39:47
+ * @FilePath: \vuetify-pro-tiptap\examples\tiptap.ts
+ */
+import 'vuetify-pro-tiptap/styles/editor.css'
+
+import 'vuetify-pro-tiptap/styles/markdown.css'
+import './styles/markdown/github.scss'
+
+import './styles/markdown/maidragon.scss'
 
 export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',

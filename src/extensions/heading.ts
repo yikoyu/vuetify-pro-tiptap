@@ -1,12 +1,12 @@
+import type { GeneralOptions } from '@/type'
 import type { Extension } from '@tiptap/core'
 import type { HeadingOptions as TiptapHeadingOptions } from '@tiptap/extension-heading'
+
+import type { BaseKitOptions } from './base-kit'
+import type { Item } from './components/ActionMenuButton.vue'
 import { Heading as TiptapHeading } from '@tiptap/extension-heading'
 
-import type { Item } from './components/ActionMenuButton.vue'
 import ActionMenuButton from './components/ActionMenuButton.vue'
-import type { BaseKitOptions } from './base-kit'
-
-import type { GeneralOptions } from '@/type'
 
 export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions<HeadingOptions> {}
 

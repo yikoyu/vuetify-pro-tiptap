@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import type { IconsOptions } from '@/constants/icons'
 import type { NodeSelection } from '@tiptap/pm/state'
 import type { Editor } from '@tiptap/vue-3'
 
 import type { ImageAttrsOptions, ImageTab, ImageTabKey } from './image/types'
-import ActionButton from './ActionButton.vue'
-
-import type { IconsOptions } from '@/constants/icons'
 import { ButtonViewReturnComponentProps } from '@/type'
+
+import { ref } from 'vue'
+import ActionButton from './ActionButton.vue'
 
 interface Props {
   editor: Editor

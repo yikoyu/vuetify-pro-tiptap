@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 import type { ImageForm } from './types'
 
 import { getIcon } from '@/constants/icons'
+
+import { computed } from 'vue'
 
 interface Props {
   modelValue?: ImageForm

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { StyleValue } from 'vue'
-import { computed, ref } from 'vue'
-import type { Editor } from '@tiptap/vue-3'
-
-import ActionButton from './ActionButton.vue'
-
-import { IconsOptions, getIcon } from '@/constants/icons'
 import type { ButtonViewReturnComponentProps } from '@/type'
+import type { Editor } from '@tiptap/vue-3'
+import type { StyleValue } from 'vue'
+
+import { getIcon, IconsOptions } from '@/constants/icons'
+
+import { computed, ref } from 'vue'
+import ActionButton from './ActionButton.vue'
 
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,

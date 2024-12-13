@@ -1,12 +1,12 @@
-import { deleteSelection } from '@tiptap/pm/commands'
+import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/type'
 import type { Editor } from '@tiptap/vue-3'
 
 import type { Display } from './image/types'
-import ActionButton from './ActionButton.vue'
-
 import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
-import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/type'
+
 import { isString } from '@/utils/utils'
+import { deleteSelection } from '@tiptap/pm/commands'
+import ActionButton from './ActionButton.vue'
 
 /** Represents the floating types for bubble images */
 type BubbleImageFloatType = 'float-left' | 'float-none' | 'float-right'

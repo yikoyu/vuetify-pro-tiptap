@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { computed, onUnmounted, unref, useAttrs, watch } from 'vue'
-import { useTheme } from 'vuetify'
 import type { Editor as CoreEditor } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
-import { Editor, EditorContent } from '@tiptap/vue-3'
-
-import BubbleMenu from './BubbleMenu.vue'
-import TipTapToolbar from './TiptapToolbar.vue'
-
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
 import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
+
 import { VuetifyTiptapOnChange } from '@/type'
 import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
+
+import { Editor, EditorContent } from '@tiptap/vue-3'
+import { computed, onUnmounted, unref, useAttrs, watch } from 'vue'
+import { useTheme } from 'vuetify'
+import BubbleMenu from './BubbleMenu.vue'
+import TipTapToolbar from './TiptapToolbar.vue'
 
 type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
 type OnUpdate = NonNullable<EditorOptions['onUpdate']>

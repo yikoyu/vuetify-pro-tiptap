@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { reactive, ref, unref } from 'vue'
-
 import { TABLE_DEFAULT_SELECTED_GRID_SIZE, TABLE_INIT_GRID_SIZE, TABLE_MAX_GRID_SIZE } from '@/constants/define'
+
 import { useLocale } from '@/locales'
 import { isMobile } from '@/utils/is-mobile'
+import { reactive, ref, unref } from 'vue'
 
 export interface GridSize {
   rows: number

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
 import type { Editor } from '@tiptap/vue-3'
-
 import type { LinkAttrs } from './types'
 
 import { getIcon } from '@/constants/icons'
+
 import { useLocale } from '@/locales'
+import { computed, ref, watch } from 'vue'
 
 interface Props {
   value?: string

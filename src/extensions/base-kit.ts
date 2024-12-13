@@ -1,30 +1,30 @@
 // StarterKit
 import type { AnyExtension } from '@tiptap/core'
-import { Extension } from '@tiptap/core'
 import type { CharacterCountOptions } from '@tiptap/extension-character-count'
+import type { DropcursorOptions } from '@tiptap/extension-dropcursor'
+import type { FocusOptions } from '@tiptap/extension-focus'
+import type { HardBreakOptions } from '@tiptap/extension-hard-break'
+import type { ListItemOptions } from '@tiptap/extension-list-item'
+import type { ParagraphOptions } from '@tiptap/extension-paragraph'
+import type { PlaceholderOptions } from '@tiptap/extension-placeholder'
+import type { TextStyleOptions } from '@tiptap/extension-text-style'
+import type { BubbleOptions } from './components/bubble'
+import { NODE_TYPE_MENU } from '@/constants/define'
+import { Extension } from '@tiptap/core'
 import { CharacterCount } from '@tiptap/extension-character-count'
 import { Document } from '@tiptap/extension-document'
-import type { DropcursorOptions } from '@tiptap/extension-dropcursor'
 import { Dropcursor } from '@tiptap/extension-dropcursor'
-import type { FocusOptions } from '@tiptap/extension-focus'
 import Focus from '@tiptap/extension-focus'
 import { Gapcursor } from '@tiptap/extension-gapcursor'
-import type { HardBreakOptions } from '@tiptap/extension-hard-break'
 import { HardBreak } from '@tiptap/extension-hard-break'
-import type { ListItemOptions } from '@tiptap/extension-list-item'
 import { ListItem } from '@tiptap/extension-list-item'
-import type { ParagraphOptions } from '@tiptap/extension-paragraph'
 import { Paragraph } from '@tiptap/extension-paragraph'
-import type { PlaceholderOptions } from '@tiptap/extension-placeholder'
 import { Placeholder } from '@tiptap/extension-placeholder'
+
 import { Text } from '@tiptap/extension-text'
-import type { TextStyleOptions } from '@tiptap/extension-text-style'
 import { TextStyle } from '@tiptap/extension-text-style'
 
-import type { BubbleOptions } from './components/bubble'
 import { defaultBubbleList, generateBubbleTypeMenu } from './components/bubble'
-
-import { NODE_TYPE_MENU } from '@/constants/define'
 
 /**
  * Represents the interface for options in the base toolkit.
