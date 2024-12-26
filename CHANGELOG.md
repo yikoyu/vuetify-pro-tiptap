@@ -1,3 +1,9 @@
+## [2.5.6](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.5...v2.5.6) (2024-12-26)
+
+### Bug Fixes
+
+* :bug: add support for Node.js 22 ([3d649e4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/3d649e462a869275697ace8c20ef71a411eb53f1)), closes [#408](https://github.com/yikoyu/vuetify-pro-tiptap/issues/408)
+
 ## [2.5.5](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.4...v2.5.5) (2024-12-13)
 
 ### Refactor
