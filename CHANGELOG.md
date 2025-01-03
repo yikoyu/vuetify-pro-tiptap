@@ -1,3 +1,14 @@
+## [2.5.7](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.6...v2.5.7) (2025-01-03)
+
+### Bug Fixes
+
+* **extensions:** ensure focus is maintained after inserting table, close [#409](https://github.com/yikoyu/vuetify-pro-tiptap/issues/409) ([6cc2c97](https://github.com/yikoyu/vuetify-pro-tiptap/commit/6cc2c9744f16266a59650d96be3ac28c95f74e88))
+* **link:** preserve parent plugins to fix autolink, close [#410](https://github.com/yikoyu/vuetify-pro-tiptap/issues/410) ([565658b](https://github.com/yikoyu/vuetify-pro-tiptap/commit/565658bfd03d390d55758e9af59ae8437ec50dfe))
+
+### Refactor
+
+* optimize export statements, close [#346](https://github.com/yikoyu/vuetify-pro-tiptap/issues/346) ([ccb8485](https://github.com/yikoyu/vuetify-pro-tiptap/commit/ccb848595e51ab8abbf233bd30524ca68cf2e462))
+
 ## [2.5.6](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.5...v2.5.6) (2024-12-26)
 
 ### Bug Fixes
