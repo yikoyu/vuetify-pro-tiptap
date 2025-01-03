@@ -33,7 +33,7 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
           title: t(`editor.textalign.${k}.tooltip`),
           icon: k,
           isActive: () => editor.isActive({ textAlign: k }) || false,
-          action: () => editor.commands.setTextAlign(k),
+          action: () => editor.chain().focus().setTextAlign(k).run(),
           disabled: !editor.can().setTextAlign(k)
         }))
 

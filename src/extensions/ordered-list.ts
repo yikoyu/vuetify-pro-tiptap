@@ -14,7 +14,7 @@ export const OrderedList = /* @__PURE__*/ TiptapOrderedList.extend<OrderedListOp
       button: ({ editor, t }) => ({
         component: ActionButton,
         componentProps: {
-          action: () => editor.commands.toggleOrderedList(),
+          action: () => editor.chain().focus().toggleOrderedList().run(),
           isActive: () => editor.isActive('orderedList') || false,
           disabled: !editor.can().toggleOrderedList(),
           icon: 'orderedList',

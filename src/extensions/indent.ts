@@ -23,8 +23,8 @@ export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
           component: ActionButton,
           componentProps: {
             action: () => {
-              if (item === 'indent') editor.commands.sinkListItem('listItem')
-              if (item === 'outdent') editor.commands.liftListItem('listItem')
+              if (item === 'indent') editor.chain().focus().sinkListItem('listItem').run()
+              if (item === 'outdent') editor.chain().focus().liftListItem('listItem').run()
             },
             disabled: !editor.can()[commands[item]]('listItem'),
             icon: item,

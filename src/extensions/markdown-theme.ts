@@ -31,7 +31,7 @@ export const MarkdownTheme = /* @__PURE__*/ Extension.create<MarkdownThemeOption
         const { state } = useContext()
 
         const markdownThemes =
-          ([...DEFAULT_MARKDOWN_THEME_LIST, ...extension.options.markdownThemes] as MarkdownThemeProps[]) || []
+          [...DEFAULT_MARKDOWN_THEME_LIST, ...extension.options.markdownThemes] as MarkdownThemeProps[]
 
         const items: Item[] = markdownThemes.map(k => ({
           title: t(k.title),

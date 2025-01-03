@@ -16,7 +16,7 @@ export const Highlight = /* @__PURE__*/ TiptapHighlight.extend<HighlightOptions>
         component: HighlightActionButton,
         componentProps: {
           action: (color?: unknown) => {
-            if (typeof color === 'string') editor.commands.setHighlight({ color })
+            if (typeof color === 'string') editor.chain().focus().setHighlight({ color }).run()
           },
           isActive: () => editor.isActive('highlight') || false,
           disabled: !editor.can().setHighlight(),

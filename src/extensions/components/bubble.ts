@@ -89,7 +89,7 @@ const imageFloatMenus = (editor: Editor): BubbleMenuItem[] => {
     componentProps: {
       tooltip: `editor.image.${float.replace('-', '.')}.tooltip`,
       icon: icons[i],
-      action: () => editor.commands.updateImage({ display: display[i] }),
+      action: () => editor.chain().focus().updateImage({ display: display[i] }).run(),
       isActive: () => editor.isActive('image', { display: display[i] })
     }
   }))
@@ -105,7 +105,7 @@ const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
     componentProps: {
       tooltip: `editor.${size.replace('-', '.')}.tooltip`,
       icon: icons[i],
-      action: () => editor.commands.updateImage({ width: IMAGE_SIZE[size], height: null }),
+      action: () => editor.chain().focus().updateImage({ width: IMAGE_SIZE[size], height: null }).run(),
       isActive: () => editor.isActive('image', { width: IMAGE_SIZE[size] })
     }
   }))
@@ -121,7 +121,7 @@ const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
     componentProps: {
       tooltip: `editor.${size.replace('-', '.')}.tooltip`,
       icon: icons[i],
-      action: () => editor.commands.updateVideo({ width: VIDEO_SIZE[size] }),
+      action: () => editor.chain().focus().updateVideo({ width: VIDEO_SIZE[size] }).run(),
       isActive: () => editor.isActive('video', { width: VIDEO_SIZE[size] })
     }
   }))
@@ -139,10 +139,10 @@ export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
       icon: 'aspectRatio',
       action: () => {
         const isLock = editor.isActive('image', { lockAspectRatio: true })
-        editor.commands.updateImage({
+        editor.chain().focus().updateImage({
           lockAspectRatio: !isLock,
           height: isLock ? undefined : null
-        })
+        }).run()
       },
       isActive: () => editor.isActive('image', { lockAspectRatio: true })
     }

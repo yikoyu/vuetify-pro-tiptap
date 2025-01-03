@@ -42,11 +42,11 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
           },
           action: () => {
             if (k.value === DEFAULT_FONT_FAMILY_VALUE) {
-              editor.commands.unsetFontFamily()
+              editor.chain().focus().unsetFontFamily().run()
               return
             }
 
-            editor.commands.setFontFamily(k.value)
+            editor.chain().focus().setFontFamily(k.value).run()
           },
           disabled: !editor.can().setFontFamily(k.value),
           style: { fontFamily: k.value },

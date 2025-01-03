@@ -61,11 +61,11 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
           },
           action: () => {
             if (k === DEFAULT_FONT_SIZE_VALUUE) {
-              editor.commands.unsetFontSize()
+              editor.chain().focus().unsetFontSize().run()
               return
             }
 
-            editor.commands.setFontSize(String(k))
+            editor.chain().focus().setFontSize(String(k)).run()
           },
           disabled: !editor.can().setFontSize(String(k)),
           divider: k === DEFAULT_FONT_SIZE_VALUUE,

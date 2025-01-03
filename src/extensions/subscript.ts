@@ -40,7 +40,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
         const subBtn: ButtonViewReturn = {
           component: ActionButton,
           componentProps: {
-            action: () => editor.commands.toggleSubscript(),
+            action: () => editor.chain().focus().toggleSubscript().run(),
             isActive: () => editor.isActive('subscript') || false,
             disabled: !editor.can().toggleSubscript(),
             icon: 'subscript',
@@ -51,7 +51,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
         const superBtn: ButtonViewReturn = {
           component: ActionButton,
           componentProps: {
-            action: () => editor.commands.toggleSuperscript(),
+            action: () => editor.chain().focus().toggleSuperscript().run(),
             isActive: () => editor.isActive('superscript') || false,
             disabled: !editor.can().toggleSuperscript(),
             icon: 'superscript',

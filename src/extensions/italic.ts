@@ -14,7 +14,7 @@ export const Italic = /* @__PURE__*/ TiptapItalic.extend<ItalicOptions>({
       button: ({ editor, t }) => ({
         component: ActionButton,
         componentProps: {
-          action: () => editor.commands.toggleItalic(),
+          action: () => editor.chain().focus().toggleItalic().run(),
           isActive: () => editor.isActive('italic') || false,
           disabled: !editor.can().toggleItalic(),
           icon: 'italic',
