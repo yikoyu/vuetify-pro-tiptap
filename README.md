@@ -358,6 +358,7 @@ Available languages:
 - zhHans
 - nl
 - de
+- it
 
 ### Use unavailable language
 Loading unavailable language, use `setMessage` for Settings
