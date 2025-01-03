@@ -44,6 +44,7 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
 
   addProseMirrorPlugins() {
     return [
+      ...(this.parent?.() || []),
       new Plugin({
         props: {
           handleClick(view: EditorView, pos: number) {
