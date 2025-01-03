@@ -31,81 +31,111 @@ import { defaultBubbleList, generateBubbleTypeMenu } from './components/bubble'
  */
 export interface BaseKitOptions {
   /**
-   * Whether to enable the document option
+   * Whether to enable the document option.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
    *
-   * @default true
+   * @default undefined
    */
-  document: false
+  document?: false
 
   /**
-   * Whether to enable the text option
+   * Whether to enable the text option.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
    *
-   * @default true
+   * @default undefined
    */
-  text: false
+  text?: false
 
   /**
-   * Whether to enable the Gapcursor
+   * Whether to enable the Gapcursor.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
    *
-   * @default true
+   * @default undefined
    */
-  gapcursor: false
+  gapcursor?: false
 
   /**
-   * Dropcursor options or false, indicating whether to enable the drop cursor
+   * Dropcursor options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<DropcursorOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  dropcursor: Partial<DropcursorOptions> | false
+  dropcursor?: Partial<DropcursorOptions> | false
 
   /**
-   * character count options or false, indicating whether to enable character count
+   * Character count options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<CharacterCountOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  characterCount: Partial<CharacterCountOptions> | false
+  characterCount?: Partial<CharacterCountOptions> | false
 
   /**
-   * HardBreak options or false, indicating whether to enable hard breaks
+   * HardBreak options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<HardBreakOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  hardBreak: Partial<HardBreakOptions> | false
+  hardBreak?: Partial<HardBreakOptions> | false
 
   /**
-   * Placeholder options or false, indicating whether to enable placeholders
+   * Placeholder options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<PlaceholderOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  placeholder: Partial<PlaceholderOptions> | false
+  placeholder?: Partial<PlaceholderOptions> | false
 
   /**
-   * Paragraph options or false, indicating whether to enable paragraph functionality
+   * Paragraph options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<ParagraphOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  paragraph: Partial<ParagraphOptions> | false
+  paragraph?: Partial<ParagraphOptions> | false
 
   /**
-   * Focus options or false, indicating whether to enable focus functionality
+   * Focus options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<FocusOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  focus: Partial<FocusOptions> | false
+  focus?: Partial<FocusOptions> | false
 
   /**
-   * ListItem options or false, indicating whether to enable list item functionality
+   * ListItem options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<ListItemOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  listItem: Partial<ListItemOptions> | false
+  listItem?: Partial<ListItemOptions> | false
 
   /**
-   * Text Style options or false, indicating whether to enable text style functionality
+   * Text Style options or `false` to disable.
+   * - `undefined` (default): Enable with default settings.
+   * - `false`: Disable.
+   * - `Partial<TextStyleOptions>`: Enable with custom options.
    *
-   * @default true
+   * @default undefined
    */
-  textStyle: Partial<TextStyleOptions> | false
+  textStyle?: Partial<TextStyleOptions> | false
 
   /**
    * Bubble options, taking `BubbleOptions<BaseKitOptions>` as parameters, indicating whether to enable the bubble functionality
