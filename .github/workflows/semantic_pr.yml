@@ -17,8 +17,18 @@ jobs:
         node: [18]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code (push event)
+        if: github.event_name == 'push'
+        uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+
+      - name: Checkout code (pull_request_target event)
+        if: github.event_name == 'pull_request_target'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
           fetch-depth: 0
           persist-credentials: false
 
