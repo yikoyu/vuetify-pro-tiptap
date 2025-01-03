@@ -18,17 +18,19 @@ interface MittEvents extends Record<EventType, unknown> {
   lang: string
 }
 
-export const DEFAULT_LOCALE: LocaleInterface = {
-  lang: DEFAULT_LANG_VALUE,
-  message: {
-    nl,
-    zhHans,
-    en,
-    de
-  }
+export const DEFAULT_LOCALE_MESSAGE = {
+  nl,
+  zhHans,
+  en,
+  de
 }
 
-class Locale {
+export const DEFAULT_LOCALE: LocaleInterface = {
+  lang: DEFAULT_LANG_VALUE,
+  message: DEFAULT_LOCALE_MESSAGE
+}
+
+export class Locale {
   private emitter
   constructor() {
     this.emitter = mitt<MittEvents>()
@@ -96,9 +98,9 @@ class Locale {
   }
 }
 
-const locale = new Locale()
+export const locale = new Locale()
 
-const useLocale = () => {
+export const useLocale = () => {
   const lang = ref(DEFAULT_LOCALE.lang)
 
   const t = computed(() => {
@@ -121,5 +123,24 @@ const useLocale = () => {
   }
 }
 
-export default locale
-export { de, en, Locale, nl, useLocale, zhHans }
+export {
+  /**
+   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.de instead.
+   */
+  de,
+
+  /**
+   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.en instead.
+   */
+  en,
+
+  /**
+   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.nl instead.
+   */
+  nl,
+
+  /**
+   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.zhHans instead.
+   */
+  zhHans
+}
