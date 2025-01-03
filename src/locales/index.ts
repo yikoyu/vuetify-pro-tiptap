@@ -3,10 +3,12 @@ import { DEFAULT_LANG_VALUE } from '@/constants/define'
 import Logger from '@/utils/logger'
 import mitt, { EventType } from '@/utils/mitt'
 import { computed, ref, unref, watchEffect } from 'vue'
-import de from './de'
+
 
 import en from './en'
 import nl from './nl'
+import de from './de'
+import it from './it'
 import zhHans from './zh-Hans'
 
 interface LocaleInterface {
@@ -22,7 +24,8 @@ export const DEFAULT_LOCALE_MESSAGE = {
   nl,
   zhHans,
   en,
-  de
+  de,
+  it
 }
 
 export const DEFAULT_LOCALE: LocaleInterface = {
@@ -128,6 +131,11 @@ export {
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.de instead.
    */
   de,
+
+  /**
+  * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.it instead.
+  */
+  it,
 
   /**
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.en instead.
