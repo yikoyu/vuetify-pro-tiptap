@@ -132,14 +132,14 @@ export {
   de,
 
   /**
-   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.it instead.
-   */
-  it,
-
-  /**
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.en instead.
    */
   en,
+
+  /**
+   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.it instead.
+   */
+  it,
 
   /**
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.nl instead.
