@@ -13,7 +13,7 @@ export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
       divider: false,
       spacer: false,
       button: ({ editor, t }) => {
-        const items: ['indent', 'outdent'] = ['indent', 'outdent']
+        const items: ['outdent', 'indent'] = ['outdent', 'indent']
         const commands = {
           indent: 'sinkListItem',
           outdent: 'liftListItem'
