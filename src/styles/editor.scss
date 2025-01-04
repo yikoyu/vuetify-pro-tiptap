@@ -108,9 +108,11 @@ $extra-light-primary-color: #ecf5ff;
     }
 
     .iframe-wrapper {
-      &.focus {
+      &.focus,
+      &.ProseMirror-selectednode {
         > div {
           outline: 4px solid $primary-color;
+          transition: outline 0.15s ease-in;
         }
       }
     }
@@ -193,9 +195,11 @@ $extra-light-primary-color: #ecf5ff;
         }
       }
 
-      &.focus {
+      &.focus,
+      &.ProseMirror-selectednode {
         img {
           outline: 2px solid $primary-color;
+          transition: outline 0.15s ease-in;
         }
       }
     }
