@@ -181,6 +181,7 @@ function getText() {
         :outlined="outlined"
         :dense="dense"
         rounded
+        dark
         :max-height="465"
         :max-width="maxWidth"
         :extensions="extensions"

@@ -8,6 +8,7 @@ import { ButtonViewReturnComponentProps } from '@/type'
 
 import { ref } from 'vue'
 import ActionButton from './ActionButton.vue'
+import OriginalThemeProvider from './OriginalThemeProvider.vue'
 
 interface Props {
   editor: Editor
@@ -61,6 +62,8 @@ function onAction() {
     :is-active="isActive"
     :action="onAction"
   >
-    <slot name="dialog" :props="{ editor, value: model, imageTabs, hiddenTabs, upload }"></slot>
+    <OriginalThemeProvider>
+      <slot name="dialog" :props="{ editor, value: model, imageTabs, hiddenTabs, upload }"></slot>
+    </OriginalThemeProvider>
   </ActionButton>
 </template>
