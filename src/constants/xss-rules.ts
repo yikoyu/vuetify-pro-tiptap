@@ -28,6 +28,8 @@ const rules: IWhiteList = {
   ol: [],
   u: [],
   table: ['class', 'style'],
+  colgroup: [],
+  col: ['style'],
   tbody: ['class', 'style'],
   tr: ['class', 'style'],
   th: ['class', 'style', 'colspan', 'rowspan'],
