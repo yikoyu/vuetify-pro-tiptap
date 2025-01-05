@@ -36,7 +36,7 @@ interface Props {
   maxHeight?: string | number
   extensions?: AnyExtension[]
   editorClass?: string | string[] | Record<string, any>
-  errorMessages: string | string[] | null
+  errorMessages?: string | string[] | null
 }
 
 interface Emits {
@@ -210,7 +210,7 @@ defineExpose({ editor })
           :color="isDark ? 'grey-darken-4' : 'grey-lighten-4'"
           v-bind="$attrs"
           :style="{
-            borderColor: $attrs['error-messages'] ? '#ff5252' : undefined,
+            borderColor: errorMessages ? '#ff5252' : undefined,
             width: '100%'
           }"
           class="vuetify-pro-tiptap-editor"

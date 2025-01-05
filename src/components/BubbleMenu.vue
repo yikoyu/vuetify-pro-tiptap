@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import type { BaseKitOptions } from '@/extensions/base-kit'
 import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
+import type { BubbleMenuOptions } from '@tiptap/extension-bubble-menu'
 import type { NodeSelection } from '@tiptap/pm/state'
 import type { Editor, Extension } from '@tiptap/vue-3'
-import { useLocale } from '@/locales'
 
+import { useLocale } from '@/locales'
+import { getDefaultShouldShow, isExtEnableAndActive } from '@/utils/utils'
 import { TextSelection } from '@tiptap/pm/state'
 import { BubbleMenu } from '@tiptap/vue-3'
-import { computed, reactive, unref } from 'vue'
+import { computed, reactive, ref, unref, watchEffect } from 'vue'
 
 interface Props {
   editor: Editor
@@ -19,26 +21,26 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const { t } = useLocale()
+const nodeType = ref<NodeTypeKey | undefined>(undefined)
 
 const tippyOptions = reactive<Record<string, unknown>>({
   maxWidth: 'auto',
   zIndex: 20,
-  appendTo: 'parent'
-})
-
-const nodeType = computed<NodeTypeKey | undefined>(() => {
-  const selection = props.editor.state.selection as NodeSelection
-  const isLink = isLinkSelection()
-
-  const isImage = selection.node?.type.name === 'image'
-  const isVideo = selection.node?.type.name === 'video'
-  const isText = selection instanceof TextSelection
-
-  if (isLink) return 'link'
-  if (isImage) return 'image'
-  if (isVideo) return 'video'
-  if (isText) return 'text'
-  return undefined
+  appendTo: 'parent',
+  delay: 100,
+  interactive: false,
+  onMount: (instance: any) => {
+    instance.popper.style.opacity = '0'
+    instance.popper.style.pointerEvents = 'none'
+  },
+  onShow: (instance: any) => {
+    setTimeout(() => {
+      instance.popper.style.opacity = '1'
+      instance.popper.style.transition = 'opacity 100ms'
+      instance.popper.style.pointerEvents = 'auto'
+      instance.setProps({ interactive: true })
+    }, 100)
+  }
 })
 
 const nodeMenus = computed(() => {
@@ -64,13 +66,36 @@ const items = computed(() => {
   return unref(nodeMenus)?.[nodeType.value] ?? []
 })
 
-function isLinkSelection() {
-  const { schema } = props.editor
-  const linkType = schema.marks.link
-  if (!linkType) return false
+function getNodeType(editor: Editor): NodeTypeKey | undefined {
+  const selection = editor.state.selection as NodeSelection
+  const isLink = isExtEnableAndActive(editor, 'link')
+  const isTable = isExtEnableAndActive(editor, 'table')
 
-  return props.editor.isActive(linkType.name)
+  const isImage = selection.node?.type.name === 'image'
+  const isVideo = selection.node?.type.name === 'video'
+  const isText = selection instanceof TextSelection
+
+  if (isTable) return 'table'
+  if (isLink) return 'link'
+  if (isImage) return 'image'
+  if (isVideo) return 'video'
+  if (isText) return 'text'
+  return undefined
 }
+
+const getShouldShow: NonNullable<BubbleMenuOptions['shouldShow']> = (props) => {
+  const _show = getDefaultShouldShow(props)
+  const _hasItems = items.value.length > 0
+
+  const isTable = isExtEnableAndActive(props.editor, 'table')
+  if (isTable) return true
+
+  return _show && _hasItems
+}
+
+watchEffect(() => {
+  nodeType.value = getNodeType(props.editor)
+})
 
 function setDisabled(item: BubbleMenuItem) {
   return props.disabled || item.componentProps?.disabled?.() || false
@@ -78,7 +103,7 @@ function setDisabled(item: BubbleMenuItem) {
 </script>
 
 <template>
-  <BubbleMenu v-show="items.length > 0" :editor="editor" :tippy-options="tippyOptions">
+  <BubbleMenu :should-show="getShouldShow" :editor="editor" :tippy-options="tippyOptions">
     <VCard class="vuetify-pro-tiptap-editor__menu-bubble">
       <VCardText class="d-flex pa-0">
         <VToolbar density="compact" flat height="auto" class="py-1 ps-1">
