@@ -56,10 +56,10 @@ function setCustom() {
 }
 
 function onChangeEditor({ editor, output }: VuetifyTiptapOnChange) {
-  console.log('output :>> ', output)
-  console.log('output[html] :>> ', editor.getHTML())
-  console.log('output[json] :>> ', editor.getJSON())
-  console.log('output[text] :>> ', editor.getText())
+  // console.log('output :>> ', output)
+  // console.log('output[html] :>> ', editor.getHTML())
+  // console.log('output[json] :>> ', editor.getJSON())
+  // console.log('output[text] :>> ', editor.getText())
 }
 
 function getHTML() {

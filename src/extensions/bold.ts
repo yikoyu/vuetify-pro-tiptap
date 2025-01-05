@@ -16,7 +16,7 @@ export const Bold = /* @__PURE__*/ TiptapBold.extend<BoldOptions>({
         componentProps: {
           action: () => editor.chain().focus().toggleBold().run(),
           isActive: () => editor.isActive('bold') || false,
-          disabled: !editor.can().toggleBold(),
+          disabled: () => !editor.can().toggleBold(),
           icon: 'bold',
           tooltip: t('editor.bold.tooltip')
         }

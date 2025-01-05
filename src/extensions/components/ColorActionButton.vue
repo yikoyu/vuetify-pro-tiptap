@@ -13,7 +13,7 @@ interface Props {
   editor: Editor
   icon?: keyof IconsOptions
   tooltip?: string
-  disabled?: boolean
+  disabled?: () => boolean
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
@@ -21,7 +21,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   icon: undefined,
   tooltip: undefined,
-  disabled: false,
+  disabled: () => false,
   action: undefined,
   isActive: undefined
 })

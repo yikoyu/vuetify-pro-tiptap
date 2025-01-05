@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { BaseKitOptions } from '@/extensions/base-kit'
-import type { BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
+import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
 import type { NodeSelection } from '@tiptap/pm/state'
 import type { Editor, Extension } from '@tiptap/vue-3'
 import { useLocale } from '@/locales'
@@ -71,6 +71,10 @@ function isLinkSelection() {
 
   return props.editor.isActive(linkType.name)
 }
+
+function setDisabled(item: BubbleMenuItem) {
+  return props.disabled || item.componentProps?.disabled?.() || false
+}
 </script>
 
 <template>
@@ -87,7 +91,7 @@ function isLinkSelection() {
               v-else
               v-bind="item.componentProps"
               :editor="editor"
-              :disabled="disabled || item.componentProps?.disabled"
+              :disabled="() => setDisabled(item)"
             >
               <template v-for="(element, slotName, i) in item.componentSlots" :key="i" #[`${slotName}`]="values">
                 <component :is="element" v-bind="values?.props" />

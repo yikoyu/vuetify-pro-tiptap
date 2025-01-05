@@ -34,7 +34,7 @@ export const Table = /* @__PURE__*/ TiptapTable.extend<TableOptions>({
         component: TableActionButton,
         componentProps: {
           isActive: () => editor.isActive('table') || false,
-          disabled: !editor.can().insertTable(),
+          disabled: () => !editor.can().insertTable(),
           icon: 'table',
           tooltip: t('editor.table.tooltip')
         }

@@ -9,7 +9,7 @@ import { computed, ref } from 'vue'
 import ActionButton from './ActionButton.vue'
 
 const props = withDefaults(defineProps<Props>(), {
-  disabled: false,
+  disabled: () => false,
   color: undefined,
   maxHeight: undefined,
 
@@ -46,14 +46,14 @@ export interface Item {
   isActive: NonNullable<ButtonViewReturnComponentProps['isActive']>
   action?: ButtonViewReturnComponentProps['action']
   style?: StyleValue
-  disabled?: boolean
+  disabled?: () => boolean
   divider?: boolean
   default?: boolean
 }
 
 interface Props {
   editor: Editor
-  disabled?: boolean
+  disabled?: () => boolean
   color?: string
   maxHeight?: string | number
 
@@ -74,7 +74,7 @@ interface Props {
     <VMenu v-model="menu" activator="parent">
       <VList density="compact" :max-height="maxHeight">
         <template v-for="(item, i) in items" :key="i">
-          <VListItem :active="item.isActive()" :disabled="item.disabled" @click="item.action">
+          <VListItem :active="item.isActive()" :disabled="item.disabled?.()" @click="item.action">
             <template #prepend>
               <VIcon v-if="item.icon" :icon="getIcon(item.icon)" />
             </template>

@@ -16,7 +16,7 @@ export const Code = /* @__PURE__*/ TiptapCode.extend<CodeOptions>({
         componentProps: {
           action: () => editor.chain().focus().toggleCode().run(),
           isActive: () => editor.isActive('code') || false,
-          disabled: !editor.can().toggleCode(),
+          disabled: () => !editor.can().toggleCode(),
           icon: 'code',
           tooltip: t('editor.code.tooltip')
         }

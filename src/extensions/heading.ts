@@ -23,7 +23,7 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
         const items: Item[] = levels.map(level => ({
           action: () => editor.chain().focus().toggleHeading({ level }).run(),
           isActive: () => editor.isActive('heading', { level }) || false,
-          disabled: !editor.can().toggleHeading({ level }),
+          disabled: () => !editor.can().toggleHeading({ level }),
           icon: `h${level}`,
           title: t(`editor.heading.h${level}.tooltip`)
         }))
@@ -32,21 +32,21 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
           items.unshift({
             action: () => editor.chain().focus().setParagraph().run(),
             isActive: () => editor.isActive('paragraph') || false,
-            disabled: !editor.can().setParagraph(),
+            disabled: () => !editor.can().setParagraph(),
             icon: 'p',
             title: t('editor.paragraph.tooltip'),
             divider: true
           })
         }
 
-        const disabled = items.filter(k => k.disabled).length === items.length
-
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'heading',
             tooltip: t('editor.heading.tooltip'),
-            disabled,
+            disabled: () => {
+              return items.filter(k => k.disabled?.()).length === items.length
+            },
             items
           }
         }

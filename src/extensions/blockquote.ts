@@ -19,7 +19,7 @@ export const Blockquote = /* @__PURE__*/ TiptapBlockquote.extend<BlockquoteOptio
         componentProps: {
           action: () => editor.chain().focus().toggleBlockquote().run(),
           isActive: () => editor.isActive('blockquote') || false,
-          disabled: !editor.can().toggleBlockquote(),
+          disabled: () => !editor.can().toggleBlockquote(),
           icon: 'blockquote',
           tooltip: t('editor.blockquote.tooltip')
         }

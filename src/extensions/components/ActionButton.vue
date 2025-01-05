@@ -8,7 +8,7 @@ import { computed } from 'vue'
 interface Props {
   icon?: keyof IconsOptions
   tooltip?: string
-  disabled?: boolean
+  disabled?: () => boolean
   color?: string
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
@@ -17,7 +17,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   icon: undefined,
   tooltip: undefined,
-  disabled: false,
+  disabled: () => false,
   color: undefined,
   action: undefined,
   isActive: undefined
@@ -31,7 +31,7 @@ const btnIcon = computed(() => getIcon(props.icon))
     class="rounded me-1 ms-0"
     density="comfortable"
     size="small"
-    :disabled="disabled"
+    :disabled="disabled?.()"
     :color="color"
     icon
     :class="{

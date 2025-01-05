@@ -26,7 +26,7 @@ export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
               if (item === 'indent') editor.chain().focus().sinkListItem('listItem').run()
               if (item === 'outdent') editor.chain().focus().liftListItem('listItem').run()
             },
-            disabled: !editor.can()[commands[item]]('listItem'),
+            disabled: () => !editor.can()[commands[item]]('listItem'),
             icon: item,
             tooltip: t(`editor.${item}.tooltip`)
           }

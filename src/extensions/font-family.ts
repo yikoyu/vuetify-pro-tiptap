@@ -48,20 +48,20 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
 
             editor.chain().focus().setFontFamily(k.value).run()
           },
-          disabled: !editor.can().setFontFamily(k.value),
+          disabled: () => !editor.can().setFontFamily(k.value),
           style: { fontFamily: k.value },
           divider: k.divider ?? false,
           default: k.default ?? false
         }))
-
-        const disabled = items.filter(k => k.disabled).length === items.length
 
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'fontFamily',
             tooltip: t('editor.fontFamily.tooltip'),
-            disabled,
+            disabled: () => {
+              return items.filter(k => k.disabled?.()).length === items.length
+            },
             items,
             maxHeight: 280
           }

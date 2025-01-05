@@ -15,86 +15,83 @@ const props = withDefaults(defineProps<Props>(), {
 const { t } = useLocale()
 
 const menu = ref<boolean>(false)
-const items = computed<Item[]>(() => {
-  const disabled = !props.editor.isActive('table')
-
-  return [
-    {
-      type: 'item',
-      key: 'insert-table',
-      title: unref(t)('editor.table.menu.insert_table'),
-      icon: getIcon('tablePlus')
-    },
-    {
-      type: 'divider'
-    },
-    {
-      type: 'item',
-      key: 'add-column-before',
-      title: unref(t)('editor.table.menu.add_column_before'),
-      icon: getIcon('tableColumnPlusBefore'),
-      disabled
-    },
-    {
-      type: 'item',
-      key: 'add-column-after',
-      title: unref(t)('editor.table.menu.add_column_after'),
-      icon: getIcon('tableColumnPlusAfter'),
-      disabled
-    },
-    {
-      type: 'item',
-      key: 'delete-column',
-      title: unref(t)('editor.table.menu.delete_column'),
-      icon: getIcon('tableColumnRemove'),
-      disabled
-    },
-    {
-      type: 'divider'
-    },
-    {
-      type: 'item',
-      key: 'add-row-before',
-      title: unref(t)('editor.table.menu.add_row_before'),
-      icon: getIcon('tableRowPlusBefore'),
-      disabled
-    },
-    {
-      type: 'item',
-      key: 'add-row-after',
-      title: unref(t)('editor.table.menu.add_row_after'),
-      icon: getIcon('tableRowPlusAfter'),
-      disabled
-    },
-    {
-      type: 'item',
-      key: 'delete-row',
-      title: unref(t)('editor.table.menu.delete_row'),
-      icon: getIcon('tableRowRemove'),
-      disabled
-    },
-    {
-      type: 'divider'
-    },
-    {
-      type: 'item',
-      key: 'merge-or-split-cells',
-      title: unref(t)('editor.table.menu.merge_or_split_cells'),
-      icon: getIcon('tableMergeCells'),
-      disabled
-    },
-    {
-      type: 'divider'
-    },
-    {
-      type: 'item',
-      key: 'delete-table',
-      title: unref(t)('editor.table.menu.delete_table'),
-      icon: getIcon('tableRemove'),
-      disabled
-    }
-  ]
-})
+const items = ref<Item[]>([
+  {
+    type: 'item',
+    key: 'insert-table',
+    title: unref(t)('editor.table.menu.insert_table'),
+    icon: getIcon('tablePlus'),
+    disabled: () => !props.editor.can().insertTable()
+  },
+  {
+    type: 'divider'
+  },
+  {
+    type: 'item',
+    key: 'add-column-before',
+    title: unref(t)('editor.table.menu.add_column_before'),
+    icon: getIcon('tableColumnPlusBefore'),
+    disabled: () => !props.editor.can().addColumnBefore()
+  },
+  {
+    type: 'item',
+    key: 'add-column-after',
+    title: unref(t)('editor.table.menu.add_column_after'),
+    icon: getIcon('tableColumnPlusAfter'),
+    disabled: () => !props.editor.can().addColumnAfter()
+  },
+  {
+    type: 'item',
+    key: 'delete-column',
+    title: unref(t)('editor.table.menu.delete_column'),
+    icon: getIcon('tableColumnRemove'),
+    disabled: () => !props.editor.can().deleteColumn()
+  },
+  {
+    type: 'divider'
+  },
+  {
+    type: 'item',
+    key: 'add-row-before',
+    title: unref(t)('editor.table.menu.add_row_before'),
+    icon: getIcon('tableRowPlusBefore'),
+    disabled: () => !props.editor.can().addRowBefore()
+  },
+  {
+    type: 'item',
+    key: 'add-row-after',
+    title: unref(t)('editor.table.menu.add_row_after'),
+    icon: getIcon('tableRowPlusAfter'),
+    disabled: () => !props.editor.can().addRowAfter()
+  },
+  {
+    type: 'item',
+    key: 'delete-row',
+    title: unref(t)('editor.table.menu.delete_row'),
+    icon: getIcon('tableRowRemove'),
+    disabled: () => !props.editor.can().deleteRow()
+  },
+  {
+    type: 'divider'
+  },
+  {
+    type: 'item',
+    key: 'merge-or-split-cells',
+    title: unref(t)('editor.table.menu.merge_or_split_cells'),
+    icon: getIcon('tableMergeCells'),
+    disabled: () => !props.editor.can().mergeOrSplit()
+  },
+  {
+    type: 'divider'
+  },
+  {
+    type: 'item',
+    key: 'delete-table',
+    title: unref(t)('editor.table.menu.delete_table'),
+    icon: getIcon('tableRemove'),
+    disabled: () => !props.editor.can().deleteTable()
+  }
+])
 
 function setTable<T extends object>(key?: TableACtionKey, options?: T) {
   if (!key) return
@@ -143,7 +140,7 @@ export interface Item {
   type: 'item' | 'divider'
   key?: TableACtionKey
   title?: string
-  disabled?: boolean
+  disabled?: () => boolean
   icon?: string
 }
 
@@ -157,7 +154,7 @@ interface Props {
   <VMenu v-model="menu" activator="parent">
     <VList density="compact">
       <template v-for="(item, index) in items">
-        <VListItem v-if="item.key === 'insert-table'" :key="index" :disabled="item.disabled">
+        <VListItem v-if="item.key === 'insert-table'" :key="index" :disabled="item.disabled?.()">
           <template #prepend>
             <VIcon :icon="item.icon" />
           </template>
@@ -170,7 +167,7 @@ interface Props {
         <VListItem
           v-else-if="item.type === 'item'"
           :key="'item-' + index"
-          :disabled="item.disabled"
+          :disabled="item.disabled?.()"
           @click="setTable(item.key)"
         >
           <template #prepend>

@@ -19,7 +19,7 @@ export const Highlight = /* @__PURE__*/ TiptapHighlight.extend<HighlightOptions>
             if (typeof color === 'string') editor.chain().focus().setHighlight({ color }).run()
           },
           isActive: () => editor.isActive('highlight') || false,
-          disabled: !editor.can().setHighlight(),
+          disabled: () => !editor.can().setHighlight(),
           icon: 'highlight',
           tooltip: t('editor.highlight.tooltip')
         }

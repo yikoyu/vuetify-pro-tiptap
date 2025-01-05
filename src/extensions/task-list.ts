@@ -32,7 +32,7 @@ export const TaskList = /* @__PURE__*/ TiptapTaskList.extend<TaskListOptions>({
         componentProps: {
           action: () => editor.chain().focus().toggleTaskList().run(),
           isActive: () => editor.isActive('taskList') || false,
-          disabled: !editor.can().toggleTaskList(),
+          disabled: () => !editor.can().toggleTaskList(),
           icon: 'taskList',
           tooltip: t('editor.tasklist.tooltip')
         }

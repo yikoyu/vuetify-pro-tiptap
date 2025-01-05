@@ -23,7 +23,7 @@ export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
             if (!color) return false
             return editor.isActive({ color }) || false
           },
-          disabled: !editor.can().setColor(''),
+          disabled: () => !editor.can().setColor(''),
           icon: 'color',
           tooltip: t('editor.color.tooltip')
         }

@@ -42,7 +42,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
           componentProps: {
             action: () => editor.chain().focus().toggleSubscript().run(),
             isActive: () => editor.isActive('subscript') || false,
-            disabled: !editor.can().toggleSubscript(),
+            disabled: () => !editor.can().toggleSubscript(),
             icon: 'subscript',
             tooltip: t('editor.subscript.tooltip')
           }
@@ -53,7 +53,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
           componentProps: {
             action: () => editor.chain().focus().toggleSuperscript().run(),
             isActive: () => editor.isActive('superscript') || false,
-            disabled: !editor.can().toggleSuperscript(),
+            disabled: () => !editor.can().toggleSuperscript(),
             icon: 'superscript',
             tooltip: t('editor.superscript.tooltip')
           }

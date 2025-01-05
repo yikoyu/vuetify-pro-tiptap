@@ -16,7 +16,7 @@ export const Strike = /* @__PURE__*/ TiptapStrike.extend<StrikeOptions>({
         componentProps: {
           action: () => editor.chain().focus().toggleStrike().run(),
           isActive: () => editor.isActive('strike') || false,
-          disabled: !editor.can().toggleStrike(),
+          disabled: () => !editor.can().toggleStrike(),
           icon: 'strike',
           tooltip: t('editor.strike.tooltip')
         }

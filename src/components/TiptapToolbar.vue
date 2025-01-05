@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { ButtonViewReturn } from '@/type'
-import type { Editor } from '@tiptap/vue-3'
+import type { Editor, Extensions } from '@tiptap/vue-3'
 
 import { useLocale } from '@/locales'
 import { isFunction } from '@/utils/utils'
-import { computed, unref } from 'vue'
+import { shallowRef, unref, watch } from 'vue'
 
 interface Menu {
   button: ButtonViewReturn
@@ -22,9 +22,13 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const { t } = useLocale()
+const items = shallowRef<Menu[]>([])
 
-const items = computed(() => {
-  const extensions = [...props.editor.extensionManager.extensions]
+watch(() => props.editor.extensionManager.extensions, val => {
+  items.value = getMenus(val)
+}, { immediate: true })
+
+function getMenus(extensions: Extensions): Menu[] {
   const sortExtensions = extensions.sort((arr, acc) => {
     const a = arr.options.sort ?? -1
     const b = acc.options.sort ?? -1
@@ -57,7 +61,11 @@ const items = computed(() => {
   }
 
   return menus
-})
+}
+
+function setDisabled(item: Menu) {
+  return props.disabled || item.button.componentProps?.disabled?.() || false
+}
 </script>
 
 <template>
@@ -70,7 +78,7 @@ const items = computed(() => {
         :is="item.button.component"
         v-bind="item.button.componentProps"
         :editor="editor"
-        :disabled="disabled || item.button.componentProps?.disabled"
+        :disabled="() => setDisabled(item)"
       >
         <template v-for="(element, slotName, i) in item.button.componentSlots" :key="i" #[`${slotName}`]="values">
           <component :is="element" v-bind="values?.props" />

@@ -25,7 +25,7 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
   addOptions() {
     return {
       ...this.parent?.(),
-      types: ['heading', 'paragraph', 'image'],
+      types: ['heading', 'paragraph'],
       button: ({ editor, extension, t }) => {
         const alignments = (extension.options?.alignments as Alignments[]) || []
 
@@ -34,17 +34,17 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
           icon: k,
           isActive: () => editor.isActive({ textAlign: k }) || false,
           action: () => editor.chain().focus().setTextAlign(k).run(),
-          disabled: !editor.can().setTextAlign(k)
+          disabled: () => !editor.can().setTextAlign(k)
         }))
-
-        const disabled = items.filter(k => k.disabled).length === items.length
 
         return {
           component: ActionMenuButton,
           componentProps: {
             icon: 'center',
             tooltip: t('editor.textalign.tooltip'),
-            disabled,
+            disabled: () => {
+              return items.filter(k => k.disabled?.()).length === items.length
+            },
             items
           }
         }

@@ -30,7 +30,7 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
           component: LinkActionButton,
           componentProps: {
             isActive: () => editor.isActive('link') || false,
-            disabled: !editor.can().setLink({ href: '' }),
+            disabled: () => !editor.can().setLink({ href: '' }),
             icon: 'link',
             tooltip: t('editor.link.tooltip')
           },

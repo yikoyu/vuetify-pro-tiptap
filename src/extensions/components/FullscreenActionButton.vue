@@ -8,7 +8,7 @@ import { useFullscreen } from '@vueuse/core'
 import { computed, unref, watch } from 'vue'
 
 const props = withDefaults(defineProps<Props>(), {
-  disabled: false,
+  disabled: () => false,
   color: undefined,
   isActive: undefined,
   useWindow: false
@@ -18,7 +18,7 @@ const { state, toggleFullscreen } = useTiptapStore()!
 const { isFullscreen, enter, exit } = useFullscreen()
 
 interface Props {
-  disabled?: boolean
+  disabled?: () => boolean
   color?: string
   isActive?: ButtonViewReturnComponentProps['isActive']
   useWindow?: boolean
@@ -60,7 +60,7 @@ function onAction(_useWindow: boolean = false) {
     class="rounded me-1 ms-0"
     density="comfortable"
     size="small"
-    :disabled="disabled"
+    :disabled="disabled()"
     :color="color"
     icon
     :class="{

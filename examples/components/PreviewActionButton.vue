@@ -14,7 +14,7 @@ import { ActionButton } from 'vuetify-pro-tiptap'
 
 const props = withDefaults(defineProps<Props>(), {
   tooltip: undefined,
-  disabled: false
+  disabled: () => false
 })
 
 // 获取原始主题
@@ -22,7 +22,7 @@ const { global: { name: originalTheme } } = useTheme()
 interface Props {
   editor: Editor
   tooltip?: string
-  disabled?: boolean
+  disabled?: () => boolean
 }
 
 const markdownTheme = ref('')
