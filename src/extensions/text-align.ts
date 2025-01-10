@@ -25,7 +25,7 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
   addOptions() {
     return {
       ...this.parent?.(),
-      types: ['heading', 'paragraph', 'image'],
+      types: ['heading', 'paragraph'],
       button: ({ editor, extension, t }) => {
         const alignments = (extension.options?.alignments as Alignments[]) || []
 

@@ -3,7 +3,6 @@ import type { IconsOptions } from '@/constants/icons'
 
 import { getIcon } from '@/constants/icons'
 import { ButtonViewReturnComponentProps } from '@/type'
-import { computed } from 'vue'
 
 interface Props {
   icon?: keyof IconsOptions
@@ -22,8 +21,6 @@ const props = withDefaults(defineProps<Props>(), {
   action: undefined,
   isActive: undefined
 })
-
-const btnIcon = computed(() => getIcon(props.icon))
 </script>
 
 <template>
@@ -39,7 +36,7 @@ const btnIcon = computed(() => getIcon(props.icon))
     }"
     @click="action"
   >
-    <VIcon v-if="btnIcon" :icon="btnIcon" />
+    <VIcon :icon="getIcon(props.icon)" />
 
     <VTooltip :eager="false" activator="parent" location="top" :text="props.tooltip" />
 
