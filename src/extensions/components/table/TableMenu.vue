@@ -16,14 +16,13 @@ const { t } = useLocale()
 
 const menu = ref<boolean>(false)
 const items = computed<Item[]>(() => {
-  const disabled = !props.editor.isActive('table')
-
   return [
     {
       type: 'item',
       key: 'insert-table',
       title: unref(t)('editor.table.menu.insert_table'),
-      icon: getIcon('tablePlus')
+      icon: getIcon('tablePlus'),
+      disabled: !props.editor.can().insertTable() || false
     },
     {
       type: 'divider'
@@ -33,21 +32,21 @@ const items = computed<Item[]>(() => {
       key: 'add-column-before',
       title: unref(t)('editor.table.menu.add_column_before'),
       icon: getIcon('tableColumnPlusBefore'),
-      disabled
+      disabled: !props.editor.can().addColumnBefore() || false
     },
     {
       type: 'item',
       key: 'add-column-after',
       title: unref(t)('editor.table.menu.add_column_after'),
       icon: getIcon('tableColumnPlusAfter'),
-      disabled
+      disabled: !props.editor.can().addColumnAfter() || false
     },
     {
       type: 'item',
       key: 'delete-column',
       title: unref(t)('editor.table.menu.delete_column'),
       icon: getIcon('tableColumnRemove'),
-      disabled
+      disabled: !props.editor.can().deleteColumn() || false
     },
     {
       type: 'divider'
@@ -57,21 +56,21 @@ const items = computed<Item[]>(() => {
       key: 'add-row-before',
       title: unref(t)('editor.table.menu.add_row_before'),
       icon: getIcon('tableRowPlusBefore'),
-      disabled
+      disabled: !props.editor.can().addRowBefore() || false
     },
     {
       type: 'item',
       key: 'add-row-after',
       title: unref(t)('editor.table.menu.add_row_after'),
       icon: getIcon('tableRowPlusAfter'),
-      disabled
+      disabled: !props.editor.can().addRowAfter() || false
     },
     {
       type: 'item',
       key: 'delete-row',
       title: unref(t)('editor.table.menu.delete_row'),
       icon: getIcon('tableRowRemove'),
-      disabled
+      disabled: !props.editor.can().deleteRow() || false
     },
     {
       type: 'divider'
@@ -81,7 +80,7 @@ const items = computed<Item[]>(() => {
       key: 'merge-or-split-cells',
       title: unref(t)('editor.table.menu.merge_or_split_cells'),
       icon: getIcon('tableMergeCells'),
-      disabled
+      disabled: !props.editor.can().mergeOrSplit() || false
     },
     {
       type: 'divider'
@@ -91,9 +90,9 @@ const items = computed<Item[]>(() => {
       key: 'delete-table',
       title: unref(t)('editor.table.menu.delete_table'),
       icon: getIcon('tableRemove'),
-      disabled
+      disabled: !props.editor.can().deleteTable() || false
     }
-  ]
+  ] as Item[]
 })
 
 function setTable<T extends object>(key?: TableACtionKey, options?: T) {

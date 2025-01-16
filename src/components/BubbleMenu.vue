@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { BaseKitOptions } from '@/extensions/base-kit'
-import type { BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
+import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
 import type { NodeSelection } from '@tiptap/pm/state'
 import type { Editor, Extension } from '@tiptap/vue-3'
 import { useLocale } from '@/locales'
 
 import { TextSelection } from '@tiptap/pm/state'
 import { BubbleMenu } from '@tiptap/vue-3'
-import { computed, reactive, unref } from 'vue'
+import { computed, reactive, ref, unref } from 'vue'
 
 interface Props {
   editor: Editor
@@ -20,6 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { t } = useLocale()
 
+const showBubble = ref(true)
 const tippyOptions = reactive<Record<string, unknown>>({
   maxWidth: 'auto',
   zIndex: 20,
@@ -28,6 +29,8 @@ const tippyOptions = reactive<Record<string, unknown>>({
 
 const nodeType = computed<NodeTypeKey | undefined>(() => {
   const selection = props.editor.state.selection as NodeSelection
+  if (selection.to === selection.from || selection.empty) return undefined
+
   const isLink = isLinkSelection()
 
   const isImage = selection.node?.type.name === 'image'
@@ -41,28 +44,40 @@ const nodeType = computed<NodeTypeKey | undefined>(() => {
   return undefined
 })
 
-const nodeMenus = computed(() => {
+function getMenus(nodeKey?: NodeTypeKey): BubbleMenuItem[] {
+  if (!nodeKey) {
+    showBubble.value = false
+    return []
+  }
+
   const { extensions = [] } = props.editor.extensionManager
   const find = extensions.find(k => k.name === 'base-kit') as Extension<BaseKitOptions>
-  if (!find) return {}
+  if (!find) {
+    showBubble.value = false
+    return []
+  }
 
   const { button } = find.options?.bubble ?? {}
 
-  if (!button) return {}
+  if (!button) {
+    showBubble.value = false
+    return []
+  }
 
-  const _button: BubbleTypeMenu = button({
+  const _buttons: BubbleTypeMenu = button({
     editor: props.editor,
     extension: find,
     t: unref(t)
   })
 
-  return _button
-})
+  if (!nodeKey) {
+    showBubble.value = false
+    return []
+  }
 
-const items = computed(() => {
-  if (!nodeType.value) return []
-  return unref(nodeMenus)?.[nodeType.value] ?? []
-})
+  showBubble.value = true
+  return unref(_buttons)?.[nodeKey] ?? []
+}
 
 function isLinkSelection() {
   const { schema } = props.editor
@@ -74,11 +89,11 @@ function isLinkSelection() {
 </script>
 
 <template>
-  <BubbleMenu v-show="items.length > 0" :editor="editor" :tippy-options="tippyOptions">
+  <BubbleMenu v-show="showBubble" :editor="editor" :tippy-options="tippyOptions">
     <VCard class="vuetify-pro-tiptap-editor__menu-bubble">
       <VCardText class="d-flex pa-0">
         <VToolbar density="compact" flat height="auto" class="py-1 ps-1">
-          <template v-for="(item, key) in items" :key="key">
+          <template v-for="(item, key) in getMenus(nodeType)" :key="key">
             <!-- Divider -->
             <VDivider v-if="item.type === 'divider'" vertical class="mx-1 me-2" />
             <!-- Buttons -->

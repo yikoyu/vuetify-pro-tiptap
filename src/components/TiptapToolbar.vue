@@ -4,7 +4,7 @@ import type { Editor } from '@tiptap/vue-3'
 
 import { useLocale } from '@/locales'
 import { isFunction } from '@/utils/utils'
-import { computed, unref } from 'vue'
+import { unref } from 'vue'
 
 interface Menu {
   button: ButtonViewReturn
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { t } = useLocale()
 
-const items = computed(() => {
+function getMenus(): Menu[] {
   const extensions = [...props.editor.extensionManager.extensions]
   const sortExtensions = extensions.sort((arr, acc) => {
     const a = arr.options.sort ?? -1
@@ -31,11 +31,9 @@ const items = computed(() => {
     return a - b
   })
 
-  let menus: Menu[] = []
-
-  for (const extension of sortExtensions) {
+  return sortExtensions.reduce((acc, extension) => {
     const { button, divider = false, spacer = false } = extension.options
-    if (!button || !isFunction(button)) continue
+    if (!button || !isFunction(button)) return acc as Menu[]
 
     const _button: ButtonViewReturn = button({
       editor: props.editor,
@@ -49,20 +47,17 @@ const items = computed(() => {
         divider: i === _button.length - 1 ? divider : false,
         spacer: i === 0 ? spacer : false
       }))
-      menus = [...menus, ...menu]
-      continue
+      return [...acc, ...menu]
     }
 
-    menus.push({ button: _button, divider, spacer })
-  }
-
-  return menus
-})
+    return [...acc, { button: _button, divider, spacer } as Menu]
+  }, [] as Menu[])
+}
 </script>
 
 <template>
   <VToolbar v-bind="$attrs" density="compact" flat height="auto" class="py-1 ps-1">
-    <template v-for="(item, key) in items" :key="key">
+    <template v-for="(item, key) in getMenus()" :key="key">
       <!-- Spacer -->
       <VSpacer v-if="item.spacer" />
       <!-- Buttons -->
