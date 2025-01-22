@@ -51,8 +51,7 @@
     "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
   },
   "scripts": {
-    "dev": "vite serve --config vite-example.config.ts",
-    "watch-build": "pnpm check:types && vite build --watch --mode production && pnpm build:styles",
+    "watch-build": "nodemon --watch src -e ts,vue,scss --exec 'pnpm build:lib && node scripts/copy-lib.js'",
     "build:lib": "pnpm check:types && vite build  && pnpm build:styles",
     "build:examples": "pnpm build:lib && pnpm check:types && vite build --config vite-example.config.ts",
     "build:styles": "pnpm sass ./src/styles:./lib/styles --style=compressed --no-source-map",
@@ -115,7 +114,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "^3.11.2",
     "@mdi/js": "^7.4.47",
-    "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.17.13",
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-vue": "^5.2.1",
@@ -128,7 +126,6 @@
     "czg": "^1.11.0",
     "eslint": "^9.16.0",
     "eslint-plugin-format": "^0.1.3",
-    "fs-extra": "^11.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.11",
     "lodash": "^4.17.21",

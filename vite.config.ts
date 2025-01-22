@@ -1,7 +1,5 @@
 import { resolve } from "path"
-import process from "process"
 import vue from "@vitejs/plugin-vue"
-import fs from "fs-extra"
 import { PluginPure } from "rollup-plugin-pure"
 import { Vuetify3Resolver } from "unplugin-vue-components/resolvers"
 import Components from "unplugin-vue-components/vite"
@@ -20,23 +18,6 @@ const deps = Object.keys(dependencies).reduce((result, k) => {
   return result
 }, {})
 
-// 自定义插件：仅在本地开发时复制 lib 目录
-const copyLibPlugin = (): PluginOption => ({
-  name: "copy-lib-plugin",
-  closeBundle: () => {
-    if (process.env.npm_lifecycle_event === "watch-build") {
-      const src = resolve(__dirname, "lib")
-      const dest = resolve(
-        __dirname,
-        "../x/ui/vuetifyx/vuetifyxjs/src/lib/TiptapEditor/lib"
-      )
-      fs.removeSync(dest)
-      fs.copySync(src, dest)
-      console.log(`Copied lib to ${dest}`)
-    }
-  }
-})
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -51,8 +32,7 @@ export default defineConfig({
     }) as PluginOption,
     dts({
       insertTypesEntry: true
-    }),
-    copyLibPlugin()
+    })
   ],
   optimizeDeps: {
     include: ["vue", "vuetify"]

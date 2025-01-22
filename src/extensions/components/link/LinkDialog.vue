@@ -85,7 +85,7 @@ function close() {
 
 watch(dialog, (val) => {
   if (!val) return
-  // console.log('props', props)
+  console.log('props', props)
   attrs.value = {
     href: props.value,
     target: props.target,
