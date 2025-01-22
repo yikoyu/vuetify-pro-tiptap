@@ -13,6 +13,7 @@ const deps = Object.keys(dependencies).reduce((result, k) => {
 
   const pattern =
     /[`~!@#$^\-&*()=|{}':;',\\[\].<>/?~！@#￥……&*（）——|{}【】'；：""'。，、？\s]/g
+  //@ts-expect-error ignore
   result[k] = k.replace(pattern, "")
 
   return result
