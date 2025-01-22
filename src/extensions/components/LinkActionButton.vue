@@ -18,6 +18,7 @@ interface Props {
   color?: string
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
+  hrefRules?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -26,7 +27,8 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   color: undefined,
   action: undefined,
-  isActive: undefined
+  isActive: undefined,
+  hrefRules: ''
 })
 
 const attrs = ref<LinkAttrs>({
@@ -55,7 +57,10 @@ function onAction() {
     :action="onAction"
   >
     <OriginalThemeProvider>
-      <slot name="dialog" :props="{ editor, value: attrs.href, ...attrs }"></slot>
+      <slot
+        name="dialog"
+        :props="{ editor, value: attrs.href, hrefRules: props.hrefRules, ...attrs }"
+      ></slot>
     </OriginalThemeProvider>
   </ActionButton>
 </template>

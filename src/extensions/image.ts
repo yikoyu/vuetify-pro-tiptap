@@ -86,7 +86,7 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
             'data-display': display
           }
         },
-        parseHTML: element => {
+        parseHTML: (element) => {
           const display = element.getAttribute('data-display')
           return display || 'inline'
         }
@@ -100,7 +100,7 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
     return {
       ...this.parent?.(),
       updateImage:
-        options =>
+        (options) =>
         ({ commands }) => {
           return commands.updateAttributes(this.name, options)
         }

@@ -1,0 +1,34 @@
+name: Build and Deploy Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: set Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dep
+        run: pnpm i
+
+      - name: build lib
+        run: pnpm run build:lib
+
+      - name: push to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: lib
+          publish_branch: release

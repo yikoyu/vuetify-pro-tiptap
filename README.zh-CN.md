@@ -9,9 +9,10 @@
 ![LICENSE](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![semantic-release: vue](https://img.shields.io/badge/semantic--release-vue-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-[English](./README.md) | 中文
+[English](../../../../../../../../vuetify-pro-tiptap/README.md) | 中文
 
 ## Demo
+
 👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
 
 👾[Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/main)
@@ -19,6 +20,7 @@
 👾[Nuxt3 Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/nuxt)
 
 ## 特色
+
 - 使用 [vuetify](https://github.com/vuetifyjs/vuetify) 组件
 - 许多开箱即用的 [extension](#extensions) (欢迎提交 issue 为新的 feature 留下建议)
 - 支持 markdown 语法
@@ -27,10 +29,13 @@
 - Vuetify 3.x 和 Vue 3.x 支持
 
 ## Vuetify 2.x
+
 Vuetify 2.x 请使用最新版本的 [vuetify-pro-tiptap@1.X.X](https://github.com/yikoyu/vuetify-pro-tiptap/tree/1.x)
 
 ## 安装
+
 ### NPM安装
+
 ```shell
 pnpm add vuetify-pro-tiptap
 # 或者
@@ -130,6 +135,7 @@ app.mount('#app')
 </details>
 
 ## 全局设置
+
 ```TypeScript
 import { markRaw } from 'vue'
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap, defaultBubbleList } from 'vuetify-pro-tiptap'
@@ -339,7 +345,9 @@ export default Extension.create<PreviewOptions>({
 ## 国际化
 
 ### 设置语言
+
 你可以在安装插件的时候声明
+
 ```TypeScript
 import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 
@@ -347,13 +355,17 @@ const VuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans'
 })
 ```
+
 或者调用方法动态修改
+
 ```TypeScript
 import { locale } from 'vuetify-pro-tiptap'
 
 locale.setLang('en')
 ```
+
 可用的语言:
+
 - en (默认)
 - zhHans
 - nl
@@ -361,7 +373,9 @@ locale.setLang('en')
 - it
 
 ### 加载新语言
+
 当前语言暂未提供时，可以使用 `setMessage` 进行设置
+
 ```TypeScript
 import { locale } from 'vuetify-pro-tiptap'
 
@@ -372,10 +386,28 @@ locale.setLang('zhHant')
 ```
 
 ## 用法
+
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseKit, Bold, Color, Fullscreen, Heading, Highlight, History, Image, Italic, Link, Strike, Table, Underline, Video, VuetifyTiptap, VuetifyViewer } from 'vuetify-pro-tiptap'
+import {
+  BaseKit,
+  Bold,
+  Color,
+  Fullscreen,
+  Heading,
+  Highlight,
+  History,
+  Image,
+  Italic,
+  Link,
+  Strike,
+  Table,
+  Underline,
+  Video,
+  VuetifyTiptap,
+  VuetifyViewer
+} from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
 
 const extensions = [
@@ -405,7 +437,15 @@ const content = ref('')
 <template>
   <VApp id="app">
     <VContainer>
-      <VuetifyTiptap v-model="content" label="Title" rounded :min-height="200" :max-height="465" :max-width="900" :extensions="extensions" />
+      <VuetifyTiptap
+        v-model="content"
+        label="Title"
+        rounded
+        :min-height="200"
+        :max-height="465"
+        :max-width="900"
+        :extensions="extensions"
+      />
       <VuetifyViewer :value="content" />
     </VContainer>
   </VApp>
@@ -417,6 +457,7 @@ const content = ref('')
 ### VuetifyTiptap
 
 #### Props
+
 | 名称                 | 类型                                       | 默认值    | 说明                         |
 | -------------------- | ------------------------------------------ | --------- | ---------------------------- |
 | modelValue           | string                                     | ''        | 输入的值                     |
@@ -439,12 +480,14 @@ const content = ref('')
 | editorClass          | string \| string[] \| Record\<string, any> | undefined | 编辑器class                  |
 
 #### Slots
+
 | 名称   | 说明                   |
 | ------ | ---------------------- |
 | editor | 自定义编辑器的插槽     |
 | bottom | 自定义编辑器底部的插槽 |
 
 #### Event
+
 | 名称                 | 类型                                              | 说明                     |
 | -------------------- | ------------------------------------------------- | ------------------------ |
 | update:modelValue    | string \| JSONContent                             | 编辑器 onUpdate 时处触发 |
@@ -455,6 +498,7 @@ const content = ref('')
 ### VuetifyViewer
 
 #### Props
+
 | 名称          | 类型                  | 默认值       | 说明            |
 | ------------- | --------------------- | ------------ | --------------- |
 | value         | string \| JSONContent | ''           | 预览的值        |
@@ -467,6 +511,7 @@ const content = ref('')
 | extensions    | AnyExtension[]        | []           | tiptap插件      |
 
 #### Slots
+
 | 名称   | 说明           |
 | ------ | -------------- |
 | before | 在顶部添加内容 |

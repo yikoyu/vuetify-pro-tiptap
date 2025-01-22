@@ -6,7 +6,6 @@ import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig, PluginOption } from 'vite'
 import dts from 'vite-plugin-dts'
-
 // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
 import { dependencies, scripts } from './package.json'
 
@@ -56,10 +55,11 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           vuetify: 'Vuetify',
+          vuetifyx: 'Vuetifyx',
           'vuetify/components': 'VuetifyComp'
         }
       },
-      external: ['vue', 'vuetify', 'vuetify/components']
+      external: ['vue', 'vuetify', 'vuetifyx', 'vuetify/components']
     }
   }
 })

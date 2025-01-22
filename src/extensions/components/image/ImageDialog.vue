@@ -47,7 +47,7 @@ const defaultImageTabs = computed<ImageTab[]>(() => {
     }
   ]
 
-  const filterDefTabs = defTabs.filter(item => {
+  const filterDefTabs = defTabs.filter((item) => {
     if (!item.type) return item
     return !props.hiddenTabs.includes(item.type)
   })
@@ -87,7 +87,7 @@ function close() {
 
 watch(
   () => props.value,
-  val => {
+  (val) => {
     form.value = {
       ...unref(form),
       ...val

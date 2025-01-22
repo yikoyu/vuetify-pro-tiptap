@@ -9,9 +9,10 @@ A WYSIWYG rich-text editor using [tiptap](https://github.com/scrumpy/tiptap) and
 ![LICENSE](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![semantic-release: vue](https://img.shields.io/badge/semantic--release-vue-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-English | [中文](./README.zh-CN.md)
+English | [中文](../../../../../../../../vuetify-pro-tiptap/README.zh-CN.md)
 
 ## Demo
+
 👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
 
 👾[Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/main)
@@ -19,6 +20,7 @@ English | [中文](./README.zh-CN.md)
 👾[Nuxt3 Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/nuxt)
 
 ## Features
+
 - Use [vuetify](https://github.com/vuetifyjs/vuetify) components
 - Many out of box [extension](#extensions) (welcome to submit an issue for feature request)
 - Markdown support
@@ -27,10 +29,13 @@ English | [中文](./README.zh-CN.md)
 - Vuetify 3.x and Vue 3.x support
 
 ## Vuetify 2.x
+
 For Vuetify 2.x please use the latest version of [vuetify-pro-tiptap@1.X.X](https://github.com/yikoyu/vuetify-pro-tiptap/tree/1.x)
 
 ## Installation
+
 ### NPM
+
 ```shell
 pnpm add vuetify-pro-tiptap
 # or
@@ -130,6 +135,7 @@ app.mount('#app')
 </details>
 
 ## Global Settings
+
 ```TypeScript
 import { markRaw } from 'vue'
 import { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap, defaultBubbleList } from 'vuetify-pro-tiptap'
@@ -339,7 +345,9 @@ export default Extension.create<PreviewOptions>({
 ## I18n
 
 ### Setting language
+
 You can declare when you install the plugin.
+
 ```TypeScript
 import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 
@@ -347,13 +355,17 @@ const VuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans'
 })
 ```
+
 Or use `setLang` dynamic change
+
 ```TypeScript
 import { locale } from 'vuetify-pro-tiptap'
 
 locale.setLang('en')
 ```
+
 Available languages:
+
 - en (default)
 - zhHans
 - nl
@@ -361,7 +373,9 @@ Available languages:
 - it
 
 ### Use unavailable language
+
 Loading unavailable language, use `setMessage` for Settings
+
 ```TypeScript
 import { locale } from 'vuetify-pro-tiptap'
 
@@ -372,10 +386,28 @@ locale.setLang('zhHant')
 ```
 
 ## Usage
+
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseKit, Bold, Color, Fullscreen, Heading, Highlight, History, Image, Italic, Link, Strike, Table, Underline, Video, VuetifyTiptap, VuetifyViewer } from 'vuetify-pro-tiptap'
+import {
+  BaseKit,
+  Bold,
+  Color,
+  Fullscreen,
+  Heading,
+  Highlight,
+  History,
+  Image,
+  Italic,
+  Link,
+  Strike,
+  Table,
+  Underline,
+  Video,
+  VuetifyTiptap,
+  VuetifyViewer
+} from 'vuetify-pro-tiptap'
 import 'vuetify-pro-tiptap/style.css'
 
 const extensions = [
@@ -405,7 +437,15 @@ const content = ref('')
 <template>
   <VApp id="app">
     <VContainer>
-      <VuetifyTiptap v-model="content" label="Title" rounded :min-height="200" :max-height="465" :max-width="900" :extensions="extensions" />
+      <VuetifyTiptap
+        v-model="content"
+        label="Title"
+        rounded
+        :min-height="200"
+        :max-height="465"
+        :max-width="900"
+        :extensions="extensions"
+      />
       <VuetifyViewer :value="content" />
     </VContainer>
   </VApp>
@@ -417,60 +457,65 @@ const content = ref('')
 ### VuetifyTiptap
 
 #### Props
-| Name | Type | Default | Description |
-| ---- | ---- | ---- | ---- |
-| modelValue | string \| JSONContent | '' | The input’s value |
-| markdownTheme | string \| false | 'default' | Markdown theme |
-| output | 'html' \| 'json' \| 'text' | 'html' | Output format |
-| dark | boolean | false | Applies the dark theme variant to the component. |
-| dense | boolean | false | Reduces the input height |
-| outlined | boolean | true | Applies the outlined style to the input |
-| flat | boolean | true | Removes the card’s elevation |
-| disabled | boolean | false | Disable the input |
-| label | string | undefined | Sets input label |
-| hideToolbar | boolean | false | Hidden the toolbar |
-| disableToolbar | boolean | false | Disable the toolbar |
-| hideBubble | boolean | false | Hidden the bubble menu |
-| removeDefaultWrapper | boolean | false | Default wrapper when the delete editor is empty |
-| maxWidth | string \| number | undefined | Sets the maximum width for the component. |
-| minHeight | string \| number | undefined | Sets the minimum height for the component. |
-| maxHeight | string \| number | undefined | Sets the maximum height for the component. |
-| extensions | AnyExtension[] | [] | Tiptap the extensions |
-| editorClass | string \| string[] \| Record\<string, any> | undefined | Editor class |
+
+| Name                 | Type                                       | Default   | Description                                      |
+| -------------------- | ------------------------------------------ | --------- | ------------------------------------------------ |
+| modelValue           | string \| JSONContent                      | ''        | The input’s value                                |
+| markdownTheme        | string \| false                            | 'default' | Markdown theme                                   |
+| output               | 'html' \| 'json' \| 'text'                 | 'html'    | Output format                                    |
+| dark                 | boolean                                    | false     | Applies the dark theme variant to the component. |
+| dense                | boolean                                    | false     | Reduces the input height                         |
+| outlined             | boolean                                    | true      | Applies the outlined style to the input          |
+| flat                 | boolean                                    | true      | Removes the card’s elevation                     |
+| disabled             | boolean                                    | false     | Disable the input                                |
+| label                | string                                     | undefined | Sets input label                                 |
+| hideToolbar          | boolean                                    | false     | Hidden the toolbar                               |
+| disableToolbar       | boolean                                    | false     | Disable the toolbar                              |
+| hideBubble           | boolean                                    | false     | Hidden the bubble menu                           |
+| removeDefaultWrapper | boolean                                    | false     | Default wrapper when the delete editor is empty  |
+| maxWidth             | string \| number                           | undefined | Sets the maximum width for the component.        |
+| minHeight            | string \| number                           | undefined | Sets the minimum height for the component.       |
+| maxHeight            | string \| number                           | undefined | Sets the maximum height for the component.       |
+| extensions           | AnyExtension[]                             | []        | Tiptap the extensions                            |
+| editorClass          | string \| string[] \| Record\<string, any> | undefined | Editor class                                     |
 
 #### Slots
-| Name | Description |
-| ---- | ---- |
-| editor | Slot to customize editor |
+
+| Name   | Description                     |
+| ------ | ------------------------------- |
+| editor | Slot to customize editor        |
 | bottom | Slot to customize editor bottom |
 
 #### Event
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| update:modelValue | string \| JSONContent | Emitted when editor onUpdate |
-| update:markdownTheme | string | Emitted when change theme |
-| change | { editor: Editor, output: string \| JSONContent } | Emitted when editor onUpdate |
-| enter | | Keyboard enter return |
+
+| Name                 | Type                                              | Description                  |
+| -------------------- | ------------------------------------------------- | ---------------------------- |
+| update:modelValue    | string \| JSONContent                             | Emitted when editor onUpdate |
+| update:markdownTheme | string                                            | Emitted when change theme    |
+| change               | { editor: Editor, output: string \| JSONContent } | Emitted when editor onUpdate |
+| enter                |                                                   | Keyboard enter return        |
 
 ### VuetifyViewer
 
 #### Props
-| Name | Type | Default | Description |
-| ---- | ---- | ---- | ---- |
-| value | string \| JSONContent | '' | The preview’s value |
-| dark | boolean | false | Applies the dark theme variant to the component. |
-| dense | boolean | false | Reduces the input height |
-| markdownTheme | string \| false | 'default' | Markdown theme |
-| xss | boolean | true | Enable xss filter |
-| xssOptions | xss.IWhiteList | Default rule | Xss filter rule config |
-| maxWidth | string \| number | undefined | Sets the maximum width for the component. |
-| extensions | AnyExtension[] | [] | Tiptap the extensions |
+
+| Name          | Type                  | Default      | Description                                      |
+| ------------- | --------------------- | ------------ | ------------------------------------------------ |
+| value         | string \| JSONContent | ''           | The preview’s value                              |
+| dark          | boolean               | false        | Applies the dark theme variant to the component. |
+| dense         | boolean               | false        | Reduces the input height                         |
+| markdownTheme | string \| false       | 'default'    | Markdown theme                                   |
+| xss           | boolean               | true         | Enable xss filter                                |
+| xssOptions    | xss.IWhiteList        | Default rule | Xss filter rule config                           |
+| maxWidth      | string \| number      | undefined    | Sets the maximum width for the component.        |
+| extensions    | AnyExtension[]        | []           | Tiptap the extensions                            |
 
 #### Slots
-| Name | Description |
-| ---- | ---- |
+
+| Name   | Description               |
+| ------ | ------------------------- |
 | before | Add content at the before |
-| after | Add content at the after |
+| after  | Add content at the after  |
 
 ## 🏗 Contributing
 
