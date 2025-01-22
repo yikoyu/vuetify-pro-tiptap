@@ -23,7 +23,7 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
     return {
       ...this.parent?.(),
       openOnClick: false,
-      hrefRules: '[value => !value.startsWith("^http://") || "URL should not start with http://"]',
+      hrefRules: '[value => !/^http:\\/\\//.test(value) || "URL should not start with http://"]',
       dialogComponent: () => LinkDialog,
       button: ({ editor, extension, t }) => {
         const { dialogComponent, hrefRules } = extension.options
