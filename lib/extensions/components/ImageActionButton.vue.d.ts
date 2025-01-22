@@ -61,12 +61,12 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     isActive: undefined;
 }>>> & Readonly<{}>, {
     color: string;
-    disabled: boolean;
-    icon: keyof IconsOptions;
     action: (value?: unknown) => void;
     isActive: () => boolean;
+    icon: keyof IconsOptions;
     tooltip: string;
     upload: (file: File) => Promise<string>;
+    disabled: boolean;
     imageTabs: ImageTab[];
     hiddenTabs: ImageTabKey[];
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;

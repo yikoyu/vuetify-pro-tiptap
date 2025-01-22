@@ -87,23 +87,22 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     extensions: () => never[];
     editorClass: undefined;
 }>>> & Readonly<{
-    onEnter?: (() => any) | undefined;
     onChange?: ((value: VuetifyTiptapOnChange) => any) | undefined;
+    onEnter?: (() => any) | undefined;
     "onUpdate:modelValue"?: ((value: string | object | undefined) => any) | undefined;
     "onUpdate:markdownTheme"?: ((value: string) => any) | undefined;
 }>, {
+    markdownTheme: string | false;
+    extensions: AnyExtension[];
     flat: boolean;
     disabled: boolean;
-    modelValue: string | object;
     maxHeight: string | number;
     maxWidth: string | number;
     minHeight: string | number;
     outlined: boolean;
+    modelValue: string | object;
     label: string;
     output: "html" | "json" | "text";
-    markdownTheme: string | false;
-    errorMessages: string | string[] | null;
-    extensions: AnyExtension[];
     dark: boolean;
     dense: boolean;
     hideToolbar: boolean;
@@ -111,6 +110,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     hideBubble: boolean;
     removeDefaultWrapper: boolean;
     editorClass: string | string[] | Record<string, any>;
+    errorMessages: string | string[] | null;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

@@ -37,11 +37,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     items: () => never[];
 }>>> & Readonly<{}>, {
     color: string;
+    icon: keyof IconsOptions;
+    tooltip: string;
     disabled: boolean;
     maxHeight: string | number;
-    icon: keyof IconsOptions;
     items: Item[];
-    tooltip: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_WithDefaults<P, D> = {

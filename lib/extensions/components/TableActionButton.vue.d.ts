@@ -26,11 +26,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     isActive: undefined;
 }>>> & Readonly<{}>, {
     color: string;
-    disabled: boolean;
-    icon: keyof IconsOptions;
     action: (value?: unknown) => void;
     isActive: () => boolean;
+    icon: keyof IconsOptions;
     tooltip: string;
+    disabled: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_WithDefaults<P, D> = {

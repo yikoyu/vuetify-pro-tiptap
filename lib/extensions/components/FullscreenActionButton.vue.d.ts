@@ -26,8 +26,8 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     useWindow: boolean;
 }>>> & Readonly<{}>, {
     color: string;
-    disabled: boolean;
     isActive: () => boolean;
+    disabled: boolean;
     useWindow: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

@@ -36,9 +36,9 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     xssOptions: () => IWhiteList;
     extensions: () => never[];
 }>>> & Readonly<{}>, {
-    value: string | JSONContent;
     markdownTheme: string | false;
     extensions: AnyExtension[];
+    value: string | JSONContent;
     dark: boolean;
     dense: boolean;
     xss: boolean | string[];
