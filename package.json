@@ -51,7 +51,7 @@
     "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
   },
   "scripts": {
-    "watch-build": "nodemon --watch src -e ts,vue,scss --exec 'pnpm build:lib && node scripts/copy-lib.js'",
+    "watch-build": "nodemon --watch src -e ts,vue,scss --exec 'pnpm build:lib'",
     "build:lib": "pnpm check:types && vite build  && pnpm build:styles",
     "build:examples": "pnpm build:lib && pnpm check:types && vite build --config vite-example.config.ts",
     "build:styles": "pnpm sass ./src/styles:./lib/styles --style=compressed --no-source-map",
