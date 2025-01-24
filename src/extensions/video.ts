@@ -70,7 +70,7 @@ function linkConvert(src: string) {
   src = src.replace('https://vimeo.com/', 'https://player.vimeo.com/video/')
 
   // Convert bilibili links
-  const isBilibiliLink = /^https?:\/\/www.bilibili.com\/video\/.*/i.test(src)
+  const isBilibiliLink = /^https?:\/\/www\.bilibili\.com\/video\/.*/i.test(src)
   if (isBilibiliLink) {
     src = src
       .replace(/\?.*$/i, '')
