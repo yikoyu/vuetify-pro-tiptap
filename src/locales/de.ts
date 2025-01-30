@@ -51,7 +51,11 @@ const locale: Record<string, string> = {
   'editor.image.dialog.tab.url': 'URL',
   'editor.image.dialog.tab.upload': 'Hochladen',
   'editor.image.dialog.form.link': 'Link',
-  'editor.image.dialog.form.alt': 'Alt'
+  'editor.image.dialog.form.alt': 'Alt',
+  'editor.video.tooltip': 'Video',
+  'editor.video.dialog.title': 'Video einfügen',
+  'editor.video.dialog.link': 'link',
+  'editor.video.dialog.button.apply': 'Anwenden',
 }
 
 export default locale
