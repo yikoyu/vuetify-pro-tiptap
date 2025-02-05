@@ -4,6 +4,7 @@ import { Node } from '@tiptap/core';
  * Represents the interface for video options, extending GeneralOptions.
  */
 export interface VideoOptions extends GeneralOptions<VideoOptions> {
+    hrefRules?: string;
     /**
      * Indicates whether fullscreen play is allowed
      *

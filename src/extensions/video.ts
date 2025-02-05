@@ -2,15 +2,17 @@ import type { GeneralOptions } from '@/type'
 
 import { VIDEO_SIZE } from '@/constants/define'
 import { getCssUnitWithDefault } from '@/utils/utils'
-
-import { Node } from '@tiptap/core'
+import { mergeAttributes, Node  } from '@tiptap/core'
+import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import VideoDialog from './components/video/VideoDialog.vue'
+import VideoNodeView from './components/video/VideoNodeView.vue'
 import VideoActionButton from './components/VideoActionButton.vue'
 
 /**
  * Represents the interface for video options, extending GeneralOptions.
  */
 export interface VideoOptions extends GeneralOptions<VideoOptions> {
+  hrefRules?: string
   /**
    * Indicates whether fullscreen play is allowed
    *
@@ -122,7 +124,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
   parseHTML() {
     return [
       {
-        tag: 'div[data-video] iframe'
+        tag: 'div[data-video]'
       }
     ]
   },
@@ -130,25 +132,18 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
   renderHTML({ HTMLAttributes }) {
     const { width = '100%' } = HTMLAttributes ?? {}
 
-    const iframeHTMLAttributes = {
-      ...HTMLAttributes,
+    return ['div', { 'data-video': '' }, [
+      'iframe',
+      {
+        ...HTMLAttributes,
       width: '100%',
       height: '100%'
-    }
+      }
+    ]]
+  },
 
-    const responsiveStyle = `position: relative;overflow: hidden;display: flex;flex: 1;max-width: ${width};`
-    const responsiveSizesStyle = `flex: 1;padding-bottom: ${(9 / 16) * 100}%;`
-
-    const iframeDOM = ['iframe', iframeHTMLAttributes]
-    const sizesDOM = ['div', { style: responsiveSizesStyle }]
-    const responsiveDOM = ['div', { style: responsiveStyle }, sizesDOM, iframeDOM]
-
-    const divAttrs = {
-      ...this.options.HTMLAttributes,
-      'data-video': ''
-    }
-
-    return ['div', divAttrs, responsiveDOM]
+  addNodeView() {
+    return VueNodeViewRenderer(VideoNodeView)
   },
 
   addCommands() {
@@ -177,17 +172,19 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       allowFullscreen: true,
       frameborder: false,
       width: VIDEO_SIZE['size-medium'],
+      hrefRules: '[value => !/^http:\\/\\//.test(value) || "URL should not start with http://"]',
       HTMLAttributes: {
         class: 'iframe-wrapper',
         style: 'display: flex;justify-content: center;'
       },
       dialogComponent: () => VideoDialog,
       button: ({ editor, extension, t }) => {
-        const { dialogComponent } = extension.options
+        const { dialogComponent, hrefRules } = extension.options
 
         return {
           component: VideoActionButton,
           componentProps: {
+            hrefRules,
             isActive: () => editor.isActive('video') || false,
             icon: 'video',
             tooltip: t('editor.video.tooltip')

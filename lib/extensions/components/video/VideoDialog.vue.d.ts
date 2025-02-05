@@ -3,16 +3,20 @@ interface Props {
     value?: string;
     editor: Editor;
     destroy?: () => void;
+    hrefRules?: string;
 }
 declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToOption<Props>, {
     value: undefined;
     destroy: undefined;
+    hrefRules: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToOption<Props>, {
     value: undefined;
     destroy: undefined;
+    hrefRules: string;
 }>>> & Readonly<{}>, {
     value: string;
     destroy: () => void;
+    hrefRules: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_WithDefaults<P, D> = {

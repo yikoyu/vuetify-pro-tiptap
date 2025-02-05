@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import type { IconsOptions } from '@/constants/icons'
-import type { Editor } from '@tiptap/vue-3'
+import type { IconsOptions } from "@/constants/icons"
+import type { Editor } from "@tiptap/vue-3"
 
-import { ButtonViewReturnComponentProps } from '@/type'
+import { ButtonViewReturnComponentProps } from "@/type"
 
-import { ref } from 'vue'
-import ActionButton from './ActionButton.vue'
-import OriginalThemeProvider from './OriginalThemeProvider.vue'
+import { ref } from "vue"
+import ActionButton from "./ActionButton.vue"
+import OriginalThemeProvider from "./OriginalThemeProvider.vue"
 
 interface Props {
   editor: Editor
-
+  hrefRules?: string
   icon?: keyof IconsOptions
   tooltip?: string
   disabled?: boolean
   color?: string
-  action?: ButtonViewReturnComponentProps['action']
-  isActive?: ButtonViewReturnComponentProps['isActive']
+  action?: ButtonViewReturnComponentProps["action"]
+  isActive?: ButtonViewReturnComponentProps["isActive"]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,13 +25,14 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   color: undefined,
   action: undefined,
-  isActive: undefined
+  isActive: undefined,
+  hrefRules: ""
 })
 
 const src = ref<string | undefined>(undefined)
 
 function onAction() {
-  const { src: _src } = props.editor.getAttributes('video')
+  const { src: _src } = props.editor.getAttributes("video")
   src.value = _src
 }
 </script>
@@ -46,7 +47,10 @@ function onAction() {
     :action="onAction"
   >
     <OriginalThemeProvider>
-      <slot name="dialog" :props="{ editor, value: src }"></slot>
+      <slot
+        name="dialog"
+        :props="{ editor, hrefRules: props.hrefRules, value: src }"
+      ></slot>
     </OriginalThemeProvider>
   </ActionButton>
 </template>

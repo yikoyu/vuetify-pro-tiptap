@@ -3,7 +3,7 @@ import type { Editor } from '@tiptap/vue-3'
 import type { LinkAttrs } from './types'
 
 import { getIcon } from '@/constants/icons'
-
+import { useEval } from '@/hooks/use-eval'
 import { useLocale } from '@/locales'
 import { computed, ref, watch } from 'vue'
 
@@ -34,25 +34,7 @@ const generateLinkAttrs = (): LinkAttrs => ({
 
 const attrs = ref(generateLinkAttrs())
 const form = ref()
-
-const evalHrefRules = computed(() => {
-  if (!props.hrefRules) return []
-
-  if (Array.isArray(props.hrefRules)) {
-    return props.hrefRules
-  }
-
-  if (
-    typeof props.hrefRules === 'string' &&
-    props.hrefRules.startsWith('[') &&
-    props.hrefRules.endsWith(']')
-  ) {
-    // eslint-disable-next-line no-new-func
-    return new Function(`return ${props.hrefRules}`)()
-  }
-
-  return props.hrefRules
-})
+const { evalHrefRules } = useEval(['hrefRules'], props)
 
 const dialog = ref<boolean>(false)
 

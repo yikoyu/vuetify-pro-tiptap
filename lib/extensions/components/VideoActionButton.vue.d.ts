@@ -3,12 +3,13 @@ import { Editor } from '@tiptap/vue-3';
 import { ButtonViewReturnComponentProps } from '../../type';
 interface Props {
     editor: Editor;
+    hrefRules?: string;
     icon?: keyof IconsOptions;
     tooltip?: string;
     disabled?: boolean;
     color?: string;
-    action?: ButtonViewReturnComponentProps['action'];
-    isActive?: ButtonViewReturnComponentProps['isActive'];
+    action?: ButtonViewReturnComponentProps["action"];
+    isActive?: ButtonViewReturnComponentProps["isActive"];
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -16,6 +17,7 @@ declare function __VLS_template(): {
         dialog?(_: {
             props: {
                 editor: Editor;
+                hrefRules: string;
                 value: string | undefined;
             };
         }): any;
@@ -31,6 +33,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     color: undefined;
     action: undefined;
     isActive: undefined;
+    hrefRules: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToOption<Props>, {
     icon: undefined;
     tooltip: undefined;
@@ -38,6 +41,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     color: undefined;
     action: undefined;
     isActive: undefined;
+    hrefRules: string;
 }>>> & Readonly<{}>, {
     color: string;
     action: (value?: unknown) => void;
@@ -45,6 +49,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     icon: keyof IconsOptions;
     tooltip: string;
     disabled: boolean;
+    hrefRules: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
