@@ -20,8 +20,13 @@ const onError = (err: any) => {
     >
       <div :style="`flex: 1; padding-bottom: ${(9 / 16) * 100}%;`"></div>
       <div class="iframe-container">
+        <ImageLoadError
+          v-if="loadError || !props.HTMLAttributes.src"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          message="Video loading failed. Please check the URL or permissions."
+        />
         <iframe
-          v-if="!loadError"
+          v-else-if="!loadError"
           ref="iframeRef"
           :src="props.HTMLAttributes.src"
           :width="props.HTMLAttributes.width"
@@ -31,11 +36,6 @@ const onError = (err: any) => {
           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
           @error="onError"
         ></iframe>
-        <ImageLoadError
-          v-else
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-          message="Video loading failed. Please check the URL or permissions."
-        />
       </div>
     </div>
   </NodeViewWrapper>

@@ -2,7 +2,7 @@ import type { GeneralOptions } from '@/type'
 
 import { VIDEO_SIZE } from '@/constants/define'
 import { getCssUnitWithDefault } from '@/utils/utils'
-import { mergeAttributes, Node  } from '@tiptap/core'
+import { Node  } from '@tiptap/core'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import VideoDialog from './components/video/VideoDialog.vue'
 import VideoNodeView from './components/video/VideoNodeView.vue'
@@ -64,7 +64,8 @@ declare module '@tiptap/core' {
   }
 }
 
-function linkConvert(src: string) {
+function linkConvert(src: string | number) {
+  src = String(src)
   // Convert youtube links
   src = src.replace('https://youtu.be/', 'https://www.youtube.com/watch?v=').replace('watch?v=', 'embed/')
 
@@ -124,7 +125,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
   parseHTML() {
     return [
       {
-        tag: 'div[data-video]'
+        tag: 'div[data-video] iframe'
       }
     ]
   },
@@ -136,8 +137,8 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       'iframe',
       {
         ...HTMLAttributes,
-      width: '100%',
-      height: '100%'
+        width: '100%',
+        height: '100%'
       }
     ]]
   },
@@ -150,7 +151,8 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
     return {
       setVideo:
         options =>
-        ({ commands }) => {
+          ({ commands }) => {
+            console.log('Inserting video with options:', options)  // 调试日志
           return commands.insertContent({
             type: this.name,
             attrs: options
@@ -159,7 +161,8 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
 
       updateVideo:
         options =>
-        ({ commands }) => {
+          ({ commands }) => {
+            console.log('Updating video with options:', options)  // 调试日志
           return commands.updateAttributes(this.name, options)
         }
     }
