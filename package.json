@@ -137,7 +137,7 @@
     "semantic-release": "^24.2.0",
     "typescript": "5.5.4",
     "unplugin-vue-components": "^0.27.5",
-    "vite": "^5.4.11",
+    "vite": "^5.4.14",
     "vite-plugin-checker": "^0.8.0",
     "vite-plugin-dts": "^4.3.0",
     "vue": "^3.2.47",
