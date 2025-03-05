@@ -23,7 +23,7 @@ English | [中文](./README.zh-CN.md)
 - Many out of box [extension](#extensions) (welcome to submit an issue for feature request)
 - Markdown support
 - TypeScript support
-- I18n support(`en`, `zhHans`, `nl`, `de`, `it`)
+- I18n support(`en`, `zhHans`, `nl`, `tr`, `de`, `it`)
 - Vuetify 3.x and Vue 3.x support
 
 ## Vuetify 2.x
@@ -357,6 +357,7 @@ Available languages:
 - en (default)
 - zhHans
 - nl
+- tr
 - de
 - it
 
