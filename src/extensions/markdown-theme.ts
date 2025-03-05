@@ -1,12 +1,12 @@
 import type { MarkdownThemeProps } from '@/constants/define'
 
 import type { GeneralOptions } from '@/type'
-import type { Item } from './components/ActionMenuButton.vue'
+import type { ActionMenuButtonItem } from './components/ActionMenuButton'
 
 import { DEFAULT_MARKDOWN_THEME_LIST } from '@/constants/define'
 import { useContext } from '@/hooks'
 import { Extension } from '@tiptap/core'
-import ActionMenuButton from './components/ActionMenuButton.vue'
+import { ActionMenuButton } from './components/ActionMenuButton'
 
 /**
  * Represents the interface for Markdown theme options, extending GeneralOptions.
@@ -33,7 +33,7 @@ export const MarkdownTheme = /* @__PURE__*/ Extension.create<MarkdownThemeOption
         const markdownThemes =
           [...DEFAULT_MARKDOWN_THEME_LIST, ...extension.options.markdownThemes] as MarkdownThemeProps[]
 
-        const items: Item[] = markdownThemes.map(k => ({
+        const items: ActionMenuButtonItem[] = markdownThemes.map(k => ({
           title: t(k.title),
           isActive: () => {
             return state.defaultMarkdownTheme === k.value

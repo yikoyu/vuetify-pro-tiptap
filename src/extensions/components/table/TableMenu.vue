@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import type { Editor } from '@tiptap/vue-3'
-import type { CreateTablePayload } from './CreateTablePopover.vue'
+import type { CreateTablePayload, TableACtionKey, TableItem } from './type'
 
 import { getIcon } from '@/constants/icons'
 import { useLocale } from '@/locales'
 
 import { computed, ref, unref } from 'vue'
 import CreateTablePopover from './CreateTablePopover.vue'
+
+interface Props {
+  editor: Editor
+  activator?: string
+}
 
 const props = withDefaults(defineProps<Props>(), {
   activator: undefined
@@ -15,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
 const { t } = useLocale()
 
 const menu = ref<boolean>(false)
-const items = computed<Item[]>(() => {
+const items = computed<TableItem[]>(() => {
   return [
     {
       type: 'item',
@@ -92,7 +97,7 @@ const items = computed<Item[]>(() => {
       icon: getIcon('tableRemove'),
       disabled: !props.editor.can().deleteTable() || false
     }
-  ] as Item[]
+  ] as TableItem[]
 })
 
 function setTable<T extends object>(key?: TableACtionKey, options?: T) {
@@ -123,32 +128,6 @@ function setTable<T extends object>(key?: TableACtionKey, options?: T) {
 function createTable(options: CreateTablePayload) {
   setTable('insert-table', options)
   menu.value = false
-}
-</script>
-
-<script lang="ts">
-type TableACtionKey =
-  | 'insert-table'
-  | 'add-column-before'
-  | 'add-column-after'
-  | 'delete-column'
-  | 'add-row-before'
-  | 'add-row-after'
-  | 'delete-row'
-  | 'merge-or-split-cells'
-  | 'delete-table'
-
-export interface Item {
-  type: 'item' | 'divider'
-  key?: TableACtionKey
-  title?: string
-  disabled?: boolean
-  icon?: string
-}
-
-interface Props {
-  editor: Editor
-  activator?: string
 }
 </script>
 

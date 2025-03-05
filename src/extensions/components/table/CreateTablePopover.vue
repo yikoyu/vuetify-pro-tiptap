@@ -1,18 +1,11 @@
 <script setup lang="ts">
-import { TABLE_DEFAULT_SELECTED_GRID_SIZE, TABLE_INIT_GRID_SIZE, TABLE_MAX_GRID_SIZE } from '@/constants/define'
+import type { CreateTablePayload, GridSize } from './type'
 
+import { TABLE_DEFAULT_SELECTED_GRID_SIZE, TABLE_INIT_GRID_SIZE, TABLE_MAX_GRID_SIZE } from '@/constants/define'
 import { useLocale } from '@/locales'
 import { isMobile } from '@/utils/is-mobile'
+
 import { reactive, ref, unref } from 'vue'
-
-export interface GridSize {
-  rows: number
-  cols: number
-}
-
-export interface CreateTablePayload extends GridSize {
-  withHeaderRow: boolean
-}
 
 interface Emits {
   (event: 'create-table', payload: CreateTablePayload): void

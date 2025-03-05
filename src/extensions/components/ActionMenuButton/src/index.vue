@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import type { ButtonViewReturnComponentProps } from '@/type'
 import type { Editor } from '@tiptap/vue-3'
-import type { StyleValue } from 'vue'
+
+import type { ActionMenuButtonItem } from './types'
 
 import { getIcon, IconsOptions } from '@/constants/icons'
-
 import { computed, ref } from 'vue'
-import ActionButton from './ActionButton.vue'
+import ActionButton from '../../ActionButton.vue'
 
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
@@ -20,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const menu = ref<boolean>(false)
 
-const active = computed<Item>(() => {
+const active = computed<ActionMenuButtonItem>(() => {
   const find = props.items.find(k => k.isActive())
   if (find && !find.default) {
     return {
@@ -29,7 +28,7 @@ const active = computed<Item>(() => {
     }
   }
 
-  const item: Item = {
+  const item: ActionMenuButtonItem = {
     title: props.tooltip,
     icon: props.icon,
     isActive: () => false
@@ -40,17 +39,6 @@ const active = computed<Item>(() => {
 </script>
 
 <script lang="ts">
-export interface Item {
-  title: string
-  icon?: keyof IconsOptions
-  isActive: NonNullable<ButtonViewReturnComponentProps['isActive']>
-  action?: ButtonViewReturnComponentProps['action']
-  style?: StyleValue
-  disabled?: boolean
-  divider?: boolean
-  default?: boolean
-}
-
 interface Props {
   editor: Editor
   disabled?: boolean
@@ -59,7 +47,7 @@ interface Props {
 
   icon?: keyof IconsOptions
   tooltip?: string
-  items?: Item[]
+  items?: ActionMenuButtonItem[]
 }
 </script>
 

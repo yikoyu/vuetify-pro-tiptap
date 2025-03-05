@@ -2,11 +2,11 @@ import type { FontFamilyProps } from '@/constants/define'
 import type { GeneralOptions } from '@/type'
 
 import type { FontFamilyOptions as TiptapFontFamilyOptions } from '@tiptap/extension-font-family'
-import type { Item } from './components/ActionMenuButton.vue'
+import type { ActionMenuButtonItem } from './components/ActionMenuButton'
 
 import { DEFAULT_FONT_FAMILY_LIST, DEFAULT_FONT_FAMILY_VALUE } from '@/constants/define'
 import { FontFamily as TiptapFontFamily } from '@tiptap/extension-font-family'
-import ActionMenuButton from './components/ActionMenuButton.vue'
+import { ActionMenuButton } from './components/ActionMenuButton'
 
 /**
  * Represents the interface for font family options, extending TiptapFontFamilyOptions and GeneralOptions.
@@ -28,7 +28,7 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
       button: ({ editor, extension, t }) => {
         const fontFamilies = (extension.options?.fontFamilies as FontFamilyProps[]) || []
 
-        const items: Item[] = fontFamilies.map(k => ({
+        const items: ActionMenuButtonItem[] = fontFamilies.map(k => ({
           title: t(k.title),
           isActive: () => {
             const { fontFamily } = editor.getAttributes('textStyle')

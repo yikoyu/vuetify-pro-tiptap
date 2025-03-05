@@ -1,11 +1,11 @@
 import type { GeneralOptions } from '@/type'
 
-import type { Item } from './components/ActionMenuButton.vue'
+import type { ActionMenuButtonItem } from './components/ActionMenuButton'
 import { DEFAULT_FONT_SIZE_LIST, DEFAULT_FONT_SIZE_VALUUE } from '@/constants/define'
 
 import { getCssUnitWithDefault } from '@/utils/utils'
 import { Extension } from '@tiptap/core'
-import ActionMenuButton from './components/ActionMenuButton.vue'
+import { ActionMenuButton } from './components/ActionMenuButton'
 
 /**
  * Represents the interface for font size options, extending GeneralOptions.
@@ -46,7 +46,7 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
       button: ({ editor, extension, t }) => {
         const fontSizes = (extension.options?.fontSizes as FontSizeOptions['fontSizes']) || []
 
-        const items: Item[] = [DEFAULT_FONT_SIZE_VALUUE, ...fontSizes].map(k => ({
+        const items: ActionMenuButtonItem[] = [DEFAULT_FONT_SIZE_VALUUE, ...fontSizes].map(k => ({
           title: k === DEFAULT_FONT_SIZE_VALUUE ? t('editor.default') : String(k),
           isActive: () => {
             const { fontSize } = editor.getAttributes('textStyle')

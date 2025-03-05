@@ -3,10 +3,10 @@ import type { Extension } from '@tiptap/core'
 import type { HeadingOptions as TiptapHeadingOptions } from '@tiptap/extension-heading'
 
 import type { BaseKitOptions } from './base-kit'
-import type { Item } from './components/ActionMenuButton.vue'
+import type { ActionMenuButtonItem } from './components/ActionMenuButton'
 import { Heading as TiptapHeading } from '@tiptap/extension-heading'
 
-import ActionMenuButton from './components/ActionMenuButton.vue'
+import { ActionMenuButton } from './components/ActionMenuButton'
 
 export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions<HeadingOptions> {}
 
@@ -20,7 +20,7 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
         const levels = extension.options?.levels || []
         const baseKitExt = extensions.find(k => k.name === 'base-kit') as Extension<BaseKitOptions>
 
-        const items: Item[] = levels.map(level => ({
+        const items: ActionMenuButtonItem[] = levels.map(level => ({
           action: () => editor.chain().focus().toggleHeading({ level }).run(),
           isActive: () => editor.isActive('heading', { level }) || false,
           disabled: !editor.can().toggleHeading({ level }),
