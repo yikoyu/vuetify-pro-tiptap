@@ -79,6 +79,6 @@ const locale: Record<string, string> = {
   'editor.redo.tooltip': 'İleri Al',
   'editor.fullscreen.tooltip.fullscreen': 'Tam Ekran',
   'editor.fullscreen.tooltip.exit': 'Tam Ekrandan Çık'
-};
+}
 
-export default locale;
+export default locale

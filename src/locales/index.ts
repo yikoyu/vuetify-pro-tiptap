@@ -8,6 +8,7 @@ import de from './de'
 import en from './en'
 import it from './it'
 import nl from './nl'
+import tr from './tr'
 import zhHans from './zh-Hans'
 
 interface LocaleInterface {
@@ -21,6 +22,7 @@ interface MittEvents extends Record<EventType, unknown> {
 
 export const DEFAULT_LOCALE_MESSAGE = {
   nl,
+  tr,
   zhHans,
   en,
   de,
@@ -145,6 +147,11 @@ export {
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.nl instead.
    */
   nl,
+
+  /**
+   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.tr instead.
+   */
+  tr,
 
   /**
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.zhHans instead.

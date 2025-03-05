@@ -23,7 +23,7 @@
 - 许多开箱即用的 [extension](#extensions) (欢迎提交 issue 为新的 feature 留下建议)
 - 支持 markdown 语法
 - TypeScript 支持
-- 支持 i18n (`en`, `zhHans`, `nl`, `de`, `it`)
+- 支持 i18n (`en`, `zhHans`, `nl`, `tr`, `de`, `it`)
 - Vuetify 3.x 和 Vue 3.x 支持
 
 ## Vuetify 2.x
@@ -357,6 +357,7 @@ locale.setLang('en')
 - en (默认)
 - zhHans
 - nl
+- tr
 - de
 - it
 
