@@ -14,12 +14,9 @@ interface Menu {
 
 interface Props {
   editor: Editor
-  disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  disabled: false
-})
+const props = withDefaults(defineProps<Props>(), {})
 
 const { t } = useLocale()
 
@@ -65,7 +62,6 @@ function getMenus(): Menu[] {
         :is="item.button.component"
         v-bind="item.button.componentProps"
         :editor="editor"
-        :disabled="disabled || item.button.componentProps?.disabled"
       >
         <template v-for="(element, slotName, i) in item.button.componentSlots" :key="i" #[`${slotName}`]="values">
           <component :is="element" v-bind="values?.props" />

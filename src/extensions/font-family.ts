@@ -59,6 +59,7 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
         return {
           component: ActionMenuButton,
           componentProps: {
+            editor,
             icon: 'fontFamily',
             tooltip: t('editor.fontFamily.tooltip'),
             disabled,

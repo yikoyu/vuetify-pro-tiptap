@@ -48,6 +48,7 @@ export const MarkdownTheme = /* @__PURE__*/ Extension.create<MarkdownThemeOption
         return {
           component: ActionMenuButton,
           componentProps: {
+            editor,
             icon: 'markdownTheme',
             tooltip: t('editor.markdownTheme.tooltip'),
             items

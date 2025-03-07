@@ -42,6 +42,7 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
         return {
           component: ActionMenuButton,
           componentProps: {
+            editor,
             icon: 'center',
             tooltip: t('editor.textalign.tooltip'),
             disabled,

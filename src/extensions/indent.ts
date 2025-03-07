@@ -2,7 +2,7 @@ import type { GeneralOptions } from '@/type'
 
 import { Extension } from '@tiptap/core'
 
-import ActionButton from './components/ActionButton.vue'
+import { ActionButton } from './components/ActionButton'
 
 export interface IndentOptions extends GeneralOptions<IndentOptions> {}
 
@@ -22,6 +22,7 @@ export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
         return items.map(item => ({
           component: ActionButton,
           componentProps: {
+            editor,
             action: () => {
               if (item === 'indent') editor.chain().focus().sinkListItem('listItem').run()
               if (item === 'outdent') editor.chain().focus().liftListItem('listItem').run()

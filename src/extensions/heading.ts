@@ -44,6 +44,7 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
         return {
           component: ActionMenuButton,
           componentProps: {
+            editor,
             icon: 'heading',
             tooltip: t('editor.heading.tooltip'),
             disabled,

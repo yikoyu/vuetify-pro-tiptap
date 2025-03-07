@@ -11,12 +11,9 @@ import { computed, reactive, ref, unref } from 'vue'
 
 interface Props {
   editor: Editor
-  disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  disabled: false
-})
+const props = withDefaults(defineProps<Props>(), {})
 
 const { t } = useLocale()
 
@@ -102,7 +99,6 @@ function isLinkSelection() {
               v-else
               v-bind="item.componentProps"
               :editor="editor"
-              :disabled="disabled || item.componentProps?.disabled"
             >
               <template v-for="(element, slotName, i) in item.componentSlots" :key="i" #[`${slotName}`]="values">
                 <component :is="element" v-bind="values?.props" />

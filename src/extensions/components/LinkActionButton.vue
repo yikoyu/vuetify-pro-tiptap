@@ -6,7 +6,7 @@ import type { LinkAttrs } from './link/types'
 import { ButtonViewReturnComponentProps } from '@/type'
 
 import { ref } from 'vue'
-import ActionButton from './ActionButton.vue'
+import { ActionButton } from './ActionButton'
 import OriginalThemeProvider from './OriginalThemeProvider.vue'
 
 interface Props {
@@ -47,6 +47,7 @@ function onAction() {
 
 <template>
   <ActionButton
+    :editor="editor"
     :icon="icon"
     :tooltip="tooltip"
     :disabled="disabled"

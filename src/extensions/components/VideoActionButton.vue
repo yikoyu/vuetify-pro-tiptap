@@ -1,32 +1,9 @@
 <script setup lang="ts">
-import type { IconsOptions } from '@/constants/icons'
-import type { Editor } from '@tiptap/vue-3'
-
-import { ButtonViewReturnComponentProps } from '@/type'
-
 import { ref } from 'vue'
-import ActionButton from './ActionButton.vue'
+import { ActionButton, actionButtonProps } from './ActionButton'
 import OriginalThemeProvider from './OriginalThemeProvider.vue'
 
-interface Props {
-  editor: Editor
-
-  icon?: keyof IconsOptions
-  tooltip?: string
-  disabled?: boolean
-  color?: string
-  action?: ButtonViewReturnComponentProps['action']
-  isActive?: ButtonViewReturnComponentProps['isActive']
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  icon: undefined,
-  tooltip: undefined,
-  disabled: false,
-  color: undefined,
-  action: undefined,
-  isActive: undefined
-})
+const props = defineProps(actionButtonProps)
 
 const src = ref<string | undefined>(undefined)
 
@@ -38,6 +15,7 @@ function onAction() {
 
 <template>
   <ActionButton
+    :editor="editor"
     :icon="icon"
     :tooltip="tooltip"
     :disabled="disabled"

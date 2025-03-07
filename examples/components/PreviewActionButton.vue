@@ -31,7 +31,7 @@ const maxWidth = ref<number>(900)
 </script>
 
 <template>
-  <ActionButton tooltip="全屏" :disabled="disabled">
+  <ActionButton :editor="editor" tooltip="全屏" :disabled="disabled">
     <VIcon>{{ `svg:${mdiFileCodeOutline}` }}</VIcon>
 
     <VThemeProvider :theme="originalTheme">

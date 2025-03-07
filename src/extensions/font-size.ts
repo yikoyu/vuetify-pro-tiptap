@@ -77,6 +77,7 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
         return {
           component: ActionMenuButton,
           componentProps: {
+            editor,
             icon: 'fontSize',
             tooltip: t('editor.fontSize.tooltip'),
             disabled,

@@ -9,7 +9,7 @@ import { VuetifyTiptapOnChange } from '@/type'
 import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 
 import { Editor, EditorContent } from '@tiptap/vue-3'
-import { computed, onUnmounted, unref, useAttrs, watch } from 'vue'
+import { computed, onUnmounted, provide, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
 import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
@@ -194,6 +194,8 @@ watch(() => props.disabled, onDisabledChange)
 
 onUnmounted(() => editor?.destroy())
 
+provide('disableToolbar', props.disableToolbar)
+
 defineExpose({ editor })
 </script>
 
@@ -201,7 +203,7 @@ defineExpose({ editor })
   <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
     <VThemeProvider :theme="isDark ? 'dark' : 'light'">
       <!-- Edit Mode -->
-      <BubbleMenu v-if="!hideBubble" :editor="editor" :disabled="disableToolbar" />
+      <BubbleMenu v-if="!hideBubble" :editor="editor" />
 
       <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
         <VCard
@@ -228,7 +230,6 @@ defineExpose({ editor })
             v-if="!hideToolbar"
             class="vuetify-pro-tiptap-editor__toolbar"
             :editor="editor"
-            :disabled="disableToolbar"
           />
 
           <slot

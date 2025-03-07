@@ -3,7 +3,7 @@ import type { BlockquoteOptions as TiptapBlockquoteOptions } from '@tiptap/exten
 
 import { Blockquote as TiptapBlockquote } from '@tiptap/extension-blockquote'
 
-import ActionButton from './components/ActionButton.vue'
+import { ActionButton } from './components/ActionButton'
 
 export interface BlockquoteOptions extends TiptapBlockquoteOptions, GeneralOptions<BlockquoteOptions> {}
 
@@ -17,6 +17,7 @@ export const Blockquote = /* @__PURE__*/ TiptapBlockquote.extend<BlockquoteOptio
       button: ({ editor, t }) => ({
         component: ActionButton,
         componentProps: {
+          editor,
           action: () => editor.chain().focus().toggleBlockquote().run(),
           isActive: () => editor.isActive('blockquote') || false,
           disabled: !editor.can().toggleBlockquote(),

@@ -6,7 +6,7 @@ import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
 
 import { isString } from '@/utils/utils'
 import { deleteSelection } from '@tiptap/pm/commands'
-import ActionButton from './ActionButton.vue'
+import { ActionButton } from './ActionButton'
 
 /** Represents the floating types for bubble images */
 type BubbleImageFloatType = 'float-left' | 'float-none' | 'float-right'

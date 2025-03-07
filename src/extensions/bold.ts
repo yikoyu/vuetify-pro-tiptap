@@ -3,7 +3,7 @@ import type { BoldOptions as TiptapImageOptions } from '@tiptap/extension-bold'
 
 import { Bold as TiptapBold } from '@tiptap/extension-bold'
 
-import ActionButton from './components/ActionButton.vue'
+import { ActionButton } from './components/ActionButton'
 
 export interface BoldOptions extends TiptapImageOptions, GeneralOptions<BoldOptions> {}
 
@@ -14,6 +14,7 @@ export const Bold = /* @__PURE__*/ TiptapBold.extend<BoldOptions>({
       button: ({ editor, t }) => ({
         component: ActionButton,
         componentProps: {
+          editor,
           action: () => editor.chain().focus().toggleBold().run(),
           isActive: () => editor.isActive('bold') || false,
           disabled: !editor.can().toggleBold(),

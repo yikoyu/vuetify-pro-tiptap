@@ -3,7 +3,7 @@ import type { OrderedListOptions as TiptapOrderedListOptions } from '@tiptap/ext
 
 import { OrderedList as TiptapOrderedList } from '@tiptap/extension-ordered-list'
 
-import ActionButton from './components/ActionButton.vue'
+import { ActionButton } from './components/ActionButton'
 
 export interface OrderedListOptions extends TiptapOrderedListOptions, GeneralOptions<OrderedListOptions> {}
 
@@ -14,6 +14,7 @@ export const OrderedList = /* @__PURE__*/ TiptapOrderedList.extend<OrderedListOp
       button: ({ editor, t }) => ({
         component: ActionButton,
         componentProps: {
+          editor,
           action: () => editor.chain().focus().toggleOrderedList().run(),
           isActive: () => editor.isActive('orderedList') || false,
           disabled: !editor.can().toggleOrderedList(),

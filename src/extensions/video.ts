@@ -188,6 +188,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
         return {
           component: VideoActionButton,
           componentProps: {
+            editor,
             isActive: () => editor.isActive('video') || false,
             icon: 'video',
             tooltip: t('editor.video.tooltip')

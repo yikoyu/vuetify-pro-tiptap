@@ -7,7 +7,7 @@ import { Subscript as TiptapSubscript } from '@tiptap/extension-subscript'
 
 import { Superscript as TiptapSuperscript } from '@tiptap/extension-superscript'
 
-import ActionButton from './components/ActionButton.vue'
+import { ActionButton } from './components/ActionButton'
 
 /**
  * Represents the interface for subscript and superscript options, extending GeneralOptions.
@@ -40,6 +40,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
         const subBtn: ButtonViewReturn = {
           component: ActionButton,
           componentProps: {
+            editor,
             action: () => editor.chain().focus().toggleSubscript().run(),
             isActive: () => editor.isActive('subscript') || false,
             disabled: !editor.can().toggleSubscript(),
@@ -51,6 +52,7 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
         const superBtn: ButtonViewReturn = {
           component: ActionButton,
           componentProps: {
+            editor,
             action: () => editor.chain().focus().toggleSuperscript().run(),
             isActive: () => editor.isActive('superscript') || false,
             disabled: !editor.can().toggleSuperscript(),

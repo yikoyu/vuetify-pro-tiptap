@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { getIcon } from '@/constants/icons'
-import { useTiptapStore } from '@/hooks'
+import type { Editor } from '@tiptap/vue-3'
 
+import { useTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
 import { ButtonViewReturnComponentProps } from '@/type'
 import { useFullscreen } from '@vueuse/core'
+
 import { computed, unref, watch } from 'vue'
+import { ActionButton } from './ActionButton'
 
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
@@ -18,6 +20,7 @@ const { state, toggleFullscreen } = useTiptapStore()!
 const { isFullscreen, enter, exit } = useFullscreen()
 
 interface Props {
+  editor: Editor
   disabled?: boolean
   color?: string
   isActive?: ButtonViewReturnComponentProps['isActive']
@@ -37,9 +40,8 @@ const text = computed(() => {
   return unref(t)(tooltip)
 })
 
-const icon = computed(() => {
-  const _icon = state.isFullscreen ? 'fullscreenExit' : 'fullscreen'
-  return getIcon(_icon)
+const icon = computed<'fullscreenExit' | 'fullscreen'>(() => {
+  return state.isFullscreen ? 'fullscreenExit' : 'fullscreen'
 })
 
 function onAction(_useWindow: boolean = false) {
@@ -56,22 +58,13 @@ function onAction(_useWindow: boolean = false) {
 </script>
 
 <template>
-  <VBtn
-    class="rounded me-1 ms-0"
-    density="comfortable"
-    size="small"
+  <ActionButton
+    :editor="editor"
     :disabled="disabled"
     :color="color"
-    icon
-    :class="{
-      'v-btn--active': isActive?.()
-    }"
-    @click="onAction(useWindow)"
-  >
-    <VIcon :icon="icon" />
-
-    <VTooltip :eager="false" activator="parent" location="top" :text="text" />
-
-    <slot></slot>
-  </VBtn>
+    :icon="icon"
+    :tooltip="text"
+    :is-active="isActive"
+    :action="() => onAction(useWindow)"
+  />
 </template>

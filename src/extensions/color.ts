@@ -14,6 +14,7 @@ export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
       button: ({ editor, t }) => ({
         component: ColorActionButton,
         componentProps: {
+          editor,
           action: (color?: unknown) => {
             if (typeof color === 'string') editor.chain().focus().setColor(color).run()
           },

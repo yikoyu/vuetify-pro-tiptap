@@ -1,30 +1,11 @@
 <script setup lang="ts">
-import type { IconsOptions } from '@/constants/icons'
-import type { Editor } from '@tiptap/vue-3'
-
 import { useTiptapStore } from '@/hooks'
-import { ButtonViewReturnComponentProps } from '@/type'
 
 import { watchEffect } from 'vue'
-import ActionButton from './ActionButton.vue'
+import { ActionButton, actionButtonProps } from './ActionButton'
 import ColorPicker from './ColorPicker.vue'
 
-interface Props {
-  editor: Editor
-  icon?: keyof IconsOptions
-  tooltip?: string
-  disabled?: boolean
-  action?: ButtonViewReturnComponentProps['action']
-  isActive?: ButtonViewReturnComponentProps['isActive']
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  icon: undefined,
-  tooltip: undefined,
-  disabled: false,
-  action: undefined,
-  isActive: undefined
-})
+const props = defineProps(actionButtonProps)
 
 const { state } = useTiptapStore()!
 
@@ -39,7 +20,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <ActionButton :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="state.highlight" :is-active="isActive">
+  <ActionButton :editor="editor" :icon="icon" :tooltip="tooltip" :disabled="disabled" :color="state.highlight" :is-active="isActive">
     <ColorPicker v-model="state.highlight" activator="parent" :nudge-top="-4" :nudge-left="8" @change="onChange" />
   </ActionButton>
 </template>

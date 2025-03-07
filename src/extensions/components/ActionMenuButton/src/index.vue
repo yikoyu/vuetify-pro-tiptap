@@ -5,17 +5,10 @@ import type { ActionMenuButtonItem } from './types'
 
 import { getIcon, IconsOptions } from '@/constants/icons'
 import { computed, ref } from 'vue'
-import ActionButton from '../../ActionButton.vue'
+import { ActionButton } from '../../ActionButton'
+import { actionButtonMenuProps } from './props'
 
-const props = withDefaults(defineProps<Props>(), {
-  disabled: false,
-  color: undefined,
-  maxHeight: undefined,
-
-  icon: undefined,
-  tooltip: '',
-  items: () => []
-})
+const props = defineProps(actionButtonMenuProps)
 
 const menu = ref<boolean>(false)
 
@@ -53,6 +46,7 @@ interface Props {
 
 <template>
   <ActionButton
+    :editor="editor"
     :icon="active.icon"
     :tooltip="active.title"
     :disabled="disabled"

@@ -11,9 +11,11 @@ export default Extension.create<PreviewOptions>({
     return {
       divider: false,
       spacer: false,
-      button: () => ({
+      button: ({ editor }) => ({
         component: PreviewActionButton,
-        componentProps: {}
+        componentProps: {
+          editor
+        }
       })
     }
   }

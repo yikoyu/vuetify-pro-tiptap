@@ -3,7 +3,7 @@ import type { HorizontalRuleOptions as TiptapHorizontalRuleOptions } from '@tipt
 
 import { HorizontalRule as TiptapHorizontalRule } from '@tiptap/extension-horizontal-rule'
 
-import ActionButton from './components/ActionButton.vue'
+import { ActionButton } from './components/ActionButton'
 
 export interface HorizontalRuleOptions extends TiptapHorizontalRuleOptions, GeneralOptions<HorizontalRuleOptions> {}
 
@@ -14,6 +14,7 @@ export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<Horizon
       button: ({ editor, t }) => ({
         component: ActionButton,
         componentProps: {
+          editor,
           action: () => editor.chain().focus().setHorizontalRule().run(),
           disabled: !editor.can().setHorizontalRule(),
           icon: 'horizontalRule',
