@@ -1,8 +1,9 @@
+import type { Extension } from "@tiptap/core"
+
 import type { PropType } from "vue"
+import { actionButtonProps, extActionButtonProps } from '@/extensions/components/ActionButton'
 
-import { actionButtonProps } from '@/extensions/components/ActionButton'
 import { omit } from '@/utils/utils'
-
 import { ActionMenuButtonItem } from "./types"
 
 export const actionButtonMenuProps = {
@@ -16,3 +17,11 @@ export const actionButtonMenuProps = {
     default: () => []
   }
 }
+
+export const extActionButtonMenuProps = <T = any>() => ({
+  ...extActionButtonProps,
+  extension: {
+    type: Object as PropType<Extension<T>>,
+    required: true
+  }
+} as const)

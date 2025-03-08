@@ -3,7 +3,7 @@ import type { ColorOptions as TiptapColorOptions } from '@tiptap/extension-color
 
 import { Color as TiptapColor } from '@tiptap/extension-color'
 
-import ColorActionButton from './components/ColorActionButton.vue'
+import { ColorActionButton } from './components/ActionButton'
 
 export interface ColorOptions extends TiptapColorOptions, GeneralOptions<ColorOptions> {}
 
@@ -15,18 +15,7 @@ export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
         component: ColorActionButton,
         componentProps: {
           editor,
-          action: (color?: unknown) => {
-            if (typeof color === 'string') editor.chain().focus().setColor(color).run()
-          },
-          isActive: () => {
-            const { color } = editor.getAttributes('textStyle')
-
-            if (!color) return false
-            return editor.isActive({ color }) || false
-          },
-          disabled: !editor.can().setColor(''),
-          icon: 'color',
-          tooltip: t('editor.color.tooltip')
+          t
         }
       })
     }

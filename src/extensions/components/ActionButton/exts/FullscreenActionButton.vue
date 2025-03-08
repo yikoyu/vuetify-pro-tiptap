@@ -1,31 +1,22 @@
 <script setup lang="ts">
-import type { Editor } from '@tiptap/vue-3'
-
 import { useTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
-import { ButtonViewReturnComponentProps } from '@/type'
 import { useFullscreen } from '@vueuse/core'
 
 import { computed, unref, watch } from 'vue'
-import { ActionButton } from './ActionButton'
+import ActionButton from '../src/index.vue'
+import { extActionButtonProps } from '../src/props'
 
-const props = withDefaults(defineProps<Props>(), {
-  disabled: false,
-  color: undefined,
-  isActive: undefined,
-  useWindow: false
+const props = defineProps({
+  ...extActionButtonProps,
+  useWindow: {
+    type: Boolean,
+    default: false
+  }
 })
 const { t } = useLocale()
 const { state, toggleFullscreen } = useTiptapStore()!
 const { isFullscreen, enter, exit } = useFullscreen()
-
-interface Props {
-  editor: Editor
-  disabled?: boolean
-  color?: string
-  isActive?: ButtonViewReturnComponentProps['isActive']
-  useWindow?: boolean
-}
 
 watch(isFullscreen, val => {
   // Press esc to exit full screen
@@ -34,7 +25,7 @@ watch(isFullscreen, val => {
   }
 })
 
-const text = computed(() => {
+const tooltip = computed(() => {
   const tooltip = state.isFullscreen ? 'editor.fullscreen.tooltip.exit' : 'editor.fullscreen.tooltip.fullscreen'
   if (!tooltip) return undefined
   return unref(t)(tooltip)
@@ -60,11 +51,8 @@ function onAction(_useWindow: boolean = false) {
 <template>
   <ActionButton
     :editor="editor"
-    :disabled="disabled"
-    :color="color"
     :icon="icon"
-    :tooltip="text"
-    :is-active="isActive"
+    :tooltip="tooltip"
     :action="() => onAction(useWindow)"
   />
 </template>

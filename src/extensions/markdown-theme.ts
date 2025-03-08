@@ -1,12 +1,10 @@
 import type { MarkdownThemeProps } from '@/constants/define'
 
 import type { GeneralOptions } from '@/type'
-import type { ActionMenuButtonItem } from './components/ActionMenuButton'
 
 import { DEFAULT_MARKDOWN_THEME_LIST } from '@/constants/define'
-import { useContext } from '@/hooks'
 import { Extension } from '@tiptap/core'
-import { ActionMenuButton } from './components/ActionMenuButton'
+import { MarkdownThemeActionMenuButton } from './components/ActionMenuButton'
 
 /**
  * Represents the interface for Markdown theme options, extending GeneralOptions.
@@ -28,30 +26,12 @@ export const MarkdownTheme = /* @__PURE__*/ Extension.create<MarkdownThemeOption
       ...this.parent?.(),
       markdownThemes: DEFAULT_MARKDOWN_THEME_LIST,
       button: ({ editor, extension, t }) => {
-        const { state } = useContext()
-
-        const markdownThemes =
-          [...DEFAULT_MARKDOWN_THEME_LIST, ...extension.options.markdownThemes] as MarkdownThemeProps[]
-
-        const items: ActionMenuButtonItem[] = markdownThemes.map(k => ({
-          title: t(k.title),
-          isActive: () => {
-            return state.defaultMarkdownTheme === k.value
-          },
-          action: () => {
-            state.defaultMarkdownTheme = k.value
-          },
-          divider: k.divider ?? false,
-          default: k.default ?? false
-        }))
-
         return {
-          component: ActionMenuButton,
+          component: MarkdownThemeActionMenuButton,
           componentProps: {
             editor,
-            icon: 'markdownTheme',
-            tooltip: t('editor.markdownTheme.tooltip'),
-            items
+            extension,
+            t
           }
         }
       }

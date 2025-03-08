@@ -1,13 +1,12 @@
 import type { GeneralOptions } from '@/type'
 import type { TextAlignOptions as TiptapTextAlignOptions } from '@tiptap/extension-text-align'
 
-import type { ActionMenuButtonItem } from './components/ActionMenuButton'
 import { TextAlign as TiptapTextAlign } from '@tiptap/extension-text-align'
 
-import { ActionMenuButton } from './components/ActionMenuButton'
+import { TextAlignActionMenuButton } from './components/ActionMenuButton'
 
 /** Represents the type for text alignments */
-type Alignments = 'left' | 'center' | 'right' | 'justify'
+export type Alignments = 'left' | 'center' | 'right' | 'justify'
 
 /**
  * Represents the interface for text align options, extending TiptapTextAlignOptions and GeneralOptions.
@@ -27,26 +26,12 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
       ...this.parent?.(),
       types: ['heading', 'paragraph'],
       button: ({ editor, extension, t }) => {
-        const alignments = (extension.options?.alignments as Alignments[]) || []
-
-        const items: ActionMenuButtonItem[] = alignments.map(k => ({
-          title: t(`editor.textalign.${k}.tooltip`),
-          icon: k,
-          isActive: () => editor.isActive({ textAlign: k }) || false,
-          action: () => editor.chain().focus().setTextAlign(k).run(),
-          disabled: !editor.can().setTextAlign(k)
-        }))
-
-        const disabled = items.filter(k => k.disabled).length === items.length
-
         return {
-          component: ActionMenuButton,
+          component: TextAlignActionMenuButton,
           componentProps: {
             editor,
-            icon: 'center',
-            tooltip: t('editor.textalign.tooltip'),
-            disabled,
-            items
+            extension,
+            t
           }
         }
       }

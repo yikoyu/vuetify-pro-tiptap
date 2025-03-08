@@ -9,7 +9,7 @@ import { TableHeader } from '@tiptap/extension-table-header'
 
 import { TableRow } from '@tiptap/extension-table-row'
 
-import TableActionButton from './components/TableActionButton.vue'
+import { TableActionButton } from './components/ActionButton'
 
 /**
  * Represents the interface for table options, extending TiptapTableOptions and GeneralOptions.
@@ -34,10 +34,7 @@ export const Table = /* @__PURE__*/ TiptapTable.extend<TableOptions>({
         component: TableActionButton,
         componentProps: {
           editor,
-          isActive: () => editor.isActive('table') || false,
-          disabled: !editor.can().insertTable(),
-          icon: 'table',
-          tooltip: t('editor.table.tooltip')
+          t
         }
       })
     }

@@ -3,7 +3,7 @@ import type { CodeBlockOptions as TiptapCodeBlockOptions } from '@tiptap/extensi
 
 import { CodeBlock as TiptapCodeBlock } from '@tiptap/extension-code-block'
 
-import { ActionButton } from './components/ActionButton'
+import { CodeBlockActionButton } from './components/ActionButton'
 
 export interface CodeBlockOptions extends TiptapCodeBlockOptions, GeneralOptions<CodeBlockOptions> {}
 
@@ -12,14 +12,10 @@ export const CodeBlock = /* @__PURE__*/ TiptapCodeBlock.extend<CodeBlockOptions>
     return {
       ...this.parent?.(),
       button: ({ editor, t }) => ({
-        component: ActionButton,
+        component: CodeBlockActionButton,
         componentProps: {
           editor,
-          action: () => editor.chain().focus().toggleCodeBlock().run(),
-          isActive: () => editor.isActive('codeBlock') || false,
-          disabled: !editor.can().toggleCodeBlock(),
-          icon: 'codeBlock',
-          tooltip: t('editor.codeblock.tooltip')
+          t
         }
       })
     }

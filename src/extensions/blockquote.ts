@@ -3,7 +3,7 @@ import type { BlockquoteOptions as TiptapBlockquoteOptions } from '@tiptap/exten
 
 import { Blockquote as TiptapBlockquote } from '@tiptap/extension-blockquote'
 
-import { ActionButton } from './components/ActionButton'
+import { BlockquoteActionButton } from './components/ActionButton'
 
 export interface BlockquoteOptions extends TiptapBlockquoteOptions, GeneralOptions<BlockquoteOptions> {}
 
@@ -15,14 +15,10 @@ export const Blockquote = /* @__PURE__*/ TiptapBlockquote.extend<BlockquoteOptio
         class: 'blockquote'
       },
       button: ({ editor, t }) => ({
-        component: ActionButton,
+        component: BlockquoteActionButton,
         componentProps: {
           editor,
-          action: () => editor.chain().focus().toggleBlockquote().run(),
-          isActive: () => editor.isActive('blockquote') || false,
-          disabled: !editor.can().toggleBlockquote(),
-          icon: 'blockquote',
-          tooltip: t('editor.blockquote.tooltip')
+          t
         }
       })
     }

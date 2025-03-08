@@ -2,7 +2,7 @@ import type { GeneralOptions } from '@/type'
 
 import { Extension } from '@tiptap/core'
 
-import FullscreenActionButton from './components/FullscreenActionButton.vue'
+import { FullscreenActionButton } from './components/ActionButton'
 
 /**
  * Represents the interface for fullscreen options, extending GeneralOptions.
@@ -26,6 +26,7 @@ export const Fullscreen = /* @__PURE__*/ Extension.create<FullscreenOptions>({
         component: FullscreenActionButton,
         componentProps: {
           editor,
+          t,
           useWindow: extension.options.useWindow ?? false
         }
       })

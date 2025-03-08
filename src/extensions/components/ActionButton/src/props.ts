@@ -35,7 +35,10 @@ export const actionButtonProps = {
 } as const
 
 export const extActionButtonProps = {
-  ...actionButtonProps,
+  editor: {
+    type: Object as PropType<Editor>,
+    required: true
+  },
   t: {
     type: Function as PropType<(path: string) => string>,
     required: true

@@ -5,10 +5,10 @@ import type { Display, ImageAttrsOptions, ImageTab, ImageTabKey } from './compon
 import { IMAGE_SIZE } from '@/constants/define'
 import { Image as TiptapImage } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
-import ImageDialog from './components/image/ImageDialog.vue'
+import { ImageActionButton } from './components/ActionButton'
 
+import ImageDialog from './components/image/ImageDialog.vue'
 import ImageView from './components/image/ImageView.vue'
-import ImageActionButton from './components/ImageActionButton.vue'
 
 /**
  * Represents the type for the upload function, which takes a File parameter and returns a Promise of type string.
@@ -123,13 +123,10 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
           component: ImageActionButton,
           componentProps: {
             editor,
+            t,
             upload,
             imageTabs,
-            hiddenTabs,
-            isActive: () => editor.isActive('image') || false,
-            disabled: !editor.can().setImage({}),
-            icon: 'image',
-            tooltip: t('editor.image.tooltip')
+            hiddenTabs
           },
           componentSlots: {
             dialog: dialogComponent()

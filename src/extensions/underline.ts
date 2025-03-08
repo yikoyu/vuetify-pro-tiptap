@@ -3,7 +3,7 @@ import type { UnderlineOptions as TiptapUnderlineOptions } from '@tiptap/extensi
 
 import { Underline as TiptapUnderline } from '@tiptap/extension-underline'
 
-import { ActionButton } from './components/ActionButton'
+import { UnderlineActionButton } from './components/ActionButton'
 
 export interface UnderlineOptions extends TiptapUnderlineOptions, GeneralOptions<UnderlineOptions> {}
 
@@ -12,14 +12,10 @@ export const Underline = /* @__PURE__*/ TiptapUnderline.extend<UnderlineOptions>
     return {
       ...this.parent?.(),
       button: ({ editor, t }) => ({
-        component: ActionButton,
+        component: UnderlineActionButton,
         componentProps: {
           editor,
-          action: () => editor.chain().focus().toggleUnderline().run(),
-          isActive: () => editor.isActive('underline') || false,
-          disabled: !editor.can().toggleUnderline(),
-          icon: 'underline',
-          tooltip: t('editor.underline.tooltip')
+          t
         }
       })
     }

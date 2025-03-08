@@ -7,7 +7,7 @@ import { Subscript as TiptapSubscript } from '@tiptap/extension-subscript'
 
 import { Superscript as TiptapSuperscript } from '@tiptap/extension-superscript'
 
-import { ActionButton } from './components/ActionButton'
+import { SubscriptActionButton } from './components/ActionButton'
 
 /**
  * Represents the interface for subscript and superscript options, extending GeneralOptions.
@@ -33,41 +33,14 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
   addOptions() {
     return {
       ...this.parent?.(),
-      button: ({ editor, extension, t }) => {
-        const subscript = extension.options.subscript
-        const superscript = extension.options.superscript
-
-        const subBtn: ButtonViewReturn = {
-          component: ActionButton,
-          componentProps: {
-            editor,
-            action: () => editor.chain().focus().toggleSubscript().run(),
-            isActive: () => editor.isActive('subscript') || false,
-            disabled: !editor.can().toggleSubscript(),
-            icon: 'subscript',
-            tooltip: t('editor.subscript.tooltip')
-          }
+      button: ({ editor, extension, t }) => ({
+        component: SubscriptActionButton,
+        componentProps: {
+          editor,
+          extension,
+          t
         }
-
-        const superBtn: ButtonViewReturn = {
-          component: ActionButton,
-          componentProps: {
-            editor,
-            action: () => editor.chain().focus().toggleSuperscript().run(),
-            isActive: () => editor.isActive('superscript') || false,
-            disabled: !editor.can().toggleSuperscript(),
-            icon: 'superscript',
-            tooltip: t('editor.superscript.tooltip')
-          }
-        }
-
-        const items: ButtonViewReturn[] = []
-
-        if (subscript !== false) items.push(subBtn)
-        if (superscript !== false) items.push(superBtn)
-
-        return items
-      }
+      })
     }
   },
 

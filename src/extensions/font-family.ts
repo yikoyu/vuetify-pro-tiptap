@@ -2,11 +2,10 @@ import type { FontFamilyProps } from '@/constants/define'
 import type { GeneralOptions } from '@/type'
 
 import type { FontFamilyOptions as TiptapFontFamilyOptions } from '@tiptap/extension-font-family'
-import type { ActionMenuButtonItem } from './components/ActionMenuButton'
 
-import { DEFAULT_FONT_FAMILY_LIST, DEFAULT_FONT_FAMILY_VALUE } from '@/constants/define'
+import { DEFAULT_FONT_FAMILY_LIST } from '@/constants/define'
 import { FontFamily as TiptapFontFamily } from '@tiptap/extension-font-family'
-import { ActionMenuButton } from './components/ActionMenuButton'
+import { FontFamilyActionMenuButton } from './components/ActionMenuButton'
 
 /**
  * Represents the interface for font family options, extending TiptapFontFamilyOptions and GeneralOptions.
@@ -26,45 +25,12 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
       ...this.parent?.(),
       fontFamilies: DEFAULT_FONT_FAMILY_LIST,
       button: ({ editor, extension, t }) => {
-        const fontFamilies = (extension.options?.fontFamilies as FontFamilyProps[]) || []
-
-        const items: ActionMenuButtonItem[] = fontFamilies.map(k => ({
-          title: t(k.title),
-          isActive: () => {
-            const { fontFamily } = editor.getAttributes('textStyle')
-            const isDefault = k.value === DEFAULT_FONT_FAMILY_VALUE
-            const notFontFamily = fontFamily === undefined
-            if (isDefault && notFontFamily) {
-              return true
-            }
-
-            return editor.isActive({ fontFamily: k.value }) || false
-          },
-          action: () => {
-            if (k.value === DEFAULT_FONT_FAMILY_VALUE) {
-              editor.chain().focus().unsetFontFamily().run()
-              return
-            }
-
-            editor.chain().focus().setFontFamily(k.value).run()
-          },
-          disabled: !editor.can().setFontFamily(k.value),
-          style: { fontFamily: k.value },
-          divider: k.divider ?? false,
-          default: k.default ?? false
-        }))
-
-        const disabled = items.filter(k => k.disabled).length === items.length
-
         return {
-          component: ActionMenuButton,
+          component: FontFamilyActionMenuButton,
           componentProps: {
             editor,
-            icon: 'fontFamily',
-            tooltip: t('editor.fontFamily.tooltip'),
-            disabled,
-            items,
-            maxHeight: 280
+            extension,
+            t
           }
         }
       }

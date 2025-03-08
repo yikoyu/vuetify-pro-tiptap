@@ -4,8 +4,8 @@ import { VIDEO_SIZE } from '@/constants/define'
 import { getCssUnitWithDefault } from '@/utils/utils'
 
 import { Node } from '@tiptap/core'
+import { VideoActionButton } from './components/ActionButton'
 import VideoDialog from './components/video/VideoDialog.vue'
-import VideoActionButton from './components/VideoActionButton.vue'
 
 /**
  * Represents the interface for video options, extending GeneralOptions.
@@ -189,14 +189,11 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
           component: VideoActionButton,
           componentProps: {
             editor,
-            isActive: () => editor.isActive('video') || false,
-            icon: 'video',
-            tooltip: t('editor.video.tooltip')
+            t
           },
           componentSlots: {
             dialog: dialogComponent()
-          },
-          disabled: !editor.can().setVideo({})
+          }
         }
       }
     }

@@ -144,5 +144,10 @@
     "vue-tsc": "2.0.29",
     "vuetify": "^3.7.14",
     "xss": "^1.0.15"
+  },
+  "pnpm": {
+    "overrides": {
+      "prosemirror-view": "1.37.0"
+    }
   }
 }

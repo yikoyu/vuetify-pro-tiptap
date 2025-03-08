@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ActionButton, actionButtonProps } from './ActionButton'
-import OriginalThemeProvider from './OriginalThemeProvider.vue'
 
-const props = defineProps(actionButtonProps)
+import OriginalThemeProvider from '../../OriginalThemeProvider.vue'
+import ActionButton from '../src/index.vue'
+import { extActionButtonProps } from '../src/props'
+
+const props = defineProps(extActionButtonProps)
 
 const src = ref<string | undefined>(undefined)
 
@@ -16,12 +18,11 @@ function onAction() {
 <template>
   <ActionButton
     :editor="editor"
-    :icon="icon"
-    :tooltip="tooltip"
-    :disabled="disabled"
-    :color="color"
-    :is-active="isActive"
     :action="onAction"
+    :is-active="() => editor.isActive('video') || false"
+    :disabled="!editor.can().setVideo({})"
+    :tooltip="t('editor.video.tooltip')"
+    icon="video"
   >
     <OriginalThemeProvider>
       <slot name="dialog" :props="{ editor, value: src }"></slot>

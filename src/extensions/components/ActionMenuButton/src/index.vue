@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type { Editor } from '@tiptap/vue-3'
-
 import type { ActionMenuButtonItem } from './types'
 
-import { getIcon, IconsOptions } from '@/constants/icons'
+import { getIcon } from '@/constants/icons'
 import { computed, ref } from 'vue'
 import { ActionButton } from '../../ActionButton'
 import { actionButtonMenuProps } from './props'
@@ -31,19 +29,6 @@ const active = computed<ActionMenuButtonItem>(() => {
 })
 </script>
 
-<script lang="ts">
-interface Props {
-  editor: Editor
-  disabled?: boolean
-  color?: string
-  maxHeight?: string | number
-
-  icon?: keyof IconsOptions
-  tooltip?: string
-  items?: ActionMenuButtonItem[]
-}
-</script>
-
 <template>
   <ActionButton
     :editor="editor"
@@ -61,7 +46,7 @@ interface Props {
               <VIcon v-if="item.icon" :icon="getIcon(item.icon)" />
             </template>
 
-            <VListItem-title :style="item.style">{{ item.title }}</VListItem-title>
+            <VListItemTitle :style="item.style">{{ item.title }}</VListItemTitle>
           </VListItem>
 
           <VDivider v-if="item.divider" />

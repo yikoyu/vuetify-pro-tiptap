@@ -1,11 +1,10 @@
 import type { GeneralOptions } from '@/type'
 
-import type { ActionMenuButtonItem } from './components/ActionMenuButton'
-import { DEFAULT_FONT_SIZE_LIST, DEFAULT_FONT_SIZE_VALUUE } from '@/constants/define'
+import { DEFAULT_FONT_SIZE_LIST } from '@/constants/define'
 
 import { getCssUnitWithDefault } from '@/utils/utils'
 import { Extension } from '@tiptap/core'
-import { ActionMenuButton } from './components/ActionMenuButton'
+import { FontSizeActionMenuButton } from './components/ActionMenuButton'
 
 /**
  * Represents the interface for font size options, extending GeneralOptions.
@@ -44,45 +43,12 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
       types: ['textStyle'],
       fontSizes: [...DEFAULT_FONT_SIZE_LIST],
       button: ({ editor, extension, t }) => {
-        const fontSizes = (extension.options?.fontSizes as FontSizeOptions['fontSizes']) || []
-
-        const items: ActionMenuButtonItem[] = [DEFAULT_FONT_SIZE_VALUUE, ...fontSizes].map(k => ({
-          title: k === DEFAULT_FONT_SIZE_VALUUE ? t('editor.default') : String(k),
-          isActive: () => {
-            const { fontSize } = editor.getAttributes('textStyle')
-
-            const isDefault = k === DEFAULT_FONT_SIZE_VALUUE
-            const notFontSize = fontSize === undefined
-            if (isDefault && notFontSize) {
-              return true
-            }
-
-            return editor.isActive({ fontSize: String(k) }) || false
-          },
-          action: () => {
-            if (k === DEFAULT_FONT_SIZE_VALUUE) {
-              editor.chain().focus().unsetFontSize().run()
-              return
-            }
-
-            editor.chain().focus().setFontSize(String(k)).run()
-          },
-          disabled: !editor.can().setFontSize(String(k)),
-          divider: k === DEFAULT_FONT_SIZE_VALUUE,
-          default: k === DEFAULT_FONT_SIZE_VALUUE
-        }))
-
-        const disabled = items.filter(k => k.disabled).length === items.length
-
         return {
-          component: ActionMenuButton,
+          component: FontSizeActionMenuButton,
           componentProps: {
             editor,
-            icon: 'fontSize',
-            tooltip: t('editor.fontSize.tooltip'),
-            disabled,
-            items,
-            maxHeight: 280
+            extension,
+            t
           }
         }
       }

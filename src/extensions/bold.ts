@@ -3,7 +3,7 @@ import type { BoldOptions as TiptapImageOptions } from '@tiptap/extension-bold'
 
 import { Bold as TiptapBold } from '@tiptap/extension-bold'
 
-import { ActionButton } from './components/ActionButton'
+import { BoldActionButton } from './components/ActionButton'
 
 export interface BoldOptions extends TiptapImageOptions, GeneralOptions<BoldOptions> {}
 
@@ -12,14 +12,10 @@ export const Bold = /* @__PURE__*/ TiptapBold.extend<BoldOptions>({
     return {
       ...this.parent?.(),
       button: ({ editor, t }) => ({
-        component: ActionButton,
+        component: BoldActionButton,
         componentProps: {
           editor,
-          action: () => editor.chain().focus().toggleBold().run(),
-          isActive: () => editor.isActive('bold') || false,
-          disabled: !editor.can().toggleBold(),
-          icon: 'bold',
-          tooltip: t('editor.bold.tooltip')
+          t
         }
       })
     }

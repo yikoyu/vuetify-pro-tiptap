@@ -5,9 +5,9 @@ import { getMarkRange } from '@tiptap/core'
 import { Link as TiptapLink } from '@tiptap/extension-link'
 
 import { Plugin, TextSelection } from '@tiptap/pm/state'
-import LinkDialog from './components/link/LinkDialog.vue'
+import { LinkActionButton } from './components/ActionButton'
 
-import LinkActionButton from './components/LinkActionButton.vue'
+import LinkDialog from './components/link/LinkDialog.vue'
 
 /**
  * Represents the interface for link options, extending TiptapLinkOptions and GeneralOptions.
@@ -30,10 +30,7 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
           component: LinkActionButton,
           componentProps: {
             editor,
-            isActive: () => editor.isActive('link') || false,
-            disabled: !editor.can().setLink({ href: '' }),
-            icon: 'link',
-            tooltip: t('editor.link.tooltip')
+            t
           },
           componentSlots: {
             dialog: dialogComponent()

@@ -3,7 +3,7 @@ import type { StrikeOptions as TiptapStrikeOptions } from '@tiptap/extension-str
 
 import { Strike as TiptapStrike } from '@tiptap/extension-strike'
 
-import { ActionButton } from './components/ActionButton'
+import { StrikeActionButton } from './components/ActionButton'
 
 export interface StrikeOptions extends TiptapStrikeOptions, GeneralOptions<StrikeOptions> {}
 
@@ -12,14 +12,10 @@ export const Strike = /* @__PURE__*/ TiptapStrike.extend<StrikeOptions>({
     return {
       ...this.parent?.(),
       button: ({ editor, t }) => ({
-        component: ActionButton,
+        component: StrikeActionButton,
         componentProps: {
           editor,
-          action: () => editor.chain().focus().toggleStrike().run(),
-          isActive: () => editor.isActive('strike') || false,
-          disabled: !editor.can().toggleStrike(),
-          icon: 'strike',
-          tooltip: t('editor.strike.tooltip')
+          t
         }
       })
     }

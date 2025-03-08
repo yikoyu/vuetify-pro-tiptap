@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import type { LinkAttrs } from '../../link/types'
+
+import { ref } from 'vue'
+import OriginalThemeProvider from '../../OriginalThemeProvider.vue'
+import ActionButton from '../src/index.vue'
+import { extActionButtonProps } from '../src/props'
+
+const props = defineProps(extActionButtonProps)
+
+const attrs = ref<LinkAttrs>({
+  href: undefined,
+  target: undefined,
+  rel: undefined
+})
+
+function onAction() {
+  const { href, target, rel } = props.editor.getAttributes('link')
+  attrs.value = {
+    href,
+    target,
+    rel
+  }
+}
+</script>
+
+<template>
+  <ActionButton
+    :editor="editor"
+    icon="link"
+    :tooltip="t('editor.link.tooltip')"
+    :disabled="!editor.can().setLink({ href: '' })"
+    :is-active="() => editor.isActive('link') || false"
+    :action="onAction"
+  >
+    <OriginalThemeProvider>
+      <slot name="dialog" :props="{ editor, value: attrs.href, ...attrs }"></slot>
+    </OriginalThemeProvider>
+  </ActionButton>
+</template>
