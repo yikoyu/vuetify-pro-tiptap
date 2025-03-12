@@ -12,7 +12,9 @@ A WYSIWYG rich-text editor using [tiptap](https://github.com/scrumpy/tiptap) and
 English | [中文](./README.zh-CN.md)
 
 ## Demo
-👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
+👉[https://yikoyu.github.io/vuetify-pro-tiptap/master/](https://yikoyu.github.io/vuetify-pro-tiptap/master/)
+
+👉[https://yikoyu.github.io/vuetify-pro-tiptap/develop/](https://yikoyu.github.io/vuetify-pro-tiptap/develop/)
 
 👾[Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/main)
 

@@ -3,6 +3,9 @@ name: Example Page
 on:
   push:
     branches: [master, develop]
+    paths:
+      - 'src/**'
+      - 'examples/**'
   workflow_dispatch:
 
 jobs:

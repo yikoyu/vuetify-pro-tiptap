@@ -12,7 +12,9 @@
 [English](./README.md) | 中文
 
 ## Demo
-👉[https://yikoyu.github.io/vuetify-pro-tiptap/](https://yikoyu.github.io/vuetify-pro-tiptap/)
+👉[https://yikoyu.github.io/vuetify-pro-tiptap/master/](https://yikoyu.github.io/vuetify-pro-tiptap/master/)
+
+👉[https://yikoyu.github.io/vuetify-pro-tiptap/develop/](https://yikoyu.github.io/vuetify-pro-tiptap/develop/)
 
 👾[Stackblitz](https://stackblitz.com/~/github.com/yikoyu/vuetify-pro-tiptap-demo/tree/main)
 
@@ -480,7 +482,7 @@ const content = ref('')
 3. 🎨Make your changes
 4. 📝Commit your changes with [Semantic Commit Messages (recommended)](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
 5. 🚀Push to the branch: `git push origin your-branch`
-6. 🎉Submit a PR to `master` branch
+6. 🎉Submit a PR to `develop` branch
 
 ## 📄 许可证
 
