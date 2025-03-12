@@ -1,3 +1,25 @@
+## [2.5.8](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.7...v2.5.8) (2025-03-12)
+
+### Bug Fixes
+
+* :bug: use OriginalThemeProvider for dialog original theme ([0ffcc21](https://github.com/yikoyu/vuetify-pro-tiptap/commit/0ffcc21b2c8f58e97b925d9e26ed9d616a1e7295)), closes [#413](https://github.com/yikoyu/vuetify-pro-tiptap/issues/413)
+* **indent:** 🐛 align indent button order with Google Docs and Word ([a863862](https://github.com/yikoyu/vuetify-pro-tiptap/commit/a863862498f0a727148d3e35874052a39ac2cb61)), closes [#414](https://github.com/yikoyu/vuetify-pro-tiptap/issues/414)
+* **locale:** add italian locale ([#411](https://github.com/yikoyu/vuetify-pro-tiptap/issues/411)) ([5072438](https://github.com/yikoyu/vuetify-pro-tiptap/commit/50724385339847844c2bc532fc05d95d0b58eac5))
+* **locales:** add missing german translation ([#426](https://github.com/yikoyu/vuetify-pro-tiptap/issues/426)) ([10064b4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/10064b423c61d58eabc05b417d1afbd0561b27b5))
+* **locales:** added Turkish translation ([#423](https://github.com/yikoyu/vuetify-pro-tiptap/issues/423)) ([e415e61](https://github.com/yikoyu/vuetify-pro-tiptap/commit/e415e615c6e458103d37c60c16d99775e0646add))
+* **styles:** :bug: restore outline styles for images and videos when Focus is disabled ([4688395](https://github.com/yikoyu/vuetify-pro-tiptap/commit/46883956788d0644ee62098dfdcfa8ecea821078)), closes [#412](https://github.com/yikoyu/vuetify-pro-tiptap/issues/412)
+* **xss:** :bug: resolve parsing issue for colgroup and col elements ([4bf5f6c](https://github.com/yikoyu/vuetify-pro-tiptap/commit/4bf5f6c0b39bfe1813007cb1c906dc3bd135feb0))
+
+### Performance
+
+* **extensions:** :zap: prevent redundant rendering of getMenus in TiptapToolbar during editing ([7aad692](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7aad6924ee2e72c3a531196d9f7d79008d8d13ca))
+* **TiptapToolbar:** :zap: optimize performance overhead of items ([4860f57](https://github.com/yikoyu/vuetify-pro-tiptap/commit/4860f5790b57d19514dbca2873620bf0dd19e1b9))
+
+### Refactor
+
+* **extensions:** :recycle: split the `export` in the `.vue` file into a separate `.ts` file ([94b64fd](https://github.com/yikoyu/vuetify-pro-tiptap/commit/94b64fd317f901fb6a53c1707150ffc0e868bd2c))
+* **extensions:** add ActionButton & ActionMenuButton props, enhance editor integration ([3519e34](https://github.com/yikoyu/vuetify-pro-tiptap/commit/3519e3438ace8c5678a30702bb69f882a8e68f0d))
+
 ## [2.5.7](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.6...v2.5.7) (2025-01-03)
 
 ### Bug Fixes
