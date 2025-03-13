@@ -52,6 +52,7 @@ import './styles/markdown/maidragon.scss'
 
 export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',
+  fallbackLang: 'en',
   markdownTheme: 'github',
   components: {
     VuetifyTiptap,
