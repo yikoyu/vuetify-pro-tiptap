@@ -49,22 +49,22 @@ $extra-light-primary-color: #ecf5ff;
         display: inline-block;
         float: none;
 
-        &[data-display='inline'] {
+        &[data-display="inline"] {
           padding-right: 12px;
           padding-left: 12px;
         }
 
-        &[data-display='block'] {
+        &[data-display="block"] {
           display: block;
         }
 
-        &[data-display='left'] {
+        &[data-display="left"] {
           float: left;
           padding-right: 12px;
           padding-left: 0;
         }
 
-        &[data-display='right'] {
+        &[data-display="right"] {
           float: right;
           padding-right: 0;
           padding-left: 12px;
@@ -95,7 +95,7 @@ $extra-light-primary-color: #ecf5ff;
   }
 
   .ProseMirror {
-    min-height: 180px;
+    // min-height: 180px;
     padding: 8px 18px;
     overflow-wrap: anywhere;
 
@@ -126,7 +126,7 @@ $extra-light-primary-color: #ecf5ff;
           inset: 0;
           z-index: 2;
           pointer-events: none;
-          content: '';
+          content: "";
           background: rgb(200 200 255 / 40%);
         }
       }
