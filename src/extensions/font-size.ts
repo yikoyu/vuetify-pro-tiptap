@@ -62,7 +62,15 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
         attributes: {
           fontSize: {
             default: null,
-            parseHTML: element => element.style.fontSize || '',
+            parseHTML: element => {
+              const fontSize = element.style.fontSize || ''
+              // 匹配带单位的字体大小值
+              const match = fontSize.match(/^(\d+(\.\d+)?)(px|em|rem|%)?$/)
+              if (match) {
+                return match[0]
+              }
+              return ''
+            },
             renderHTML: attributes => {
               if (!attributes.fontSize) {
                 return {}
