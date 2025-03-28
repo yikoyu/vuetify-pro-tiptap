@@ -8,6 +8,7 @@ import de from './de'
 import en from './en'
 import it from './it'
 import nl from './nl'
+import pt from './pt'
 import tr from './tr'
 import zhHans from './zh-Hans'
 
@@ -26,7 +27,8 @@ export const DEFAULT_LOCALE_MESSAGE = {
   zhHans,
   en,
   de,
-  it
+  it,
+  pt,
 }
 
 export const DEFAULT_LOCALE: LocaleInterface = {
@@ -147,6 +149,11 @@ export {
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.nl instead.
    */
   nl,
+
+  /**
+   * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.pt instead.
+   */
+  pt,
 
   /**
    * @deprecated This export will be removed in v2.6.0+. Use DEFAULT_LOCALE_MESSAGE.tr instead.
