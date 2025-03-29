@@ -55,6 +55,7 @@ import SelectImage from './components/SelectImage.vue'
 
 export const vuetifyProTipTap = createVuetifyProTipTap({
   lang: 'zhHans',
+  fallbackLang: 'en',
   components: {
     VuetifyTiptap,
     VuetifyViewer
@@ -142,6 +143,8 @@ import SelectImage from './components/SelectImage.vue'
 export const vuetifyProTipTap = createVuetifyProTipTap({
   // Set default lang
   lang: 'zhHans',
+  // Set default fallback lang
+  fallbackLang: 'en',
   // Set markdown theme
   markdownTheme: 'github',
   // Global registration app.component
@@ -346,7 +349,8 @@ You can declare when you install the plugin.
 import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'
 
 const VuetifyProTipTap = createVuetifyProTipTap({
-  lang: 'zhHans'
+  lang: 'zhHans',
+  fallbackLang: 'en'
 })
 ```
 Or use `setLang` dynamic change

@@ -17,6 +17,13 @@ interface Instance {
   defaultLang?: string
 
   /**
+   * Default fallbackLang setting
+   *
+   * @default DEFAULT_LANG_VALUE
+   */
+  defaultFallbackLang?: string
+
+  /**
    * Default Markdown theme setting
    *
    * @default DEFAULT_MARKDOWN_THEME_VALUE
@@ -30,6 +37,7 @@ const state: Instance = reactive({
 
 export function createContext(instance: Partial<Instance>) {
   state.defaultLang = instance.defaultLang
+  state.defaultFallbackLang = instance.defaultFallbackLang
   state.defaultMarkdownTheme = instance.defaultMarkdownTheme
   state.extensions = instance.extensions ?? []
 }
