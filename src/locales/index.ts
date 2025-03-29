@@ -9,6 +9,7 @@ import de from './de'
 import en from './en'
 import it from './it'
 import nl from './nl'
+import pt from './pt'
 import tr from './tr'
 import zhHans from './zh-Hans'
 
@@ -47,7 +48,8 @@ export const DEFAULT_LOCALE_MESSAGE: LangMessages = {
   zhHans,
   en,
   de,
-  it
+  it,
+  pt,
 }
 
 /**
