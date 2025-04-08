@@ -154,8 +154,8 @@ importers:
         specifier: ^5.2.3
         version: 5.2.3(vite@5.4.16)(vue@3.4.25)
       '@vueuse/core':
-        specifier: ^11.3.0
-        version: 11.3.0(vue@3.4.25)
+        specifier: ^13.1.0
+        version: 13.1.0(vue@3.4.25)
       '@yikoyu/commitlint-config':
         specifier: ^0.2.1
         version: 0.2.1(@types/node@22.5.0)(cz-git@1.11.1)(czg@1.11.1)(typescript@5.5.4)
@@ -2117,8 +2117,8 @@ packages:
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
     dev: true
 
-  /@types/web-bluetooth@0.0.20:
-    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+  /@types/web-bluetooth@0.0.21:
+    resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@8.25.0(@typescript-eslint/parser@8.25.0)(eslint@9.16.0)(typescript@5.5.4):
@@ -2558,29 +2558,27 @@ packages:
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
     dev: true
 
-  /@vueuse/core@11.3.0(vue@3.4.25):
-    resolution: {integrity: sha512-7OC4Rl1f9G8IT6rUfi9JrKiXy4bfmHhZ5x2Ceojy0jnd3mHNEvV4JaRygH362ror6/NZ+Nl+n13LPzGiPN8cKA==}
+  /@vueuse/core@13.1.0(vue@3.4.25):
+    resolution: {integrity: sha512-PAauvdRXZvTWXtGLg8cPUFjiZEddTqmogdwYpnn60t08AA5a8Q4hZokBnpTOnVNqySlFlTcRYIC8OqreV4hv3Q==}
+    peerDependencies:
+      vue: ^3.5.0
     dependencies:
-      '@types/web-bluetooth': 0.0.20
-      '@vueuse/metadata': 11.3.0
-      '@vueuse/shared': 11.3.0(vue@3.4.25)
-      vue-demi: 0.14.10(vue@3.4.25)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
+      '@types/web-bluetooth': 0.0.21
+      '@vueuse/metadata': 13.1.0
+      '@vueuse/shared': 13.1.0(vue@3.4.25)
+      vue: 3.4.25(typescript@5.5.4)
     dev: true
 
-  /@vueuse/metadata@11.3.0:
-    resolution: {integrity: sha512-pwDnDspTqtTo2HwfLw4Rp6yywuuBdYnPYDq+mO38ZYKGebCUQC/nVj/PXSiK9HX5otxLz8Fn7ECPbjiRz2CC3g==}
+  /@vueuse/metadata@13.1.0:
+    resolution: {integrity: sha512-+TDd7/a78jale5YbHX9KHW3cEDav1lz1JptwDvep2zSG8XjCsVE+9mHIzjTOaPbHUAk5XiE4jXLz51/tS+aKQw==}
     dev: true
 
-  /@vueuse/shared@11.3.0(vue@3.4.25):
-    resolution: {integrity: sha512-P8gSSWQeucH5821ek2mn/ciCk+MS/zoRKqdQIM3bHq6p7GXDAJLmnRRKmF5F65sAVJIfzQlwR3aDzwCn10s8hA==}
+  /@vueuse/shared@13.1.0(vue@3.4.25):
+    resolution: {integrity: sha512-IVS/qRRjhPTZ6C2/AM3jieqXACGwFZwWTdw5sNTSKk2m/ZpkuuN+ri+WCVUP8TqaKwJYt/KuMwmXspMAw8E6ew==}
+    peerDependencies:
+      vue: ^3.5.0
     dependencies:
-      vue-demi: 0.14.10(vue@3.4.25)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
+      vue: 3.4.25(typescript@5.5.4)
     dev: true
 
   /@yikoyu/commitlint-config@0.2.1(@types/node@22.5.0)(cz-git@1.11.1)(czg@1.11.1)(typescript@5.5.4):
@@ -7639,21 +7637,6 @@ packages:
 
   /vscode-uri@3.1.0:
     resolution: {integrity: sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==}
-    dev: true
-
-  /vue-demi@0.14.10(vue@3.4.25):
-    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      vue: 3.4.25(typescript@5.5.4)
     dev: true
 
   /vue-demi@0.14.10(vue@3.4.38):
