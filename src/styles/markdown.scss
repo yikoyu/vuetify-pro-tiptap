@@ -319,7 +319,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     }
   }
 
-  table.table-wrapper {
+  table {
     display: inline-block !important;
     width: auto;
     max-width: 100%;
@@ -329,11 +329,23 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     border-collapse: collapse;
     border: 1px solid var(--cyanosis-table-border-color);
 
+    thead th {
+      &::selection {
+        background-color: transparent;
+      }
+    }
+
     thead {
       font-size: 14px;
       color: #000;
       text-align: left;
       background: #f6f6f6;
+    }
+
+    tbody td {
+      &::selection {
+        background-color: var(--cyanosis-slct-bg-color);
+      }
     }
 
     p {
@@ -487,20 +499,6 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   del::selection {
     color: var(--cyanosis-slct-del-color);
     background-color: var(--cyanosis-slct-elbg-color);
-  }
-
-  table {
-    thead th {
-      &::selection {
-        background-color: transparent;
-      }
-    }
-
-    tbody td {
-      &::selection {
-        background-color: var(--cyanosis-slct-bg-color);
-      }
-    }
   }
 
   code::selection {

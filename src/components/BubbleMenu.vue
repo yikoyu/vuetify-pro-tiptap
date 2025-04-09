@@ -3,8 +3,9 @@ import type { BaseKitOptions } from '@/extensions/base-kit'
 import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
 import type { NodeSelection } from '@tiptap/pm/state'
 import type { Editor, Extension } from '@tiptap/vue-3'
-import { useLocale } from '@/locales'
 
+import { useLocale } from '@/locales'
+import { isExtEnableAndActive } from '@/utils/utils'
 import { TextSelection } from '@tiptap/pm/state'
 import { BubbleMenu } from '@tiptap/vue-3'
 import { computed, reactive, ref, unref } from 'vue'
@@ -17,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {})
 
 const { t } = useLocale()
 
-const showBubble = ref(true)
+const showBubble = ref(false)
 const tippyOptions = reactive<Record<string, unknown>>({
   maxWidth: 'auto',
   zIndex: 20,
@@ -28,12 +29,14 @@ const nodeType = computed<NodeTypeKey | undefined>(() => {
   const selection = props.editor.state.selection as NodeSelection
   if (selection.to === selection.from || selection.empty) return undefined
 
-  const isLink = isLinkSelection()
+  const isLink = isExtEnableAndActive(props.editor, 'link')
+  const isTable = isExtEnableAndActive(props.editor, 'table')
 
   const isImage = selection.node?.type.name === 'image'
   const isVideo = selection.node?.type.name === 'video'
   const isText = selection instanceof TextSelection
 
+  if (isTable) return 'table'
   if (isLink) return 'link'
   if (isImage) return 'image'
   if (isVideo) return 'video'
@@ -74,14 +77,6 @@ function getMenus(nodeKey?: NodeTypeKey): BubbleMenuItem[] {
 
   showBubble.value = true
   return unref(_buttons)?.[nodeKey] ?? []
-}
-
-function isLinkSelection() {
-  const { schema } = props.editor
-  const linkType = schema.marks.link
-  if (!linkType) return false
-
-  return props.editor.isActive(linkType.name)
 }
 </script>
 
