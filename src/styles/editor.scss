@@ -99,6 +99,11 @@ $extra-light-primary-color: #ecf5ff;
     padding: 8px 18px;
     overflow-wrap: anywhere;
 
+    &.resize-cursor {
+      cursor: ew-resize;
+      cursor: col-resize;
+    }
+
     p.is-editor-empty:first-child::before {
       float: left;
       height: 0;
@@ -117,7 +122,30 @@ $extra-light-primary-color: #ecf5ff;
       }
     }
 
-    table.table-wrapper {
+    /**
+     * see https://github.com/ueberdosis/tiptap/issues/6176
+     */
+    table.tableWrapper,
+    .tableWrapper > table,
+    table.table-wrapper,
+    .table-wrapper > table {
+      overflow: hidden;
+
+      td,
+      th {
+        position: relative;
+      }
+
+      .column-resize-handle {
+        position: absolute;
+        top: 0;
+        right: -2px;
+        bottom: -2px;
+        width: 4px;
+        pointer-events: none;
+        background-color: $primary-color;
+      }
+
       .selectedCell {
         position: relative;
 

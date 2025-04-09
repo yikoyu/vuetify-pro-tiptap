@@ -1,4 +1,7 @@
 import type { Editor } from '@tiptap/core'
+import type { BubbleMenuOptions } from '@tiptap/extension-bubble-menu'
+
+import { isTextSelection } from '@tiptap/core'
 
 export function clamp(val: number, min: number, max: number) {
   if (val < min) return min
@@ -43,6 +46,29 @@ export function hasExtension(editor: Editor, name: string): boolean {
   // Return false if the extension method with the specified name is not found, otherwise return true
   if (!find) return false
   return true
+}
+
+/**
+ * Checks if the given extension is enabled and active in the editor.
+ *
+ * @param {Editor} editor - The editor instance.
+ * @param {string} name - The name of the extension.
+ * @returns {boolean} Returns true if the extension is enabled and active, otherwise false.
+ */
+export const isExtEnableAndActive = (editor: Editor, name: string): boolean => {
+  const { schema } = editor
+  const _markType = schema.marks[name]
+  const _nodeType = schema.nodes[name]
+
+  if (_markType) {
+    return editor.isActive(_markType.name)
+  }
+
+  if (_nodeType) {
+    return editor.isActive(_nodeType.name)
+  }
+
+  return false
 }
 
 export { differenceBy, isEqual, omit, throttle } from 'lodash-unified'
