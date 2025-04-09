@@ -28,11 +28,14 @@ type BubbleImageType =
 /** Represents the types for bubble videos */
 type BubbleVideoType = 'video' | 'remove'
 
+/** Represents the types for bubble table */
+type BubbleTableType = 'table-add-column-before' | 'table-add-column-after' | 'table-delete-column' | 'table-add-row-before' | 'table-add-row-after' | 'table-delete-row' | 'table-merge-or-split-cells' | 'table-delete-table'
+
 /** Represents the overall types for bubbles */
-type BubbleAllType = BubbleImageType | BubbleVideoType | ExtensionNameKeys | 'divider' | (string & {})
+type BubbleAllType = BubbleImageType | BubbleVideoType | BubbleTableType | ExtensionNameKeys | 'divider' | (string & {})
 
 /** Represents the key types for node types */
-export type NodeTypeKey = 'image' | 'text' | 'link' | 'video'
+export type NodeTypeKey = 'table' | 'image' | 'text' | 'link' | 'video'
 
 /** Represents the menu of bubble types for each node type */
 export type BubbleTypeMenu = Partial<Record<NodeTypeKey, BubbleMenuItem[]>>
@@ -127,10 +130,96 @@ const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
   }))
 }
 
+const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
+  return [
+    {
+      type: 'table-add-column-before',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.add_column_before',
+        icon: 'tableColumnPlusBefore',
+        action: () => editor.chain().focus().addColumnBefore().run(),
+        disabled: !editor.can().addColumnBefore()
+      }
+    },
+    {
+      type: 'table-add-column-after',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.add_column_after',
+        icon: 'tableColumnPlusAfter',
+        action: () => editor.chain().focus().addColumnAfter().run(),
+        disabled: !editor.can().addColumnAfter()
+      }
+    },
+    {
+      type: 'table-delete-column',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.delete_column',
+        icon: 'tableColumnRemove',
+        action: () => editor.chain().focus().deleteColumn().run(),
+        disabled: !editor.can().deleteColumn()
+      }
+    },
+    {
+      type: 'table-add-row-before',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.add_row_before',
+        icon: 'tableRowPlusBefore',
+        action: () => editor.chain().focus().addRowBefore().run(),
+        disabled: !editor.can().addRowBefore()
+      }
+    },
+    {
+      type: 'table-add-row-after',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.add_row_after',
+        icon: 'tableRowPlusAfter',
+        action: () => editor.chain().focus().addRowAfter().run(),
+        disabled: !editor.can().addRowAfter()
+      }
+    },
+    {
+      type: 'table-delete-row',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.delete_row',
+        icon: 'tableRowRemove',
+        action: () => editor.chain().focus().deleteRow().run(),
+        disabled: !editor.can().deleteRow()
+      }
+    },
+    {
+      type: 'table-merge-or-split-cells',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.merge_or_split_cells',
+        icon: 'tableMergeCells',
+        action: () => editor.chain().focus().mergeOrSplit().run(),
+        disabled: !editor.can().mergeOrSplit()
+      }
+    },
+    {
+      type: 'table-delete-table',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.table.menu.delete_table',
+        icon: 'tableRemove',
+        action: () => editor.chain().focus().deleteTable().run(),
+        disabled: !editor.can().deleteTable()
+      }
+    }
+  ]
+}
+
 export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
   ...imageFloatMenus(editor),
   ...imageSizeMenus(editor),
   ...videoSizeMenus(editor),
+  ...tableBubbleMenus(editor),
   {
     type: 'image-aspect-ratio',
     component: ActionButton,

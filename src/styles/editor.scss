@@ -117,7 +117,35 @@ $extra-light-primary-color: #ecf5ff;
       }
     }
 
-    table.table-wrapper {
+    /**
+     * see https://github.com/ueberdosis/tiptap/issues/6176
+     */
+    table.tableWrapper,
+    .tableWrapper > table,
+    table.table-wrapper,
+    .table-wrapper > table {
+      overflow: hidden;
+
+      td,
+      th {
+        position: relative;
+      }
+
+      .resize-cursor {
+        cursor: ew-resize;
+        cursor: col-resize;
+      }
+
+      .column-resize-handle {
+        position: absolute;
+        top: 0;
+        right: -2px;
+        bottom: -2px;
+        width: 4px;
+        pointer-events: none;
+        background-color: $primary-color;
+      }
+
       .selectedCell {
         position: relative;
 

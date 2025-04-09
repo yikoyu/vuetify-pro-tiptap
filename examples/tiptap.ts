@@ -105,7 +105,10 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
       }
     }),
     Video,
-    Table.configure({ divider: true }),
+    Table.configure({
+      divider: true,
+      cellMinWidth: 100
+    }),
     Blockquote,
     HorizontalRule,
     CodeBlock.configure({ divider: true }),

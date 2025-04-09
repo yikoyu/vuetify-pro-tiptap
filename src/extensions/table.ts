@@ -27,6 +27,7 @@ export const Table = /* @__PURE__*/ TiptapTable.extend<TableOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
+      resizable: true,
       HTMLAttributes: {
         class: 'table-wrapper'
       },

@@ -141,5 +141,6 @@ export const NODE_TYPE_MENU: NodeTypeMenu = {
     'unlink',
     'link-open'
   ],
-  video: ['video-size-small', 'video-size-medium', 'video-size-large', 'divider', 'video', 'remove']
+  video: ['video-size-small', 'video-size-medium', 'video-size-large', 'divider', 'video', 'remove'],
+  table: ['table-add-column-before', 'table-add-column-after', 'table-delete-column', 'divider', 'table-add-row-before', 'table-add-row-after', 'table-delete-row', 'divider', 'table-merge-or-split-cells', 'divider', 'table-delete-table', 'divider']
 }
