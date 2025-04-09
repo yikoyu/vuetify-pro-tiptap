@@ -49,7 +49,7 @@ export const DEFAULT_LOCALE_MESSAGE: LangMessages = {
   en,
   de,
   it,
-  pt,
+  pt
 }
 
 /**
