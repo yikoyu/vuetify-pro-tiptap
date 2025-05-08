@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { getIcon } from '@/constants/icons'
-import { inject } from 'vue'
+import { inject, ref, type Ref } from 'vue'
 import { actionButtonProps } from './props'
 
 const props = defineProps(actionButtonProps)
 
-const disableToolbar = inject<boolean>('disableToolbar', false)
+const disableToolbar = inject<Readonly<Ref<boolean>>>('disableToolbar', ref(false))
 </script>
 
 <template>

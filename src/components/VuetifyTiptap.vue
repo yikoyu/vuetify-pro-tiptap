@@ -9,7 +9,7 @@ import { VuetifyTiptapOnChange } from '@/type'
 import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 
 import { Editor, EditorContent } from '@tiptap/vue-3'
-import { computed, onUnmounted, provide, unref, useAttrs, watch } from 'vue'
+import { computed, onUnmounted, provide, toRef, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
 import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
@@ -194,7 +194,7 @@ watch(() => props.disabled, onDisabledChange)
 
 onUnmounted(() => editor?.destroy())
 
-provide('disableToolbar', props.disableToolbar)
+provide('disableToolbar', toRef(() => props.disableToolbar))
 
 defineExpose({ editor })
 </script>
