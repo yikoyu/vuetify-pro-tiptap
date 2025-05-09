@@ -1,7 +1,9 @@
 $white-color: #fff;
-$border-color: #dcdfe6;
-$primary-color: #409eff;
-$extra-light-primary-color: #ecf5ff;
+$primary-color: rgb(var(--v-theme-primary, 24, 103, 192));
+
+:root {
+  --vp-theme-primary: #{$primary-color};
+}
 
 .vuetify-pro-tiptap {
   overflow-wrap: anywhere;
@@ -288,28 +290,6 @@ $extra-light-primary-color: #ecf5ff;
     p {
       padding: 0;
       line-height: 1.2rem;
-    }
-  }
-}
-
-.table-grid-size-editor {
-  $root: &;
-
-  &__cell {
-    &__inner {
-      box-sizing: border-box;
-      width: 16px;
-      height: 16px;
-      padding: 4px;
-      border: 1px solid $border-color;
-      border-radius: 2px;
-    }
-
-    &--selected {
-      #{$root}__cell__inner {
-        background-color: $extra-light-primary-color;
-        border-color: $primary-color;
-      }
     }
   }
 }
