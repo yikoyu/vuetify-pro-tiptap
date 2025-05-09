@@ -10,7 +10,6 @@ import { computed, ref, watch } from 'vue'
 interface Props {
   value?: string
   target?: '_self' | '_blank'
-  rel?: string
   editor: Editor
   destroy?: () => void
 }
@@ -18,7 +17,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   value: undefined,
   target: '_blank',
-  rel: undefined,
   destroy: undefined
 })
 
@@ -26,8 +24,7 @@ const { t } = useLocale()
 
 const generateLinkAttrs = (): LinkAttrs => ({
   href: '',
-  target: '_blank',
-  rel: ''
+  target: '_blank'
 })
 
 const attrs = ref(generateLinkAttrs())
@@ -35,17 +32,17 @@ const attrs = ref(generateLinkAttrs())
 const dialog = ref<boolean>(false)
 
 const isDisabled = computed(() => {
-  const { href, target, rel } = attrs.value
+  const { href, target } = attrs.value
   if (!href) return true
 
-  return props.value === href && props.target === target && props.rel === rel
+  return props.value === href && props.target === target
 })
 
 function apply() {
-  const { href, target, rel } = attrs.value
+  const { href, target } = attrs.value
 
   if (href) {
-    props.editor.chain().focus().extendMarkRange('link').setLink({ href, target, rel }).run()
+    props.editor.chain().focus().extendMarkRange('link').setLink({ href, target }).run()
   }
   close()
 }
@@ -62,8 +59,7 @@ watch(dialog, val => {
 
   attrs.value = {
     href: props.value,
-    target: props.target,
-    rel: props.rel
+    target: props.target
   }
 })
 </script>
@@ -83,17 +79,6 @@ watch(dialog, val => {
 
       <VCardText>
         <VTextField v-model="attrs.href" :label="t('editor.link.dialog.link')" autofocus />
-
-        <VTextField v-model="attrs.rel" :label="t('editor.link.dialog.rel')" hide-details />
-
-        <VCheckbox
-          v-model="attrs.target"
-          :label="t('editor.link.dialog.openInNewTab')"
-          color="primary"
-          false-value="_self"
-          true-value="_blank"
-          hide-details
-        />
       </VCardText>
 
       <VCardActions>

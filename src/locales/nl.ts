@@ -39,7 +39,6 @@ const locale: Record<string, string> = {
   'editor.link.open': 'Link openen',
   'editor.link.dialog.title': 'Link invoegen',
   'editor.link.dialog.link': 'link',
-  'editor.link.dialog.rel': 'rel',
   'editor.link.dialog.openInNewTab': 'Openen in nieuw tabblad',
   'editor.link.dialog.button.apply': 'Toepassen',
   'editor.markdownTheme.tooltip': 'Thema',

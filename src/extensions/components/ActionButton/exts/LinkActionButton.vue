@@ -10,16 +10,14 @@ const props = defineProps(extActionButtonProps)
 
 const attrs = ref<LinkAttrs>({
   href: undefined,
-  target: undefined,
-  rel: undefined
+  target: undefined
 })
 
 function onAction() {
-  const { href, target, rel } = props.editor.getAttributes('link')
+  const { href, target } = props.editor.getAttributes('link')
   attrs.value = {
     href,
-    target,
-    rel
+    target
   }
 }
 </script>

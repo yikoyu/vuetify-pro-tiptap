@@ -39,7 +39,6 @@ const locale: Record<string, string> = {
   'editor.link.open': '打开链接',
   'editor.link.dialog.title': '插入链接',
   'editor.link.dialog.link': '链接',
-  'editor.link.dialog.rel': 'rel',
   'editor.link.dialog.openInNewTab': '在新标签页中打开',
   'editor.link.dialog.button.apply': '应用',
   'editor.markdownTheme.tooltip': '主题',

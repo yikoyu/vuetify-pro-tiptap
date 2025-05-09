@@ -39,7 +39,6 @@ const locale: Record<string, string> = {
   'editor.link.open': 'Bağlantıyı Aç',
   'editor.link.dialog.title': 'Bağlantı Ekle',
   'editor.link.dialog.link': 'bağlantı',
-  'editor.link.dialog.rel': 'ilişki',
   'editor.link.dialog.openInNewTab': 'Yeni sekmede aç',
   'editor.link.dialog.button.apply': 'Uygula',
   'editor.markdownTheme.tooltip': 'Tema',
