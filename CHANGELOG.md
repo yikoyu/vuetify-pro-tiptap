@@ -1,3 +1,21 @@
+## [2.6.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.8...v2.6.0) (2025-05-09)
+
+### Features
+
+* **bubble:** :sparkles: support table operations with default resizable=true and fix style loss ([380f746](https://github.com/yikoyu/vuetify-pro-tiptap/commit/380f7462cd2f0565d0a2340eb1cd933e1526dadb))
+* **link:** :sparkles: remove "open in new tab" and "rel" options ([bf61aa4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/bf61aa4fdec26538978b5c3d86ff654f1a185b6e)), closes [#438](https://github.com/yikoyu/vuetify-pro-tiptap/issues/438)
+* **locale:** :sparkles: enhance internationalization with fallback support and cleanup ([250d695](https://github.com/yikoyu/vuetify-pro-tiptap/commit/250d695123157d61b7d119780602b61f24e6026a))
+* **locale:** add Portuguese language support ([#432](https://github.com/yikoyu/vuetify-pro-tiptap/issues/432)) ([a1a330c](https://github.com/yikoyu/vuetify-pro-tiptap/commit/a1a330c04584f41f0c56c7e515399b51dd63165a))
+
+### Bug Fixes
+
+* :bug: disableToolbar prop not behaving reactively ([566ce6c](https://github.com/yikoyu/vuetify-pro-tiptap/commit/566ce6ce93d2c853722a6f125edac2f3bd189eb6))
+* **font-size:** :bug: recognize pre-set fontSize when marking text ([7a4b039](https://github.com/yikoyu/vuetify-pro-tiptap/commit/7a4b039ef9698706a5d8d32b135bbebe51a710f1)), closes [#431](https://github.com/yikoyu/vuetify-pro-tiptap/issues/431)
+
+### Refactor
+
+* **table:** :recycle: replace table-grid-size-editor with cellInnerStyles ([f052c86](https://github.com/yikoyu/vuetify-pro-tiptap/commit/f052c860e5879f3f336496fbbf40563f0c8a57bc))
+
 ## [2.5.8](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.7...v2.5.8) (2025-03-12)
 
 ### Bug Fixes
