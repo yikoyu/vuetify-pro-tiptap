@@ -7,13 +7,13 @@ export interface HtmlViewOptions extends GeneralOptions<HtmlViewOptions> {}
 
 // Helper functions outside the extension
 function createOverlay(editor: Editor) {
-  // 获取编辑器DOM元素
+  // Get editor DOM element
   const editorElement = editor.view.dom;
   const editorParent = editorElement.parentElement;
 
   if (!editorParent) return null;
 
-  // 创建覆盖容器
+  // Create overlay container
   const overlay = document.createElement("div");
   overlay.className = "tiptap-html-overlay";
   overlay.style.position = "absolute";
@@ -29,7 +29,7 @@ function createOverlay(editor: Editor) {
   overlay.style.boxSizing = "border-box";
   overlay.style.border = "1px solid #ddd";
 
-  // 创建HTML编辑区域
+  // Create HTML editing area
   const textarea = document.createElement("textarea");
   textarea.className = "tiptap-html-editor";
   textarea.style.width = "100%";
@@ -44,56 +44,69 @@ function createOverlay(editor: Editor) {
   textarea.style.outline = "none";
   textarea.style.color = "#333";
 
-  // 将HTML内容设置到文本区域
+  // Set HTML content to the text area
   const currentContent = editor.getHTML();
 
-  // 保存原始内容以便稍后恢复
+  // Save original content for later restoration
   editor.storage.htmlView.editorContent = currentContent;
 
-  // 格式化HTML内容
+  // Format HTML content
   const formattedHtml = formatHtml(currentContent);
   textarea.value = formattedHtml;
 
-  // 保存格式化后的HTML内容
+  // Save formatted HTML content
   editor.storage.htmlView.htmlContent = formattedHtml;
 
-  // 将编辑区域添加到覆盖层
+  // Add the editing area to the overlay
   overlay.appendChild(textarea);
 
-  // 将覆盖层添加到编辑器父容器
+  // Add the overlay to the editor parent container
   editorParent.style.position = "relative";
+
+  // Get the original dimensions before appending the overlay
+  const originalWidth = editorElement.offsetWidth;
+  const originalHeight = editorElement.offsetHeight;
+
+  // Force the overlay to have the exact same dimensions as the editor
+  overlay.style.width = `${originalWidth}px`;
+  overlay.style.height = `${originalHeight}px`;
+  overlay.style.minHeight = `${originalHeight}px`;
+
+  // Add smooth transition for any dimension changes
+  overlay.style.transition = "none";
+
   editorParent.appendChild(overlay);
 
-  // 聚焦到HTML编辑区域
+  // Focus on the HTML editing area
   setTimeout(() => {
     textarea.focus();
     console.log("Switched to HTML view mode");
   }, 10);
 
-  // 添加输入事件来实时更新存储的HTML内容和编辑器内容
+  // Add input event to update stored HTML content and editor content in real-time
   textarea.addEventListener("input", () => {
-    // 更新存储的HTML内容
+    // Update stored HTML content
     editor.storage.htmlView.htmlContent = textarea.value;
 
-    // 实时同步到富文本编辑器，但不影响HTML编辑体验
+    // Sync to rich text editor in real-time without affecting HTML editing experience
     try {
-      // 标记更新来源为HTML编辑器
+      // Mark update source as HTML editor
       editor.storage.htmlView.isUpdatingFromHTML = true;
 
-      // 解析HTML内容
+      // Parse HTML content
       const parsedHtml = parseHtml(textarea.value);
 
-      // 使用commands API更新编辑器内容
+      // Use commands API to update editor content
       editor.commands.setContent(parsedHtml, false);
 
-      // 确保编辑器状态更新并触发v-model更新
-      // 这是关键：手动触发更新事件确保v-model正确同步
+      // Ensure editor state updates and triggers v-model update
+      // This is key: manually trigger update event to ensure v-model syncs correctly
       const tr = editor.state.tr;
       tr.setMeta("preventUpdate", false);
       tr.setMeta("addToHistory", false);
       editor.view.dispatch(tr);
 
-      // 关键：手动触发更新事件，确保v-model同步
+      // Key: manually trigger update event to ensure v-model syncs
       if (editor.options.onUpdate) {
         editor.options.onUpdate({
           editor,
@@ -103,7 +116,7 @@ function createOverlay(editor: Editor) {
     } catch (error) {
       console.error("Error syncing HTML to editor:", error);
     } finally {
-      // 延迟一帧后重置标志位，确保更新完成
+      // Delay resetting flag by one frame to ensure update is complete
       requestAnimationFrame(() => {
         editor.storage.htmlView.isUpdatingFromHTML = false;
       });
@@ -113,9 +126,9 @@ function createOverlay(editor: Editor) {
   return overlay;
 }
 
-// 格式化HTML内容 (美化和转义)
+// Format HTML content (beautify and escape)
 function formatHtml(html: string) {
-  // 移除可能存在的tiptap-html-* 相关标签
+  // Remove any existing tiptap-html-* related tags
   const cleanContent = html
     .replace(/<div class="tiptap-html-overlay"[^>]*>[\s\S]*?<\/div>/gi, "")
     .replace(
@@ -123,13 +136,13 @@ function formatHtml(html: string) {
       "",
     );
 
-  // 这里可以添加更多代码来美化HTML
+  // More code can be added here to beautify HTML
   return cleanContent;
 }
 
-// 解析HTML内容 (从编辑状态恢复)
+// Parse HTML content (restore from edit state)
 function parseHtml(html: string) {
-  // 移除可能存在的标签，以防意外
+  // Remove potential tags as a precaution
   const cleanContent = html
     .replace(/<div class="tiptap-html-overlay"[^>]*>[\s\S]*?<\/div>/gi, "")
     .replace(
@@ -140,47 +153,47 @@ function parseHtml(html: string) {
   return cleanContent;
 }
 
-// 找到编辑器工具栏，为所有按钮添加禁用状态
+// Find editor toolbar and add disabled state to all buttons
 function disableAllToolbarButtons(editor: Editor) {
   try {
-    // 创建或获取全局标志，用于禁用所有工具栏按钮
+    // Create or get global flag for disabling all toolbar buttons
     if ((window as any).tiptapGlobalState === undefined) {
       (window as any).tiptapGlobalState = {};
     }
 
-    // 设置全局状态表示HTML模式已激活
+    // Set global state indicating HTML mode is active
     (window as any).tiptapGlobalState.htmlModeActive = true;
 
-    // 手动触发工具栏更新（如果有重新渲染机制）
+    // Manually trigger toolbar update (if there's a re-rendering mechanism)
     const event = new CustomEvent("tiptap-html-mode-changed", {
       detail: { isHtmlMode: true },
     });
     document.dispatchEvent(event);
 
-    // 给编辑器容器添加类名，触发CSS禁用
+    // Add class name to editor container to trigger CSS disabling
     const editorContainer = document.querySelector(".vuetify-pro-tiptap");
     if (editorContainer) {
       editorContainer.classList.add("html-view-active");
     }
 
-    // 再次直接操作DOM，强制找到并标记HTML按钮
+    // Directly manipulate DOM again to find and mark HTML button
     setTimeout(() => {
-      // 尝试通过多种方式找到HTML按钮
-      // 1. 通过SVG路径
+      // Try to find HTML button through multiple methods
+      // 1. Through SVG path
       const buttons = document.querySelectorAll(".v-toolbar button");
       buttons.forEach((btn) => {
         const svg = btn.querySelector(".v-icon svg");
         if (svg) {
           const path = svg.querySelector("path");
           const d = path?.getAttribute("d") || "";
-          // 匹配常见的code图标路径
+          // Match common code icon path
           if (
             d.includes(
               "M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z",
             )
           ) {
             btn.setAttribute("data-htmlview-btn", "true");
-            // 确保这个按钮完全可点击
+            // Ensure this button is fully clickable
             (btn as HTMLElement).style.pointerEvents = "auto";
             (btn as HTMLElement).style.opacity = "1";
             (btn as HTMLElement).style.cursor = "pointer";
@@ -189,7 +202,7 @@ function disableAllToolbarButtons(editor: Editor) {
             (btn as HTMLElement).style.zIndex = "10000";
             btn.removeAttribute("disabled");
           } else {
-            // 确保所有其他按钮不可点击
+            // Ensure all other buttons are not clickable
             (btn as HTMLElement).style.pointerEvents = "none";
             (btn as HTMLElement).style.opacity = "0.4";
             (btn as HTMLElement).style.cursor = "not-allowed";
@@ -199,40 +212,40 @@ function disableAllToolbarButtons(editor: Editor) {
       });
     }, 50);
 
-    console.log("所有编辑器工具已禁用");
+    console.log("All editor tools have been disabled");
   } catch (error) {
-    console.error("禁用工具栏按钮失败:", error);
+    console.error("Failed to disable toolbar buttons:", error);
   }
 }
 
-// 恢复编辑器工具栏按钮状态
+// Restore editor toolbar button state
 function enableAllToolbarButtons(editor: Editor) {
   try {
-    // 更新全局状态
+    // Update global state
     if ((window as any).tiptapGlobalState !== undefined) {
       (window as any).tiptapGlobalState.htmlModeActive = false;
     }
 
-    // 触发自定义事件通知工具栏更新
+    // Trigger custom event to notify toolbar update
     const event = new CustomEvent("tiptap-html-mode-changed", {
       detail: { isHtmlMode: false },
     });
     document.dispatchEvent(event);
 
-    // 移除编辑器容器的禁用类名
+    // Remove disabled class name from editor container
     const editorContainer = document.querySelector(".vuetify-pro-tiptap");
     if (editorContainer) {
       editorContainer.classList.remove("html-view-active");
     }
 
-    // 直接找到并重置所有按钮
+    // Find and reset all buttons directly
     const buttons = document.querySelectorAll(".v-toolbar button");
     buttons.forEach((btn) => {
-      // 删除disabled属性
+      // Remove disabled attribute
       btn.removeAttribute("disabled");
       btn.removeAttribute("aria-disabled");
 
-      // 重置样式
+      // Reset styles
       if (btn instanceof HTMLElement) {
         btn.style.pointerEvents = "";
         btn.style.opacity = "";
@@ -242,29 +255,29 @@ function enableAllToolbarButtons(editor: Editor) {
         btn.style.position = "";
         btn.style.border = "";
 
-        // 移除事件阻止
+        // Remove event prevention
         btn.onclick = null;
       }
     });
 
-    console.log("所有编辑器工具已启用");
+    console.log("All editor tools have been enabled");
   } catch (error) {
-    console.error("启用工具栏按钮失败:", error);
+    console.error("Failed to enable toolbar buttons:", error);
   }
 }
 
-// 激活HTML视图模式
+// Activate HTML view mode
 function activateHtmlMode(editor: Editor) {
   try {
-    // 禁用其他所有插件/功能
+    // Disable all other plugins/features
     const extensions = editor.extensionManager.extensions;
     for (const extension of extensions) {
-      // 跳过HTML视图插件本身
+      // Skip HTML view plugin itself
       if (extension.name === "htmlView") continue;
 
-      // 临时禁用其他插件
+      // Temporarily disable other plugins
       if (extension.options && typeof extension.options.enable === "boolean") {
-        // 保存当前状态以便恢复
+        // Save current state for later restoration
         if (!editor.storage.htmlView.disabledExtensions) {
           editor.storage.htmlView.disabledExtensions = {};
         }
@@ -274,16 +287,44 @@ function activateHtmlMode(editor: Editor) {
       }
     }
 
-    // 禁用工具栏上的所有按钮
+    // Get editor dimensions before switching to HTML mode
+    const editorElement = editor.view.dom;
+    const editorParent = editorElement.parentElement;
+
+    if (editorParent) {
+      // Store original dimensions to prevent layout shifts
+      const originalWidth = editorElement.offsetWidth;
+      const originalHeight = editorElement.offsetHeight;
+      const originalScrollHeight = editorElement.scrollHeight;
+
+      // Store dimensions as CSS variables for consistent sizing
+      editorParent.style.setProperty(
+        "--tiptap-editor-width",
+        `${originalWidth}px`,
+      );
+      editorParent.style.setProperty(
+        "--tiptap-editor-height",
+        `${originalHeight - 210}px`,
+      );
+      editorParent.style.setProperty(
+        "--tiptap-editor-scroll-height",
+        `${originalScrollHeight}px`,
+      );
+
+      // Add class to fix dimensions during transition
+      editorParent.classList.add("tiptap-preserve-dimensions");
+    }
+
+    // Disable all buttons on the toolbar
     disableAllToolbarButtons(editor);
 
-    // 创建覆盖层并保存引用
+    // Create overlay and save reference
     const overlay = createOverlay(editor);
     if (overlay) {
       editor.storage.htmlView.overlayElement = overlay;
       editor.storage.htmlView.isHtmlMode = true;
 
-      // 添加样式到编辑器容器，指示当前处于HTML模式
+      // Add style to editor container to indicate currently in HTML mode
       const editorElement = editor.view.dom;
       if (editorElement.parentElement) {
         editorElement.parentElement.classList.add("html-view-mode");
@@ -294,44 +335,63 @@ function activateHtmlMode(editor: Editor) {
   }
 }
 
-// 停用HTML视图模式并应用更改
+// Deactivate HTML view mode and apply changes
 function deactivateHtmlMode(editor: Editor) {
   try {
-    // 获取更新后的HTML内容
+    // Get updated HTML content
     const htmlContent = editor.storage.htmlView.htmlContent;
 
-    // 移除覆盖层
+    // Remove overlay
     if (editor.storage.htmlView.overlayElement) {
       editor.storage.htmlView.overlayElement.remove();
       editor.storage.htmlView.overlayElement = null;
     }
 
-    // 启用所有工具栏按钮
+    // Enable all toolbar buttons
     enableAllToolbarButtons(editor);
 
-    // 移除HTML模式指示样式
+    // Remove HTML mode indicator style
     const editorElement = editor.view.dom;
     if (editorElement.parentElement) {
       editorElement.parentElement.classList.remove("html-view-mode");
+      // Remove dimension preservation class
+      editorElement.parentElement.classList.remove(
+        "tiptap-preserve-dimensions",
+      );
+
+      // Clean up CSS variables after a brief delay to prevent flickering
+      setTimeout(() => {
+        if (editorElement.parentElement) {
+          editorElement.parentElement.style.removeProperty(
+            "--tiptap-editor-width",
+          );
+          editorElement.parentElement.style.removeProperty(
+            "--tiptap-editor-height",
+          );
+          editorElement.parentElement.style.removeProperty(
+            "--tiptap-editor-scroll-height",
+          );
+        }
+      }, 50);
     }
 
-    // 如果有HTML内容，将其应用到编辑器
+    // If there's HTML content, apply it to the editor
     if (htmlContent && htmlContent.trim() !== "") {
       const parsedHtml = parseHtml(htmlContent);
 
-      // 标记更新来源
+      // Mark update source
       editor.storage.htmlView.isUpdatingFromHTML = true;
 
-      // 设置编辑器内容
+      // Set editor content
       editor.commands.setContent(parsedHtml);
 
-      // 手动触发更新
+      // Manually trigger update
       const tr = editor.state.tr;
       tr.setMeta("preventUpdate", false);
       tr.setMeta("addToHistory", false);
       editor.view.dispatch(tr);
 
-      // 关键：手动触发更新事件，确保v-model同步
+      // Key: manually trigger update event to ensure v-model syncs
       if (editor.options.onUpdate) {
         editor.options.onUpdate({
           editor,
@@ -339,7 +399,7 @@ function deactivateHtmlMode(editor: Editor) {
         });
       }
 
-      // 延迟重置标记
+      // Delay resetting marker
       requestAnimationFrame(() => {
         editor.storage.htmlView.isUpdatingFromHTML = false;
       });
@@ -347,7 +407,7 @@ function deactivateHtmlMode(editor: Editor) {
       console.log("Applied HTML to editor");
     }
 
-    // 恢复之前禁用的插件
+    // Restore previously disabled plugins
     const extensions = editor.extensionManager.extensions;
     if (editor.storage.htmlView.disabledExtensions) {
       for (const extension of extensions) {
@@ -363,17 +423,17 @@ function deactivateHtmlMode(editor: Editor) {
             editor.storage.htmlView.disabledExtensions[extension.name];
         }
       }
-      // 清除存储的状态
+      // Clear stored state
       editor.storage.htmlView.disabledExtensions = {};
     }
 
-    // 更新状态
+    // Update state
     editor.storage.htmlView.isHtmlMode = false;
     console.log("Switched back to rich text mode");
   } catch (error) {
     console.error("Error applying HTML:", error);
 
-    // 移除覆盖层
+    // Remove overlay
     if (editor.storage.htmlView.overlayElement) {
       editor.storage.htmlView.overlayElement.remove();
       editor.storage.htmlView.overlayElement = null;
@@ -398,9 +458,9 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
     } as const;
   },
 
-  // 增加自定义CSS，用于HTML视图模式
+  // Add custom CSS for HTML view mode
   addGlobalAttributes() {
-    // 添加全局CSS样式
+    // Add global CSS styles
     const style = document.createElement("style");
     style.textContent = `
       .html-view-mode .ProseMirror {
@@ -408,15 +468,39 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
       }
       .tiptap-html-overlay {
         border-radius: 0 !important;
+        /* Prevent flickering by using proper dimensions and transitions */
+        box-sizing: border-box !important;
+        transition: none !important;
       }
-      /* 禁用HTML模式下的所有其他按钮 - 更强力版本 */
+      /* Ensure the editor container doesn't resize during transition */
+      .vuetify-pro-tiptap.html-view-mode {
+        min-height: var(--tiptap-editor-height) !important;
+        display: block !important;
+      }
+      .html-view-mode .ProseMirror-focused {
+        outline: none !important;
+      }
+      /* Preserve dimensions to prevent layout shifts */
+      .tiptap-preserve-dimensions {
+        min-height: var(--tiptap-editor-height) !important;
+        height: var(--tiptap-editor-height) !important;
+        width: var(--tiptap-editor-width) !important;
+        transition: none !important;
+      }
+      /* Ensure textarea in HTML view keeps the exact same dimensions */
+      .tiptap-html-editor {
+        min-height: var(--tiptap-editor-scroll-height, 100%) !important;
+        height: var(--tiptap-editor-scroll-height, 100%) !important;
+        width: var(--tiptap-editor-width, 100%) !important;
+      }
+      /* Disable all other buttons in HTML mode - stronger version */
       .html-view-active .v-toolbar button {
         opacity: 0.4 !important;
         cursor: not-allowed !important;
         background-color: #f0f0f0 !important;
         pointer-events: none !important;
       }
-      /* 确保HTML视图按钮始终可点击 */
+      /* Ensure HTML view button is always clickable */
       .html-view-active .v-toolbar button[data-htmlview-btn="true"] {
         opacity: 1 !important;
         cursor: pointer !important;
@@ -442,24 +526,24 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
             const isHtmlMode = editor.storage.htmlView.isHtmlMode;
 
             if (isHtmlMode) {
-              // 从HTML视图切换到富文本视图
+              // Switch from HTML view to rich text view
               deactivateHtmlMode(editor);
             } else {
-              // 从富文本视图切换到HTML视图
+              // Switch from rich text view to HTML view
               activateHtmlMode(editor);
             }
           },
           isActive: () => editor.storage.htmlView.isHtmlMode || false,
           icon: "htmlView",
           tooltip: t("editor.htmlview.tooltip"),
-          // 当启用HTML视图时，其他插件按钮应该被禁用
+          // Other plugin buttons should be disabled when HTML view is enabled
           onRender: () => {
-            // 监听自定义事件，当HTML模式发生变化时被调用
+            // Listen for custom event, called when HTML mode changes
             const handler = (e: CustomEvent) => {
-              // 主动寻找HTML按钮并确保标记
+              // Actively look for HTML button and ensure it's marked
               const htmlButtons =
                 document.querySelectorAll(".v-toolbar button");
-              // 通过多个选择器尝试找到HTML按钮
+              // Try to find HTML button through multiple selectors
               htmlButtons.forEach((btn) => {
                 const svg = btn.querySelector(".v-icon svg");
                 if (svg) {
@@ -472,33 +556,33 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
                         "M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z",
                       )
                   ) {
-                    // 找到HTML按钮，设置标记
+                    // Found HTML button, set marker
                     btn.setAttribute("data-htmlview-btn", "true");
                   }
                 }
               });
 
-              // 获取所有工具栏按钮
+              // Get all toolbar buttons
               const allButtons = document.querySelectorAll(
                 ".vuetify-pro-tiptap .v-toolbar button",
               );
 
-              // 遍历所有按钮
+              // Iterate through all buttons
               allButtons.forEach((button) => {
-                // 检查是否为HTML按钮
+                // Check if it's the HTML button
                 const isHtmlButton = button.hasAttribute("data-htmlview-btn");
 
                 if (e.detail.isHtmlMode) {
-                  // HTML模式激活
+                  // HTML mode activated
                   if (!isHtmlButton) {
-                    // 非HTML按钮禁用 - 多重机制确保禁用
+                    // Non-HTML buttons disabled - multiple mechanisms to ensure disabling
                     button.setAttribute("disabled", "true");
                     button.setAttribute("aria-disabled", "true");
                     (button as HTMLElement).style.pointerEvents = "none";
                     (button as HTMLElement).style.opacity = "0.4";
                     (button as HTMLElement).style.backgroundColor = "#f0f0f0";
                     (button as HTMLElement).style.cursor = "not-allowed";
-                    // 安全地添加事件阻止
+                    // Safely add event prevention
                     if (button instanceof HTMLElement) {
                       button.onclick = function (event: Event) {
                         event.preventDefault();
@@ -507,7 +591,7 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
                       };
                     }
                   } else {
-                    // HTML按钮保持启用
+                    // HTML button remains enabled
                     button.removeAttribute("disabled");
                     button.removeAttribute("aria-disabled");
                     (button as HTMLElement).style.pointerEvents = "auto";
@@ -521,7 +605,7 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
                     (button as HTMLElement).style.cursor = "pointer";
                   }
                 } else {
-                  // 普通模式，恢复所有按钮
+                  // Normal mode, restore all buttons
                   button.removeAttribute("disabled");
                   button.removeAttribute("aria-disabled");
                   (button as HTMLElement).style.pointerEvents = "";
@@ -531,7 +615,7 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
                   (button as HTMLElement).style.position = "";
                   (button as HTMLElement).style.zIndex = "";
                   (button as HTMLElement).style.cursor = "";
-                  // 安全地移除事件阻止
+                  // Safely remove event prevention
                   if (button instanceof HTMLElement) {
                     button.onclick = null;
                   }
@@ -544,15 +628,15 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
               handler as EventListener,
             );
 
-            // 给当前按钮标记为HTML视图按钮，避免被自己禁用
+            // Mark current button as HTML view button to avoid it being disabled by itself
             return {
               element: document.createElement("div"),
               onMount: (element: HTMLElement) => {
-                // 找到最近的按钮元素并标记
+                // Find the closest button element and mark it
                 const button = element.closest("button");
                 if (button) {
                   button.setAttribute("data-htmlview-btn", "true");
-                  console.log("HTML视图按钮已标记");
+                  console.log("HTML view button has been marked");
                 }
               },
               onDestroy: () => {
@@ -568,11 +652,11 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
     };
   },
 
-  // 清理函数，确保切换回普通模式并移除任何临时元素
+  // Cleanup function to ensure switching back to normal mode and removing any temporary elements
   onDestroy() {
     const editor = this.editor;
     if (editor.storage.htmlView.isHtmlMode) {
-      // 移除HTML编辑器覆盖层
+      // Remove HTML editor overlay
       if (editor.storage.htmlView.overlayElement) {
         editor.storage.htmlView.overlayElement.remove();
         editor.storage.htmlView.overlayElement = null;
@@ -580,10 +664,10 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
     }
   },
 
-  // 处理编辑器更新事件
+  // Handle editor update events
   onUpdate() {
     return ({ editor }: { editor: Editor }) => {
-      // 允许所有更新传播到v-model，但阻止HTML视图模式下的干扰
+      // Allow all updates to propagate to v-model, but prevent interference in HTML view mode
       if (
         editor.storage.htmlView.isHtmlMode &&
         !editor.storage.htmlView.isUpdatingFromHTML
@@ -591,7 +675,7 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
         return false;
       }
 
-      // 否则允许更新传播到v-model
+      // Otherwise allow updates to propagate to v-model
       return true;
     };
   },
