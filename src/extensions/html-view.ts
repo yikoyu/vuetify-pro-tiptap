@@ -269,6 +269,21 @@ function enableAllToolbarButtons(editor: Editor) {
 // Activate HTML view mode
 function activateHtmlMode(editor: Editor) {
   try {
+    // Get editor dimensions FIRST, before any modifications
+    const editorElement = editor.view.dom;
+    const editorParent = editorElement.parentElement;
+    // Store original dimensions right at the beginning
+    let originalWidth = 0;
+    let originalHeight = 0;
+    let originalScrollHeight = 0;
+
+    if (editorParent) {
+      console.log(editorParent, "editorParent");
+      originalWidth = editorParent.offsetWidth;
+      originalHeight = editorParent.offsetHeight;
+      originalScrollHeight = editorParent.scrollHeight;
+    }
+
     // Disable all other plugins/features
     const extensions = editor.extensionManager.extensions;
     for (const extension of extensions) {
@@ -287,16 +302,8 @@ function activateHtmlMode(editor: Editor) {
       }
     }
 
-    // Get editor dimensions before switching to HTML mode
-    const editorElement = editor.view.dom;
-    const editorParent = editorElement.parentElement;
-
+    // Now use the dimensions we captured at the beginning
     if (editorParent) {
-      // Store original dimensions to prevent layout shifts
-      const originalWidth = editorElement.offsetWidth;
-      const originalHeight = editorElement.offsetHeight;
-      const originalScrollHeight = editorElement.scrollHeight;
-
       // Store dimensions as CSS variables for consistent sizing
       editorParent.style.setProperty(
         "--tiptap-editor-width",
@@ -304,7 +311,7 @@ function activateHtmlMode(editor: Editor) {
       );
       editorParent.style.setProperty(
         "--tiptap-editor-height",
-        `${originalHeight - 210}px`,
+        `${originalHeight}px`,
       );
       editorParent.style.setProperty(
         "--tiptap-editor-scroll-height",
@@ -455,6 +462,10 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
       overlayElement: null as HTMLElement | null,
       isUpdatingFromHTML: false,
       disabledExtensions: {} as Record<string, boolean>,
+      // Add storage for dimensions
+      originalWidth: 0,
+      originalHeight: 0,
+      originalScrollHeight: 0,
     } as const;
   },
 
@@ -474,7 +485,7 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
       }
       /* Ensure the editor container doesn't resize during transition */
       .vuetify-pro-tiptap.html-view-mode {
-        min-height: var(--tiptap-editor-height) !important;
+        height: var(--tiptap-editor-height) !important;
         display: block !important;
       }
       .html-view-mode .ProseMirror-focused {
@@ -523,13 +534,34 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
         component: ActionButton,
         componentProps: {
           action: () => {
+            // debugger;
             const isHtmlMode = editor.storage.htmlView.isHtmlMode;
 
             if (isHtmlMode) {
               // Switch from HTML view to rich text view
               deactivateHtmlMode(editor);
             } else {
-              // Switch from rich text view to HTML view
+              // Capture dimensions BEFORE activating HTML mode
+              const editorElement = editor.view.dom;
+              const editorParent = editorElement.parentElement;
+
+              if (editorParent) {
+                // Store original dimensions in storage
+                editor.storage.htmlView.originalWidth =
+                  editorParent.offsetWidth;
+                editor.storage.htmlView.originalHeight =
+                  editorParent.offsetHeight;
+                editor.storage.htmlView.originalScrollHeight =
+                  editorParent.scrollHeight;
+                console.log(
+                  "Captured original dimensions before HTML mode:",
+                  editor.storage.htmlView.originalWidth,
+                  editor.storage.htmlView.originalHeight,
+                  editor.storage.htmlView.originalScrollHeight,
+                );
+              }
+
+              // Now switch to HTML view with stored dimensions
               activateHtmlMode(editor);
             }
           },
