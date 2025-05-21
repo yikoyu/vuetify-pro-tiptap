@@ -14,7 +14,7 @@ export type VuetifyTiptapOnChange = {
 /**
  * Represents the keys for different extensions.
  */
-export type ExtensionNameKeys = 'bold' | 'italic' | 'underline' | 'strike' | 'color' | 'highlight' | 'heading' | 'textAlign' | 'bulletList' | 'orderedList' | 'taskList' | 'indent' | 'link' | 'image' | 'video' | 'table' | 'blockquote' | 'horizontalRule' | 'code' | 'codeBlock' | 'clear' | 'history' | 'fullscreen';
+export type ExtensionNameKeys = "bold" | "italic" | "underline" | "strike" | "color" | "highlight" | "heading" | "textAlign" | "bulletList" | "orderedList" | "taskList" | "indent" | "link" | "image" | "video" | "table" | "blockquote" | "horizontalRule" | "code" | "codeBlock" | "clear" | "history" | "htmlView" | "fullscreen";
 /**
  * Represents the general options for Tiptap extensions.
  */

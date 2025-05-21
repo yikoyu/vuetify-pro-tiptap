@@ -5,9 +5,9 @@ export { useContext } from './hooks';
 export * from './install';
 export * from './locales';
 export type * from './type';
-declare module 'vue' {
+declare module "vue" {
     interface GlobalComponents {
-        VuetifyTiptap: typeof import('./components/VuetifyTiptap.vue').default;
-        VuetifyViewer: typeof import('./components/VuetifyViewer.vue').default;
+        VuetifyTiptap: typeof import("./components/VuetifyTiptap.vue").default;
+        VuetifyViewer: typeof import("./components/VuetifyViewer.vue").default;
     }
 }

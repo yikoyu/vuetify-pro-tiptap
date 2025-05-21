@@ -30,6 +30,8 @@ export type { HistoryOptions } from './history';
 export { History } from './history';
 export type { HorizontalRuleOptions } from './horizontal-rule';
 export { HorizontalRule } from './horizontal-rule';
+export type { HtmlViewOptions } from './html-view';
+export { HtmlView } from './html-view';
 export type { ImageOptions } from './image';
 export { Image } from './image';
 export type { IndentOptions } from './indent';

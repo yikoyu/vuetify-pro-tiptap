@@ -1,58 +1,63 @@
-import type { Editor as CoreEditor, Extension, JSONContent } from '@tiptap/core'
-import type { Editor } from '@tiptap/vue-3'
+import type {
+  Editor as CoreEditor,
+  Extension,
+  JSONContent,
+} from "@tiptap/core";
+import type { Editor } from "@tiptap/vue-3";
 
-import type { IconsOptions } from './constants/icons'
+import type { IconsOptions } from "./constants/icons";
 
-export type { Editor, JSONContent } from '@tiptap/core'
+export type { Editor, JSONContent } from "@tiptap/core";
 
 /**
  * Represents the onChange event for VuetifyTiptap.
  */
 export type VuetifyTiptapOnChange = {
   /** Editor object */
-  editor: CoreEditor
+  editor: CoreEditor;
   /** Output content, can be a string or JSON content */
-  output: string | JSONContent
-}
+  output: string | JSONContent;
+};
 
 /**
  * Represents the keys for different extensions.
  */
 export type ExtensionNameKeys =
-  | 'bold'
-  | 'italic'
-  | 'underline'
-  | 'strike'
-  | 'color'
-  | 'highlight'
-  | 'heading'
-  | 'textAlign'
-  | 'bulletList'
-  | 'orderedList'
-  | 'taskList'
-  | 'indent'
-  | 'link'
-  | 'image'
-  | 'video'
-  | 'table'
-  | 'blockquote'
-  | 'horizontalRule'
-  | 'code'
-  | 'codeBlock'
-  | 'clear'
-  | 'history'
-  | 'fullscreen'
+  | "bold"
+  | "italic"
+  | "underline"
+  | "strike"
+  | "color"
+  | "highlight"
+  | "heading"
+  | "textAlign"
+  | "bulletList"
+  | "orderedList"
+  | "taskList"
+  | "indent"
+  | "link"
+  | "image"
+  | "video"
+  | "table"
+  | "blockquote"
+  | "horizontalRule"
+  | "code"
+  | "codeBlock"
+  | "clear"
+  | "history"
+  | "htmlView"
+  | "fullscreen";
 
 /**
  * Represents the general options for Tiptap extensions.
  */
 export interface GeneralOptions<T> {
   /** Enabled divider */
-  divider: boolean
+  divider: boolean;
   /** Enabled spacer */
-  spacer: boolean
+  spacer: boolean;
   /** Button view function */
-  button: ButtonView<T>
+  button: ButtonView<T>;
 }
 
 /**
@@ -60,14 +65,14 @@ export interface GeneralOptions<T> {
  */
 export interface ButtonViewReturnComponentProps {
   /** Method triggered when action is performed */
-  action?: (value?: unknown) => void
+  action?: (value?: unknown) => void;
   /** Whether it is in the active state */
-  isActive?: () => boolean
+  isActive?: () => boolean;
   /** Button icon */
-  icon?: keyof IconsOptions
+  icon?: keyof IconsOptions;
   /** Text displayed on hover */
-  tooltip?: string
-  [x: string]: any
+  tooltip?: string;
+  [x: string]: any;
 }
 
 /**
@@ -75,8 +80,8 @@ export interface ButtonViewReturnComponentProps {
  */
 export interface ButtonViewReturnComponentSlots {
   /** Dialog slot */
-  dialog: () => any
-  [x: string]: () => any
+  dialog: () => any;
+  [x: string]: () => any;
 }
 
 /**
@@ -84,11 +89,11 @@ export interface ButtonViewReturnComponentSlots {
  */
 export interface ButtonViewReturn {
   /** Component */
-  component: unknown
+  component: unknown;
   /** Component props */
-  componentProps: ButtonViewReturnComponentProps
+  componentProps: ButtonViewReturnComponentProps;
   /** Component slots */
-  componentSlots?: ButtonViewReturnComponentSlots
+  componentSlots?: ButtonViewReturnComponentSlots;
 }
 
 /**
@@ -96,16 +101,16 @@ export interface ButtonViewReturn {
  */
 export interface ButtonViewParams<T = any> {
   /** Editor object */
-  editor: Editor
+  editor: Editor;
   /** Extension object */
-  extension: Extension<T>
+  extension: Extension<T>;
   /** Translation function */
-  t: (path: string) => string
+  t: (path: string) => string;
 }
 
 /**
  * Represents the ButtonView function.
  */
 export interface ButtonView<T = any> {
-  (options: ButtonViewParams<T>): ButtonViewReturn | ButtonViewReturn[]
+  (options: ButtonViewParams<T>): ButtonViewReturn | ButtonViewReturn[];
 }

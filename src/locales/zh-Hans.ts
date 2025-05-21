@@ -74,6 +74,7 @@ const locale: Record<string, string> = {
   "editor.horizontalrule.tooltip": "分隔线",
   "editor.code.tooltip": "代码",
   "editor.codeblock.tooltip": "代码块",
+  "editor.htmlview.tooltip": "HTML视图",
   "editor.clear.tooltip": "清除格式",
   "editor.undo.tooltip": "撤销",
   "editor.redo.tooltip": "重做",

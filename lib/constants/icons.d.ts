@@ -45,6 +45,7 @@ export interface IconsOptions extends ToolbarIconsOptions {
     aspectRatio: string;
     delete: string;
     text: string;
+    htmlView: string;
     h1: string;
     h2: string;
     h3: string;

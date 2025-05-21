@@ -41,6 +41,7 @@ import {
   mdiFullscreen,
   mdiFullscreenExit,
   mdiImagePlus,
+  mdiLanguageHtml5,
   mdiLinkVariantOff,
   mdiLinkVariantPlus,
   mdiMinus,
@@ -63,89 +64,90 @@ import {
   mdiText,
   mdiUndo,
   mdiVideoPlus,
-  mdiWater
-} from '@mdi/js'
+  mdiWater,
+} from "@mdi/js";
 
 export interface ToolbarIconsOptions {
-  bold: string
-  italic: string
-  underline: string
-  strike: string
-  color: string
-  highlight: string
-  heading: string
-  textAlign: string
-  fontFamily: string
-  fontSize: string
-  bulletList: string
-  orderedList: string
-  taskList: string
-  indent: string
-  outdent: string
-  link: string
-  fileImagePlus: string
-  image: string
-  video: string
-  table: string
-  blockquote: string
-  horizontalRule: string
-  code: string
-  codeBlock: string
-  clear: string
-  undo: string
-  redo: string
-  markdownTheme: string
-  fullscreen: string
+  bold: string;
+  italic: string;
+  underline: string;
+  strike: string;
+  color: string;
+  highlight: string;
+  heading: string;
+  textAlign: string;
+  fontFamily: string;
+  fontSize: string;
+  bulletList: string;
+  orderedList: string;
+  taskList: string;
+  indent: string;
+  outdent: string;
+  link: string;
+  fileImagePlus: string;
+  image: string;
+  video: string;
+  table: string;
+  blockquote: string;
+  horizontalRule: string;
+  code: string;
+  codeBlock: string;
+  clear: string;
+  undo: string;
+  redo: string;
+  markdownTheme: string;
+  fullscreen: string;
 }
 
 export interface IconsOptions extends ToolbarIconsOptions {
-  circle: string
-  close: string
-  fullscreenExit: string
-  linkVariant: string
-  linkVariantOff: string
-  openInNew: string
-  formatFloatLeft: string
-  formatFloatNone: string
-  formatFloatRight: string
-  sizeS: string
-  sizeM: string
-  sizeL: string
-  aspectRatio: string
-  delete: string
-  text: string
+  circle: string;
+  close: string;
+  fullscreenExit: string;
+  linkVariant: string;
+  linkVariantOff: string;
+  openInNew: string;
+  formatFloatLeft: string;
+  formatFloatNone: string;
+  formatFloatRight: string;
+  sizeS: string;
+  sizeM: string;
+  sizeL: string;
+  aspectRatio: string;
+  delete: string;
+  text: string;
+  htmlView: string;
 
   // heading
-  h1: string
-  h2: string
-  h3: string
-  h4: string
-  h5: string
-  h6: string
-  p: string
+  h1: string;
+  h2: string;
+  h3: string;
+  h4: string;
+  h5: string;
+  h6: string;
+  p: string;
 
   // textAlign
-  left: string
-  center: string
-  right: string
-  justify: string
+  left: string;
+  center: string;
+  right: string;
+  justify: string;
 
   // sub and superscript
-  subscript: string
-  superscript: string
+  subscript: string;
+  superscript: string;
 
   // table
-  tablePlus: string
-  tableRemove: string
-  tableColumnPlusAfter: string
-  tableColumnPlusBefore: string
-  tableColumnRemove: string
-  tableRowPlusAfter: string
-  tableRowPlusBefore: string
-  tableRowRemove: string
-  tableMergeCells: string
+  tablePlus: string;
+  tableRemove: string;
+  tableColumnPlusAfter: string;
+  tableColumnPlusBefore: string;
+  tableColumnRemove: string;
+  tableRowPlusAfter: string;
+  tableRowPlusBefore: string;
+  tableRowRemove: string;
+  tableMergeCells: string;
 
-  check: string
+  check: string;
 }
 
 const icons: IconsOptions = {
@@ -212,6 +214,7 @@ const icons: IconsOptions = {
   aspectRatio: mdiAspectRatio,
   delete: mdiDelete,
   text: mdiText,
+  htmlView: mdiLanguageHtml5,
 
   // table
   tablePlus: mdiTablePlus,
@@ -224,10 +227,10 @@ const icons: IconsOptions = {
   tableRowRemove: mdiTableRowRemove,
   tableMergeCells: mdiTableMergeCells,
 
-  check: mdiCheck
-}
+  check: mdiCheck,
+};
 
 export function getIcon(iconName?: keyof IconsOptions): string | undefined {
-  if (!iconName) return undefined
-  return `svg:${icons[iconName]}`
+  if (!iconName) return undefined;
+  return `svg:${icons[iconName]}`;
 }
