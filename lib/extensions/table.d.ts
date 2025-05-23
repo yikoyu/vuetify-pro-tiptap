@@ -13,5 +13,7 @@ export interface TableOptions extends TiptapTableOptions, GeneralOptions<TableOp
     tableHeader: Partial<TableHeaderOptions>;
     /** options for table cells */
     tableCell: Partial<TableCellOptions>;
+    /** HTML attributes that should be allowed on table elements */
+    allowedAttributes?: string[];
 }
 export declare const Table: import('@tiptap/core').Node<TableOptions, any>;

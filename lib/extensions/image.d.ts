@@ -21,6 +21,8 @@ export interface ImageOptions extends TiptapImageOptions, GeneralOptions<ImageOp
     hiddenTabs: ImageTabKey[];
     /** Component for the image dialog */
     dialogComponent: any;
+    /** HTML attributes that should be allowed on image elements */
+    allowedAttributes?: string[];
 }
 /**
  * Represents the interface for options to set image attributes, extending ImageAttrsOptions and including the src property.
@@ -29,7 +31,7 @@ interface SetImageAttrsOptions extends ImageAttrsOptions {
     /** The source URL of the image. */
     src: string;
 }
-declare module '@tiptap/core' {
+declare module "@tiptap/core" {
     interface Commands<ReturnType> {
         imageResize: {
             /**

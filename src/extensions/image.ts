@@ -1,36 +1,46 @@
-import type { GeneralOptions } from '@/type'
-import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
-import type { Display, ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
+import type { GeneralOptions } from "@/type";
+import type { ImageOptions as TiptapImageOptions } from "@tiptap/extension-image";
+import type {
+  Display,
+  ImageAttrsOptions,
+  ImageTab,
+  ImageTabKey,
+} from "./components/image/types";
 
-import { IMAGE_SIZE } from '@/constants/define'
-import { Image as TiptapImage } from '@tiptap/extension-image'
-import { VueNodeViewRenderer } from '@tiptap/vue-3'
-import ImageDialog from './components/image/ImageDialog.vue'
+import { IMAGE_SIZE } from "@/constants/define";
+import { Image as TiptapImage } from "@tiptap/extension-image";
+import { VueNodeViewRenderer } from "@tiptap/vue-3";
+import { addCommonAttributes } from "./attribute-config";
+import ImageDialog from "./components/image/ImageDialog.vue";
 
-import ImageView from './components/image/ImageView.vue'
-import ImageActionButton from './components/ImageActionButton.vue'
+import ImageView from "./components/image/ImageView.vue";
+import ImageActionButton from "./components/ImageActionButton.vue";
 
 /**
  * Represents the type for the upload function, which takes a File parameter and returns a Promise of type string.
  */
-type Upload = (file: File) => Promise<string>
+type Upload = (file: File) => Promise<string>;
 
 /**
  * Represents the interface for image options, extending TiptapImageOptions and GeneralOptions.
  */
-export interface ImageOptions extends TiptapImageOptions, GeneralOptions<ImageOptions> {
+export interface ImageOptions
+  extends TiptapImageOptions,
+    GeneralOptions<ImageOptions> {
   /** Function for uploading images */
-  upload?: Upload
+  upload?: Upload;
   /** image default width */
-  width?: string | number
+  width?: string | number;
   /** image default display */
-  display: Display
+  display: Display;
   /** List of image tabs */
-  imageTabs: ImageTab[]
+  imageTabs: ImageTab[];
   /** List of hidden image tab keys */
-  hiddenTabs: ImageTabKey[]
+  hiddenTabs: ImageTabKey[];
   /** Component for the image dialog */
-  dialogComponent: any
+  dialogComponent: any;
+  /** HTML attributes that should be allowed on image elements */
+  allowedAttributes?: string[];
 }
 
 /**
@@ -38,63 +48,67 @@ export interface ImageOptions extends TiptapImageOptions, GeneralOptions<ImageOp
  */
 interface SetImageAttrsOptions extends ImageAttrsOptions {
   /** The source URL of the image. */
-  src: string
+  src: string;
 }
 
-declare module '@tiptap/core' {
+declare module "@tiptap/core" {
   interface Commands<ReturnType> {
     imageResize: {
       /**
        * Add an image
        */
-      setImage: (options: Partial<SetImageAttrsOptions>) => ReturnType
+      setImage: (options: Partial<SetImageAttrsOptions>) => ReturnType;
       /**
        * Update an image
        */
-      updateImage: (options: Partial<SetImageAttrsOptions>) => ReturnType
-    }
+      updateImage: (options: Partial<SetImageAttrsOptions>) => ReturnType;
+    };
   }
 }
 
 export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
   addAttributes() {
     return {
-      ...this.parent?.(),
+      ...addCommonAttributes(
+        this.parent?.(),
+        "image",
+        this.options.allowedAttributes,
+      ),
       src: {
-        default: null
+        default: null,
       },
       alt: {
-        default: null
+        default: null,
       },
       lockAspectRatio: {
-        default: true
+        default: true,
       },
       width: {
-        default: this.options.width
+        default: this.options.width,
       },
       height: {
-        default: null
+        default: null,
       },
       display: {
         default: this.options.display,
         renderHTML: ({ display }) => {
           if (!display) {
-            return {}
+            return {};
           }
 
           return {
-            'data-display': display
-          }
+            "data-display": display,
+          };
         },
         parseHTML: (element) => {
-          const display = element.getAttribute('data-display')
-          return display || 'inline'
-        }
-      }
-    }
+          const display = element.getAttribute("data-display");
+          return display || "inline";
+        },
+      },
+    };
   },
   addNodeView() {
-    return VueNodeViewRenderer(ImageView as any)
+    return VueNodeViewRenderer(ImageView as any);
   },
   addCommands() {
     return {
@@ -102,22 +116,23 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
       updateImage:
         (options) =>
         ({ commands }) => {
-          return commands.updateAttributes(this.name, options)
-        }
-    }
+          return commands.updateAttributes(this.name, options);
+        },
+    };
   },
   addOptions() {
     return {
       ...this.parent?.(),
       upload: undefined,
-      width: IMAGE_SIZE['size-large'],
-      display: 'inline',
+      width: IMAGE_SIZE["size-large"],
+      display: "inline",
       imageTabs: [],
       hiddenTabs: [],
       inline: true,
       dialogComponent: () => ImageDialog,
       button: ({ editor, extension, t }) => {
-        const { upload, imageTabs, hiddenTabs, dialogComponent } = extension.options
+        const { upload, imageTabs, hiddenTabs, dialogComponent } =
+          extension.options;
 
         return {
           component: ImageActionButton,
@@ -126,16 +141,16 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
             upload,
             imageTabs,
             hiddenTabs,
-            isActive: () => editor.isActive('image') || false,
+            isActive: () => editor.isActive("image") || false,
             disabled: !editor.can().setImage({}),
-            icon: 'image',
-            tooltip: t('editor.image.tooltip')
+            icon: "image",
+            tooltip: t("editor.image.tooltip"),
           },
           componentSlots: {
-            dialog: dialogComponent()
-          }
-        }
-      }
-    }
-  }
-})
+            dialog: dialogComponent(),
+          },
+        };
+      },
+    };
+  },
+});

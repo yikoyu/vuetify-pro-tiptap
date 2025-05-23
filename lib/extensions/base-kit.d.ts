@@ -3,10 +3,10 @@ import { DropcursorOptions } from '@tiptap/extension-dropcursor';
 import { FocusOptions } from '@tiptap/extension-focus';
 import { HardBreakOptions } from '@tiptap/extension-hard-break';
 import { ListItemOptions } from '@tiptap/extension-list-item';
-import { ParagraphOptions } from '@tiptap/extension-paragraph';
 import { PlaceholderOptions } from '@tiptap/extension-placeholder';
 import { TextStyleOptions } from '@tiptap/extension-text-style';
 import { BubbleOptions } from './components/bubble';
+import { ParagraphOptions } from './paragraph';
 import { Extension } from '@tiptap/core';
 /**
  * Represents the interface for options in the base toolkit.

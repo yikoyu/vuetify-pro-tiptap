@@ -8,7 +8,7 @@ export interface AttributeConfigOptions {
  * 全局属性注册中心
  */
 class AttributeRegistry {
-  private globalAttributes: string[] = ["class", "style", "id"]; // 默认属性
+  private globalAttributes: string[] = ["class", "style", "id", "data-*"]; // 默认属性
   private isInitialized = false;
 
   /**

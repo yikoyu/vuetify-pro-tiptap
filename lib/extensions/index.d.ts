@@ -44,6 +44,8 @@ export type { MarkdownThemeOptions } from './markdown-theme';
 export { MarkdownTheme } from './markdown-theme';
 export type { OrderedListOptions } from './ordered-list';
 export { OrderedList } from './ordered-list';
+export type { ParagraphOptions } from './paragraph';
+export { Paragraph } from './paragraph';
 export type { StrikeOptions } from './strike';
 export { Strike } from './strike';
 export type { SubAndSuperScriptOptions } from './subscript';

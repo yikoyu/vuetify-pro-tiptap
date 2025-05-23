@@ -7,5 +7,7 @@ import { TaskListOptions as TiptapTaskListOptions } from '@tiptap/extension-task
 export interface TaskListOptions extends TiptapTaskListOptions, GeneralOptions<TaskListOptions> {
     /** options for task items */
     taskItem: Partial<TaskItemOptions>;
+    /** HTML attributes that should be allowed on task list elements */
+    allowedAttributes?: string[];
 }
 export declare const TaskList: import('@tiptap/core').Node<TaskListOptions, any>;

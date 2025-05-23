@@ -17,6 +17,10 @@ function createOverlay(editor: Editor) {
 
   if (!editorParent) return null;
 
+  // Save current scroll position before making any changes
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
   // Create overlay container
   const overlay = document.createElement("div");
   overlay.className = "tiptap-html-overlay";
@@ -80,9 +84,14 @@ function createOverlay(editor: Editor) {
 
   editorParent.appendChild(overlay);
 
-  // Focus on the HTML editing area
+  // Focus on the HTML editing area without scrolling
   setTimeout(() => {
-    textarea.focus();
+    // Use preventScroll to avoid automatic scrolling
+    textarea.focus({ preventScroll: true });
+
+    // Restore the original scroll position
+    // window.scrollTo(scrollLeft, 0);
+
     console.log("Switched to HTML view mode");
   }, 10);
 

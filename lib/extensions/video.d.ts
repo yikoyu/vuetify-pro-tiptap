@@ -29,6 +29,8 @@ export interface VideoOptions extends GeneralOptions<VideoOptions> {
     };
     /** Component for the video dialog */
     dialogComponent: any;
+    /** HTML attributes that should be allowed on video elements */
+    allowedAttributes?: string[];
 }
 /**
  * Represents the type for setting video options
@@ -39,7 +41,7 @@ type SetVideoOptions = {
     /** The width of the video */
     width: string | number;
 };
-declare module '@tiptap/core' {
+declare module "@tiptap/core" {
     interface Commands<ReturnType> {
         video: {
             /**

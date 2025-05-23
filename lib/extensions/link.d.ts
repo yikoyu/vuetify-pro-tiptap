@@ -7,5 +7,7 @@ export interface LinkOptions extends TiptapLinkOptions, GeneralOptions<LinkOptio
     /** Component for the link dialog */
     dialogComponent: any;
     hrefRules: string;
+    /** HTML attributes that should be allowed on link elements */
+    allowedAttributes?: string[];
 }
 export declare const Link: import('@tiptap/core').Mark<LinkOptions, any>;
