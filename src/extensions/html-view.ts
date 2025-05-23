@@ -1,9 +1,13 @@
 import type { GeneralOptions } from "@/type";
 import type { Editor } from "@tiptap/core";
 import { Extension } from "@tiptap/core";
+import { registerGlobalAllowedAttributes } from "./attribute-config";
 import ActionButton from "./components/ActionButton.vue";
 
-export interface HtmlViewOptions extends GeneralOptions<HtmlViewOptions> {}
+export interface HtmlViewOptions extends GeneralOptions<HtmlViewOptions> {
+  /** Global HTML attributes that can be inherited by other extensions */
+  allowedAttributes?: string[];
+}
 
 // Helper functions outside the extension
 function createOverlay(editor: Editor) {
@@ -23,7 +27,6 @@ function createOverlay(editor: Editor) {
   overlay.style.height = "100%";
   overlay.style.backgroundColor = "#f8f9fa";
   overlay.style.zIndex = "10";
-  overlay.style.overflow = "auto";
   overlay.style.display = "flex";
   overlay.style.flexDirection = "column";
   overlay.style.boxSizing = "border-box";
@@ -530,157 +533,166 @@ export const HtmlView = /* @__PURE__*/ Extension.create<HtmlViewOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
-      button: ({ editor, t }) => ({
-        component: ActionButton,
-        componentProps: {
-          action: () => {
-            // debugger;
-            const isHtmlMode = editor.storage.htmlView.isHtmlMode;
+      // Default allowedAttributes that can be overridden
+      allowedAttributes: [],
+      button: ({ editor, t, extension }) => {
+        // 注册全局属性（在按钮配置时执行）
+        if (extension.options.allowedAttributes) {
+          registerGlobalAllowedAttributes(extension.options.allowedAttributes);
+        }
 
-            if (isHtmlMode) {
-              // Switch from HTML view to rich text view
-              deactivateHtmlMode(editor);
-            } else {
-              // Capture dimensions BEFORE activating HTML mode
-              const editorElement = editor.view.dom;
-              const editorParent = editorElement.parentElement;
+        return {
+          component: ActionButton,
+          componentProps: {
+            action: () => {
+              // debugger;
+              const isHtmlMode = editor.storage.htmlView.isHtmlMode;
 
-              if (editorParent) {
-                // Store original dimensions in storage
-                editor.storage.htmlView.originalWidth =
-                  editorParent.offsetWidth;
-                editor.storage.htmlView.originalHeight =
-                  editorParent.offsetHeight;
-                editor.storage.htmlView.originalScrollHeight =
-                  editorParent.scrollHeight;
-                console.log(
-                  "Captured original dimensions before HTML mode:",
-                  editor.storage.htmlView.originalWidth,
-                  editor.storage.htmlView.originalHeight,
-                  editor.storage.htmlView.originalScrollHeight,
-                );
-              }
+              if (isHtmlMode) {
+                // Switch from HTML view to rich text view
+                deactivateHtmlMode(editor);
+              } else {
+                // Capture dimensions BEFORE activating HTML mode
+                const editorElement = editor.view.dom;
+                const editorParent = editorElement.parentElement;
 
-              // Now switch to HTML view with stored dimensions
-              activateHtmlMode(editor);
-            }
-          },
-          isActive: () => editor.storage.htmlView.isHtmlMode || false,
-          icon: "htmlView",
-          tooltip: t("editor.htmlview.tooltip"),
-          // Other plugin buttons should be disabled when HTML view is enabled
-          onRender: () => {
-            // Listen for custom event, called when HTML mode changes
-            const handler = (e: CustomEvent) => {
-              // Actively look for HTML button and ensure it's marked
-              const htmlButtons =
-                document.querySelectorAll(".v-toolbar button");
-              // Try to find HTML button through multiple selectors
-              htmlButtons.forEach((btn) => {
-                const svg = btn.querySelector(".v-icon svg");
-                if (svg) {
-                  const path = svg.querySelector("path");
-                  if (
-                    path &&
-                    path
-                      .getAttribute("d")
-                      ?.includes(
-                        "M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z",
-                      )
-                  ) {
-                    // Found HTML button, set marker
-                    btn.setAttribute("data-htmlview-btn", "true");
-                  }
+                if (editorParent) {
+                  // Store original dimensions in storage
+                  editor.storage.htmlView.originalWidth =
+                    editorParent.offsetWidth;
+                  editor.storage.htmlView.originalHeight =
+                    editorParent.offsetHeight;
+                  editor.storage.htmlView.originalScrollHeight =
+                    editorParent.scrollHeight;
+                  console.log(
+                    "Captured original dimensions before HTML mode:",
+                    editor.storage.htmlView.originalWidth,
+                    editor.storage.htmlView.originalHeight,
+                    editor.storage.htmlView.originalScrollHeight,
+                  );
                 }
-              });
 
-              // Get all toolbar buttons
-              const allButtons = document.querySelectorAll(
-                ".vuetify-pro-tiptap .v-toolbar button",
-              );
+                // Now switch to HTML view with stored dimensions
+                activateHtmlMode(editor);
+              }
+            },
+            isActive: () => editor.storage.htmlView.isHtmlMode || false,
+            icon: "htmlView",
+            tooltip: t("editor.htmlview.tooltip"),
+            // Other plugin buttons should be disabled when HTML view is enabled
+            onRender: () => {
+              // Listen for custom event, called when HTML mode changes
+              const handler = (e: CustomEvent) => {
+                // Actively look for HTML button and ensure it's marked
+                const htmlButtons =
+                  document.querySelectorAll(".v-toolbar button");
+                // Try to find HTML button through multiple selectors
+                htmlButtons.forEach((btn) => {
+                  const svg = btn.querySelector(".v-icon svg");
+                  if (svg) {
+                    const path = svg.querySelector("path");
+                    if (
+                      path &&
+                      path
+                        .getAttribute("d")
+                        ?.includes(
+                          "M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z",
+                        )
+                    ) {
+                      // Found HTML button, set marker
+                      btn.setAttribute("data-htmlview-btn", "true");
+                    }
+                  }
+                });
 
-              // Iterate through all buttons
-              allButtons.forEach((button) => {
-                // Check if it's the HTML button
-                const isHtmlButton = button.hasAttribute("data-htmlview-btn");
+                // Get all toolbar buttons
+                const allButtons = document.querySelectorAll(
+                  ".vuetify-pro-tiptap .v-toolbar button",
+                );
 
-                if (e.detail.isHtmlMode) {
-                  // HTML mode activated
-                  if (!isHtmlButton) {
-                    // Non-HTML buttons disabled - multiple mechanisms to ensure disabling
-                    button.setAttribute("disabled", "true");
-                    button.setAttribute("aria-disabled", "true");
-                    (button as HTMLElement).style.pointerEvents = "none";
-                    (button as HTMLElement).style.opacity = "0.4";
-                    (button as HTMLElement).style.backgroundColor = "#f0f0f0";
-                    (button as HTMLElement).style.cursor = "not-allowed";
-                    // Safely add event prevention
-                    if (button instanceof HTMLElement) {
-                      button.onclick = function (event: Event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        return false;
-                      };
+                // Iterate through all buttons
+                allButtons.forEach((button) => {
+                  // Check if it's the HTML button
+                  const isHtmlButton = button.hasAttribute("data-htmlview-btn");
+
+                  if (e.detail.isHtmlMode) {
+                    // HTML mode activated
+                    if (!isHtmlButton) {
+                      // Non-HTML buttons disabled - multiple mechanisms to ensure disabling
+                      button.setAttribute("disabled", "true");
+                      button.setAttribute("aria-disabled", "true");
+                      (button as HTMLElement).style.pointerEvents = "none";
+                      (button as HTMLElement).style.opacity = "0.4";
+                      (button as HTMLElement).style.backgroundColor = "#f0f0f0";
+                      (button as HTMLElement).style.cursor = "not-allowed";
+                      // Safely add event prevention
+                      if (button instanceof HTMLElement) {
+                        button.onclick = function (event: Event) {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          return false;
+                        };
+                      }
+                    } else {
+                      // HTML button remains enabled
+                      button.removeAttribute("disabled");
+                      button.removeAttribute("aria-disabled");
+                      (button as HTMLElement).style.pointerEvents = "auto";
+                      (button as HTMLElement).style.opacity = "1";
+                      (button as HTMLElement).style.backgroundColor =
+                        "rgba(25, 118, 210, 0.12)";
+                      (button as HTMLElement).style.border =
+                        "1px solid rgba(25, 118, 210, 0.5)";
+                      (button as HTMLElement).style.zIndex = "1000";
+                      (button as HTMLElement).style.position = "relative";
+                      (button as HTMLElement).style.cursor = "pointer";
                     }
                   } else {
-                    // HTML button remains enabled
+                    // Normal mode, restore all buttons
                     button.removeAttribute("disabled");
                     button.removeAttribute("aria-disabled");
-                    (button as HTMLElement).style.pointerEvents = "auto";
-                    (button as HTMLElement).style.opacity = "1";
-                    (button as HTMLElement).style.backgroundColor =
-                      "rgba(25, 118, 210, 0.12)";
-                    (button as HTMLElement).style.border =
-                      "1px solid rgba(25, 118, 210, 0.5)";
-                    (button as HTMLElement).style.zIndex = "1000";
-                    (button as HTMLElement).style.position = "relative";
-                    (button as HTMLElement).style.cursor = "pointer";
+                    (button as HTMLElement).style.pointerEvents = "";
+                    (button as HTMLElement).style.opacity = "";
+                    (button as HTMLElement).style.backgroundColor = "";
+                    (button as HTMLElement).style.border = "";
+                    (button as HTMLElement).style.position = "";
+                    (button as HTMLElement).style.zIndex = "";
+                    (button as HTMLElement).style.cursor = "";
+                    // Safely remove event prevention
+                    if (button instanceof HTMLElement) {
+                      button.onclick = null;
+                    }
                   }
-                } else {
-                  // Normal mode, restore all buttons
-                  button.removeAttribute("disabled");
-                  button.removeAttribute("aria-disabled");
-                  (button as HTMLElement).style.pointerEvents = "";
-                  (button as HTMLElement).style.opacity = "";
-                  (button as HTMLElement).style.backgroundColor = "";
-                  (button as HTMLElement).style.border = "";
-                  (button as HTMLElement).style.position = "";
-                  (button as HTMLElement).style.zIndex = "";
-                  (button as HTMLElement).style.cursor = "";
-                  // Safely remove event prevention
-                  if (button instanceof HTMLElement) {
-                    button.onclick = null;
+                });
+              };
+
+              document.addEventListener(
+                "tiptap-html-mode-changed",
+                handler as EventListener,
+              );
+
+              // Mark current button as HTML view button to avoid it being disabled by itself
+              return {
+                element: document.createElement("div"),
+                onMount: (element: HTMLElement) => {
+                  // Find the closest button element and mark it
+                  const button = element.closest("button");
+                  if (button) {
+                    button.setAttribute("data-htmlview-btn", "true");
+                    console.log("HTML view button has been marked");
                   }
-                }
-              });
-            };
-
-            document.addEventListener(
-              "tiptap-html-mode-changed",
-              handler as EventListener,
-            );
-
-            // Mark current button as HTML view button to avoid it being disabled by itself
-            return {
-              element: document.createElement("div"),
-              onMount: (element: HTMLElement) => {
-                // Find the closest button element and mark it
-                const button = element.closest("button");
-                if (button) {
-                  button.setAttribute("data-htmlview-btn", "true");
-                  console.log("HTML view button has been marked");
-                }
-              },
-              onDestroy: () => {
-                document.removeEventListener(
-                  "tiptap-html-mode-changed",
-                  handler as EventListener,
-                );
-              },
-            };
+                },
+                onDestroy: () => {
+                  document.removeEventListener(
+                    "tiptap-html-mode-changed",
+                    handler as EventListener,
+                  );
+                },
+              };
+            },
           },
-        },
-      }),
+        };
+      },
     };
   },
 
