@@ -365,6 +365,7 @@ locale.setLang('en')
 - nl
 - tr
 - de
+- fr
 - it
 - pt
 
