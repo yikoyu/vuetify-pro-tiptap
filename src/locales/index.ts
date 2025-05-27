@@ -7,6 +7,7 @@ import { computed, ref, unref, watchEffect } from 'vue'
 // Import language files
 import de from './de'
 import en from './en'
+import fr from './fr'
 import it from './it'
 import nl from './nl'
 import pt from './pt'
@@ -48,6 +49,7 @@ export const DEFAULT_LOCALE_MESSAGE: LangMessages = {
   zhHans,
   en,
   de,
+  fr,
   it,
   pt
 }

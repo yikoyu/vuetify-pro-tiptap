@@ -365,6 +365,7 @@ Available languages:
 - nl
 - tr
 - de
+- fr
 - it
 - pt
 
