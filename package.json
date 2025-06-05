@@ -52,9 +52,8 @@
   },
   "scripts": {
     "dev": "vite serve --config vite-example.config.ts",
-    "build:lib": "pnpm check:types && vite build && pnpm build:styles",
+    "build:lib": "pnpm check:types && vite build",
     "build:examples": "pnpm build:lib && pnpm check:types && vite build --config vite-example.config.ts",
-    "build:styles": "pnpm sass ./src/styles:./lib/styles --style=compressed --no-source-map",
     "lint:css": "stylelint **/*.{css,less,scss,vue}",
     "lint:js": "eslint .",
     "lint:all": "eslint . & stylelint **/*.{css,less,scss,vue}",
@@ -62,7 +61,7 @@
     "commit": "czg",
     "check:types": "vue-tsc --noEmit --skipLibCheck",
     "push": "pnpm build:lib && pnpm publish --no-git-checks --registry https://registry.npmjs.org/",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "peerDependencies": {
     "vue": "^3.5.0",
