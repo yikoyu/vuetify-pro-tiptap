@@ -25,7 +25,7 @@ English | [中文](./README.zh-CN.md)
 - Many out of box [extension](#extensions) (welcome to submit an issue for feature request)
 - Markdown support
 - TypeScript support
-- I18n support(`en`, `zhHans`, `nl`, `tr`, `de`, `it`, `pt`)
+- I18n support(`en`, `zhHans`, `nl`, `tr`, `de`, `fr`, `it`, `pt`)
 - Vuetify 3.x and Vue 3.x support
 
 ## Vuetify 2.x
