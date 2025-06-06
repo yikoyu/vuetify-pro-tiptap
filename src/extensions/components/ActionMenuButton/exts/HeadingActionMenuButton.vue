@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { BaseKitOptions } from '@/extensions/base-kit'
 import type { Extension } from '@tiptap/core'
 import type { HeadingOptions } from '@tiptap/extension-heading'
 import type { ActionMenuButtonItem } from '../src/types'
+import type { BaseKitOptions } from '@/extensions/base-kit'
 
 import { computed } from 'vue'
 import ActionMenuButton from '../src/index.vue'

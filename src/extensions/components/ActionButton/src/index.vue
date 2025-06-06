@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
+import { inject, ref  } from 'vue'
 import { getIcon } from '@/constants/icons'
-import { inject, ref, type Ref } from 'vue'
 import { actionButtonProps } from './props'
 
 const props = defineProps(actionButtonProps)

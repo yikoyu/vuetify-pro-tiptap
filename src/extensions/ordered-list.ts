@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { OrderedListOptions as TiptapOrderedListOptions } from '@tiptap/extension-ordered-list'
+import type { GeneralOptions } from '@/type'
 
 import { OrderedList as TiptapOrderedList } from '@tiptap/extension-ordered-list'
 

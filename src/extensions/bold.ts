@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { BoldOptions as TiptapImageOptions } from '@tiptap/extension-bold'
+import type { GeneralOptions } from '@/type'
 
 import { Bold as TiptapBold } from '@tiptap/extension-bold'
 

@@ -2,10 +2,10 @@
 import type { Editor } from '@tiptap/vue-3'
 import type { LinkAttrs } from './types'
 
-import { getIcon } from '@/constants/icons'
-
-import { useLocale } from '@/locales'
 import { computed, ref, watch } from 'vue'
+
+import { getIcon } from '@/constants/icons'
+import { useLocale } from '@/locales'
 
 interface Props {
   value?: string

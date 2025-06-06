@@ -2,9 +2,9 @@
 import type { Editor } from '@tiptap/vue-3'
 import type { ImageAttrsOptions, ImageForm, ImageTab, ImageTabKey } from './types'
 
+import { computed, ref, unref, watch } from 'vue'
 import { getIcon } from '@/constants/icons'
 import { useLocale } from '@/locales'
-import { computed, ref, unref, watch } from 'vue'
 
 import ImageUpload from './ImageUpload.vue'
 import ImageUrl from './ImageUrl.vue'

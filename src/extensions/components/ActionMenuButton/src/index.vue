@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { ActionMenuButtonItem } from './types'
 
-import { getIcon } from '@/constants/icons'
 import { computed, ref } from 'vue'
+import { getIcon } from '@/constants/icons'
 import { ActionButton } from '../../ActionButton'
 import { actionButtonMenuProps } from './props'
 

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { MarkdownThemeOptions } from '@/extensions/markdown-theme'
 import type { ActionMenuButtonItem } from '../src/types'
+import type { MarkdownThemeOptions } from '@/extensions/markdown-theme'
 
+import { computed } from 'vue'
 import { DEFAULT_MARKDOWN_THEME_LIST, MarkdownThemeProps } from '@/constants/define'
 import { useContext } from '@/hooks'
-import { computed } from 'vue'
 import ActionMenuButton from '../src/index.vue'
 import { extActionButtonMenuProps } from '../src/props'
 

@@ -1,4 +1,3 @@
-import { NODE_TYPE_MENU } from '@/constants/define'
 import { markRaw } from 'vue'
 import {
   BaseKit,
@@ -34,6 +33,7 @@ import {
   VuetifyTiptap,
   VuetifyViewer
 } from 'vuetify-pro-tiptap'
+import { NODE_TYPE_MENU } from '@/constants/define'
 import LinkDialog from './components/LinkDialog.vue'
 
 import SelectImage from './components/SelectImage.vue'

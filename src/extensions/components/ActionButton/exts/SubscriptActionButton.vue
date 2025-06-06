@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { SubAndSuperScriptOptions } from '@/extensions/subscript'
 import type { Extension } from '@tiptap/core'
 import type { PropType } from 'vue'
+import type { SubAndSuperScriptOptions } from '@/extensions/subscript'
 
 import { computed } from 'vue'
 import ActionButton from '../src/index.vue'

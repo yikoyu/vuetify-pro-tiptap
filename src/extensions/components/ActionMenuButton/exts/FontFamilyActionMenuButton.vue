@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+import type { ActionMenuButtonItem } from '../src/types'
 import type { FontFamilyProps } from '@/constants/define'
 import type { FontFamilyOptions } from '@/extensions/font-family'
-import type { ActionMenuButtonItem } from '../src/types'
 
-import { DEFAULT_FONT_FAMILY_VALUE } from '@/constants/define'
 import { computed } from 'vue'
+import { DEFAULT_FONT_FAMILY_VALUE } from '@/constants/define'
 import ActionMenuButton from '../src/index.vue'
 import { extActionButtonMenuProps } from '../src/props'
 

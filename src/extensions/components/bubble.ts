@@ -1,11 +1,11 @@
-import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/type'
 import type { Editor } from '@tiptap/vue-3'
-
 import type { Display } from './image/types'
-import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
 
-import { isString } from '@/utils/utils'
+import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/type'
 import { deleteSelection } from '@tiptap/pm/commands'
+
+import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants/define'
+import { isString } from '@/utils/utils'
 import { ActionButton } from './ActionButton'
 
 /** Represents the floating types for bubble images */

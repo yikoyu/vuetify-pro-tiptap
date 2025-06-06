@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { BulletListOptions as TiptapBulletListOptions } from '@tiptap/extension-bullet-list'
+import type { GeneralOptions } from '@/type'
 
 import { BulletList as TiptapBulletList } from '@tiptap/extension-bullet-list'
 

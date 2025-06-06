@@ -1,9 +1,9 @@
 import type { ComputedRef } from 'vue'
+import { computed, unref, watch, watchEffect } from 'vue'
+
 import { DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
 
 import { isBoolean, isString } from '@/utils/utils'
-
-import { computed, unref, watch, watchEffect } from 'vue'
 import { useContext } from './use-context'
 
 export function useMarkdownTheme(value: ComputedRef<string | false | undefined>, hooks?: (value: string) => void) {

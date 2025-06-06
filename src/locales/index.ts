@@ -1,8 +1,8 @@
-import { DEFAULT_LANG_VALUE } from '@/constants/define'
+import { computed, ref, unref, watchEffect } from 'vue'
 
+import { DEFAULT_LANG_VALUE } from '@/constants/define'
 import Logger from '@/utils/logger'
 import mitt, { EventType } from '@/utils/mitt'
-import { computed, ref, unref, watchEffect } from 'vue'
 
 // Import language files
 import de from './de'

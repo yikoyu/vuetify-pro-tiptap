@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { CodeBlockOptions as TiptapCodeBlockOptions } from '@tiptap/extension-code-block'
+import type { GeneralOptions } from '@/type'
 
 import { CodeBlock as TiptapCodeBlock } from '@tiptap/extension-code-block'
 

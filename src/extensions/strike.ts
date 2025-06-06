@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { StrikeOptions as TiptapStrikeOptions } from '@tiptap/extension-strike'
+import type { GeneralOptions } from '@/type'
 
 import { Strike as TiptapStrike } from '@tiptap/extension-strike'
 

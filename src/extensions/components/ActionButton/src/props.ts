@@ -1,7 +1,7 @@
-import type { IconsOptions } from "@/constants/icons"
-import type { ButtonViewReturnComponentProps } from "@/type"
 import type { Editor } from "@tiptap/vue-3"
 import type { PropType } from "vue"
+import type { IconsOptions } from "@/constants/icons"
+import type { ButtonViewReturnComponentProps } from "@/type"
 
 export const actionButtonProps = {
   editor: {

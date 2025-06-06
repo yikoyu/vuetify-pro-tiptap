@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ColorPicker from '@/extensions/components/ColorPicker.vue'
-
-import { useTiptapStore } from '@/hooks'
 import { watchEffect } from 'vue'
+
+import ColorPicker from '@/extensions/components/ColorPicker.vue'
+import { useTiptapStore } from '@/hooks'
 import ActionButton from '../src/index.vue'
 import { extActionButtonProps } from '../src/props'
 

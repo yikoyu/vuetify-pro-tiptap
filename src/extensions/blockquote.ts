@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { BlockquoteOptions as TiptapBlockquoteOptions } from '@tiptap/extension-blockquote'
+import type { GeneralOptions } from '@/type'
 
 import { Blockquote as TiptapBlockquote } from '@tiptap/extension-blockquote'
 
