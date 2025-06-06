@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { AnyExtension, JSONContent } from '@tiptap/core'
 import type { IWhiteList } from 'xss'
-import xssRules from '@/constants/xss-rules'
-import { useContext, useMarkdownTheme } from '@/hooks'
-import { isBoolean, isString } from '@/utils/utils'
 import { generateHTML } from '@tiptap/html'
-
 import { computed, unref } from 'vue'
 import { useTheme } from 'vuetify'
 import Xss from 'xss'
+
+import xssRules from '@/constants/xss-rules'
+import { useContext, useMarkdownTheme } from '@/hooks'
+import { isBoolean, isString } from '@/utils/utils'
 
 interface Props {
   value?: string | JSONContent

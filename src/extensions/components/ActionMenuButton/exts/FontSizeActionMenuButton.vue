@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { FontSizeOptions } from '@/extensions/font-size'
 import type { ActionMenuButtonItem } from '../src/types'
+import type { FontSizeOptions } from '@/extensions/font-size'
 
-import { DEFAULT_FONT_SIZE_VALUUE } from '@/constants/define'
 import { computed } from 'vue'
+import { DEFAULT_FONT_SIZE_VALUUE } from '@/constants/define'
 import ActionMenuButton from '../src/index.vue'
 import { extActionButtonMenuProps } from '../src/props'
 

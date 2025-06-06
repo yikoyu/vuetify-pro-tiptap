@@ -8,7 +8,7 @@
 import { computed, unref } from 'vue'
 
 interface Props {
-  modelValue: {
+  modelValue?: {
     [x: string]: string
   }
 }

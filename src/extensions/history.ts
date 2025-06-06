@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { HistoryOptions as TiptapHistoryOptions } from '@tiptap/extension-history'
+import type { GeneralOptions } from '@/type'
 
 import { History as TiptapHistory } from '@tiptap/extension-history'
 

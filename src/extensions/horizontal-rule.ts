@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { HorizontalRuleOptions as TiptapHorizontalRuleOptions } from '@tiptap/extension-horizontal-rule'
+import type { GeneralOptions } from '@/type'
 
 import { HorizontalRule as TiptapHorizontalRule } from '@tiptap/extension-horizontal-rule'
 

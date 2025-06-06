@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { HighlightOptions as TiptapHighlightOptions } from '@tiptap/extension-highlight'
+import type { GeneralOptions } from '@/type'
 
 import { Highlight as TiptapHighlight } from '@tiptap/extension-highlight'
 

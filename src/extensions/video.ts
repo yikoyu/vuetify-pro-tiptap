@@ -1,9 +1,9 @@
 import type { GeneralOptions } from '@/type'
 
-import { VIDEO_SIZE } from '@/constants/define'
-import { getCssUnitWithDefault } from '@/utils/utils'
-
 import { Node } from '@tiptap/core'
+import { VIDEO_SIZE } from '@/constants/define'
+
+import { getCssUnitWithDefault } from '@/utils/utils'
 import { VideoActionButton } from './components/ActionButton'
 import VideoDialog from './components/video/VideoDialog.vue'
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Alignments, TextAlignOptions } from '@/extensions/text-align'
-
 import type { ActionMenuButtonItem } from '../src/types'
+
+import type { Alignments, TextAlignOptions } from '@/extensions/text-align'
 import { computed } from 'vue'
 import ActionMenuButton from '../src/index.vue'
 import { extActionButtonMenuProps } from '../src/props'

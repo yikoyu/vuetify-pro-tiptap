@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useTiptapStore } from '@/hooks'
-import { useLocale } from '@/locales'
 import { useFullscreen } from '@vueuse/core'
-
 import { computed, unref, watch } from 'vue'
+import { useTiptapStore } from '@/hooks'
+
+import { useLocale } from '@/locales'
 import ActionButton from '../src/index.vue'
 import { extActionButtonProps } from '../src/props'
 

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { BaseKitOptions } from '@/extensions/base-kit'
-import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
 import type { NodeSelection } from '@tiptap/pm/state'
 import type { Editor, Extension } from '@tiptap/vue-3'
+import type { BaseKitOptions } from '@/extensions/base-kit'
+import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
 
-import { useLocale } from '@/locales'
-import { isExtEnableAndActive } from '@/utils/utils'
 import { TextSelection } from '@tiptap/pm/state'
 import { BubbleMenu } from '@tiptap/vue-3'
 import { computed, reactive, ref, unref } from 'vue'
+import { useLocale } from '@/locales'
+import { isExtEnableAndActive } from '@/utils/utils'
 
 interface Props {
   editor: Editor
