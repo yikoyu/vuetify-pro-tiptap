@@ -18,8 +18,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [20]
-        # pnpm: [8]
 
     steps:
       - uses: actions/checkout@v4
@@ -28,8 +26,6 @@ jobs:
           persist-credentials: false
 
       - uses: ./.github/actions/build-setup
-        with:
-          node-version: ${{ matrix.node }}
 
       - name: Build Lib
         run: pnpm build:lib

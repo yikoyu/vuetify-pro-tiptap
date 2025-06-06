@@ -1,2 +1,7 @@
 packages:
   - examples
+onlyBuiltDependencies:
+  - esbuild
+  - json-editor-vue
+  - unrs-resolver
+  - vue-demi
