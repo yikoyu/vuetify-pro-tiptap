@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { Editor as CoreEditor } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
-import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
-import { useLocale } from '@/locales'
-
-import { VuetifyTiptapOnChange } from '@/type'
-import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
-
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import { computed, onUnmounted, provide, toRef, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
+
+import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
+import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
+
+import { useLocale } from '@/locales'
+import { VuetifyTiptapOnChange } from '@/type'
+import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
 
@@ -183,7 +183,7 @@ const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
   if (isEqual(output, val)) return
 
   const { from, to } = editor.state.selection
-  editor.commands.setContent(val, false)
+  editor.commands.setContent(val, undefined)
   editor.commands.setTextSelection({ from, to })
 }, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME)
 

@@ -1,10 +1,10 @@
+import type { FontFamilyOptions as TiptapFontFamilyOptions } from '@tiptap/extension-font-family'
 import type { FontFamilyProps } from '@/constants/define'
+
 import type { GeneralOptions } from '@/type'
 
-import type { FontFamilyOptions as TiptapFontFamilyOptions } from '@tiptap/extension-font-family'
-
-import { DEFAULT_FONT_FAMILY_LIST } from '@/constants/define'
 import { FontFamily as TiptapFontFamily } from '@tiptap/extension-font-family'
+import { DEFAULT_FONT_FAMILY_LIST } from '@/constants/define'
 import { FontFamilyActionMenuButton } from './components/ActionMenuButton'
 
 /**
@@ -23,6 +23,9 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
   addOptions() {
     return {
       ...this.parent?.(),
+      types: ['textStyle'],
+      divider: true,
+      spacer: false,
       fontFamilies: DEFAULT_FONT_FAMILY_LIST,
       button: ({ editor, extension, t }) => {
         return {

@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { HorizontalRuleOptions as TiptapHorizontalRuleOptions } from '@tiptap/extension-horizontal-rule'
+import type { GeneralOptions } from '@/type'
 
 import { HorizontalRule as TiptapHorizontalRule } from '@tiptap/extension-horizontal-rule'
 
@@ -11,6 +11,7 @@ export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<Horizon
   addOptions() {
     return {
       ...this.parent?.(),
+      HTMLAttributes: {},
       button: ({ editor, t }) => ({
         component: HorizontalRuleActionButton,
         componentProps: {

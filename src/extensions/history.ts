@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { HistoryOptions as TiptapHistoryOptions } from '@tiptap/extension-history'
+import type { GeneralOptions } from '@/type'
 
 import { History as TiptapHistory } from '@tiptap/extension-history'
 
@@ -12,6 +12,7 @@ export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
     return {
       ...this.parent?.(),
       depth: 10,
+      newGroupDelay: 1,
       button: ({ editor, t }) => ({
         component: HistoryActionButton,
         componentProps: {

@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { HeadingOptions as TiptapHeadingOptions } from '@tiptap/extension-heading'
+import type { GeneralOptions } from '@/type'
 import { Heading as TiptapHeading } from '@tiptap/extension-heading'
 
 import { HeadingActionMenuButton } from './components/ActionMenuButton'
@@ -11,6 +11,7 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
     return {
       ...this.parent?.(),
       levels: [1, 2, 3, 4, 5, 6],
+      HTMLAttributes: {},
       button: ({ editor, extension, t }) => {
         return {
           component: HeadingActionMenuButton,

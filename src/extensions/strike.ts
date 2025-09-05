@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { StrikeOptions as TiptapStrikeOptions } from '@tiptap/extension-strike'
+import type { GeneralOptions } from '@/type'
 
 import { Strike as TiptapStrike } from '@tiptap/extension-strike'
 
@@ -11,6 +11,7 @@ export const Strike = /* @__PURE__*/ TiptapStrike.extend<StrikeOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
+      HTMLAttributes: {},
       button: ({ editor, t }) => ({
         component: StrikeActionButton,
         componentProps: {

@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { UnderlineOptions as TiptapUnderlineOptions } from '@tiptap/extension-underline'
+import type { GeneralOptions } from '@/type'
 
 import { Underline as TiptapUnderline } from '@tiptap/extension-underline'
 
@@ -11,6 +11,7 @@ export const Underline = /* @__PURE__*/ TiptapUnderline.extend<UnderlineOptions>
   addOptions() {
     return {
       ...this.parent?.(),
+      HTMLAttributes: {},
       button: ({ editor, t }) => ({
         component: UnderlineActionButton,
         componentProps: {

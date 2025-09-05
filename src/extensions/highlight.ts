@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { HighlightOptions as TiptapHighlightOptions } from '@tiptap/extension-highlight'
+import type { GeneralOptions } from '@/type'
 
 import { Highlight as TiptapHighlight } from '@tiptap/extension-highlight'
 
@@ -12,6 +12,7 @@ export const Highlight = /* @__PURE__*/ TiptapHighlight.extend<HighlightOptions>
     return {
       ...this.parent?.(),
       multicolor: true,
+      HTMLAttributes: {},
       button: ({ editor, t }) => ({
         component: HighlightActionButton,
         componentProps: {

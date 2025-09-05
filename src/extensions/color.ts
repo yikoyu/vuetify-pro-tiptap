@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { ColorOptions as TiptapColorOptions } from '@tiptap/extension-color'
+import type { GeneralOptions } from '@/type'
 
 import { Color as TiptapColor } from '@tiptap/extension-color'
 
@@ -11,6 +11,7 @@ export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
+      types: ['textStyle'],
       button: ({ editor, t }) => ({
         component: ColorActionButton,
         componentProps: {

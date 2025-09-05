@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { BoldOptions as TiptapImageOptions } from '@tiptap/extension-bold'
+import type { GeneralOptions } from '@/type'
 
 import { Bold as TiptapBold } from '@tiptap/extension-bold'
 
@@ -11,6 +11,7 @@ export const Bold = /* @__PURE__*/ TiptapBold.extend<BoldOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
+      HTMLAttributes: {},
       button: ({ editor, t }) => ({
         component: BoldActionButton,
         componentProps: {

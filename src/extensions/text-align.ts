@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { TextAlignOptions as TiptapTextAlignOptions } from '@tiptap/extension-text-align'
+import type { GeneralOptions } from '@/type'
 
 import { TextAlign as TiptapTextAlign } from '@tiptap/extension-text-align'
 
@@ -25,6 +25,10 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
     return {
       ...this.parent?.(),
       types: ['heading', 'paragraph'],
+      alignments: ['left', 'center', 'right'],
+      defaultAlignment: null,
+      divider: false,
+      spacer: false,
       button: ({ editor, extension, t }) => {
         return {
           component: TextAlignActionMenuButton,

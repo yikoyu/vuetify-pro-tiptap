@@ -1,5 +1,5 @@
-import type { GeneralOptions } from '@/type'
 import type { BulletListOptions as TiptapBulletListOptions } from '@tiptap/extension-bullet-list'
+import type { GeneralOptions } from '@/type'
 
 import { BulletList as TiptapBulletList } from '@tiptap/extension-bullet-list'
 
@@ -11,6 +11,10 @@ export const BulletList = /* @__PURE__*/ TiptapBulletList.extend<BulletListOptio
   addOptions() {
     return {
       ...this.parent?.(),
+      itemTypeName: 'listItem',
+      keepMarks: false,
+      HTMLAttributes: {},
+      keepAttributes: false,
       button: ({ editor, t }) => ({
         component: BulletListActionButton,
         componentProps: {
