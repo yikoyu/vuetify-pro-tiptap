@@ -1,6 +1,6 @@
+import type { GeneralOptions } from '@/type'
 import type { LinkOptions as TiptapLinkOptions } from '@tiptap/extension-link'
 import type { EditorView } from '@tiptap/pm/view'
-import type { GeneralOptions } from '@/type'
 import { getMarkRange } from '@tiptap/core'
 import { Link as TiptapLink } from '@tiptap/extension-link'
 

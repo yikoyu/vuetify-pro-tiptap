@@ -1,5 +1,5 @@
-import type { HeadingOptions as TiptapHeadingOptions } from '@tiptap/extension-heading'
 import type { GeneralOptions } from '@/type'
+import type { HeadingOptions as TiptapHeadingOptions } from '@tiptap/extension-heading'
 import { Heading as TiptapHeading } from '@tiptap/extension-heading'
 
 import { HeadingActionMenuButton } from './components/ActionMenuButton'

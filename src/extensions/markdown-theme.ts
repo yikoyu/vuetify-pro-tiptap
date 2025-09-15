@@ -2,8 +2,8 @@ import type { MarkdownThemeProps } from '@/constants/define'
 
 import type { GeneralOptions } from '@/type'
 
-import { Extension } from '@tiptap/core'
 import { DEFAULT_MARKDOWN_THEME_LIST } from '@/constants/define'
+import { Extension } from '@tiptap/core'
 import { MarkdownThemeActionMenuButton } from './components/ActionMenuButton'
 
 /**

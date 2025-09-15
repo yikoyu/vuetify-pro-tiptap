@@ -1,10 +1,10 @@
+import type { GeneralOptions } from '@/type'
 import type { ImageOptions as TiptapImageOptions } from '@tiptap/extension-image'
 import type { Display, ImageAttrsOptions, ImageTab, ImageTabKey } from './components/image/types'
-import type { GeneralOptions } from '@/type'
 
+import { IMAGE_SIZE } from '@/constants/define'
 import { Image as TiptapImage } from '@tiptap/extension-image'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
-import { IMAGE_SIZE } from '@/constants/define'
 import { ImageActionButton } from './components/ActionButton'
 
 import ImageDialog from './components/image/ImageDialog.vue'

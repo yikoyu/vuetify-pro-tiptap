@@ -1,5 +1,5 @@
-import type { UnderlineOptions as TiptapUnderlineOptions } from '@tiptap/extension-underline'
 import type { GeneralOptions } from '@/type'
+import type { UnderlineOptions as TiptapUnderlineOptions } from '@tiptap/extension-underline'
 
 import { Underline as TiptapUnderline } from '@tiptap/extension-underline'
 

@@ -1,9 +1,9 @@
 import type { GeneralOptions } from '@/type'
 
-import { Extension } from '@tiptap/core'
-
 import { DEFAULT_FONT_SIZE_LIST } from '@/constants/define'
+
 import { getCssUnitWithDefault } from '@/utils/utils'
+import { Extension } from '@tiptap/core'
 import { FontSizeActionMenuButton } from './components/ActionMenuButton'
 
 /**

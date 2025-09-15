@@ -1,10 +1,10 @@
-import type { FontFamilyOptions as TiptapFontFamilyOptions } from '@tiptap/extension-font-family'
 import type { FontFamilyProps } from '@/constants/define'
-
 import type { GeneralOptions } from '@/type'
 
-import { FontFamily as TiptapFontFamily } from '@tiptap/extension-font-family'
+import type { FontFamilyOptions as TiptapFontFamilyOptions } from '@tiptap/extension-font-family'
+
 import { DEFAULT_FONT_FAMILY_LIST } from '@/constants/define'
+import { FontFamily as TiptapFontFamily } from '@tiptap/extension-font-family'
 import { FontFamilyActionMenuButton } from './components/ActionMenuButton'
 
 /**

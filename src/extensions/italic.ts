@@ -1,5 +1,5 @@
-import type { ItalicOptions as TiptapItalicOptions } from '@tiptap/extension-italic'
 import type { GeneralOptions } from '@/type'
+import type { ItalicOptions as TiptapItalicOptions } from '@tiptap/extension-italic'
 
 import { Italic as TiptapItalic } from '@tiptap/extension-italic'
 

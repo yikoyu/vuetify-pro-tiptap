@@ -1,5 +1,5 @@
-import type { TextAlignOptions as TiptapTextAlignOptions } from '@tiptap/extension-text-align'
 import type { GeneralOptions } from '@/type'
+import type { TextAlignOptions as TiptapTextAlignOptions } from '@tiptap/extension-text-align'
 
 import { TextAlign as TiptapTextAlign } from '@tiptap/extension-text-align'
 
