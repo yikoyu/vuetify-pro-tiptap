@@ -1,11 +1,11 @@
+import type { CodeBlockOptions as TiptapCodeBlockOptions } from '@tiptap/extension-code-block'
 import type { GeneralOptions } from '@/type'
-import type { CodeOptions as TiptapCodeOptions } from '@tiptap/extension-code'
 
-import { Code as TiptapCode } from '@tiptap/extension-code'
+import { CodeBlock as TiptapCodeBlock } from '@tiptap/extension-code-block'
 
-import { CodeActionButton } from './components/ActionButton'
+import { CodeBlockActionButton } from './components/ActionButton'
 
-export interface CodeOptions extends TiptapCodeOptions, GeneralOptions<CodeOptions> {}
+export interface CodeBlockOptions extends TiptapCodeBlockOptions, GeneralOptions<CodeBlockOptions> {}
 
 export const CodeBlock = /* @__PURE__*/ TiptapCodeBlock.extend<CodeBlockOptions>({
   addOptions() {
