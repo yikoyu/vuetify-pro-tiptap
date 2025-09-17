@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { IMAGE_MAX_SIZE, IMAGE_MIN_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { clamp, isNumber, throttle } from '@/utils/utils'
-
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
-
 import { computed, ref, unref, watchEffect } from 'vue'
+
+import { IMAGE_MAX_SIZE, IMAGE_MIN_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants/define'
+
+import { clamp, isNumber, throttle } from '@/utils/utils'
 import { ImageAttrsOptions } from './types'
 
 const props = defineProps({
@@ -96,7 +96,13 @@ function onImageLoad(e: Record<string, any>) {
 // https://github.com/scrumpy/tiptap/issues/361#issuecomment-540299541
 function selectImage() {
   const { editor, getPos } = props
-  editor.commands.setNodeSelection(getPos())
+  const pos = getPos()
+
+  if (pos === undefined) {
+    return
+  }
+
+  editor.commands.setNodeSelection(pos)
 }
 
 /* invoked when window or editor resize */

@@ -12,6 +12,7 @@ export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
     return {
       ...this.parent?.(),
       depth: 10,
+      newGroupDelay: 1,
       button: ({ editor, t }) => ({
         component: HistoryActionButton,
         componentProps: {

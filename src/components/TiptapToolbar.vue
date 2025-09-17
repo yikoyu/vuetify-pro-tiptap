@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { ButtonViewReturn } from '@/type'
 import type { Editor } from '@tiptap/vue-3'
+import type { ButtonViewReturn } from '@/type'
 
+import { unref } from 'vue'
 import { useLocale } from '@/locales'
 import { isFunction } from '@/utils/utils'
-import { unref } from 'vue'
 
 interface Menu {
   button: ButtonViewReturn
-  divider: boolean
-  spacer: boolean
+  divider?: boolean
+  spacer?: boolean
 }
 
 interface Props {
@@ -56,7 +56,7 @@ function getMenus(): Menu[] {
   <VToolbar v-bind="$attrs" density="compact" flat height="auto" class="py-1 ps-1">
     <template v-for="(item, key) in getMenus()" :key="key">
       <!-- Spacer -->
-      <VSpacer v-if="item.spacer" />
+      <VSpacer v-if="item.spacer ?? false" />
       <!-- Buttons -->
       <component
         :is="item.button.component"
@@ -69,7 +69,7 @@ function getMenus(): Menu[] {
       </component>
 
       <!-- Divider -->
-      <VDivider v-if="item.divider" vertical class="mx-1 me-2" />
+      <VDivider v-if="item.divider ?? false" vertical class="mx-1 me-2" />
     </template>
   </VToolbar>
 </template>

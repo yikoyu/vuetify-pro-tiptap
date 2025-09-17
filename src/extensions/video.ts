@@ -172,8 +172,6 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
 
   addOptions() {
     return {
-      divider: false,
-      spacer: false,
       allowFullscreen: true,
       frameborder: false,
       width: VIDEO_SIZE['size-medium'],

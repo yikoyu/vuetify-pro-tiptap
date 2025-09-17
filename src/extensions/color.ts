@@ -11,6 +11,7 @@ export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
+      types: ['textStyle'],
       button: ({ editor, t }) => ({
         component: ColorActionButton,
         componentProps: {

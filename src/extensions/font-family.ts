@@ -23,6 +23,9 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
   addOptions() {
     return {
       ...this.parent?.(),
+      types: ['textStyle'],
+      divider: true,
+      spacer: false,
       fontFamilies: DEFAULT_FONT_FAMILY_LIST,
       button: ({ editor, extension, t }) => {
         return {

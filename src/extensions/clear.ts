@@ -11,6 +11,7 @@ export const Clear = /* @__PURE__*/ Node.create<ClearOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
+
       button: ({ editor, t }) => ({
         component: ClearActionButton,
         componentProps: {

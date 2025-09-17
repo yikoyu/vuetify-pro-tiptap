@@ -11,6 +11,7 @@ export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<Horizon
   addOptions() {
     return {
       ...this.parent?.(),
+      HTMLAttributes: {},
       button: ({ editor, t }) => ({
         component: HorizontalRuleActionButton,
         componentProps: {
