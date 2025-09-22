@@ -1,16 +1,16 @@
-import type { HistoryOptions as TiptapHistoryOptions } from '@tiptap/extension-history'
+import type { UndoRedoOptions } from '@tiptap/extensions'
 import type { GeneralOptions } from '@/type'
 
-import { History as TiptapHistory } from '@tiptap/extension-history'
+import { UndoRedo } from '@tiptap/extensions'
 
 import { HistoryActionButton } from './components/ActionButton'
 
-export interface HistoryOptions extends TiptapHistoryOptions, GeneralOptions<HistoryOptions> {}
+export interface HistoryOptions extends UndoRedoOptions, GeneralOptions<HistoryOptions> {}
 
-export const History = /* @__PURE__*/ TiptapHistory.extend<HistoryOptions>({
+export const History = /* @__PURE__*/ UndoRedo.extend<HistoryOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as UndoRedoOptions,
       depth: 10,
       button: ({ editor, t }) => ({
         component: HistoryActionButton,

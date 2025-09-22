@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Editor as CoreEditor } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
-import { Editor, EditorContent } from '@tiptap/vue-3'
-import { computed, onUnmounted, provide, toRef, unref, useAttrs, watch } from 'vue'
+import { EditorContent, useEditor } from '@tiptap/vue-3'
+import { computed, provide, toRef, unref, useAttrs, watch } from 'vue'
 import { useTheme } from 'vuetify'
 
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
@@ -96,7 +96,7 @@ const sortExtensions = computed<AnyExtension[]>(() => {
   return [...exts, ...diff].map((k, i) => k.configure({ sort: i }))
 })
 
-const editor = new Editor({
+const editor = useEditor({
   content: props.modelValue,
   editorProps: {
     handleKeyDown: throttle<HandleKeyDown>(function (view, event) {
@@ -176,23 +176,21 @@ function getOutput(editor: CoreEditor, output: Props['output']) {
 }
 
 const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
-  if (!editor) return
+  if (!editor.value) return
 
-  const output = getOutput(editor, props.output)
+  const output = getOutput(editor.value, props.output)
 
   if (isEqual(output, val)) return
 
-  const { from, to } = editor.state.selection
-  editor.commands.setContent(val, false)
-  editor.commands.setTextSelection({ from, to })
+  const { from, to } = editor.value.state.selection
+  editor.value.commands.setContent(val, { emitUpdate: false })
+  editor.value.commands.setTextSelection({ from, to })
 }, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME)
 
-const onDisabledChange = (val: boolean) => editor?.setEditable(!val)
+const onDisabledChange = (val: boolean) => editor.value?.setEditable(!val)
 
 watch(() => props.modelValue, onValueChange)
 watch(() => props.disabled, onDisabledChange)
-
-onUnmounted(() => editor?.destroy())
 
 provide('disableToolbar', toRef(() => props.disableToolbar))
 
@@ -202,9 +200,6 @@ defineExpose({ editor })
 <template>
   <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
     <VThemeProvider :theme="isDark ? 'dark' : 'light'">
-      <!-- Edit Mode -->
-      <BubbleMenu v-if="!hideBubble" :editor="editor" />
-
       <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
         <VCard
           :flat="flat"
@@ -231,6 +226,9 @@ defineExpose({ editor })
             class="vuetify-pro-tiptap-editor__toolbar"
             :editor="editor"
           />
+
+          <!-- Edit Mode -->
+          <BubbleMenu v-if="!hideBubble" :editor="editor" />
 
           <slot
             name="editor"

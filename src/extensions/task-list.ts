@@ -1,9 +1,6 @@
-import type { TaskItemOptions } from '@tiptap/extension-task-item'
-import type { TaskListOptions as TiptapTaskListOptions } from '@tiptap/extension-task-list'
+import type { TaskItemOptions, TaskListOptions as TiptapTaskListOptions  } from '@tiptap/extension-list'
 import type { GeneralOptions } from '@/type'
-import { TaskItem } from '@tiptap/extension-task-item'
-
-import { TaskList as TiptapTaskList } from '@tiptap/extension-task-list'
+import { TaskItem, TaskList as TiptapTaskList  } from '@tiptap/extension-list'
 
 import { TaskListActionButton } from './components/ActionButton'
 
@@ -18,7 +15,7 @@ export interface TaskListOptions extends TiptapTaskListOptions, GeneralOptions<T
 export const TaskList = /* @__PURE__*/ TiptapTaskList.extend<TaskListOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapTaskListOptions,
       HTMLAttributes: {
         class: 'task-list'
       },

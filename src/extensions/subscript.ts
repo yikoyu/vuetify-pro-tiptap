@@ -16,15 +16,15 @@ export interface SubAndSuperScriptOptions extends GeneralOptions<SubAndSuperScri
   /**
    * subscript options or false, indicating whether subscript is enabled
    *
-   * @default true
+   * @default undefined
    */
-  subscript: Partial<TiptapSubscriptOptions> | false
+  subscript?: Partial<TiptapSubscriptOptions> | false
   /**
    * superscript options or false, indicating whether superscript is enabled
    *
-   * @default true
+   * @default undefined
    */
-  superscript: Partial<TiptapSuperscriptOptions> | false
+  superscript?: Partial<TiptapSuperscriptOptions> | false
 }
 
 export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScriptOptions>({

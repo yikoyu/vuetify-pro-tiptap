@@ -20,7 +20,7 @@ export interface LinkOptions extends TiptapLinkOptions, GeneralOptions<LinkOptio
 export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapLinkOptions,
       openOnClick: false,
       dialogComponent: () => LinkDialog,
       button: ({ editor, extension, t }) => {

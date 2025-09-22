@@ -1,7 +1,7 @@
-import type { OrderedListOptions as TiptapOrderedListOptions } from '@tiptap/extension-ordered-list'
+import type { OrderedListOptions as TiptapOrderedListOptions } from '@tiptap/extension-list'
 import type { GeneralOptions } from '@/type'
 
-import { OrderedList as TiptapOrderedList } from '@tiptap/extension-ordered-list'
+import { OrderedList as TiptapOrderedList } from '@tiptap/extension-list'
 
 import { OrderedListActionButton } from './components/ActionButton'
 
@@ -10,7 +10,7 @@ export interface OrderedListOptions extends TiptapOrderedListOptions, GeneralOpt
 export const OrderedList = /* @__PURE__*/ TiptapOrderedList.extend<OrderedListOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapOrderedListOptions,
       button: ({ editor, t }) => ({
         component: OrderedListActionButton,
         componentProps: {

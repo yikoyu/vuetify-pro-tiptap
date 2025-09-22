@@ -10,7 +10,7 @@ export interface HorizontalRuleOptions extends TiptapHorizontalRuleOptions, Gene
 export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<HorizontalRuleOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapHorizontalRuleOptions,
       button: ({ editor, t }) => ({
         component: HorizontalRuleActionButton,
         componentProps: {

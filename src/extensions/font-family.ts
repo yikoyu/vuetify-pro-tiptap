@@ -22,7 +22,7 @@ export interface FontFamilyOptions extends TiptapFontFamilyOptions, GeneralOptio
 export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapFontFamilyOptions,
       fontFamilies: DEFAULT_FONT_FAMILY_LIST,
       button: ({ editor, extension, t }) => {
         return {

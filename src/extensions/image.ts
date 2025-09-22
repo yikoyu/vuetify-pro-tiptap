@@ -108,7 +108,7 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
   },
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapImageOptions,
       upload: undefined,
       width: IMAGE_SIZE['size-large'],
       display: 'inline',

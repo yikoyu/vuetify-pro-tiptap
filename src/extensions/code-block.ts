@@ -10,7 +10,7 @@ export interface CodeBlockOptions extends TiptapCodeBlockOptions, GeneralOptions
 export const CodeBlock = /* @__PURE__*/ TiptapCodeBlock.extend<CodeBlockOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapCodeBlockOptions,
       button: ({ editor, t }) => ({
         component: CodeBlockActionButton,
         componentProps: {

@@ -135,11 +135,6 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   word-break: break-word;
 
   @include transition-color;
-  @include light-and-dark;
-
-  &.__dark {
-    @include light-and-dark(true);
-  }
 
   h1 {
     @include head-title(4px, 30px);
@@ -562,5 +557,14 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
 }
 
 .vuetify-pro-tiptap-editor__content.markdown-theme-default {
-  @include markdown-body;
+  @include light-and-dark;
+
+  &.__dark {
+    @include light-and-dark(true);
+  }
+
+  .tiptap.ProseMirror,
+  .content {
+    @include markdown-body;
+  }
 }

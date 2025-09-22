@@ -5,8 +5,8 @@ import type { BaseKitOptions } from '@/extensions/base-kit'
 import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/components/bubble'
 
 import { TextSelection } from '@tiptap/pm/state'
-import { BubbleMenu } from '@tiptap/vue-3'
-import { computed, reactive, ref, unref } from 'vue'
+import { BubbleMenu } from '@tiptap/vue-3/menus'
+import { computed, ref, unref } from 'vue'
 import { useLocale } from '@/locales'
 import { isExtEnableAndActive } from '@/utils/utils'
 
@@ -17,13 +17,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 
 const { t } = useLocale()
-
-const showBubble = ref(false)
-const tippyOptions = reactive<Record<string, unknown>>({
-  maxWidth: 'auto',
-  zIndex: 20,
-  appendTo: 'parent'
-})
 
 const nodeType = computed<NodeTypeKey | undefined>(() => {
   const selection = props.editor.state.selection as NodeSelection
@@ -46,21 +39,18 @@ const nodeType = computed<NodeTypeKey | undefined>(() => {
 
 function getMenus(nodeKey?: NodeTypeKey): BubbleMenuItem[] {
   if (!nodeKey) {
-    showBubble.value = false
     return []
   }
 
   const { extensions = [] } = props.editor.extensionManager
   const find = extensions.find(k => k.name === 'base-kit') as Extension<BaseKitOptions>
   if (!find) {
-    showBubble.value = false
     return []
   }
 
   const { button } = find.options?.bubble ?? {}
 
   if (!button) {
-    showBubble.value = false
     return []
   }
 
@@ -71,17 +61,15 @@ function getMenus(nodeKey?: NodeTypeKey): BubbleMenuItem[] {
   })
 
   if (!nodeKey) {
-    showBubble.value = false
     return []
   }
 
-  showBubble.value = true
   return unref(_buttons)?.[nodeKey] ?? []
 }
 </script>
 
 <template>
-  <BubbleMenu v-show="showBubble" :editor="editor" :tippy-options="tippyOptions">
+  <BubbleMenu :editor="editor">
     <VCard class="vuetify-pro-tiptap-editor__menu-bubble">
       <VCardText class="d-flex pa-0">
         <VToolbar density="compact" flat height="auto" class="py-1 ps-1">

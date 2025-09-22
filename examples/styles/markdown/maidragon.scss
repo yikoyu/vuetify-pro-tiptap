@@ -19,7 +19,7 @@ $-green: #50aa32;
 $-dark-green: #008403;
 $-red: #fe226f;
 
-.vuetify-pro-tiptap-editor__content.markdown-theme-maidragon {
+@mixin markdown-theme-maidragon {
   position: relative !important;
   z-index: 1 !important;
   display: -webkit-box !important;
@@ -44,18 +44,6 @@ $-red: #fe226f;
   -webkit-box-direction: normal !important;
   -moz-box-orient: vertical !important;
   -moz-box-direction: normal !important;
-
-  &.__dark {
-    color: white !important;
-
-    &::after {
-      filter: invert(98%) !important;
-    }
-
-    blockquote {
-      color: #f6f6f6 !important;
-    }
-  }
 
   &::before,
   &::after {
@@ -746,5 +734,24 @@ $-red: #fe226f;
     transform: translate(24px, 36px);
     transform: translate(24px, 36px);
     transform: translate(24px, 36px);
+  }
+}
+
+.vuetify-pro-tiptap-editor__content.markdown-theme-maidragon {
+  &.__dark {
+    color: white !important;
+
+    &::after {
+      filter: invert(98%) !important;
+    }
+
+    blockquote {
+      color: #f6f6f6 !important;
+    }
+  }
+
+  .tiptap.ProseMirror,
+  .content {
+    @include markdown-theme-maidragon;
   }
 }

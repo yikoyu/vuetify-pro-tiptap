@@ -10,7 +10,7 @@ export interface ColorOptions extends TiptapColorOptions, GeneralOptions<ColorOp
 export const Color = /* @__PURE__*/ TiptapColor.extend<ColorOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapColorOptions,
       button: ({ editor, t }) => ({
         component: ColorActionButton,
         componentProps: {

@@ -9,7 +9,7 @@ export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions<Hea
 export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapHeadingOptions,
       levels: [1, 2, 3, 4, 5, 6],
       button: ({ editor, extension, t }) => {
         return {

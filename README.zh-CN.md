@@ -236,9 +236,13 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
 $value: 'github';
 
 .vuetify-pro-tiptap-editor__content.markdown-theme-#{$value} {
-  // 自定义样式
   &.__dark {
-    // dark 模式下的自定义样式
+    // your dark mode custom styles
+  }
+
+  .tiptap.ProseMirror,
+  .content {
+    // your custom styles
   }
 }
 ```

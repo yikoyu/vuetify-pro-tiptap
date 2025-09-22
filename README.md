@@ -236,9 +236,13 @@ Create github.scss
 $value: 'github';
 
 .vuetify-pro-tiptap-editor__content.markdown-theme-#{$value} {
-  // your custom styles
   &.__dark {
     // your dark mode custom styles
+  }
+
+  .tiptap.ProseMirror,
+  .content {
+    // your custom styles
   }
 }
 ```

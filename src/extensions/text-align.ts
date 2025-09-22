@@ -17,13 +17,13 @@ export interface TextAlignOptions extends TiptapTextAlignOptions, GeneralOptions
    *
    * @default ['left', 'center', 'right', 'justify']
    */
-  alignments: Alignments[]
+  alignment?: Alignments[]
 }
 
 export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>({
   addOptions() {
     return {
-      ...this.parent?.(),
+      ...this.parent?.() as TiptapTextAlignOptions,
       types: ['heading', 'paragraph'],
       button: ({ editor, extension, t }) => {
         return {
