@@ -1,3 +1,14 @@
+## [2.7.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.6.0...v2.7.0) (2025-09-23)
+
+### Features
+
+* **locales:** :sparkles: added french language support ([84193c9](https://github.com/yikoyu/vuetify-pro-tiptap/commit/84193c9cebe16f4bc01e2f45957427c2f9135904))
+* **tiptap:** :sparkles: upgrade tiptap packages ([1f28b58](https://github.com/yikoyu/vuetify-pro-tiptap/commit/1f28b58edbbd76ff10fdc35fd8dc86c38abaee1d)), closes [#447](https://github.com/yikoyu/vuetify-pro-tiptap/issues/447) [#450](https://github.com/yikoyu/vuetify-pro-tiptap/issues/450)
+
+### Bug Fixes
+
+* **xss:** :bug: add `sup` and `sub` to default xssOptions whitelist ([3e23bbe](https://github.com/yikoyu/vuetify-pro-tiptap/commit/3e23bbe232c359730e6550a3848bd182e0a743ea)), closes [#444](https://github.com/yikoyu/vuetify-pro-tiptap/issues/444)
+
 ## [2.6.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.5.8...v2.6.0) (2025-05-09)
 
 ### Features
