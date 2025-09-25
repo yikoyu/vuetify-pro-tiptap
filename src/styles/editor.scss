@@ -50,8 +50,8 @@ $primary-color: rgb(var(--v-theme-primary, 24, 103, 192));
       }
 
       img {
-        display: inline-block;
         float: none;
+        display: inline-block;
 
         &[data-display='inline'] {
           padding-right: 12px;
@@ -167,8 +167,8 @@ $primary-color: rgb(var(--v-theme-primary, 24, 103, 192));
     .image-view {
       $root: &;
 
-      display: inline-block;
       float: none;
+      display: inline-block;
       max-width: 100%;
       line-height: 0;
       vertical-align: baseline;
@@ -197,9 +197,9 @@ $primary-color: rgb(var(--v-theme-primary, 24, 103, 192));
 
       &__body {
         position: relative;
+        clear: both;
         display: inline-block;
         max-width: 100%;
-        clear: both;
         outline: transparent solid 2px;
         transition: all 0.2s ease-in;
 

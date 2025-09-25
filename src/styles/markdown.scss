@@ -132,7 +132,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
   font-weight: 400;
   line-height: 1.75;
   color: var(--cyanosis-base-color);
-  word-break: break-word;
+  overflow-wrap: break-word;
 
   @include transition-color;
 
@@ -241,7 +241,7 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     font-family: $monospace-font;
     font-size: 0.87em;
     color: var(--cyanosis-code-color);
-    word-break: break-word;
+    overflow-wrap: break-word;
     background-color: var(--cyanosis-code-bg-color);
     border-radius: 2px;
   }
@@ -301,10 +301,10 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
       content: '';
       border-bottom: 1px solid var(--cyanosis-border-color);
       opacity: 0;
+      transform: translate3d(0, 0, 0);
       transition:
         top 0.3s,
         opacity 0.3s;
-      transform: translate3d(0, 0, 0);
     }
 
     &:hover::after {
@@ -444,8 +444,8 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
       font-weight: bolder;
       color: var(--cyanosis-title-color);
       cursor: pointer;
-      border-bottom: 1px solid var(--cyanosis-border-color);
       outline: none;
+      border-bottom: 1px solid var(--cyanosis-border-color);
     }
 
     & > p {
