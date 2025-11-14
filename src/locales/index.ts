@@ -8,6 +8,7 @@ import mitt, { EventType } from '@/utils/mitt'
 import de from './de'
 import en from './en'
 import fr from './fr'
+import hu from './hu'
 import it from './it'
 import nl from './nl'
 import pt from './pt'
@@ -51,7 +52,8 @@ export const DEFAULT_LOCALE_MESSAGE: LangMessages = {
   de,
   fr,
   it,
-  pt
+  pt,
+  hu
 }
 
 /**
