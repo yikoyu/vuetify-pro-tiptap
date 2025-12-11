@@ -7,10 +7,10 @@
   "description": "tiptap text editor on vuejs and vuetify",
   "author": "yikoyu<2282373181@qq.com>",
   "license": "MIT",
-  "homepage": "https://yikoyu.github.io/vuetify-pro-tiptap/",
+  "homepage": "https://yikoyu.github.io/vuetify-pro-tiptap/master/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yikoyu/vuetify-pro-tiptap"
+    "url": "git+https://github.com/yikoyu/vuetify-pro-tiptap.git"
   },
   "keywords": [
     "vue",
@@ -119,7 +119,7 @@
     "semantic-release": "^25.0.2",
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^16.26.1",
-    "typescript": "5.5.4",
+    "typescript": "^5.9.3",
     "unplugin-vue-components": "^30.0.0",
     "vite": "^7.2.7",
     "vite-plugin-dts": "^4.5.4",
