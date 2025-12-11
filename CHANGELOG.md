@@ -1,3 +1,13 @@
+## [2.8.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.7.0...v2.8.0) (2025-12-11)
+
+### Features
+
+* **locales:** add hungarian language support ([128fb6f](https://github.com/yikoyu/vuetify-pro-tiptap/commit/128fb6f9c4aba882b710908e1c5fe4bce8aee610))
+
+### Refactor
+
+* **deps:** :recycle: replace lodash-related dependencies with es-toolkit ([764fdca](https://github.com/yikoyu/vuetify-pro-tiptap/commit/764fdca2aa6222c27e6b58ce95f0467ffe99bd51))
+
 ## [2.7.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.6.0...v2.7.0) (2025-09-23)
 
 ### Features
