@@ -71,4 +71,4 @@ export const isExtEnableAndActive = (editor: Editor, name: string): boolean => {
   return false
 }
 
-export { differenceBy, isEqual, omit, throttle } from 'lodash-unified'
+export { differenceBy, isEqual, omit, throttle } from 'es-toolkit/compat'
