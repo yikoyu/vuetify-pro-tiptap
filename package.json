@@ -3,7 +3,7 @@
   "type": "module",
   "version": "2.7.0",
   "private": false,
-  "packageManager": "pnpm@10.11.1",
+  "packageManager": "pnpm@10.25.0",
   "description": "tiptap text editor on vuejs and vuetify",
   "author": "yikoyu<2282373181@qq.com>",
   "license": "MIT",
@@ -61,7 +61,7 @@
     "commit": "czg",
     "check:types": "vue-tsc --noEmit --skipLibCheck",
     "push": "pnpm build:lib && pnpm publish --no-git-checks --registry https://registry.npmjs.org/",
-    "prepare": "husky"
+    "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
     "vue": "^3.5.0",
@@ -113,11 +113,11 @@
     "es-toolkit": "^1.42.0",
     "eslint": "^9.39.1",
     "eslint-plugin-format": "^1.1.0",
-    "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "rollup-plugin-pure": "^0.4.0",
     "sass": "1.94.3",
     "semantic-release": "^25.0.2",
+    "simple-git-hooks": "^2.13.1",
     "stylelint": "^16.26.1",
     "typescript": "5.5.4",
     "unplugin-vue-components": "^30.0.0",
@@ -127,5 +127,17 @@
     "vue-tsc": "2.0.29",
     "vuetify": "^3.11.3",
     "xss": "^1.0.15"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint --edit $1"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --fix"
+    ],
+    "**/*.{css,less,scss,vue}": [
+      "stylelint --fix"
+    ]
   }
 }
