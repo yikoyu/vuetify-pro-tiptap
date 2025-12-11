@@ -372,6 +372,11 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     }
   }
 
+  b,
+  strong {
+    color: var(--cyanosis-strong-color);
+  }
+
   blockquote {
     @include blockquote-color;
 
@@ -395,11 +400,6 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
     }
   }
 
-  b,
-  strong {
-    color: var(--cyanosis-strong-color);
-  }
-
   i,
   em {
     color: var(--cyanosis-em-color);
@@ -407,34 +407,6 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
 
   del {
     color: var(--cyanosis-del-color);
-  }
-
-  ol,
-  ul {
-    padding-left: 28px;
-
-    li {
-      margin-bottom: 0;
-      list-style: inherit;
-
-      p {
-        margin: 0;
-      }
-
-      & .task-list-item {
-        list-style: none;
-
-        ul,
-        ol {
-          margin-top: 0;
-        }
-      }
-    }
-
-    ul,
-    ol {
-      margin-top: 4px;
-    }
   }
 
   // details & summary
@@ -454,6 +426,34 @@ $d-selection-pre-code-bg-color: rgb(160 200 255 / 25%);
       color: #666;
       background-color: var(--cyanosis-blockquote-bg-color);
       border: 2px dashed var(--cyanosis-strong-color);
+    }
+  }
+
+  ol,
+  ul {
+    padding-left: 28px;
+
+    ul,
+    ol {
+      margin-top: 4px;
+    }
+
+    li {
+      margin-bottom: 0;
+      list-style: inherit;
+
+      p {
+        margin: 0;
+      }
+
+      & .task-list-item {
+        list-style: none;
+
+        ul,
+        ol {
+          margin-top: 0;
+        }
+      }
     }
   }
 

@@ -48,7 +48,7 @@ const customLang = ref({ ...locale.message.en })
 // })
 
 function toggleTheme() {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+  theme.toggle()
 }
 
 function setCustom() {

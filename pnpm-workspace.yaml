@@ -1,6 +1,8 @@
 packages:
   - examples
+
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - esbuild
   - json-editor-vue
   - unrs-resolver

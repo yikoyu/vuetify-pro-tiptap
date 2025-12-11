@@ -1,2 +1,2 @@
-@import './editor';
-@import './markdown';
+@forward 'editor';
+@forward 'markdown';
