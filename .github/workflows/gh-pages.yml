@@ -30,6 +30,6 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
-          destination_dir: ${{ github.ref_name }}  # 动态使用分支名
+          destination_dir: ${{ github.ref_name }} # 动态使用分支名
           keep_files: false
           force_orphan: false

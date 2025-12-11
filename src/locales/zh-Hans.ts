@@ -77,7 +77,7 @@ const locale: Record<string, string> = {
   'editor.undo.tooltip': '撤销',
   'editor.redo.tooltip': '重做',
   'editor.fullscreen.tooltip.fullscreen': '全屏',
-  'editor.fullscreen.tooltip.exit': '退出全屏'
+  'editor.fullscreen.tooltip.exit': '退出全屏',
 }
 
 export default locale

@@ -7,8 +7,10 @@ const props = defineProps(extActionButtonProps)
 const historys: ['undo', 'redo'] = ['undo', 'redo']
 
 function action(item: 'undo' | 'redo') {
-  if (item === 'redo') props.editor.chain().focus().redo().run()
-  if (item === 'undo') props.editor.chain().focus().undo().run()
+  if (item === 'redo')
+    props.editor.chain().focus().redo().run()
+  if (item === 'undo')
+    props.editor.chain().focus().undo().run()
 }
 </script>
 

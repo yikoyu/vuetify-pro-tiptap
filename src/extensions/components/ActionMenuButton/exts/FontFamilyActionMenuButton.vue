@@ -35,7 +35,7 @@ const items = computed<ActionMenuButtonItem[]>(() => {
     },
     style: { fontFamily: k.value },
     divider: k.divider ?? false,
-    default: k.default ?? false
+    default: k.default ?? false,
   }))
 })
 </script>

@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
   markdownTheme: undefined,
   xss: true,
   xssOptions: () => xssRules,
-  extensions: () => []
+  extensions: () => [],
 })
 
 const { state } = useContext()
@@ -37,8 +37,10 @@ const { markdownThemeStyle } = useMarkdownTheme(computed(() => props.markdownThe
 const ext = computed<AnyExtension[]>(() => [...state.extensions, ...props.extensions])
 
 const isDark = computed<boolean>(() => {
-  if (isBoolean(props.dark)) return props.dark
-  if (isBoolean(theme.current.value.dark)) return theme.current.value.dark
+  if (isBoolean(props.dark))
+    return props.dark
+  if (isBoolean(theme.current.value.dark))
+    return theme.current.value.dark
   return false
 })
 
@@ -46,11 +48,12 @@ const viewerClass = computed(() => ({
   __dark: unref(isDark),
   dense: props.dense,
   view: true,
-  ...unref(markdownThemeStyle)
+  ...unref(markdownThemeStyle),
 }))
 
 const htmlValue = computed<string>(() => {
-  if (isString(props.value)) return props.value
+  if (isString(props.value))
+    return props.value
   return generateHTML(props.value, unref(ext))
 })
 
@@ -72,10 +75,10 @@ const cleanValue = computed(() => {
 
 <template>
   <div class="vuetify-pro-tiptap-editor__content" :class="viewerClass" :style="{ width: '100%' }">
-    <slot name="before"></slot>
+    <slot name="before" />
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div class="content" v-html="cleanValue"></div>
+    <div class="content" v-html="cleanValue" />
 
-    <slot name="after"></slot>
+    <slot name="after" />
   </div>
 </template>

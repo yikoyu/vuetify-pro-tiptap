@@ -136,7 +136,7 @@ export interface BaseKitOptions {
   bubble: Partial<BubbleOptions<BaseKitOptions>>
 }
 
-export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
+export const BaseKit = /* @__PURE__ */ Extension.create<BaseKitOptions>({
   name: 'base-kit',
 
   addOptions() {
@@ -149,8 +149,8 @@ export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
           const { list = {}, defaultBubbleList } = extension.options?.bubble ?? {}
           const defaultList = defaultBubbleList?.(editor) ?? []
           return generateBubbleTypeMenu(list, defaultList, { editor, extension, t })
-        }
-      }
+        },
+      },
     }
   },
 
@@ -161,8 +161,8 @@ export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
       extensions.push(
         Placeholder.configure({
           placeholder: '',
-          ...this.options.placeholder
-        })
+          ...this.options.placeholder,
+        }),
       )
     }
 
@@ -170,8 +170,8 @@ export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
       extensions.push(
         Focus.configure({
           className: 'focus',
-          ...this.options.focus
-        })
+          ...this.options.focus,
+        }),
       )
     }
 
@@ -212,5 +212,5 @@ export const BaseKit = /* @__PURE__*/ Extension.create<BaseKitOptions>({
     }
 
     return extensions
-  }
+  },
 })

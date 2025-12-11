@@ -30,19 +30,20 @@ function getMenus(): Menu[] {
 
   return sortExtensions.reduce((acc, extension) => {
     const { button, divider = false, spacer = false } = extension.options
-    if (!button || !isFunction(button)) return acc as Menu[]
+    if (!button || !isFunction(button))
+      return acc as Menu[]
 
     const _button: ButtonViewReturn = button({
       editor: props.editor,
       extension,
-      t: unref(t)
+      t: unref(t),
     })
 
     if (Array.isArray(_button)) {
       const menu: Menu[] = _button.map((k, i) => ({
         button: k,
         divider: i === _button.length - 1 ? divider : false,
-        spacer: i === 0 ? spacer : false
+        spacer: i === 0 ? spacer : false,
       }))
       return [...acc, ...menu]
     }

@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
   nudgeLeft: 0,
   nudgeTop: 0,
-  more: true
+  more: true,
 })
 
 const emit = defineEmits<Emits>()
@@ -29,7 +29,7 @@ const inutValue = ref('')
 const menu = ref(false)
 // const picker = ref(false);
 
-watch(menu, val => {
+watch(menu, (val) => {
   inutValue.value = props.modelValue
 })
 

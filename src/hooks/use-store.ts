@@ -54,7 +54,7 @@ export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() =
     defaultMarkdownTheme: DEFAULT_MARKDOWN_THEME_VALUE,
     isFullscreen: false,
     color: undefined,
-    highlight: undefined
+    highlight: undefined,
   })
 
   const isFullscreen = computed(() => state.isFullscreen)
@@ -72,6 +72,6 @@ export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() =
   return {
     state,
     isFullscreen,
-    toggleFullscreen
+    toggleFullscreen,
   }
 })

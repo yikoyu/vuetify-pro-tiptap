@@ -14,7 +14,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  activator: undefined
+  activator: undefined,
 })
 
 const { t } = useLocale()
@@ -27,81 +27,82 @@ const items = computed<TableItem[]>(() => {
       key: 'insert-table',
       title: unref(t)('editor.table.menu.insert_table'),
       icon: getIcon('tablePlus'),
-      disabled: !props.editor.can().insertTable() || false
+      disabled: !props.editor.can().insertTable() || false,
     },
     {
-      type: 'divider'
+      type: 'divider',
     },
     {
       type: 'item',
       key: 'add-column-before',
       title: unref(t)('editor.table.menu.add_column_before'),
       icon: getIcon('tableColumnPlusBefore'),
-      disabled: !props.editor.can().addColumnBefore() || false
+      disabled: !props.editor.can().addColumnBefore() || false,
     },
     {
       type: 'item',
       key: 'add-column-after',
       title: unref(t)('editor.table.menu.add_column_after'),
       icon: getIcon('tableColumnPlusAfter'),
-      disabled: !props.editor.can().addColumnAfter() || false
+      disabled: !props.editor.can().addColumnAfter() || false,
     },
     {
       type: 'item',
       key: 'delete-column',
       title: unref(t)('editor.table.menu.delete_column'),
       icon: getIcon('tableColumnRemove'),
-      disabled: !props.editor.can().deleteColumn() || false
+      disabled: !props.editor.can().deleteColumn() || false,
     },
     {
-      type: 'divider'
+      type: 'divider',
     },
     {
       type: 'item',
       key: 'add-row-before',
       title: unref(t)('editor.table.menu.add_row_before'),
       icon: getIcon('tableRowPlusBefore'),
-      disabled: !props.editor.can().addRowBefore() || false
+      disabled: !props.editor.can().addRowBefore() || false,
     },
     {
       type: 'item',
       key: 'add-row-after',
       title: unref(t)('editor.table.menu.add_row_after'),
       icon: getIcon('tableRowPlusAfter'),
-      disabled: !props.editor.can().addRowAfter() || false
+      disabled: !props.editor.can().addRowAfter() || false,
     },
     {
       type: 'item',
       key: 'delete-row',
       title: unref(t)('editor.table.menu.delete_row'),
       icon: getIcon('tableRowRemove'),
-      disabled: !props.editor.can().deleteRow() || false
+      disabled: !props.editor.can().deleteRow() || false,
     },
     {
-      type: 'divider'
+      type: 'divider',
     },
     {
       type: 'item',
       key: 'merge-or-split-cells',
       title: unref(t)('editor.table.menu.merge_or_split_cells'),
       icon: getIcon('tableMergeCells'),
-      disabled: !props.editor.can().mergeOrSplit() || false
+      disabled: !props.editor.can().mergeOrSplit() || false,
     },
     {
-      type: 'divider'
+      type: 'divider',
     },
     {
       type: 'item',
       key: 'delete-table',
       title: unref(t)('editor.table.menu.delete_table'),
       icon: getIcon('tableRemove'),
-      disabled: !props.editor.can().deleteTable() || false
-    }
+      disabled: !props.editor.can().deleteTable() || false,
+    },
   ] as TableItem[]
 })
 
 function setTable<T extends object>(key?: TableACtionKey, options?: T) {
-  if (!key) return
+  if (!key)
+    return
 
   const { editor } = props
 
@@ -119,7 +120,7 @@ function setTable<T extends object>(key?: TableACtionKey, options?: T) {
     'add-row-after': () => editor.chain().focus().addRowAfter().run(),
     'delete-row': () => editor.chain().focus().deleteRow().run(),
     'merge-or-split-cells': () => editor.chain().focus().mergeOrSplit().run(),
-    'delete-table': () => editor.chain().focus().deleteTable().run()
+    'delete-table': () => editor.chain().focus().deleteTable().run(),
   }
 
   actions[key]?.()
@@ -147,7 +148,7 @@ function createTable(options: CreateTablePayload) {
 
         <VListItem
           v-else-if="item.type === 'item'"
-          :key="'item-' + index"
+          :key="`item-${index}`"
           :disabled="item.disabled"
           @click="setTable(item.key)"
         >
@@ -158,7 +159,7 @@ function createTable(options: CreateTablePayload) {
           <VListItemTitle>{{ item.title }}</VListItemTitle>
         </VListItem>
 
-        <VDivider v-else :key="'divider-' + index" />
+        <VDivider v-else :key="`divider-${index}`" />
       </template>
     </VList>
   </VMenu>

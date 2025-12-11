@@ -10,14 +10,14 @@ const props = defineProps(extActionButtonProps)
 
 const attrs = ref<LinkAttrs>({
   href: undefined,
-  target: undefined
+  target: undefined,
 })
 
 function onAction() {
   const { href, target } = props.editor.getAttributes('link')
   attrs.value = {
     href,
-    target
+    target,
   }
 }
 </script>
@@ -32,7 +32,7 @@ function onAction() {
     :action="onAction"
   >
     <OriginalThemeProvider>
-      <slot name="dialog" :props="{ editor, value: attrs.href, ...attrs }"></slot>
+      <slot name="dialog" :props="{ editor, value: attrs.href, ...attrs }" />
     </OriginalThemeProvider>
   </ActionButton>
 </template>

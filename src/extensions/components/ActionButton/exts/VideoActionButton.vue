@@ -25,7 +25,7 @@ function onAction() {
     icon="video"
   >
     <OriginalThemeProvider>
-      <slot name="dialog" :props="{ editor, value: src }"></slot>
+      <slot name="dialog" :props="{ editor, value: src }" />
     </OriginalThemeProvider>
   </ActionButton>
 </template>

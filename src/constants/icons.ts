@@ -63,7 +63,7 @@ import {
   mdiText,
   mdiUndo,
   mdiVideoPlus,
-  mdiWater
+  mdiWater,
 } from '@mdi/js'
 
 export interface ToolbarIconsOptions {
@@ -224,10 +224,11 @@ const icons: IconsOptions = {
   tableRowRemove: mdiTableRowRemove,
   tableMergeCells: mdiTableMergeCells,
 
-  check: mdiCheck
+  check: mdiCheck,
 }
 
 export function getIcon(iconName?: keyof IconsOptions): string | undefined {
-  if (!iconName) return undefined
+  if (!iconName)
+    return undefined
   return `svg:${icons[iconName]}`
 }

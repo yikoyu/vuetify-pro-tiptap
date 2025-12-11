@@ -19,7 +19,8 @@ function action(color: string) {
 function isActive() {
   const { color } = props.editor.getAttributes('textStyle')
 
-  if (!color) return false
+  if (!color)
+    return false
   return props.editor.isActive({ color }) || false
 }
 

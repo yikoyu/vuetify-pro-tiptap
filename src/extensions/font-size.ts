@@ -34,7 +34,7 @@ declare module '@tiptap/core' {
   }
 }
 
-export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
+export const FontSize = /* @__PURE__ */ Extension.create<FontSizeOptions>({
   name: 'fontSize',
 
   addOptions() {
@@ -48,10 +48,10 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
           componentProps: {
             editor,
             extension,
-            t
-          }
+            t,
+          },
         }
-      }
+      },
     }
   },
 
@@ -62,7 +62,7 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
         attributes: {
           fontSize: {
             default: null,
-            parseHTML: element => {
+            parseHTML: (element) => {
               const fontSize = element.style.fontSize || ''
               // 匹配带单位的字体大小值
               const match = fontSize.match(/^(\d+(\.\d+)?)(px|em|rem|%)?$/)
@@ -71,18 +71,18 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
               }
               return ''
             },
-            renderHTML: attributes => {
+            renderHTML: (attributes) => {
               if (!attributes.fontSize) {
                 return {}
               }
 
               return {
-                style: `font-size: ${getCssUnitWithDefault(attributes.fontSize)}`
+                style: `font-size: ${getCssUnitWithDefault(attributes.fontSize)}`,
               }
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     ]
   },
 
@@ -90,14 +90,14 @@ export const FontSize = /* @__PURE__*/ Extension.create<FontSizeOptions>({
     return {
       setFontSize:
         fontSize =>
-        ({ chain }) => {
-          return chain().setMark('textStyle', { fontSize }).run()
-        },
+          ({ chain }) => {
+            return chain().setMark('textStyle', { fontSize }).run()
+          },
       unsetFontSize:
         () =>
-        ({ chain }) => {
-          return chain().setMark('textStyle', { fontSize: null }).removeEmptyTextStyle().run()
-        }
+          ({ chain }) => {
+            return chain().setMark('textStyle', { fontSize: null }).removeEmptyTextStyle().run()
+          },
     }
-  }
+  },
 })

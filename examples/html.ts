@@ -110,7 +110,7 @@ export const jsonValue = {
     {
       type: 'heading',
       attrs: { textAlign: 'start', level: 1 },
-      content: [{ type: 'text', text: 'Vuetify Pro Tiptap' }]
+      content: [{ type: 'text', text: 'Vuetify Pro Tiptap' }],
     },
     {
       type: 'paragraph',
@@ -120,17 +120,17 @@ export const jsonValue = {
         {
           type: 'text',
           marks: [
-            { type: 'link', attrs: { href: 'https://github.com/scrumpy/tiptap', target: '_blank', class: null } }
+            { type: 'link', attrs: { href: 'https://github.com/scrumpy/tiptap', target: '_blank', class: null } },
           ],
-          text: 'tiptap'
+          text: 'tiptap',
         },
         { type: 'text', text: ' and ' },
         {
           type: 'text',
           marks: [
-            { type: 'link', attrs: { href: 'https://github.com/vuetifyjs/vuetify', target: '_blank', class: null } }
+            { type: 'link', attrs: { href: 'https://github.com/vuetifyjs/vuetify', target: '_blank', class: null } },
           ],
-          text: 'vuetify'
+          text: 'vuetify',
         },
         { type: 'text', text: ' for Vue.js' },
         {
@@ -143,10 +143,10 @@ export const jsonValue = {
             lockAspectRatio: true,
             width: 200,
             height: null,
-            display: 'right'
-          }
-        }
-      ]
+            display: 'right',
+          },
+        },
+      ],
     },
     { type: 'paragraph', attrs: { textAlign: 'start' } },
     { type: 'paragraph', attrs: { textAlign: 'start' } },
@@ -162,12 +162,12 @@ export const jsonValue = {
           marks: [
             {
               type: 'link',
-              attrs: { href: 'https://yikoyu.github.io/vuetify-pro-tiptap/', target: '_blank', class: null }
-            }
+              attrs: { href: 'https://yikoyu.github.io/vuetify-pro-tiptap/', target: '_blank', class: null },
+            },
           ],
-          text: 'https://yikoyu.github.io/vuetify-pro-tiptap/'
-        }
-      ]
+          text: 'https://yikoyu.github.io/vuetify-pro-tiptap/',
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 2 }, content: [{ type: 'text', text: 'Features' }] },
     {
@@ -186,27 +186,27 @@ export const jsonValue = {
                   marks: [
                     {
                       type: 'link',
-                      attrs: { href: 'https://github.com/vuetifyjs/vuetify', target: '_blank', class: null }
-                    }
+                      attrs: { href: 'https://github.com/vuetifyjs/vuetify', target: '_blank', class: null },
+                    },
                   ],
-                  text: 'vuetify'
+                  text: 'vuetify',
                 },
-                { type: 'text', text: ' components' }
-              ]
-            }
-          ]
+                { type: 'text', text: ' components' },
+              ],
+            },
+          ],
         },
         {
           type: 'listItem',
           content: [
-            { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Markdown support' }] }
-          ]
+            { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Markdown support' }] },
+          ],
         },
         {
           type: 'listItem',
           content: [
-            { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'TypeScript support' }] }
-          ]
+            { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'TypeScript support' }] },
+          ],
         },
         {
           type: 'listItem',
@@ -219,10 +219,10 @@ export const jsonValue = {
                 { type: 'text', marks: [{ type: 'code' }], text: 'en' },
                 { type: 'text', text: ', ' },
                 { type: 'text', marks: [{ type: 'code' }], text: 'zhHans' },
-                { type: 'text', text: ')' }
-              ]
-            }
-          ]
+                { type: 'text', text: ')' },
+              ],
+            },
+          ],
         },
         {
           type: 'listItem',
@@ -230,11 +230,11 @@ export const jsonValue = {
             {
               type: 'paragraph',
               attrs: { textAlign: 'left' },
-              content: [{ type: 'text', text: 'Vuetify 3.x and Vue 3.x support' }]
-            }
-          ]
-        }
-      ]
+              content: [{ type: 'text', text: 'Vuetify 3.x and Vue 3.x support' }],
+            },
+          ],
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 2 }, content: [{ type: 'text', text: 'Vuetify 2.x' }] },
     {
@@ -247,12 +247,12 @@ export const jsonValue = {
           marks: [
             {
               type: 'link',
-              attrs: { href: 'https://github.com/yikoyu/vuetify-pro-tiptap/tree/1.x', target: '_blank', class: null }
-            }
+              attrs: { href: 'https://github.com/yikoyu/vuetify-pro-tiptap/tree/1.x', target: '_blank', class: null },
+            },
           ],
-          text: 'vuetify-pro-tiptap@1.X.X'
-        }
-      ]
+          text: 'vuetify-pro-tiptap@1.X.X',
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 2 }, content: [{ type: 'text', text: 'Installation' }] },
     { type: 'heading', attrs: { textAlign: 'start', level: 3 }, content: [{ type: 'text', text: 'NPM' }] },
@@ -262,9 +262,9 @@ export const jsonValue = {
       content: [
         {
           type: 'text',
-          text: 'pnpm add vuetify-pro-tiptap\n# or\nyarn add vuetify-pro-tiptap\n# or\nnpm i vuetify-pro-tiptap -S'
-        }
-      ]
+          text: 'pnpm add vuetify-pro-tiptap\n# or\nyarn add vuetify-pro-tiptap\n# or\nnpm i vuetify-pro-tiptap -S',
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 3 }, content: [{ type: 'text', text: 'Install plugin' }] },
     { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'tiptap.tsmain.ts' }] },
@@ -275,26 +275,26 @@ export const jsonValue = {
       content: [
         {
           type: 'text',
-          text: "import { markRaw } from 'vue'\nimport { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap, defaultBubbleList } from 'vuetify-pro-tiptap'\nimport { BaseKit, Image, Fullscreen } from 'vuetify-pro-tiptap'\nimport 'vuetify-pro-tiptap/style.css'\nimport SelectImage from './components/SelectImage.vue'\n\nexport const vuetifyProTipTap = createVuetifyProTipTap({\n  // Set default lang\n  lang: 'zhHans',\n  // Global registration app.component\n  components: {\n    VuetifyTiptap,\n    VuetifyViewer\n  },\n  // Global registration extensions\n  extensions: [\n    BaseKit.configure({\n      placeholder: {\n        placeholder: 'Enter some text...'\n      },\n      bubble: {\n        // default config\n        list: {\n          image: [ 'float-left', 'float-none', 'float-right', 'divider', 'size-small', 'size-medium', 'size-large', 'divider', 'textAlign', 'divider', 'image', 'image-aspect-ratio', 'remove'],\n          text: ['bold', 'italic', 'underline', 'strike', 'divider', 'color', 'highlight', 'textAlign', 'divider', 'link'],\n          video: ['video', 'remove']\n        },\n        defaultBubbleList: editor => {\n          // You can customize the bubble menu here\n          return defaultBubbleList(editor) // default customize bubble list\n        }\n      }\n    }),\n    Image.configure({\n      // Generate a VDivider after the button\n      divider: true,\n      // Custom image tabs\n      imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],\n      // hidden default tab\n      hiddenTabs: ['upload'],\n      // custom upload function\n      upload(file) {\n        const url = URL.createObjectURL(file)\n        console.log('mock upload api :>> ', url)\n        return Promise.resolve(url)\n      }\n    }),\n    Fullscreen.configure({\n      // Generate a VSpacer after the button\n      spacer: true\n    })\n  ]\n})"
-        }
-      ]
+          text: 'import { markRaw } from \'vue\'\nimport { VuetifyTiptap, VuetifyViewer, createVuetifyProTipTap, defaultBubbleList } from \'vuetify-pro-tiptap\'\nimport { BaseKit, Image, Fullscreen } from \'vuetify-pro-tiptap\'\nimport \'vuetify-pro-tiptap/style.css\'\nimport SelectImage from \'./components/SelectImage.vue\'\n\nexport const vuetifyProTipTap = createVuetifyProTipTap({\n  // Set default lang\n  lang: \'zhHans\',\n  // Global registration app.component\n  components: {\n    VuetifyTiptap,\n    VuetifyViewer\n  },\n  // Global registration extensions\n  extensions: [\n    BaseKit.configure({\n      placeholder: {\n        placeholder: \'Enter some text...\'\n      },\n      bubble: {\n        // default config\n        list: {\n          image: [ \'float-left\', \'float-none\', \'float-right\', \'divider\', \'size-small\', \'size-medium\', \'size-large\', \'divider\', \'textAlign\', \'divider\', \'image\', \'image-aspect-ratio\', \'remove\'],\n          text: [\'bold\', \'italic\', \'underline\', \'strike\', \'divider\', \'color\', \'highlight\', \'textAlign\', \'divider\', \'link\'],\n          video: [\'video\', \'remove\']\n        },\n        defaultBubbleList: editor => {\n          // You can customize the bubble menu here\n          return defaultBubbleList(editor) // default customize bubble list\n        }\n      }\n    }),\n    Image.configure({\n      // Generate a VDivider after the button\n      divider: true,\n      // Custom image tabs\n      imageTabs: [{ name: \'SELECT\', component: markRaw(SelectImage) }],\n      // hidden default tab\n      hiddenTabs: [\'upload\'],\n      // custom upload function\n      upload(file) {\n        const url = URL.createObjectURL(file)\n        console.log(\'mock upload api :>> \', url)\n        return Promise.resolve(url)\n      }\n    }),\n    Fullscreen.configure({\n      // Generate a VSpacer after the button\n      spacer: true\n    })\n  ]\n})',
+        },
+      ],
     },
     {
       type: 'heading',
       attrs: { textAlign: 'start', level: 2 },
-      content: [{ type: 'text', text: 'Custom extensions' }]
+      content: [{ type: 'text', text: 'Custom extensions' }],
     },
     {
       type: 'paragraph',
       attrs: { textAlign: 'left' },
-      content: [{ type: 'text', text: 'PreviewActionButton.vuepreview.ts' }]
+      content: [{ type: 'text', text: 'PreviewActionButton.vuepreview.ts' }],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 2 }, content: [{ type: 'text', text: 'I18n' }] },
     { type: 'heading', attrs: { textAlign: 'start', level: 3 }, content: [{ type: 'text', text: 'Setting language' }] },
     {
       type: 'paragraph',
       attrs: { textAlign: 'start' },
-      content: [{ type: 'text', text: 'You can declare when you install the plugin.' }]
+      content: [{ type: 'text', text: 'You can declare when you install the plugin.' }],
     },
     {
       type: 'codeBlock',
@@ -302,9 +302,9 @@ export const jsonValue = {
       content: [
         {
           type: 'text',
-          text: "import { createVuetifyProTipTap } from 'vuetify-pro-tiptap'\n\nconst VuetifyProTipTap = createVuetifyProTipTap({\n  lang: 'zhHans'\n})"
-        }
-      ]
+          text: 'import { createVuetifyProTipTap } from \'vuetify-pro-tiptap\'\n\nconst VuetifyProTipTap = createVuetifyProTipTap({\n  lang: \'zhHans\'\n})',
+        },
+      ],
     },
     {
       type: 'paragraph',
@@ -312,13 +312,13 @@ export const jsonValue = {
       content: [
         { type: 'text', text: 'Or use ' },
         { type: 'text', marks: [{ type: 'code' }], text: 'setLang' },
-        { type: 'text', text: ' dynamic change' }
-      ]
+        { type: 'text', text: ' dynamic change' },
+      ],
     },
     {
       type: 'codeBlock',
       attrs: { language: null },
-      content: [{ type: 'text', text: "import { locale } from 'vuetify-pro-tiptap'\n\nlocale.setLang('en')" }]
+      content: [{ type: 'text', text: 'import { locale } from \'vuetify-pro-tiptap\'\n\nlocale.setLang(\'en\')' }],
     },
     { type: 'paragraph', attrs: { textAlign: 'start' }, content: [{ type: 'text', text: 'Available languages:' }] },
     {
@@ -327,19 +327,19 @@ export const jsonValue = {
         {
           type: 'listItem',
           content: [
-            { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'en (default)' }] }
-          ]
+            { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'en (default)' }] },
+          ],
         },
         {
           type: 'listItem',
-          content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'zhHans' }] }]
-        }
-      ]
+          content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'zhHans' }] }],
+        },
+      ],
     },
     {
       type: 'heading',
       attrs: { textAlign: 'start', level: 3 },
-      content: [{ type: 'text', text: 'Use unavailable language' }]
+      content: [{ type: 'text', text: 'Use unavailable language' }],
     },
     {
       type: 'paragraph',
@@ -347,8 +347,8 @@ export const jsonValue = {
       content: [
         { type: 'text', text: 'Loading unavailable language, use ' },
         { type: 'text', marks: [{ type: 'code' }], text: 'setMessage' },
-        { type: 'text', text: ' for Settings' }
-      ]
+        { type: 'text', text: ' for Settings' },
+      ],
     },
     {
       type: 'codeBlock',
@@ -356,9 +356,9 @@ export const jsonValue = {
       content: [
         {
           type: 'text',
-          text: "import { locale } from 'vuetify-pro-tiptap'\n\nlocale.setMessage('zhHant', {\n  // i18n text\n})\nlocale.setLang('zhHant')"
-        }
-      ]
+          text: 'import { locale } from \'vuetify-pro-tiptap\'\n\nlocale.setMessage(\'zhHant\', {\n  // i18n text\n})\nlocale.setLang(\'zhHant\')',
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 2 }, content: [{ type: 'text', text: 'Usage' }] },
     {
@@ -367,9 +367,9 @@ export const jsonValue = {
       content: [
         {
           type: 'text',
-          text: '<script setup lang="ts">\nimport { ref } from \'vue\'\nimport { VuetifyTiptap, VuetifyViewer } from \'vuetify-pro-tiptap\'\nimport \'vuetify-pro-tiptap/style.css\'\nimport { BaseKit, Bold, Italic, Underline, Strike, Color, Highlight, Heading, Link, Image, Video, Table, Fullscreen, History } from \'vuetify-pro-tiptap\'\n\nconst extensions = [\n  BaseKit.configure({\n    placeholder: {\n      placeholder: \'Enter some text...\'\n    }\n  }),\n  Bold,\n  Italic,\n  Underline,\n  Strike,\n  Color,\n  Highlight,\n  Heading,\n  Link,\n  Image,\n  Video,\n  Table,\n  Fullscreen,\n  History\n]\n\nconst content = ref(\'\')\n</script>\n\n<template>\n  <v-app id="app">\n    <v-container>\n      <VuetifyTiptap v-model="content" label="Title" rounded :min-height="200" :max-height="465" :max-width="900" :extensions="extensions" />\n      <VuetifyViewer :value="content" />\n    </v-container>\n  </v-app>\n</template>'
-        }
-      ]
+          text: '<script setup lang="ts">\nimport { ref } from \'vue\'\nimport { VuetifyTiptap, VuetifyViewer } from \'vuetify-pro-tiptap\'\nimport \'vuetify-pro-tiptap/style.css\'\nimport { BaseKit, Bold, Italic, Underline, Strike, Color, Highlight, Heading, Link, Image, Video, Table, Fullscreen, History } from \'vuetify-pro-tiptap\'\n\nconst extensions = [\n  BaseKit.configure({\n    placeholder: {\n      placeholder: \'Enter some text...\'\n    }\n  }),\n  Bold,\n  Italic,\n  Underline,\n  Strike,\n  Color,\n  Highlight,\n  Heading,\n  Link,\n  Image,\n  Video,\n  Table,\n  Fullscreen,\n  History\n]\n\nconst content = ref(\'\')\n</script>\n\n<template>\n  <v-app id="app">\n    <v-container>\n      <VuetifyTiptap v-model="content" label="Title" rounded :min-height="200" :max-height="465" :max-width="900" :extensions="extensions" />\n      <VuetifyViewer :value="content" />\n    </v-container>\n  </v-app>\n</template>',
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 2 }, content: [{ type: 'text', text: 'Props' }] },
     { type: 'heading', attrs: { textAlign: 'start', level: 3 }, content: [{ type: 'text', text: 'VuetifyTiptap' }] },
@@ -383,28 +383,28 @@ export const jsonValue = {
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }],
             },
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Type' }] }]
-            },
-            {
-              type: 'tableHeader',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Default' }] }
-              ]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Type' }] }],
             },
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] }
-              ]
-            }
-          ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Default' }] },
+              ],
+            },
+            {
+              type: 'tableHeader',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -413,20 +413,20 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'modelValue' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'modelValue' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'string' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'string' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: "''" }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: '\'\'' }] }],
             },
             {
               type: 'tableCell',
@@ -435,11 +435,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'The input’s value' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'The input’s value' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -447,19 +447,19 @@ export const jsonValue = {
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dark' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dark' }] }],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -468,11 +468,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Applies the dark theme variant to the component.' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Applies the dark theme variant to the component.' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -480,54 +480,19 @@ export const jsonValue = {
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dense' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dense' }] }],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Reduces the input height' }]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          type: 'tableRow',
-          content: [
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'outlined' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'true' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -536,44 +501,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Applies the outlined style to the input' }]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          type: 'tableRow',
-          content: [
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'flat' }] }]
+                  content: [{ type: 'text', text: 'Reduces the input height' }],
+                },
+              ],
             },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'true' }] }]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Removes the card’s elevation' }]
-                }
-              ]
-            }
-          ]
+          ],
         },
         {
           type: 'tableRow',
@@ -582,20 +514,20 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'disabled' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'outlined' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'true' }] }],
             },
             {
               type: 'tableCell',
@@ -604,11 +536,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Disable the input' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Applies the outlined style to the input' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -616,56 +548,19 @@ export const jsonValue = {
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'label' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'flat' }] }],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'string' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Sets input label' }]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          type: 'tableRow',
-          content: [
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'hideToolbar' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'true' }] }],
             },
             {
               type: 'tableCell',
@@ -674,11 +569,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Hidden the toolbar' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Removes the card’s elevation' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -687,20 +582,20 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'disableToolbar' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'disabled' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -709,11 +604,46 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Disable the toolbar' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Disable the input' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tableRow',
+          content: [
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'label' }] }],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'string' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'Sets input label' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -722,8 +652,20 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'maxWidth' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'hideToolbar' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -732,29 +674,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'string | boolean' }]
-                }
-              ]
+                  content: [{ type: 'text', text: 'Hidden the toolbar' }],
+                },
+              ],
             },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Sets the maximum width for the component.' }]
-                }
-              ]
-            }
-          ]
+          ],
         },
         {
           type: 'tableRow',
@@ -763,8 +687,20 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'minHeight' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'disableToolbar' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -773,29 +709,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'string | boolean' }]
-                }
-              ]
+                  content: [{ type: 'text', text: 'Disable the toolbar' }],
+                },
+              ],
             },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Sets the minimum height for the component.' }]
-                }
-              ]
-            }
-          ]
+          ],
         },
         {
           type: 'tableRow',
@@ -804,8 +722,8 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'maxHeight' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'maxWidth' }] },
+              ],
             },
             {
               type: 'tableCell',
@@ -814,16 +732,16 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'string | boolean' }]
-                }
-              ]
+                  content: [{ type: 'text', text: 'string | boolean' }],
+                },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] },
+              ],
             },
             {
               type: 'tableCell',
@@ -832,11 +750,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Sets the maximum height for the component.' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Sets the maximum width for the component.' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -845,20 +763,8 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'extensions' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'AnyExtension[]' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: '[]' }] }]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'minHeight' }] },
+              ],
             },
             {
               type: 'tableCell',
@@ -867,11 +773,29 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Tiptap the extensions' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'string | boolean' }],
+                },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'Sets the minimum height for the component.' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -880,8 +804,8 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'editorClass' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'maxHeight' }] },
+              ],
             },
             {
               type: 'tableCell',
@@ -890,27 +814,103 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'string | string[] | Record<string, any>' }]
-                }
-              ]
+                  content: [{ type: 'text', text: 'string | boolean' }],
+                },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Editor class' }] }
-              ]
-            }
-          ]
-        }
-      ]
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'Sets the maximum height for the component.' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tableRow',
+          content: [
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'extensions' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'AnyExtension[]' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: '[]' }] }],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'Tiptap the extensions' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tableRow',
+          content: [
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'editorClass' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'string | string[] | Record<string, any>' }],
+                },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'undefined' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Editor class' }] },
+              ],
+            },
+          ],
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 4 }, content: [{ type: 'text', text: 'Slots' }] },
     {
@@ -922,16 +922,16 @@ export const jsonValue = {
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }],
             },
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] }
-              ]
-            }
-          ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -940,8 +940,8 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'editor' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'editor' }] },
+              ],
             },
             {
               type: 'tableCell',
@@ -950,11 +950,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Slot to customize editor' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Slot to customize editor' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -963,8 +963,8 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'bottom' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'bottom' }] },
+              ],
             },
             {
               type: 'tableCell',
@@ -973,13 +973,13 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Slot to customize editor bottom' }]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  content: [{ type: 'text', text: 'Slot to customize editor bottom' }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 3 }, content: [{ type: 'text', text: 'VuetifyViewer' }] },
     { type: 'heading', attrs: { textAlign: 'start', level: 4 }, content: [{ type: 'text', text: 'Props' }] },
@@ -992,28 +992,28 @@ export const jsonValue = {
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }],
             },
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Type' }] }]
-            },
-            {
-              type: 'tableHeader',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Default' }] }
-              ]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Type' }] }],
             },
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] }
-              ]
-            }
-          ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Default' }] },
+              ],
+            },
+            {
+              type: 'tableHeader',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -1021,17 +1021,17 @@ export const jsonValue = {
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'value' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'value' }] }],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'value' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'value' }] }],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: "''" }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: '\'\'' }] }],
             },
             {
               type: 'tableCell',
@@ -1040,11 +1040,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'The preview’s value' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'The preview’s value' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -1052,19 +1052,19 @@ export const jsonValue = {
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dark' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dark' }] }],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -1073,11 +1073,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Applies the dark theme variant to the component.' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Applies the dark theme variant to the component.' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -1085,58 +1085,19 @@ export const jsonValue = {
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dense' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'dense' }] }],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Reduces the input height' }]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          type: 'tableRow',
-          content: [
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'hideMarkdownStyle' }]
-                }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -1145,44 +1106,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Hide .markdown-body class' }]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          type: 'tableRow',
-          content: [
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'xss' }] }]
+                  content: [{ type: 'text', text: 'Reduces the input height' }],
+                },
+              ],
             },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] }
-              ]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'true' }] }]
-            },
-            {
-              type: 'tableCell',
-              attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                {
-                  type: 'paragraph',
-                  attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Enable xss filter' }]
-                }
-              ]
-            }
-          ]
+          ],
         },
         {
           type: 'tableRow',
@@ -1191,22 +1119,24 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'xssOptions' }] }
-              ]
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'hideMarkdownStyle' }],
+                },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'xss.IWhiteList' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
             },
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Default rule' }] }
-              ]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'false' }] }],
             },
             {
               type: 'tableCell',
@@ -1215,13 +1145,83 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Xss filter rule config' }]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  content: [{ type: 'text', text: 'Hide .markdown-body class' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tableRow',
+          content: [
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'xss' }] }],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'boolean' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'true' }] }],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'Enable xss filter' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tableRow',
+          content: [
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'xssOptions' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'xss.IWhiteList' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Default rule' }] },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: { colspan: 1, rowspan: 1, colwidth: null },
+              content: [
+                {
+                  type: 'paragraph',
+                  attrs: { textAlign: 'left' },
+                  content: [{ type: 'text', text: 'Xss filter rule config' }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     { type: 'heading', attrs: { textAlign: 'start', level: 4 }, content: [{ type: 'text', text: 'Slots' }] },
     {
@@ -1233,16 +1233,16 @@ export const jsonValue = {
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Name' }] }],
             },
             {
               type: 'tableHeader',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] }
-              ]
-            }
-          ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'Description' }] },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -1251,8 +1251,8 @@ export const jsonValue = {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
               content: [
-                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'before' }] }
-              ]
+                { type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'before' }] },
+              ],
             },
             {
               type: 'tableCell',
@@ -1261,11 +1261,11 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Add content at the before' }]
-                }
-              ]
-            }
-          ]
+                  content: [{ type: 'text', text: 'Add content at the before' }],
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'tableRow',
@@ -1273,7 +1273,7 @@ export const jsonValue = {
             {
               type: 'tableCell',
               attrs: { colspan: 1, rowspan: 1, colwidth: null },
-              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'after' }] }]
+              content: [{ type: 'paragraph', attrs: { textAlign: 'left' }, content: [{ type: 'text', text: 'after' }] }],
             },
             {
               type: 'tableCell',
@@ -1282,13 +1282,13 @@ export const jsonValue = {
                 {
                   type: 'paragraph',
                   attrs: { textAlign: 'left' },
-                  content: [{ type: 'text', text: 'Add content at the after' }]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+                  content: [{ type: 'text', text: 'Add content at the after' }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
 }

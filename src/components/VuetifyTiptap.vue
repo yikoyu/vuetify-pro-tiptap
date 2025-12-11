@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import type { Editor as CoreEditor } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
+import type { VuetifyTiptapOnChange } from '@/type'
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import { computed, provide, toRef, unref, useAttrs, watch } from 'vue'
+
 import { useTheme } from 'vuetify'
-
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
-import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 
+import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
-import { VuetifyTiptapOnChange } from '@/type'
 import { differenceBy, getCssUnitWithDefault, hasExtension, isBoolean, isEqual, throttle } from '@/utils/utils'
 import BubbleMenu from './BubbleMenu.vue'
 import TipTapToolbar from './TiptapToolbar.vue'
@@ -67,7 +67,7 @@ const props = withDefaults(defineProps<Props>(), {
 
   // Editor
   extensions: () => [],
-  editorClass: undefined
+  editorClass: undefined,
 })
 
 const emit = defineEmits<Emits>()
@@ -79,7 +79,7 @@ const { markdownThemeStyle } = useMarkdownTheme(
   computed(() => props.markdownTheme),
   (value: string) => {
     emit('update:markdownTheme', value)
-  }
+  },
 )
 
 const sortExtensions = computed<AnyExtension[]>(() => {
@@ -88,7 +88,8 @@ const sortExtensions = computed<AnyExtension[]>(() => {
   // Override configurations for duplicate extensions
   const exts = state.extensions.map((k, i) => {
     const find = props.extensions.find(ext => ext.name === k.name)
-    if (!find) return k
+    if (!find)
+      return k
 
     return k.configure(find.options)
   })
@@ -99,7 +100,7 @@ const sortExtensions = computed<AnyExtension[]>(() => {
 const editor = useEditor({
   content: props.modelValue,
   editorProps: {
-    handleKeyDown: throttle<HandleKeyDown>(function (view, event) {
+    handleKeyDown: throttle<HandleKeyDown>((view, event) => {
       if (event.key === 'Enter' && attrs.enter && !event.shiftKey) {
         emit('enter')
 
@@ -107,7 +108,7 @@ const editor = useEditor({
       }
 
       return false
-    }, EDITOR_UPDATE_THROTTLE_WAIT_TIME)
+    }, EDITOR_UPDATE_THROTTLE_WAIT_TIME),
   },
   onUpdate: throttle<OnUpdate>(({ editor }) => {
     const output = getOutput(editor, props.output)
@@ -119,21 +120,23 @@ const editor = useEditor({
   extensions: unref(sortExtensions),
   autofocus: false,
   editable: !props.disabled,
-  injectCSS: true
+  injectCSS: true,
 })
 
 const { t } = useLocale()
 
 const isDark = computed<boolean>(() => {
-  if (isBoolean(props.dark)) return props.dark
-  if (isBoolean(theme.current.value.dark)) return theme.current.value.dark
+  if (isBoolean(props.dark))
+    return props.dark
+  if (isBoolean(theme.current.value.dark))
+    return theme.current.value.dark
   return false
 })
 
 const contentDynamicClasses = computed(() => {
   const values: Record<string, any> = {
     __dark: unref(isDark),
-    ...unref(markdownThemeStyle)
+    ...unref(markdownThemeStyle),
   }
 
   return [values, props.editorClass]
@@ -143,12 +146,13 @@ const contentDynamicStyles = computed(() => {
   const maxWidth = getCssUnitWithDefault(props.maxWidth)
 
   const maxHeightStyle = {
-    maxWidth: maxWidth,
+    maxWidth,
     width: !maxWidth ? undefined : '100%',
     margin: !maxWidth ? undefined : '0 auto',
-    backgroundColor: unref(isDark) ? '#1E1E1E' : '#FFFFFF'
+    backgroundColor: unref(isDark) ? '#1E1E1E' : '#FFFFFF',
   }
-  if (unref(isFullscreen)) return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
+  if (unref(isFullscreen))
+    return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
 
   const minHeight = getCssUnitWithDefault(props.minHeight)
   const maxHeight = getCssUnitWithDefault(props.maxHeight)
@@ -157,30 +161,38 @@ const contentDynamicStyles = computed(() => {
     minHeight,
     maxHeight,
     overflowY: 'auto',
-    ...maxHeightStyle
+    ...maxHeightStyle,
   }
 })
 
 function getOutput(editor: CoreEditor, output: Props['output']) {
   if (props.removeDefaultWrapper) {
-    if (output === 'html') return editor.isEmpty ? '' : editor.getHTML()
-    if (output === 'json') return editor.isEmpty ? {} : editor.getJSON()
-    if (output === 'text') return editor.isEmpty ? '' : editor.getText()
+    if (output === 'html')
+      return editor.isEmpty ? '' : editor.getHTML()
+    if (output === 'json')
+      return editor.isEmpty ? {} : editor.getJSON()
+    if (output === 'text')
+      return editor.isEmpty ? '' : editor.getText()
     return ''
   }
 
-  if (output === 'html') return editor.getHTML()
-  if (output === 'json') return editor.getJSON()
-  if (output === 'text') return editor.getText()
+  if (output === 'html')
+    return editor.getHTML()
+  if (output === 'json')
+    return editor.getJSON()
+  if (output === 'text')
+    return editor.getText()
   return ''
 }
 
 const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
-  if (!editor.value) return
+  if (!editor.value)
+    return
 
   const output = getOutput(editor.value, props.output)
 
-  if (isEqual(output, val)) return
+  if (isEqual(output, val))
+    return
 
   const { from, to } = editor.value.state.selection
   editor.value.commands.setContent(val, { emitUpdate: false })
@@ -208,7 +220,7 @@ defineExpose({ editor })
           v-bind="$attrs"
           :style="{
             borderColor: errorMessages ? '#ff5252' : undefined,
-            width: '100%'
+            width: '100%',
           }"
           class="vuetify-pro-tiptap-editor"
           :class="{ 'vuetify-pro-tiptap-editor--fullscreen': isFullscreen }"
@@ -232,7 +244,7 @@ defineExpose({ editor })
 
           <slot
             name="editor"
-            v-bind="{ editor, props: { class: 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }"
+            v-bind="{ editor, props: { 'class': 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }"
           >
             <EditorContent
               class="vuetify-pro-tiptap-editor__content"

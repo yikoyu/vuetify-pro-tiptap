@@ -20,7 +20,7 @@ export interface TextAlignOptions extends TiptapTextAlignOptions, GeneralOptions
   alignment?: Alignments[]
 }
 
-export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>({
+export const TextAlign = /* @__PURE__ */ TiptapTextAlign.extend<TextAlignOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapTextAlignOptions,
@@ -31,10 +31,10 @@ export const TextAlign = /* @__PURE__*/ TiptapTextAlign.extend<TextAlignOptions>
           componentProps: {
             editor,
             extension,
-            t
-          }
+            t,
+          },
         }
-      }
+      },
     }
-  }
+  },
 })

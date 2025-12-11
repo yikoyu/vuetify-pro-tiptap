@@ -7,7 +7,7 @@ import { HistoryActionButton } from './components/ActionButton'
 
 export interface HistoryOptions extends UndoRedoOptions, GeneralOptions<HistoryOptions> {}
 
-export const History = /* @__PURE__*/ UndoRedo.extend<HistoryOptions>({
+export const History = /* @__PURE__ */ UndoRedo.extend<HistoryOptions>({
   addOptions() {
     return {
       ...this.parent?.() as UndoRedoOptions,
@@ -16,9 +16,9 @@ export const History = /* @__PURE__*/ UndoRedo.extend<HistoryOptions>({
         component: HistoryActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

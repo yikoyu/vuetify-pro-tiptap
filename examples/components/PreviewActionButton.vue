@@ -14,7 +14,7 @@ import { ActionButton } from 'vuetify-pro-tiptap'
 
 const props = withDefaults(defineProps<Props>(), {
   tooltip: undefined,
-  disabled: false
+  disabled: false,
 })
 
 // 获取原始主题
@@ -43,13 +43,21 @@ const maxWidth = ref<number>(900)
             </VBtn>
 
             <VBtnToggle v-model="markdownTheme" color="deep-purple-accent-3" rounded="0" group>
-              <VBtn value=""> Global </VBtn>
+              <VBtn value="">
+                Global
+              </VBtn>
 
-              <VBtn value="default"> Default </VBtn>
+              <VBtn value="default">
+                Default
+              </VBtn>
 
-              <VBtn value="github"> Github </VBtn>
+              <VBtn value="github">
+                Github
+              </VBtn>
 
-              <VBtn value="maidragon"> Maidragon </VBtn>
+              <VBtn value="maidragon">
+                Maidragon
+              </VBtn>
             </VBtnToggle>
           </VToolbar>
 

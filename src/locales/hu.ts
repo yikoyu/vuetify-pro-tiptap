@@ -77,7 +77,7 @@ const locale: Record<string, string> = {
   'editor.undo.tooltip': 'Visszavonás',
   'editor.redo.tooltip': 'Ismét',
   'editor.fullscreen.tooltip.fullscreen': 'Teljes képernyő',
-  'editor.fullscreen.tooltip.exit': 'Kilépés a teljes képernyőből'
+  'editor.fullscreen.tooltip.exit': 'Kilépés a teljes képernyőből',
 }
 
 export default locale

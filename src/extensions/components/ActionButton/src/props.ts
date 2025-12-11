@@ -1,46 +1,46 @@
-import type { Editor } from "@tiptap/vue-3"
-import type { PropType } from "vue"
-import type { IconsOptions } from "@/constants/icons"
-import type { ButtonViewReturnComponentProps } from "@/type"
+import type { Editor } from '@tiptap/vue-3'
+import type { PropType } from 'vue'
+import type { IconsOptions } from '@/constants/icons'
+import type { ButtonViewReturnComponentProps } from '@/type'
 
 export const actionButtonProps = {
   editor: {
     type: Object as PropType<Editor>,
-    required: true
+    required: true,
   },
   icon: {
     type: String as PropType<keyof IconsOptions>,
-    default: undefined
+    default: undefined,
   },
   tooltip: {
     type: String,
-    default: ''
+    default: '',
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   color: {
     type: String,
-    default: undefined
+    default: undefined,
   },
   action: {
     type: Function as PropType<ButtonViewReturnComponentProps['action']>,
-    default: undefined
+    default: undefined,
   },
   isActive: {
     type: Function as PropType<ButtonViewReturnComponentProps['isActive']>,
-    default: undefined
-  }
+    default: undefined,
+  },
 } as const
 
 export const extActionButtonProps = {
   editor: {
     type: Object as PropType<Editor>,
-    required: true
+    required: true,
   },
   t: {
     type: Function as PropType<(path: string) => string>,
-    required: true
-  }
+    required: true,
+  },
 } as const

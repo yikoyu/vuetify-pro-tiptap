@@ -36,7 +36,7 @@ const rules: IWhiteList = {
   tr: ['class', 'style'],
   th: ['class', 'style', 'colspan', 'rowspan'],
   td: ['class', 'style', 'colspan', 'rowspan'],
-  br: []
+  br: [],
 }
 
 export default rules

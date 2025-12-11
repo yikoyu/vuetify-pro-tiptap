@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * copy to https://github.com/developit/mitt
  */
@@ -95,7 +96,7 @@ export default function mitt<Events extends Record<EventType, unknown>>(
     emit<Key extends keyof Events>(type: Key, evt?: Events[Key]) {
       let handlers = all!.get(type)
       if (handlers) {
-        // eslint-disable-next-line array-callback-return
+         
         ;(handlers as EventHandlerList<Events[keyof Events]>).slice().map(handler => {
           handler(evt!)
         })
@@ -103,7 +104,7 @@ export default function mitt<Events extends Record<EventType, unknown>>(
 
       handlers = all!.get('*')
       if (handlers) {
-        // eslint-disable-next-line array-callback-return
+         
         ;(handlers as WildCardEventHandlerList<Events>).slice().map(handler => {
           handler(type, evt!)
         })

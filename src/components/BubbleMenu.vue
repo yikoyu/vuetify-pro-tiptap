@@ -6,7 +6,7 @@ import type { BubbleMenuItem, BubbleTypeMenu, NodeTypeKey } from '@/extensions/c
 
 import { TextSelection } from '@tiptap/pm/state'
 import { BubbleMenu } from '@tiptap/vue-3/menus'
-import { computed, ref, unref } from 'vue'
+import { computed, unref } from 'vue'
 import { useLocale } from '@/locales'
 import { isExtEnableAndActive } from '@/utils/utils'
 
@@ -20,7 +20,8 @@ const { t } = useLocale()
 
 const nodeType = computed<NodeTypeKey | undefined>(() => {
   const selection = props.editor.state.selection as NodeSelection
-  if (selection.to === selection.from || selection.empty) return undefined
+  if (selection.to === selection.from || selection.empty)
+    return undefined
 
   const isLink = isExtEnableAndActive(props.editor, 'link')
   const isTable = isExtEnableAndActive(props.editor, 'table')
@@ -29,11 +30,16 @@ const nodeType = computed<NodeTypeKey | undefined>(() => {
   const isVideo = selection.node?.type.name === 'video'
   const isText = selection instanceof TextSelection
 
-  if (isTable) return 'table'
-  if (isLink) return 'link'
-  if (isImage) return 'image'
-  if (isVideo) return 'video'
-  if (isText) return 'text'
+  if (isTable)
+    return 'table'
+  if (isLink)
+    return 'link'
+  if (isImage)
+    return 'image'
+  if (isVideo)
+    return 'video'
+  if (isText)
+    return 'text'
   return undefined
 })
 
@@ -57,7 +63,7 @@ function getMenus(nodeKey?: NodeTypeKey): BubbleMenuItem[] {
   const _buttons: BubbleTypeMenu = button({
     editor: props.editor,
     extension: find,
-    t: unref(t)
+    t: unref(t),
   })
 
   if (!nodeKey) {

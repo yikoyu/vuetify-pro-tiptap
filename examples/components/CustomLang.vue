@@ -18,15 +18,15 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  modelValue: () => ({})
+  modelValue: () => ({}),
 })
 const emits = defineEmits<Emits>()
 
 const customLang = computed({
   get: () => props.modelValue,
-  set: val => {
+  set: (val) => {
     emits('update:modelValue', val)
-  }
+  },
 })
 const customLangKey = computed(() => Object.keys(unref(customLang)))
 </script>

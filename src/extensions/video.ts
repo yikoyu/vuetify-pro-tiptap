@@ -40,7 +40,7 @@ export interface VideoOptions extends GeneralOptions<VideoOptions> {
 /**
  * Represents the type for setting video options
  */
-type SetVideoOptions = {
+interface SetVideoOptions {
   /** The source URL of the video */
   src: string
   /** The width of the video */
@@ -85,7 +85,7 @@ function linkConvert(src: string) {
   return src
 }
 
-export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
+export const Video = /* @__PURE__ */ Node.create<VideoOptions>({
   name: 'video',
 
   group: 'block',
@@ -99,31 +99,31 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       src: {
         default: null,
         renderHTML: ({ src }) => ({
-          src: src ? linkConvert(src) : null
-        })
+          src: src ? linkConvert(src) : null,
+        }),
       },
       width: {
         default: this.options.width,
         renderHTML: ({ width }) => ({
-          width: getCssUnitWithDefault(width)
-        })
+          width: getCssUnitWithDefault(width),
+        }),
       },
       frameborder: {
         default: this.options.frameborder ? 1 : 0,
-        parseHTML: () => (this.options.frameborder ? 1 : 0)
+        parseHTML: () => (this.options.frameborder ? 1 : 0),
       },
       allowfullscreen: {
         default: this.options.allowFullscreen,
-        parseHTML: () => this.options.allowFullscreen
-      }
+        parseHTML: () => this.options.allowFullscreen,
+      },
     }
   },
 
   parseHTML() {
     return [
       {
-        tag: 'div[data-video] iframe'
-      }
+        tag: 'div[data-video] iframe',
+      },
     ]
   },
 
@@ -133,7 +133,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
     const iframeHTMLAttributes = {
       ...HTMLAttributes,
       width: '100%',
-      height: '100%'
+      height: '100%',
     }
 
     const responsiveStyle = `position: relative;overflow: hidden;display: flex;flex: 1;max-width: ${width};`
@@ -145,7 +145,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
 
     const divAttrs = {
       ...this.options.HTMLAttributes,
-      'data-video': ''
+      'data-video': '',
     }
 
     return ['div', divAttrs, responsiveDOM]
@@ -155,18 +155,18 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
     return {
       setVideo:
         options =>
-        ({ commands }) => {
-          return commands.insertContent({
-            type: this.name,
-            attrs: options
-          })
-        },
+          ({ commands }) => {
+            return commands.insertContent({
+              type: this.name,
+              attrs: options,
+            })
+          },
 
       updateVideo:
         options =>
-        ({ commands }) => {
-          return commands.updateAttributes(this.name, options)
-        }
+          ({ commands }) => {
+            return commands.updateAttributes(this.name, options)
+          },
     }
   },
 
@@ -179,7 +179,7 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       width: VIDEO_SIZE['size-medium'],
       HTMLAttributes: {
         class: 'iframe-wrapper',
-        style: 'display: flex;justify-content: center;'
+        style: 'display: flex;justify-content: center;',
       },
       dialogComponent: () => VideoDialog,
       button: ({ editor, extension, t }) => {
@@ -189,13 +189,13 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
           component: VideoActionButton,
           componentProps: {
             editor,
-            t
+            t,
           },
           componentSlots: {
-            dialog: dialogComponent()
-          }
+            dialog: dialogComponent(),
+          },
         }
-      }
+      },
     }
-  }
+  },
 })

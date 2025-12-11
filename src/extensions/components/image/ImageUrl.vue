@@ -15,14 +15,14 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  modelValue: () => ({})
+  modelValue: () => ({}),
 })
 
 const emit = defineEmits<Emits>()
 
 const form = computed({
   get: () => props.modelValue,
-  set: val => emit('update:modelValue', val)
+  set: val => emit('update:modelValue', val),
 })
 </script>
 

@@ -7,7 +7,7 @@ import { HorizontalRuleActionButton } from './components/ActionButton'
 
 export interface HorizontalRuleOptions extends TiptapHorizontalRuleOptions, GeneralOptions<HorizontalRuleOptions> {}
 
-export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<HorizontalRuleOptions>({
+export const HorizontalRule = /* @__PURE__ */ TiptapHorizontalRule.extend<HorizontalRuleOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapHorizontalRuleOptions,
@@ -15,9 +15,9 @@ export const HorizontalRule = /* @__PURE__*/ TiptapHorizontalRule.extend<Horizon
         component: HorizontalRuleActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

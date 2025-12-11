@@ -16,7 +16,7 @@ export interface FullscreenOptions extends GeneralOptions<FullscreenOptions> {
   useWindow: boolean
 }
 
-export const Fullscreen = /* @__PURE__*/ Extension.create<FullscreenOptions>({
+export const Fullscreen = /* @__PURE__ */ Extension.create<FullscreenOptions>({
   name: 'fullscreen',
   addOptions() {
     return {
@@ -27,9 +27,9 @@ export const Fullscreen = /* @__PURE__*/ Extension.create<FullscreenOptions>({
         componentProps: {
           editor,
           t,
-          useWindow: extension.options.useWindow ?? false
-        }
-      })
+          useWindow: extension.options.useWindow ?? false,
+        },
+      }),
     }
-  }
+  },
 })

@@ -6,7 +6,7 @@ import { HeadingActionMenuButton } from './components/ActionMenuButton'
 
 export interface HeadingOptions extends TiptapHeadingOptions, GeneralOptions<HeadingOptions> {}
 
-export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
+export const Heading = /* @__PURE__ */ TiptapHeading.extend<HeadingOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapHeadingOptions,
@@ -17,10 +17,10 @@ export const Heading = /* @__PURE__*/ TiptapHeading.extend<HeadingOptions>({
           componentProps: {
             editor,
             extension,
-            t
-          }
+            t,
+          },
         }
-      }
+      },
     }
-  }
+  },
 })

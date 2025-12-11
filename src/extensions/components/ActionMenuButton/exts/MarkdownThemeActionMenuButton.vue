@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import type { ActionMenuButtonItem } from '../src/types'
-import type { MarkdownThemeOptions } from '@/extensions/markdown-theme'
+import type { MarkdownThemeProps } from '@/constants/define'
 
+import type { MarkdownThemeOptions } from '@/extensions/markdown-theme'
 import { computed } from 'vue'
-import { DEFAULT_MARKDOWN_THEME_LIST, MarkdownThemeProps } from '@/constants/define'
+import { DEFAULT_MARKDOWN_THEME_LIST } from '@/constants/define'
 import { useContext } from '@/hooks'
 import ActionMenuButton from '../src/index.vue'
 import { extActionButtonMenuProps } from '../src/props'
@@ -13,8 +14,8 @@ const props = defineProps(extActionButtonMenuProps<MarkdownThemeOptions>())
 const { state } = useContext()
 
 const items = computed<ActionMenuButtonItem[]>(() => {
-  const markdownThemes =
-    [...DEFAULT_MARKDOWN_THEME_LIST, ...props.extension.options.markdownThemes] as MarkdownThemeProps[]
+  const markdownThemes
+    = [...DEFAULT_MARKDOWN_THEME_LIST, ...props.extension.options.markdownThemes] as MarkdownThemeProps[]
 
   return markdownThemes.map(k => ({
     title: props.t(k.title),
@@ -25,7 +26,7 @@ const items = computed<ActionMenuButtonItem[]>(() => {
       state.defaultMarkdownTheme = k.value
     },
     divider: k.divider ?? false,
-    default: k.default ?? false
+    default: k.default ?? false,
   }))
 })
 </script>

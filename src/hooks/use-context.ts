@@ -32,7 +32,7 @@ interface Instance {
 }
 
 const state: Instance = reactive({
-  extensions: []
+  extensions: [],
 }) as unknown as Instance
 
 export function createContext(instance: Partial<Instance>) {
@@ -44,6 +44,6 @@ export function createContext(instance: Partial<Instance>) {
 
 export function useContext() {
   return {
-    state
+    state,
   }
 }

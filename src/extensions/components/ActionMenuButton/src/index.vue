@@ -15,14 +15,14 @@ const active = computed<ActionMenuButtonItem>(() => {
   if (find && !find.default) {
     return {
       ...find,
-      icon: find.icon ? find.icon : props.icon
+      icon: find.icon ? find.icon : props.icon,
     }
   }
 
   const item: ActionMenuButtonItem = {
     title: props.tooltip,
     icon: props.icon,
-    isActive: () => false
+    isActive: () => false,
   }
 
   return item
@@ -46,7 +46,9 @@ const active = computed<ActionMenuButtonItem>(() => {
               <VIcon v-if="item.icon" :icon="getIcon(item.icon)" />
             </template>
 
-            <VListItemTitle :style="item.style">{{ item.title }}</VListItemTitle>
+            <VListItemTitle :style="item.style">
+              {{ item.title }}
+            </VListItemTitle>
           </VListItem>
 
           <VDivider v-if="item.divider" />

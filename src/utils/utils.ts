@@ -1,11 +1,10 @@
 import type { Editor } from '@tiptap/core'
-import type { BubbleMenuOptions } from '@tiptap/extension-bubble-menu'
-
-import { isTextSelection } from '@tiptap/core'
 
 export function clamp(val: number, min: number, max: number) {
-  if (val < min) return min
-  if (val > max) return max
+  if (val < min)
+    return min
+  if (val > max)
+    return max
   return val
 }
 
@@ -15,10 +14,26 @@ export const isString = (value: unknown): value is string => typeof value === 's
 
 export const isBoolean = (value: unknown): value is boolean => typeof value === 'boolean'
 
-export const isFunction = (value: unknown): value is Function => typeof value === 'function'
+/**
+ * Checks if `value` is a function.
+ *
+ * @param {any} value The value to check.
+ * @returns {value is (...args: any[]) => any} Returns `true` if `value` is a function, else `false`.
+ *
+ * @example
+ * isFunction(Array.prototype.slice); // true
+ * isFunction(async function () {}); // true
+ * isFunction(function* () {}); // true
+ * isFunction(Proxy); // true
+ * isFunction(Int8Array); // true
+ */
+export function isFunction(value: any): value is (...args: any[]) => any {
+  return typeof value === 'function'
+}
 
-export const getCssUnitWithDefault = (value?: string | number, defaultUnit: string = 'px') => {
-  if (!value) return value
+export function getCssUnitWithDefault(value?: string | number, defaultUnit: string = 'px') {
+  if (!value)
+    return value
 
   const stringValue = isNumber(value) ? String(value) : value
 
@@ -44,7 +59,8 @@ export function hasExtension(editor: Editor, name: string): boolean {
   const find = extensions.find(i => i.name === name)
 
   // Return false if the extension method with the specified name is not found, otherwise return true
-  if (!find) return false
+  if (!find)
+    return false
   return true
 }
 
@@ -55,7 +71,7 @@ export function hasExtension(editor: Editor, name: string): boolean {
  * @param {string} name - The name of the extension.
  * @returns {boolean} Returns true if the extension is enabled and active, otherwise false.
  */
-export const isExtEnableAndActive = (editor: Editor, name: string): boolean => {
+export function isExtEnableAndActive(editor: Editor, name: string): boolean {
   const { schema } = editor
   const _markType = schema.marks[name]
   const _nodeType = schema.nodes[name]

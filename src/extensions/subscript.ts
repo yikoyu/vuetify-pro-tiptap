@@ -1,7 +1,7 @@
 import type { Extensions } from '@tiptap/core'
 import type { SubscriptExtensionOptions as TiptapSubscriptOptions } from '@tiptap/extension-subscript'
 import type { SuperscriptExtensionOptions as TiptapSuperscriptOptions } from '@tiptap/extension-superscript'
-import type { ButtonViewReturn, GeneralOptions } from '@/type'
+import type { GeneralOptions } from '@/type'
 import { Extension } from '@tiptap/core'
 import { Subscript as TiptapSubscript } from '@tiptap/extension-subscript'
 
@@ -27,7 +27,7 @@ export interface SubAndSuperScriptOptions extends GeneralOptions<SubAndSuperScri
   superscript?: Partial<TiptapSuperscriptOptions> | false
 }
 
-export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScriptOptions>({
+export const SubAndSuperScript = /* @__PURE__ */ Extension.create<SubAndSuperScriptOptions>({
   name: 'subAndSuperScript',
 
   addOptions() {
@@ -38,9 +38,9 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
         componentProps: {
           editor,
           extension,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
   },
 
@@ -56,5 +56,5 @@ export const SubAndSuperScript = /* @__PURE__*/ Extension.create<SubAndSuperScri
     }
 
     return extensions
-  }
+  },
 })

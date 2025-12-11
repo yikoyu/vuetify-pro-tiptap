@@ -11,8 +11,8 @@ const props = defineProps({
   ...extActionButtonProps,
   extension: {
     type: Object as PropType<Extension<SubAndSuperScriptOptions>>,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const items = computed<('subscript' | 'superscript')[]>(() => {
@@ -20,20 +20,24 @@ const items = computed<('subscript' | 'superscript')[]>(() => {
   const subscript = props.extension.options.subscript
   const superscript = props.extension.options.superscript
 
-  if (subscript !== false) values.push('subscript')
-  if (superscript !== false) values.push('superscript')
+  if (subscript !== false)
+    values.push('subscript')
+  if (superscript !== false)
+    values.push('superscript')
 
   return values
 })
 
 const commands = {
   subscript: 'toggleSubscript',
-  superscript: 'toggleSuperscript'
+  superscript: 'toggleSuperscript',
 } as const
 
 function action(item: 'subscript' | 'superscript') {
-  if (item === 'subscript') props.editor.chain().focus().toggleSubscript().run()
-  if (item === 'superscript') props.editor.chain().focus().toggleSuperscript().run()
+  if (item === 'subscript')
+    props.editor.chain().focus().toggleSubscript().run()
+  if (item === 'superscript')
+    props.editor.chain().focus().toggleSuperscript().run()
 }
 </script>
 

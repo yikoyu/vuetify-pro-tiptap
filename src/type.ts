@@ -8,7 +8,7 @@ export type { Editor, JSONContent } from '@tiptap/core'
 /**
  * Represents the onChange event for VuetifyTiptap.
  */
-export type VuetifyTiptapOnChange = {
+export interface VuetifyTiptapOnChange {
   /** Editor object */
   editor: CoreEditor
   /** Output content, can be a string or JSON content */
@@ -18,30 +18,30 @@ export type VuetifyTiptapOnChange = {
 /**
  * Represents the keys for different extensions.
  */
-export type ExtensionNameKeys =
-  | 'bold'
-  | 'italic'
-  | 'underline'
-  | 'strike'
-  | 'color'
-  | 'highlight'
-  | 'heading'
-  | 'textAlign'
-  | 'bulletList'
-  | 'orderedList'
-  | 'taskList'
-  | 'indent'
-  | 'link'
-  | 'image'
-  | 'video'
-  | 'table'
-  | 'blockquote'
-  | 'horizontalRule'
-  | 'code'
-  | 'codeBlock'
-  | 'clear'
-  | 'history'
-  | 'fullscreen'
+export type ExtensionNameKeys
+  = | 'bold'
+    | 'italic'
+    | 'underline'
+    | 'strike'
+    | 'color'
+    | 'highlight'
+    | 'heading'
+    | 'textAlign'
+    | 'bulletList'
+    | 'orderedList'
+    | 'taskList'
+    | 'indent'
+    | 'link'
+    | 'image'
+    | 'video'
+    | 'table'
+    | 'blockquote'
+    | 'horizontalRule'
+    | 'code'
+    | 'codeBlock'
+    | 'clear'
+    | 'history'
+    | 'fullscreen'
 
 /**
  * Represents the general options for Tiptap extensions.

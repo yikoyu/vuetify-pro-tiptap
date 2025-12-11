@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
   upload: undefined,
   imageTabs: () => [],
   hiddenTabs: () => [],
-  destroy: undefined
+  destroy: undefined,
 })
 
 const { t } = useLocale()
@@ -38,17 +38,18 @@ const defaultImageTabs = computed<ImageTab[]>(() => {
     {
       name: unref(t)('editor.image.dialog.tab.url'),
       type: 'url',
-      component: ImageUrl
+      component: ImageUrl,
     },
     {
       name: unref(t)('editor.image.dialog.tab.upload'),
       type: 'upload',
-      component: ImageUpload
-    }
+      component: ImageUpload,
+    },
   ]
 
-  const filterDefTabs = defTabs.filter(item => {
-    if (!item.type) return item
+  const filterDefTabs = defTabs.filter((item) => {
+    if (!item.type)
+      return item
     return !props.hiddenTabs.includes(item.type)
   })
 
@@ -57,13 +58,15 @@ const defaultImageTabs = computed<ImageTab[]>(() => {
 
 const disabledApply = computed<boolean>(() => {
   const { src } = unref(form)
-  if (typeof src === 'string' && src !== '') return false
+  if (typeof src === 'string' && src !== '')
+    return false
   return true
 })
 
 async function apply() {
   const { src, lockAspectRatio, height } = unref(form)
-  if (!src) return
+  if (!src)
+    return
 
   props.editor
     .chain()
@@ -71,7 +74,7 @@ async function apply() {
     .setImage({
       ...unref(form),
       src,
-      height: lockAspectRatio ? undefined : height
+      height: lockAspectRatio ? undefined : height,
     })
     .run()
 
@@ -87,13 +90,13 @@ function close() {
 
 watch(
   () => props.value,
-  val => {
+  (val) => {
     form.value = {
       ...unref(form),
-      ...val
+      ...val,
     }
   },
-  { immediate: true, deep: true }
+  { immediate: true, deep: true },
 )
 </script>
 

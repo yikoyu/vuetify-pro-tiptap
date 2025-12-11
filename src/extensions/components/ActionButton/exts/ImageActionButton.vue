@@ -13,16 +13,16 @@ const props = defineProps({
   ...extActionButtonProps,
   upload: {
     type: Function as PropType<(file: File) => Promise<string>>,
-    default: undefined
+    default: undefined,
   },
   imageTabs: {
     type: Array as PropType<ImageTab[]>,
-    default: () => []
+    default: () => [],
   },
   hiddenTabs: {
     type: Array as PropType<ImageTabKey[]>,
-    default: () => []
-  }
+    default: () => [],
+  },
 })
 
 const model = ref<ImageAttrsOptions>({})
@@ -31,12 +31,18 @@ function onAction() {
   const selection = props.editor?.view.state.selection as NodeSelection | null
   const attrs = (selection?.node?.attrs ?? {}) as ImageAttrsOptions
 
-  if (attrs?.src) model.value.src = attrs.src
-  if (attrs?.alt) model.value.alt = attrs.alt
-  if (attrs?.title) model.value.title = attrs.title
-  if (attrs?.width) model.value.width = attrs.width
-  if (attrs?.height) model.value.height = attrs.height
-  if (attrs?.display) model.value.display = attrs.display
+  if (attrs?.src)
+    model.value.src = attrs.src
+  if (attrs?.alt)
+    model.value.alt = attrs.alt
+  if (attrs?.title)
+    model.value.title = attrs.title
+  if (attrs?.width)
+    model.value.width = attrs.width
+  if (attrs?.height)
+    model.value.height = attrs.height
+  if (attrs?.display)
+    model.value.display = attrs.display
   model.value.lockAspectRatio = attrs.lockAspectRatio ?? true
 }
 </script>
@@ -51,7 +57,7 @@ function onAction() {
     icon="image"
   >
     <OriginalThemeProvider>
-      <slot name="dialog" :props="{ editor, value: model, imageTabs, hiddenTabs, upload }"></slot>
+      <slot name="dialog" :props="{ editor, value: model, imageTabs, hiddenTabs, upload }" />
     </OriginalThemeProvider>
   </ActionButton>
 </template>

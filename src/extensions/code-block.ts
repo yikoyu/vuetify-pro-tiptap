@@ -7,7 +7,7 @@ import { CodeBlockActionButton } from './components/ActionButton'
 
 export interface CodeBlockOptions extends TiptapCodeBlockOptions, GeneralOptions<CodeBlockOptions> {}
 
-export const CodeBlock = /* @__PURE__*/ TiptapCodeBlock.extend<CodeBlockOptions>({
+export const CodeBlock = /* @__PURE__ */ TiptapCodeBlock.extend<CodeBlockOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapCodeBlockOptions,
@@ -15,9 +15,9 @@ export const CodeBlock = /* @__PURE__*/ TiptapCodeBlock.extend<CodeBlockOptions>
         component: CodeBlockActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

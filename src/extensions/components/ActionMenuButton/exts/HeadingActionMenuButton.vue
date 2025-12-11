@@ -20,7 +20,7 @@ const items = computed<ActionMenuButtonItem[]>(() => {
     isActive: () => props.editor.isActive('heading', { level }) || false,
     disabled: !props.editor.can().toggleHeading({ level }),
     icon: `h${level}`,
-    title: props.t(`editor.heading.h${level}.tooltip`)
+    title: props.t(`editor.heading.h${level}.tooltip`),
   }))
 
   if (baseKitExt && baseKitExt.options.paragraph !== false) {
@@ -30,7 +30,7 @@ const items = computed<ActionMenuButtonItem[]>(() => {
       disabled: !props.editor.can().setParagraph(),
       icon: 'p',
       title: props.t('editor.paragraph.tooltip'),
-      divider: true
+      divider: true,
     })
   }
 

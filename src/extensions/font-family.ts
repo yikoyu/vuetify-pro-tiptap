@@ -19,7 +19,7 @@ export interface FontFamilyOptions extends TiptapFontFamilyOptions, GeneralOptio
   fontFamilies: FontFamilyProps[]
 }
 
-export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptions>({
+export const FontFamily = /* @__PURE__ */ TiptapFontFamily.extend<FontFamilyOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapFontFamilyOptions,
@@ -30,10 +30,10 @@ export const FontFamily = /* @__PURE__*/ TiptapFontFamily.extend<FontFamilyOptio
           componentProps: {
             editor,
             extension,
-            t
-          }
+            t,
+          },
         }
-      }
+      },
     }
-  }
+  },
 })

@@ -18,7 +18,7 @@ export interface MarkdownThemeOptions extends GeneralOptions<MarkdownThemeOption
   markdownThemes: MarkdownThemeProps[]
 }
 
-export const MarkdownTheme = /* @__PURE__*/ Extension.create<MarkdownThemeOptions>({
+export const MarkdownTheme = /* @__PURE__ */ Extension.create<MarkdownThemeOptions>({
   name: 'markdownTheme',
 
   addOptions() {
@@ -31,10 +31,10 @@ export const MarkdownTheme = /* @__PURE__*/ Extension.create<MarkdownThemeOption
           componentProps: {
             editor,
             extension,
-            t
-          }
+            t,
+          },
         }
-      }
+      },
     }
-  }
+  },
 })

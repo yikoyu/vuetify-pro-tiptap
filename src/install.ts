@@ -12,7 +12,7 @@ export interface InstallationOptions {
   extensions?: Extensions
 }
 
-export const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
+export function createVuetifyProTipTap(opts: InstallationOptions): Plugin {
   const install: Plugin = (app: App): void => {
     const { lang, fallbackLang, markdownTheme, components = {}, extensions } = opts || {}
 
@@ -25,7 +25,7 @@ export const createVuetifyProTipTap = (opts: InstallationOptions): Plugin => {
       defaultLang: lang,
       defaultFallbackLang: fallbackLang,
       defaultMarkdownTheme: markdownTheme,
-      extensions
+      extensions,
     })
   }
 

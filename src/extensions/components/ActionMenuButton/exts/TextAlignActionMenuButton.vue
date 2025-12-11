@@ -16,7 +16,7 @@ const items = computed<ActionMenuButtonItem[]>(() => {
     icon: k,
     isActive: () => props.editor.isActive({ textAlign: k }) || false,
     action: () => props.editor.chain().focus().setTextAlign(k).run(),
-    disabled: !props.editor.can().setTextAlign(k)
+    disabled: !props.editor.can().setTextAlign(k),
   }))
 })
 </script>

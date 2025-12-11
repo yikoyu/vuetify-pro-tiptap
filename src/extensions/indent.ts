@@ -6,7 +6,7 @@ import { IndentActionButton } from './components/ActionButton'
 
 export interface IndentOptions extends GeneralOptions<IndentOptions> {}
 
-export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
+export const Indent = /* @__PURE__ */ Extension.create<IndentOptions>({
   name: 'indent',
   addOptions() {
     return {
@@ -16,9 +16,9 @@ export const Indent = /* @__PURE__*/ Extension.create<IndentOptions>({
         component: IndentActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

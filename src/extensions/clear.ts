@@ -6,7 +6,7 @@ import { ClearActionButton } from './components/ActionButton'
 
 export interface ClearOptions extends GeneralOptions<ClearOptions> {}
 
-export const Clear = /* @__PURE__*/ Node.create<ClearOptions>({
+export const Clear = /* @__PURE__ */ Node.create<ClearOptions>({
   name: 'clear',
   addOptions() {
     return {
@@ -15,9 +15,9 @@ export const Clear = /* @__PURE__*/ Node.create<ClearOptions>({
         component: ClearActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

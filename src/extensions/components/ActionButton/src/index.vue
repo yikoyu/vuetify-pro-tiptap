@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import { inject, ref  } from 'vue'
+import { inject, ref } from 'vue'
 import { getIcon } from '@/constants/icons'
 import { actionButtonProps } from './props'
 
@@ -18,7 +18,7 @@ const disableToolbar = inject<Readonly<Ref<boolean>>>('disableToolbar', ref(fals
     :color="color"
     icon
     :class="{
-      'v-btn--active': isActive?.()
+      'v-btn--active': isActive?.(),
     }"
     @click="action"
   >
@@ -26,6 +26,6 @@ const disableToolbar = inject<Readonly<Ref<boolean>>>('disableToolbar', ref(fals
 
     <VTooltip :eager="false" activator="parent" location="top" :text="props.tooltip" />
 
-    <slot></slot>
+    <slot />
   </VBtn>
 </template>

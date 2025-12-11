@@ -17,15 +17,17 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   value: undefined,
   target: '_blank',
-  destroy: undefined
+  destroy: undefined,
 })
 
 const { t } = useLocale()
 
-const generateLinkAttrs = (): LinkAttrs => ({
-  href: '',
-  target: '_blank'
-})
+function generateLinkAttrs(): LinkAttrs {
+  return {
+    href: '',
+    target: '_blank',
+  }
+}
 
 const attrs = ref(generateLinkAttrs())
 
@@ -33,7 +35,8 @@ const dialog = ref<boolean>(false)
 
 const isDisabled = computed(() => {
   const { href, target } = attrs.value
-  if (!href) return true
+  if (!href)
+    return true
 
   return props.value === href && props.target === target
 })
@@ -54,12 +57,13 @@ function close() {
   setTimeout(() => props.destroy?.(), 300)
 }
 
-watch(dialog, val => {
-  if (!val) return
+watch(dialog, (val) => {
+  if (!val)
+    return
 
   attrs.value = {
     href: props.value,
-    target: props.target
+    target: props.target,
   }
 })
 </script>

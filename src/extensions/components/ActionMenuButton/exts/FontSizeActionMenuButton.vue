@@ -34,7 +34,7 @@ const items = computed<ActionMenuButtonItem[]>(() => {
       props.editor.chain().focus().setFontSize(String(k)).run()
     },
     divider: k === DEFAULT_FONT_SIZE_VALUUE,
-    default: k === DEFAULT_FONT_SIZE_VALUUE
+    default: k === DEFAULT_FONT_SIZE_VALUUE,
   }))
 })
 </script>

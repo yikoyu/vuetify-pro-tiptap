@@ -7,7 +7,7 @@ import { BulletListActionButton } from './components/ActionButton'
 
 export interface BulletListOptions extends TiptapBulletListOptions, GeneralOptions<BulletListOptions> {}
 
-export const BulletList = /* @__PURE__*/ TiptapBulletList.extend<BulletListOptions>({
+export const BulletList = /* @__PURE__ */ TiptapBulletList.extend<BulletListOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapBulletListOptions,
@@ -15,9 +15,9 @@ export const BulletList = /* @__PURE__*/ TiptapBulletList.extend<BulletListOptio
         component: BulletListActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

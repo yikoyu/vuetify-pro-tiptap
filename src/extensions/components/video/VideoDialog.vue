@@ -13,7 +13,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   value: undefined,
-  destroy: undefined
+  destroy: undefined,
 })
 
 const { t } = useLocale()
@@ -23,8 +23,10 @@ const url = ref<string>('')
 const dialog = ref<boolean>(false)
 
 const isDisabled = computed(() => {
-  if (props.value === url.value) return true
-  if (!unref(url)) return true
+  if (props.value === url.value)
+    return true
+  if (!unref(url))
+    return true
   return false
 })
 

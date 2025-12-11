@@ -7,20 +7,20 @@ import { BlockquoteActionButton } from './components/ActionButton'
 
 export interface BlockquoteOptions extends TiptapBlockquoteOptions, GeneralOptions<BlockquoteOptions> {}
 
-export const Blockquote = /* @__PURE__*/ TiptapBlockquote.extend<BlockquoteOptions>({
+export const Blockquote = /* @__PURE__ */ TiptapBlockquote.extend<BlockquoteOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
       HTMLAttributes: {
-        class: 'blockquote'
+        class: 'blockquote',
       },
       button: ({ editor, t }) => ({
         component: BlockquoteActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

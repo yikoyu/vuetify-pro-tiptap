@@ -31,7 +31,7 @@ import {
   Underline,
   Video,
   VuetifyTiptap,
-  VuetifyViewer
+  VuetifyViewer,
 } from 'vuetify-pro-tiptap'
 import { NODE_TYPE_MENU } from '@/constants/define'
 import LinkDialog from './components/LinkDialog.vue'
@@ -50,23 +50,23 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
   markdownTheme: 'github',
   components: {
     VuetifyTiptap,
-    VuetifyViewer
+    VuetifyViewer,
   },
   extensions: [
     BaseKit.configure({
       placeholder: {
-        placeholder: 'Enter some text...'
+        placeholder: 'Enter some text...',
       },
       bubble: {
         // default config
         list: {
-          ...NODE_TYPE_MENU
+          ...NODE_TYPE_MENU,
         },
-        defaultBubbleList: editor => {
+        defaultBubbleList: (editor) => {
           // You can customize the bubble menu here
           return defaultBubbleList(editor) // default customize bubble list
-        }
-      }
+        },
+      },
     }),
     Bold,
     Italic,
@@ -86,7 +86,7 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
     TaskList,
     Indent.configure({ divider: true }),
     Link.configure({
-      dialogComponent: () => LinkDialog
+      dialogComponent: () => LinkDialog,
     }),
     Image.configure({
       imageTabs: [{ name: 'SELECT', component: markRaw(SelectImage) }],
@@ -96,12 +96,12 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
         const url = URL.createObjectURL(file)
         console.log('mock upload api :>> ', url)
         return Promise.resolve(url)
-      }
+      },
     }),
     Video,
     Table.configure({
       divider: true,
-      cellMinWidth: 100
+      cellMinWidth: 100,
     }),
     Blockquote,
     HorizontalRule,
@@ -111,16 +111,16 @@ export const vuetifyProTipTap = createVuetifyProTipTap({
       markdownThemes: [
         {
           title: 'Github',
-          value: 'github'
+          value: 'github',
         },
         {
           title: 'Maidragon',
-          value: 'maidragon'
-        }
-      ]
+          value: 'maidragon',
+        },
+      ],
     }),
     Fullscreen.configure({
-      useWindow: true
-    })
-  ]
+      useWindow: true,
+    }),
+  ],
 })

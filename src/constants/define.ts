@@ -50,7 +50,7 @@ export const COLORS_LIST = [
   '#CCCCCC',
   '#D5D5D4',
   '#E8E8E8',
-  '#EEEEEE'
+  '#EEEEEE',
 ] as const
 
 export interface FontFamilyProps {
@@ -76,7 +76,7 @@ export const DEFAULT_FONT_FAMILY_LIST: FontFamilyProps[] = [
   { title: 'Verdana', value: 'Verdana' },
   { title: 'Courier New', value: 'Courier New', divider: true },
   { title: 'Monaco', value: 'Monaco' },
-  { title: 'Monospace', value: 'monospace' }
+  { title: 'Monospace', value: 'monospace' },
 ]
 
 export type MarkdownThemeProps = FontFamilyProps
@@ -86,7 +86,7 @@ export const DEFAULT_MARKDOWN_THEME_VALUE = 'default' as const
 
 /** Default list of Markdown themes */
 export const DEFAULT_MARKDOWN_THEME_LIST: FontFamilyProps[] = [
-  { title: 'editor.default', value: DEFAULT_MARKDOWN_THEME_VALUE, default: true }
+  { title: 'editor.default', value: DEFAULT_MARKDOWN_THEME_VALUE, default: true },
 ]
 
 /** Default font size list */
@@ -99,14 +99,14 @@ export const DEFAULT_FONT_SIZE_VALUUE = 'default' as const
 export enum IMAGE_SIZE {
   'size-small' = 200,
   'size-medium' = 500,
-  'size-large' = '100%'
+  'size-large' = '100%',
 }
 
 /** Options for setting video size in the bubble menu */
 export enum VIDEO_SIZE {
   'size-small' = 480,
   'size-medium' = 640,
-  'size-large' = '100%'
+  'size-large' = '100%',
 }
 
 /** Actions displayed in the bubble menu */
@@ -124,7 +124,7 @@ export const NODE_TYPE_MENU: NodeTypeMenu = {
     'divider',
     'image',
     'image-aspect-ratio',
-    'remove'
+    'remove',
   ],
   text: ['bold', 'italic', 'underline', 'strike', 'divider', 'color', 'highlight', 'textAlign', 'divider', 'link'],
   link: [
@@ -139,8 +139,8 @@ export const NODE_TYPE_MENU: NodeTypeMenu = {
     'divider',
     'link',
     'unlink',
-    'link-open'
+    'link-open',
   ],
   video: ['video-size-small', 'video-size-medium', 'video-size-large', 'divider', 'video', 'remove'],
-  table: ['table-add-column-before', 'table-add-column-after', 'table-delete-column', 'divider', 'table-add-row-before', 'table-add-row-after', 'table-delete-row', 'divider', 'table-merge-or-split-cells', 'divider', 'table-delete-table', 'divider']
+  table: ['table-add-column-before', 'table-add-column-after', 'table-delete-column', 'divider', 'table-add-row-before', 'table-add-row-after', 'table-delete-row', 'divider', 'table-merge-or-split-cells', 'divider', 'table-delete-table', 'divider'],
 }

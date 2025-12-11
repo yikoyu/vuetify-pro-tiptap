@@ -56,24 +56,24 @@ declare module '@tiptap/core' {
   }
 }
 
-export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
+export const Image = /* @__PURE__ */ TiptapImage.extend<ImageOptions>({
   addAttributes() {
     return {
       ...this.parent?.(),
       src: {
-        default: null
+        default: null,
       },
       alt: {
-        default: null
+        default: null,
       },
       lockAspectRatio: {
-        default: true
+        default: true,
       },
       width: {
-        default: this.options.width
+        default: this.options.width,
       },
       height: {
-        default: null
+        default: null,
       },
       display: {
         default: this.options.display,
@@ -83,14 +83,14 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
           }
 
           return {
-            'data-display': display
+            'data-display': display,
           }
         },
-        parseHTML: element => {
+        parseHTML: (element) => {
           const display = element.getAttribute('data-display')
           return display || 'inline'
-        }
-      }
+        },
+      },
     }
   },
   addNodeView() {
@@ -101,9 +101,9 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
       ...this.parent?.(),
       updateImage:
         options =>
-        ({ commands }) => {
-          return commands.updateAttributes(this.name, options)
-        }
+          ({ commands }) => {
+            return commands.updateAttributes(this.name, options)
+          },
     }
   },
   addOptions() {
@@ -126,13 +126,13 @@ export const Image = /* @__PURE__*/ TiptapImage.extend<ImageOptions>({
             t,
             upload,
             imageTabs,
-            hiddenTabs
+            hiddenTabs,
           },
           componentSlots: {
-            dialog: dialogComponent()
-          }
+            dialog: dialogComponent(),
+          },
         }
-      }
+      },
     }
-  }
+  },
 })

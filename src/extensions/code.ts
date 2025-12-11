@@ -7,7 +7,7 @@ import { CodeActionButton } from './components/ActionButton'
 
 export interface CodeOptions extends TiptapCodeOptions, GeneralOptions<CodeOptions> {}
 
-export const Code = /* @__PURE__*/ TiptapCode.extend<CodeOptions>({
+export const Code = /* @__PURE__ */ TiptapCode.extend<CodeOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapCodeOptions,
@@ -15,9 +15,9 @@ export const Code = /* @__PURE__*/ TiptapCode.extend<CodeOptions>({
         component: CodeActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

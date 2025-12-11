@@ -1,8 +1,9 @@
-import { computed, ref, unref, watchEffect } from 'vue'
+import type { EventType } from '@/utils/mitt'
 
+import { computed, ref, unref, watchEffect } from 'vue'
 import { DEFAULT_LANG_VALUE } from '@/constants/define'
 import Logger from '@/utils/logger'
-import mitt, { EventType } from '@/utils/mitt'
+import mitt from '@/utils/mitt'
 
 // Import language files
 import de from './de'
@@ -53,7 +54,7 @@ export const DEFAULT_LOCALE_MESSAGE: LangMessages = {
   fr,
   it,
   pt,
-  hu
+  hu,
 }
 
 /**
@@ -63,7 +64,7 @@ export const DEFAULT_LOCALE_MESSAGE: LangMessages = {
 const DEFAULT_LOCALE: LocaleInterface = {
   lang: DEFAULT_LANG_VALUE,
   fallbackLang: DEFAULT_LANG_VALUE,
-  message: DEFAULT_LOCALE_MESSAGE
+  message: DEFAULT_LOCALE_MESSAGE,
 }
 
 /**
@@ -97,7 +98,8 @@ class Locale {
     if (!this.isLangSupported(lang)) {
       Logger.warn(`Can't find the current language "${lang}", Using fallback language "${this._locale.fallbackLang}" instead.`)
       this._locale.lang = this._locale.fallbackLang
-    } else {
+    }
+    else {
       this._locale.lang = lang
     }
     this.emitter.emit('lang', this._locale.lang)
@@ -182,7 +184,7 @@ class Locale {
   public registerWatchLang(hook: (lang: string) => void) {
     this.emitter.on('lang', hook)
     return {
-      unsubscribe: () => this.emitter.off('lang', hook)
+      unsubscribe: () => this.emitter.off('lang', hook),
     }
   }
 
@@ -220,7 +222,7 @@ export const locale = new Locale()
  * A Vue composable function for using the locale functionality in a reactive way.
  * @returns An object containing the reactive language code and the computed translation function.
  */
-export const useLocale = () => {
+export function useLocale() {
   const lang = ref(locale.lang)
 
   const t = computed(() => locale.buildI18nHandler(unref(lang)))
@@ -234,6 +236,6 @@ export const useLocale = () => {
 
   return {
     lang,
-    t
+    t,
   }
 }

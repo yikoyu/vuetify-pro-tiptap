@@ -7,9 +7,9 @@
 <script setup lang="ts">
 import type { VuetifyTiptapOnChange } from 'vuetify-pro-tiptap'
 import JsonEditorVue from 'json-editor-vue'
-import { computed, ref, unref } from 'vue'
+import { ref, unref } from 'vue'
 import { useTheme } from 'vuetify'
-import { BaseKit, Heading, locale  } from 'vuetify-pro-tiptap'
+import { BaseKit, Heading, locale } from 'vuetify-pro-tiptap'
 
 import CustomLang from './components/CustomLang.vue'
 import preview from './extensions/preview'
@@ -19,12 +19,12 @@ const extensions = [
   preview.configure({ spacer: true }),
   BaseKit.configure({
     placeholder: {
-      placeholder: 'Placeholder...'
-    }
+      placeholder: 'Placeholder...',
+    },
   }),
   Heading.configure({
-    levels: [1, 2, 3, 4]
-  })
+    levels: [1, 2, 3, 4],
+  }),
 ]
 
 const theme = useTheme()
@@ -94,7 +94,7 @@ function getText() {
               width="120"
               height="20"
               title="GitHub"
-            ></iframe>
+            />
           </div>
         </template>
       </VAlert>
@@ -103,39 +103,65 @@ function getText() {
         {{ $vuetify.theme.current.dark ? 'dark' : 'light' }}
       </VBtn>
 
-      <VBtn class="mb-4 ms-4" color="primary" @click="locale.setLang('zhHans')"> set Chinese </VBtn>
+      <VBtn class="mb-4 ms-4" color="primary" @click="locale.setLang('zhHans')">
+        set Chinese
+      </VBtn>
 
-      <VBtn class="mb-4 ms-4" color="primary" @click="locale.setLang('en')"> set English </VBtn>
+      <VBtn class="mb-4 ms-4" color="primary" @click="locale.setLang('en')">
+        set English
+      </VBtn>
 
-      <VBtn class="mb-4 ms-4" color="primary" @click="setCustom"> set Custom Lang </VBtn>
+      <VBtn class="mb-4 ms-4" color="primary" @click="setCustom">
+        set Custom Lang
+      </VBtn>
 
       <div class="my-4">
         <VBtn-toggle v-model="markdownTheme" color="deep-purple-accent-3" rounded="0" group>
-          <VBtn value=""> Global </VBtn>
+          <VBtn value="">
+            Global
+          </VBtn>
 
-          <VBtn value="default"> Default </VBtn>
+          <VBtn value="default">
+            Default
+          </VBtn>
 
-          <VBtn value="github"> Github </VBtn>
+          <VBtn value="github">
+            Github
+          </VBtn>
 
-          <VBtn value="maidragon"> Maidragon </VBtn>
+          <VBtn value="maidragon">
+            Maidragon
+          </VBtn>
         </VBtn-toggle>
       </div>
 
       <div class="my-4">
         <VBtn-toggle v-model="output" color="deep-purple-accent-3" rounded="0" group>
-          <VBtn value="html"> Html </VBtn>
+          <VBtn value="html">
+            Html
+          </VBtn>
 
-          <VBtn value="json"> Json </VBtn>
+          <VBtn value="json">
+            Json
+          </VBtn>
 
-          <VBtn value="text"> Text </VBtn>
+          <VBtn value="text">
+            Text
+          </VBtn>
         </VBtn-toggle>
       </div>
 
-      <VBtn class="mb-4" color="primary" @click="getHTML"> getHTML </VBtn>
+      <VBtn class="mb-4" color="primary" @click="getHTML">
+        getHTML
+      </VBtn>
 
-      <VBtn class="mb-4 ms-4" color="primary" @click="getJSON"> getJSON </VBtn>
+      <VBtn class="mb-4 ms-4" color="primary" @click="getJSON">
+        getJSON
+      </VBtn>
 
-      <VBtn class="mb-4 ms-4" color="primary" @click="getText"> getText </VBtn>
+      <VBtn class="mb-4 ms-4" color="primary" @click="getText">
+        getText
+      </VBtn>
 
       <div class="my-4">
         <VDialog :width="maxWidth">

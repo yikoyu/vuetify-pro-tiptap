@@ -7,7 +7,7 @@ import { HighlightActionButton } from './components/ActionButton'
 
 export interface HighlightOptions extends TiptapHighlightOptions, GeneralOptions<HighlightOptions> {}
 
-export const Highlight = /* @__PURE__*/ TiptapHighlight.extend<HighlightOptions>({
+export const Highlight = /* @__PURE__ */ TiptapHighlight.extend<HighlightOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapHighlightOptions,
@@ -16,9 +16,9 @@ export const Highlight = /* @__PURE__*/ TiptapHighlight.extend<HighlightOptions>
         component: HighlightActionButton,
         componentProps: {
           editor,
-          t
-        }
-      })
+          t,
+        },
+      }),
     }
-  }
+  },
 })

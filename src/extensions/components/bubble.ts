@@ -15,15 +15,15 @@ type BubbleImageFloatType = 'float-left' | 'float-none' | 'float-right'
 type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large'
 
 /** Represents the various types for bubble images */
-type BubbleImageType =
-  | BubbleImageFloatType
-  | `image-${BubbleImageOrVideoSizeType}`
-  | `video-${BubbleImageOrVideoSizeType}`
-  | 'image'
-  | 'image-aspect-ratio'
-  | 'unlink'
-  | 'link-open'
-  | 'remove'
+type BubbleImageType
+  = | BubbleImageFloatType
+    | `image-${BubbleImageOrVideoSizeType}`
+    | `video-${BubbleImageOrVideoSizeType}`
+    | 'image'
+    | 'image-aspect-ratio'
+    | 'unlink'
+    | 'link-open'
+    | 'remove'
 
 /** Represents the types for bubble videos */
 type BubbleVideoType = 'video' | 'remove'
@@ -77,12 +77,12 @@ export interface BubbleOptions<T> {
   button: BubbleView<T>
 }
 
-const imageFloatMenus = (editor: Editor): BubbleMenuItem[] => {
+function imageFloatMenus(editor: Editor): BubbleMenuItem[] {
   const types: BubbleImageFloatType[] = ['float-left', 'float-none', 'float-right']
   const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = [
     'formatFloatLeft',
     'formatFloatNone',
-    'formatFloatRight'
+    'formatFloatRight',
   ]
   const display: Display[] = ['left', 'inline', 'right']
 
@@ -93,12 +93,12 @@ const imageFloatMenus = (editor: Editor): BubbleMenuItem[] => {
       tooltip: `editor.image.${float.replace('-', '.')}.tooltip`,
       icon: icons[i],
       action: () => editor.chain().focus().updateImage({ display: display[i] }).run(),
-      isActive: () => editor.isActive('image', { display: display[i] })
-    }
+      isActive: () => editor.isActive('image', { display: display[i] }),
+    },
   }))
 }
 
-const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
+function imageSizeMenus(editor: Editor): BubbleMenuItem[] {
   const types: BubbleImageOrVideoSizeType[] = ['size-small', 'size-medium', 'size-large']
   const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = ['sizeS', 'sizeM', 'sizeL']
 
@@ -109,12 +109,12 @@ const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
       tooltip: `editor.${size.replace('-', '.')}.tooltip`,
       icon: icons[i],
       action: () => editor.chain().focus().updateImage({ width: IMAGE_SIZE[size], height: null }).run(),
-      isActive: () => editor.isActive('image', { width: IMAGE_SIZE[size] })
-    }
+      isActive: () => editor.isActive('image', { width: IMAGE_SIZE[size] }),
+    },
   }))
 }
 
-const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
+function videoSizeMenus(editor: Editor): BubbleMenuItem[] {
   const types: BubbleImageOrVideoSizeType[] = ['size-small', 'size-medium', 'size-large']
   const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = ['sizeS', 'sizeM', 'sizeL']
 
@@ -125,12 +125,12 @@ const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
       tooltip: `editor.${size.replace('-', '.')}.tooltip`,
       icon: icons[i],
       action: () => editor.chain().focus().updateVideo({ width: VIDEO_SIZE[size] }).run(),
-      isActive: () => editor.isActive('video', { width: VIDEO_SIZE[size] })
-    }
+      isActive: () => editor.isActive('video', { width: VIDEO_SIZE[size] }),
+    },
   }))
 }
 
-const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
+function tableBubbleMenus(editor: Editor): BubbleMenuItem[] {
   return [
     {
       type: 'table-add-column-before',
@@ -139,8 +139,8 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.add_column_before',
         icon: 'tableColumnPlusBefore',
         action: () => editor.chain().focus().addColumnBefore().run(),
-        disabled: !editor.can().addColumnBefore()
-      }
+        disabled: !editor.can().addColumnBefore(),
+      },
     },
     {
       type: 'table-add-column-after',
@@ -149,8 +149,8 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.add_column_after',
         icon: 'tableColumnPlusAfter',
         action: () => editor.chain().focus().addColumnAfter().run(),
-        disabled: !editor.can().addColumnAfter()
-      }
+        disabled: !editor.can().addColumnAfter(),
+      },
     },
     {
       type: 'table-delete-column',
@@ -159,8 +159,8 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.delete_column',
         icon: 'tableColumnRemove',
         action: () => editor.chain().focus().deleteColumn().run(),
-        disabled: !editor.can().deleteColumn()
-      }
+        disabled: !editor.can().deleteColumn(),
+      },
     },
     {
       type: 'table-add-row-before',
@@ -169,8 +169,8 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.add_row_before',
         icon: 'tableRowPlusBefore',
         action: () => editor.chain().focus().addRowBefore().run(),
-        disabled: !editor.can().addRowBefore()
-      }
+        disabled: !editor.can().addRowBefore(),
+      },
     },
     {
       type: 'table-add-row-after',
@@ -179,8 +179,8 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.add_row_after',
         icon: 'tableRowPlusAfter',
         action: () => editor.chain().focus().addRowAfter().run(),
-        disabled: !editor.can().addRowAfter()
-      }
+        disabled: !editor.can().addRowAfter(),
+      },
     },
     {
       type: 'table-delete-row',
@@ -189,8 +189,8 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.delete_row',
         icon: 'tableRowRemove',
         action: () => editor.chain().focus().deleteRow().run(),
-        disabled: !editor.can().deleteRow()
-      }
+        disabled: !editor.can().deleteRow(),
+      },
     },
     {
       type: 'table-merge-or-split-cells',
@@ -199,8 +199,8 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.merge_or_split_cells',
         icon: 'tableMergeCells',
         action: () => editor.chain().focus().mergeOrSplit().run(),
-        disabled: !editor.can().mergeOrSplit()
-      }
+        disabled: !editor.can().mergeOrSplit(),
+      },
     },
     {
       type: 'table-delete-table',
@@ -209,73 +209,75 @@ const tableBubbleMenus = (editor: Editor): BubbleMenuItem[] => {
         tooltip: 'editor.table.menu.delete_table',
         icon: 'tableRemove',
         action: () => editor.chain().focus().deleteTable().run(),
-        disabled: !editor.can().deleteTable()
-      }
-    }
+        disabled: !editor.can().deleteTable(),
+      },
+    },
   ]
 }
 
-export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
-  ...imageFloatMenus(editor),
-  ...imageSizeMenus(editor),
-  ...videoSizeMenus(editor),
-  ...tableBubbleMenus(editor),
-  {
-    type: 'image-aspect-ratio',
-    component: ActionButton,
-    componentProps: {
-      tooltip: 'editor.image.dialog.form.aspectRatio',
-      icon: 'aspectRatio',
-      action: () => {
-        const isLock = editor.isActive('image', { lockAspectRatio: true })
-        editor.chain().focus().updateImage({
-          lockAspectRatio: !isLock,
-          height: isLock ? undefined : null
-        }).run()
+export function defaultBubbleList(editor: Editor): BubbleMenuItem[] {
+  return [
+    ...imageFloatMenus(editor),
+    ...imageSizeMenus(editor),
+    ...videoSizeMenus(editor),
+    ...tableBubbleMenus(editor),
+    {
+      type: 'image-aspect-ratio',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.image.dialog.form.aspectRatio',
+        icon: 'aspectRatio',
+        action: () => {
+          const isLock = editor.isActive('image', { lockAspectRatio: true })
+          editor.chain().focus().updateImage({
+            lockAspectRatio: !isLock,
+            height: isLock ? undefined : null,
+          }).run()
+        },
+        isActive: () => editor.isActive('image', { lockAspectRatio: true }),
       },
-      isActive: () => editor.isActive('image', { lockAspectRatio: true })
-    }
-  },
-  {
-    type: 'unlink',
-    component: ActionButton,
-    componentProps: {
-      tooltip: 'editor.link.unlink.tooltip',
-      icon: 'linkVariantOff',
-      action: () => {
-        const { href } = editor.getAttributes('link')
+    },
+    {
+      type: 'unlink',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.link.unlink.tooltip',
+        icon: 'linkVariantOff',
+        action: () => {
+          const { href } = editor.getAttributes('link')
 
-        editor.chain().extendMarkRange('link', { href }).unsetLink().focus().run()
-      }
-    }
-  },
-  {
-    type: 'link-open',
-    component: ActionButton,
-    componentProps: {
-      tooltip: 'editor.link.open',
-      icon: 'openInNew',
-      action: () => {
-        const { href } = editor.getAttributes('link')
-        if (isString(href) && href) {
-          window.open(href, '_blank')
-        }
-      }
-    }
-  },
-  {
-    type: 'remove',
-    component: ActionButton,
-    componentProps: {
-      tooltip: 'editor.remove',
-      icon: 'delete',
-      action: () => {
-        const { state, dispatch } = editor.view
-        deleteSelection(state, dispatch)
-      }
-    }
-  }
-]
+          editor.chain().extendMarkRange('link', { href }).unsetLink().focus().run()
+        },
+      },
+    },
+    {
+      type: 'link-open',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.link.open',
+        icon: 'openInNew',
+        action: () => {
+          const { href } = editor.getAttributes('link')
+          if (isString(href) && href) {
+            window.open(href, '_blank')
+          }
+        },
+      },
+    },
+    {
+      type: 'remove',
+      component: ActionButton,
+      componentProps: {
+        tooltip: 'editor.remove',
+        icon: 'delete',
+        action: () => {
+          const { state, dispatch } = editor.view
+          deleteSelection(state, dispatch)
+        },
+      },
+    },
+  ]
+}
 
 /**
  * Generate bubble menu
@@ -285,30 +287,28 @@ export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
  * @param {ButtonViewParams<T>} { editor, extension, t }
  * @return {*}  {BubbleTypeMenu}
  */
-export const generateBubbleTypeMenu = <T = any>(
-  list: NodeTypeMenu,
-  defaultList: BubbleMenuItem[],
-  { editor, extension, t }: ButtonViewParams<T>
-): BubbleTypeMenu => {
+export function generateBubbleTypeMenu<T = any>(list: NodeTypeMenu, defaultList: BubbleMenuItem[], { editor, extension, t }: ButtonViewParams<T>): BubbleTypeMenu {
   const { extensions = [] } = editor.extensionManager
 
   const items: BubbleTypeMenu = {}
 
   for (const node of Object.keys(list)) {
     const nodeType = list[node as NodeTypeKey]
-    if (!nodeType) continue
+    if (!nodeType)
+      continue
 
     const _items: BubbleMenuItem[] = []
 
     for (const ext of nodeType) {
       if (ext === 'divider') {
         const lastItem = _items[_items.length - 1]
-        if (lastItem?.type === 'divider') continue
+        if (lastItem?.type === 'divider')
+          continue
 
         _items.push({
           type: 'divider',
           component: undefined,
-          componentProps: {}
+          componentProps: {},
         })
         continue
       }
@@ -319,9 +319,9 @@ export const generateBubbleTypeMenu = <T = any>(
           ...find,
           componentProps: {
             ...find.componentProps,
-            tooltip: find.componentProps.tooltip ? t(find.componentProps.tooltip) : undefined
+            tooltip: find.componentProps.tooltip ? t(find.componentProps.tooltip) : undefined,
           },
-          componentSlots: find.componentSlots
+          componentSlots: find.componentSlots,
         })
         continue
       }
@@ -335,7 +335,7 @@ export const generateBubbleTypeMenu = <T = any>(
           type: ext,
           component: _button.component,
           componentProps: _button.componentProps,
-          componentSlots: _button.componentSlots
+          componentSlots: _button.componentSlots,
         })
         continue
       }
@@ -344,8 +344,10 @@ export const generateBubbleTypeMenu = <T = any>(
     const lastItem = _items[_items.length - 1]
     const fristItem = _items[0]
 
-    if (lastItem?.type === 'divider') _items.pop()
-    if (fristItem?.type === 'divider') _items.shift()
+    if (lastItem?.type === 'divider')
+      _items.pop()
+    if (fristItem?.type === 'divider')
+      _items.shift()
 
     items[node as NodeTypeKey] = _items
   }

@@ -1,46 +1,46 @@
 <script setup lang="ts">
+import type { ImageAttrsOptions } from './types'
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
+
 import { computed, ref, unref, watchEffect } from 'vue'
 
 import { IMAGE_MAX_SIZE, IMAGE_MIN_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants/define'
-
 import { clamp, isNumber, throttle } from '@/utils/utils'
-import { ImageAttrsOptions } from './types'
 
 const props = defineProps({
   ...nodeViewProps,
 
   selected: {
     type: Boolean,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const ResizeDirection = {
   TOP_LEFT: 'tl',
   TOP_RIGHT: 'tr',
   BOTTOM_LEFT: 'bl',
-  BOTTOM_RIGHT: 'br'
+  BOTTOM_RIGHT: 'br',
 }
 
 const maxSize = ref<{
-    width: number
-    height: number
+  width: number
+  height: number
 }>({
   width: IMAGE_MAX_SIZE,
-  height: IMAGE_MAX_SIZE
+  height: IMAGE_MAX_SIZE,
 })
 
 const originalSize = ref({
   width: 0,
-  height: 0
+  height: 0,
 })
 
 const resizeDirections = ref<string[]>([
   ResizeDirection.TOP_LEFT,
   ResizeDirection.TOP_RIGHT,
   ResizeDirection.BOTTOM_LEFT,
-  ResizeDirection.BOTTOM_RIGHT
+  ResizeDirection.BOTTOM_RIGHT,
 ])
 
 const resizing = ref<boolean>(false)
@@ -50,7 +50,7 @@ const resizerState = ref({
   y: 0,
   w: 0,
   h: 0,
-  dir: ''
+  dir: '',
 })
 
 const imgAttrs = computed(() => {
@@ -64,8 +64,8 @@ const imgAttrs = computed(() => {
     alt: alt || undefined,
     style: {
       width: width || undefined,
-      height: height || undefined
-    }
+      height: height || undefined,
+    },
   }
 })
 
@@ -80,7 +80,7 @@ const imageViewClass = computed<string[]>(() => {
 })
 const imageMaxStyle = computed(() => {
   const {
-    style: { width }
+    style: { width },
   } = unref(imgAttrs)
 
   return { width: width === '100%' ? width : undefined }
@@ -89,7 +89,7 @@ const imageMaxStyle = computed(() => {
 function onImageLoad(e: Record<string, any>) {
   originalSize.value = {
     width: e.target.width,
-    height: e.target.height
+    height: e.target.height,
   }
 }
 
@@ -101,7 +101,7 @@ function selectImage() {
 }
 
 /* invoked when window or editor resize */
-const getMaxSize = throttle(function () {
+const getMaxSize = throttle(() => {
   const { editor } = props
   const { width } = getComputedStyle(editor.view.dom)
   maxSize.value.width = Number.parseInt(width, 10)
@@ -129,13 +129,16 @@ function onMouseDown(e: MouseEvent, dir: string) {
   if (width && !height) {
     width = width > maxWidth ? maxWidth : width
     height = Math.round(width / aspectRatio)
-  } else if (height && !width) {
+  }
+  else if (height && !width) {
     width = Math.round(height * aspectRatio)
     width = width > maxWidth ? maxWidth : width
-  } else if (!width && !height) {
+  }
+  else if (!width && !height) {
     width = originalWidth > maxWidth ? maxWidth : originalWidth
     height = Math.round(width / aspectRatio)
-  } else {
+  }
+  else {
     width = width > maxWidth ? maxWidth : width
   }
 
@@ -148,10 +151,11 @@ function onMouseDown(e: MouseEvent, dir: string) {
   onEvents()
 }
 
-const onMouseMove = throttle(function (e: MouseEvent) {
+const onMouseMove = throttle((e: MouseEvent) => {
   e.preventDefault()
   e.stopPropagation()
-  if (!unref(resizing)) return
+  if (!unref(resizing))
+    return
 
   const { x, y, w, h, dir } = unref(resizerState)
 
@@ -163,14 +167,15 @@ const onMouseMove = throttle(function (e: MouseEvent) {
 
   props.updateAttributes({
     width,
-    height
+    height,
   })
 }, IMAGE_THROTTLE_WAIT_TIME)
 
 function onMouseUp(e: MouseEvent) {
   e.preventDefault()
   e.stopPropagation()
-  if (!unref(resizing)) return
+  if (!unref(resizing))
+    return
 
   resizing.value = false
 
@@ -179,7 +184,7 @@ function onMouseUp(e: MouseEvent) {
     y: 0,
     w: 0,
     h: 0,
-    dir: ''
+    dir: '',
   }
 
   offEvents()
@@ -198,7 +203,7 @@ function offEvents() {
 
 const resizeOb: ResizeObserver = new ResizeObserver(() => getMaxSize())
 
-watchEffect(effect => {
+watchEffect((effect) => {
   unref(resizeOb).observe(props.editor.view.dom)
 
   effect(() => {
@@ -214,7 +219,7 @@ watchEffect(effect => {
       data-drag-handle
       :class="{
         'image-view__body--focused': selected,
-        'image-view__body--resizing': resizing
+        'image-view__body--resizing': resizing,
       }"
       class="image-view__body"
       :style="imageMaxStyle"
@@ -226,7 +231,7 @@ watchEffect(effect => {
         class="image-view__body__image"
         @load="onImageLoad"
         @click="selectImage"
-      />
+      >
 
       <div v-if="editor.view.editable" v-show="selected || resizing" class="image-resizer">
         <span
@@ -235,7 +240,7 @@ watchEffect(effect => {
           :class="`image-resizer__handler--${direction}`"
           class="image-resizer__handler"
           @mousedown="onMouseDown($event, direction)"
-        ></span>
+        />
       </div>
     </div>
   </NodeViewWrapper>

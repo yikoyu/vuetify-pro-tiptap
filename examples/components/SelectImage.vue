@@ -13,32 +13,32 @@ interface SelectImageEmits {
 
 const props = withDefaults(defineProps<SelectImageProps>(), {
   modelValue: () => ({}),
-  upload: undefined
+  upload: undefined,
 })
 
 const emits = defineEmits<SelectImageEmits>()
 
 const form = computed({
   get: () => props.modelValue,
-  set: val => {
+  set: (val) => {
     emits('update:modelValue', val)
-  }
+  },
 })
 
 const items = [
   { alt: 'Test 1', src: 'https://picsum.photos/1920/1080.webp?t=1' },
   { alt: 'Test 2', src: 'https://picsum.photos/1920/1080.webp?t=2' },
-  { alt: 'Test 3', src: 'https://picsum.photos/1920/1080.webp?t=3' }
+  { alt: 'Test 3', src: 'https://picsum.photos/1920/1080.webp?t=3' },
 ]
 
 watch(
   () => unref(form).src,
-  val => {
+  (val) => {
     const find = items.find(k => k.src === val)
     if (find) {
       form.value.alt = find.alt
     }
-  }
+  },
 )
 </script>
 

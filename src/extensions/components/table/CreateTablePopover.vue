@@ -9,7 +9,7 @@ import { useLocale } from '@/locales'
 import { isMobile } from '@/utils/is-mobile'
 
 interface Emits {
-  (event: 'create-table', payload: CreateTablePayload): void
+  (event: 'createTable', payload: CreateTablePayload): void
 }
 
 const emit = defineEmits<Emits>()
@@ -20,12 +20,12 @@ const menu = ref<boolean>(false)
 const withHeaderRow = ref<boolean>(true)
 const tableGridSize = reactive<GridSize>({
   rows: isMobile() ? TABLE_MAX_GRID_SIZE : TABLE_INIT_GRID_SIZE,
-  cols: isMobile() ? TABLE_MAX_GRID_SIZE : TABLE_INIT_GRID_SIZE
+  cols: isMobile() ? TABLE_MAX_GRID_SIZE : TABLE_INIT_GRID_SIZE,
 })
 
 const selectedTableGridSize: GridSize = reactive<GridSize>({
   rows: TABLE_DEFAULT_SELECTED_GRID_SIZE,
-  cols: TABLE_DEFAULT_SELECTED_GRID_SIZE
+  cols: TABLE_DEFAULT_SELECTED_GRID_SIZE,
 })
 
 function cellInnerStyles(row: number, col: number): StyleValue {
@@ -35,7 +35,7 @@ function cellInnerStyles(row: number, col: number): StyleValue {
     height: '16px',
     padding: '4px',
     border: '1px solid #dcdfe6',
-    borderRadius: '2px'
+    borderRadius: '2px',
   }
 
   if (col <= selectedTableGridSize.cols && row <= selectedTableGridSize.rows) {
@@ -60,7 +60,7 @@ function selectTableGridSize(rows: number, cols: number): void {
 }
 
 function onMouseDown(rows: number, cols: number) {
-  emit('create-table', { rows, cols, withHeaderRow: unref(withHeaderRow) })
+  emit('createTable', { rows, cols, withHeaderRow: unref(withHeaderRow) })
   resetTableGridSize()
 }
 
@@ -96,15 +96,15 @@ function resetTableGridSize(): void {
       </VCardText>
 
       <VCardText class="d-flex flex-column flex-wrap justify-space-between pa-2">
-        <div v-for="row in tableGridSize.rows" :key="'r' + row" class="d-flex">
+        <div v-for="row in tableGridSize.rows" :key="`r${row}`" class="d-flex">
           <div
             v-for="col in tableGridSize.cols"
-            :key="'c' + col"
+            :key="`c${col}`"
             class="pa-1"
             @mouseover="selectTableGridSize(row, col)"
             @mousedown="onMouseDown(row, col)"
           >
-            <div :style="cellInnerStyles(row, col)"></div>
+            <div :style="cellInnerStyles(row, col)" />
           </div>
         </div>
       </VCardText>

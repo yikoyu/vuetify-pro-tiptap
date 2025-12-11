@@ -18,7 +18,7 @@ interface Emits {
 
 const props = withDefaults(defineProps<Props>(), {
   modelValue: () => ({}),
-  upload: undefined
+  upload: undefined,
 })
 
 const emit = defineEmits<Emits>()
@@ -26,30 +26,32 @@ const emit = defineEmits<Emits>()
 const loading = ref<boolean>(false)
 const form = computed({
   get: () => props.modelValue,
-  set: val => emit('update:modelValue', val)
+  set: val => emit('update:modelValue', val),
 })
 
-const onFileSelected = async (files: File | File[]) => {
+async function onFileSelected(files: File | File[]) {
   const file = files instanceof File ? files : files[0]
   if (!file) {
     throw new Error('No files to upload')
   }
 
   try {
-      loading.value = true
-      const data = await props.upload?.(file)
-      if (!data) {
-        throw new Error('No link received after upload')
-      }
+    loading.value = true
+    const data = await props.upload?.(file)
+    if (!data) {
+      throw new Error('No link received after upload')
+    }
 
-      form.value = {
-          ...unref(form),
-          src: data
-      }
-  } catch (err) {
-      Logger.error(`Failed to execute upload file: ${err}`)
-  } finally {
-      loading.value = false
+    form.value = {
+      ...unref(form),
+      src: data,
+    }
+  }
+  catch (err) {
+    Logger.error(`Failed to execute upload file: ${err}`)
+  }
+  finally {
+    loading.value = false
   }
 }
 </script>

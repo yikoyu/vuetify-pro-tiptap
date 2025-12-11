@@ -7,6 +7,6 @@ const { global: { name: originalTheme } } = useTheme()
 
 <template>
   <VThemeProvider :theme="originalTheme">
-    <slot></slot>
+    <slot />
   </VThemeProvider>
 </template>

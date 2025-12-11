@@ -1,5 +1,5 @@
 import type { ComputedRef } from 'vue'
-import { computed, unref, watch, watchEffect } from 'vue'
+import { computed, unref, watch } from 'vue'
 
 import { DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
 
@@ -10,7 +10,8 @@ export function useMarkdownTheme(value: ComputedRef<string | false | undefined>,
   const { state } = useContext()
 
   const markdownTheme = computed<string>(() => {
-    if (isBoolean(unref(value))) return DEFAULT_MARKDOWN_THEME_VALUE
+    if (isBoolean(unref(value)))
+      return DEFAULT_MARKDOWN_THEME_VALUE
     if (isString(state.defaultMarkdownTheme) && state.defaultMarkdownTheme) {
       return state.defaultMarkdownTheme
     }
@@ -20,7 +21,7 @@ export function useMarkdownTheme(value: ComputedRef<string | false | undefined>,
 
   const markdownThemeStyle = computed(() => {
     return {
-      [`markdown-theme-${unref(markdownTheme)}`]: !!isString(unref(markdownTheme))
+      [`markdown-theme-${unref(markdownTheme)}`]: !!isString(unref(markdownTheme)),
     }
   })
 
@@ -32,7 +33,7 @@ export function useMarkdownTheme(value: ComputedRef<string | false | undefined>,
 
   watch(markdownTheme, val => setMarkdownTheme(val))
 
-  watch(value, val => {
+  watch(value, (val) => {
     if (val && isString(val) && state.defaultMarkdownTheme !== val) {
       state.defaultMarkdownTheme = val
     }
@@ -45,6 +46,6 @@ export function useMarkdownTheme(value: ComputedRef<string | false | undefined>,
   onCreated()
 
   return {
-    markdownThemeStyle
+    markdownThemeStyle,
   }
 }

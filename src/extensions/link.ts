@@ -17,7 +17,7 @@ export interface LinkOptions extends TiptapLinkOptions, GeneralOptions<LinkOptio
   dialogComponent: any
 }
 
-export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
+export const Link = /* @__PURE__ */ TiptapLink.extend<LinkOptions>({
   addOptions() {
     return {
       ...this.parent?.() as TiptapLinkOptions,
@@ -30,13 +30,13 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
           component: LinkActionButton,
           componentProps: {
             editor,
-            t
+            t,
           },
           componentSlots: {
-            dialog: dialogComponent()
-          }
+            dialog: dialogComponent(),
+          },
         }
-      }
+      },
     }
   },
 
@@ -50,7 +50,8 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
 
             const range = getMarkRange(doc.resolve(pos), schema.marks.link)
 
-            if (!range) return false
+            if (!range)
+              return false
 
             const $start = doc.resolve(range.from)
             const $end = doc.resolve(range.to)
@@ -59,9 +60,9 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
 
             view.dispatch(transaction)
             return true
-          }
-        }
-      })
+          },
+        },
+      }),
     ]
-  }
+  },
 })
