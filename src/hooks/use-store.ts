@@ -1,6 +1,6 @@
 import type { AnyExtension } from '@tiptap/core'
 import { createInjectionState } from '@vueuse/core'
-import { computed, reactive, watchEffect } from 'vue'
+import { computed, reactive, ref, watchEffect } from 'vue'
 
 import { DEFAULT_LANG_VALUE, DEFAULT_MARKDOWN_THEME_VALUE } from '@/constants/define'
 
@@ -47,6 +47,7 @@ interface Instance {
 
 export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() => {
   const { state: _state } = useContext()
+  const fullscreenRef = ref<HTMLElement>()
 
   const state: Instance = reactive({
     extensions: _state.extensions ?? [],
@@ -71,6 +72,7 @@ export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() =
 
   return {
     state,
+    fullscreenRef,
     isFullscreen,
     toggleFullscreen,
   }

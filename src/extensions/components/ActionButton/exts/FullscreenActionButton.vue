@@ -15,8 +15,8 @@ const props = defineProps({
   },
 })
 const { t } = useLocale()
-const { state, toggleFullscreen } = useTiptapStore()!
-const { isFullscreen, enter, exit } = useFullscreen()
+const { state, toggleFullscreen, fullscreenRef } = useTiptapStore()!
+const { isFullscreen, enter, exit } = useFullscreen(fullscreenRef)
 
 watch(isFullscreen, (val) => {
   // Press esc to exit full screen
