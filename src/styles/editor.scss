@@ -137,7 +137,7 @@ $primary-color: rgb(var(--v-theme-primary, 24, 103, 192));
     .tableWrapper > table,
     table.table-wrapper,
     .table-wrapper > table {
-      overflow: hidden;
+      overflow: hidden !important;
 
       td,
       th {
