@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.8.0...v2.8.1) (2025-12-13)
+
+### Bug Fixes
+
+* **fullscreen:** :bug: fix fullscreen editor obscured by multiple VCards [#462](https://github.com/yikoyu/vuetify-pro-tiptap/issues/462) ([#463](https://github.com/yikoyu/vuetify-pro-tiptap/issues/463)) ([1235070](https://github.com/yikoyu/vuetify-pro-tiptap/commit/123507069b207933631c68620ca3afd16913cadc))
+* **table:** :bug: fix scrollbar appearing when adjusting table width in editor ([0d6401c](https://github.com/yikoyu/vuetify-pro-tiptap/commit/0d6401c08a683ce4c9521e6a8f36bb05e4117133))
+
 ## [2.8.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.7.0...v2.8.0) (2025-12-11)
 
 ### Features
