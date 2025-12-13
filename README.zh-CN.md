@@ -8,7 +8,7 @@
 [![Test](https://github.com/yikoyu/vuetify-pro-tiptap/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/yikoyu/vuetify-pro-tiptap/actions/workflows/test.yml)
 ![LICENSE](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![semantic-release: vue](https://img.shields.io/badge/semantic--release-vue-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-[![pkg.pr.new](https://pkg.pr.new/badge/yikoyu/vuetify-pro-tiptap)]()
+[![pkg.pr.new](https://pkg.pr.new/badge/yikoyu/vuetify-pro-tiptap)](https://pkg.pr.new/~/yikoyu/vuetify-pro-tiptap)
 
 [English](./README.md) | 中文
 
