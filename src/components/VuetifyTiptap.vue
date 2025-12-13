@@ -46,6 +46,10 @@ interface Emits {
   (event: 'update:markdownTheme', value: string): void
 }
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
   markdownTheme: undefined,
