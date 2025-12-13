@@ -74,7 +74,7 @@ const emit = defineEmits<Emits>()
 const attrs = useAttrs()
 
 const theme = useTheme()
-const { state, fullscreenRef, isFullscreen } = useProvideTiptapStore()
+const { state, isFullscreen } = useProvideTiptapStore()
 const { markdownThemeStyle } = useMarkdownTheme(
   computed(() => props.markdownTheme),
   (value: string) => {
@@ -149,7 +149,7 @@ const contentDynamicStyles = computed(() => {
     maxWidth,
     width: !maxWidth ? undefined : '100%',
     margin: !maxWidth ? undefined : '0 auto',
-    backgroundColor: unref(isDark) ? '#212121' : '#FFFFFF',
+    backgroundColor: unref(isDark) ? '#121212' : '#FFFFFF',
   }
   if (unref(isFullscreen))
     return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
@@ -215,7 +215,6 @@ defineExpose({ editor })
       <VThemeProvider :theme="isDark ? 'dark' : 'light'">
         <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
           <VCard
-            ref="fullscreenRef"
             :flat="flat"
             :outlined="outlined"
             :color="isDark ? 'grey-darken-4' : 'grey-lighten-4'"
