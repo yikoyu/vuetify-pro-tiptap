@@ -8,6 +8,7 @@
 [![Test](https://github.com/yikoyu/vuetify-pro-tiptap/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/yikoyu/vuetify-pro-tiptap/actions/workflows/test.yml)
 ![LICENSE](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![semantic-release: vue](https://img.shields.io/badge/semantic--release-vue-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![pkg.pr.new](https://pkg.pr.new/badge/yikoyu/vuetify-pro-tiptap)]()
 
 [English](./README.md) | 中文
 
@@ -276,13 +277,11 @@ import { mdiClose, mdiFileCodeOutline } from '@mdi/js'
 import { ref } from 'vue'
 import { ActionButton } from 'vuetify-pro-tiptap'
 
-interface Props {
+const props = withDefaults(defineProps<{
   editor: Editor
   tooltip?: string
   disabled?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
   tooltip: undefined,
   disabled: false
 })
@@ -292,7 +291,7 @@ const maxWidth = ref<number>(900)
 </script>
 
 <template>
-  <ActionButton tooltip="全屏" :disabled="disabled">
+  <ActionButton :editor="editor" tooltip="全屏" :disabled="disabled">
     <VIcon>{{ `svg:${mdiFileCodeOutline}` }}</VIcon>
     <VDialog v-model="dialog" fullscreen hide-overlay activator="parent">
       <VCard>
@@ -319,14 +318,12 @@ const maxWidth = ref<number>(900)
 <summary>preview.ts</summary>
 
 ```typescript
-import type { ButtonView, GeneralOptions } from 'vuetify-pro-tiptap'
-
+import type { GeneralOptions } from 'vuetify-pro-tiptap'
 import { Extension } from '@tiptap/core'
+
 import PreviewActionButton from '../components/PreviewActionButton.vue'
 
-export interface PreviewOptions extends GeneralOptions {
-  button: ButtonView
-}
+export type PreviewOptions = GeneralOptions<PreviewOptions>
 
 export default Extension.create<PreviewOptions>({
   name: 'preview',
@@ -334,12 +331,14 @@ export default Extension.create<PreviewOptions>({
     return {
       divider: false,
       spacer: false,
-      button: () => ({
+      button: ({ editor }) => ({
         component: PreviewActionButton,
-        componentProps: {}
-      })
+        componentProps: {
+          editor,
+        },
+      }),
     }
-  }
+  },
 })
 ```
 
