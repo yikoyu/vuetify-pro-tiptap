@@ -202,17 +202,19 @@ function getText() {
 
       <VDivider class="my-4" />
 
-      <VuetifyTiptap
-        v-model:markdown-theme="markdownTheme"
-        label="Editor 2"
-        :outlined="outlined"
-        :dense="dense"
-        rounded
-        dark
-        :max-height="465"
-        :max-width="maxWidth"
-        :extensions="extensions"
-      />
+      <VCard>
+        <VuetifyTiptap
+          v-model:markdown-theme="markdownTheme"
+          label="Editor 2"
+          :outlined="outlined"
+          :dense="dense"
+          rounded
+          dark
+          :max-height="465"
+          :max-width="maxWidth"
+          :extensions="extensions"
+        />
+      </VCard>
 
       <VDivider class="my-4" />
 

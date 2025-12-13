@@ -46,6 +46,10 @@ interface Emits {
   (event: 'update:markdownTheme', value: string): void
 }
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
   markdownTheme: undefined,
@@ -149,7 +153,7 @@ const contentDynamicStyles = computed(() => {
     maxWidth,
     width: !maxWidth ? undefined : '100%',
     margin: !maxWidth ? undefined : '0 auto',
-    backgroundColor: unref(isDark) ? '#1E1E1E' : '#FFFFFF',
+    backgroundColor: unref(isDark) ? '#121212' : '#FFFFFF',
   }
   if (unref(isFullscreen))
     return { height: '100%', overflowY: 'auto', ...maxHeightStyle }
@@ -210,70 +214,72 @@ defineExpose({ editor })
 </script>
 
 <template>
-  <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
-    <VThemeProvider :theme="isDark ? 'dark' : 'light'">
-      <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
-        <VCard
-          :flat="flat"
-          :outlined="outlined"
-          :color="isDark ? 'grey-darken-4' : 'grey-lighten-4'"
-          v-bind="$attrs"
-          :style="{
-            borderColor: errorMessages ? '#ff5252' : undefined,
-            width: '100%',
-          }"
-          class="vuetify-pro-tiptap-editor"
-          :class="{ 'vuetify-pro-tiptap-editor--fullscreen': isFullscreen }"
-        >
-          <template v-if="label && !isFullscreen">
-            <VCardTitle :class="isDark ? 'bg-grey-darken-3' : 'bg-grey-lighten-3'">
-              {{ label }}
-            </VCardTitle>
-
-            <VDivider />
-          </template>
-          <!-- Toolbar -->
-          <TipTapToolbar
-            v-if="!hideToolbar"
-            class="vuetify-pro-tiptap-editor__toolbar"
-            :editor="editor"
-          />
-
-          <!-- Edit Mode -->
-          <BubbleMenu v-if="!hideBubble" :editor="editor" />
-
-          <slot
-            name="editor"
-            v-bind="{ editor, props: { 'class': 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }"
+  <Teleport to="body" :disabled="!isFullscreen">
+    <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
+      <VThemeProvider :theme="isDark ? 'dark' : 'light'">
+        <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
+          <VCard
+            :flat="flat"
+            :outlined="outlined"
+            :color="isDark ? 'grey-darken-4' : 'grey-lighten-4'"
+            v-bind="$attrs"
+            :style="{
+              borderColor: errorMessages ? '#ff5252' : undefined,
+              width: '100%',
+            }"
+            class="vuetify-pro-tiptap-editor"
+            :class="{ 'vuetify-pro-tiptap-editor--fullscreen': isFullscreen }"
           >
-            <EditorContent
-              class="vuetify-pro-tiptap-editor__content"
-              :class="contentDynamicClasses"
-              :style="contentDynamicStyles"
+            <template v-if="label && !isFullscreen">
+              <VCardTitle :class="isDark ? 'bg-grey-darken-3' : 'bg-grey-lighten-3'">
+                {{ label }}
+              </VCardTitle>
+
+              <VDivider />
+            </template>
+            <!-- Toolbar -->
+            <TipTapToolbar
+              v-if="!hideToolbar"
+              class="vuetify-pro-tiptap-editor__toolbar"
               :editor="editor"
-              data-testid="value"
             />
-          </slot>
 
-          <slot name="bottom" v-bind="{ editor }">
-            <VToolbar class="px-4" density="compact" flat>
-              <VSpacer />
+            <!-- Edit Mode -->
+            <BubbleMenu v-if="!hideBubble" :editor="editor" />
 
-              <template v-if="hasExtension(editor, 'characterCount')">
-                <span class="text-overline me-4">
-                  {{ editor.storage.characterCount.words() }} {{ t('editor.words') }}
-                </span>
+            <slot
+              name="editor"
+              v-bind="{ editor, props: { 'class': 'vuetify-pro-tiptap-editor__content', 'data-testid': 'value' } }"
+            >
+              <EditorContent
+                class="vuetify-pro-tiptap-editor__content"
+                :class="contentDynamicClasses"
+                :style="contentDynamicStyles"
+                :editor="editor"
+                data-testid="value"
+              />
+            </slot>
 
-                <span class="text-overline">
-                  {{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}
-                </span>
-              </template>
-            </VToolbar>
-          </slot>
-        </VCard>
-      </VInput>
-    </VThemeProvider>
-  </div>
+            <slot name="bottom" v-bind="{ editor }">
+              <VToolbar class="px-4" density="compact" flat>
+                <VSpacer />
+
+                <template v-if="hasExtension(editor, 'characterCount')">
+                  <span class="text-overline me-4">
+                    {{ editor.storage.characterCount.words() }} {{ t('editor.words') }}
+                  </span>
+
+                  <span class="text-overline">
+                    {{ editor.storage.characterCount.characters() }} {{ t('editor.characters') }}
+                  </span>
+                </template>
+              </VToolbar>
+            </slot>
+          </VCard>
+        </VInput>
+      </VThemeProvider>
+    </div>
+  </Teleport>
 </template>
 
 <style lang="scss">
