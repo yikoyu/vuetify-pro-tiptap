@@ -1,3 +1,9 @@
+## [2.8.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.8.1...v2.8.2) (2025-12-18)
+
+### Bug Fixes
+
+* **package:** :bug: fix style.css export path ([6c20edd](https://github.com/yikoyu/vuetify-pro-tiptap/commit/6c20edd2601a51b027ec6e661390cd2c65909935)), closes [#464](https://github.com/yikoyu/vuetify-pro-tiptap/issues/464)
+
 ## [2.8.1](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.8.0...v2.8.1) (2025-12-13)
 
 ### Bug Fixes
