@@ -14,22 +14,6 @@ on:
 jobs:
   build:
     if: ${{ github.repository == 'yikoyu/vuetify-pro-tiptap' }}
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: ./.github/actions/build-setup
-
-      - name: Build Lib
-        run: pnpm build:lib
-
-      - name: Publish PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: pnpm dlx pkg-pr-new publish --pnpm --packageManager=pnpm,npm,yarn
+    uses: yikoyu/workflows/.github/workflows/publish-pr-commit-pkg.yml@main
+    with:
+      build-command: pnpm build:lib

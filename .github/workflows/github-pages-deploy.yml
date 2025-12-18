@@ -1,0 +1,18 @@
+name: Github Pages deploy
+
+on:
+  push:
+    branches: [master, develop]
+    paths:
+      - 'src/**'
+      - 'examples/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: yikoyu/workflows/.github/workflows/github-pages-deploy.yml@main
+    permissions:
+      contents: write
+    with:
+      target-folder: ${{ github.ref_name }}
+      build-command: pnpm build:examples

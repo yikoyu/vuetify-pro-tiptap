@@ -1,0 +1,19 @@
+name: Check Vue
+
+on:
+  push:
+    branches: [master, develop]
+
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  tests:
+    runs-on: [ubuntu-latest]
+
+    steps:
+      - name: Setup JS
+        uses: yikoyu/workflows/setup-js@main
+
+      - name: Check Vue
+        run: pnpm check:types

@@ -1,0 +1,14 @@
+name: Commitlint Validate
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  commitlint:
+    uses: yikoyu/workflows/.github/workflows/commitlint.yml@main
