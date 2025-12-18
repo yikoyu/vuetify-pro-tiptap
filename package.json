@@ -30,13 +30,10 @@
       "require": "./lib/vuetify-pro-tiptap.umd.cjs"
     },
     "./style.css": {
-      "import": "./lib/style.css",
-      "require": "./lib/style.css"
+      "import": "./lib/vuetify-pro-tiptap.css",
+      "require": "./lib/vuetify-pro-tiptap.css"
     },
-    "./styles/": {
-      "import": "./lib/styles/",
-      "require": "./lib/styles/"
-    }
+    "./*": "./lib/*"
   },
   "main": "./lib/vuetify-pro-tiptap.umd.cjs",
   "module": "./lib/vuetify-pro-tiptap.js",
