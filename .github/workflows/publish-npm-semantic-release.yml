@@ -7,6 +7,8 @@ jobs:
   build:
     if: ${{ github.repository == 'yikoyu/vuetify-pro-tiptap' }}
     uses: yikoyu/workflows/.github/workflows/publish-npm-semantic-release.yml@main
+    secrets:
+      github-token: ${{ secrets.ACCESS_TOKEN }}
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
