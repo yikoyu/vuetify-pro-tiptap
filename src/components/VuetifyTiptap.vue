@@ -283,5 +283,5 @@ defineExpose({ editor })
 </template>
 
 <style lang="scss">
-@forward '@/styles/index.scss';
+@forward '@/styles/index';
 </style>
