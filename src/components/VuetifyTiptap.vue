@@ -3,7 +3,7 @@ import type { Editor as CoreEditor } from '@tiptap/core'
 import type { AnyExtension, EditorOptions } from '@tiptap/vue-3'
 import type { VuetifyTiptapOnChange } from '@/type'
 import { EditorContent, useEditor } from '@tiptap/vue-3'
-import { computed, provide, toRef, unref, useAttrs, watch } from 'vue'
+import { computed, provide, ref, toRef, unref, useAttrs, watch } from 'vue'
 
 import { useTheme } from 'vuetify'
 import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
@@ -77,6 +77,11 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<Emits>()
 const attrs = useAttrs()
 
+// Track the last value emitted by this component so onValueChange can
+// distinguish a parent echoing back our own update vs a genuine
+// external change that should overwrite the editor content.
+const lastEmittedValue = ref<Props['modelValue']>(props.modelValue)
+
 const theme = useTheme()
 const { state, isFullscreen } = useProvideTiptapStore()
 const { markdownThemeStyle } = useMarkdownTheme(
@@ -117,6 +122,7 @@ const editor = useEditor({
   onUpdate: throttle<OnUpdate>(({ editor }) => {
     const output = getOutput(editor, props.output)
 
+    lastEmittedValue.value = output
     emit('update:modelValue', output)
 
     emit('change', { editor, output })
@@ -195,7 +201,10 @@ const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
 
   const output = getOutput(editor.value, props.output)
 
-  if (isEqual(output, val))
+  // Skip if the editor already has this content, OR if the incoming value
+  // is just the parent echoing back what we emitted. calling setContent
+  // would overwrite characters the user typed since the last emission.
+  if (isEqual(output, val) || isEqual(lastEmittedValue.value, val))
     return
 
   const { from, to } = editor.value.state.selection
