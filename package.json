@@ -97,7 +97,7 @@
     "@tiptap/vue-3": "^3.14.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.7.3",
+    "@antfu/eslint-config": "^9.0.0",
     "@mdi/js": "^7.4.47",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vueuse/core": "^14.1.0",
