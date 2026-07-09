@@ -1,3 +1,22 @@
+## [3.0.0](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.8.2...v3.0.0) (2026-07-09)
+
+### ⚠ BREAKING CHANGES
+
+* The following props have been renamed or removed:
+- 'outlined' prop renamed to 'variant' (accepts Vuetify VCard variant strings)
+- 'dense' prop renamed to 'density' (accepts Vuetify density strings)
+- VMenu 'nudge-left'/'nudge-top' props replaced by 'offset'
+- VSheet 'fluid' prop removed
+Upgrade your component usages accordingly.
+
+### Features
+
+* migrate to Vuetify 4 and refactor component props ([71ad0ce](https://github.com/yikoyu/vuetify-pro-tiptap/commit/71ad0ce32a2455b62d5cc2c1ab6d8032d577437a))
+
+### Bug Fixes
+
+* add emit tracking to prevent circular feedback from removing characters after they are typed ([9be6bd4](https://github.com/yikoyu/vuetify-pro-tiptap/commit/9be6bd428332d17777d94799c65f4f1b754cd237))
+
 ## [2.8.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.8.1...v2.8.2) (2025-12-18)
 
 ### Bug Fixes
