@@ -5,8 +5,8 @@ import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import { PluginPure } from 'rollup-plugin-pure'
 import * as sass from 'sass'
+import dts from 'unplugin-dts/vite'
 import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
@@ -20,6 +20,7 @@ export default defineConfig({
       functions: ['Mark.create', 'Extension.create', 'Node.create'],
     }) as PluginOption,
     dts({
+      processor: 'vue',
       insertTypesEntry: true,
     }),
     // 使用sass原生API编译SCSS
