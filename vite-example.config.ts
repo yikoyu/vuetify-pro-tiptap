@@ -7,20 +7,17 @@
 import { resolve } from 'node:path'
 
 import vue from '@vitejs/plugin-vue'
-import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
-import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
+import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
   plugins: [
-    vue(),
-    Components({
-      dirs: undefined,
-      dts: false,
-      resolvers: [Vuetify3Resolver()],
+    vue({
+      template: { transformAssetUrls },
     }),
+    Vuetify({ autoImport: true }),
   ],
   resolve: {
     alias: {

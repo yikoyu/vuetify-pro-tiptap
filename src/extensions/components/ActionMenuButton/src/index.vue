@@ -43,7 +43,7 @@ const active = computed<ActionMenuButtonItem>(() => {
         <template v-for="(item, i) in items" :key="i">
           <VListItem :active="item.isActive()" :disabled="item.disabled" @click="item.action">
             <template #prepend>
-              <VIcon v-if="item.icon" :icon="getIcon(item.icon)" />
+              <VIcon v-if="item.icon" size="small" :icon="getIcon(item.icon)" />
             </template>
 
             <VListItemTitle :style="item.style">

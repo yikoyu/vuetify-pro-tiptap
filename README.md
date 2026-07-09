@@ -27,10 +27,15 @@ English | [中文](./README.zh-CN.md)
 - Markdown support
 - TypeScript support
 - I18n support(`en`, `zhHans`, `nl`, `tr`, `de`, `fr`, `it`, `pt`, `hu`)
-- Vuetify 3.x and Vue 3.x support
+- Vuetify 4.x and Vue 3.x support
 
 ## Vuetify 2.x
 For Vuetify 2.x please use the latest version of [vuetify-pro-tiptap@1.X.X](https://github.com/yikoyu/vuetify-pro-tiptap/tree/1.x)
+
+## Vuetify 3.x
+For Vuetify 3.x please use the latest version of [vuetify-pro-tiptap@2.X.X](https://github.com/yikoyu/vuetify-pro-tiptap/tree/2.x)
+
+The current version (`>=3.0.0`) requires Vuetify 4.x and Vue 3.x.
 
 ## Installation
 ### NPM
@@ -436,9 +441,9 @@ const content = ref('')
 | markdownTheme | string \| false | 'default' | Markdown theme |
 | output | 'html' \| 'json' \| 'text' | 'html' | Output format |
 | dark | boolean | false | Applies the dark theme variant to the component. |
-| dense | boolean | false | Reduces the input height |
-| outlined | boolean | true | Applies the outlined style to the input |
-| flat | boolean | true | Removes the card’s elevation |
+| density | 'default' \| 'comfortable' \| 'compact' | 'default' | Adjusts the vertical height used by the component. |
+| variant | 'flat' \| 'text' \| 'elevated' \| 'tonal' \| 'outlined' \| 'plain' | 'outlined' | Applies a distinct style to the component. |
+| flat | boolean | true | Removes the card's elevation |
 | disabled | boolean | false | Disable the input |
 | label | string | undefined | Sets input label |
 | hideToolbar | boolean | false | Hidden the toolbar |

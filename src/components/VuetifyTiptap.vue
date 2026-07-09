@@ -6,7 +6,7 @@ import { EditorContent, useEditor } from '@tiptap/vue-3'
 import { computed, provide, ref, toRef, unref, useAttrs, watch } from 'vue'
 
 import { useTheme } from 'vuetify'
-import { EDITOR_UPDATE_THROTTLE_WAIT_TIME, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants/define'
+import { EDITOR_UPDATE_THROTTLE_WAIT_TIME } from '@/constants/define'
 
 import { useMarkdownTheme, useProvideTiptapStore } from '@/hooks'
 import { useLocale } from '@/locales'
@@ -22,8 +22,8 @@ interface Props {
   markdownTheme?: string | false
   output?: 'html' | 'json' | 'text'
   dark?: boolean
-  dense?: boolean
-  outlined?: boolean
+  density?: 'default' | 'comfortable' | 'compact'
+  variant?: 'flat' | 'text' | 'elevated' | 'tonal' | 'outlined' | 'plain'
   flat?: boolean
   disabled?: boolean
   label?: string
@@ -55,8 +55,8 @@ const props = withDefaults(defineProps<Props>(), {
   markdownTheme: undefined,
   output: 'html',
   dark: undefined,
-  dense: false,
-  outlined: true,
+  density: 'default',
+  variant: 'text',
   flat: true,
   disabled: false,
   label: undefined,
@@ -195,7 +195,7 @@ function getOutput(editor: CoreEditor, output: Props['output']) {
   return ''
 }
 
-const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
+function onValueChange(val: NonNullable<Props['modelValue']>) {
   if (!editor.value)
     return
 
@@ -210,7 +210,7 @@ const onValueChange = throttle((val: NonNullable<Props['modelValue']>) => {
   const { from, to } = editor.value.state.selection
   editor.value.commands.setContent(val, { emitUpdate: false })
   editor.value.commands.setTextSelection({ from, to })
-}, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME)
+}
 
 const onDisabledChange = (val: boolean) => editor.value?.setEditable(!val)
 
@@ -224,23 +224,26 @@ defineExpose({ editor })
 
 <template>
   <Teleport to="body" :disabled="!isFullscreen">
-    <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense }">
+    <div v-if="editor" class="vuetify-pro-tiptap" :class="{ dense: density === 'compact' }">
       <VThemeProvider :theme="isDark ? 'dark' : 'light'">
-        <VInput class="pt-0" hide-details="auto" :error-messages="errorMessages">
+        <VInput class="pt-0" :density="density" hide-details="auto" :error-messages="errorMessages">
           <VCard
             :flat="flat"
-            :outlined="outlined"
-            :color="isDark ? 'grey-darken-4' : 'grey-lighten-4'"
+            :variant="variant"
+            :density="density"
             v-bind="$attrs"
             :style="{
+              backgroundColor: isDark ? '#212121' : '#F5F5F5',
               borderColor: errorMessages ? '#ff5252' : undefined,
               width: '100%',
             }"
             class="vuetify-pro-tiptap-editor"
-            :class="{ 'vuetify-pro-tiptap-editor--fullscreen': isFullscreen }"
+            :class="{
+              'vuetify-pro-tiptap-editor--fullscreen': isFullscreen,
+            }"
           >
             <template v-if="label && !isFullscreen">
-              <VCardTitle :class="isDark ? 'bg-grey-darken-3' : 'bg-grey-lighten-3'">
+              <VCardTitle :style="{ backgroundColor: isDark ? '#424242' : '#EEEEEE' }">
                 {{ label }}
               </VCardTitle>
 

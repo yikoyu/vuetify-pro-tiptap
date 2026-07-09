@@ -27,10 +27,15 @@
 - 支持 markdown 语法
 - TypeScript 支持
 - 支持 i18n (`en`, `zhHans`, `nl`, `tr`, `de`, `fr`, `it`, `pt`, `hu`)
-- Vuetify 3.x 和 Vue 3.x 支持
+- Vuetify 4.x 和 Vue 3.x 支持
 
 ## Vuetify 2.x
 Vuetify 2.x 请使用最新版本的 [vuetify-pro-tiptap@1.X.X](https://github.com/yikoyu/vuetify-pro-tiptap/tree/1.x)
+
+## Vuetify 3.x
+Vuetify 3.x 请使用最新版本的 [vuetify-pro-tiptap@2.X.X](https://github.com/yikoyu/vuetify-pro-tiptap/tree/2.x)
+
+当前版本 (`>=3.0.0`) 需要 Vuetify 4.x 和 Vue 3.x。
 
 ## 安装
 ### NPM安装
@@ -436,8 +441,8 @@ const content = ref('')
 | markdownTheme        | string \| false                            | 'default' | markdown主题                 |
 | output               | 'html' \| 'json' \| 'text'                 | 'html'    | 输出格式                     |
 | dark                 | boolean                                    | false     | 是否为深色主题               |
-| dense                | boolean                                    | false     | 是否为紧凑模式               |
-| outlined             | boolean                                    | true      | 将轮廓样式应用于输入         |
+| density              | 'default' \| 'comfortable' \| 'compact'    | 'default' | 组件使用的垂直高度           |
+| variant              | 'flat' \| 'text' \| 'elevated' \| 'tonal' \| 'outlined' \| 'plain' | 'outlined' | 组件的样式变体 |
 | flat                 | boolean                                    | true      | 移除卡片的 elevation         |
 | disabled             | boolean                                    | false     | 禁用输入                     |
 | label                | string                                     | undefined | 设置输入标签                 |

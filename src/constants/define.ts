@@ -5,12 +5,6 @@ export const DEFAULT_LANG_VALUE = 'en' as const
 /** Throttle time for editor input (milliseconds) */
 export const EDITOR_UPDATE_THROTTLE_WAIT_TIME = 200 as const
 
-/**
- * watch throttling time must be less than the update time
- * otherwise the cursor position will reach the end
- */
-export const EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME = EDITOR_UPDATE_THROTTLE_WAIT_TIME - 80
-
 /** Minimum size for image adjustments */
 export const IMAGE_MIN_SIZE = 20 as const
 /** Maximum size for image adjustments */

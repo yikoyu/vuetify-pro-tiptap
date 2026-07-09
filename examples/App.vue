@@ -185,8 +185,7 @@ function getText() {
         :output="output"
         :hide-toolbar="hideToolbar"
         :disable-toolbar="disableToolbar"
-        :outlined="outlined"
-        :dense="dense"
+        :density="dense ? 'compact' : 'default'"
         :error-messages="errorMessages"
         rounded
         :max-height="465"
@@ -206,8 +205,8 @@ function getText() {
         <VuetifyTiptap
           v-model:markdown-theme="markdownTheme"
           label="Editor 2"
-          :outlined="outlined"
-          :dense="dense"
+          :variant="outlined ? 'outlined' : undefined"
+          :density="dense ? 'compact' : 'default'"
           rounded
           dark
           :max-height="465"

@@ -22,7 +22,7 @@ const disableToolbar = inject<Readonly<Ref<boolean>>>('disableToolbar', ref(fals
     }"
     @click="action"
   >
-    <VIcon :icon="getIcon(props.icon)" />
+    <VIcon size="small" :icon="getIcon(props.icon)" />
 
     <VTooltip :eager="false" activator="parent" location="top" :text="props.tooltip" />
 

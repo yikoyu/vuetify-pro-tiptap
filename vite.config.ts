@@ -5,20 +5,17 @@ import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import { PluginPure } from 'rollup-plugin-pure'
 import * as sass from 'sass'
-import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
-import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
-    Components({
-      dirs: undefined,
-      dts: 'types/components.d.ts',
-      resolvers: [Vuetify3Resolver()],
+    vue({
+      template: { transformAssetUrls },
     }),
+    Vuetify({ autoImport: true, styles: 'none' }),
     PluginPure({
       functions: ['Mark.create', 'Extension.create', 'Node.create'],
     }) as PluginOption,
@@ -81,13 +78,15 @@ export default defineConfig({
     rollupOptions: {
       output: {
         exports: 'named',
-        globals: {
-          'vue': 'Vue',
-          'vuetify': 'Vuetify',
-          'vuetify/components': 'VuetifyComp',
+        globals: (id: string) => {
+          if (id === 'vue')
+            return 'Vue'
+          if (id.startsWith('vuetify'))
+            return 'Vuetify'
+          return id
         },
       },
-      external: ['vue', 'vuetify', 'vuetify/components'],
+      external: ['vue', /^vuetify/],
     },
   },
 })

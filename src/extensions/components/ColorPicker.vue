@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import { COLORS_LIST } from '@/constants/define'
 import { getIcon } from '@/constants/icons'
@@ -33,6 +33,12 @@ watch(menu, (val) => {
   inutValue.value = props.modelValue
 })
 
+const menuOffset = computed<number[]>(() => {
+  const left = Number(props.nudgeLeft || 255)
+  const top = Number(props.nudgeTop || 42)
+  return [left, top]
+})
+
 function setColor(color: string) {
   emit('update:modelValue', color)
   emit('change', color)
@@ -45,15 +51,14 @@ function setColor(color: string) {
 <template>
   <VMenu
     v-model="menu"
-    :nudge-left="nudgeLeft || 255"
-    :nudge-top="nudgeTop || 42"
+    :offset="menuOffset"
     :close-on-content-click="false"
     transition="scale-transition"
     :origin="!nudgeLeft ? 'top right' : 'top left'"
     activator="parent"
   >
     <VList>
-      <VSheet class="d-flex flex-wrap justify-between ma-1" fluid :max-width="230">
+      <VSheet class="d-flex flex-wrap justify-between ma-1" :max-width="230">
         <VBtn v-for="color in COLORS_LIST" :key="color" flat icon density="compact" @click="setColor(color)">
           <VIcon :icon="getIcon('circle')" :color="color" />
         </VBtn>

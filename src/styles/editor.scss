@@ -50,7 +50,7 @@ $primary-color: rgb(var(--v-theme-primary, 24, 103, 192));
       position: relative;
 
       :focus-visible {
-        outline: -webkit-focus-ring-color auto 0;
+        outline: none;
       }
 
       img {
