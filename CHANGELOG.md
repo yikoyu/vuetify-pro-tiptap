@@ -1,3 +1,9 @@
+## [2.8.3](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.8.2...v2.8.3) (2026-07-31)
+
+### Bug Fixes
+
+* add emit tracking to prevent circular feedback from removing characters after they are typed ([047aef7](https://github.com/yikoyu/vuetify-pro-tiptap/commit/047aef7081663c0d7264c9494a903302ac9af371))
+
 ## [2.8.2](https://github.com/yikoyu/vuetify-pro-tiptap/compare/v2.8.1...v2.8.2) (2025-12-18)
 
 ### Bug Fixes
