@@ -3,6 +3,7 @@ import type { Editor } from '@tiptap/vue-3'
 import type { LinkAttrs } from './link/types'
 
 import type { IconsOptions } from '@/constants/icons'
+import type { HrefRules } from '@/hooks/use-href-rules'
 import { ref } from 'vue'
 
 import { ButtonViewReturnComponentProps } from '@/type'
@@ -18,7 +19,7 @@ interface Props {
   color?: string
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
-  hrefRules?: string
+  hrefRules?: HrefRules
 }
 
 const props = withDefaults(defineProps<Props>(), {

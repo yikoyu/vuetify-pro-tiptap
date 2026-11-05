@@ -2,14 +2,15 @@
 import type { Editor } from '@tiptap/vue-3'
 import { computed, ref, unref, watchEffect } from 'vue'
 import { getIcon } from '@/constants/icons'
-import { useEval } from '@/hooks/use-eval'
+import type { HrefRules } from '@/hooks/use-href-rules'
+import { useHrefRules } from '@/hooks/use-href-rules'
 import { useLocale } from '@/locales'
 
 interface Props {
   value?: string
   editor: Editor
   destroy?: () => void
-  hrefRules?: string
+  hrefRules?: HrefRules
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -24,7 +25,7 @@ const url = ref<string>('')
 
 const dialog = ref<boolean>(false)
 const form = ref()
-const { evalHrefRules } = useEval(['hrefRules'], props)
+const validationRules = useHrefRules(props)
 
 const isDisabled = computed(() => {
   if (props.value === url.value) return true
@@ -72,7 +73,7 @@ watchEffect(() => {
 
       <v-form ref="form" @submit.prevent="apply">
         <VCardText>
-          <vx-field v-model="url" :rules="evalHrefRules" :label="t('editor.video.dialog.link')" autofocus />
+          <vx-field v-model="url" :rules="validationRules" :label="t('editor.video.dialog.link')" autofocus />
         </VCardText>
 
         <VCardActions>

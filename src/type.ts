@@ -114,3 +114,5 @@ export interface ButtonViewParams<T = any> {
 export interface ButtonView<T = any> {
   (options: ButtonViewParams<T>): ButtonViewReturn | ButtonViewReturn[]
 }
+
+export type { HrefRule, HrefRuleDescriptor, HrefRules } from './hooks/use-href-rules'

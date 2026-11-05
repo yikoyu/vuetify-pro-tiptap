@@ -4,7 +4,8 @@ import type { LinkAttrs } from './types'
 
 import { computed, ref, watch } from 'vue'
 import { getIcon } from '@/constants/icons'
-import { useEval } from '@/hooks/use-eval'
+import type { HrefRules } from '@/hooks/use-href-rules'
+import { useHrefRules } from '@/hooks/use-href-rules'
 import { useLocale } from '@/locales'
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
   rel?: string
   editor: Editor
   destroy?: () => void
-  hrefRules?: string
+  hrefRules?: HrefRules
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -34,7 +35,7 @@ const generateLinkAttrs = (): LinkAttrs => ({
 
 const attrs = ref(generateLinkAttrs())
 const form = ref()
-const { evalHrefRules } = useEval(['hrefRules'], props)
+const validationRules = useHrefRules(props)
 
 const dialog = ref<boolean>(false)
 
@@ -92,7 +93,7 @@ watch(dialog, (val) => {
         <VCardText>
           <vx-field
             v-model="attrs.href"
-            :rules="evalHrefRules"
+            :rules="validationRules"
             :label="t('editor.link.dialog.link')"
             autofocus
           />

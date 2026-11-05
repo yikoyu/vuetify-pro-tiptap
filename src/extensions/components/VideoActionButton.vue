@@ -2,6 +2,8 @@
 import type { Editor } from "@tiptap/vue-3"
 import type { IconsOptions } from "@/constants/icons"
 
+import type { HrefRules } from "@/hooks/use-href-rules"
+
 import { ref } from "vue"
 
 import { ButtonViewReturnComponentProps } from "@/type"
@@ -10,7 +12,7 @@ import OriginalThemeProvider from "./OriginalThemeProvider.vue"
 
 interface Props {
   editor: Editor
-  hrefRules?: string
+  hrefRules?: HrefRules
   icon?: keyof IconsOptions
   tooltip?: string
   disabled?: boolean

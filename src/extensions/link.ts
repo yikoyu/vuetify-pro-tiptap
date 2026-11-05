@@ -1,5 +1,6 @@
 import type { LinkOptions as TiptapLinkOptions } from "@tiptap/extension-link"
 import type { EditorView } from "@tiptap/pm/view"
+import type { HrefRules } from "@/hooks/use-href-rules"
 import type { GeneralOptions } from "@/type"
 import { getMarkRange } from "@tiptap/core"
 import { Link as TiptapLink } from "@tiptap/extension-link"
@@ -18,7 +19,8 @@ export interface LinkOptions
     GeneralOptions<LinkOptions> {
   /** Component for the link dialog */
   dialogComponent: any
-  hrefRules: string
+  /** Validation rules for the link dialog, see `HrefRules` */
+  hrefRules: HrefRules
   /** HTML attributes that should be allowed on link elements */
   allowedAttributes?: string[]
 }
@@ -36,8 +38,9 @@ export const Link = /* @__PURE__*/ TiptapLink.extend<LinkOptions>({
     return {
       ...(this.parent?.() as TiptapLinkOptions),
       openOnClick: false,
-      hrefRules:
-        '[value => !/^http:\\/\\//.test(value) || "URL should not start with http://"]',
+      hrefRules: [
+        { pattern: "^http://", negate: true, message: "URL should not start with http://" }
+      ],
       dialogComponent: () => LinkDialog,
       button: ({ editor, extension, t }) => {
         const { dialogComponent, hrefRules } = extension.options

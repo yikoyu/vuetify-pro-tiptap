@@ -1,3 +1,4 @@
+import type { HrefRules } from "@/hooks/use-href-rules"
 import type { GeneralOptions } from "@/type"
 
 import { Node } from "@tiptap/core"
@@ -13,7 +14,8 @@ import VideoActionButton from "./components/VideoActionButton.vue"
  * Represents the interface for video options, extending GeneralOptions.
  */
 export interface VideoOptions extends GeneralOptions<VideoOptions> {
-  hrefRules?: string
+  /** Validation rules for the video dialog, see `HrefRules` */
+  hrefRules?: HrefRules
   /**
    * Indicates whether fullscreen play is allowed
    *
@@ -192,8 +194,9 @@ export const Video = /* @__PURE__*/ Node.create<VideoOptions>({
       allowFullscreen: true,
       frameborder: false,
       width: VIDEO_SIZE["size-medium"],
-      hrefRules:
-        '[value => !/^http:\\/\\//.test(value) || "URL should not start with http://"]',
+      hrefRules: [
+        { pattern: "^http://", negate: true, message: "URL should not start with http://" }
+      ],
       HTMLAttributes: {
         class: "iframe-wrapper",
         style: "display: flex;justify-content: center;"
