@@ -1,11 +1,12 @@
 import { Editor } from '@tiptap/vue-3';
+import { HrefRules } from '../../../hooks/use-href-rules';
 interface Props {
     value?: string;
     target?: '_self' | '_blank';
     rel?: string;
     editor: Editor;
     destroy?: () => void;
-    hrefRules?: string;
+    hrefRules?: HrefRules;
 }
 declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToOption<Props>, {
     value: undefined;
@@ -24,7 +25,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     target: "_self" | "_blank";
     rel: string;
     destroy: () => void;
-    hrefRules: string;
+    hrefRules: HrefRules;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_WithDefaults<P, D> = {

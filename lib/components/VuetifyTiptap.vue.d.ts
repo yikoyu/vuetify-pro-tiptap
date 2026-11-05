@@ -93,8 +93,8 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     "onUpdate:markdownTheme"?: ((value: string) => any) | undefined;
 }>, {
     markdownTheme: string | false;
-    extensions: AnyExtension[];
     flat: boolean;
+    extensions: AnyExtension[];
     disabled: boolean;
     maxHeight: string | number;
     maxWidth: string | number;

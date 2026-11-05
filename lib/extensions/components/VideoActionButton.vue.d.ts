@@ -1,9 +1,10 @@
 import { Editor } from '@tiptap/vue-3';
 import { IconsOptions } from '../../constants/icons';
+import { HrefRules } from '../../hooks/use-href-rules';
 import { ButtonViewReturnComponentProps } from '../../type';
 interface Props {
     editor: Editor;
-    hrefRules?: string;
+    hrefRules?: HrefRules;
     icon?: keyof IconsOptions;
     tooltip?: string;
     disabled?: boolean;
@@ -17,7 +18,7 @@ declare function __VLS_template(): {
         dialog?(_: {
             props: {
                 editor: Editor;
-                hrefRules: string;
+                hrefRules: HrefRules;
                 value: string | undefined;
             };
         }): any;
@@ -49,7 +50,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     icon: keyof IconsOptions;
     tooltip: string;
     disabled: boolean;
-    hrefRules: string;
+    hrefRules: HrefRules;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

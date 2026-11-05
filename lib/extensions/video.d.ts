@@ -1,10 +1,12 @@
+import { HrefRules } from '../hooks/use-href-rules';
 import { GeneralOptions } from '../type';
 import { Node } from '@tiptap/core';
 /**
  * Represents the interface for video options, extending GeneralOptions.
  */
 export interface VideoOptions extends GeneralOptions<VideoOptions> {
-    hrefRules?: string;
+    /** Validation rules for the video dialog, see `HrefRules` */
+    hrefRules?: HrefRules;
     /**
      * Indicates whether fullscreen play is allowed
      *

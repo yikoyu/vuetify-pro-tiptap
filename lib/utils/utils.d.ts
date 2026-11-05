@@ -13,4 +13,20 @@ export declare const getCssUnitWithDefault: (value?: string | number, defaultUni
  * @returns {boolean} - Returns true if the specified extension method is present, otherwise returns false.
  */
 export declare function hasExtension(editor: Editor, name: string): boolean;
+/**
+ * Resolves an href taken from the document into one that is safe to open, or
+ * null if it is not.
+ *
+ * A link mark's href is document content, so whoever authored the document
+ * chose it -- not necessarily the person who clicks it. window.open on a
+ * javascript: href runs that script, so the scheme has to be checked before
+ * navigating.
+ *
+ * The check parses rather than pattern-matches, because the URL parser strips
+ * tab, LF and CR before reading the scheme: "java\tscript:alert(1)" is a
+ * javascript: URL to the browser while a prefix test on the raw string sees
+ * something else entirely. For the same reason this returns the parsed href,
+ * so callers navigate to exactly what was validated.
+ */
+export declare function safeLinkHref(href: string): string | null;
 export { differenceBy, isEqual, throttle } from 'lodash-unified';
