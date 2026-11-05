@@ -7,7 +7,7 @@ A WYSIWYG rich-text editor using [tiptap](https://github.com/scrumpy/tiptap) and
 >
 > Upstream [yikoyu/vuetify-pro-tiptap](https://github.com/yikoyu/vuetify-pro-tiptap) v3.0.0+ requires **Vuetify 4**. QOR5 products depend on Vuetify **3.x** UI customizations, so this fork stays on Vuetify 3 permanently and must NOT be synced wholesale with upstream. tiptap here is **v3 (^3.30.2+, security floor 3.27.0** — Aikido CVEs AIKIDO-2026-484358 / AIKIDO-2026-801631**)** — never downgrade below that.
 >
-> **QOR5-specific features not in upstream:** `HtmlView` (HTML source mode) with `allowedAttributes` inheritance (`attribute-config.ts`), enhanced `Video` (bilibili links, load-error handling, `VideoNodeView`), `useEval`-based `hrefRules` link validation, dimension-preserving HTML mode.
+> **QOR5-specific features not in upstream:** `HtmlView` (HTML source mode) with `allowedAttributes` inheritance (`attribute-config.ts`), enhanced `Video` (bilibili links, load-error handling, `VideoNodeView`), eval-free `hrefRules` link validation (rule functions, JSON rule descriptors, or the legacy `value => /re/.test(value) || "msg"` string), dimension-preserving HTML mode.
 >
 > **Syncing policy:** cherry-pick individual upstream fixes only (skip anything touching Vuetify 4, the post-v3 directory restructure, or cosmetic style changes). Upstream fixes ported so far: `047aef7` (v-model circular feedback), `1235070` (fullscreen teleport, minus the background-color change), `3e23bbe` (xss sub/sup whitelist), `7a4b039` (font-size parsing). Verified not applicable: `0d6401c`, `566ce6c`.
 >
@@ -516,8 +516,8 @@ const content = ref('')
 | dark          | boolean               | false        | Applies the dark theme variant to the component. |
 | dense         | boolean               | false        | Reduces the input height                         |
 | markdownTheme | string \| false       | 'default'    | Markdown theme                                   |
-| xss           | boolean               | true         | Enable xss filter                                |
 | xssOptions    | xss.IWhiteList        | Default rule | Xss filter rule config                           |
+| iframeSrcWhitelist | (string \| RegExp)[] | undefined | Allowed iframe src (string = URL prefix). Unset = no restriction |
 | maxWidth      | string \| number      | undefined    | Sets the maximum width for the component.        |
 | extensions    | AnyExtension[]        | []           | Tiptap the extensions                            |
 
